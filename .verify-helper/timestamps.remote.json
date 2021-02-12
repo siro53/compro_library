@@ -1,3 +1,8 @@
 {
-"example.test.cpp": "2021-02-12 01:20:05 +0900"
+"test/a_plus_b.test.cpp": "2021-02-12 13:21:22 +0900",
+"test/fast_factorize.test.cpp": "2021-02-12 13:21:22 +0900",
+"test/lca.test.cpp": "2021-02-12 13:21:22 +0900",
+"test/set_xor_min.test.cpp": "2021-02-12 13:21:22 +0900",
+"test/staticrmq.test.cpp": "2021-02-12 13:21:22 +0900",
+"test/zalgorothm.test.cpp": "2021-02-12 13:21:22 +0900"
 }
