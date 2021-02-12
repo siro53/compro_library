@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/queue_operate_all_compose.test.cpp
+    title: test/queue_operate_all_compose.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"data_structure/swag.hpp\"\ntemplate <typename T> struct\
@@ -49,8 +52,9 @@ data:
   path: data_structure/swag.hpp
   requiredBy: []
   timestamp: '2021-02-12 13:21:22+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - test/queue_operate_all_compose.test.cpp
 documentation_of: data_structure/swag.hpp
 layout: document
 redirect_from:

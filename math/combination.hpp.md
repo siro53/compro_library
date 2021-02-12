@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':x:'
     path: math/modint.hpp
     title: math/modint.hpp
   _extendedRequiredBy: []

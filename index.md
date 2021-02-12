@@ -6,7 +6,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/BIT.hpp
       title: data_structure/BIT.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/LiChaoTree.hpp
       title: data_structure/LiChaoTree.hpp
     - icon: ':heavy_check_mark:'
@@ -15,7 +15,7 @@ data:
     - icon: ':warning:'
       path: data_structure/compress.hpp
       title: data_structure/compress.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: data_structure/swag.hpp
       title: data_structure/swag.hpp
   - name: data_structure/segtree
@@ -33,22 +33,22 @@ data:
       title: geometry/geometry.hpp
   - name: graph
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: graph/bipartite_matching.hpp
       title: graph/bipartite_matching.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: graph/dinic.hpp
       title: graph/dinic.hpp
     - icon: ':warning:'
       path: graph/doubling_tree.hpp
       title: graph/doubling_tree.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: graph/dsu.hpp
       title: graph/dsu.hpp
     - icon: ':heavy_check_mark:'
       path: graph/lca.hpp
       title: graph/lca.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: graph/scc.hpp
       title: graph/scc.hpp
     - icon: ':warning:'
@@ -77,10 +77,10 @@ data:
     - icon: ':warning:'
       path: math/lagrange_interpolation.hpp
       title: math/lagrange_interpolation.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: math/matrix.hpp
       title: math/matrix.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: math/modint.hpp
       title: math/modint.hpp
     - icon: ':warning:'
@@ -108,21 +108,42 @@ data:
       title: string/z_algo.hpp
   - name: template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/template.cpp
       title: template/template.cpp
   verificationCategories:
   - name: test
     pages:
     - icon: ':heavy_check_mark:'
+      path: test/Hopcroft-Karp.test.cpp
+      title: test/Hopcroft-Karp.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/a_plus_b.test.cpp
       title: test/a_plus_b.test.cpp
+    - icon: ':x:'
+      path: test/determinant.test.cpp
+      title: test/determinant.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/dinic.test.cpp
+      title: test/dinic.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/fast_factorize.test.cpp
       title: test/fast_factorize.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/lca.test.cpp
       title: test/lca.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/line_add_get_min.test.cpp
+      title: test/line_add_get_min.test.cpp
+    - icon: ':x:'
+      path: test/queue_operate_all_compose.test.cpp
+      title: test/queue_operate_all_compose.test.cpp
+    - icon: ':x:'
+      path: test/sa-is.test.cpp
+      title: test/sa-is.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/scc.test.cpp
+      title: test/scc.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/set_xor_min.test.cpp
       title: test/set_xor_min.test.cpp
@@ -132,6 +153,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/staticrmq.test.cpp
       title: test/staticrmq.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/union-find.test.cpp
+      title: test/union-find.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/zalgorothm.test.cpp
       title: test/zalgorothm.test.cpp

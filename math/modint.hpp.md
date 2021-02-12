@@ -8,10 +8,16 @@ data:
   - icon: ':warning:'
     path: math/lagrange_interpolation.hpp
     title: math/lagrange_interpolation.hpp
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/determinant.test.cpp
+    title: test/determinant.test.cpp
+  - icon: ':x:'
+    path: test/queue_operate_all_compose.test.cpp
+    title: test/queue_operate_all_compose.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/modint.hpp\"\ntemplate <int mod> struct ModInt {\n\
@@ -62,8 +68,10 @@ data:
   - math/lagrange_interpolation.hpp
   - math/combination.hpp
   timestamp: '2021-02-12 13:21:22+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - test/queue_operate_all_compose.test.cpp
+  - test/determinant.test.cpp
 documentation_of: math/modint.hpp
 layout: document
 redirect_from:
