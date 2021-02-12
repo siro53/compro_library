@@ -1,0 +1,97 @@
+---
+data:
+  _extendedDependsOn: []
+  _extendedRequiredBy: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/a_plus_b.test.cpp
+    title: test/a_plus_b.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/fast_factorize.test.cpp
+    title: test/fast_factorize.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/lca.test.cpp
+    title: test/lca.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/set_xor_min.test.cpp
+    title: test/set_xor_min.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/staticrangesum.test.cpp
+    title: test/staticrangesum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/staticrmq.test.cpp
+    title: test/staticrmq.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/zalgorothm.test.cpp
+    title: test/zalgorothm.test.cpp
+  _isVerificationFailed: false
+  _pathExtension: cpp
+  _verificationStatusIcon: ':heavy_check_mark:'
+  attributes:
+    links: []
+  bundledCode: "#line 1 \"template/template.cpp\"\n#include <bits/stdc++.h>\nusing\
+    \ namespace std;\ntemplate <class T> inline bool chmax(T &a, T b) {\n    if(a\
+    \ < b) {\n        a = b;\n        return 1;\n    }\n    return 0;\n}\ntemplate\
+    \ <class T> inline bool chmin(T &a, T b) {\n    if(a > b) {\n        a = b;\n\
+    \        return 1;\n    }\n    return 0;\n}\n#define DEBUG\n#ifdef DEBUG\ntemplate\
+    \ <class T, class U>\nostream &operator<<(ostream &os, const pair<T, U> &p) {\n\
+    \    os << '(' << p.first << ',' << p.second << ')';\n    return os;\n}\ntemplate\
+    \ <class T> ostream &operator<<(ostream &os, const vector<T> &v) {\n    os <<\
+    \ '{';\n    for(int i = 0; i < (int)v.size(); i++) {\n        if(i) { os << ',';\
+    \ }\n        os << v[i];\n    }\n    os << '}';\n    return os;\n}\nvoid debugg()\
+    \ { cerr << endl; }\ntemplate <class T, class... Args>\nvoid debugg(const T &x,\
+    \ const Args &... args) {\n    cerr << \" \" << x;\n    debugg(args...);\n}\n\
+    #define debug(...)                                                           \
+    \  \\\n    cerr << __LINE__ << \" [\" << #__VA_ARGS__ << \"]: \", debugg(__VA_ARGS__)\n\
+    #define dump(x) cerr << __LINE__ << \" \" << #x << \" = \" << (x) << endl\n#else\n\
+    #define debug(...) (void(0))\n#define dump(x) (void(0))\n#endif\n\nstruct Setup\
+    \ {\n    Setup() {\n        cin.tie(0);\n        ios::sync_with_stdio(false);\n\
+    \        cout << fixed << setprecision(15);\n    }\n} __Setup;\n\nusing ll = long\
+    \ long;\n#define ALL(v) (v).begin(), (v).end()\n#define RALL(v) (v).rbegin(),\
+    \ (v).rend()\n#define repl(i, a, b) for(int i = a; i < int(b); i++)\n#define rep(i,\
+    \ n) repl(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\nconstexpr\
+    \ int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4] = {0,\
+    \ 1, 0, -1};\n\n//-------------------------------------\n"
+  code: "#include <bits/stdc++.h>\nusing namespace std;\ntemplate <class T> inline\
+    \ bool chmax(T &a, T b) {\n    if(a < b) {\n        a = b;\n        return 1;\n\
+    \    }\n    return 0;\n}\ntemplate <class T> inline bool chmin(T &a, T b) {\n\
+    \    if(a > b) {\n        a = b;\n        return 1;\n    }\n    return 0;\n}\n\
+    #define DEBUG\n#ifdef DEBUG\ntemplate <class T, class U>\nostream &operator<<(ostream\
+    \ &os, const pair<T, U> &p) {\n    os << '(' << p.first << ',' << p.second <<\
+    \ ')';\n    return os;\n}\ntemplate <class T> ostream &operator<<(ostream &os,\
+    \ const vector<T> &v) {\n    os << '{';\n    for(int i = 0; i < (int)v.size();\
+    \ i++) {\n        if(i) { os << ','; }\n        os << v[i];\n    }\n    os <<\
+    \ '}';\n    return os;\n}\nvoid debugg() { cerr << endl; }\ntemplate <class T,\
+    \ class... Args>\nvoid debugg(const T &x, const Args &... args) {\n    cerr <<\
+    \ \" \" << x;\n    debugg(args...);\n}\n#define debug(...)                   \
+    \                                          \\\n    cerr << __LINE__ << \" [\"\
+    \ << #__VA_ARGS__ << \"]: \", debugg(__VA_ARGS__)\n#define dump(x) cerr << __LINE__\
+    \ << \" \" << #x << \" = \" << (x) << endl\n#else\n#define debug(...) (void(0))\n\
+    #define dump(x) (void(0))\n#endif\n\nstruct Setup {\n    Setup() {\n        cin.tie(0);\n\
+    \        ios::sync_with_stdio(false);\n        cout << fixed << setprecision(15);\n\
+    \    }\n} __Setup;\n\nusing ll = long long;\n#define ALL(v) (v).begin(), (v).end()\n\
+    #define RALL(v) (v).rbegin(), (v).rend()\n#define repl(i, a, b) for(int i = a;\
+    \ i < int(b); i++)\n#define rep(i, n) repl(i, 0, n)\nconst int INF = 1 << 30;\n\
+    const ll LLINF = 1LL << 60;\nconstexpr int MOD = 1000000007;\nconst int dx[4]\
+    \ = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0, -1};\n\n//-------------------------------------"
+  dependsOn: []
+  isVerificationFile: false
+  path: template/template.cpp
+  requiredBy: []
+  timestamp: '2021-02-12 13:21:22+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/zalgorothm.test.cpp
+  - test/fast_factorize.test.cpp
+  - test/staticrangesum.test.cpp
+  - test/lca.test.cpp
+  - test/set_xor_min.test.cpp
+  - test/staticrmq.test.cpp
+  - test/a_plus_b.test.cpp
+documentation_of: template/template.cpp
+layout: document
+redirect_from:
+- /library/template/template.cpp
+- /library/template/template.cpp.html
+title: template/template.cpp
+---

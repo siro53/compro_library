@@ -1,0 +1,139 @@
+---
+data:
+  libraryCategories:
+  - name: data_structure
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: data_structure/BIT.hpp
+      title: data_structure/BIT.hpp
+    - icon: ':warning:'
+      path: data_structure/LiChaoTree.hpp
+      title: data_structure/LiChaoTree.hpp
+    - icon: ':heavy_check_mark:'
+      path: data_structure/binary_trie.hpp
+      title: data_structure/binary_trie.hpp
+    - icon: ':warning:'
+      path: data_structure/compress.hpp
+      title: data_structure/compress.hpp
+    - icon: ':warning:'
+      path: data_structure/swag.hpp
+      title: data_structure/swag.hpp
+  - name: data_structure/segtree
+    pages:
+    - icon: ':warning:'
+      path: data_structure/segtree/lazy_segtree.hpp
+      title: data_structure/segtree/lazy_segtree.hpp
+    - icon: ':heavy_check_mark:'
+      path: data_structure/segtree/segtree.hpp
+      title: data_structure/segtree/segtree.hpp
+  - name: geometry
+    pages:
+    - icon: ':warning:'
+      path: geometry/geometry.hpp
+      title: geometry/geometry.hpp
+  - name: graph
+    pages:
+    - icon: ':warning:'
+      path: graph/bipartite_matching.hpp
+      title: graph/bipartite_matching.hpp
+    - icon: ':warning:'
+      path: graph/dinic.hpp
+      title: graph/dinic.hpp
+    - icon: ':warning:'
+      path: graph/doubling_tree.hpp
+      title: graph/doubling_tree.hpp
+    - icon: ':warning:'
+      path: graph/dsu.hpp
+      title: graph/dsu.hpp
+    - icon: ':heavy_check_mark:'
+      path: graph/lca.hpp
+      title: graph/lca.hpp
+    - icon: ':warning:'
+      path: graph/scc.hpp
+      title: graph/scc.hpp
+    - icon: ':warning:'
+      path: graph/tree_diameter.hpp
+      title: graph/tree_diameter.hpp
+    - icon: ':warning:'
+      path: graph/tree_hash.hpp
+      title: graph/tree_hash.hpp
+  - name: math
+    pages:
+    - icon: ':warning:'
+      path: math/BSGS.hpp
+      title: math/BSGS.hpp
+    - icon: ':warning:'
+      path: math/combination.hpp
+      title: math/combination.hpp
+    - icon: ':warning:'
+      path: math/divisor.hpp
+      title: math/divisor.hpp
+    - icon: ':warning:'
+      path: math/fft.hpp
+      title: math/fft.hpp
+    - icon: ':warning:'
+      path: math/gcd_lcm.hpp
+      title: math/gcd_lcm.hpp
+    - icon: ':warning:'
+      path: math/lagrange_interpolation.hpp
+      title: math/lagrange_interpolation.hpp
+    - icon: ':warning:'
+      path: math/matrix.hpp
+      title: math/matrix.hpp
+    - icon: ':warning:'
+      path: math/modint.hpp
+      title: math/modint.hpp
+    - icon: ':warning:'
+      path: math/modinv.hpp
+      title: math/modinv.hpp
+    - icon: ':heavy_check_mark:'
+      path: math/pollad-rho.hpp
+      title: math/pollad-rho.hpp
+    - icon: ':warning:'
+      path: math/pow_mod.hpp
+      title: math/pow_mod.hpp
+    - icon: ':warning:'
+      path: math/prime_factor.hpp
+      title: math/prime_factor.hpp
+  - name: string
+    pages:
+    - icon: ':warning:'
+      path: string/rolling_hash.hpp
+      title: string/rolling_hash.hpp
+    - icon: ':warning:'
+      path: string/trie.hpp
+      title: string/trie.hpp
+    - icon: ':heavy_check_mark:'
+      path: string/z_algo.hpp
+      title: string/z_algo.hpp
+  - name: template
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: template/template.cpp
+      title: template/template.cpp
+  verificationCategories:
+  - name: test
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/a_plus_b.test.cpp
+      title: test/a_plus_b.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/fast_factorize.test.cpp
+      title: test/fast_factorize.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/lca.test.cpp
+      title: test/lca.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/set_xor_min.test.cpp
+      title: test/set_xor_min.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/staticrangesum.test.cpp
+      title: test/staticrangesum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/staticrmq.test.cpp
+      title: test/staticrmq.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/zalgorothm.test.cpp
+      title: test/zalgorothm.test.cpp
+layout: toppage
+---

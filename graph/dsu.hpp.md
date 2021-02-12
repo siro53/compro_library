@@ -1,0 +1,42 @@
+---
+data:
+  _extendedDependsOn: []
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
+  _pathExtension: hpp
+  _verificationStatusIcon: ':warning:'
+  attributes:
+    links: []
+  bundledCode: "#line 1 \"graph/dsu.hpp\"\nstruct UnionFind {\n    vector<int> par;\n\
+    \n    UnionFind(int n) : par(n, -1) {}\n    void init(int n) { par.assign(n, -1);\
+    \ }\n\n    int root(int x) {\n        if(par[x] < 0)\n            return x;\n\
+    \        else\n            return par[x] = root(par[x]);\n    }\n\n    bool issame(int\
+    \ x, int y) { return root(x) == root(y); }\n\n    bool merge(int x, int y) {\n\
+    \        x = root(x);\n        y = root(y);\n        if(x == y)\n            return\
+    \ false;\n        if(par[x] > par[y])\n            swap(x, y); // merge technique\n\
+    \        par[x] += par[y];\n        par[y] = x;\n        return true;\n    }\n\
+    \n    int size(int x) { return -par[root(x)]; }\n};\n"
+  code: "struct UnionFind {\n    vector<int> par;\n\n    UnionFind(int n) : par(n,\
+    \ -1) {}\n    void init(int n) { par.assign(n, -1); }\n\n    int root(int x) {\n\
+    \        if(par[x] < 0)\n            return x;\n        else\n            return\
+    \ par[x] = root(par[x]);\n    }\n\n    bool issame(int x, int y) { return root(x)\
+    \ == root(y); }\n\n    bool merge(int x, int y) {\n        x = root(x);\n    \
+    \    y = root(y);\n        if(x == y)\n            return false;\n        if(par[x]\
+    \ > par[y])\n            swap(x, y); // merge technique\n        par[x] += par[y];\n\
+    \        par[y] = x;\n        return true;\n    }\n\n    int size(int x) { return\
+    \ -par[root(x)]; }\n};"
+  dependsOn: []
+  isVerificationFile: false
+  path: graph/dsu.hpp
+  requiredBy: []
+  timestamp: '2021-02-12 13:21:22+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
+documentation_of: graph/dsu.hpp
+layout: document
+redirect_from:
+- /library/graph/dsu.hpp
+- /library/graph/dsu.hpp.html
+title: graph/dsu.hpp
+---
