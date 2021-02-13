@@ -15,7 +15,7 @@ data:
     - icon: ':warning:'
       path: data_structure/compress.hpp
       title: data_structure/compress.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/swag.hpp
       title: data_structure/swag.hpp
   - name: data_structure/segtree
@@ -77,10 +77,10 @@ data:
     - icon: ':warning:'
       path: math/lagrange_interpolation.hpp
       title: math/lagrange_interpolation.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: math/matrix.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/modint.hpp
       title: math/modint.hpp
     - icon: ':warning:'
@@ -100,6 +100,9 @@ data:
     - icon: ':warning:'
       path: string/rolling_hash.hpp
       title: string/rolling_hash.hpp
+    - icon: ':heavy_check_mark:'
+      path: string/sa-is.hpp
+      title: string/sa-is.hpp
     - icon: ':warning:'
       path: string/trie.hpp
       title: string/trie.hpp
@@ -108,7 +111,7 @@ data:
       title: string/z_algo.hpp
   - name: template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/template.cpp
       title: template/template.cpp
   verificationCategories:
@@ -120,7 +123,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/a_plus_b.test.cpp
       title: test/a_plus_b.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/determinant.test.cpp
       title: test/determinant.test.cpp
     - icon: ':heavy_check_mark:'
@@ -135,10 +138,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/line_add_get_min.test.cpp
       title: test/line_add_get_min.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/queue_operate_all_compose.test.cpp
       title: test/queue_operate_all_compose.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/sa-is.test.cpp
       title: test/sa-is.test.cpp
     - icon: ':heavy_check_mark:'

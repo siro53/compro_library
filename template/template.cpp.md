@@ -9,7 +9,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/a_plus_b.test.cpp
     title: test/a_plus_b.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/determinant.test.cpp
     title: test/determinant.test.cpp
   - icon: ':heavy_check_mark:'
@@ -24,9 +24,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/line_add_get_min.test.cpp
     title: test/line_add_get_min.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/queue_operate_all_compose.test.cpp
     title: test/queue_operate_all_compose.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/sa-is.test.cpp
+    title: test/sa-is.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/scc.test.cpp
     title: test/scc.test.cpp
@@ -45,9 +48,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/zalgorothm.test.cpp
     title: test/zalgorothm.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"template/template.cpp\"\n#include <bits/stdc++.h>\nusing\
@@ -100,7 +103,7 @@ data:
   path: template/template.cpp
   requiredBy: []
   timestamp: '2021-02-12 13:21:22+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Hopcroft-Karp.test.cpp
   - test/union-find.test.cpp
@@ -111,6 +114,7 @@ data:
   - test/scc.test.cpp
   - test/set_xor_min.test.cpp
   - test/queue_operate_all_compose.test.cpp
+  - test/sa-is.test.cpp
   - test/determinant.test.cpp
   - test/line_add_get_min.test.cpp
   - test/dinic.test.cpp

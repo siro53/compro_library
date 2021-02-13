@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/determinant.test.cpp
     title: test/determinant.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/matrix.hpp\"\n// \u884C\u5217\u30E9\u30A4\u30D6\u30E9\
@@ -110,7 +110,7 @@ data:
   path: math/matrix.hpp
   requiredBy: []
   timestamp: '2021-02-12 13:21:22+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/determinant.test.cpp
 documentation_of: math/matrix.hpp

@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/matrix.hpp
     title: math/matrix.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: math/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/matrix_det
@@ -44,26 +44,30 @@ data:
     \ n) repl(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\nconstexpr\
     \ int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4] = {0,\
     \ 1, 0, -1};\n\n//-------------------------------------\n#line 1 \"math/modint.hpp\"\
-    \ntemplate <int mod> struct ModInt {\n    using M = ModInt;\n    int x;\n    ModInt()\
-    \ : x(0) {}\n    ModInt(int64_t y) : x(y >= 0 ? y % mod : (mod - (-y) % mod) %\
-    \ mod) {}\n    M &operator+=(const M &p) {\n        if((x += p.x) >= mod) x -=\
-    \ mod;\n        return *this;\n    }\n    M &operator-=(const M &p) {\n      \
-    \  if((x += mod - p.x) >= mod) x -= mod;\n        return *this;\n    }\n    M\
-    \ &operator*=(const M &p) {\n        x = (int)(1LL * x * p.x % mod);\n       \
-    \ return *this;\n    }\n    M &operator/=(const M &p) {\n        *this *= p.inverse();\n\
-    \        return *this;\n    }\n    M operator-() const { return M(-x); }\n   \
-    \ M operator+(const M &p) const { return M(*this) += p; }\n    M operator-(const\
-    \ M &p) const { return M(*this) -= p; }\n    M operator*(const M &p) const { return\
-    \ M(*this) *= p; }\n    M operator/(const M &p) const { return M(*this) /= p;\
-    \ }\n    M inverse() const {\n        int a = x, b = mod, u = 1, v = 0, t;\n \
-    \       while(b > 0) {\n            t = a / b;\n            swap(a -= t * b, b);\n\
-    \            swap(u -= t * v, v);\n        }\n        return M(u);\n    }\n  \
-    \  M pow(int64_t n) const {\n        M ret(1), mul(x);\n        while(n > 0) {\n\
-    \            if(n & 1) ret *= mul;\n            mul *= mul;\n            n >>=\
-    \ 1;\n        }\n        return ret;\n    }\n    friend ostream &operator<<(ostream\
-    \ &os, const M &p) { return os << p.x; }\n    friend istream &operator>>(istream\
-    \ &is, M &a) {\n        int64_t t;\n        is >> t;\n        a = M<mod>(t);\n\
-    \        return (is);\n    }\n    static int get_mod() { return mod; }\n};\n#line\
+    \ntemplate <int mod> struct ModInt {\n    int x;\n    ModInt() : x(0) {}\n   \
+    \ ModInt(int64_t y) : x(y >= 0 ? y % mod : (mod - (-y) % mod) % mod) {}\n    ModInt\
+    \ &operator+=(const ModInt &p) {\n        if((x += p.x) >= mod)\n            x\
+    \ -= mod;\n        return *this;\n    }\n    ModInt &operator-=(const ModInt &p)\
+    \ {\n        if((x += mod - p.x) >= mod)\n            x -= mod;\n        return\
+    \ *this;\n    }\n    ModInt &operator*=(const ModInt &p) {\n        x = (int)(1LL\
+    \ * x * p.x % mod);\n        return *this;\n    }\n    ModInt &operator/=(const\
+    \ ModInt &p) {\n        *this *= p.inv();\n        return *this;\n    }\n    ModInt\
+    \ operator-() const { return ModInt(-x); }\n    ModInt operator+(const ModInt\
+    \ &p) const { return ModInt(*this) += p; }\n    ModInt operator-(const ModInt\
+    \ &p) const { return ModInt(*this) -= p; }\n    ModInt operator*(const ModInt\
+    \ &p) const { return ModInt(*this) *= p; }\n    ModInt operator/(const ModInt\
+    \ &p) const { return ModInt(*this) /= p; }\n    bool operator==(const ModInt &p)\
+    \ const { return x == p.x; }\n    bool operator!=(const ModInt &p) const { return\
+    \ x != p.x; }\n    ModInt inv() const {\n        int a = x, b = mod, u = 1, v\
+    \ = 0, t;\n        while(b > 0) {\n            t = a / b;\n            swap(a\
+    \ -= t * b, b);\n            swap(u -= t * v, v);\n        }\n        return ModInt(u);\n\
+    \    }\n    ModInt pow(int64_t n) const {\n        ModInt ret(1), mul(x);\n  \
+    \      while(n > 0) {\n            if(n & 1)\n                ret *= mul;\n  \
+    \          mul *= mul;\n            n >>= 1;\n        }\n        return ret;\n\
+    \    }\n    friend ostream &operator<<(ostream &os, const ModInt &p) {\n     \
+    \   return os << p.x;\n    }\n    friend istream &operator>>(istream &is, ModInt\
+    \ &a) {\n        int64_t t;\n        is >> t;\n        a = ModInt<mod>(t);\n \
+    \       return (is);\n    }\n    static int get_mod() { return mod; }\n};\n#line\
     \ 1 \"math/matrix.hpp\"\n// \u884C\u5217\u30E9\u30A4\u30D6\u30E9\u30EA\ntemplate\
     \ <class T> struct Matrix {\n    vector<vector<T>> A;\n\n    Matrix() {}\n\n \
     \   Matrix(size_t n, size_t m) : A(n, vector<T>(m, 0)) {}\n\n    Matrix(size_t\
@@ -128,8 +132,8 @@ data:
   isVerificationFile: true
   path: test/determinant.test.cpp
   requiredBy: []
-  timestamp: '2021-02-13 08:38:16+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-02-13 09:10:17+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/determinant.test.cpp
 layout: document
