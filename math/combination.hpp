@@ -8,7 +8,7 @@ struct Combination {
     Combination(int _MAX) : fac(_MAX), finv(_MAX), MAX(_MAX) {
         fac[0] = fac[1] = 1;
         for(int i = 2; i < MAX; i++) { fac[i] = fac[i - 1] * i; }
-        finv[MAX - 1] = fac[MAX - 1].inverse();
+        finv[MAX - 1] = fac[MAX - 1].inv();
         for(int i = MAX - 1; i >= 1; i--) { finv[i - 1] = finv[i] * i; }
     }
     mint COM(int n, int k) {
