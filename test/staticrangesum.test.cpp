@@ -6,7 +6,7 @@ int main(){
     int N, Q;
     cin >> N >> Q;
     BIT<ll> bit(N);
-    rep(i, N){
+    REP(i, N){
         int a; cin >> a;
         bit.add(i, a);
     }

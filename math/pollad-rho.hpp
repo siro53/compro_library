@@ -69,7 +69,7 @@ struct FastFactorize {
             }
             ll nxt = now;
             dfs(dfs, d + 1, nxt);
-            rep(i, cnt[v[d]]) {
+            REP(i, cnt[v[d]]) {
                 nxt *= v[d];
                 dfs(dfs, d + 1, nxt);
             }
