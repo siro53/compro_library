@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/fast_factorize.test.cpp
     title: test/fast_factorize.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/pollad-rho.hpp\"\nstruct FastFactorize {\n    ll mul(ll\
@@ -39,7 +39,7 @@ data:
     \        auto dfs = [&](auto &&dfs, int d, ll now) -> void {\n            if(d\
     \ == sz) {\n                res.emplace_back(now);\n                return;\n\
     \            }\n            ll nxt = now;\n            dfs(dfs, d + 1, nxt);\n\
-    \            rep(i, cnt[v[d]]) {\n                nxt *= v[d];\n             \
+    \            REP(i, cnt[v[d]]) {\n                nxt *= v[d];\n             \
     \   dfs(dfs, d + 1, nxt);\n            }\n        };\n\n        dfs(dfs, 0, 1);\n\
     \        sort(ALL(res));\n        return res;\n    }\n};\n"
   code: "struct FastFactorize {\n    ll mul(ll a, ll b, ll c) { return (__int128)a\
@@ -70,15 +70,15 @@ data:
     \        auto dfs = [&](auto &&dfs, int d, ll now) -> void {\n            if(d\
     \ == sz) {\n                res.emplace_back(now);\n                return;\n\
     \            }\n            ll nxt = now;\n            dfs(dfs, d + 1, nxt);\n\
-    \            rep(i, cnt[v[d]]) {\n                nxt *= v[d];\n             \
+    \            REP(i, cnt[v[d]]) {\n                nxt *= v[d];\n             \
     \   dfs(dfs, d + 1, nxt);\n            }\n        };\n\n        dfs(dfs, 0, 1);\n\
     \        sort(ALL(res));\n        return res;\n    }\n};"
   dependsOn: []
   isVerificationFile: false
   path: math/pollad-rho.hpp
   requiredBy: []
-  timestamp: '2021-02-12 13:21:22+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2021-02-16 09:23:45+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/fast_factorize.test.cpp
 documentation_of: math/pollad-rho.hpp

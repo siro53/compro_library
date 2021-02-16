@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/BIT.hpp
     title: data_structure/BIT.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/static_range_sum
@@ -53,13 +53,13 @@ data:
     \ 0; k >>= 1) {\n            if(res + k < n && bit[res + k] < x) {\n         \
     \       x -= bit[res + k];\n                res += k;\n            }\n       \
     \ }\n        return res + 1;\n    }\n};\n#line 4 \"test/staticrangesum.test.cpp\"\
-    \n\nint main(){\n    int N, Q;\n    cin >> N >> Q;\n    BIT<ll> bit(N);\n    rep(i,\
+    \n\nint main(){\n    int N, Q;\n    cin >> N >> Q;\n    BIT<ll> bit(N);\n    REP(i,\
     \ N){\n        int a; cin >> a;\n        bit.add(i, a);\n    }\n\n    while(Q--){\n\
     \        int l, r;\n        cin >> l >> r;\n        cout << bit.sum(l, r) << \"\
     \\n\";\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_sum\"\n#include\
     \ \"../template/template.cpp\"\n#include \"../data_structure/BIT.hpp\"\n\nint\
-    \ main(){\n    int N, Q;\n    cin >> N >> Q;\n    BIT<ll> bit(N);\n    rep(i,\
+    \ main(){\n    int N, Q;\n    cin >> N >> Q;\n    BIT<ll> bit(N);\n    REP(i,\
     \ N){\n        int a; cin >> a;\n        bit.add(i, a);\n    }\n\n    while(Q--){\n\
     \        int l, r;\n        cin >> l >> r;\n        cout << bit.sum(l, r) << \"\
     \\n\";\n    }\n}"
@@ -69,8 +69,8 @@ data:
   isVerificationFile: true
   path: test/staticrangesum.test.cpp
   requiredBy: []
-  timestamp: '2021-02-16 09:13:04+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-02-16 09:23:45+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/staticrangesum.test.cpp
 layout: document

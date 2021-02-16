@@ -18,7 +18,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/dinic.test.cpp
     title: test/dinic.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/fast_factorize.test.cpp
     title: test/fast_factorize.test.cpp
   - icon: ':heavy_check_mark:'
@@ -39,7 +39,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/set_xor_min.test.cpp
     title: test/set_xor_min.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/staticrangesum.test.cpp
     title: test/staticrangesum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -51,9 +51,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/zalgorothm.test.cpp
     title: test/zalgorothm.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"template/template.cpp\"\n#include <bits/stdc++.h>\nusing\
@@ -106,7 +106,7 @@ data:
   path: template/template.cpp
   requiredBy: []
   timestamp: '2021-02-16 09:13:04+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Hopcroft-Karp.test.cpp
   - test/union-find.test.cpp

@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/pollad-rho.hpp
     title: math/pollad-rho.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/factorize
@@ -68,7 +68,7 @@ data:
     \ v.end());\n        int sz = int(v.size());\n\n        auto dfs = [&](auto &&dfs,\
     \ int d, ll now) -> void {\n            if(d == sz) {\n                res.emplace_back(now);\n\
     \                return;\n            }\n            ll nxt = now;\n         \
-    \   dfs(dfs, d + 1, nxt);\n            rep(i, cnt[v[d]]) {\n                nxt\
+    \   dfs(dfs, d + 1, nxt);\n            REP(i, cnt[v[d]]) {\n                nxt\
     \ *= v[d];\n                dfs(dfs, d + 1, nxt);\n            }\n        };\n\
     \n        dfs(dfs, 0, 1);\n        sort(ALL(res));\n        return res;\n    }\n\
     };\n#line 4 \"test/fast_factorize.test.cpp\"\n\nint main() {\n    int q;\n   \
@@ -88,8 +88,8 @@ data:
   isVerificationFile: true
   path: test/fast_factorize.test.cpp
   requiredBy: []
-  timestamp: '2021-02-16 09:13:04+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-02-16 09:23:45+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/fast_factorize.test.cpp
 layout: document

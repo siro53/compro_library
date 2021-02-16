@@ -3,7 +3,7 @@ data:
   libraryCategories:
   - name: data_structure
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/BIT.hpp
       title: data_structure/BIT.hpp
     - icon: ':heavy_check_mark:'
@@ -86,7 +86,7 @@ data:
     - icon: ':warning:'
       path: math/modinv.hpp
       title: math/modinv.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/pollad-rho.hpp
       title: math/pollad-rho.hpp
     - icon: ':warning:'
@@ -111,7 +111,7 @@ data:
       title: string/z_algo.hpp
   - name: template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/template.cpp
       title: template/template.cpp
   verificationCategories:
@@ -132,7 +132,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/dinic.test.cpp
       title: test/dinic.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/fast_factorize.test.cpp
       title: test/fast_factorize.test.cpp
     - icon: ':heavy_check_mark:'
@@ -153,7 +153,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/set_xor_min.test.cpp
       title: test/set_xor_min.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/staticrangesum.test.cpp
       title: test/staticrangesum.test.cpp
     - icon: ':heavy_check_mark:'
