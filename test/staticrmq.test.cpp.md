@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/segtree/segtree.hpp
     title: data_structure/segtree/segtree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
@@ -37,10 +37,10 @@ data:
     \ {\n    Setup() {\n        cin.tie(0);\n        ios::sync_with_stdio(false);\n\
     \        cout << fixed << setprecision(15);\n    }\n} __Setup;\n\nusing ll = long\
     \ long;\n#define ALL(v) (v).begin(), (v).end()\n#define RALL(v) (v).rbegin(),\
-    \ (v).rend()\n#define repl(i, a, b) for(int i = a; i < int(b); i++)\n#define rep(i,\
-    \ n) repl(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\nconstexpr\
-    \ int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4] = {0,\
-    \ 1, 0, -1};\n\n//-------------------------------------\n#line 4 \"test/staticrmq.test.cpp\"\
+    \ (v).rend()\n#define FOR(i, a, b) for(int i = (a); i < int(b); i++)\n#define\
+    \ REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\n\
+    constexpr int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4]\
+    \ = {0, 1, 0, -1};\n\n//-------------------------------------\n#line 4 \"test/staticrmq.test.cpp\"\
     \n\n#line 1 \"data_structure/segtree/segtree.hpp\"\ntemplate <typename Monoid>\
     \ struct SegmentTree {\n    using F = function<Monoid(Monoid, Monoid)>;\n\n  private:\n\
     \    int n;\n    vector<Monoid> node;\n    Monoid E;\n    F f;\n\n  public:\n\
@@ -77,7 +77,7 @@ data:
   isVerificationFile: true
   path: test/staticrmq.test.cpp
   requiredBy: []
-  timestamp: '2021-02-12 13:21:22+09:00'
+  timestamp: '2021-02-16 09:13:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/staticrmq.test.cpp

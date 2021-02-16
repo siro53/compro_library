@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/scc.hpp
     title: graph/scc.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
@@ -37,10 +37,10 @@ data:
     \ {\n    Setup() {\n        cin.tie(0);\n        ios::sync_with_stdio(false);\n\
     \        cout << fixed << setprecision(15);\n    }\n} __Setup;\n\nusing ll = long\
     \ long;\n#define ALL(v) (v).begin(), (v).end()\n#define RALL(v) (v).rbegin(),\
-    \ (v).rend()\n#define repl(i, a, b) for(int i = a; i < int(b); i++)\n#define rep(i,\
-    \ n) repl(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\nconstexpr\
-    \ int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4] = {0,\
-    \ 1, 0, -1};\n\n//-------------------------------------\n#line 1 \"graph/scc.hpp\"\
+    \ (v).rend()\n#define FOR(i, a, b) for(int i = (a); i < int(b); i++)\n#define\
+    \ REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\n\
+    constexpr int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4]\
+    \ = {0, 1, 0, -1};\n\n//-------------------------------------\n#line 1 \"graph/scc.hpp\"\
     \nstruct SCC {\n    vector<vector<int>> &G;\n    vector<vector<int>> revG;\n \
     \   vector<int> vs, comp;\n    vector<bool> seen;\n    int cnt;\n\n    SCC(vector<vector<int>>\
     \ &g)\n        : G(g), revG(g.size()), comp(g.size(), -1), seen(g.size(), false)\
@@ -81,7 +81,7 @@ data:
   isVerificationFile: true
   path: test/scc.test.cpp
   requiredBy: []
-  timestamp: '2021-02-13 08:38:16+09:00'
+  timestamp: '2021-02-16 09:13:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/scc.test.cpp

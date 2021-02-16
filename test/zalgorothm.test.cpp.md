@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: string/z_algo.hpp
     title: string/z_algo.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
@@ -37,10 +37,10 @@ data:
     \ {\n    Setup() {\n        cin.tie(0);\n        ios::sync_with_stdio(false);\n\
     \        cout << fixed << setprecision(15);\n    }\n} __Setup;\n\nusing ll = long\
     \ long;\n#define ALL(v) (v).begin(), (v).end()\n#define RALL(v) (v).rbegin(),\
-    \ (v).rend()\n#define repl(i, a, b) for(int i = a; i < int(b); i++)\n#define rep(i,\
-    \ n) repl(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\nconstexpr\
-    \ int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4] = {0,\
-    \ 1, 0, -1};\n\n//-------------------------------------\n#line 1 \"string/z_algo.hpp\"\
+    \ (v).rend()\n#define FOR(i, a, b) for(int i = (a); i < int(b); i++)\n#define\
+    \ REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\n\
+    constexpr int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4]\
+    \ = {0, 1, 0, -1};\n\n//-------------------------------------\n#line 1 \"string/z_algo.hpp\"\
     \n// \u3059\u3079\u30660-indexed\n// n := |S| \u3068\u3059\u308B\u3002\n// s[i,j]\
     \ := s\u306E[i,j]\u306E\u7BC4\u56F2\u306E\u9023\u7D9A\u90E8\u5206\u6587\u5B57\u5217\
     \u3068\u3059\u308B\u3002\u3053\u306E\u3068\u304D\u3001\n// s[0, n-1](= s)\u3068\
@@ -66,7 +66,7 @@ data:
   isVerificationFile: true
   path: test/zalgorothm.test.cpp
   requiredBy: []
-  timestamp: '2021-02-12 13:21:22+09:00'
+  timestamp: '2021-02-16 09:13:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/zalgorothm.test.cpp

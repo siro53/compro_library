@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/LiChaoTree.hpp
     title: data_structure/LiChaoTree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
@@ -37,10 +37,10 @@ data:
     \ {\n    Setup() {\n        cin.tie(0);\n        ios::sync_with_stdio(false);\n\
     \        cout << fixed << setprecision(15);\n    }\n} __Setup;\n\nusing ll = long\
     \ long;\n#define ALL(v) (v).begin(), (v).end()\n#define RALL(v) (v).rbegin(),\
-    \ (v).rend()\n#define repl(i, a, b) for(int i = a; i < int(b); i++)\n#define rep(i,\
-    \ n) repl(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\nconstexpr\
-    \ int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4] = {0,\
-    \ 1, 0, -1};\n\n//-------------------------------------\n#line 1 \"data_structure/LiChaoTree.hpp\"\
+    \ (v).rend()\n#define FOR(i, a, b) for(int i = (a); i < int(b); i++)\n#define\
+    \ REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\n\
+    constexpr int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4]\
+    \ = {0, 1, 0, -1};\n\n//-------------------------------------\n#line 1 \"data_structure/LiChaoTree.hpp\"\
     \ntemplate <typename T> struct LiChaoTree {\n    struct Line {\n        T a, b;\n\
     \        Line(T _a, T _b) : a(_a), b(_b) {}\n        inline T f(T x) const { return\
     \ (a * x + b); }\n    };\n    vector<T> X;\n    vector<Line> lines;\n    int n;\n\
@@ -91,7 +91,7 @@ data:
   isVerificationFile: true
   path: test/line_add_get_min.test.cpp
   requiredBy: []
-  timestamp: '2021-02-13 08:38:16+09:00'
+  timestamp: '2021-02-16 09:13:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/line_add_get_min.test.cpp

@@ -3,7 +3,7 @@ data:
   libraryCategories:
   - name: data_structure
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/BIT.hpp
       title: data_structure/BIT.hpp
     - icon: ':heavy_check_mark:'
@@ -54,7 +54,7 @@ data:
     - icon: ':warning:'
       path: graph/tree_diameter.hpp
       title: graph/tree_diameter.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: graph/tree_hash.hpp
       title: graph/tree_hash.hpp
   - name: math
@@ -86,7 +86,7 @@ data:
     - icon: ':warning:'
       path: math/modinv.hpp
       title: math/modinv.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/pollad-rho.hpp
       title: math/pollad-rho.hpp
     - icon: ':warning:'
@@ -111,12 +111,15 @@ data:
       title: string/z_algo.hpp
   - name: template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/template.cpp
       title: template/template.cpp
   verificationCategories:
   - name: test
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/AOJ2821.test.cpp
+      title: test/AOJ2821.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/Hopcroft-Karp.test.cpp
       title: test/Hopcroft-Karp.test.cpp
@@ -129,7 +132,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/dinic.test.cpp
       title: test/dinic.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/fast_factorize.test.cpp
       title: test/fast_factorize.test.cpp
     - icon: ':heavy_check_mark:'
@@ -150,7 +153,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/set_xor_min.test.cpp
       title: test/set_xor_min.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/staticrangesum.test.cpp
       title: test/staticrangesum.test.cpp
     - icon: ':heavy_check_mark:'

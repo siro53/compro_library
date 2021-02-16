@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/bipartite_matching.hpp
     title: graph/bipartite_matching.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
@@ -37,10 +37,10 @@ data:
     \ {\n    Setup() {\n        cin.tie(0);\n        ios::sync_with_stdio(false);\n\
     \        cout << fixed << setprecision(15);\n    }\n} __Setup;\n\nusing ll = long\
     \ long;\n#define ALL(v) (v).begin(), (v).end()\n#define RALL(v) (v).rbegin(),\
-    \ (v).rend()\n#define repl(i, a, b) for(int i = a; i < int(b); i++)\n#define rep(i,\
-    \ n) repl(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\nconstexpr\
-    \ int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4] = {0,\
-    \ 1, 0, -1};\n\n//-------------------------------------\n#line 1 \"graph/bipartite_matching.hpp\"\
+    \ (v).rend()\n#define FOR(i, a, b) for(int i = (a); i < int(b); i++)\n#define\
+    \ REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\n\
+    constexpr int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4]\
+    \ = {0, 1, 0, -1};\n\n//-------------------------------------\n#line 1 \"graph/bipartite_matching.hpp\"\
     \nstruct BipartiteMatching {\n    int L, R;\n    vector<int> l, r, d;\n    vector<bool>\
     \ seen;\n    vector<vector<int>> G;\n\n    BipartiteMatching(int L, int R)\n \
     \       : L(L), R(R), l(L, -1), r(R, -1), d(L), seen(L), G(L) {}\n\n    void add_edge(int\
@@ -79,7 +79,7 @@ data:
   isVerificationFile: true
   path: test/Hopcroft-Karp.test.cpp
   requiredBy: []
-  timestamp: '2021-02-13 08:38:16+09:00'
+  timestamp: '2021-02-16 09:13:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Hopcroft-Karp.test.cpp

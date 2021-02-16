@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ2821.test.cpp
+    title: test/AOJ2821.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"graph/tree_hash.hpp\"\nclass TreeHash {\n  private:\n  \
@@ -78,8 +81,9 @@ data:
   path: graph/tree_hash.hpp
   requiredBy: []
   timestamp: '2021-02-12 13:21:22+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/AOJ2821.test.cpp
 documentation_of: graph/tree_hash.hpp
 layout: document
 redirect_from:

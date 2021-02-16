@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/AOJ2821.test.cpp
+    title: test/AOJ2821.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/Hopcroft-Karp.test.cpp
     title: test/Hopcroft-Karp.test.cpp
   - icon: ':heavy_check_mark:'
@@ -15,7 +18,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/dinic.test.cpp
     title: test/dinic.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/fast_factorize.test.cpp
     title: test/fast_factorize.test.cpp
   - icon: ':heavy_check_mark:'
@@ -36,7 +39,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/set_xor_min.test.cpp
     title: test/set_xor_min.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/staticrangesum.test.cpp
     title: test/staticrangesum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -48,9 +51,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/zalgorothm.test.cpp
     title: test/zalgorothm.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"template/template.cpp\"\n#include <bits/stdc++.h>\nusing\
@@ -72,10 +75,10 @@ data:
     \ {\n    Setup() {\n        cin.tie(0);\n        ios::sync_with_stdio(false);\n\
     \        cout << fixed << setprecision(15);\n    }\n} __Setup;\n\nusing ll = long\
     \ long;\n#define ALL(v) (v).begin(), (v).end()\n#define RALL(v) (v).rbegin(),\
-    \ (v).rend()\n#define repl(i, a, b) for(int i = a; i < int(b); i++)\n#define rep(i,\
-    \ n) repl(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\nconstexpr\
-    \ int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4] = {0,\
-    \ 1, 0, -1};\n\n//-------------------------------------\n"
+    \ (v).rend()\n#define FOR(i, a, b) for(int i = (a); i < int(b); i++)\n#define\
+    \ REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\n\
+    constexpr int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4]\
+    \ = {0, 1, 0, -1};\n\n//-------------------------------------\n"
   code: "#include <bits/stdc++.h>\nusing namespace std;\ntemplate <class T> inline\
     \ bool chmax(T &a, T b) {\n    if(a < b) {\n        a = b;\n        return 1;\n\
     \    }\n    return 0;\n}\ntemplate <class T> inline bool chmin(T &a, T b) {\n\
@@ -94,16 +97,16 @@ data:
     #define dump(x) (void(0))\n#endif\n\nstruct Setup {\n    Setup() {\n        cin.tie(0);\n\
     \        ios::sync_with_stdio(false);\n        cout << fixed << setprecision(15);\n\
     \    }\n} __Setup;\n\nusing ll = long long;\n#define ALL(v) (v).begin(), (v).end()\n\
-    #define RALL(v) (v).rbegin(), (v).rend()\n#define repl(i, a, b) for(int i = a;\
-    \ i < int(b); i++)\n#define rep(i, n) repl(i, 0, n)\nconst int INF = 1 << 30;\n\
+    #define RALL(v) (v).rbegin(), (v).rend()\n#define FOR(i, a, b) for(int i = (a);\
+    \ i < int(b); i++)\n#define REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\n\
     const ll LLINF = 1LL << 60;\nconstexpr int MOD = 1000000007;\nconst int dx[4]\
     \ = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0, -1};\n\n//-------------------------------------"
   dependsOn: []
   isVerificationFile: false
   path: template/template.cpp
   requiredBy: []
-  timestamp: '2021-02-12 13:21:22+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-02-16 09:13:04+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/Hopcroft-Karp.test.cpp
   - test/union-find.test.cpp
@@ -111,6 +114,7 @@ data:
   - test/fast_factorize.test.cpp
   - test/staticrangesum.test.cpp
   - test/lca.test.cpp
+  - test/AOJ2821.test.cpp
   - test/scc.test.cpp
   - test/set_xor_min.test.cpp
   - test/queue_operate_all_compose.test.cpp
