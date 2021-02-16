@@ -55,8 +55,8 @@ struct Setup {
 using ll = long long;
 #define ALL(v) (v).begin(), (v).end()
 #define RALL(v) (v).rbegin(), (v).rend()
-#define repl(i, a, b) for(int i = a; i < int(b); i++)
-#define rep(i, n) repl(i, 0, n)
+#define FOR(i, a, b) for(int i = (a); i < int(b); i++)
+#define REP(i, n) FOR(i, 0, n)
 const int INF = 1 << 30;
 const ll LLINF = 1LL << 60;
 constexpr int MOD = 1000000007;
