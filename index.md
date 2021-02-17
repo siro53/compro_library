@@ -68,7 +68,7 @@ data:
     - icon: ':warning:'
       path: math/divisor.hpp
       title: math/divisor.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/fft.hpp
       title: math/fft.hpp
     - icon: ':warning:'
@@ -111,7 +111,7 @@ data:
       title: string/z_algo.hpp
   - name: template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/template.cpp
       title: template/template.cpp
   verificationCategories:
@@ -162,7 +162,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/union-find.test.cpp
       title: test/union-find.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yuki0206.test.cpp
       title: test/yuki0206.test.cpp
     - icon: ':heavy_check_mark:'
