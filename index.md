@@ -162,6 +162,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/union-find.test.cpp
       title: test/union-find.test.cpp
+    - icon: ':x:'
+      path: test/yuki0206.test.cpp
+      title: test/yuki0206.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/zalgorothm.test.cpp
       title: test/zalgorothm.test.cpp
