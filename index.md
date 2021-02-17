@@ -68,7 +68,7 @@ data:
     - icon: ':warning:'
       path: math/divisor.hpp
       title: math/divisor.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: math/fft.hpp
       title: math/fft.hpp
     - icon: ':warning:'
@@ -111,7 +111,7 @@ data:
       title: string/z_algo.hpp
   - name: template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/template.cpp
       title: template/template.cpp
   verificationCategories:

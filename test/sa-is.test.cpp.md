@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: string/sa-is.hpp
     title: string/sa-is.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
