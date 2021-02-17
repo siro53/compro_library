@@ -1,5 +1,5 @@
-#include "compro_library/template/template.cpp"
-#include "compro_library/math/fft.hpp"
+#include "../template/template.cpp"
+#include "../math/fft.hpp"
 
 int L, M, N, Q;
 vector<double> A, B;
