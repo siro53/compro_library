@@ -1,11 +1,17 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: graph/two_sat.hpp
+    title: graph/two_sat.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/scc.test.cpp
     title: test/scc.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/two_sat.test.cpp
+    title: test/two_sat.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -51,11 +57,13 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: graph/scc.hpp
-  requiredBy: []
+  requiredBy:
+  - graph/two_sat.hpp
   timestamp: '2021-02-22 10:22:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/scc.test.cpp
+  - test/two_sat.test.cpp
 documentation_of: graph/scc.hpp
 layout: document
 redirect_from:

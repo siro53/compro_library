@@ -57,6 +57,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/tree_hash.hpp
       title: graph/tree_hash.hpp
+    - icon: ':heavy_check_mark:'
+      path: graph/two_sat.hpp
+      title: graph/two_sat.hpp
   - name: math
     pages:
     - icon: ':warning:'
@@ -159,6 +162,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/staticrmq.test.cpp
       title: test/staticrmq.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/two_sat.test.cpp
+      title: test/two_sat.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/union-find.test.cpp
       title: test/union-find.test.cpp

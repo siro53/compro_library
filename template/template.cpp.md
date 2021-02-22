@@ -46,6 +46,9 @@ data:
     path: test/staticrmq.test.cpp
     title: test/staticrmq.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/two_sat.test.cpp
+    title: test/two_sat.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/union-find.test.cpp
     title: test/union-find.test.cpp
   - icon: ':heavy_check_mark:'
@@ -120,6 +123,7 @@ data:
   - test/lca.test.cpp
   - test/AOJ2821.test.cpp
   - test/scc.test.cpp
+  - test/two_sat.test.cpp
   - test/set_xor_min.test.cpp
   - test/queue_operate_all_compose.test.cpp
   - test/sa-is.test.cpp
