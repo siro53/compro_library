@@ -3,20 +3,21 @@
 #include "../graph/scc.hpp"
 
 int main() {
-    int n, m;
-    cin >> n >> m;
-    vector<vector<int>> G(n);
-    for(int i = 0; i < m; i++) {
-        int a, b;
-        cin >> a >> b;
-        G[a].emplace_back(b);
+    int N, M;
+    cin >> N >> M;
+
+    SCC scc(N);
+    REP(i, M) {
+        int a, b; cin >> a >> b;
+        scc.add_edge(a, b);
     }
-    SCC scc(G);
-    vector<vector<int>> res(scc.cnt);
-    for(int i = 0; i < n; i++) {
-        res[scc.comp[i]].emplace_back(i);
+    scc.build();
+
+    vector<vector<int>> res(scc.size());
+    for(int i = 0; i < N; i++) {
+        res[scc[i]].emplace_back(i);
     }
-    cout << scc.cnt << "\n";
+    cout << scc.size() << "\n";
     for(int i = 0; i < res.size(); i++) {
         int sz = res[i].size();
         cout << sz << " ";
