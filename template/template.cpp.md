@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/AOJ2426.test.cpp
+    title: test/AOJ2426.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/AOJ2821.test.cpp
     title: test/AOJ2821.test.cpp
   - icon: ':heavy_check_mark:'
@@ -126,6 +129,7 @@ data:
   - test/two_sat.test.cpp
   - test/set_xor_min.test.cpp
   - test/queue_operate_all_compose.test.cpp
+  - test/AOJ2426.test.cpp
   - test/sa-is.test.cpp
   - test/determinant.test.cpp
   - test/line_add_get_min.test.cpp

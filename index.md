@@ -12,9 +12,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/binary_trie.hpp
       title: data_structure/binary_trie.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/compress.hpp
       title: data_structure/compress.hpp
+    - icon: ':heavy_check_mark:'
+      path: data_structure/sum2d.hpp
+      title: data_structure/sum2d.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/swag.hpp
       title: data_structure/swag.hpp
@@ -120,6 +123,9 @@ data:
   verificationCategories:
   - name: test
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/AOJ2426.test.cpp
+      title: test/AOJ2426.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/AOJ2821.test.cpp
       title: test/AOJ2821.test.cpp
