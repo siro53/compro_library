@@ -120,6 +120,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: template/template.cpp
       title: template/template.cpp
+  - name: util
+    pages:
+    - icon: ':warning:'
+      path: util/get_time.hpp
+      title: util/get_time.hpp
+    - icon: ':warning:'
+      path: util/randint.hpp
+      title: util/randint.hpp
   verificationCategories:
   - name: test
     pages:
