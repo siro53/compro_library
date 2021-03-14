@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: math/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
@@ -26,7 +26,7 @@ data:
     \ <class T> inline bool chmax(T &a, T b) {\n    if(a < b) {\n        a = b;\n\
     \        return 1;\n    }\n    return 0;\n}\ntemplate <class T> inline bool chmin(T\
     \ &a, T b) {\n    if(a > b) {\n        a = b;\n        return 1;\n    }\n    return\
-    \ 0;\n}\n#define DEBUG\n#ifdef DEBUG\ntemplate <class T, class U>\nostream &operator<<(ostream\
+    \ 0;\n}\n#ifndef DEBUG\ntemplate <class T, class U>\nostream &operator<<(ostream\
     \ &os, const pair<T, U> &p) {\n    os << '(' << p.first << ',' << p.second <<\
     \ ')';\n    return os;\n}\ntemplate <class T> ostream &operator<<(ostream &os,\
     \ const vector<T> &v) {\n    os << '{';\n    for(int i = 0; i < (int)v.size();\
@@ -117,7 +117,7 @@ data:
   isVerificationFile: true
   path: test/queue_operate_all_compose.test.cpp
   requiredBy: []
-  timestamp: '2021-02-16 09:13:04+09:00'
+  timestamp: '2021-03-14 11:30:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/queue_operate_all_compose.test.cpp

@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/bipartite_matching.hpp
     title: graph/bipartite_matching.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
@@ -22,40 +22,40 @@ data:
     \ std;\ntemplate <class T> inline bool chmax(T &a, T b) {\n    if(a < b) {\n \
     \       a = b;\n        return 1;\n    }\n    return 0;\n}\ntemplate <class T>\
     \ inline bool chmin(T &a, T b) {\n    if(a > b) {\n        a = b;\n        return\
-    \ 1;\n    }\n    return 0;\n}\n#define DEBUG\n#ifdef DEBUG\ntemplate <class T,\
-    \ class U>\nostream &operator<<(ostream &os, const pair<T, U> &p) {\n    os <<\
-    \ '(' << p.first << ',' << p.second << ')';\n    return os;\n}\ntemplate <class\
-    \ T> ostream &operator<<(ostream &os, const vector<T> &v) {\n    os << '{';\n\
-    \    for(int i = 0; i < (int)v.size(); i++) {\n        if(i) { os << ','; }\n\
-    \        os << v[i];\n    }\n    os << '}';\n    return os;\n}\nvoid debugg()\
-    \ { cerr << endl; }\ntemplate <class T, class... Args>\nvoid debugg(const T &x,\
-    \ const Args &... args) {\n    cerr << \" \" << x;\n    debugg(args...);\n}\n\
-    #define debug(...)                                                           \
-    \  \\\n    cerr << __LINE__ << \" [\" << #__VA_ARGS__ << \"]: \", debugg(__VA_ARGS__)\n\
-    #define dump(x) cerr << __LINE__ << \" \" << #x << \" = \" << (x) << endl\n#else\n\
-    #define debug(...) (void(0))\n#define dump(x) (void(0))\n#endif\n\nstruct Setup\
-    \ {\n    Setup() {\n        cin.tie(0);\n        ios::sync_with_stdio(false);\n\
-    \        cout << fixed << setprecision(15);\n    }\n} __Setup;\n\nusing ll = long\
-    \ long;\n#define ALL(v) (v).begin(), (v).end()\n#define RALL(v) (v).rbegin(),\
-    \ (v).rend()\n#define FOR(i, a, b) for(int i = (a); i < int(b); i++)\n#define\
-    \ REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\n\
-    constexpr int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4]\
-    \ = {0, 1, 0, -1};\n\n//-------------------------------------\n#line 1 \"graph/bipartite_matching.hpp\"\
-    \nstruct BipartiteMatching {\n    int L, R;\n    vector<int> l, r, d;\n    vector<bool>\
-    \ seen;\n    vector<vector<int>> G;\n\n    BipartiteMatching(int L, int R)\n \
-    \       : L(L), R(R), l(L, -1), r(R, -1), d(L), seen(L), G(L) {}\n\n    void add_edge(int\
-    \ _l, int _r) { G[_l].emplace_back(_r); }\n\n    void bfs() {\n        vector<int>\
-    \ que;\n        int head = 0, tail = 0;\n        fill(d.begin(), d.end(), -1);\n\
-    \        for(int i = 0; i < L; i++) {\n            if(l[i] == -1) {\n        \
-    \        que.emplace_back(i), tail++;\n                d[i] = 0;\n           \
-    \ }\n        }\n        while(head != tail) {\n            int v = que[head++];\n\
-    \            for(const auto &u : G[v]) {\n                if(r[u] != -1 && d[r[u]]\
-    \ == -1) {\n                    d[r[u]] = d[v] + 1;\n                    que.emplace_back(r[u]),\
-    \ tail++;\n                }\n            }\n        }\n    }\n\n    bool dfs(int\
-    \ v) {\n        if(seen[v]) return false;\n        seen[v] = true;\n        for(const\
-    \ auto &u : G[v]) {\n            if(r[u] == -1 || (d[r[u]] == d[v] + 1 && dfs(r[u])))\
-    \ {\n                l[v] = u;\n                r[u] = v;\n                return\
-    \ true;\n            }\n        }\n        return false;\n    }\n\n    int matching()\
+    \ 1;\n    }\n    return 0;\n}\n#ifndef DEBUG\ntemplate <class T, class U>\nostream\
+    \ &operator<<(ostream &os, const pair<T, U> &p) {\n    os << '(' << p.first <<\
+    \ ',' << p.second << ')';\n    return os;\n}\ntemplate <class T> ostream &operator<<(ostream\
+    \ &os, const vector<T> &v) {\n    os << '{';\n    for(int i = 0; i < (int)v.size();\
+    \ i++) {\n        if(i) { os << ','; }\n        os << v[i];\n    }\n    os <<\
+    \ '}';\n    return os;\n}\nvoid debugg() { cerr << endl; }\ntemplate <class T,\
+    \ class... Args>\nvoid debugg(const T &x, const Args &... args) {\n    cerr <<\
+    \ \" \" << x;\n    debugg(args...);\n}\n#define debug(...)                   \
+    \                                          \\\n    cerr << __LINE__ << \" [\"\
+    \ << #__VA_ARGS__ << \"]: \", debugg(__VA_ARGS__)\n#define dump(x) cerr << __LINE__\
+    \ << \" \" << #x << \" = \" << (x) << endl\n#else\n#define debug(...) (void(0))\n\
+    #define dump(x) (void(0))\n#endif\n\nstruct Setup {\n    Setup() {\n        cin.tie(0);\n\
+    \        ios::sync_with_stdio(false);\n        cout << fixed << setprecision(15);\n\
+    \    }\n} __Setup;\n\nusing ll = long long;\n#define ALL(v) (v).begin(), (v).end()\n\
+    #define RALL(v) (v).rbegin(), (v).rend()\n#define FOR(i, a, b) for(int i = (a);\
+    \ i < int(b); i++)\n#define REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\n\
+    const ll LLINF = 1LL << 60;\nconstexpr int MOD = 1000000007;\nconst int dx[4]\
+    \ = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0, -1};\n\n//-------------------------------------\n\
+    #line 1 \"graph/bipartite_matching.hpp\"\nstruct BipartiteMatching {\n    int\
+    \ L, R;\n    vector<int> l, r, d;\n    vector<bool> seen;\n    vector<vector<int>>\
+    \ G;\n\n    BipartiteMatching(int L, int R)\n        : L(L), R(R), l(L, -1), r(R,\
+    \ -1), d(L), seen(L), G(L) {}\n\n    void add_edge(int _l, int _r) { G[_l].emplace_back(_r);\
+    \ }\n\n    void bfs() {\n        vector<int> que;\n        int head = 0, tail\
+    \ = 0;\n        fill(d.begin(), d.end(), -1);\n        for(int i = 0; i < L; i++)\
+    \ {\n            if(l[i] == -1) {\n                que.emplace_back(i), tail++;\n\
+    \                d[i] = 0;\n            }\n        }\n        while(head != tail)\
+    \ {\n            int v = que[head++];\n            for(const auto &u : G[v]) {\n\
+    \                if(r[u] != -1 && d[r[u]] == -1) {\n                    d[r[u]]\
+    \ = d[v] + 1;\n                    que.emplace_back(r[u]), tail++;\n         \
+    \       }\n            }\n        }\n    }\n\n    bool dfs(int v) {\n        if(seen[v])\
+    \ return false;\n        seen[v] = true;\n        for(const auto &u : G[v]) {\n\
+    \            if(r[u] == -1 || (d[r[u]] == d[v] + 1 && dfs(r[u]))) {\n        \
+    \        l[v] = u;\n                r[u] = v;\n                return true;\n\
+    \            }\n        }\n        return false;\n    }\n\n    int matching()\
     \ {\n        int res = 0;\n        while(1) {\n            bfs();\n          \
     \  fill(seen.begin(), seen.end(), false);\n            int f = 0;\n          \
     \  for(int i = 0; i < L; i++) {\n                if(l[i] == -1 && dfs(i)) f++;\n\
@@ -79,7 +79,7 @@ data:
   isVerificationFile: true
   path: test/Hopcroft-Karp.test.cpp
   requiredBy: []
-  timestamp: '2021-02-16 09:13:04+09:00'
+  timestamp: '2021-03-14 11:30:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Hopcroft-Karp.test.cpp

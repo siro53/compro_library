@@ -112,12 +112,12 @@ data:
     - icon: ':warning:'
       path: string/trie.hpp
       title: string/trie.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: string/z_algo.hpp
       title: string/z_algo.hpp
   - name: template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/template.cpp
       title: template/template.cpp
   - name: util
@@ -185,7 +185,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yuki0206.test.cpp
       title: test/yuki0206.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/zalgorothm.test.cpp
       title: test/zalgorothm.test.cpp
 layout: toppage

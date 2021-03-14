@@ -10,18 +10,18 @@ data:
     links: []
   bundledCode: "#line 1 \"util/randint.hpp\"\nstruct random_number_generator {\n \
     \   mt19937 mt;\n    random_number_generator():mt(chrono::steady_clock::now().time_since_epoch().count())\
-    \ {}\n    int operator()(int a, int b) {\n        uniform_int_distribution<T>\
+    \ {}\n    int operator()(int a, int b) {\n        uniform_int_distribution<int>\
     \ dist(a, b - 1);\n        return dist(mt);\n    }\n    int operator()(int b)\
     \ {\n        return (*this)(0, b);\n    }\n};\n"
   code: "struct random_number_generator {\n    mt19937 mt;\n    random_number_generator():mt(chrono::steady_clock::now().time_since_epoch().count())\
-    \ {}\n    int operator()(int a, int b) {\n        uniform_int_distribution<T>\
+    \ {}\n    int operator()(int a, int b) {\n        uniform_int_distribution<int>\
     \ dist(a, b - 1);\n        return dist(mt);\n    }\n    int operator()(int b)\
     \ {\n        return (*this)(0, b);\n    }\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: util/randint.hpp
   requiredBy: []
-  timestamp: '2021-03-06 10:35:50+09:00'
+  timestamp: '2021-03-14 11:30:56+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: util/randint.hpp
