@@ -14,8 +14,7 @@ template <class T> inline bool chmin(T &a, T b) {
     }
     return 0;
 }
-#define DEBUG
-#ifdef DEBUG
+#ifndef DEBUG
 template <class T, class U>
 ostream &operator<<(ostream &os, const pair<T, U> &p) {
     os << '(' << p.first << ',' << p.second << ')';
