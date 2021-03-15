@@ -22,8 +22,14 @@ data:
     path: test/dinic.test.cpp
     title: test/dinic.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/erathosthenes.test.cpp
+    title: test/erathosthenes.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/fast_factorize.test.cpp
     title: test/fast_factorize.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/is_prime.test.cpp
+    title: test/is_prime.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/lca.test.cpp
     title: test/lca.test.cpp
@@ -57,12 +63,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki0206.test.cpp
     title: test/yuki0206.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/zalgorothm.test.cpp
     title: test/zalgorothm.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"template/template.cpp\"\n#include <bits/stdc++.h>\nusing\
@@ -115,7 +121,7 @@ data:
   path: template/template.cpp
   requiredBy: []
   timestamp: '2021-03-14 11:30:56+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki0206.test.cpp
   - test/Hopcroft-Karp.test.cpp
@@ -132,6 +138,8 @@ data:
   - test/AOJ2426.test.cpp
   - test/sa-is.test.cpp
   - test/determinant.test.cpp
+  - test/is_prime.test.cpp
+  - test/erathosthenes.test.cpp
   - test/line_add_get_min.test.cpp
   - test/dinic.test.cpp
   - test/staticrmq.test.cpp

@@ -75,11 +75,17 @@ data:
       path: math/divisor.hpp
       title: math/divisor.hpp
     - icon: ':heavy_check_mark:'
+      path: math/eratosthenes.hpp
+      title: math/eratosthenes.hpp
+    - icon: ':heavy_check_mark:'
       path: math/fft.hpp
       title: math/fft.hpp
     - icon: ':warning:'
       path: math/gcd_lcm.hpp
       title: math/gcd_lcm.hpp
+    - icon: ':heavy_check_mark:'
+      path: math/is_prime.hpp
+      title: math/is_prime.hpp
     - icon: ':warning:'
       path: math/lagrange_interpolation.hpp
       title: math/lagrange_interpolation.hpp
@@ -112,12 +118,12 @@ data:
     - icon: ':warning:'
       path: string/trie.hpp
       title: string/trie.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: string/z_algo.hpp
       title: string/z_algo.hpp
   - name: template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/template.cpp
       title: template/template.cpp
   - name: util
@@ -150,8 +156,14 @@ data:
       path: test/dinic.test.cpp
       title: test/dinic.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/erathosthenes.test.cpp
+      title: test/erathosthenes.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/fast_factorize.test.cpp
       title: test/fast_factorize.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/is_prime.test.cpp
+      title: test/is_prime.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/lca.test.cpp
       title: test/lca.test.cpp
@@ -185,7 +197,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yuki0206.test.cpp
       title: test/yuki0206.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/zalgorothm.test.cpp
       title: test/zalgorothm.test.cpp
 layout: toppage

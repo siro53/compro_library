@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: math/is_prime.hpp
+    title: math/is_prime.hpp
+  - icon: ':heavy_check_mark:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
@@ -11,10 +14,10 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/aplusb
+    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_C&lang=jp
     links:
-    - https://judge.yosupo.jp/problem/aplusb
-  bundledCode: "#line 1 \"test/a_plus_b.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\
+    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_C&lang=jp
+  bundledCode: "#line 1 \"test/is_prime.test.cpp\"\n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_C&lang=jp\"\
     \n#line 1 \"template/template.cpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\ntemplate <class T> inline bool chmax(T &a, T b) {\n    if(a < b) {\n \
     \       a = b;\n        return 1;\n    }\n    return 0;\n}\ntemplate <class T>\
@@ -37,23 +40,30 @@ data:
     \ i < int(b); i++)\n#define REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\n\
     const ll LLINF = 1LL << 60;\nconstexpr int MOD = 1000000007;\nconst int dx[4]\
     \ = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0, -1};\n\n//-------------------------------------\n\
-    #line 3 \"test/a_plus_b.test.cpp\"\n\nint main(){\n    ll a, b;\n    cin >> a\
-    \ >> b;\n    cout << a + b << \"\\n\";\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../template/template.cpp\"\
-    \n\nint main(){\n    ll a, b;\n    cin >> a >> b;\n    cout << a + b << \"\\n\"\
-    ;\n}"
+    #line 1 \"math/is_prime.hpp\"\nbool is_prime(int n) {\n    if(n <= 1) return false;\n\
+    \    for(int i = 2; i * i <= n; i++) {\n        if(n % i == 0) return false;\n\
+    \    }\n    return true;\n}\n#line 4 \"test/is_prime.test.cpp\"\n\nint main()\
+    \ {\n    int t; cin >> t;\n    int ans = 0;\n    while(t--) {\n        int n;\
+    \ \n        cin >> n;\n        ans += is_prime(n);\n    }\n    cout << ans <<\
+    \ endl;\n}\n"
+  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_C&lang=jp\"\
+    \n#include \"../template/template.cpp\"\n#include \"../math/is_prime.hpp\"\n\n\
+    int main() {\n    int t; cin >> t;\n    int ans = 0;\n    while(t--) {\n     \
+    \   int n; \n        cin >> n;\n        ans += is_prime(n);\n    }\n    cout <<\
+    \ ans << endl;\n}"
   dependsOn:
   - template/template.cpp
+  - math/is_prime.hpp
   isVerificationFile: true
-  path: test/a_plus_b.test.cpp
+  path: test/is_prime.test.cpp
   requiredBy: []
-  timestamp: '2021-03-14 11:30:56+09:00'
+  timestamp: '2021-03-15 20:37:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/a_plus_b.test.cpp
+documentation_of: test/is_prime.test.cpp
 layout: document
 redirect_from:
-- /verify/test/a_plus_b.test.cpp
-- /verify/test/a_plus_b.test.cpp.html
-title: test/a_plus_b.test.cpp
+- /verify/test/is_prime.test.cpp
+- /verify/test/is_prime.test.cpp.html
+title: test/is_prime.test.cpp
 ---
