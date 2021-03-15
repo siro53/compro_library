@@ -5,7 +5,9 @@
 "test/a_plus_b.test.cpp": "2021-03-14 11:30:56 +0900",
 "test/determinant.test.cpp": "2021-03-14 11:30:56 +0900",
 "test/dinic.test.cpp": "2021-03-14 11:30:56 +0900",
+"test/erathosthenes.test.cpp": "2021-03-15 20:37:34 +0900",
 "test/fast_factorize.test.cpp": "2021-03-14 11:30:56 +0900",
+"test/is_prime.test.cpp": "2021-03-15 20:37:34 +0900",
 "test/lca.test.cpp": "2021-03-14 11:30:56 +0900",
 "test/line_add_get_min.test.cpp": "2021-03-14 11:30:56 +0900",
 "test/queue_operate_all_compose.test.cpp": "2021-03-14 11:30:56 +0900",
@@ -16,5 +18,6 @@
 "test/staticrmq.test.cpp": "2021-03-14 11:30:56 +0900",
 "test/two_sat.test.cpp": "2021-03-14 11:30:56 +0900",
 "test/union-find.test.cpp": "2021-03-14 11:30:56 +0900",
-"test/yuki0206.test.cpp": "2021-03-14 11:30:56 +0900"
+"test/yuki0206.test.cpp": "2021-03-14 11:30:56 +0900",
+"test/zalgorothm.test.cpp": "2021-03-14 11:30:56 +0900"
 }
