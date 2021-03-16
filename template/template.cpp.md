@@ -7,6 +7,9 @@ data:
     path: test/AOJ2426.test.cpp
     title: test/AOJ2426.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/AOJ2748.test.cpp
+    title: test/AOJ2748.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/AOJ2821.test.cpp
     title: test/AOJ2821.test.cpp
   - icon: ':heavy_check_mark:'
@@ -124,6 +127,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki0206.test.cpp
+  - test/AOJ2748.test.cpp
   - test/Hopcroft-Karp.test.cpp
   - test/union-find.test.cpp
   - test/zalgorothm.test.cpp

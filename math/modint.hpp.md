@@ -3,9 +3,6 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
-    path: math/combination.hpp
-    title: math/combination.hpp
-  - icon: ':warning:'
     path: math/lagrange_interpolation.hpp
     title: math/lagrange_interpolation.hpp
   _extendedVerifiedWith:
@@ -74,7 +71,6 @@ data:
   path: math/modint.hpp
   requiredBy:
   - math/lagrange_interpolation.hpp
-  - math/combination.hpp
   timestamp: '2021-02-13 09:10:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
