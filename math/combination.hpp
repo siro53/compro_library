@@ -1,7 +1,3 @@
-#include "modint.hpp"
-
-using mint = ModInt<MOD>;
-
 struct Combination {
     int MAX;
     vector<mint> fac, finv;

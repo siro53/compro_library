@@ -1,3 +1,4 @@
+// グラフを構築したらbuild()を必ず呼ぶこと!!!
 class SCC {
   private:
     vector<vector<int>> G;
@@ -36,7 +37,7 @@ class SCC {
     void build() {
         int n = (int)G.size();
         for(int i = 0; i < n; i++) {
-            if(!seen[i]) { dfs(i); }
+            if(!seen[i]) dfs(i);
         }
         reverse(ALL(vs));
         cnt = 0;
@@ -46,6 +47,18 @@ class SCC {
                 cnt++;
             }
         }
+    }
+    // 必ずbuild()した後に呼び出すこと!!!
+    vector<vector<int>> get_contract_graph() {
+        vector<vector<int>> res_g(cnt);
+        for(int i = 0; i < int(G.size()); i++) {
+            for(const int& to : G[i]) {
+                int a = comp[i], b = comp[to];
+                if(a == b) continue;
+                res_g[a].push_back(b);
+            }
+        }
+        return res_g;
     }
     int operator[](int k) const { return comp[k]; }
     int size() const { return cnt; }
