@@ -1,3 +1,4 @@
+#pragma region Macros
 #include <bits/stdc++.h>
 using namespace std;
 template <class T> inline bool chmax(T &a, T b) {
@@ -14,7 +15,7 @@ template <class T> inline bool chmin(T &a, T b) {
     }
     return 0;
 }
-#ifndef DEBUG
+#ifdef DEBUG
 template <class T, class U>
 ostream &operator<<(ostream &os, const pair<T, U> &p) {
     os << '(' << p.first << ',' << p.second << ')';
@@ -61,5 +62,4 @@ const ll LLINF = 1LL << 60;
 constexpr int MOD = 1000000007;
 const int dx[4] = {1, 0, -1, 0};
 const int dy[4] = {0, 1, 0, -1};
-
-//-------------------------------------
+#pragma endregion Macros
