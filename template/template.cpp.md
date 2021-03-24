@@ -60,30 +60,30 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/two_sat.test.cpp
     title: test/two_sat.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/union-find.test.cpp
     title: test/union-find.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki0206.test.cpp
     title: test/yuki0206.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/zalgorothm.test.cpp
     title: test/zalgorothm.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"template/template.cpp\"\n#include <bits/stdc++.h>\nusing\
-    \ namespace std;\ntemplate <class T> inline bool chmax(T &a, T b) {\n    if(a\
-    \ < b) {\n        a = b;\n        return 1;\n    }\n    return 0;\n}\ntemplate\
-    \ <class T> inline bool chmin(T &a, T b) {\n    if(a > b) {\n        a = b;\n\
-    \        return 1;\n    }\n    return 0;\n}\n#ifndef DEBUG\ntemplate <class T,\
-    \ class U>\nostream &operator<<(ostream &os, const pair<T, U> &p) {\n    os <<\
-    \ '(' << p.first << ',' << p.second << ')';\n    return os;\n}\ntemplate <class\
-    \ T> ostream &operator<<(ostream &os, const vector<T> &v) {\n    os << '{';\n\
-    \    for(int i = 0; i < (int)v.size(); i++) {\n        if(i) { os << ','; }\n\
-    \        os << v[i];\n    }\n    os << '}';\n    return os;\n}\nvoid debugg()\
+  bundledCode: "#line 1 \"template/template.cpp\"\n#pragma region Macros\n#include\
+    \ <bits/stdc++.h>\nusing namespace std;\ntemplate <class T> inline bool chmax(T\
+    \ &a, T b) {\n    if(a < b) {\n        a = b;\n        return 1;\n    }\n    return\
+    \ 0;\n}\ntemplate <class T> inline bool chmin(T &a, T b) {\n    if(a > b) {\n\
+    \        a = b;\n        return 1;\n    }\n    return 0;\n}\n#ifdef DEBUG\ntemplate\
+    \ <class T, class U>\nostream &operator<<(ostream &os, const pair<T, U> &p) {\n\
+    \    os << '(' << p.first << ',' << p.second << ')';\n    return os;\n}\ntemplate\
+    \ <class T> ostream &operator<<(ostream &os, const vector<T> &v) {\n    os <<\
+    \ '{';\n    for(int i = 0; i < (int)v.size(); i++) {\n        if(i) { os << ',';\
+    \ }\n        os << v[i];\n    }\n    os << '}';\n    return os;\n}\nvoid debugg()\
     \ { cerr << endl; }\ntemplate <class T, class... Args>\nvoid debugg(const T &x,\
     \ const Args &... args) {\n    cerr << \" \" << x;\n    debugg(args...);\n}\n\
     #define debug(...)                                                           \
@@ -96,58 +96,58 @@ data:
     \ (v).rend()\n#define FOR(i, a, b) for(int i = (a); i < int(b); i++)\n#define\
     \ REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\n\
     constexpr int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4]\
-    \ = {0, 1, 0, -1};\n\n//-------------------------------------\n"
-  code: "#include <bits/stdc++.h>\nusing namespace std;\ntemplate <class T> inline\
-    \ bool chmax(T &a, T b) {\n    if(a < b) {\n        a = b;\n        return 1;\n\
-    \    }\n    return 0;\n}\ntemplate <class T> inline bool chmin(T &a, T b) {\n\
-    \    if(a > b) {\n        a = b;\n        return 1;\n    }\n    return 0;\n}\n\
-    #ifndef DEBUG\ntemplate <class T, class U>\nostream &operator<<(ostream &os, const\
-    \ pair<T, U> &p) {\n    os << '(' << p.first << ',' << p.second << ')';\n    return\
-    \ os;\n}\ntemplate <class T> ostream &operator<<(ostream &os, const vector<T>\
-    \ &v) {\n    os << '{';\n    for(int i = 0; i < (int)v.size(); i++) {\n      \
-    \  if(i) { os << ','; }\n        os << v[i];\n    }\n    os << '}';\n    return\
-    \ os;\n}\nvoid debugg() { cerr << endl; }\ntemplate <class T, class... Args>\n\
-    void debugg(const T &x, const Args &... args) {\n    cerr << \" \" << x;\n   \
-    \ debugg(args...);\n}\n#define debug(...)                                    \
-    \                         \\\n    cerr << __LINE__ << \" [\" << #__VA_ARGS__ <<\
-    \ \"]: \", debugg(__VA_ARGS__)\n#define dump(x) cerr << __LINE__ << \" \" << #x\
-    \ << \" = \" << (x) << endl\n#else\n#define debug(...) (void(0))\n#define dump(x)\
-    \ (void(0))\n#endif\n\nstruct Setup {\n    Setup() {\n        cin.tie(0);\n  \
-    \      ios::sync_with_stdio(false);\n        cout << fixed << setprecision(15);\n\
+    \ = {0, 1, 0, -1};\n#pragma endregion Macros\n"
+  code: "#pragma region Macros\n#include <bits/stdc++.h>\nusing namespace std;\ntemplate\
+    \ <class T> inline bool chmax(T &a, T b) {\n    if(a < b) {\n        a = b;\n\
+    \        return 1;\n    }\n    return 0;\n}\ntemplate <class T> inline bool chmin(T\
+    \ &a, T b) {\n    if(a > b) {\n        a = b;\n        return 1;\n    }\n    return\
+    \ 0;\n}\n#ifdef DEBUG\ntemplate <class T, class U>\nostream &operator<<(ostream\
+    \ &os, const pair<T, U> &p) {\n    os << '(' << p.first << ',' << p.second <<\
+    \ ')';\n    return os;\n}\ntemplate <class T> ostream &operator<<(ostream &os,\
+    \ const vector<T> &v) {\n    os << '{';\n    for(int i = 0; i < (int)v.size();\
+    \ i++) {\n        if(i) { os << ','; }\n        os << v[i];\n    }\n    os <<\
+    \ '}';\n    return os;\n}\nvoid debugg() { cerr << endl; }\ntemplate <class T,\
+    \ class... Args>\nvoid debugg(const T &x, const Args &... args) {\n    cerr <<\
+    \ \" \" << x;\n    debugg(args...);\n}\n#define debug(...)                   \
+    \                                          \\\n    cerr << __LINE__ << \" [\"\
+    \ << #__VA_ARGS__ << \"]: \", debugg(__VA_ARGS__)\n#define dump(x) cerr << __LINE__\
+    \ << \" \" << #x << \" = \" << (x) << endl\n#else\n#define debug(...) (void(0))\n\
+    #define dump(x) (void(0))\n#endif\n\nstruct Setup {\n    Setup() {\n        cin.tie(0);\n\
+    \        ios::sync_with_stdio(false);\n        cout << fixed << setprecision(15);\n\
     \    }\n} __Setup;\n\nusing ll = long long;\n#define ALL(v) (v).begin(), (v).end()\n\
     #define RALL(v) (v).rbegin(), (v).rend()\n#define FOR(i, a, b) for(int i = (a);\
     \ i < int(b); i++)\n#define REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\n\
     const ll LLINF = 1LL << 60;\nconstexpr int MOD = 1000000007;\nconst int dx[4]\
-    \ = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0, -1};\n\n//-------------------------------------"
+    \ = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0, -1};\n#pragma endregion Macros"
   dependsOn: []
   isVerificationFile: false
   path: template/template.cpp
   requiredBy: []
-  timestamp: '2021-03-14 11:30:56+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-03-24 17:44:53+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yuki0206.test.cpp
-  - test/AOJ2748.test.cpp
-  - test/Hopcroft-Karp.test.cpp
-  - test/union-find.test.cpp
+  - test/AOJ2426.test.cpp
+  - test/two_sat.test.cpp
+  - test/staticrmq.test.cpp
+  - test/queue_operate_all_compose.test.cpp
   - test/zalgorothm.test.cpp
+  - test/Hopcroft-Karp.test.cpp
+  - test/set_xor_min.test.cpp
+  - test/lca.test.cpp
+  - test/yuki0206.test.cpp
+  - test/scc.test.cpp
+  - test/sa-is.test.cpp
   - test/fast_factorize.test.cpp
   - test/staticrangesum.test.cpp
-  - test/lca.test.cpp
-  - test/AOJ2821.test.cpp
-  - test/scc.test.cpp
-  - test/two_sat.test.cpp
-  - test/set_xor_min.test.cpp
-  - test/queue_operate_all_compose.test.cpp
-  - test/AOJ2426.test.cpp
-  - test/sa-is.test.cpp
-  - test/determinant.test.cpp
-  - test/is_prime.test.cpp
-  - test/erathosthenes.test.cpp
-  - test/line_add_get_min.test.cpp
   - test/dinic.test.cpp
-  - test/staticrmq.test.cpp
+  - test/line_add_get_min.test.cpp
+  - test/determinant.test.cpp
+  - test/AOJ2748.test.cpp
   - test/a_plus_b.test.cpp
+  - test/AOJ2821.test.cpp
+  - test/union-find.test.cpp
+  - test/erathosthenes.test.cpp
+  - test/is_prime.test.cpp
 documentation_of: template/template.cpp
 layout: document
 redirect_from:

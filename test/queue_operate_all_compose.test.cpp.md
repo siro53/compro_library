@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: math/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
@@ -22,38 +22,39 @@ data:
     - https://judge.yosupo.jp/problem/queue_operate_all_composite
   bundledCode: "#line 1 \"test/queue_operate_all_compose.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.yosupo.jp/problem/queue_operate_all_composite\"\n#line 1 \"\
-    template/template.cpp\"\n#include <bits/stdc++.h>\nusing namespace std;\ntemplate\
-    \ <class T> inline bool chmax(T &a, T b) {\n    if(a < b) {\n        a = b;\n\
-    \        return 1;\n    }\n    return 0;\n}\ntemplate <class T> inline bool chmin(T\
-    \ &a, T b) {\n    if(a > b) {\n        a = b;\n        return 1;\n    }\n    return\
-    \ 0;\n}\n#ifndef DEBUG\ntemplate <class T, class U>\nostream &operator<<(ostream\
-    \ &os, const pair<T, U> &p) {\n    os << '(' << p.first << ',' << p.second <<\
-    \ ')';\n    return os;\n}\ntemplate <class T> ostream &operator<<(ostream &os,\
-    \ const vector<T> &v) {\n    os << '{';\n    for(int i = 0; i < (int)v.size();\
-    \ i++) {\n        if(i) { os << ','; }\n        os << v[i];\n    }\n    os <<\
-    \ '}';\n    return os;\n}\nvoid debugg() { cerr << endl; }\ntemplate <class T,\
-    \ class... Args>\nvoid debugg(const T &x, const Args &... args) {\n    cerr <<\
-    \ \" \" << x;\n    debugg(args...);\n}\n#define debug(...)                   \
-    \                                          \\\n    cerr << __LINE__ << \" [\"\
-    \ << #__VA_ARGS__ << \"]: \", debugg(__VA_ARGS__)\n#define dump(x) cerr << __LINE__\
-    \ << \" \" << #x << \" = \" << (x) << endl\n#else\n#define debug(...) (void(0))\n\
-    #define dump(x) (void(0))\n#endif\n\nstruct Setup {\n    Setup() {\n        cin.tie(0);\n\
-    \        ios::sync_with_stdio(false);\n        cout << fixed << setprecision(15);\n\
-    \    }\n} __Setup;\n\nusing ll = long long;\n#define ALL(v) (v).begin(), (v).end()\n\
-    #define RALL(v) (v).rbegin(), (v).rend()\n#define FOR(i, a, b) for(int i = (a);\
-    \ i < int(b); i++)\n#define REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\n\
-    const ll LLINF = 1LL << 60;\nconstexpr int MOD = 1000000007;\nconst int dx[4]\
-    \ = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0, -1};\n\n//-------------------------------------\n\
-    #line 1 \"data_structure/swag.hpp\"\ntemplate <typename T> struct SWAG {\n   \
-    \ struct Data {\n        T x, sum;\n        Data() {}\n        Data(T x, T sum)\
-    \ : x(x), sum(sum) {}\n    };\n    using F = function<T(T, T)>;\n    stack<Data>\
-    \ frontStack, backStack;\n    F f;\n\n    SWAG(F f) : f(f) {}\n\n    bool empty()\
-    \ { return (frontStack.empty() && backStack.empty()); }\n\n    size_t size() {\
-    \ return frontStack.size() + backStack.size(); }\n\n    void pop() {\n       \
-    \ assert(!empty());\n        if(frontStack.empty()) {\n            frontStack.emplace(backStack.top().x,\
-    \ backStack.top().x);\n            backStack.pop();\n            while(!backStack.empty())\
-    \ {\n                T s = f(backStack.top().x, frontStack.top().sum);\n     \
-    \           frontStack.emplace(backStack.top().x, s);\n                backStack.pop();\n\
+    template/template.cpp\"\n#pragma region Macros\n#include <bits/stdc++.h>\nusing\
+    \ namespace std;\ntemplate <class T> inline bool chmax(T &a, T b) {\n    if(a\
+    \ < b) {\n        a = b;\n        return 1;\n    }\n    return 0;\n}\ntemplate\
+    \ <class T> inline bool chmin(T &a, T b) {\n    if(a > b) {\n        a = b;\n\
+    \        return 1;\n    }\n    return 0;\n}\n#ifdef DEBUG\ntemplate <class T,\
+    \ class U>\nostream &operator<<(ostream &os, const pair<T, U> &p) {\n    os <<\
+    \ '(' << p.first << ',' << p.second << ')';\n    return os;\n}\ntemplate <class\
+    \ T> ostream &operator<<(ostream &os, const vector<T> &v) {\n    os << '{';\n\
+    \    for(int i = 0; i < (int)v.size(); i++) {\n        if(i) { os << ','; }\n\
+    \        os << v[i];\n    }\n    os << '}';\n    return os;\n}\nvoid debugg()\
+    \ { cerr << endl; }\ntemplate <class T, class... Args>\nvoid debugg(const T &x,\
+    \ const Args &... args) {\n    cerr << \" \" << x;\n    debugg(args...);\n}\n\
+    #define debug(...)                                                           \
+    \  \\\n    cerr << __LINE__ << \" [\" << #__VA_ARGS__ << \"]: \", debugg(__VA_ARGS__)\n\
+    #define dump(x) cerr << __LINE__ << \" \" << #x << \" = \" << (x) << endl\n#else\n\
+    #define debug(...) (void(0))\n#define dump(x) (void(0))\n#endif\n\nstruct Setup\
+    \ {\n    Setup() {\n        cin.tie(0);\n        ios::sync_with_stdio(false);\n\
+    \        cout << fixed << setprecision(15);\n    }\n} __Setup;\n\nusing ll = long\
+    \ long;\n#define ALL(v) (v).begin(), (v).end()\n#define RALL(v) (v).rbegin(),\
+    \ (v).rend()\n#define FOR(i, a, b) for(int i = (a); i < int(b); i++)\n#define\
+    \ REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\n\
+    constexpr int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4]\
+    \ = {0, 1, 0, -1};\n#pragma endregion Macros\n#line 1 \"data_structure/swag.hpp\"\
+    \ntemplate <typename T> struct SWAG {\n    struct Data {\n        T x, sum;\n\
+    \        Data() {}\n        Data(T x, T sum) : x(x), sum(sum) {}\n    };\n   \
+    \ using F = function<T(T, T)>;\n    stack<Data> frontStack, backStack;\n    F\
+    \ f;\n\n    SWAG(F f) : f(f) {}\n\n    bool empty() { return (frontStack.empty()\
+    \ && backStack.empty()); }\n\n    size_t size() { return frontStack.size() + backStack.size();\
+    \ }\n\n    void pop() {\n        assert(!empty());\n        if(frontStack.empty())\
+    \ {\n            frontStack.emplace(backStack.top().x, backStack.top().x);\n \
+    \           backStack.pop();\n            while(!backStack.empty()) {\n      \
+    \          T s = f(backStack.top().x, frontStack.top().sum);\n               \
+    \ frontStack.emplace(backStack.top().x, s);\n                backStack.pop();\n\
     \            }\n        }\n        frontStack.pop();\n    }\n\n    void push(T\
     \ val) {\n        if(backStack.empty()) {\n            backStack.emplace(val,\
     \ val);\n        } else {\n            T s = f(backStack.top().sum, val);\n  \
@@ -117,7 +118,7 @@ data:
   isVerificationFile: true
   path: test/queue_operate_all_compose.test.cpp
   requiredBy: []
-  timestamp: '2021-03-14 11:30:56+09:00'
+  timestamp: '2021-03-24 17:44:53+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/queue_operate_all_compose.test.cpp

@@ -45,7 +45,7 @@ data:
     - icon: ':warning:'
       path: graph/doubling_tree.hpp
       title: graph/doubling_tree.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/dsu.hpp
       title: graph/dsu.hpp
     - icon: ':heavy_check_mark:'
@@ -77,7 +77,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/eratosthenes.hpp
       title: math/eratosthenes.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/fft.hpp
       title: math/fft.hpp
     - icon: ':warning:'
@@ -118,12 +118,12 @@ data:
     - icon: ':warning:'
       path: string/trie.hpp
       title: string/trie.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: string/z_algo.hpp
       title: string/z_algo.hpp
   - name: template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/template.cpp
       title: template/template.cpp
   - name: util
@@ -194,13 +194,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/two_sat.test.cpp
       title: test/two_sat.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/union-find.test.cpp
       title: test/union-find.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yuki0206.test.cpp
       title: test/yuki0206.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/zalgorothm.test.cpp
       title: test/zalgorothm.test.cpp
 layout: toppage
