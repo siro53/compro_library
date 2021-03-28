@@ -62,4 +62,6 @@ const ll LLINF = 1LL << 60;
 constexpr int MOD = 1000000007;
 const int dx[4] = {1, 0, -1, 0};
 const int dy[4] = {0, 1, 0, -1};
+
+void Case(int i) { cout << "Case #" << i << ": "; }
 #pragma endregion Macros
