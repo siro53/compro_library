@@ -43,21 +43,22 @@ data:
     \ (v).rend()\n#define FOR(i, a, b) for(int i = (a); i < int(b); i++)\n#define\
     \ REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\n\
     constexpr int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4]\
-    \ = {0, 1, 0, -1};\n#pragma endregion Macros\n#line 1 \"math/modint.hpp\"\ntemplate\
-    \ <int mod> struct ModInt {\n    int x;\n    ModInt() : x(0) {}\n    ModInt(int64_t\
-    \ y) : x(y >= 0 ? y % mod : (mod - (-y) % mod) % mod) {}\n    ModInt &operator+=(const\
-    \ ModInt &p) {\n        if((x += p.x) >= mod)\n            x -= mod;\n       \
-    \ return *this;\n    }\n    ModInt &operator-=(const ModInt &p) {\n        if((x\
-    \ += mod - p.x) >= mod)\n            x -= mod;\n        return *this;\n    }\n\
-    \    ModInt &operator*=(const ModInt &p) {\n        x = (int)(1LL * x * p.x %\
-    \ mod);\n        return *this;\n    }\n    ModInt &operator/=(const ModInt &p)\
-    \ {\n        *this *= p.inv();\n        return *this;\n    }\n    ModInt operator-()\
-    \ const { return ModInt(-x); }\n    ModInt operator+(const ModInt &p) const {\
-    \ return ModInt(*this) += p; }\n    ModInt operator-(const ModInt &p) const {\
-    \ return ModInt(*this) -= p; }\n    ModInt operator*(const ModInt &p) const {\
-    \ return ModInt(*this) *= p; }\n    ModInt operator/(const ModInt &p) const {\
-    \ return ModInt(*this) /= p; }\n    bool operator==(const ModInt &p) const { return\
-    \ x == p.x; }\n    bool operator!=(const ModInt &p) const { return x != p.x; }\n\
+    \ = {0, 1, 0, -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\n\
+    #pragma endregion Macros\n#line 1 \"math/modint.hpp\"\ntemplate <int mod> struct\
+    \ ModInt {\n    int x;\n    ModInt() : x(0) {}\n    ModInt(int64_t y) : x(y >=\
+    \ 0 ? y % mod : (mod - (-y) % mod) % mod) {}\n    ModInt &operator+=(const ModInt\
+    \ &p) {\n        if((x += p.x) >= mod)\n            x -= mod;\n        return\
+    \ *this;\n    }\n    ModInt &operator-=(const ModInt &p) {\n        if((x += mod\
+    \ - p.x) >= mod)\n            x -= mod;\n        return *this;\n    }\n    ModInt\
+    \ &operator*=(const ModInt &p) {\n        x = (int)(1LL * x * p.x % mod);\n  \
+    \      return *this;\n    }\n    ModInt &operator/=(const ModInt &p) {\n     \
+    \   *this *= p.inv();\n        return *this;\n    }\n    ModInt operator-() const\
+    \ { return ModInt(-x); }\n    ModInt operator+(const ModInt &p) const { return\
+    \ ModInt(*this) += p; }\n    ModInt operator-(const ModInt &p) const { return\
+    \ ModInt(*this) -= p; }\n    ModInt operator*(const ModInt &p) const { return\
+    \ ModInt(*this) *= p; }\n    ModInt operator/(const ModInt &p) const { return\
+    \ ModInt(*this) /= p; }\n    bool operator==(const ModInt &p) const { return x\
+    \ == p.x; }\n    bool operator!=(const ModInt &p) const { return x != p.x; }\n\
     \    ModInt inv() const {\n        int a = x, b = mod, u = 1, v = 0, t;\n    \
     \    while(b > 0) {\n            t = a / b;\n            swap(a -= t * b, b);\n\
     \            swap(u -= t * v, v);\n        }\n        return ModInt(u);\n    }\n\
@@ -132,7 +133,7 @@ data:
   isVerificationFile: true
   path: test/determinant.test.cpp
   requiredBy: []
-  timestamp: '2021-03-24 17:44:53+09:00'
+  timestamp: '2021-03-28 17:58:47+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/determinant.test.cpp

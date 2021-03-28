@@ -37,9 +37,9 @@ data:
     \ (v).rend()\n#define FOR(i, a, b) for(int i = (a); i < int(b); i++)\n#define\
     \ REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\n\
     constexpr int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4]\
-    \ = {0, 1, 0, -1};\n#pragma endregion Macros\n#line 3 \"test/a_plus_b.test.cpp\"\
-    \n\nint main(){\n    ll a, b;\n    cin >> a >> b;\n    cout << a + b << \"\\n\"\
-    ;\n}\n"
+    \ = {0, 1, 0, -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\n\
+    #pragma endregion Macros\n#line 3 \"test/a_plus_b.test.cpp\"\n\nint main(){\n\
+    \    ll a, b;\n    cin >> a >> b;\n    cout << a + b << \"\\n\";\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../template/template.cpp\"\
     \n\nint main(){\n    ll a, b;\n    cin >> a >> b;\n    cout << a + b << \"\\n\"\
     ;\n}"
@@ -48,7 +48,7 @@ data:
   isVerificationFile: true
   path: test/a_plus_b.test.cpp
   requiredBy: []
-  timestamp: '2021-03-24 17:44:53+09:00'
+  timestamp: '2021-03-28 17:58:47+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/a_plus_b.test.cpp

@@ -51,7 +51,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/lca.hpp
       title: graph/lca.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/scc.hpp
       title: graph/scc.hpp
     - icon: ':warning:'
@@ -60,7 +60,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/tree_hash.hpp
       title: graph/tree_hash.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/two_sat.hpp
       title: graph/two_sat.hpp
   - name: math
@@ -68,6 +68,9 @@ data:
     - icon: ':warning:'
       path: math/BSGS.hpp
       title: math/BSGS.hpp
+    - icon: ':warning:'
+      path: math/ceil_floor_div.hpp
+      title: math/ceil_floor_div.hpp
     - icon: ':warning:'
       path: math/combination.hpp
       title: math/combination.hpp
@@ -80,6 +83,9 @@ data:
     - icon: ':x:'
       path: math/fft.hpp
       title: math/fft.hpp
+    - icon: ':warning:'
+      path: math/floor_ceil_sqrt.hpp
+      title: math/floor_ceil_sqrt.hpp
     - icon: ':warning:'
       path: math/gcd_lcm.hpp
       title: math/gcd_lcm.hpp
@@ -191,7 +197,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/staticrmq.test.cpp
       title: test/staticrmq.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/two_sat.test.cpp
       title: test/two_sat.test.cpp
     - icon: ':x:'

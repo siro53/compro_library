@@ -40,20 +40,20 @@ data:
     \ (v).rend()\n#define FOR(i, a, b) for(int i = (a); i < int(b); i++)\n#define\
     \ REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\n\
     constexpr int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4]\
-    \ = {0, 1, 0, -1};\n#pragma endregion Macros\n#line 1 \"graph/dsu.hpp\"\nstruct\
-    \ UnionFind {\n    vector<int> par;\n\n    UnionFind(int n) : par(n, -1) {}\n\
-    \    void init(int n) { par.assign(n, -1); }\n\n    int root(int x) {\n      \
-    \  if(par[x] < 0)\n            return x;\n        else\n            return par[x]\
-    \ = root(par[x]);\n    }\n\n    bool issame(int x, int y) { return root(x) ==\
-    \ root(y); }\n\n    bool merge(int x, int y) {\n        x = root(x);\n       \
-    \ y = root(y);\n        if(x == y)\n            return false;\n        if(par[x]\
-    \ > par[y])\n            swap(x, y); // merge technique\n        par[x] += par[y];\n\
-    \        par[y] = x;\n        return true;\n    }\n\n    int size(int x) { return\
-    \ -par[root(x)]; }\n};\n#line 4 \"test/union-find.test.cpp\"\n\nint main(){\n\
-    \    int n, q;\n    cin >> n >> q;\n    UnionFind uf(n);\n    while(q--) {\n \
-    \       int t, u, v;\n        cin >> t >> u >> v;\n        if(t == 0) {\n    \
-    \        uf.merge(u, v);\n        } else {\n            cout << uf.issame(u, v)\
-    \ << endl;\n        }\n    }\n}\n"
+    \ = {0, 1, 0, -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\n\
+    #pragma endregion Macros\n#line 1 \"graph/dsu.hpp\"\nstruct UnionFind {\n    vector<int>\
+    \ par;\n\n    UnionFind(int n) : par(n, -1) {}\n    void init(int n) { par.assign(n,\
+    \ -1); }\n\n    int root(int x) {\n        if(par[x] < 0)\n            return\
+    \ x;\n        else\n            return par[x] = root(par[x]);\n    }\n\n    bool\
+    \ issame(int x, int y) { return root(x) == root(y); }\n\n    bool merge(int x,\
+    \ int y) {\n        x = root(x);\n        y = root(y);\n        if(x == y)\n \
+    \           return false;\n        if(par[x] > par[y])\n            swap(x, y);\
+    \ // merge technique\n        par[x] += par[y];\n        par[y] = x;\n       \
+    \ return true;\n    }\n\n    int size(int x) { return -par[root(x)]; }\n};\n#line\
+    \ 4 \"test/union-find.test.cpp\"\n\nint main(){\n    int n, q;\n    cin >> n >>\
+    \ q;\n    UnionFind uf(n);\n    while(q--) {\n        int t, u, v;\n        cin\
+    \ >> t >> u >> v;\n        if(t == 0) {\n            uf.merge(u, v);\n       \
+    \ } else {\n            cout << uf.issame(u, v) << endl;\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/unionfind\"\n#include \"\
     ../template/template.cpp\"\n#include \"../graph/dsu.hpp\"\n\nint main(){\n   \
     \ int n, q;\n    cin >> n >> q;\n    UnionFind uf(n);\n    while(q--) {\n    \
@@ -66,7 +66,7 @@ data:
   isVerificationFile: true
   path: test/union-find.test.cpp
   requiredBy: []
-  timestamp: '2021-03-24 17:44:53+09:00'
+  timestamp: '2021-03-28 17:58:47+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/union-find.test.cpp

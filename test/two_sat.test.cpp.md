@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/scc.hpp
     title: graph/scc.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/two_sat.hpp
     title: graph/two_sat.hpp
   - icon: ':question:'
@@ -12,9 +12,9 @@ data:
     title: template/template.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/two_sat
@@ -43,12 +43,13 @@ data:
     \ (v).rend()\n#define FOR(i, a, b) for(int i = (a); i < int(b); i++)\n#define\
     \ REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\n\
     constexpr int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4]\
-    \ = {0, 1, 0, -1};\n#pragma endregion Macros\n#line 1 \"graph/scc.hpp\"\n// \u30B0\
-    \u30E9\u30D5\u3092\u69CB\u7BC9\u3057\u305F\u3089build()\u3092\u5FC5\u305A\u547C\
-    \u3076\u3053\u3068!!!\nclass SCC {\n  private:\n    vector<vector<int>> G;\n \
-    \   vector<vector<int>> revG;\n    vector<int> vs, comp;\n    vector<bool> seen;\n\
-    \    int cnt;\n    void dfs(int v) {\n        seen[v] = true;\n        for(const\
-    \ int &u : G[v]) {\n            if(!seen[u]) { dfs(u); }\n        }\n        vs.emplace_back(v);\n\
+    \ = {0, 1, 0, -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\n\
+    #pragma endregion Macros\n#line 1 \"graph/scc.hpp\"\n// \u30B0\u30E9\u30D5\u3092\
+    \u69CB\u7BC9\u3057\u305F\u3089build()\u3092\u5FC5\u305A\u547C\u3076\u3053\u3068\
+    !!!\nclass SCC {\n  private:\n    vector<vector<int>> G;\n    vector<vector<int>>\
+    \ revG;\n    vector<int> vs, comp;\n    vector<bool> seen;\n    int cnt;\n   \
+    \ void dfs(int v) {\n        seen[v] = true;\n        for(const int &u : G[v])\
+    \ {\n            if(!seen[u]) { dfs(u); }\n        }\n        vs.emplace_back(v);\n\
     \    }\n    void rev_dfs(int v, int id) {\n        seen[v] = true;\n        comp[v]\
     \ = id;\n        for(const int &u : revG[v]) {\n            if(comp[u] == -1)\
     \ { rev_dfs(u, id); }\n        }\n    }\n\n  public:\n    SCC(int N) : G(N), revG(N),\
@@ -101,8 +102,8 @@ data:
   isVerificationFile: true
   path: test/two_sat.test.cpp
   requiredBy: []
-  timestamp: '2021-03-24 17:44:53+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-03-28 17:58:47+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/two_sat.test.cpp
 layout: document
