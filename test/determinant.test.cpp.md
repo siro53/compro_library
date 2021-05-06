@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: math/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
@@ -133,7 +133,7 @@ data:
   isVerificationFile: true
   path: test/determinant.test.cpp
   requiredBy: []
-  timestamp: '2021-03-28 17:58:47+09:00'
+  timestamp: '2021-05-06 11:13:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/determinant.test.cpp

@@ -16,6 +16,9 @@ data:
       path: data_structure/compress.hpp
       title: data_structure/compress.hpp
     - icon: ':heavy_check_mark:'
+      path: data_structure/rangeBIT.hpp
+      title: data_structure/rangeBIT.hpp
+    - icon: ':heavy_check_mark:'
       path: data_structure/sum2d.hpp
       title: data_structure/sum2d.hpp
     - icon: ':heavy_check_mark:'
@@ -45,13 +48,13 @@ data:
     - icon: ':warning:'
       path: graph/doubling_tree.hpp
       title: graph/doubling_tree.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/dsu.hpp
       title: graph/dsu.hpp
     - icon: ':heavy_check_mark:'
       path: graph/lca.hpp
       title: graph/lca.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: graph/scc.hpp
       title: graph/scc.hpp
     - icon: ':warning:'
@@ -60,7 +63,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/tree_hash.hpp
       title: graph/tree_hash.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/two_sat.hpp
       title: graph/two_sat.hpp
   - name: math
@@ -80,7 +83,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/eratosthenes.hpp
       title: math/eratosthenes.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/fft.hpp
       title: math/fft.hpp
     - icon: ':warning:'
@@ -124,12 +127,12 @@ data:
     - icon: ':warning:'
       path: string/trie.hpp
       title: string/trie.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: string/z_algo.hpp
       title: string/z_algo.hpp
   - name: template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/template.cpp
       title: template/template.cpp
   - name: util
@@ -183,6 +186,9 @@ data:
       path: test/queue_operate_all_compose.test.cpp
       title: test/queue_operate_all_compose.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/rangeBIT.test.cpp
+      title: test/rangeBIT.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/sa-is.test.cpp
       title: test/sa-is.test.cpp
     - icon: ':heavy_check_mark:'
@@ -197,16 +203,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/staticrmq.test.cpp
       title: test/staticrmq.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/two_sat.test.cpp
       title: test/two_sat.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/union-find.test.cpp
       title: test/union-find.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yuki0206.test.cpp
       title: test/yuki0206.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/zalgorothm.test.cpp
       title: test/zalgorothm.test.cpp
 layout: toppage

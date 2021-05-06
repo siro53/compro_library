@@ -43,6 +43,9 @@ data:
     path: test/queue_operate_all_compose.test.cpp
     title: test/queue_operate_all_compose.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/rangeBIT.test.cpp
+    title: test/rangeBIT.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/sa-is.test.cpp
     title: test/sa-is.test.cpp
   - icon: ':heavy_check_mark:'
@@ -57,21 +60,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/staticrmq.test.cpp
     title: test/staticrmq.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/two_sat.test.cpp
     title: test/two_sat.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/union-find.test.cpp
     title: test/union-find.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yuki0206.test.cpp
     title: test/yuki0206.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/zalgorothm.test.cpp
     title: test/zalgorothm.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"template/template.cpp\"\n#pragma region Macros\n#include\
@@ -126,30 +129,31 @@ data:
   path: template/template.cpp
   requiredBy: []
   timestamp: '2021-03-28 17:58:47+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/AOJ2426.test.cpp
-  - test/two_sat.test.cpp
-  - test/staticrmq.test.cpp
-  - test/queue_operate_all_compose.test.cpp
-  - test/zalgorothm.test.cpp
-  - test/Hopcroft-Karp.test.cpp
-  - test/set_xor_min.test.cpp
-  - test/lca.test.cpp
-  - test/yuki0206.test.cpp
-  - test/scc.test.cpp
-  - test/sa-is.test.cpp
-  - test/fast_factorize.test.cpp
-  - test/staticrangesum.test.cpp
-  - test/dinic.test.cpp
   - test/line_add_get_min.test.cpp
-  - test/determinant.test.cpp
   - test/AOJ2748.test.cpp
-  - test/a_plus_b.test.cpp
-  - test/AOJ2821.test.cpp
+  - test/fast_factorize.test.cpp
+  - test/AOJ2426.test.cpp
+  - test/zalgorothm.test.cpp
+  - test/staticrangesum.test.cpp
   - test/union-find.test.cpp
-  - test/erathosthenes.test.cpp
   - test/is_prime.test.cpp
+  - test/yuki0206.test.cpp
+  - test/AOJ2821.test.cpp
+  - test/set_xor_min.test.cpp
+  - test/Hopcroft-Karp.test.cpp
+  - test/a_plus_b.test.cpp
+  - test/erathosthenes.test.cpp
+  - test/sa-is.test.cpp
+  - test/rangeBIT.test.cpp
+  - test/staticrmq.test.cpp
+  - test/two_sat.test.cpp
+  - test/determinant.test.cpp
+  - test/dinic.test.cpp
+  - test/scc.test.cpp
+  - test/queue_operate_all_compose.test.cpp
+  - test/lca.test.cpp
 documentation_of: template/template.cpp
 layout: document
 redirect_from:

@@ -5,6 +5,9 @@ data:
     path: data_structure/BIT.hpp
     title: data_structure/BIT.hpp
   - icon: ':heavy_check_mark:'
+    path: data_structure/rangeBIT.hpp
+    title: data_structure/rangeBIT.hpp
+  - icon: ':heavy_check_mark:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
@@ -14,10 +17,10 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/static_range_sum
+    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G&lang=ja
     links:
-    - https://judge.yosupo.jp/problem/static_range_sum
-  bundledCode: "#line 1 \"test/staticrangesum.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_sum\"\
+    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G&lang=ja
+  bundledCode: "#line 1 \"test/rangeBIT.test.cpp\"\n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G&lang=ja\"\
     \n#line 1 \"template/template.cpp\"\n#pragma region Macros\n#include <bits/stdc++.h>\n\
     using namespace std;\ntemplate <class T> inline bool chmax(T &a, T b) {\n    if(a\
     \ < b) {\n        a = b;\n        return 1;\n    }\n    return 0;\n}\ntemplate\
@@ -53,30 +56,42 @@ data:
     \        while(2 * k <= n) { k <<= 1; }\n        for(; k > 0; k >>= 1) {\n   \
     \         if(res + k < n && bit[res + k] < x) {\n                x -= bit[res\
     \ + k];\n                res += k;\n            }\n        }\n        return res\
-    \ + 1;\n    }\n};\n#line 4 \"test/staticrangesum.test.cpp\"\n\nint main(){\n \
-    \   int N, Q;\n    cin >> N >> Q;\n    BIT<ll> bit(N);\n    REP(i, N){\n     \
-    \   int a; cin >> a;\n        bit.add(i, a);\n    }\n\n    while(Q--){\n     \
-    \   int l, r;\n        cin >> l >> r;\n        cout << bit.sum(l, r) << \"\\n\"\
-    ;\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_sum\"\n#include\
-    \ \"../template/template.cpp\"\n#include \"../data_structure/BIT.hpp\"\n\nint\
-    \ main(){\n    int N, Q;\n    cin >> N >> Q;\n    BIT<ll> bit(N);\n    REP(i,\
-    \ N){\n        int a; cin >> a;\n        bit.add(i, a);\n    }\n\n    while(Q--){\n\
-    \        int l, r;\n        cin >> l >> r;\n        cout << bit.sum(l, r) << \"\
-    \\n\";\n    }\n}"
+    \ + 1;\n    }\n};\n#line 2 \"data_structure/rangeBIT.hpp\"\n\ntemplate<class T>\n\
+    struct rangeBIT {\n    BIT<T> p, q;\n    rangeBIT(){}\n    rangeBIT(int n): p(n+1),\
+    \ q(n+1) {}\n    void add(int l, int r, T val) { // [l, r)\u306Bval\u3092\u52A0\
+    \u7B97\n        p.add(l, -val * l);\n        p.add(r, val * r);\n        q.add(l,\
+    \ val);\n        q.add(r, -val);\n    }\n    void add(int i, T val) {\n      \
+    \  add(i, i+1, val);\n    }\n    T sum(int r) { // [0, r)\n        return p.sum(r)\
+    \ + q.sum(r) * r;\n    }\n    T sum(int l, int r) { // [l, r)\n        assert(l\
+    \ <= r);\n        return sum(r) - sum(l);\n    }\n};\n#line 4 \"test/rangeBIT.test.cpp\"\
+    \n\nint main() {\n    int N, Q;\n    cin >> N >> Q;\n\n    rangeBIT<ll> bt(N);\n\
+    \n    REP(_, Q) {\n        int type; cin >> type;\n        if(type == 0) {\n \
+    \           int l, r, val;\n            cin >> l >> r >> val;\n            l--;\n\
+    \            bt.add(l, r, val);\n        } else {\n            int l, r;\n   \
+    \         cin >> l >> r;\n            l--;\n            cout << bt.sum(l, r) <<\
+    \ \"\\n\";\n        }\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G&lang=ja\"\
+    \n#include \"../template/template.cpp\"\n#include \"../data_structure/rangeBIT.hpp\"\
+    \n\nint main() {\n    int N, Q;\n    cin >> N >> Q;\n\n    rangeBIT<ll> bt(N);\n\
+    \n    REP(_, Q) {\n        int type; cin >> type;\n        if(type == 0) {\n \
+    \           int l, r, val;\n            cin >> l >> r >> val;\n            l--;\n\
+    \            bt.add(l, r, val);\n        } else {\n            int l, r;\n   \
+    \         cin >> l >> r;\n            l--;\n            cout << bt.sum(l, r) <<\
+    \ \"\\n\";\n        }\n    }\n}"
   dependsOn:
   - template/template.cpp
+  - data_structure/rangeBIT.hpp
   - data_structure/BIT.hpp
   isVerificationFile: true
-  path: test/staticrangesum.test.cpp
+  path: test/rangeBIT.test.cpp
   requiredBy: []
-  timestamp: '2021-03-28 17:58:47+09:00'
+  timestamp: '2021-05-06 11:13:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/staticrangesum.test.cpp
+documentation_of: test/rangeBIT.test.cpp
 layout: document
 redirect_from:
-- /verify/test/staticrangesum.test.cpp
-- /verify/test/staticrangesum.test.cpp.html
-title: test/staticrangesum.test.cpp
+- /verify/test/rangeBIT.test.cpp
+- /verify/test/rangeBIT.test.cpp.html
+title: test/rangeBIT.test.cpp
 ---

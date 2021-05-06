@@ -104,12 +104,12 @@ data:
     \      }\n            for(int j = i + 1; j < width(); j++) {\n               \
     \ T a = B[j][i];\n                for(int k = 0; k < width(); k++) {\n       \
     \             B[j][k] -= B[i][k] * a;\n                }\n            }\n    \
-    \    }\n        return (ret);\n    }\n};"
+    \    }\n        return (ret);\n    }\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: math/matrix.hpp
   requiredBy: []
-  timestamp: '2021-02-12 13:21:22+09:00'
+  timestamp: '2021-05-06 11:13:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/determinant.test.cpp

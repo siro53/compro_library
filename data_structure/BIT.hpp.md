@@ -1,8 +1,14 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: data_structure/rangeBIT.hpp
+    title: data_structure/rangeBIT.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/rangeBIT.test.cpp
+    title: test/rangeBIT.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/staticrangesum.test.cpp
     title: test/staticrangesum.test.cpp
@@ -39,11 +45,13 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: data_structure/BIT.hpp
-  requiredBy: []
+  requiredBy:
+  - data_structure/rangeBIT.hpp
   timestamp: '2021-02-12 13:21:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/staticrangesum.test.cpp
+  - test/rangeBIT.test.cpp
 documentation_of: data_structure/BIT.hpp
 layout: document
 redirect_from:
