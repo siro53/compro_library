@@ -60,12 +60,13 @@ data:
     \       if(u == v) {\n            return u;\n        }\n\n        for(int k =\
     \ log2_n - 1; k >= 0; k--) {\n            if(par[k][u] != par[k][v]) {\n     \
     \           u = par[k][u];\n                v = par[k][v];\n            }\n  \
-    \      }\n        return par[0][u];\n    }\n};\n#line 4 \"test/lca.test.cpp\"\n\
-    \nint main(){\n    int n, q;\n    cin >> n >> q;\n    vector<vector<int>> g(n);\n\
-    \    for(int i = 1; i < n; i++) {\n        int p;\n        cin >> p;\n       \
-    \ g[i].emplace_back(p);\n        g[p].emplace_back(i);\n    }\n\n    LCA lca(g,\
-    \ 0);\n\n    while(q--) {\n        int u, v;\n        cin >> u >> v;\n       \
-    \ cout << lca.get_lca(u, v) << endl;\n    }\n}\n"
+    \      }\n        return par[0][u];\n    }\n\n    int get_dist(int u, int v) {\n\
+    \        return depth[u] + depth[v] - 2 * depth[get_lca(u, v)];\n    }\n};\n#line\
+    \ 4 \"test/lca.test.cpp\"\n\nint main(){\n    int n, q;\n    cin >> n >> q;\n\
+    \    vector<vector<int>> g(n);\n    for(int i = 1; i < n; i++) {\n        int\
+    \ p;\n        cin >> p;\n        g[i].emplace_back(p);\n        g[p].emplace_back(i);\n\
+    \    }\n\n    LCA lca(g, 0);\n\n    while(q--) {\n        int u, v;\n        cin\
+    \ >> u >> v;\n        cout << lca.get_lca(u, v) << endl;\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n#include \"../template/template.cpp\"\
     \n#include \"../graph/lca.hpp\"\n\nint main(){\n    int n, q;\n    cin >> n >>\
     \ q;\n    vector<vector<int>> g(n);\n    for(int i = 1; i < n; i++) {\n      \
@@ -78,7 +79,7 @@ data:
   isVerificationFile: true
   path: test/lca.test.cpp
   requiredBy: []
-  timestamp: '2021-03-28 17:58:47+09:00'
+  timestamp: '2021-05-08 11:12:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/lca.test.cpp

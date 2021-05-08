@@ -30,9 +30,10 @@ data:
     \ == v) {\n            return u;\n        }\n\n        for(int k = log2_n - 1;\
     \ k >= 0; k--) {\n            if(par[k][u] != par[k][v]) {\n                u\
     \ = par[k][u];\n                v = par[k][v];\n            }\n        }\n   \
-    \     return par[0][u];\n    }\n};\n#line 2 \"graph/doubling_tree.hpp\"\n\ntemplate\
-    \ <class T> struct doubling_tree : LCA {\n    vector<vector<T>> db;\n    bool\
-    \ edge;\n    function<T(T, T)> f;\n    T E;\n    doubling_tree(const vector<vector<int>>\
+    \     return par[0][u];\n    }\n\n    int get_dist(int u, int v) {\n        return\
+    \ depth[u] + depth[v] - 2 * depth[get_lca(u, v)];\n    }\n};\n#line 2 \"graph/doubling_tree.hpp\"\
+    \n\ntemplate <class T> struct doubling_tree : LCA {\n    vector<vector<T>> db;\n\
+    \    bool edge;\n    function<T(T, T)> f;\n    T E;\n    doubling_tree(const vector<vector<int>>\
     \ &g, int root, function<T(T, T)> f,\n                  T E)\n        : LCA::LCA(g,\
     \ root), f(f), E(E), db(log2_n, vector<T>(n, E)) {}\n    void build(const vector<T>\
     \ &init, bool is_edge) {\n        edge = is_edge;\n        for(int i = 0; i <\
@@ -72,7 +73,7 @@ data:
   isVerificationFile: false
   path: graph/doubling_tree.hpp
   requiredBy: []
-  timestamp: '2021-02-12 13:21:22+09:00'
+  timestamp: '2021-05-08 11:12:29+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: graph/doubling_tree.hpp

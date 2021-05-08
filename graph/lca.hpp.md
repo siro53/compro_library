@@ -33,7 +33,8 @@ data:
     \ == v) {\n            return u;\n        }\n\n        for(int k = log2_n - 1;\
     \ k >= 0; k--) {\n            if(par[k][u] != par[k][v]) {\n                u\
     \ = par[k][u];\n                v = par[k][v];\n            }\n        }\n   \
-    \     return par[0][u];\n    }\n};\n"
+    \     return par[0][u];\n    }\n\n    int get_dist(int u, int v) {\n        return\
+    \ depth[u] + depth[v] - 2 * depth[get_lca(u, v)];\n    }\n};\n"
   code: "struct LCA {\n    const int n = 0;\n    const int log2_n = 0;\n    vector<vector<int>>\
     \ par;\n    vector<int> depth;\n\n    LCA(const vector<vector<int>> &g, int root)\n\
     \        : n(g.size()), log2_n(log2(n) + 1), par(log2_n, vector<int>(n)),\n  \
@@ -52,13 +53,15 @@ data:
     \      }\n\n        if(u == v) {\n            return u;\n        }\n\n       \
     \ for(int k = log2_n - 1; k >= 0; k--) {\n            if(par[k][u] != par[k][v])\
     \ {\n                u = par[k][u];\n                v = par[k][v];\n        \
-    \    }\n        }\n        return par[0][u];\n    }\n};\n"
+    \    }\n        }\n        return par[0][u];\n    }\n\n    int get_dist(int u,\
+    \ int v) {\n        return depth[u] + depth[v] - 2 * depth[get_lca(u, v)];\n \
+    \   }\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: graph/lca.hpp
   requiredBy:
   - graph/doubling_tree.hpp
-  timestamp: '2021-02-12 13:21:22+09:00'
+  timestamp: '2021-05-08 11:12:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/lca.test.cpp
