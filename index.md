@@ -55,6 +55,9 @@ data:
       path: graph/lca.hpp
       title: graph/lca.hpp
     - icon: ':heavy_check_mark:'
+      path: graph/maximum_independent_set.hpp
+      title: graph/maximum_independent_set.hpp
+    - icon: ':heavy_check_mark:'
       path: graph/scc.hpp
       title: graph/scc.hpp
     - icon: ':warning:'
@@ -182,6 +185,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/line_add_get_min.test.cpp
       title: test/line_add_get_min.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/maximum_independent_set.test.cpp
+      title: test/maximum_independent_set.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/queue_operate_all_compose.test.cpp
       title: test/queue_operate_all_compose.test.cpp

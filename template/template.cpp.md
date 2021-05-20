@@ -40,6 +40,9 @@ data:
     path: test/line_add_get_min.test.cpp
     title: test/line_add_get_min.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/maximum_independent_set.test.cpp
+    title: test/maximum_independent_set.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/queue_operate_all_compose.test.cpp
     title: test/queue_operate_all_compose.test.cpp
   - icon: ':heavy_check_mark:'
@@ -152,6 +155,7 @@ data:
   - test/sa-is.test.cpp
   - test/zalgorothm.test.cpp
   - test/lca.test.cpp
+  - test/maximum_independent_set.test.cpp
   - test/set_xor_min.test.cpp
   - test/a_plus_b.test.cpp
 documentation_of: template/template.cpp
