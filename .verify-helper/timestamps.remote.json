@@ -11,6 +11,7 @@
 "test/is_prime.test.cpp": "2021-03-28 17:58:47 +0900",
 "test/lca.test.cpp": "2021-05-08 11:12:29 +0900",
 "test/line_add_get_min.test.cpp": "2021-03-28 17:58:47 +0900",
+"test/maximum_independent_set.test.cpp": "2021-05-20 11:52:11 +0900",
 "test/queue_operate_all_compose.test.cpp": "2021-03-28 17:58:47 +0900",
 "test/rangeBIT.test.cpp": "2021-05-06 11:13:45 +0900",
 "test/sa-is.test.cpp": "2021-03-28 17:58:47 +0900",
