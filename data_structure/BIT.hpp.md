@@ -50,8 +50,8 @@ data:
   timestamp: '2021-02-12 13:21:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/staticrangesum.test.cpp
   - test/rangeBIT.test.cpp
+  - test/staticrangesum.test.cpp
 documentation_of: data_structure/BIT.hpp
 layout: document
 redirect_from:

@@ -19,6 +19,9 @@ data:
     path: test/a_plus_b.test.cpp
     title: test/a_plus_b.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/chromatic_number.test.cpp
+    title: test/chromatic_number.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/determinant.test.cpp
     title: test/determinant.test.cpp
   - icon: ':heavy_check_mark:'
@@ -134,30 +137,31 @@ data:
   timestamp: '2021-03-28 17:58:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/AOJ2821.test.cpp
-  - test/determinant.test.cpp
-  - test/scc.test.cpp
-  - test/AOJ2426.test.cpp
-  - test/dinic.test.cpp
-  - test/fast_factorize.test.cpp
+  - test/zalgorothm.test.cpp
+  - test/set_xor_min.test.cpp
+  - test/rangeBIT.test.cpp
+  - test/union-find.test.cpp
+  - test/chromatic_number.test.cpp
+  - test/yuki0206.test.cpp
+  - test/maximum_independent_set.test.cpp
+  - test/two_sat.test.cpp
+  - test/a_plus_b.test.cpp
   - test/queue_operate_all_compose.test.cpp
   - test/line_add_get_min.test.cpp
-  - test/staticrangesum.test.cpp
-  - test/Hopcroft-Karp.test.cpp
-  - test/union-find.test.cpp
-  - test/rangeBIT.test.cpp
-  - test/two_sat.test.cpp
-  - test/yuki0206.test.cpp
-  - test/is_prime.test.cpp
   - test/staticrmq.test.cpp
-  - test/erathosthenes.test.cpp
-  - test/AOJ2748.test.cpp
   - test/sa-is.test.cpp
-  - test/zalgorothm.test.cpp
+  - test/determinant.test.cpp
+  - test/AOJ2748.test.cpp
+  - test/scc.test.cpp
+  - test/fast_factorize.test.cpp
+  - test/Hopcroft-Karp.test.cpp
+  - test/dinic.test.cpp
+  - test/AOJ2426.test.cpp
+  - test/staticrangesum.test.cpp
+  - test/AOJ2821.test.cpp
+  - test/is_prime.test.cpp
   - test/lca.test.cpp
-  - test/maximum_independent_set.test.cpp
-  - test/set_xor_min.test.cpp
-  - test/a_plus_b.test.cpp
+  - test/erathosthenes.test.cpp
 documentation_of: template/template.cpp
 layout: document
 redirect_from:

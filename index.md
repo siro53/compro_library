@@ -43,6 +43,9 @@ data:
       path: graph/bipartite_matching.hpp
       title: graph/bipartite_matching.hpp
     - icon: ':heavy_check_mark:'
+      path: graph/chromatic_number.hpp
+      title: graph/chromatic_number.hpp
+    - icon: ':heavy_check_mark:'
       path: graph/dinic.hpp
       title: graph/dinic.hpp
     - icon: ':warning:'
@@ -164,6 +167,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/a_plus_b.test.cpp
       title: test/a_plus_b.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/chromatic_number.test.cpp
+      title: test/chromatic_number.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/determinant.test.cpp
       title: test/determinant.test.cpp
