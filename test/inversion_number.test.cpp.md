@@ -69,12 +69,12 @@ data:
     \ {0, 1, ... , N-1} \u304B\u3089\u306A\u308B\u91CD\u8907\u3092\u8A31\u3057\u305F\
     \u6570\u5217\n// \u3053\u306E\u6570\u5217\u306E\u8EE2\u5012\u6570\u3092\u8FD4\u3059\
     \ntemplate<class T>\nT inversion_number(const vector<int>& v) {\n    int N = (int)v.size();\n\
-    \    BIT<int> bt(N);\n    T res = 0;\n    REP(i, N) {\n        res += i - bt.sum(v[i]+1);\n\
-    \        bt.add(v[i], 1);\n    }\n    return res;\n}\n#line 5 \"test/inversion_number.test.cpp\"\
-    \n\nint main() {\n    int N;\n    cin >> N;\n    vector<int> a(N);\n    REP(i,\
-    \ N) cin >> a[i];\n    \n    Compress<int> comp(a);\n    vector<int> v(N);\n \
-    \   REP(i, N) v[i] = comp.get(a[i]);\n\n    cout << inversion_number<ll>(v) <<\
-    \ \"\\n\";\n}\n"
+    \    BIT<int> bt(N);\n    T res = 0;\n    for(int i = 0; i < N; i++) {\n     \
+    \   res += i - bt.sum(v[i]+1);\n        bt.add(v[i], 1);\n    }\n    return res;\n\
+    }\n#line 5 \"test/inversion_number.test.cpp\"\n\nint main() {\n    int N;\n  \
+    \  cin >> N;\n    vector<int> a(N);\n    REP(i, N) cin >> a[i];\n    \n    Compress<int>\
+    \ comp(a);\n    vector<int> v(N);\n    REP(i, N) v[i] = comp.get(a[i]);\n\n  \
+    \  cout << inversion_number<ll>(v) << \"\\n\";\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_5_D\"\n\
     #include \"../template/template.cpp\"\n#include \"../data_structure/compress.hpp\"\
     \n#include \"../data_structure/inversion_number.hpp\"\n\nint main() {\n    int\
@@ -89,7 +89,7 @@ data:
   isVerificationFile: true
   path: test/inversion_number.test.cpp
   requiredBy: []
-  timestamp: '2021-06-02 11:17:04+09:00'
+  timestamp: '2021-06-02 11:19:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/inversion_number.test.cpp
