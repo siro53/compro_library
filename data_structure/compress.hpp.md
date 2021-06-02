@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ2426.test.cpp
     title: test/AOJ2426.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/inversion_number.test.cpp
+    title: test/inversion_number.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -32,6 +35,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ2426.test.cpp
+  - test/inversion_number.test.cpp
 documentation_of: data_structure/compress.hpp
 layout: document
 redirect_from:

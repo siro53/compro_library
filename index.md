@@ -16,6 +16,9 @@ data:
       path: data_structure/compress.hpp
       title: data_structure/compress.hpp
     - icon: ':heavy_check_mark:'
+      path: data_structure/inversion_number.hpp
+      title: data_structure/inversion_number.hpp
+    - icon: ':heavy_check_mark:'
       path: data_structure/rangeBIT.hpp
       title: data_structure/rangeBIT.hpp
     - icon: ':heavy_check_mark:'
@@ -182,6 +185,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/fast_factorize.test.cpp
       title: test/fast_factorize.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/inversion_number.test.cpp
+      title: test/inversion_number.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/is_prime.test.cpp
       title: test/is_prime.test.cpp

@@ -3,9 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: data_structure/inversion_number.hpp
+    title: data_structure/inversion_number.hpp
+  - icon: ':heavy_check_mark:'
     path: data_structure/rangeBIT.hpp
     title: data_structure/rangeBIT.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/inversion_number.test.cpp
+    title: test/inversion_number.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/rangeBIT.test.cpp
     title: test/rangeBIT.test.cpp
@@ -47,11 +53,13 @@ data:
   path: data_structure/BIT.hpp
   requiredBy:
   - data_structure/rangeBIT.hpp
+  - data_structure/inversion_number.hpp
   timestamp: '2021-02-12 13:21:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/rangeBIT.test.cpp
   - test/staticrangesum.test.cpp
+  - test/inversion_number.test.cpp
 documentation_of: data_structure/BIT.hpp
 layout: document
 redirect_from:

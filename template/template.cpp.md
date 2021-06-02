@@ -34,6 +34,9 @@ data:
     path: test/fast_factorize.test.cpp
     title: test/fast_factorize.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/inversion_number.test.cpp
+    title: test/inversion_number.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/is_prime.test.cpp
     title: test/is_prime.test.cpp
   - icon: ':heavy_check_mark:'
@@ -159,6 +162,7 @@ data:
   - test/AOJ2426.test.cpp
   - test/staticrangesum.test.cpp
   - test/AOJ2821.test.cpp
+  - test/inversion_number.test.cpp
   - test/is_prime.test.cpp
   - test/lca.test.cpp
   - test/erathosthenes.test.cpp
