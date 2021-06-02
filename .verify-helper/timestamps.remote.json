@@ -9,6 +9,7 @@
 "test/dinic.test.cpp": "2021-03-28 17:58:47 +0900",
 "test/erathosthenes.test.cpp": "2021-03-28 17:58:47 +0900",
 "test/fast_factorize.test.cpp": "2021-03-28 17:58:47 +0900",
+"test/inversion_number.test.cpp": "2021-06-02 11:17:04 +0900",
 "test/is_prime.test.cpp": "2021-03-28 17:58:47 +0900",
 "test/lca.test.cpp": "2021-05-08 11:12:29 +0900",
 "test/line_add_get_min.test.cpp": "2021-03-28 17:58:47 +0900",
