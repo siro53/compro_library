@@ -7,7 +7,7 @@ T inversion_number(const vector<int>& v) {
     int N = (int)v.size();
     BIT<int> bt(N);
     T res = 0;
-    REP(i, N) {
+    for(int i = 0; i < N; i++) {
         res += i - bt.sum(v[i]+1);
         bt.add(v[i], 1);
     }
