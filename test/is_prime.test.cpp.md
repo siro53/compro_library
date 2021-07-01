@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/is_prime.hpp
     title: math/is_prime.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
@@ -41,12 +41,13 @@ data:
     \ REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\n\
     constexpr int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4]\
     \ = {0, 1, 0, -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\n\
-    #pragma endregion Macros\n#line 1 \"math/is_prime.hpp\"\nbool is_prime(int n)\
-    \ {\n    if(n <= 1) return false;\n    for(int i = 2; i * i <= n; i++) {\n   \
-    \     if(n % i == 0) return false;\n    }\n    return true;\n}\n#line 4 \"test/is_prime.test.cpp\"\
-    \n\nint main() {\n    int t; cin >> t;\n    int ans = 0;\n    while(t--) {\n \
-    \       int n; \n        cin >> n;\n        ans += is_prime(n);\n    }\n    cout\
-    \ << ans << endl;\n}\n"
+    int popcount(int x) { return __builtin_popcount(x); }\nll popcount(ll x) { return\
+    \ __builtin_popcountll(x); }\n#pragma endregion Macros\n#line 1 \"math/is_prime.hpp\"\
+    \nbool is_prime(int n) {\n    if(n <= 1) return false;\n    for(int i = 2; i *\
+    \ i <= n; i++) {\n        if(n % i == 0) return false;\n    }\n    return true;\n\
+    }\n#line 4 \"test/is_prime.test.cpp\"\n\nint main() {\n    int t; cin >> t;\n\
+    \    int ans = 0;\n    while(t--) {\n        int n; \n        cin >> n;\n    \
+    \    ans += is_prime(n);\n    }\n    cout << ans << endl;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_C&lang=jp\"\
     \n#include \"../template/template.cpp\"\n#include \"../math/is_prime.hpp\"\n\n\
     int main() {\n    int t; cin >> t;\n    int ans = 0;\n    while(t--) {\n     \
@@ -58,7 +59,7 @@ data:
   isVerificationFile: true
   path: test/is_prime.test.cpp
   requiredBy: []
-  timestamp: '2021-03-28 17:58:47+09:00'
+  timestamp: '2021-07-01 11:58:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/is_prime.test.cpp

@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/lca.hpp
     title: graph/lca.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
@@ -41,30 +41,31 @@ data:
     \ REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\n\
     constexpr int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4]\
     \ = {0, 1, 0, -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\n\
-    #pragma endregion Macros\n#line 1 \"graph/lca.hpp\"\nstruct LCA {\n    const int\
-    \ n = 0;\n    const int log2_n = 0;\n    vector<vector<int>> par;\n    vector<int>\
-    \ depth;\n\n    LCA(const vector<vector<int>> &g, int root)\n        : n(g.size()),\
-    \ log2_n(log2(n) + 1), par(log2_n, vector<int>(n)),\n          depth(n) {\n  \
-    \      dfs(g, root, -1, 0);\n        for(int k = 0; k + 1 < log2_n; k++) {\n \
-    \           for(int v = 0; v < n; v++) {\n                if(par[k][v] < 0) {\n\
-    \                    par[k + 1][v] = -1;\n                } else {\n         \
-    \           par[k + 1][v] = par[k][par[k][v]];\n                }\n          \
-    \  }\n        }\n    }\n\n    void dfs(const vector<vector<int>> &g, int v, int\
-    \ p, int d) {\n        par[0][v] = p;\n        depth[v] = d;\n        for(auto\
-    \ &u : g[v]) {\n            if(u != p) {\n                dfs(g, u, v, d + 1);\n\
-    \            }\n        }\n    }\n\n    int get_lca(int u, int v) {\n        //\
-    \ u\u3068v\u306E\u6DF1\u3055\u304C\u540C\u3058\u306B\u306A\u308B\u307E\u3067\u8FBF\
-    \u308B\n        if(depth[u] > depth[v]) {\n            swap(u, v);\n        }\n\
-    \        for(int k = 0; k < log2_n; k++) {\n            if(((depth[v] - depth[u])\
-    \ >> k) & 1) {\n                v = par[k][v];\n            }\n        }\n\n \
-    \       if(u == v) {\n            return u;\n        }\n\n        for(int k =\
-    \ log2_n - 1; k >= 0; k--) {\n            if(par[k][u] != par[k][v]) {\n     \
-    \           u = par[k][u];\n                v = par[k][v];\n            }\n  \
-    \      }\n        return par[0][u];\n    }\n\n    int get_dist(int u, int v) {\n\
-    \        return depth[u] + depth[v] - 2 * depth[get_lca(u, v)];\n    }\n};\n#line\
-    \ 4 \"test/lca.test.cpp\"\n\nint main(){\n    int n, q;\n    cin >> n >> q;\n\
-    \    vector<vector<int>> g(n);\n    for(int i = 1; i < n; i++) {\n        int\
-    \ p;\n        cin >> p;\n        g[i].emplace_back(p);\n        g[p].emplace_back(i);\n\
+    int popcount(int x) { return __builtin_popcount(x); }\nll popcount(ll x) { return\
+    \ __builtin_popcountll(x); }\n#pragma endregion Macros\n#line 1 \"graph/lca.hpp\"\
+    \nstruct LCA {\n    const int n = 0;\n    const int log2_n = 0;\n    vector<vector<int>>\
+    \ par;\n    vector<int> depth;\n\n    LCA(const vector<vector<int>> &g, int root)\n\
+    \        : n(g.size()), log2_n(log2(n) + 1), par(log2_n, vector<int>(n)),\n  \
+    \        depth(n) {\n        dfs(g, root, -1, 0);\n        for(int k = 0; k +\
+    \ 1 < log2_n; k++) {\n            for(int v = 0; v < n; v++) {\n             \
+    \   if(par[k][v] < 0) {\n                    par[k + 1][v] = -1;\n           \
+    \     } else {\n                    par[k + 1][v] = par[k][par[k][v]];\n     \
+    \           }\n            }\n        }\n    }\n\n    void dfs(const vector<vector<int>>\
+    \ &g, int v, int p, int d) {\n        par[0][v] = p;\n        depth[v] = d;\n\
+    \        for(auto &u : g[v]) {\n            if(u != p) {\n                dfs(g,\
+    \ u, v, d + 1);\n            }\n        }\n    }\n\n    int get_lca(int u, int\
+    \ v) {\n        // u\u3068v\u306E\u6DF1\u3055\u304C\u540C\u3058\u306B\u306A\u308B\
+    \u307E\u3067\u8FBF\u308B\n        if(depth[u] > depth[v]) {\n            swap(u,\
+    \ v);\n        }\n        for(int k = 0; k < log2_n; k++) {\n            if(((depth[v]\
+    \ - depth[u]) >> k) & 1) {\n                v = par[k][v];\n            }\n  \
+    \      }\n\n        if(u == v) {\n            return u;\n        }\n\n       \
+    \ for(int k = log2_n - 1; k >= 0; k--) {\n            if(par[k][u] != par[k][v])\
+    \ {\n                u = par[k][u];\n                v = par[k][v];\n        \
+    \    }\n        }\n        return par[0][u];\n    }\n\n    int get_dist(int u,\
+    \ int v) {\n        return depth[u] + depth[v] - 2 * depth[get_lca(u, v)];\n \
+    \   }\n};\n#line 4 \"test/lca.test.cpp\"\n\nint main(){\n    int n, q;\n    cin\
+    \ >> n >> q;\n    vector<vector<int>> g(n);\n    for(int i = 1; i < n; i++) {\n\
+    \        int p;\n        cin >> p;\n        g[i].emplace_back(p);\n        g[p].emplace_back(i);\n\
     \    }\n\n    LCA lca(g, 0);\n\n    while(q--) {\n        int u, v;\n        cin\
     \ >> u >> v;\n        cout << lca.get_lca(u, v) << endl;\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n#include \"../template/template.cpp\"\
@@ -79,7 +80,7 @@ data:
   isVerificationFile: true
   path: test/lca.test.cpp
   requiredBy: []
-  timestamp: '2021-05-08 11:12:29+09:00'
+  timestamp: '2021-07-01 11:58:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/lca.test.cpp

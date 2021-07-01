@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/LiChaoTree.hpp
     title: data_structure/LiChaoTree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
@@ -41,9 +41,10 @@ data:
     \ REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\n\
     constexpr int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4]\
     \ = {0, 1, 0, -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\n\
-    #pragma endregion Macros\n#line 1 \"data_structure/LiChaoTree.hpp\"\ntemplate\
-    \ <typename T> struct LiChaoTree {\n    struct Line {\n        T a, b;\n     \
-    \   Line(T _a, T _b) : a(_a), b(_b) {}\n        inline T f(T x) const { return\
+    int popcount(int x) { return __builtin_popcount(x); }\nll popcount(ll x) { return\
+    \ __builtin_popcountll(x); }\n#pragma endregion Macros\n#line 1 \"data_structure/LiChaoTree.hpp\"\
+    \ntemplate <typename T> struct LiChaoTree {\n    struct Line {\n        T a, b;\n\
+    \        Line(T _a, T _b) : a(_a), b(_b) {}\n        inline T f(T x) const { return\
     \ (a * x + b); }\n    };\n    vector<T> X;\n    vector<Line> lines;\n    int n;\n\
     \    LiChaoTree() {}\n    LiChaoTree(const vector<T> &_X, T _INF) : X(_X) {\n\
     \        n = 1;\n        while(n < X.size()) {\n            n <<= 1;\n       \
@@ -92,7 +93,7 @@ data:
   isVerificationFile: true
   path: test/line_add_get_min.test.cpp
   requiredBy: []
-  timestamp: '2021-03-28 17:58:47+09:00'
+  timestamp: '2021-07-01 11:58:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/line_add_get_min.test.cpp

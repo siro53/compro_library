@@ -3,13 +3,13 @@ data:
   libraryCategories:
   - name: data_structure
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/BIT.hpp
       title: data_structure/BIT.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/LiChaoTree.hpp
       title: data_structure/LiChaoTree.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/binary_trie.hpp
       title: data_structure/binary_trie.hpp
     - icon: ':heavy_check_mark:'
@@ -32,7 +32,7 @@ data:
     - icon: ':warning:'
       path: data_structure/segtree/lazy_segtree.hpp
       title: data_structure/segtree/lazy_segtree.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/segtree/segtree.hpp
       title: data_structure/segtree/segtree.hpp
   - name: geometry
@@ -54,7 +54,7 @@ data:
     - icon: ':warning:'
       path: graph/doubling_tree.hpp
       title: graph/doubling_tree.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/dsu.hpp
       title: graph/dsu.hpp
     - icon: ':heavy_check_mark:'
@@ -63,7 +63,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/maximum_independent_set.hpp
       title: graph/maximum_independent_set.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/scc.hpp
       title: graph/scc.hpp
     - icon: ':warning:'
@@ -72,7 +72,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/tree_hash.hpp
       title: graph/tree_hash.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/two_sat.hpp
       title: graph/two_sat.hpp
   - name: math
@@ -92,7 +92,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/eratosthenes.hpp
       title: math/eratosthenes.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/fft.hpp
       title: math/fft.hpp
     - icon: ':warning:'
@@ -136,12 +136,12 @@ data:
     - icon: ':warning:'
       path: string/trie.hpp
       title: string/trie.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: string/z_algo.hpp
       title: string/z_algo.hpp
   - name: template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/template.cpp
       title: template/template.cpp
   - name: util
@@ -212,25 +212,25 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/scc.test.cpp
       title: test/scc.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/set_xor_min.test.cpp
       title: test/set_xor_min.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/staticrangesum.test.cpp
       title: test/staticrangesum.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/staticrmq.test.cpp
       title: test/staticrmq.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/two_sat.test.cpp
       title: test/two_sat.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/union-find.test.cpp
       title: test/union-find.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yuki0206.test.cpp
       title: test/yuki0206.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/zalgorothm.test.cpp
       title: test/zalgorothm.test.cpp
 layout: toppage

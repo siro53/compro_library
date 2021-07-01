@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/BIT.hpp
     title: data_structure/BIT.hpp
   - icon: ':heavy_check_mark:'
@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/inversion_number.hpp
     title: data_structure/inversion_number.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
@@ -47,10 +47,11 @@ data:
     \ REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\n\
     constexpr int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4]\
     \ = {0, 1, 0, -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\n\
-    #pragma endregion Macros\n#line 1 \"data_structure/compress.hpp\"\ntemplate <typename\
-    \ T> struct Compress {\n    vector<T> v;\n    Compress() {}\n    Compress(vector<T>\
-    \ vv) : v(vv) {\n        sort(ALL(v));\n        v.erase(unique(ALL(v)), end(v));\n\
-    \    }\n    void build(vector<T> vv) {\n        v = vv;\n        sort(ALL(v));\n\
+    int popcount(int x) { return __builtin_popcount(x); }\nll popcount(ll x) { return\
+    \ __builtin_popcountll(x); }\n#pragma endregion Macros\n#line 1 \"data_structure/compress.hpp\"\
+    \ntemplate <typename T> struct Compress {\n    vector<T> v;\n    Compress() {}\n\
+    \    Compress(vector<T> vv) : v(vv) {\n        sort(ALL(v));\n        v.erase(unique(ALL(v)),\
+    \ end(v));\n    }\n    void build(vector<T> vv) {\n        v = vv;\n        sort(ALL(v));\n\
     \        v.erase(unique(ALL(v)), end(v));\n    }\n    int get(T x) { return (int)(lower_bound(ALL(v),\
     \ x) - v.begin()); }\n    T &operator[](int i) { return v[i]; }\n    size_t size()\
     \ { return v.size(); }\n};\n#line 1 \"data_structure/BIT.hpp\"\ntemplate <typename\
@@ -89,7 +90,7 @@ data:
   isVerificationFile: true
   path: test/inversion_number.test.cpp
   requiredBy: []
-  timestamp: '2021-06-02 11:19:55+09:00'
+  timestamp: '2021-07-01 11:58:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/inversion_number.test.cpp

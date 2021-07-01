@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/chromatic_number.hpp
     title: graph/chromatic_number.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
@@ -41,17 +41,18 @@ data:
     \ REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\n\
     constexpr int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4]\
     \ = {0, 1, 0, -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\n\
-    #pragma endregion Macros\n#line 1 \"graph/chromatic_number.hpp\"\n// \u5F69\u8272\
-    \u6570 O(n*2^n)\nint chromatic_number(int N, const vector<vector<int>>& G) {\n\
-    \    // \u672C\u5F53\u306Frandom\u306B\u7D20\u6570\u3092\u53D6\u3063\u305F\u65B9\
-    \u304C\u3044\u3044\n    constexpr int mod = int(1e9) + 9;\n    // ind[S] = \u9802\
-    \u70B9\u96C6\u5408S\u306E\u90E8\u5206\u96C6\u5408\u3067\u3042\u3063\u3066\u3001\
-    \u72EC\u7ACB\u96C6\u5408\u3092\u306A\u3059\u3082\u306E\u306E\u500B\u6570\n   \
-    \ vector<int> ind(1 << N, 0);\n    // adj_bit[v] = v\u3068\u96A3\u63A5\u3057\u3066\
-    \u308B\u9802\u70B9\u306E\u5834\u6240\u306Bbit\u3092\u7ACB\u3066\u305F\u3082\u306E\
-    \n    vector<int> adj_bit(N, 0);\n    for(int i = 0; i < N; i++) {\n        for(int\
-    \ j = 0; j < N; j++) if(G[i][j]) adj_bit[i] |= (1 << j);\n    }\n    ind[0] =\
-    \ 1;\n    for(int S = 1; S < (1 << N); S++) {\n        int v = __builtin_ctz(S);\n\
+    int popcount(int x) { return __builtin_popcount(x); }\nll popcount(ll x) { return\
+    \ __builtin_popcountll(x); }\n#pragma endregion Macros\n#line 1 \"graph/chromatic_number.hpp\"\
+    \n// \u5F69\u8272\u6570 O(n*2^n)\nint chromatic_number(int N, const vector<vector<int>>&\
+    \ G) {\n    // \u672C\u5F53\u306Frandom\u306B\u7D20\u6570\u3092\u53D6\u3063\u305F\
+    \u65B9\u304C\u3044\u3044\n    constexpr int mod = int(1e9) + 9;\n    // ind[S]\
+    \ = \u9802\u70B9\u96C6\u5408S\u306E\u90E8\u5206\u96C6\u5408\u3067\u3042\u3063\u3066\
+    \u3001\u72EC\u7ACB\u96C6\u5408\u3092\u306A\u3059\u3082\u306E\u306E\u500B\u6570\
+    \n    vector<int> ind(1 << N, 0);\n    // adj_bit[v] = v\u3068\u96A3\u63A5\u3057\
+    \u3066\u308B\u9802\u70B9\u306E\u5834\u6240\u306Bbit\u3092\u7ACB\u3066\u305F\u3082\
+    \u306E\n    vector<int> adj_bit(N, 0);\n    for(int i = 0; i < N; i++) {\n   \
+    \     for(int j = 0; j < N; j++) if(G[i][j]) adj_bit[i] |= (1 << j);\n    }\n\
+    \    ind[0] = 1;\n    for(int S = 1; S < (1 << N); S++) {\n        int v = __builtin_ctz(S);\n\
     \        ind[S] = ind[S ^ (1 << v)] + ind[(S ^ (1 << v)) & ~adj_bit[v]];\n   \
     \     if(ind[S] >= mod) ind[S] -= mod;\n    }\n    vector<ll> sum(1 << N);\n \
     \   for(int S = 0; S < (1 << N); S++) sum[S] = ((N - (int)__builtin_popcount(S))\
@@ -75,7 +76,7 @@ data:
   isVerificationFile: true
   path: test/chromatic_number.test.cpp
   requiredBy: []
-  timestamp: '2021-05-22 00:40:57+09:00'
+  timestamp: '2021-07-01 11:58:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/chromatic_number.test.cpp

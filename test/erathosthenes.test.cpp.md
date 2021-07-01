@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/eratosthenes.hpp
     title: math/eratosthenes.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
@@ -41,14 +41,15 @@ data:
     \ REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\n\
     constexpr int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4]\
     \ = {0, 1, 0, -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\n\
-    #pragma endregion Macros\n#line 1 \"math/eratosthenes.hpp\"\nvector<bool> eratosthenes(int\
-    \ n) {\n    vector<bool> isp(n + 1, true);\n    isp[0] = isp[1] = false;\n   \
-    \ for(int i = 2; i * i <= n; i++) {\n        if(!isp[i]) continue;\n        for(int\
-    \ j = i+i; j <= n; j += i) isp[j] = false;\n    }\n    return isp;\n}\n#line 4\
-    \ \"test/erathosthenes.test.cpp\"\n\nint main() {\n    int t; cin >> t;\n\n  \
-    \  auto isp = eratosthenes(100000000);\n    int ans = 0;\n\n    while(t--) {\n\
-    \        int n; cin >> n;\n        ans += isp[n];\n    }\n\n    cout << ans <<\
-    \ endl;\n}\n"
+    int popcount(int x) { return __builtin_popcount(x); }\nll popcount(ll x) { return\
+    \ __builtin_popcountll(x); }\n#pragma endregion Macros\n#line 1 \"math/eratosthenes.hpp\"\
+    \nvector<bool> eratosthenes(int n) {\n    vector<bool> isp(n + 1, true);\n   \
+    \ isp[0] = isp[1] = false;\n    for(int i = 2; i * i <= n; i++) {\n        if(!isp[i])\
+    \ continue;\n        for(int j = i+i; j <= n; j += i) isp[j] = false;\n    }\n\
+    \    return isp;\n}\n#line 4 \"test/erathosthenes.test.cpp\"\n\nint main() {\n\
+    \    int t; cin >> t;\n\n    auto isp = eratosthenes(100000000);\n    int ans\
+    \ = 0;\n\n    while(t--) {\n        int n; cin >> n;\n        ans += isp[n];\n\
+    \    }\n\n    cout << ans << endl;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_C&lang=jp\"\
     \n#include \"../compro_library/template/template.cpp\"\n#include \"../compro_library/math/eratosthenes.hpp\"\
     \n\nint main() {\n    int t; cin >> t;\n\n    auto isp = eratosthenes(100000000);\n\
@@ -60,7 +61,7 @@ data:
   isVerificationFile: true
   path: test/erathosthenes.test.cpp
   requiredBy: []
-  timestamp: '2021-03-28 17:58:47+09:00'
+  timestamp: '2021-07-01 11:58:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/erathosthenes.test.cpp

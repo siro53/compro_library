@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/dsu.hpp
     title: graph/dsu.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/unionfind
@@ -41,19 +41,21 @@ data:
     \ REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\n\
     constexpr int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4]\
     \ = {0, 1, 0, -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\n\
-    #pragma endregion Macros\n#line 1 \"graph/dsu.hpp\"\nstruct UnionFind {\n    vector<int>\
-    \ par;\n\n    UnionFind(int n) : par(n, -1) {}\n    void init(int n) { par.assign(n,\
-    \ -1); }\n\n    int root(int x) {\n        if(par[x] < 0)\n            return\
-    \ x;\n        else\n            return par[x] = root(par[x]);\n    }\n\n    bool\
-    \ issame(int x, int y) { return root(x) == root(y); }\n\n    bool merge(int x,\
-    \ int y) {\n        x = root(x);\n        y = root(y);\n        if(x == y)\n \
-    \           return false;\n        if(par[x] > par[y])\n            swap(x, y);\
-    \ // merge technique\n        par[x] += par[y];\n        par[y] = x;\n       \
-    \ return true;\n    }\n\n    int size(int x) { return -par[root(x)]; }\n};\n#line\
-    \ 4 \"test/union-find.test.cpp\"\n\nint main(){\n    int n, q;\n    cin >> n >>\
-    \ q;\n    UnionFind uf(n);\n    while(q--) {\n        int t, u, v;\n        cin\
-    \ >> t >> u >> v;\n        if(t == 0) {\n            uf.merge(u, v);\n       \
-    \ } else {\n            cout << uf.issame(u, v) << endl;\n        }\n    }\n}\n"
+    int popcount(int x) { return __builtin_popcount(x); }\nll popcount(ll x) { return\
+    \ __builtin_popcountll(x); }\n#pragma endregion Macros\n#line 1 \"graph/dsu.hpp\"\
+    \nstruct UnionFind {\n    vector<int> par;\n\n    UnionFind(int n) : par(n, -1)\
+    \ {}\n    void init(int n) { par.assign(n, -1); }\n\n    int root(int x) {\n \
+    \       if(par[x] < 0)\n            return x;\n        else\n            return\
+    \ par[x] = root(par[x]);\n    }\n\n    bool issame(int x, int y) { return root(x)\
+    \ == root(y); }\n\n    bool merge(int x, int y) {\n        x = root(x);\n    \
+    \    y = root(y);\n        if(x == y)\n            return false;\n        if(par[x]\
+    \ > par[y])\n            swap(x, y); // merge technique\n        par[x] += par[y];\n\
+    \        par[y] = x;\n        return true;\n    }\n\n    int size(int x) { return\
+    \ -par[root(x)]; }\n};\n#line 4 \"test/union-find.test.cpp\"\n\nint main(){\n\
+    \    int n, q;\n    cin >> n >> q;\n    UnionFind uf(n);\n    while(q--) {\n \
+    \       int t, u, v;\n        cin >> t >> u >> v;\n        if(t == 0) {\n    \
+    \        uf.merge(u, v);\n        } else {\n            cout << uf.issame(u, v)\
+    \ << endl;\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/unionfind\"\n#include \"\
     ../template/template.cpp\"\n#include \"../graph/dsu.hpp\"\n\nint main(){\n   \
     \ int n, q;\n    cin >> n >> q;\n    UnionFind uf(n);\n    while(q--) {\n    \
@@ -66,8 +68,8 @@ data:
   isVerificationFile: true
   path: test/union-find.test.cpp
   requiredBy: []
-  timestamp: '2021-03-28 17:58:47+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-07-01 11:58:18+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/union-find.test.cpp
 layout: document

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/scc.hpp
     title: graph/scc.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
@@ -41,39 +41,40 @@ data:
     \ REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\n\
     constexpr int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4]\
     \ = {0, 1, 0, -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\n\
-    #pragma endregion Macros\n#line 1 \"graph/scc.hpp\"\n// \u30B0\u30E9\u30D5\u3092\
-    \u69CB\u7BC9\u3057\u305F\u3089build()\u3092\u5FC5\u305A\u547C\u3076\u3053\u3068\
-    !!!\nclass SCC {\n  private:\n    vector<vector<int>> G;\n    vector<vector<int>>\
-    \ revG;\n    vector<int> vs, comp;\n    vector<bool> seen;\n    int cnt;\n   \
-    \ void dfs(int v) {\n        seen[v] = true;\n        for(const int &u : G[v])\
-    \ {\n            if(!seen[u]) { dfs(u); }\n        }\n        vs.emplace_back(v);\n\
-    \    }\n    void rev_dfs(int v, int id) {\n        seen[v] = true;\n        comp[v]\
-    \ = id;\n        for(const int &u : revG[v]) {\n            if(comp[u] == -1)\
-    \ { rev_dfs(u, id); }\n        }\n    }\n\n  public:\n    SCC(int N) : G(N), revG(N),\
-    \ comp(N, -1), seen(N, false) {}\n    SCC(vector<vector<int>> g)\n        : G(g),\
-    \ revG(g.size()), comp(g.size(), -1), seen(g.size(), false) {\n        int n =\
-    \ (int)g.size();\n        for(int i = 0; i < n; i++) {\n            for(const\
-    \ auto &u : g[i]) { revG[u].emplace_back(i); }\n        }\n    }\n    void add_edge(int\
-    \ i, int j) {\n        G[i].emplace_back(j);\n        revG[j].emplace_back(i);\n\
-    \    }\n    void build() {\n        int n = (int)G.size();\n        for(int i\
-    \ = 0; i < n; i++) {\n            if(!seen[i]) dfs(i);\n        }\n        reverse(ALL(vs));\n\
-    \        cnt = 0;\n        for(const int &v : vs) {\n            if(comp[v] ==\
-    \ -1) {\n                rev_dfs(v, cnt);\n                cnt++;\n          \
-    \  }\n        }\n    }\n    // \u5FC5\u305Abuild()\u3057\u305F\u5F8C\u306B\u547C\
-    \u3073\u51FA\u3059\u3053\u3068!!!\n    vector<vector<int>> get_contract_graph()\
-    \ {\n        vector<vector<int>> res_g(cnt);\n        for(int i = 0; i < int(G.size());\
-    \ i++) {\n            for(const int& to : G[i]) {\n                int a = comp[i],\
-    \ b = comp[to];\n                if(a == b) continue;\n                res_g[a].push_back(b);\n\
-    \            }\n        }\n        return res_g;\n    }\n    int operator[](int\
-    \ k) const { return comp[k]; }\n    int size() const { return cnt; }\n};\n#line\
-    \ 4 \"test/scc.test.cpp\"\n\nint main() {\n    int N, M;\n    cin >> N >> M;\n\
-    \n    SCC scc(N);\n    REP(i, M) {\n        int a, b; cin >> a >> b;\n       \
-    \ scc.add_edge(a, b);\n    }\n    scc.build();\n\n    vector<vector<int>> res(scc.size());\n\
-    \    for(int i = 0; i < N; i++) {\n        res[scc[i]].emplace_back(i);\n    }\n\
-    \    cout << scc.size() << \"\\n\";\n    for(int i = 0; i < res.size(); i++) {\n\
-    \        int sz = res[i].size();\n        cout << sz << \" \";\n        for(int\
-    \ j = 0; j < sz; j++) {\n            cout << res[i][j] << \" \\n\"[j == sz - 1];\n\
-    \        }\n    }\n}\n"
+    int popcount(int x) { return __builtin_popcount(x); }\nll popcount(ll x) { return\
+    \ __builtin_popcountll(x); }\n#pragma endregion Macros\n#line 1 \"graph/scc.hpp\"\
+    \n// \u30B0\u30E9\u30D5\u3092\u69CB\u7BC9\u3057\u305F\u3089build()\u3092\u5FC5\
+    \u305A\u547C\u3076\u3053\u3068!!!\nclass SCC {\n  private:\n    vector<vector<int>>\
+    \ G;\n    vector<vector<int>> revG;\n    vector<int> vs, comp;\n    vector<bool>\
+    \ seen;\n    int cnt;\n    void dfs(int v) {\n        seen[v] = true;\n      \
+    \  for(const int &u : G[v]) {\n            if(!seen[u]) { dfs(u); }\n        }\n\
+    \        vs.emplace_back(v);\n    }\n    void rev_dfs(int v, int id) {\n     \
+    \   seen[v] = true;\n        comp[v] = id;\n        for(const int &u : revG[v])\
+    \ {\n            if(comp[u] == -1) { rev_dfs(u, id); }\n        }\n    }\n\n \
+    \ public:\n    SCC(int N) : G(N), revG(N), comp(N, -1), seen(N, false) {}\n  \
+    \  SCC(vector<vector<int>> g)\n        : G(g), revG(g.size()), comp(g.size(),\
+    \ -1), seen(g.size(), false) {\n        int n = (int)g.size();\n        for(int\
+    \ i = 0; i < n; i++) {\n            for(const auto &u : g[i]) { revG[u].emplace_back(i);\
+    \ }\n        }\n    }\n    void add_edge(int i, int j) {\n        G[i].emplace_back(j);\n\
+    \        revG[j].emplace_back(i);\n    }\n    void build() {\n        int n =\
+    \ (int)G.size();\n        for(int i = 0; i < n; i++) {\n            if(!seen[i])\
+    \ dfs(i);\n        }\n        reverse(ALL(vs));\n        cnt = 0;\n        for(const\
+    \ int &v : vs) {\n            if(comp[v] == -1) {\n                rev_dfs(v,\
+    \ cnt);\n                cnt++;\n            }\n        }\n    }\n    // \u5FC5\
+    \u305Abuild()\u3057\u305F\u5F8C\u306B\u547C\u3073\u51FA\u3059\u3053\u3068!!!\n\
+    \    vector<vector<int>> get_contract_graph() {\n        vector<vector<int>> res_g(cnt);\n\
+    \        for(int i = 0; i < int(G.size()); i++) {\n            for(const int&\
+    \ to : G[i]) {\n                int a = comp[i], b = comp[to];\n             \
+    \   if(a == b) continue;\n                res_g[a].push_back(b);\n           \
+    \ }\n        }\n        return res_g;\n    }\n    int operator[](int k) const\
+    \ { return comp[k]; }\n    int size() const { return cnt; }\n};\n#line 4 \"test/scc.test.cpp\"\
+    \n\nint main() {\n    int N, M;\n    cin >> N >> M;\n\n    SCC scc(N);\n    REP(i,\
+    \ M) {\n        int a, b; cin >> a >> b;\n        scc.add_edge(a, b);\n    }\n\
+    \    scc.build();\n\n    vector<vector<int>> res(scc.size());\n    for(int i =\
+    \ 0; i < N; i++) {\n        res[scc[i]].emplace_back(i);\n    }\n    cout << scc.size()\
+    \ << \"\\n\";\n    for(int i = 0; i < res.size(); i++) {\n        int sz = res[i].size();\n\
+    \        cout << sz << \" \";\n        for(int j = 0; j < sz; j++) {\n       \
+    \     cout << res[i][j] << \" \\n\"[j == sz - 1];\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/scc\"\n#include \"../template/template.cpp\"\
     \n#include \"../graph/scc.hpp\"\n\nint main() {\n    int N, M;\n    cin >> N >>\
     \ M;\n\n    SCC scc(N);\n    REP(i, M) {\n        int a, b; cin >> a >> b;\n \
@@ -89,7 +90,7 @@ data:
   isVerificationFile: true
   path: test/scc.test.cpp
   requiredBy: []
-  timestamp: '2021-03-28 17:58:47+09:00'
+  timestamp: '2021-07-01 11:58:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/scc.test.cpp

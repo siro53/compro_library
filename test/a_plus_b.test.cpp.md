@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
@@ -38,8 +38,10 @@ data:
     \ REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\n\
     constexpr int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4]\
     \ = {0, 1, 0, -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\n\
-    #pragma endregion Macros\n#line 3 \"test/a_plus_b.test.cpp\"\n\nint main(){\n\
-    \    ll a, b;\n    cin >> a >> b;\n    cout << a + b << \"\\n\";\n}\n"
+    int popcount(int x) { return __builtin_popcount(x); }\nll popcount(ll x) { return\
+    \ __builtin_popcountll(x); }\n#pragma endregion Macros\n#line 3 \"test/a_plus_b.test.cpp\"\
+    \n\nint main(){\n    ll a, b;\n    cin >> a >> b;\n    cout << a + b << \"\\n\"\
+    ;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../template/template.cpp\"\
     \n\nint main(){\n    ll a, b;\n    cin >> a >> b;\n    cout << a + b << \"\\n\"\
     ;\n}"
@@ -48,7 +50,7 @@ data:
   isVerificationFile: true
   path: test/a_plus_b.test.cpp
   requiredBy: []
-  timestamp: '2021-03-28 17:58:47+09:00'
+  timestamp: '2021-07-01 11:58:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/a_plus_b.test.cpp

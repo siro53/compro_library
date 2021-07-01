@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/bipartite_matching.hpp
     title: graph/bipartite_matching.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
@@ -41,22 +41,23 @@ data:
     \ REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\n\
     constexpr int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4]\
     \ = {0, 1, 0, -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\n\
-    #pragma endregion Macros\n#line 1 \"graph/bipartite_matching.hpp\"\nstruct BipartiteMatching\
-    \ {\n    int L, R;\n    vector<int> l, r, d;\n    vector<bool> seen;\n    vector<vector<int>>\
-    \ G;\n\n    BipartiteMatching(int L, int R)\n        : L(L), R(R), l(L, -1), r(R,\
-    \ -1), d(L), seen(L), G(L) {}\n\n    void add_edge(int _l, int _r) { G[_l].emplace_back(_r);\
-    \ }\n\n    void bfs() {\n        vector<int> que;\n        int head = 0, tail\
-    \ = 0;\n        fill(d.begin(), d.end(), -1);\n        for(int i = 0; i < L; i++)\
-    \ {\n            if(l[i] == -1) {\n                que.emplace_back(i), tail++;\n\
-    \                d[i] = 0;\n            }\n        }\n        while(head != tail)\
-    \ {\n            int v = que[head++];\n            for(const auto &u : G[v]) {\n\
-    \                if(r[u] != -1 && d[r[u]] == -1) {\n                    d[r[u]]\
-    \ = d[v] + 1;\n                    que.emplace_back(r[u]), tail++;\n         \
-    \       }\n            }\n        }\n    }\n\n    bool dfs(int v) {\n        if(seen[v])\
-    \ return false;\n        seen[v] = true;\n        for(const auto &u : G[v]) {\n\
-    \            if(r[u] == -1 || (d[r[u]] == d[v] + 1 && dfs(r[u]))) {\n        \
-    \        l[v] = u;\n                r[u] = v;\n                return true;\n\
-    \            }\n        }\n        return false;\n    }\n\n    int matching()\
+    int popcount(int x) { return __builtin_popcount(x); }\nll popcount(ll x) { return\
+    \ __builtin_popcountll(x); }\n#pragma endregion Macros\n#line 1 \"graph/bipartite_matching.hpp\"\
+    \nstruct BipartiteMatching {\n    int L, R;\n    vector<int> l, r, d;\n    vector<bool>\
+    \ seen;\n    vector<vector<int>> G;\n\n    BipartiteMatching(int L, int R)\n \
+    \       : L(L), R(R), l(L, -1), r(R, -1), d(L), seen(L), G(L) {}\n\n    void add_edge(int\
+    \ _l, int _r) { G[_l].emplace_back(_r); }\n\n    void bfs() {\n        vector<int>\
+    \ que;\n        int head = 0, tail = 0;\n        fill(d.begin(), d.end(), -1);\n\
+    \        for(int i = 0; i < L; i++) {\n            if(l[i] == -1) {\n        \
+    \        que.emplace_back(i), tail++;\n                d[i] = 0;\n           \
+    \ }\n        }\n        while(head != tail) {\n            int v = que[head++];\n\
+    \            for(const auto &u : G[v]) {\n                if(r[u] != -1 && d[r[u]]\
+    \ == -1) {\n                    d[r[u]] = d[v] + 1;\n                    que.emplace_back(r[u]),\
+    \ tail++;\n                }\n            }\n        }\n    }\n\n    bool dfs(int\
+    \ v) {\n        if(seen[v]) return false;\n        seen[v] = true;\n        for(const\
+    \ auto &u : G[v]) {\n            if(r[u] == -1 || (d[r[u]] == d[v] + 1 && dfs(r[u])))\
+    \ {\n                l[v] = u;\n                r[u] = v;\n                return\
+    \ true;\n            }\n        }\n        return false;\n    }\n\n    int matching()\
     \ {\n        int res = 0;\n        while(1) {\n            bfs();\n          \
     \  fill(seen.begin(), seen.end(), false);\n            int f = 0;\n          \
     \  for(int i = 0; i < L; i++) {\n                if(l[i] == -1 && dfs(i)) f++;\n\
@@ -80,7 +81,7 @@ data:
   isVerificationFile: true
   path: test/Hopcroft-Karp.test.cpp
   requiredBy: []
-  timestamp: '2021-03-28 17:58:47+09:00'
+  timestamp: '2021-07-01 11:58:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Hopcroft-Karp.test.cpp
