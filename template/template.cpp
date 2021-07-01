@@ -64,4 +64,6 @@ const int dx[4] = {1, 0, -1, 0};
 const int dy[4] = {0, 1, 0, -1};
 
 void Case(int i) { cout << "Case #" << i << ": "; }
+int popcount(int x) { return __builtin_popcount(x); }
+ll popcount(ll x) { return __builtin_popcountll(x); }
 #pragma endregion Macros
