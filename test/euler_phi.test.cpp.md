@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: string/z_algo.hpp
-    title: string/z_algo.hpp
+    path: math/euler_phi.hpp
+    title: math/euler_phi.hpp
   - icon: ':heavy_check_mark:'
     path: template/template.cpp
     title: template/template.cpp
@@ -14,10 +14,10 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/zalgorithm
+    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_D&lang=jp
     links:
-    - https://judge.yosupo.jp/problem/zalgorithm
-  bundledCode: "#line 1 \"test/zalgorothm.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/zalgorithm\"\
+    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_D&lang=jp
+  bundledCode: "#line 1 \"test/euler_phi.test.cpp\"\n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_D&lang=jp\"\
     \n#line 1 \"template/template.cpp\"\n#pragma region Macros\n#include <bits/stdc++.h>\n\
     using namespace std;\ntemplate <class T> inline bool chmax(T &a, T b) {\n    if(a\
     \ < b) {\n        a = b;\n        return 1;\n    }\n    return 0;\n}\ntemplate\
@@ -42,39 +42,29 @@ data:
     constexpr int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4]\
     \ = {0, 1, 0, -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\n\
     int popcount(int x) { return __builtin_popcount(x); }\nll popcount(ll x) { return\
-    \ __builtin_popcountll(x); }\n#pragma endregion Macros\n#line 1 \"string/z_algo.hpp\"\
-    \n// \u3059\u3079\u30660-indexed\n// n := |S| \u3068\u3059\u308B\u3002\n// s[i,j]\
-    \ := s\u306E[i,j]\u306E\u7BC4\u56F2\u306E\u9023\u7D9A\u90E8\u5206\u6587\u5B57\u5217\
-    \u3068\u3059\u308B\u3002\u3053\u306E\u3068\u304D\u3001\n// s[0, n-1](= s)\u3068\
-    s[i, n-1]\u306E\u6700\u9577\u5171\u901A\u63A5\u982D\u8F9E\u306E\u9577\u3055\u3092\
-    \u8A18\u9332\u3057\u305F\u914D\u5217\u3092\u8FD4\u3059\u3002\n// \u8A08\u7B97\u91CF\
-    \u306FO(|S|)\nvector<int> z_algo(const string &s) {\n    int c = 0, n = (int)s.size();\n\
-    \    vector<int> z(n, 0);\n    for(int i = 1; i < n; i++) {\n        if(i + z[i\
-    \ - c] < c + z[c]) {\n            z[i] = z[i - c];\n        } else {\n       \
-    \     int j = max(0, c + z[c] - i);\n            while(i + j < n && s[j] == s[i\
-    \ + j]) {\n                j++;\n            }\n            z[i] = j;\n      \
-    \      c = i;\n        }\n    }\n    z[0] = n;\n    return z;\n}\n#line 4 \"test/zalgorothm.test.cpp\"\
-    \n\nint main(){\n    string s;\n    cin >> s;\n    auto z = z_algo(s);\n    for(int\
-    \ i = 0; i < z.size(); i++) {\n        cout << z[i] << ' ';\n    }\n    cout <<\
-    \ \"\\n\";\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/zalgorithm\"\n#include\
-    \ \"../template/template.cpp\"\n#include \"../string/z_algo.hpp\"\n\nint main(){\n\
-    \    string s;\n    cin >> s;\n    auto z = z_algo(s);\n    for(int i = 0; i <\
-    \ z.size(); i++) {\n        cout << z[i] << ' ';\n    }\n    cout << \"\\n\";\n\
-    }"
+    \ __builtin_popcountll(x); }\n#pragma endregion Macros\n#line 3 \"test/euler_phi.test.cpp\"\
+    \n\n#line 1 \"math/euler_phi.hpp\"\ntemplate<class T>\nT phi(T n) {\n    T ret\
+    \ = n;\n    for(T i = 2; i * i <= n; i++) {\n        if(n % i == 0) {\n      \
+    \      ret -= ret / i;\n            while(n % i == 0) n /= i;\n        }\n   \
+    \ }\n    if(n > 1) ret -= ret / n;\n    return ret;\n}\n#line 5 \"test/euler_phi.test.cpp\"\
+    \n\nint main() {\n    ll n;\n    cin >> n;\n    cout << phi<ll>(n) << endl;\n\
+    }\n"
+  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_D&lang=jp\"\
+    \n#include \"../template/template.cpp\"\n\n#include \"../math/euler_phi.hpp\"\n\
+    \nint main() {\n    ll n;\n    cin >> n;\n    cout << phi<ll>(n) << endl;\n}"
   dependsOn:
   - template/template.cpp
-  - string/z_algo.hpp
+  - math/euler_phi.hpp
   isVerificationFile: true
-  path: test/zalgorothm.test.cpp
+  path: test/euler_phi.test.cpp
   requiredBy: []
-  timestamp: '2021-07-01 11:58:18+09:00'
+  timestamp: '2021-08-06 10:40:51+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/zalgorothm.test.cpp
+documentation_of: test/euler_phi.test.cpp
 layout: document
 redirect_from:
-- /verify/test/zalgorothm.test.cpp
-- /verify/test/zalgorothm.test.cpp.html
-title: test/zalgorothm.test.cpp
+- /verify/test/euler_phi.test.cpp
+- /verify/test/euler_phi.test.cpp.html
+title: test/euler_phi.test.cpp
 ---

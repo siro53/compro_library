@@ -34,8 +34,8 @@ data:
   timestamp: '2021-02-12 13:21:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/inversion_number.test.cpp
   - test/AOJ2426.test.cpp
+  - test/inversion_number.test.cpp
 documentation_of: data_structure/compress.hpp
 layout: document
 redirect_from:
