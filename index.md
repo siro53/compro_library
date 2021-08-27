@@ -104,6 +104,9 @@ data:
     - icon: ':warning:'
       path: math/gcd_lcm.hpp
       title: math/gcd_lcm.hpp
+    - icon: ':warning:'
+      path: math/golden_section_search.hpp
+      title: math/golden_section_search.hpp
     - icon: ':heavy_check_mark:'
       path: math/is_prime.hpp
       title: math/is_prime.hpp
@@ -119,6 +122,9 @@ data:
     - icon: ':warning:'
       path: math/modinv.hpp
       title: math/modinv.hpp
+    - icon: ':warning:'
+      path: math/osa_k.hpp
+      title: math/osa_k.hpp
     - icon: ':heavy_check_mark:'
       path: math/pollad-rho.hpp
       title: math/pollad-rho.hpp
