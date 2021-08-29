@@ -13,6 +13,9 @@ data:
     path: test/AOJ2821.test.cpp
     title: test/AOJ2821.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/AOJ2858.test.cpp
+    title: test/AOJ2858.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/Hopcroft-Karp.test.cpp
     title: test/Hopcroft-Karp.test.cpp
   - icon: ':heavy_check_mark:'
@@ -170,6 +173,7 @@ data:
   - test/set_xor_min.test.cpp
   - test/staticrangesum.test.cpp
   - test/chromatic_number.test.cpp
+  - test/AOJ2858.test.cpp
   - test/scc.test.cpp
   - test/yuki0206.test.cpp
   - test/sa-is.test.cpp

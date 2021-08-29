@@ -134,6 +134,9 @@ data:
     - icon: ':warning:'
       path: math/prime_factor.hpp
       title: math/prime_factor.hpp
+    - icon: ':heavy_check_mark:'
+      path: math/segment_sieve.hpp
+      title: math/segment_sieve.hpp
   - name: string
     pages:
     - icon: ':warning:'
@@ -173,6 +176,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/AOJ2821.test.cpp
       title: test/AOJ2821.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/AOJ2858.test.cpp
+      title: test/AOJ2858.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/Hopcroft-Karp.test.cpp
       title: test/Hopcroft-Karp.test.cpp

@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/AOJ2858.test.cpp
+    title: test/AOJ2858.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/erathosthenes.test.cpp
     title: test/erathosthenes.test.cpp
   _isVerificationFailed: false
@@ -27,6 +30,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/erathosthenes.test.cpp
+  - test/AOJ2858.test.cpp
 documentation_of: math/eratosthenes.hpp
 layout: document
 redirect_from:
