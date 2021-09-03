@@ -1,29 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/BIT.hpp
     title: data_structure/BIT.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/compress.hpp
     title: data_structure/compress.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/mo.hpp
     title: data_structure/mo.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    links: []
+    PROBLEM: https://judge.yosupo.jp/problem/static_range_inversions_query
+    links:
+    - https://judge.yosupo.jp/problem/static_range_inversions_query
   bundledCode: "#line 1 \"test/static_range_inversions_query.test.cpp\"\n#pragma GCC\
     \ target(\"avx2\")\n#pragma GCC optimize(\"O3\")\n#pragma GCC optimize(\"unroll-loops\"\
-    )\n#line 1 \"template/template.cpp\"\n#pragma region Macros\n#include <bits/stdc++.h>\n\
+    )\n#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_inversions_query\"\
+    \n#line 1 \"template/template.cpp\"\n#pragma region Macros\n#include <bits/stdc++.h>\n\
     using namespace std;\ntemplate <class T> inline bool chmax(T &a, T b) {\n    if(a\
     \ < b) {\n        a = b;\n        return 1;\n    }\n    return 0;\n}\ntemplate\
     \ <class T> inline bool chmin(T &a, T b) {\n    if(a > b) {\n        a = b;\n\
@@ -81,7 +84,7 @@ data:
     \   while(2 * k <= n) { k <<= 1; }\n        for(; k > 0; k >>= 1) {\n        \
     \    if(res + k < n && bit[res + k] < x) {\n                x -= bit[res + k];\n\
     \                res += k;\n            }\n        }\n        return res + 1;\n\
-    \    }\n};\n#line 8 \"test/static_range_inversions_query.test.cpp\"\n\nint N,\
+    \    }\n};\n#line 9 \"test/static_range_inversions_query.test.cpp\"\n\nint N,\
     \ Q;\nvector<int> a;\nvector<ll> ans;\nCompress<int> comp;\nBIT<int> bt(1);\n\
     ll now_ans;\n\nvoid Mo::add_right(int id) {\n    int p = a[id];\n    now_ans +=\
     \ bt.sum(p+1, comp.size());\n    bt.add(p, 1);\n}\n\nvoid Mo::add_left(int id)\
@@ -96,7 +99,8 @@ data:
     \ = 0;\n    REP(i, Q) {\n        int qid = mo.process();\n        ans[qid] = now_ans;\n\
     \    }\n\n    REP(i, Q) cout << ans[i] << \"\\n\";\n}\n"
   code: "#pragma GCC target(\"avx2\")\n#pragma GCC optimize(\"O3\")\n#pragma GCC optimize(\"\
-    unroll-loops\")\n#include \"../template/template.cpp\"\n#include \"../data_structure/mo.hpp\"\
+    unroll-loops\")\n#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_inversions_query\"\
+    \n#include \"../template/template.cpp\"\n#include \"../data_structure/mo.hpp\"\
     \n#include \"../data_structure/compress.hpp\"\n#include \"../data_structure/BIT.hpp\"\
     \n\nint N, Q;\nvector<int> a;\nvector<ll> ans;\nCompress<int> comp;\nBIT<int>\
     \ bt(1);\nll now_ans;\n\nvoid Mo::add_right(int id) {\n    int p = a[id];\n  \
@@ -119,8 +123,8 @@ data:
   isVerificationFile: true
   path: test/static_range_inversions_query.test.cpp
   requiredBy: []
-  timestamp: '2021-09-03 15:14:59+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-09-03 15:18:44+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/static_range_inversions_query.test.cpp
 layout: document

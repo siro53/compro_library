@@ -15,15 +15,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/rangeBIT.test.cpp
     title: test/rangeBIT.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/static_range_inversions_query.test.cpp
     title: test/static_range_inversions_query.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/staticrangesum.test.cpp
     title: test/staticrangesum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"data_structure/BIT.hpp\"\ntemplate <typename T> struct BIT\
@@ -58,7 +58,7 @@ data:
   - data_structure/inversion_number.hpp
   - data_structure/rangeBIT.hpp
   timestamp: '2021-02-12 13:21:22+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/staticrangesum.test.cpp
   - test/inversion_number.test.cpp

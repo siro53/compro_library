@@ -3,7 +3,7 @@ data:
   libraryCategories:
   - name: data_structure
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/BIT.hpp
       title: data_structure/BIT.hpp
     - icon: ':heavy_check_mark:'
@@ -12,13 +12,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/binary_trie.hpp
       title: data_structure/binary_trie.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/compress.hpp
       title: data_structure/compress.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/inversion_number.hpp
       title: data_structure/inversion_number.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/mo.hpp
       title: data_structure/mo.hpp
     - icon: ':heavy_check_mark:'
@@ -156,7 +156,7 @@ data:
       title: string/z_algo.hpp
   - name: template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/template.cpp
       title: template/template.cpp
   - name: util
@@ -236,7 +236,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/set_xor_min.test.cpp
       title: test/set_xor_min.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/static_range_inversions_query.test.cpp
       title: test/static_range_inversions_query.test.cpp
     - icon: ':heavy_check_mark:'
