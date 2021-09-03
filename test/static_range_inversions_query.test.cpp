@@ -1,6 +1,7 @@
 #pragma GCC target("avx2")
 #pragma GCC optimize("O3")
 #pragma GCC optimize("unroll-loops")
+#define PROBLEM "https://judge.yosupo.jp/problem/static_range_inversions_query"
 #include "../template/template.cpp"
 #include "../data_structure/mo.hpp"
 #include "../data_structure/compress.hpp"
