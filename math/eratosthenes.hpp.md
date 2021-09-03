@@ -29,8 +29,8 @@ data:
   timestamp: '2021-03-15 20:37:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/erathosthenes.test.cpp
   - test/AOJ2858.test.cpp
+  - test/erathosthenes.test.cpp
 documentation_of: math/eratosthenes.hpp
 layout: document
 redirect_from:

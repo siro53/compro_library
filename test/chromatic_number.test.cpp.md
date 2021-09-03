@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/chromatic_number.hpp
     title: graph/chromatic_number.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
