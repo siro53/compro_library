@@ -1,12 +1,11 @@
 class Mo {
   private:
     vector<int> L, R, ord;
-    vector<bool> nowuse;
     int BUCKET_SIZE;// bucket size
     int nl, nr, ptr;
 
   public:
-    Mo(int N) : BUCKET_SIZE(sqrt(N)), nl(0), nr(0), ptr(0), nowuse(N) {}
+    Mo(int N) : BUCKET_SIZE(sqrt(N)), nl(0), nr(0), ptr(0) {}
 
     // [l, r)
     void insert(int l, int r) {
