@@ -64,8 +64,5 @@ data:
   verifiedWith: []
 documentation_of: string/trie.hpp
 layout: document
-redirect_from:
-- /library/string/trie.hpp
-- /library/string/trie.hpp.html
-title: string/trie.hpp
+title: "Trie\u6728"
 ---

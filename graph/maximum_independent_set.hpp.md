@@ -90,8 +90,5 @@ data:
   - test/maximum_independent_set.test.cpp
 documentation_of: graph/maximum_independent_set.hpp
 layout: document
-redirect_from:
-- /library/graph/maximum_independent_set.hpp
-- /library/graph/maximum_independent_set.hpp.html
-title: graph/maximum_independent_set.hpp
+title: "\u6700\u5927\u72EC\u7ACB\u96C6\u5408"
 ---

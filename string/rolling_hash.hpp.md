@@ -84,8 +84,5 @@ data:
   verifiedWith: []
 documentation_of: string/rolling_hash.hpp
 layout: document
-redirect_from:
-- /library/string/rolling_hash.hpp
-- /library/string/rolling_hash.hpp.html
-title: string/rolling_hash.hpp
+title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
 ---

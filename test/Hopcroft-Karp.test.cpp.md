@@ -3,10 +3,10 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: graph/bipartite_matching.hpp
-    title: graph/bipartite_matching.hpp
-  - icon: ':heavy_check_mark:'
+    title: "Hopcroft-Karp algorithm(\u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0)"
+  - icon: ':question:'
     path: template/template.cpp
-    title: template/template.cpp
+    title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false

@@ -27,8 +27,5 @@ data:
   - test/is_prime.test.cpp
 documentation_of: math/is_prime.hpp
 layout: document
-redirect_from:
-- /library/math/is_prime.hpp
-- /library/math/is_prime.hpp.html
-title: math/is_prime.hpp
+title: "\u7D20\u6570\u5224\u5B9A"
 ---

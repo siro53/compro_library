@@ -157,8 +157,5 @@ data:
   - test/sa-is.test.cpp
 documentation_of: string/sa-is.hpp
 layout: document
-redirect_from:
-- /library/string/sa-is.hpp
-- /library/string/sa-is.hpp.html
-title: string/sa-is.hpp
+title: SA-IS
 ---

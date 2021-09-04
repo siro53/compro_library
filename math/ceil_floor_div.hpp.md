@@ -25,8 +25,5 @@ data:
   verifiedWith: []
 documentation_of: math/ceil_floor_div.hpp
 layout: document
-redirect_from:
-- /library/math/ceil_floor_div.hpp
-- /library/math/ceil_floor_div.hpp.html
-title: math/ceil_floor_div.hpp
+title: "\u5272\u308A\u7B97(floor, ceil)"
 ---

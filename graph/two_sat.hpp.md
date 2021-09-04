@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: graph/scc.hpp
-    title: graph/scc.hpp
+    title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3(SCC)"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -70,8 +70,5 @@ data:
   - test/two_sat.test.cpp
 documentation_of: graph/two_sat.hpp
 layout: document
-redirect_from:
-- /library/graph/two_sat.hpp
-- /library/graph/two_sat.hpp.html
-title: graph/two_sat.hpp
+title: 2-SAT
 ---

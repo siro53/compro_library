@@ -57,8 +57,5 @@ data:
   - test/AOJ2858.test.cpp
 documentation_of: math/segment_sieve.hpp
 layout: document
-redirect_from:
-- /library/math/segment_sieve.hpp
-- /library/math/segment_sieve.hpp.html
-title: math/segment_sieve.hpp
+title: "\u533A\u9593\u7BE9"
 ---

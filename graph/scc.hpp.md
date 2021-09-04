@@ -4,7 +4,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: graph/two_sat.hpp
-    title: graph/two_sat.hpp
+    title: 2-SAT
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ2748.test.cpp
@@ -83,8 +83,5 @@ data:
   - test/AOJ2748.test.cpp
 documentation_of: graph/scc.hpp
 layout: document
-redirect_from:
-- /library/graph/scc.hpp
-- /library/graph/scc.hpp.html
-title: graph/scc.hpp
+title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3(SCC)"
 ---

@@ -4,7 +4,7 @@ data:
   _extendedRequiredBy:
   - icon: ':warning:'
     path: math/lagrange_interpolation.hpp
-    title: math/lagrange_interpolation.hpp
+    title: "\u30E9\u30B0\u30E9\u30F3\u30B8\u30E5\u88DC\u9593"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/determinant.test.cpp
@@ -78,8 +78,5 @@ data:
   - test/determinant.test.cpp
 documentation_of: math/modint.hpp
 layout: document
-redirect_from:
-- /library/math/modint.hpp
-- /library/math/modint.hpp.html
-title: math/modint.hpp
+title: ModInt
 ---

@@ -29,8 +29,5 @@ data:
   - test/euler_phi.test.cpp
 documentation_of: math/euler_phi.hpp
 layout: document
-redirect_from:
-- /library/math/euler_phi.hpp
-- /library/math/euler_phi.hpp.html
-title: math/euler_phi.hpp
+title: "\u30AA\u30A4\u30E9\u30FC\u306Ephi\u95A2\u6570"
 ---

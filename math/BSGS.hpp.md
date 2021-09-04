@@ -40,8 +40,5 @@ data:
   verifiedWith: []
 documentation_of: math/BSGS.hpp
 layout: document
-redirect_from:
-- /library/math/BSGS.hpp
-- /library/math/BSGS.hpp.html
-title: math/BSGS.hpp
+title: "\u96E2\u6563\u5BFE\u6570\u554F\u984C"
 ---

@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: math/modint.hpp
-    title: math/modint.hpp
+    title: ModInt
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -142,8 +142,5 @@ data:
   verifiedWith: []
 documentation_of: math/lagrange_interpolation.hpp
 layout: document
-redirect_from:
-- /library/math/lagrange_interpolation.hpp
-- /library/math/lagrange_interpolation.hpp.html
-title: math/lagrange_interpolation.hpp
+title: "\u30E9\u30B0\u30E9\u30F3\u30B8\u30E5\u88DC\u9593"
 ---

@@ -32,8 +32,5 @@ data:
   verifiedWith: []
 documentation_of: math/floor_ceil_sqrt.hpp
 layout: document
-redirect_from:
-- /library/math/floor_ceil_sqrt.hpp
-- /library/math/floor_ceil_sqrt.hpp.html
-title: math/floor_ceil_sqrt.hpp
+title: "\u5E73\u65B9\u6839(floor, ceil)"
 ---

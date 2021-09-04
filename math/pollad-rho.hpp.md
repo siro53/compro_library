@@ -83,8 +83,5 @@ data:
   - test/fast_factorize.test.cpp
 documentation_of: math/pollad-rho.hpp
 layout: document
-redirect_from:
-- /library/math/pollad-rho.hpp
-- /library/math/pollad-rho.hpp.html
-title: math/pollad-rho.hpp
+title: "\u30DD\u30E9\u30FC\u30C9\u30FB\u30ED\u30FC\u6CD5"
 ---

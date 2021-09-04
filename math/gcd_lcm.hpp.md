@@ -23,8 +23,5 @@ data:
   verifiedWith: []
 documentation_of: math/gcd_lcm.hpp
 layout: document
-redirect_from:
-- /library/math/gcd_lcm.hpp
-- /library/math/gcd_lcm.hpp.html
-title: math/gcd_lcm.hpp
+title: GCD, LCM
 ---

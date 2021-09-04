@@ -39,8 +39,5 @@ data:
   - test/union-find.test.cpp
 documentation_of: graph/dsu.hpp
 layout: document
-redirect_from:
-- /library/graph/dsu.hpp
-- /library/graph/dsu.hpp.html
-title: graph/dsu.hpp
+title: UnionFind
 ---

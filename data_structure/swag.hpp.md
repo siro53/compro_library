@@ -57,8 +57,5 @@ data:
   - test/queue_operate_all_compose.test.cpp
 documentation_of: data_structure/swag.hpp
 layout: document
-redirect_from:
-- /library/data_structure/swag.hpp
-- /library/data_structure/swag.hpp.html
-title: data_structure/swag.hpp
+title: SWAG
 ---

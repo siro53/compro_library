@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/BIT.hpp
-    title: data_structure/BIT.hpp
-  - icon: ':heavy_check_mark:'
+    title: Binary Indexed Tree
+  - icon: ':x:'
     path: data_structure/rangeBIT.hpp
-    title: data_structure/rangeBIT.hpp
-  - icon: ':heavy_check_mark:'
+    title: range BIT
+  - icon: ':question:'
     path: template/template.cpp
-    title: template/template.cpp
+    title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G&lang=ja
@@ -46,18 +46,18 @@ data:
     \ = {0, 1, 0, -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\n\
     int popcount(int x) { return __builtin_popcount(x); }\nll popcount(ll x) { return\
     \ __builtin_popcountll(x); }\n#pragma endregion Macros\n#line 1 \"data_structure/BIT.hpp\"\
-    \ntemplate <typename T> struct BIT {\n    int n;\n    vector<T> bit;\n    BIT(int\
-    \ _n) { init(_n); }\n    void init(int _n) {\n        n = _n + 1;\n        bit.resize(n\
-    \ + 1, 0);\n    }\n    // [0, k)\n    T sum(int k) {\n        T res = 0;\n   \
-    \     for(int i = k - 1; i >= 0; i = (i & (i + 1)) - 1) { res += bit[i]; }\n \
-    \       return res;\n    }\n    // [l, r)\n    T sum(int l, int r) { return (l\
-    \ < r ? sum(r) - sum(l) : 0); }\n    // bit[k] += x\n    void add(int k, T x)\
-    \ {\n        for(int i = k; i < n; i |= i + 1) { bit[i] += x; }\n    }\n    //\
-    \ v[0] + ... + v[res] >= x\n    int lower_bound(T x) {\n        int res = -1;\n\
-    \        int k = 1;\n        while(2 * k <= n) { k <<= 1; }\n        for(; k >\
-    \ 0; k >>= 1) {\n            if(res + k < n && bit[res + k] < x) {\n         \
-    \       x -= bit[res + k];\n                res += k;\n            }\n       \
-    \ }\n        return res + 1;\n    }\n};\n#line 2 \"data_structure/rangeBIT.hpp\"\
+    \ntemplate <typename T> struct BIT {\n    int n;\n    vector<T> bit;\n    BIT(){}\n\
+    \    BIT(int _n) { init(_n); }\n    void init(int _n) {\n        n = _n + 1;\n\
+    \        bit.resize(n + 1, 0);\n    }\n    // [0, k)\n    T sum(int k) {\n   \
+    \     T res = 0;\n        for(int i = k - 1; i >= 0; i = (i & (i + 1)) - 1) {\
+    \ res += bit[i]; }\n        return res;\n    }\n    // [l, r)\n    T sum(int l,\
+    \ int r) { return (l < r ? sum(r) - sum(l) : 0); }\n    // bit[k] += x\n    void\
+    \ add(int k, T x) {\n        for(int i = k; i < n; i |= i + 1) { bit[i] += x;\
+    \ }\n    }\n    // v[0] + ... + v[res] >= x\n    int lower_bound(T x) {\n    \
+    \    int res = -1;\n        int k = 1;\n        while(2 * k <= n) { k <<= 1; }\n\
+    \        for(; k > 0; k >>= 1) {\n            if(res + k < n && bit[res + k] <\
+    \ x) {\n                x -= bit[res + k];\n                res += k;\n      \
+    \      }\n        }\n        return res + 1;\n    }\n};\n#line 2 \"data_structure/rangeBIT.hpp\"\
     \n\ntemplate<class T>\nstruct rangeBIT {\n    BIT<T> p, q;\n    rangeBIT(){}\n\
     \    rangeBIT(int n): p(n+1), q(n+1) {}\n    void add(int l, int r, T val) { //\
     \ [l, r)\u306Bval\u3092\u52A0\u7B97\n        p.add(l, -val * l);\n        p.add(r,\
@@ -86,8 +86,8 @@ data:
   isVerificationFile: true
   path: test/rangeBIT.test.cpp
   requiredBy: []
-  timestamp: '2021-07-01 11:58:18+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-09-04 16:29:23+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/rangeBIT.test.cpp
 layout: document

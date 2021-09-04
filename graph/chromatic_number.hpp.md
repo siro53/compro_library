@@ -56,8 +56,5 @@ data:
   - test/chromatic_number.test.cpp
 documentation_of: graph/chromatic_number.hpp
 layout: document
-redirect_from:
-- /library/graph/chromatic_number.hpp
-- /library/graph/chromatic_number.hpp.html
-title: graph/chromatic_number.hpp
+title: "\u5F69\u8272\u6570"
 ---

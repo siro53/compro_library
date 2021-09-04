@@ -381,8 +381,5 @@ data:
   verifiedWith: []
 documentation_of: geometry/geometry.hpp
 layout: document
-redirect_from:
-- /library/geometry/geometry.hpp
-- /library/geometry/geometry.hpp.html
-title: geometry/geometry.hpp
+title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA"
 ---

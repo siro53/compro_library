@@ -86,8 +86,5 @@ data:
   - test/AOJ2821.test.cpp
 documentation_of: graph/tree_hash.hpp
 layout: document
-redirect_from:
-- /library/graph/tree_hash.hpp
-- /library/graph/tree_hash.hpp.html
-title: graph/tree_hash.hpp
+title: "\u6728\u306E\u540C\u578B\u6027\u5224\u5B9A(\u6728hash)"
 ---

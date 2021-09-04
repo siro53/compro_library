@@ -3,10 +3,10 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: graph/lca.hpp
-    title: graph/lca.hpp
-  - icon: ':heavy_check_mark:'
+    title: "LCA(\u30C0\u30D6\u30EA\u30F3\u30B0)"
+  - icon: ':question:'
     path: template/template.cpp
-    title: template/template.cpp
+    title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false

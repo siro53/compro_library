@@ -45,8 +45,5 @@ data:
   - test/zalgorothm.test.cpp
 documentation_of: string/z_algo.hpp
 layout: document
-redirect_from:
-- /library/string/z_algo.hpp
-- /library/string/z_algo.hpp.html
-title: string/z_algo.hpp
+title: Z Algorithm
 ---

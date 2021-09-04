@@ -62,8 +62,5 @@ data:
   - test/Hopcroft-Karp.test.cpp
 documentation_of: graph/bipartite_matching.hpp
 layout: document
-redirect_from:
-- /library/graph/bipartite_matching.hpp
-- /library/graph/bipartite_matching.hpp.html
-title: graph/bipartite_matching.hpp
+title: "Hopcroft-Karp algorithm(\u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0)"
 ---

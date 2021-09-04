@@ -25,8 +25,5 @@ data:
   verifiedWith: []
 documentation_of: math/pow_mod.hpp
 layout: document
-redirect_from:
-- /library/math/pow_mod.hpp
-- /library/math/pow_mod.hpp.html
-title: math/pow_mod.hpp
+title: "\u7E70\u308A\u8FD4\u3057\u81EA\u4E57\u6CD5(mod)"
 ---

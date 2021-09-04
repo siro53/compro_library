@@ -73,8 +73,5 @@ data:
   - test/yuki0206.test.cpp
 documentation_of: math/fft.hpp
 layout: document
-redirect_from:
-- /library/math/fft.hpp
-- /library/math/fft.hpp.html
-title: math/fft.hpp
+title: "\u9AD8\u901F\u30D5\u30FC\u30EA\u30A8\u5909\u63DB(FFT)"
 ---

@@ -57,8 +57,5 @@ data:
   - test/line_add_get_min.test.cpp
 documentation_of: data_structure/LiChaoTree.hpp
 layout: document
-redirect_from:
-- /library/data_structure/LiChaoTree.hpp
-- /library/data_structure/LiChaoTree.hpp.html
-title: data_structure/LiChaoTree.hpp
+title: Li Chao Tree
 ---

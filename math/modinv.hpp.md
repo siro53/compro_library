@@ -25,8 +25,5 @@ data:
   verifiedWith: []
 documentation_of: math/modinv.hpp
 layout: document
-redirect_from:
-- /library/math/modinv.hpp
-- /library/math/modinv.hpp.html
-title: math/modinv.hpp
+title: "\u9006\u5143\u8A08\u7B97(\u62E1\u5F35Euclid)"
 ---

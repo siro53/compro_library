@@ -31,8 +31,5 @@ data:
   verifiedWith: []
 documentation_of: math/combination.hpp
 layout: document
-redirect_from:
-- /library/math/combination.hpp
-- /library/math/combination.hpp.html
-title: math/combination.hpp
+title: "\u4E8C\u9805\u4FC2\u6570"
 ---

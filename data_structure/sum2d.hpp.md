@@ -40,8 +40,5 @@ data:
   - test/AOJ2426.test.cpp
 documentation_of: data_structure/sum2d.hpp
 layout: document
-redirect_from:
-- /library/data_structure/sum2d.hpp
-- /library/data_structure/sum2d.hpp.html
-title: data_structure/sum2d.hpp
+title: "\u4E8C\u6B21\u5143\u7D2F\u7A4D\u548C"
 ---

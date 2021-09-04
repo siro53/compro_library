@@ -74,8 +74,5 @@ data:
   - test/set_xor_min.test.cpp
 documentation_of: data_structure/binary_trie.hpp
 layout: document
-redirect_from:
-- /library/data_structure/binary_trie.hpp
-- /library/data_structure/binary_trie.hpp.html
-title: data_structure/binary_trie.hpp
+title: Binary Trie
 ---

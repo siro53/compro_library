@@ -102,8 +102,5 @@ data:
   - test/dinic.test.cpp
 documentation_of: graph/dinic.hpp
 layout: document
-redirect_from:
-- /library/graph/dinic.hpp
-- /library/graph/dinic.hpp.html
-title: graph/dinic.hpp
+title: Dinic
 ---

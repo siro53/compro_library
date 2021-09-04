@@ -4,7 +4,7 @@ data:
   _extendedRequiredBy:
   - icon: ':warning:'
     path: graph/doubling_tree.hpp
-    title: graph/doubling_tree.hpp
+    title: "\u6728\u4E0A\u306E\u30C0\u30D6\u30EA\u30F3\u30B0"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/lca.test.cpp
@@ -67,8 +67,5 @@ data:
   - test/lca.test.cpp
 documentation_of: graph/lca.hpp
 layout: document
-redirect_from:
-- /library/graph/lca.hpp
-- /library/graph/lca.hpp.html
-title: graph/lca.hpp
+title: "LCA(\u30C0\u30D6\u30EA\u30F3\u30B0)"
 ---

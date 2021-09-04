@@ -39,7 +39,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/fast_factorize.test.cpp
     title: test/fast_factorize.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/inversion_number.test.cpp
     title: test/inversion_number.test.cpp
   - icon: ':heavy_check_mark:'
@@ -57,7 +57,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/queue_operate_all_compose.test.cpp
     title: test/queue_operate_all_compose.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/rangeBIT.test.cpp
     title: test/rangeBIT.test.cpp
   - icon: ':heavy_check_mark:'
@@ -90,9 +90,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/zalgorothm.test.cpp
     title: test/zalgorothm.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"template/template.cpp\"\n#pragma region Macros\n#include\
@@ -150,7 +150,7 @@ data:
   path: template/template.cpp
   requiredBy: []
   timestamp: '2021-07-01 11:58:18+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/euler_phi.test.cpp
   - test/two_sat.test.cpp
@@ -183,8 +183,5 @@ data:
   - test/set_xor_min.test.cpp
 documentation_of: template/template.cpp
 layout: document
-redirect_from:
-- /library/template/template.cpp
-- /library/template/template.cpp.html
-title: template/template.cpp
+title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
 ---

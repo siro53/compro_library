@@ -36,8 +36,5 @@ data:
   verifiedWith: []
 documentation_of: math/osa_k.hpp
 layout: document
-redirect_from:
-- /library/math/osa_k.hpp
-- /library/math/osa_k.hpp.html
-title: math/osa_k.hpp
+title: "osa_k\u6CD5"
 ---
