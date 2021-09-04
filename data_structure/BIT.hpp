@@ -1,6 +1,7 @@
 template <typename T> struct BIT {
     int n;
     vector<T> bit;
+    BIT(){}
     BIT(int _n) { init(_n); }
     void init(int _n) {
         n = _n + 1;
