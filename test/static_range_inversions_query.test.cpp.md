@@ -9,7 +9,7 @@ data:
     title: data_structure/compress.hpp
   - icon: ':heavy_check_mark:'
     path: data_structure/mo.hpp
-    title: data_structure/mo.hpp
+    title: Mo's Algorithm
   - icon: ':heavy_check_mark:'
     path: template/template.cpp
     title: template/template.cpp
@@ -51,20 +51,20 @@ data:
     \ = {0, 1, 0, -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\n\
     int popcount(int x) { return __builtin_popcount(x); }\nll popcount(ll x) { return\
     \ __builtin_popcountll(x); }\n#pragma endregion Macros\n#line 1 \"data_structure/mo.hpp\"\
-    \nclass Mo {\n  private:\n    vector<int> L, R, ord;\n    vector<bool> nowuse;\n\
-    \    int BUCKET_SIZE;// bucket size\n    int nl, nr, ptr;\n\n  public:\n    Mo(int\
-    \ N) : BUCKET_SIZE(sqrt(N)), nl(0), nr(0), ptr(0), nowuse(N) {}\n\n    // [l,\
-    \ r)\n    void insert(int l, int r) {\n        L.push_back(l);\n        R.push_back(r);\n\
-    \    }\n    // \u30AF\u30A8\u30EA\u3092sort\u3059\u308B\n    void build() {\n\
-    \        ord.resize(L.size());\n        iota(ALL(ord), 0);\n        sort(ALL(ord),\
-    \ [&](int l, int r) {\n            if(L[l] / BUCKET_SIZE != L[r] / BUCKET_SIZE)\n\
-    \                return (L[l] < L[r]);\n            else\n                return\
-    \ (R[l] < R[r]);\n        });\n    }\n    // \u30AF\u30A8\u30EA\u30921\u3064\u9032\
-    \u3081\u308B, \u8FD4\u308A\u5024\u306F\u30AF\u30A8\u30EA\u306Eid\n    int process()\
-    \ {\n        if(ptr == ord.size()) return -1;\n        int qid = ord[ptr];\n \
-    \       while(nl > L[qid]) add_left(--nl);\n        while(nr < R[qid]) add_right(nr++);\n\
-    \        while(nl < L[qid]) del_left(nl++);\n        while(nr > R[qid]) del_right(--nr);\n\
-    \        return ord[ptr++];\n    }\n\n    void add_left(int id);\n    void add_right(int\
+    \nclass Mo {\n  private:\n    vector<int> L, R, ord;\n    int BUCKET_SIZE;// bucket\
+    \ size\n    int nl, nr, ptr;\n\n  public:\n    Mo(int N) : BUCKET_SIZE(sqrt(N)),\
+    \ nl(0), nr(0), ptr(0) {}\n\n    // [l, r)\n    void insert(int l, int r) {\n\
+    \        L.push_back(l);\n        R.push_back(r);\n    }\n    // \u30AF\u30A8\u30EA\
+    \u3092sort\u3059\u308B\n    void build() {\n        ord.resize(L.size());\n  \
+    \      iota(ALL(ord), 0);\n        sort(ALL(ord), [&](int l, int r) {\n      \
+    \      if(L[l] / BUCKET_SIZE != L[r] / BUCKET_SIZE)\n                return (L[l]\
+    \ < L[r]);\n            else\n                return (R[l] < R[r]);\n        });\n\
+    \    }\n    // \u30AF\u30A8\u30EA\u30921\u3064\u9032\u3081\u308B, \u8FD4\u308A\
+    \u5024\u306F\u30AF\u30A8\u30EA\u306Eid\n    int process() {\n        if(ptr ==\
+    \ ord.size()) return -1;\n        int qid = ord[ptr];\n        while(nl > L[qid])\
+    \ add_left(--nl);\n        while(nr < R[qid]) add_right(nr++);\n        while(nl\
+    \ < L[qid]) del_left(nl++);\n        while(nr > R[qid]) del_right(--nr);\n   \
+    \     return ord[ptr++];\n    }\n\n    void add_left(int id);\n    void add_right(int\
     \ id);\n    void del_left(int id);\n    void del_right(int id);\n};\n#line 1 \"\
     data_structure/compress.hpp\"\ntemplate <typename T> struct Compress {\n    vector<T>\
     \ v;\n    Compress() {}\n    Compress(vector<T> vv) : v(vv) {\n        sort(ALL(v));\n\
@@ -123,7 +123,7 @@ data:
   isVerificationFile: true
   path: test/static_range_inversions_query.test.cpp
   requiredBy: []
-  timestamp: '2021-09-03 15:18:44+09:00'
+  timestamp: '2021-09-04 15:32:44+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/static_range_inversions_query.test.cpp

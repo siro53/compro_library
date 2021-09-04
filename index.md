@@ -20,7 +20,7 @@ data:
       title: data_structure/inversion_number.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/mo.hpp
-      title: data_structure/mo.hpp
+      title: Mo's Algorithm
     - icon: ':heavy_check_mark:'
       path: data_structure/rangeBIT.hpp
       title: data_structure/rangeBIT.hpp
@@ -259,3 +259,5 @@ data:
       title: test/zalgorothm.test.cpp
 layout: toppage
 ---
+- このページは競技プログラミング用のスニペットを集めたページです。動作環境はc++17(gcc)を仮定しています。
+- バグ等を発見しましたら、[GitHubのissue](https://github.com/siro53/compro_library/issues)にご一報下さるととても喜びます！
