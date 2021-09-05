@@ -3,7 +3,7 @@ data:
   libraryCategories:
   - name: data_structure
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/BIT.hpp
       title: Binary Indexed Tree
     - icon: ':heavy_check_mark:'
@@ -12,16 +12,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/binary_trie.hpp
       title: Binary Trie
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/compress.hpp
       title: "\u5EA7\u6A19\u5727\u7E2E"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/inversion_number.hpp
       title: "\u8EE2\u5012\u6570"
     - icon: ':heavy_check_mark:'
       path: data_structure/mo.hpp
       title: Mo's Algorithm
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/rangeBIT.hpp
       title: range BIT
     - icon: ':heavy_check_mark:'
@@ -156,7 +156,7 @@ data:
       title: Z Algorithm
   - name: template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/template.cpp
       title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   - name: util
@@ -206,7 +206,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/fast_factorize.test.cpp
       title: test/fast_factorize.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/inversion_number.test.cpp
       title: test/inversion_number.test.cpp
     - icon: ':heavy_check_mark:'
@@ -224,7 +224,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/queue_operate_all_compose.test.cpp
       title: test/queue_operate_all_compose.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/rangeBIT.test.cpp
       title: test/rangeBIT.test.cpp
     - icon: ':heavy_check_mark:'

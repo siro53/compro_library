@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/BIT.hpp
     title: Binary Indexed Tree
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/inversion_number.test.cpp
     title: test/inversion_number.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"data_structure/BIT.hpp\"\ntemplate <typename T> struct BIT\
@@ -45,10 +45,19 @@ data:
   path: data_structure/inversion_number.hpp
   requiredBy: []
   timestamp: '2021-09-04 16:29:23+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/inversion_number.test.cpp
 documentation_of: data_structure/inversion_number.hpp
 layout: document
 title: "\u8EE2\u5012\u6570"
 ---
+
+## 内容
+数列の転倒数を求める
+
+## 使い方
+- `inversion_number(v)`: 数列$v$の転倒数を求める
+
+## 計算量
+数列の長さを$N$として、$O(N\log{N})$
