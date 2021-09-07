@@ -79,6 +79,9 @@ data:
     path: test/staticrmq.test.cpp
     title: test/staticrmq.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/two_edge_connected_components.test.cpp
+    title: test/two_edge_connected_components.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/two_sat.test.cpp
     title: test/two_sat.test.cpp
   - icon: ':heavy_check_mark:'
@@ -169,6 +172,7 @@ data:
   - test/erathosthenes.test.cpp
   - test/is_prime.test.cpp
   - test/zalgorothm.test.cpp
+  - test/two_edge_connected_components.test.cpp
   - test/sa-is.test.cpp
   - test/AOJ2426.test.cpp
   - test/queue_operate_all_compose.test.cpp

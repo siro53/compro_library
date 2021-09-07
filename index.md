@@ -46,6 +46,9 @@ data:
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
+      path: graph/bi_edge_connected_components.hpp
+      title: "\u4E8C\u91CD\u8FBA\u9023\u7D50\u6210\u5206\u5206\u89E3(BECC)"
+    - icon: ':heavy_check_mark:'
       path: graph/bipartite_matching.hpp
       title: "Hopcroft-Karp algorithm(\u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0)"
     - icon: ':heavy_check_mark:'
@@ -245,6 +248,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/staticrmq.test.cpp
       title: test/staticrmq.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/two_edge_connected_components.test.cpp
+      title: test/two_edge_connected_components.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/two_sat.test.cpp
       title: test/two_sat.test.cpp
