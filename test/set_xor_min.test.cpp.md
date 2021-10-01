@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/binary_trie.hpp
     title: Binary Trie
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/set_xor_min
@@ -36,38 +36,40 @@ data:
     #define debug(...) (void(0))\n#define dump(x) (void(0))\n#endif\n\nstruct Setup\
     \ {\n    Setup() {\n        cin.tie(0);\n        ios::sync_with_stdio(false);\n\
     \        cout << fixed << setprecision(15);\n    }\n} __Setup;\n\nusing ll = long\
-    \ long;\n#define ALL(v) (v).begin(), (v).end()\n#define RALL(v) (v).rbegin(),\
-    \ (v).rend()\n#define FOR(i, a, b) for(int i = (a); i < int(b); i++)\n#define\
-    \ REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\n\
-    constexpr int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4]\
-    \ = {0, 1, 0, -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\n\
-    int popcount(int x) { return __builtin_popcount(x); }\nll popcount(ll x) { return\
-    \ __builtin_popcountll(x); }\n#pragma endregion Macros\n#line 1 \"data_structure/binary_trie.hpp\"\
-    \nstruct BinaryTrie {\n    static const int B = 64;\n    using ull = uint64_t;\n\
-    \    struct Node {\n        int cnt;\n        Node *child[2];\n        Node()\
-    \ : cnt(0), child{nullptr, nullptr} {}\n    };\n    Node *root;\n    BinaryTrie()\
-    \ : root(nullptr) {}\n    int count(ull val) const {\n        if(!root) {\n  \
-    \          return 0;\n        }\n        Node *now = root;\n        for(int i\
-    \ = B - 1; i >= 0; i--) {\n            now = now->child[(val >> i) & 1ULL];\n\
-    \            if(!now) {\n                return 0;\n            }\n        }\n\
-    \        return now->cnt;\n    }\n    Node *insert(Node *now, ull val, int i =\
-    \ B - 1) {\n        if(!now) {\n            now = new Node();\n        }\n   \
-    \     now->cnt++;\n        if(i < 0) {\n            return now;\n        }\n \
-    \       bool dir = (val >> i) & 1ULL;\n        now->child[dir] = insert(now->child[dir],\
-    \ val, i - 1);\n        return now;\n    }\n    void insert(ull val) {\n     \
-    \   if(count(val)) {\n            return;\n        }\n        root = insert(root,\
-    \ val);\n    }\n    Node *erase(Node *now, ull val, int i = B - 1) {\n       \
-    \ assert(now);\n        now->cnt--;\n        if(now->cnt == 0) {\n           \
-    \ return nullptr;\n        }\n        if(i < 0) {\n            return now;\n \
-    \       }\n        bool dir = (val >> i) & 1ULL;\n        now->child[dir] = erase(now->child[dir],\
-    \ val, i - 1);\n        return now;\n    }\n    void erase(ull val) {\n      \
-    \  if(count(val) == 0) {\n            return;\n        }\n        root = erase(root,\
-    \ val);\n    }\n    ull min_element(Node *now, ull val, int i = B - 1) {\n   \
-    \     assert(now);\n        if(i < 0) {\n            return 0;\n        }\n  \
-    \      bool dir = (val >> i) & 1ULL;\n        if(!now->child[dir]) {\n       \
-    \     dir = !dir;\n            return (1ULL << i) | min_element(now->child[dir],\
-    \ val, i - 1);\n        } else {\n            return min_element(now->child[dir],\
-    \ val, i - 1);\n        }\n    }\n    ull min_element(ull val = 0) { return min_element(root,\
+    \ long;\n#define OVERLOAD3(_1, _2, _3, name, ...) name\n#define ALL(v) (v).begin(),\
+    \ (v).end()\n#define RALL(v) (v).rbegin(), (v).rend()\n#define REP1(i, n) for(int\
+    \ i = 0; i < (n); i++)\n#define REP2(i, a, b) for(int i = (a); i < int(b); i++)\n\
+    #define REP(...) OVERLOAD3(__VA_ARGS__, REP2, REP1)(__VA_ARGS__)\nconst int INF\
+    \ = 1 << 30;\nconst ll LLINF = 1LL << 60;\nconstexpr int MOD = 1000000007;\nconst\
+    \ int dx[4] = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0, -1};\n\nvoid Case(int\
+    \ i) { cout << \"Case #\" << i << \": \"; }\nint popcount(int x) { return __builtin_popcount(x);\
+    \ }\nll popcount(ll x) { return __builtin_popcountll(x); }\n#pragma endregion\
+    \ Macros\n#line 1 \"data_structure/binary_trie.hpp\"\nstruct BinaryTrie {\n  \
+    \  static const int B = 64;\n    using ull = uint64_t;\n    struct Node {\n  \
+    \      int cnt;\n        Node *child[2];\n        Node() : cnt(0), child{nullptr,\
+    \ nullptr} {}\n    };\n    Node *root;\n    BinaryTrie() : root(nullptr) {}\n\
+    \    int count(ull val) const {\n        if(!root) {\n            return 0;\n\
+    \        }\n        Node *now = root;\n        for(int i = B - 1; i >= 0; i--)\
+    \ {\n            now = now->child[(val >> i) & 1ULL];\n            if(!now) {\n\
+    \                return 0;\n            }\n        }\n        return now->cnt;\n\
+    \    }\n    Node *insert(Node *now, ull val, int i = B - 1) {\n        if(!now)\
+    \ {\n            now = new Node();\n        }\n        now->cnt++;\n        if(i\
+    \ < 0) {\n            return now;\n        }\n        bool dir = (val >> i) &\
+    \ 1ULL;\n        now->child[dir] = insert(now->child[dir], val, i - 1);\n    \
+    \    return now;\n    }\n    void insert(ull val) {\n        if(count(val)) {\n\
+    \            return;\n        }\n        root = insert(root, val);\n    }\n  \
+    \  Node *erase(Node *now, ull val, int i = B - 1) {\n        assert(now);\n  \
+    \      now->cnt--;\n        if(now->cnt == 0) {\n            return nullptr;\n\
+    \        }\n        if(i < 0) {\n            return now;\n        }\n        bool\
+    \ dir = (val >> i) & 1ULL;\n        now->child[dir] = erase(now->child[dir], val,\
+    \ i - 1);\n        return now;\n    }\n    void erase(ull val) {\n        if(count(val)\
+    \ == 0) {\n            return;\n        }\n        root = erase(root, val);\n\
+    \    }\n    ull min_element(Node *now, ull val, int i = B - 1) {\n        assert(now);\n\
+    \        if(i < 0) {\n            return 0;\n        }\n        bool dir = (val\
+    \ >> i) & 1ULL;\n        if(!now->child[dir]) {\n            dir = !dir;\n   \
+    \         return (1ULL << i) | min_element(now->child[dir], val, i - 1);\n   \
+    \     } else {\n            return min_element(now->child[dir], val, i - 1);\n\
+    \        }\n    }\n    ull min_element(ull val = 0) { return min_element(root,\
     \ val); }\n};\n#line 4 \"test/set_xor_min.test.cpp\"\n\nint main(){\n    int Q;\n\
     \    cin >> Q;\n    BinaryTrie btrie;\n    while(Q--) {\n        int t, x;\n \
     \       cin >> t >> x;\n        if(t == 0) {\n            btrie.insert(x);\n \
@@ -86,8 +88,8 @@ data:
   isVerificationFile: true
   path: test/set_xor_min.test.cpp
   requiredBy: []
-  timestamp: '2021-07-01 11:58:18+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-10-01 13:55:05+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/set_xor_min.test.cpp
 layout: document

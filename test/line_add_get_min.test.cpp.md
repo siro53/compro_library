@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/LiChaoTree.hpp
     title: Li Chao Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -36,35 +36,36 @@ data:
     #define debug(...) (void(0))\n#define dump(x) (void(0))\n#endif\n\nstruct Setup\
     \ {\n    Setup() {\n        cin.tie(0);\n        ios::sync_with_stdio(false);\n\
     \        cout << fixed << setprecision(15);\n    }\n} __Setup;\n\nusing ll = long\
-    \ long;\n#define ALL(v) (v).begin(), (v).end()\n#define RALL(v) (v).rbegin(),\
-    \ (v).rend()\n#define FOR(i, a, b) for(int i = (a); i < int(b); i++)\n#define\
-    \ REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\n\
-    constexpr int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4]\
-    \ = {0, 1, 0, -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\n\
-    int popcount(int x) { return __builtin_popcount(x); }\nll popcount(ll x) { return\
-    \ __builtin_popcountll(x); }\n#pragma endregion Macros\n#line 1 \"data_structure/LiChaoTree.hpp\"\
-    \ntemplate <typename T> struct LiChaoTree {\n    struct Line {\n        T a, b;\n\
-    \        Line(T _a, T _b) : a(_a), b(_b) {}\n        inline T f(T x) const { return\
-    \ (a * x + b); }\n    };\n    vector<T> X;\n    vector<Line> lines;\n    int n;\n\
-    \    LiChaoTree() {}\n    LiChaoTree(const vector<T> &_X, T _INF) : X(_X) {\n\
-    \        n = 1;\n        while(n < X.size()) {\n            n <<= 1;\n       \
-    \ }\n        while(X.size() < n) {\n            X.emplace_back(X.back() + 1);\n\
-    \        }\n        lines.assign((n << 1) - 1, Line(0, _INF));\n    }\n    void\
-    \ update(Line &line, int k, int l, int r) {\n        int mid = (l + r) >> 1;\n\
-    \        bool flg_l = (line.f(X[l]) < lines[k].f(X[l]));\n        bool flg_r =\
-    \ (line.f(X[mid]) < lines[k].f(X[mid]));\n        if(flg_r) {\n            swap(lines[k],\
-    \ line);\n        }\n        if(l + 1 >= r) {\n            return;\n        }\n\
-    \        if(flg_l != flg_r) {\n            update(line, 2 * k + 1, l, mid);\n\
-    \        } else {\n            update(line, 2 * k + 2, mid, r);\n        }\n \
-    \   }\n    void add(T a, T b) {\n        Line l(a, b);\n        update(l, 0, 0,\
-    \ n);\n    }\n    T query(int k) {\n        const T x = X[k];\n        k += n\
-    \ - 1;\n        T ans = lines[k].f(x);\n        while(k > 0) {\n            k\
-    \ = (k - 1) >> 1;\n            chmin(ans, lines[k].f(x));\n        }\n       \
-    \ return ans;\n    }\n};\n#line 4 \"test/line_add_get_min.test.cpp\"\n\nusing\
-    \ PLL = pair<ll, ll>;\n\nint main() {\n    int N, Q;\n    cin >> N >> Q;\n   \
-    \ vector<PLL> L(N);\n    for(int i = 0; i < N; i++) {\n        cin >> L[i].first\
-    \ >> L[i].second;\n    }\n    vector<int> q_type(Q);\n    vector<PLL> q(Q);\n\
-    \    vector<ll> x;\n    for(int i = 0; i < Q; i++) {\n        cin >> q_type[i];\n\
+    \ long;\n#define OVERLOAD3(_1, _2, _3, name, ...) name\n#define ALL(v) (v).begin(),\
+    \ (v).end()\n#define RALL(v) (v).rbegin(), (v).rend()\n#define REP1(i, n) for(int\
+    \ i = 0; i < (n); i++)\n#define REP2(i, a, b) for(int i = (a); i < int(b); i++)\n\
+    #define REP(...) OVERLOAD3(__VA_ARGS__, REP2, REP1)(__VA_ARGS__)\nconst int INF\
+    \ = 1 << 30;\nconst ll LLINF = 1LL << 60;\nconstexpr int MOD = 1000000007;\nconst\
+    \ int dx[4] = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0, -1};\n\nvoid Case(int\
+    \ i) { cout << \"Case #\" << i << \": \"; }\nint popcount(int x) { return __builtin_popcount(x);\
+    \ }\nll popcount(ll x) { return __builtin_popcountll(x); }\n#pragma endregion\
+    \ Macros\n#line 1 \"data_structure/LiChaoTree.hpp\"\ntemplate <typename T> struct\
+    \ LiChaoTree {\n    struct Line {\n        T a, b;\n        Line(T _a, T _b) :\
+    \ a(_a), b(_b) {}\n        inline T f(T x) const { return (a * x + b); }\n   \
+    \ };\n    vector<T> X;\n    vector<Line> lines;\n    int n;\n    LiChaoTree()\
+    \ {}\n    LiChaoTree(const vector<T> &_X, T _INF) : X(_X) {\n        n = 1;\n\
+    \        while(n < X.size()) {\n            n <<= 1;\n        }\n        while(X.size()\
+    \ < n) {\n            X.emplace_back(X.back() + 1);\n        }\n        lines.assign((n\
+    \ << 1) - 1, Line(0, _INF));\n    }\n    void update(Line &line, int k, int l,\
+    \ int r) {\n        int mid = (l + r) >> 1;\n        bool flg_l = (line.f(X[l])\
+    \ < lines[k].f(X[l]));\n        bool flg_r = (line.f(X[mid]) < lines[k].f(X[mid]));\n\
+    \        if(flg_r) {\n            swap(lines[k], line);\n        }\n        if(l\
+    \ + 1 >= r) {\n            return;\n        }\n        if(flg_l != flg_r) {\n\
+    \            update(line, 2 * k + 1, l, mid);\n        } else {\n            update(line,\
+    \ 2 * k + 2, mid, r);\n        }\n    }\n    void add(T a, T b) {\n        Line\
+    \ l(a, b);\n        update(l, 0, 0, n);\n    }\n    T query(int k) {\n       \
+    \ const T x = X[k];\n        k += n - 1;\n        T ans = lines[k].f(x);\n   \
+    \     while(k > 0) {\n            k = (k - 1) >> 1;\n            chmin(ans, lines[k].f(x));\n\
+    \        }\n        return ans;\n    }\n};\n#line 4 \"test/line_add_get_min.test.cpp\"\
+    \n\nusing PLL = pair<ll, ll>;\n\nint main() {\n    int N, Q;\n    cin >> N >>\
+    \ Q;\n    vector<PLL> L(N);\n    for(int i = 0; i < N; i++) {\n        cin >>\
+    \ L[i].first >> L[i].second;\n    }\n    vector<int> q_type(Q);\n    vector<PLL>\
+    \ q(Q);\n    vector<ll> x;\n    for(int i = 0; i < Q; i++) {\n        cin >> q_type[i];\n\
     \        if(q_type[i] == 0) {\n            cin >> q[i].first >> q[i].second;\n\
     \        } else {\n            cin >> q[i].first;\n            x.emplace_back(q[i].first);\n\
     \        }\n    }\n    sort(ALL(x));\n    LiChaoTree<ll> lichao(x, LLINF);\n \
@@ -93,7 +94,7 @@ data:
   isVerificationFile: true
   path: test/line_add_get_min.test.cpp
   requiredBy: []
-  timestamp: '2021-07-01 11:58:18+09:00'
+  timestamp: '2021-10-01 13:55:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/line_add_get_min.test.cpp

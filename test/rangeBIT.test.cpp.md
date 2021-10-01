@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/BIT.hpp
     title: Binary Indexed Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/rangeBIT.hpp
     title: range BIT
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G&lang=ja
@@ -39,38 +39,40 @@ data:
     #define debug(...) (void(0))\n#define dump(x) (void(0))\n#endif\n\nstruct Setup\
     \ {\n    Setup() {\n        cin.tie(0);\n        ios::sync_with_stdio(false);\n\
     \        cout << fixed << setprecision(15);\n    }\n} __Setup;\n\nusing ll = long\
-    \ long;\n#define ALL(v) (v).begin(), (v).end()\n#define RALL(v) (v).rbegin(),\
-    \ (v).rend()\n#define FOR(i, a, b) for(int i = (a); i < int(b); i++)\n#define\
-    \ REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\n\
-    constexpr int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4]\
-    \ = {0, 1, 0, -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\n\
-    int popcount(int x) { return __builtin_popcount(x); }\nll popcount(ll x) { return\
-    \ __builtin_popcountll(x); }\n#pragma endregion Macros\n#line 1 \"data_structure/BIT.hpp\"\
-    \ntemplate <typename T> struct BIT {\n    int n;\n    vector<T> bit;\n    BIT(){}\n\
-    \    BIT(int _n) { init(_n); }\n    void init(int _n) {\n        n = _n + 1;\n\
-    \        bit.resize(n + 1, 0);\n    }\n    // [0, k)\n    T sum(int k) {\n   \
-    \     T res = 0;\n        for(int i = k - 1; i >= 0; i = (i & (i + 1)) - 1) {\
-    \ res += bit[i]; }\n        return res;\n    }\n    // [l, r)\n    T sum(int l,\
-    \ int r) { return (l < r ? sum(r) - sum(l) : 0); }\n    // bit[k] += x\n    void\
-    \ add(int k, T x) {\n        for(int i = k; i < n; i |= i + 1) { bit[i] += x;\
-    \ }\n    }\n    // v[0] + ... + v[res] >= x\n    int lower_bound(T x) {\n    \
-    \    int res = -1;\n        int k = 1;\n        while(2 * k <= n) { k <<= 1; }\n\
-    \        for(; k > 0; k >>= 1) {\n            if(res + k < n && bit[res + k] <\
-    \ x) {\n                x -= bit[res + k];\n                res += k;\n      \
-    \      }\n        }\n        return res + 1;\n    }\n};\n#line 2 \"data_structure/rangeBIT.hpp\"\
-    \n\ntemplate<class T>\nstruct rangeBIT {\n    BIT<T> p, q;\n    rangeBIT(){}\n\
-    \    rangeBIT(int n): p(n+1), q(n+1) {}\n    void add(int l, int r, T val) { //\
-    \ [l, r)\u306Bval\u3092\u52A0\u7B97\n        p.add(l, -val * l);\n        p.add(r,\
-    \ val * r);\n        q.add(l, val);\n        q.add(r, -val);\n    }\n    void\
-    \ add(int i, T val) {\n        add(i, i+1, val);\n    }\n    T sum(int r) { //\
-    \ [0, r)\n        return p.sum(r) + q.sum(r) * r;\n    }\n    T sum(int l, int\
-    \ r) { // [l, r)\n        assert(l <= r);\n        return sum(r) - sum(l);\n \
-    \   }\n};\n#line 4 \"test/rangeBIT.test.cpp\"\n\nint main() {\n    int N, Q;\n\
-    \    cin >> N >> Q;\n\n    rangeBIT<ll> bt(N);\n\n    REP(_, Q) {\n        int\
-    \ type; cin >> type;\n        if(type == 0) {\n            int l, r, val;\n  \
-    \          cin >> l >> r >> val;\n            l--;\n            bt.add(l, r, val);\n\
-    \        } else {\n            int l, r;\n            cin >> l >> r;\n       \
-    \     l--;\n            cout << bt.sum(l, r) << \"\\n\";\n        }\n    }\n}\n"
+    \ long;\n#define OVERLOAD3(_1, _2, _3, name, ...) name\n#define ALL(v) (v).begin(),\
+    \ (v).end()\n#define RALL(v) (v).rbegin(), (v).rend()\n#define REP1(i, n) for(int\
+    \ i = 0; i < (n); i++)\n#define REP2(i, a, b) for(int i = (a); i < int(b); i++)\n\
+    #define REP(...) OVERLOAD3(__VA_ARGS__, REP2, REP1)(__VA_ARGS__)\nconst int INF\
+    \ = 1 << 30;\nconst ll LLINF = 1LL << 60;\nconstexpr int MOD = 1000000007;\nconst\
+    \ int dx[4] = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0, -1};\n\nvoid Case(int\
+    \ i) { cout << \"Case #\" << i << \": \"; }\nint popcount(int x) { return __builtin_popcount(x);\
+    \ }\nll popcount(ll x) { return __builtin_popcountll(x); }\n#pragma endregion\
+    \ Macros\n#line 1 \"data_structure/BIT.hpp\"\ntemplate <typename T> struct BIT\
+    \ {\n    int n;\n    vector<T> bit;\n    BIT(){}\n    BIT(int _n) { init(_n);\
+    \ }\n    void init(int _n) {\n        n = _n + 1;\n        bit.resize(n + 1, 0);\n\
+    \    }\n    // [0, k)\n    T sum(int k) {\n        T res = 0;\n        for(int\
+    \ i = k - 1; i >= 0; i = (i & (i + 1)) - 1) { res += bit[i]; }\n        return\
+    \ res;\n    }\n    // [l, r)\n    T sum(int l, int r) { return (l < r ? sum(r)\
+    \ - sum(l) : 0); }\n    // bit[k] += x\n    void add(int k, T x) {\n        for(int\
+    \ i = k; i < n; i |= i + 1) { bit[i] += x; }\n    }\n    // v[0] + ... + v[res]\
+    \ >= x\n    int lower_bound(T x) {\n        int res = -1;\n        int k = 1;\n\
+    \        while(2 * k <= n) { k <<= 1; }\n        for(; k > 0; k >>= 1) {\n   \
+    \         if(res + k < n && bit[res + k] < x) {\n                x -= bit[res\
+    \ + k];\n                res += k;\n            }\n        }\n        return res\
+    \ + 1;\n    }\n};\n#line 2 \"data_structure/rangeBIT.hpp\"\n\ntemplate<class T>\n\
+    struct rangeBIT {\n    BIT<T> p, q;\n    rangeBIT(){}\n    rangeBIT(int n): p(n+1),\
+    \ q(n+1) {}\n    void add(int l, int r, T val) { // [l, r)\u306Bval\u3092\u52A0\
+    \u7B97\n        p.add(l, -val * l);\n        p.add(r, val * r);\n        q.add(l,\
+    \ val);\n        q.add(r, -val);\n    }\n    void add(int i, T val) {\n      \
+    \  add(i, i+1, val);\n    }\n    T sum(int r) { // [0, r)\n        return p.sum(r)\
+    \ + q.sum(r) * r;\n    }\n    T sum(int l, int r) { // [l, r)\n        assert(l\
+    \ <= r);\n        return sum(r) - sum(l);\n    }\n};\n#line 4 \"test/rangeBIT.test.cpp\"\
+    \n\nint main() {\n    int N, Q;\n    cin >> N >> Q;\n\n    rangeBIT<ll> bt(N);\n\
+    \n    REP(_, Q) {\n        int type; cin >> type;\n        if(type == 0) {\n \
+    \           int l, r, val;\n            cin >> l >> r >> val;\n            l--;\n\
+    \            bt.add(l, r, val);\n        } else {\n            int l, r;\n   \
+    \         cin >> l >> r;\n            l--;\n            cout << bt.sum(l, r) <<\
+    \ \"\\n\";\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G&lang=ja\"\
     \n#include \"../template/template.cpp\"\n#include \"../data_structure/rangeBIT.hpp\"\
     \n\nint main() {\n    int N, Q;\n    cin >> N >> Q;\n\n    rangeBIT<ll> bt(N);\n\
@@ -86,8 +88,8 @@ data:
   isVerificationFile: true
   path: test/rangeBIT.test.cpp
   requiredBy: []
-  timestamp: '2021-09-04 16:29:23+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-10-01 13:55:05+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/rangeBIT.test.cpp
 layout: document

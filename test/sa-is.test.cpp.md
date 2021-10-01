@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: string/sa-is.hpp
     title: SA-IS
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/suffixarray
@@ -36,33 +36,34 @@ data:
     #define debug(...) (void(0))\n#define dump(x) (void(0))\n#endif\n\nstruct Setup\
     \ {\n    Setup() {\n        cin.tie(0);\n        ios::sync_with_stdio(false);\n\
     \        cout << fixed << setprecision(15);\n    }\n} __Setup;\n\nusing ll = long\
-    \ long;\n#define ALL(v) (v).begin(), (v).end()\n#define RALL(v) (v).rbegin(),\
-    \ (v).rend()\n#define FOR(i, a, b) for(int i = (a); i < int(b); i++)\n#define\
-    \ REP(i, n) FOR(i, 0, n)\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\n\
-    constexpr int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4]\
-    \ = {0, 1, 0, -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\n\
-    int popcount(int x) { return __builtin_popcount(x); }\nll popcount(ll x) { return\
-    \ __builtin_popcountll(x); }\n#pragma endregion Macros\n#line 1 \"string/sa-is.hpp\"\
-    \nclass SA_IS {\n  private:\n    vector<int> sa_is(const vector<int> &t, int alp_sz)\
-    \ {\n        const int n = int(t.size());\n        vector<bool> is_S(n, false),\
-    \ is_LMS(n, false);\n        vector<int> LMSs;\n\n        // type-S\u306Asuffix\u3092\
-    \u8ABF\u3079\u308B\n        is_S[n - 1] = true;\n        for(int i = n - 2; i\
-    \ >= 0; i--) {\n            if(t[i] < t[i + 1] || ((t[i] == t[i + 1]) && is_S[i\
-    \ + 1])) {\n                is_S[i] = true;\n            }\n        }\n\n    \
-    \    // type-S*\u306Asuffix\u3092\u8ABF\u3079\u308B\n        for(int i = 0; i\
-    \ < n; i++) {\n            if(is_S[i] && (i == 0 || !is_S[i - 1])) {\n       \
-    \         is_LMS[i] = true;\n                LMSs.push_back(i);\n            }\n\
-    \        }\n\n        // \u307E\u305Atype-S*\u304C\u30BD\u30FC\u30C8\u3055\u308C\
-    \u3066\u3044\u308B\u3068\u4EEE\u5B9A\u3057\u3066\u3001induced_sort\u3092\u884C\
-    \u3046\u3002\n        // induced_sort\u5F8C\u306FS*\u90E8\u5206\u5217\u306F\u30BD\
-    \u30FC\u30C8\u3055\u308C\u3066\u3044\u308B\n        vector<int> pre_SA = induced_sort(t,\
-    \ LMSs, is_S, alp_sz);\n        vector<int> sorted_LMSs(LMSs.size(), 0);\n   \
-    \     {\n            int id = 0;\n            for(int i : pre_SA) {\n        \
-    \        if(is_LMS[i]) sorted_LMSs[id++] = i;\n            }\n        }\n\n  \
-    \      // S*\u90E8\u5206\u6587\u5B57\u5217\u306E\u9806\u5E8F\u3092\u6C7A\u5B9A\
-    \u3059\u308B\n        int rank = 0;\n        pre_SA[sorted_LMSs[0]] = 0;\n   \
-    \     if(int(sorted_LMSs.size()) > 1) pre_SA[sorted_LMSs[1]] = ++rank;\n     \
-    \   for(int i = 1; i < int(LMSs.size()) - 1; i++) {\n            bool is_diff\
+    \ long;\n#define OVERLOAD3(_1, _2, _3, name, ...) name\n#define ALL(v) (v).begin(),\
+    \ (v).end()\n#define RALL(v) (v).rbegin(), (v).rend()\n#define REP1(i, n) for(int\
+    \ i = 0; i < (n); i++)\n#define REP2(i, a, b) for(int i = (a); i < int(b); i++)\n\
+    #define REP(...) OVERLOAD3(__VA_ARGS__, REP2, REP1)(__VA_ARGS__)\nconst int INF\
+    \ = 1 << 30;\nconst ll LLINF = 1LL << 60;\nconstexpr int MOD = 1000000007;\nconst\
+    \ int dx[4] = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0, -1};\n\nvoid Case(int\
+    \ i) { cout << \"Case #\" << i << \": \"; }\nint popcount(int x) { return __builtin_popcount(x);\
+    \ }\nll popcount(ll x) { return __builtin_popcountll(x); }\n#pragma endregion\
+    \ Macros\n#line 1 \"string/sa-is.hpp\"\nclass SA_IS {\n  private:\n    vector<int>\
+    \ sa_is(const vector<int> &t, int alp_sz) {\n        const int n = int(t.size());\n\
+    \        vector<bool> is_S(n, false), is_LMS(n, false);\n        vector<int> LMSs;\n\
+    \n        // type-S\u306Asuffix\u3092\u8ABF\u3079\u308B\n        is_S[n - 1] =\
+    \ true;\n        for(int i = n - 2; i >= 0; i--) {\n            if(t[i] < t[i\
+    \ + 1] || ((t[i] == t[i + 1]) && is_S[i + 1])) {\n                is_S[i] = true;\n\
+    \            }\n        }\n\n        // type-S*\u306Asuffix\u3092\u8ABF\u3079\u308B\
+    \n        for(int i = 0; i < n; i++) {\n            if(is_S[i] && (i == 0 || !is_S[i\
+    \ - 1])) {\n                is_LMS[i] = true;\n                LMSs.push_back(i);\n\
+    \            }\n        }\n\n        // \u307E\u305Atype-S*\u304C\u30BD\u30FC\u30C8\
+    \u3055\u308C\u3066\u3044\u308B\u3068\u4EEE\u5B9A\u3057\u3066\u3001induced_sort\u3092\
+    \u884C\u3046\u3002\n        // induced_sort\u5F8C\u306FS*\u90E8\u5206\u5217\u306F\
+    \u30BD\u30FC\u30C8\u3055\u308C\u3066\u3044\u308B\n        vector<int> pre_SA =\
+    \ induced_sort(t, LMSs, is_S, alp_sz);\n        vector<int> sorted_LMSs(LMSs.size(),\
+    \ 0);\n        {\n            int id = 0;\n            for(int i : pre_SA) {\n\
+    \                if(is_LMS[i]) sorted_LMSs[id++] = i;\n            }\n       \
+    \ }\n\n        // S*\u90E8\u5206\u6587\u5B57\u5217\u306E\u9806\u5E8F\u3092\u6C7A\
+    \u5B9A\u3059\u308B\n        int rank = 0;\n        pre_SA[sorted_LMSs[0]] = 0;\n\
+    \        if(int(sorted_LMSs.size()) > 1) pre_SA[sorted_LMSs[1]] = ++rank;\n  \
+    \      for(int i = 1; i < int(LMSs.size()) - 1; i++) {\n            bool is_diff\
     \ = false;\n            for(int j = 0; j < n; j++) {\n                int now\
     \ = sorted_LMSs[i] + j;\n                int nxt = sorted_LMSs[i + 1] + j;\n \
     \               if(t[now] != t[nxt] || is_LMS[now] != is_LMS[nxt]) {\n       \
@@ -124,8 +125,8 @@ data:
   isVerificationFile: true
   path: test/sa-is.test.cpp
   requiredBy: []
-  timestamp: '2021-07-01 11:58:18+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-10-01 13:55:05+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/sa-is.test.cpp
 layout: document
