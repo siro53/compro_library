@@ -27,7 +27,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/sum2d.hpp
       title: "\u4E8C\u6B21\u5143\u7D2F\u7A4D\u548C"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/swag.hpp
       title: SWAG
   - name: data_structure/segtree
@@ -66,7 +66,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/lca.hpp
       title: "LCA(\u30C0\u30D6\u30EA\u30F3\u30B0)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/maximum_independent_set.hpp
       title: "\u6700\u5927\u72EC\u7ACB\u96C6\u5408"
     - icon: ':question:'
@@ -122,7 +122,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: "\u884C\u5217\u30E9\u30A4\u30D6\u30E9\u30EA"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/modint.hpp
       title: ModInt
     - icon: ':warning:'
@@ -221,10 +221,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/line_add_get_min.test.cpp
       title: test/line_add_get_min.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/maximum_independent_set.test.cpp
       title: test/maximum_independent_set.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/queue_operate_all_compose.test.cpp
       title: test/queue_operate_all_compose.test.cpp
     - icon: ':x:'

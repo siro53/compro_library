@@ -9,12 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/determinant.test.cpp
     title: test/determinant.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/queue_operate_all_compose.test.cpp
     title: test/queue_operate_all_compose.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/modint.hpp\"\ntemplate <int mod> struct ModInt {\n\
@@ -72,7 +72,7 @@ data:
   requiredBy:
   - math/lagrange_interpolation.hpp
   timestamp: '2021-02-13 09:10:17+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/queue_operate_all_compose.test.cpp
   - test/determinant.test.cpp
