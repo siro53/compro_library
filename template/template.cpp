@@ -63,6 +63,7 @@ using ll = long long;
 const int INF = 1 << 30;
 const ll LLINF = 1LL << 60;
 constexpr int MOD = 1000000007;
+constexpr int MOD2 = 998244353;
 const int dx[4] = {1, 0, -1, 0};
 const int dy[4] = {0, 1, 0, -1};
 
