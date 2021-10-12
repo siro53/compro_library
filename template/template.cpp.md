@@ -121,11 +121,11 @@ data:
     \ i = 0; i < (n); i++)\n#define REP2(i, a, b) for(int i = (a); i < int(b); i++)\n\
     #define REP(...) OVERLOAD3(__VA_ARGS__, REP2, REP1)(__VA_ARGS__)\n#define UNIQUE(v)\
     \ sort(ALL(v)), (v).erase(unique(ALL(v)), (v).end())\nconst int INF = 1 << 30;\n\
-    const ll LLINF = 1LL << 60;\nconstexpr int MOD = 1000000007;\nconst int dx[4]\
-    \ = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0, -1};\n\nvoid Case(int i) { cout\
-    \ << \"Case #\" << i << \": \"; }\nint popcount(int x) { return __builtin_popcount(x);\
-    \ }\nll popcount(ll x) { return __builtin_popcountll(x); }\n#pragma endregion\
-    \ Macros\n"
+    const ll LLINF = 1LL << 60;\nconstexpr int MOD = 1000000007;\nconstexpr int MOD2\
+    \ = 998244353;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0,\
+    \ -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\nint popcount(int\
+    \ x) { return __builtin_popcount(x); }\nll popcount(ll x) { return __builtin_popcountll(x);\
+    \ }\n#pragma endregion Macros\n"
   code: "#pragma region Macros\n#include <bits/stdc++.h>\nusing namespace std;\ntemplate\
     \ <class T> inline bool chmax(T &a, T b) {\n    if(a < b) {\n        a = b;\n\
     \        return 1;\n    }\n    return 0;\n}\ntemplate <class T> inline bool chmin(T\
@@ -149,47 +149,48 @@ data:
     \ a, b) for(int i = (a); i < int(b); i++)\n#define REP(...) OVERLOAD3(__VA_ARGS__,\
     \ REP2, REP1)(__VA_ARGS__)\n#define UNIQUE(v) sort(ALL(v)), (v).erase(unique(ALL(v)),\
     \ (v).end())\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\nconstexpr\
-    \ int MOD = 1000000007;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4] = {0,\
-    \ 1, 0, -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\nint popcount(int\
-    \ x) { return __builtin_popcount(x); }\nll popcount(ll x) { return __builtin_popcountll(x);\
-    \ }\n#pragma endregion Macros\n"
+    \ int MOD = 1000000007;\nconstexpr int MOD2 = 998244353;\nconst int dx[4] = {1,\
+    \ 0, -1, 0};\nconst int dy[4] = {0, 1, 0, -1};\n\nvoid Case(int i) { cout << \"\
+    Case #\" << i << \": \"; }\nint popcount(int x) { return __builtin_popcount(x);\
+    \ }\nll popcount(ll x) { return __builtin_popcountll(x); }\n#pragma endregion\
+    \ Macros\n"
   dependsOn: []
   isVerificationFile: false
   path: template/template.cpp
   requiredBy: []
-  timestamp: '2021-10-04 10:02:11+09:00'
+  timestamp: '2021-10-12 21:25:46+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/set_xor_min.test.cpp
-  - test/AOJ2858.test.cpp
-  - test/line_add_get_min.test.cpp
-  - test/fast_factorize.test.cpp
-  - test/queue_operate_all_compose.test.cpp
-  - test/zalgorothm.test.cpp
-  - test/erathosthenes.test.cpp
   - test/sa-is.test.cpp
   - test/staticrangesum.test.cpp
-  - test/static_range_inversions_query.test.cpp
-  - test/inversion_number.test.cpp
-  - test/chromatic_number.test.cpp
-  - test/two_sat.test.cpp
   - test/dinic.test.cpp
-  - test/yuki0206.test.cpp
-  - test/is_prime.test.cpp
-  - test/determinant.test.cpp
-  - test/AOJ2821.test.cpp
-  - test/staticrmq.test.cpp
-  - test/union-find.test.cpp
-  - test/AOJ2748.test.cpp
-  - test/AOJ2426.test.cpp
-  - test/maximum_independent_set.test.cpp
-  - test/rangeBIT.test.cpp
-  - test/scc.test.cpp
-  - test/Hopcroft-Karp.test.cpp
-  - test/a_plus_b.test.cpp
-  - test/two_edge_connected_components.test.cpp
-  - test/lca.test.cpp
   - test/euler_phi.test.cpp
+  - test/a_plus_b.test.cpp
+  - test/chromatic_number.test.cpp
+  - test/AOJ2748.test.cpp
+  - test/staticrmq.test.cpp
+  - test/maximum_independent_set.test.cpp
+  - test/AOJ2858.test.cpp
+  - test/two_sat.test.cpp
+  - test/lca.test.cpp
+  - test/AOJ2821.test.cpp
+  - test/two_edge_connected_components.test.cpp
+  - test/scc.test.cpp
+  - test/union-find.test.cpp
+  - test/queue_operate_all_compose.test.cpp
+  - test/static_range_inversions_query.test.cpp
+  - test/rangeBIT.test.cpp
+  - test/zalgorothm.test.cpp
+  - test/determinant.test.cpp
+  - test/AOJ2426.test.cpp
+  - test/yuki0206.test.cpp
+  - test/Hopcroft-Karp.test.cpp
+  - test/inversion_number.test.cpp
+  - test/set_xor_min.test.cpp
+  - test/line_add_get_min.test.cpp
+  - test/is_prime.test.cpp
+  - test/erathosthenes.test.cpp
+  - test/fast_factorize.test.cpp
 documentation_of: template/template.cpp
 layout: document
 title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"

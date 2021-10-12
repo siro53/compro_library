@@ -38,12 +38,12 @@ data:
     \ i = 0; i < (n); i++)\n#define REP2(i, a, b) for(int i = (a); i < int(b); i++)\n\
     #define REP(...) OVERLOAD3(__VA_ARGS__, REP2, REP1)(__VA_ARGS__)\n#define UNIQUE(v)\
     \ sort(ALL(v)), (v).erase(unique(ALL(v)), (v).end())\nconst int INF = 1 << 30;\n\
-    const ll LLINF = 1LL << 60;\nconstexpr int MOD = 1000000007;\nconst int dx[4]\
-    \ = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0, -1};\n\nvoid Case(int i) { cout\
-    \ << \"Case #\" << i << \": \"; }\nint popcount(int x) { return __builtin_popcount(x);\
-    \ }\nll popcount(ll x) { return __builtin_popcountll(x); }\n#pragma endregion\
-    \ Macros\n#line 3 \"test/a_plus_b.test.cpp\"\n\nint main(){\n    ll a, b;\n  \
-    \  cin >> a >> b;\n    cout << a + b << \"\\n\";\n}\n"
+    const ll LLINF = 1LL << 60;\nconstexpr int MOD = 1000000007;\nconstexpr int MOD2\
+    \ = 998244353;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0,\
+    \ -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\nint popcount(int\
+    \ x) { return __builtin_popcount(x); }\nll popcount(ll x) { return __builtin_popcountll(x);\
+    \ }\n#pragma endregion Macros\n#line 3 \"test/a_plus_b.test.cpp\"\n\nint main(){\n\
+    \    ll a, b;\n    cin >> a >> b;\n    cout << a + b << \"\\n\";\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../template/template.cpp\"\
     \n\nint main(){\n    ll a, b;\n    cin >> a >> b;\n    cout << a + b << \"\\n\"\
     ;\n}"
@@ -52,7 +52,7 @@ data:
   isVerificationFile: true
   path: test/a_plus_b.test.cpp
   requiredBy: []
-  timestamp: '2021-10-04 10:02:11+09:00'
+  timestamp: '2021-10-12 21:25:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/a_plus_b.test.cpp

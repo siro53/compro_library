@@ -42,36 +42,36 @@ data:
     \ i = 0; i < (n); i++)\n#define REP2(i, a, b) for(int i = (a); i < int(b); i++)\n\
     #define REP(...) OVERLOAD3(__VA_ARGS__, REP2, REP1)(__VA_ARGS__)\n#define UNIQUE(v)\
     \ sort(ALL(v)), (v).erase(unique(ALL(v)), (v).end())\nconst int INF = 1 << 30;\n\
-    const ll LLINF = 1LL << 60;\nconstexpr int MOD = 1000000007;\nconst int dx[4]\
-    \ = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0, -1};\n\nvoid Case(int i) { cout\
-    \ << \"Case #\" << i << \": \"; }\nint popcount(int x) { return __builtin_popcount(x);\
-    \ }\nll popcount(ll x) { return __builtin_popcountll(x); }\n#pragma endregion\
-    \ Macros\n#line 1 \"graph/bi_edge_connected_components.hpp\"\nclass BECC {\nprivate:\n\
-    \    int N, sz;\n    vector<vector<int>> G;\n    vector<int> seen, imos, comp;\n\
-    \n    void dfs1(int u, int p) {\n        seen[u] = 1;\n        bool is_skipped_par\
-    \ = false;\n        for(int v : G[u]) {\n            if(v == p and !is_skipped_par)\
-    \ {\n                is_skipped_par = true;\n                continue;\n     \
-    \       }\n            if(seen[v] == 0) {\n                dfs1(v, u);\n     \
-    \           imos[u] += imos[v];\n            } else if(seen[v] == 1) {\n     \
-    \           imos[u]++;\n                imos[v]--;\n            }\n        }\n\
-    \        seen[u] = 2;\n    }\n\n    void dfs2(int u) {\n        for(int v : G[u])\
-    \ {\n            if(comp[v] != -1) continue;\n            comp[v] = (imos[v] ==\
-    \ 0 ? sz++ : comp[u]);\n            dfs2(v);\n        }\n    }\n\npublic:\n  \
-    \  BECC(int N): N(N), G(N), seen(N, 0), imos(N, 0), sz(0), comp(N, -1) {}\n  \
-    \  BECC(vector<vector<int>> g) : N(g.size()), G(g), seen(N, 0), imos(N, 0), sz(0),\
-    \ comp(N, -1) {}\n    \n    void add_edge(int u, int v) {\n        G[u].emplace_back(v);\n\
-    \        G[v].emplace_back(u);\n    } \n\n    void build() {\n        for(int\
-    \ i = 0; i < N; i++) {\n            if(seen[i] != 0) continue;\n            dfs1(i,\
-    \ -1);\n        }\n        for(int i = 0; i < N; i++) {\n            if(comp[i]\
-    \ != -1) continue;\n            comp[i] = sz++;\n            dfs2(i);\n      \
-    \  }\n    }\n    \n    // \u5FC5\u305Abuild()\u3057\u305F\u5F8C\u306B\u547C\u3073\
-    \u51FA\u3059\u3053\u3068!!!\n    vector<vector<int>> get_contract_graph() {\n\
-    \        vector<vector<int>> h(sz);\n        for(int u = 0; u < N; u++) {\n  \
-    \          for(const int& v : G[u]) {\n                int x = comp[u], y = comp[v];\n\
-    \                if(x == y) continue;\n                h[x].push_back(y);\n  \
-    \              h[y].push_back(x);\n            }\n        }\n        return h;\n\
-    \    }\n\n    int operator[](int k) const { return comp[k]; }\n    int size()\
-    \ const { return sz; }\n};\n#line 4 \"test/two_edge_connected_components.test.cpp\"\
+    const ll LLINF = 1LL << 60;\nconstexpr int MOD = 1000000007;\nconstexpr int MOD2\
+    \ = 998244353;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0,\
+    \ -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\nint popcount(int\
+    \ x) { return __builtin_popcount(x); }\nll popcount(ll x) { return __builtin_popcountll(x);\
+    \ }\n#pragma endregion Macros\n#line 1 \"graph/bi_edge_connected_components.hpp\"\
+    \nclass BECC {\nprivate:\n    int N, sz;\n    vector<vector<int>> G;\n    vector<int>\
+    \ seen, imos, comp;\n\n    void dfs1(int u, int p) {\n        seen[u] = 1;\n \
+    \       bool is_skipped_par = false;\n        for(int v : G[u]) {\n          \
+    \  if(v == p and !is_skipped_par) {\n                is_skipped_par = true;\n\
+    \                continue;\n            }\n            if(seen[v] == 0) {\n  \
+    \              dfs1(v, u);\n                imos[u] += imos[v];\n            }\
+    \ else if(seen[v] == 1) {\n                imos[u]++;\n                imos[v]--;\n\
+    \            }\n        }\n        seen[u] = 2;\n    }\n\n    void dfs2(int u)\
+    \ {\n        for(int v : G[u]) {\n            if(comp[v] != -1) continue;\n  \
+    \          comp[v] = (imos[v] == 0 ? sz++ : comp[u]);\n            dfs2(v);\n\
+    \        }\n    }\n\npublic:\n    BECC(int N): N(N), G(N), seen(N, 0), imos(N,\
+    \ 0), sz(0), comp(N, -1) {}\n    BECC(vector<vector<int>> g) : N(g.size()), G(g),\
+    \ seen(N, 0), imos(N, 0), sz(0), comp(N, -1) {}\n    \n    void add_edge(int u,\
+    \ int v) {\n        G[u].emplace_back(v);\n        G[v].emplace_back(u);\n   \
+    \ } \n\n    void build() {\n        for(int i = 0; i < N; i++) {\n           \
+    \ if(seen[i] != 0) continue;\n            dfs1(i, -1);\n        }\n        for(int\
+    \ i = 0; i < N; i++) {\n            if(comp[i] != -1) continue;\n            comp[i]\
+    \ = sz++;\n            dfs2(i);\n        }\n    }\n    \n    // \u5FC5\u305Abuild()\u3057\
+    \u305F\u5F8C\u306B\u547C\u3073\u51FA\u3059\u3053\u3068!!!\n    vector<vector<int>>\
+    \ get_contract_graph() {\n        vector<vector<int>> h(sz);\n        for(int\
+    \ u = 0; u < N; u++) {\n            for(const int& v : G[u]) {\n             \
+    \   int x = comp[u], y = comp[v];\n                if(x == y) continue;\n    \
+    \            h[x].push_back(y);\n                h[y].push_back(x);\n        \
+    \    }\n        }\n        return h;\n    }\n\n    int operator[](int k) const\
+    \ { return comp[k]; }\n    int size() const { return sz; }\n};\n#line 4 \"test/two_edge_connected_components.test.cpp\"\
     \n\nint main() {\n    int N, M;\n    cin >> N >> M;\n    BECC becc(N);\n    REP(i,\
     \ M) {\n        int a, b;\n        cin >> a >> b;\n        becc.add_edge(a, b);\n\
     \    }\n    becc.build();\n    int K = becc.size();\n    vector<vector<int>> res(K);\n\
@@ -92,7 +92,7 @@ data:
   isVerificationFile: true
   path: test/two_edge_connected_components.test.cpp
   requiredBy: []
-  timestamp: '2021-10-04 10:02:11+09:00'
+  timestamp: '2021-10-12 21:25:46+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/two_edge_connected_components.test.cpp

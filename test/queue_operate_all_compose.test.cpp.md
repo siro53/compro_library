@@ -45,27 +45,27 @@ data:
     \ i = 0; i < (n); i++)\n#define REP2(i, a, b) for(int i = (a); i < int(b); i++)\n\
     #define REP(...) OVERLOAD3(__VA_ARGS__, REP2, REP1)(__VA_ARGS__)\n#define UNIQUE(v)\
     \ sort(ALL(v)), (v).erase(unique(ALL(v)), (v).end())\nconst int INF = 1 << 30;\n\
-    const ll LLINF = 1LL << 60;\nconstexpr int MOD = 1000000007;\nconst int dx[4]\
-    \ = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0, -1};\n\nvoid Case(int i) { cout\
-    \ << \"Case #\" << i << \": \"; }\nint popcount(int x) { return __builtin_popcount(x);\
-    \ }\nll popcount(ll x) { return __builtin_popcountll(x); }\n#pragma endregion\
-    \ Macros\n#line 1 \"data_structure/swag.hpp\"\ntemplate <typename T> struct SWAG\
-    \ {\n    struct Data {\n        T x, sum;\n        Data() {}\n        Data(T x,\
-    \ T sum) : x(x), sum(sum) {}\n    };\n    using F = function<T(T, T)>;\n    stack<Data>\
-    \ frontStack, backStack;\n    F f;\n\n    SWAG(F f) : f(f) {}\n\n    bool empty()\
-    \ { return (frontStack.empty() && backStack.empty()); }\n\n    size_t size() {\
-    \ return frontStack.size() + backStack.size(); }\n\n    void pop() {\n       \
-    \ assert(!empty());\n        if(frontStack.empty()) {\n            frontStack.emplace(backStack.top().x,\
-    \ backStack.top().x);\n            backStack.pop();\n            while(!backStack.empty())\
-    \ {\n                T s = f(backStack.top().x, frontStack.top().sum);\n     \
-    \           frontStack.emplace(backStack.top().x, s);\n                backStack.pop();\n\
-    \            }\n        }\n        frontStack.pop();\n    }\n\n    void push(T\
-    \ val) {\n        if(backStack.empty()) {\n            backStack.emplace(val,\
-    \ val);\n        } else {\n            T s = f(backStack.top().sum, val);\n  \
-    \          backStack.emplace(val, s);\n        }\n    }\n\n    T fold_all() {\n\
-    \        assert(!empty());\n        if(frontStack.empty()) {\n            return\
-    \ backStack.top().sum;\n        } else if(backStack.empty()) {\n            return\
-    \ frontStack.top().sum;\n        } else {\n            return f(frontStack.top().sum,\
+    const ll LLINF = 1LL << 60;\nconstexpr int MOD = 1000000007;\nconstexpr int MOD2\
+    \ = 998244353;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0,\
+    \ -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\nint popcount(int\
+    \ x) { return __builtin_popcount(x); }\nll popcount(ll x) { return __builtin_popcountll(x);\
+    \ }\n#pragma endregion Macros\n#line 1 \"data_structure/swag.hpp\"\ntemplate <typename\
+    \ T> struct SWAG {\n    struct Data {\n        T x, sum;\n        Data() {}\n\
+    \        Data(T x, T sum) : x(x), sum(sum) {}\n    };\n    using F = function<T(T,\
+    \ T)>;\n    stack<Data> frontStack, backStack;\n    F f;\n\n    SWAG(F f) : f(f)\
+    \ {}\n\n    bool empty() { return (frontStack.empty() && backStack.empty()); }\n\
+    \n    size_t size() { return frontStack.size() + backStack.size(); }\n\n    void\
+    \ pop() {\n        assert(!empty());\n        if(frontStack.empty()) {\n     \
+    \       frontStack.emplace(backStack.top().x, backStack.top().x);\n          \
+    \  backStack.pop();\n            while(!backStack.empty()) {\n               \
+    \ T s = f(backStack.top().x, frontStack.top().sum);\n                frontStack.emplace(backStack.top().x,\
+    \ s);\n                backStack.pop();\n            }\n        }\n        frontStack.pop();\n\
+    \    }\n\n    void push(T val) {\n        if(backStack.empty()) {\n          \
+    \  backStack.emplace(val, val);\n        } else {\n            T s = f(backStack.top().sum,\
+    \ val);\n            backStack.emplace(val, s);\n        }\n    }\n\n    T fold_all()\
+    \ {\n        assert(!empty());\n        if(frontStack.empty()) {\n           \
+    \ return backStack.top().sum;\n        } else if(backStack.empty()) {\n      \
+    \      return frontStack.top().sum;\n        } else {\n            return f(frontStack.top().sum,\
     \ backStack.top().sum);\n        }\n    }\n};\n#line 1 \"math/modint.hpp\"\ntemplate\
     \ <int mod> struct ModInt {\n    int x;\n    ModInt() : x(0) {}\n    ModInt(int64_t\
     \ y) : x(y >= 0 ? y % mod : (mod - (-y) % mod) % mod) {}\n    ModInt &operator+=(const\
@@ -122,7 +122,7 @@ data:
   isVerificationFile: true
   path: test/queue_operate_all_compose.test.cpp
   requiredBy: []
-  timestamp: '2021-10-04 10:02:11+09:00'
+  timestamp: '2021-10-12 21:25:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/queue_operate_all_compose.test.cpp

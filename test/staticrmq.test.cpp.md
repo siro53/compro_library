@@ -41,33 +41,34 @@ data:
     \ i = 0; i < (n); i++)\n#define REP2(i, a, b) for(int i = (a); i < int(b); i++)\n\
     #define REP(...) OVERLOAD3(__VA_ARGS__, REP2, REP1)(__VA_ARGS__)\n#define UNIQUE(v)\
     \ sort(ALL(v)), (v).erase(unique(ALL(v)), (v).end())\nconst int INF = 1 << 30;\n\
-    const ll LLINF = 1LL << 60;\nconstexpr int MOD = 1000000007;\nconst int dx[4]\
-    \ = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0, -1};\n\nvoid Case(int i) { cout\
-    \ << \"Case #\" << i << \": \"; }\nint popcount(int x) { return __builtin_popcount(x);\
-    \ }\nll popcount(ll x) { return __builtin_popcountll(x); }\n#pragma endregion\
-    \ Macros\n#line 4 \"test/staticrmq.test.cpp\"\n\n#line 1 \"data_structure/segtree/segtree.hpp\"\
-    \ntemplate <typename Monoid> struct SegmentTree {\n    using F = function<Monoid(Monoid,\
-    \ Monoid)>;\n\n  private:\n    int n;\n    vector<Monoid> node;\n    Monoid E;\n\
-    \    F f;\n\n  public:\n    SegmentTree(vector<Monoid> &v, Monoid e, const F func)\
-    \ : f(func), E(e) {\n        int sz = v.size();\n        n = 1;\n        while(n\
-    \ < sz) {\n            n *= 2;\n        }\n        node.resize(2 * n - 1, E);\n\
-    \        for(int i = 0; i < sz; i++) {\n            node[i + n - 1] = v[i];\n\
-    \        }\n        for(int i = n - 2; i >= 0; i--) {\n            node[i] = f(node[2\
-    \ * i + 1], node[2 * i + 2]);\n        }\n    }\n\n    void update(int i, Monoid\
-    \ val) {\n        i += (n - 1);\n        node[i] = val;\n        while(i > 0)\
-    \ {\n            i = (i - 1) / 2;\n            node[i] = f(node[2 * i + 1], node[2\
-    \ * i + 2]);\n        }\n    }\n\n    Monoid query(int a, int b, int i = 0, int\
-    \ l = 0, int r = -1) {\n        if(r < 0) {\n            r = n;\n        }\n \
-    \       if(r <= a || b <= l) {\n            return E;\n        }\n        if(a\
-    \ <= l && r <= b) {\n            return node[i];\n        }\n        Monoid vl\
-    \ = query(a, b, 2 * i + 1, l, (l + r) / 2);\n        Monoid vr = query(a, b, 2\
-    \ * i + 2, (l + r) / 2, r);\n        return f(vl, vr);\n    }\n\n    Monoid operator[](const\
-    \ int &i) const { return node[i + n - 1]; }\n};\n#line 6 \"test/staticrmq.test.cpp\"\
-    \n\nint main(){\n    int n, q;\n    cin >> n >> q;\n    vector<int> a(n);\n  \
-    \  for(int i = 0; i < n; i++) {\n        cin >> a[i];\n    }\n    SegmentTree<int>\
-    \ seg(a, INF,\n                         [](const int &p, const int &q) { return\
-    \ min(p, q); });\n    int l, r;\n    while(q--) {\n        cin >> l >> r;\n  \
-    \      cout << seg.query(l, r) << \"\\n\";\n    }\n}\n"
+    const ll LLINF = 1LL << 60;\nconstexpr int MOD = 1000000007;\nconstexpr int MOD2\
+    \ = 998244353;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0,\
+    \ -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\nint popcount(int\
+    \ x) { return __builtin_popcount(x); }\nll popcount(ll x) { return __builtin_popcountll(x);\
+    \ }\n#pragma endregion Macros\n#line 4 \"test/staticrmq.test.cpp\"\n\n#line 1\
+    \ \"data_structure/segtree/segtree.hpp\"\ntemplate <typename Monoid> struct SegmentTree\
+    \ {\n    using F = function<Monoid(Monoid, Monoid)>;\n\n  private:\n    int n;\n\
+    \    vector<Monoid> node;\n    Monoid E;\n    F f;\n\n  public:\n    SegmentTree(vector<Monoid>\
+    \ &v, Monoid e, const F func) : f(func), E(e) {\n        int sz = v.size();\n\
+    \        n = 1;\n        while(n < sz) {\n            n *= 2;\n        }\n   \
+    \     node.resize(2 * n - 1, E);\n        for(int i = 0; i < sz; i++) {\n    \
+    \        node[i + n - 1] = v[i];\n        }\n        for(int i = n - 2; i >= 0;\
+    \ i--) {\n            node[i] = f(node[2 * i + 1], node[2 * i + 2]);\n       \
+    \ }\n    }\n\n    void update(int i, Monoid val) {\n        i += (n - 1);\n  \
+    \      node[i] = val;\n        while(i > 0) {\n            i = (i - 1) / 2;\n\
+    \            node[i] = f(node[2 * i + 1], node[2 * i + 2]);\n        }\n    }\n\
+    \n    Monoid query(int a, int b, int i = 0, int l = 0, int r = -1) {\n       \
+    \ if(r < 0) {\n            r = n;\n        }\n        if(r <= a || b <= l) {\n\
+    \            return E;\n        }\n        if(a <= l && r <= b) {\n          \
+    \  return node[i];\n        }\n        Monoid vl = query(a, b, 2 * i + 1, l, (l\
+    \ + r) / 2);\n        Monoid vr = query(a, b, 2 * i + 2, (l + r) / 2, r);\n  \
+    \      return f(vl, vr);\n    }\n\n    Monoid operator[](const int &i) const {\
+    \ return node[i + n - 1]; }\n};\n#line 6 \"test/staticrmq.test.cpp\"\n\nint main(){\n\
+    \    int n, q;\n    cin >> n >> q;\n    vector<int> a(n);\n    for(int i = 0;\
+    \ i < n; i++) {\n        cin >> a[i];\n    }\n    SegmentTree<int> seg(a, INF,\n\
+    \                         [](const int &p, const int &q) { return min(p, q); });\n\
+    \    int l, r;\n    while(q--) {\n        cin >> l >> r;\n        cout << seg.query(l,\
+    \ r) << \"\\n\";\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/staticrmq\"\n\n#include\
     \ \"../template/template.cpp\"\n\n#include \"../data_structure/segtree/segtree.hpp\"\
     \n\nint main(){\n    int n, q;\n    cin >> n >> q;\n    vector<int> a(n);\n  \
@@ -81,7 +82,7 @@ data:
   isVerificationFile: true
   path: test/staticrmq.test.cpp
   requiredBy: []
-  timestamp: '2021-10-04 10:02:11+09:00'
+  timestamp: '2021-10-12 21:25:46+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/staticrmq.test.cpp

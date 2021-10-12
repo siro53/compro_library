@@ -41,60 +41,61 @@ data:
     \ i = 0; i < (n); i++)\n#define REP2(i, a, b) for(int i = (a); i < int(b); i++)\n\
     #define REP(...) OVERLOAD3(__VA_ARGS__, REP2, REP1)(__VA_ARGS__)\n#define UNIQUE(v)\
     \ sort(ALL(v)), (v).erase(unique(ALL(v)), (v).end())\nconst int INF = 1 << 30;\n\
-    const ll LLINF = 1LL << 60;\nconstexpr int MOD = 1000000007;\nconst int dx[4]\
-    \ = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0, -1};\n\nvoid Case(int i) { cout\
-    \ << \"Case #\" << i << \": \"; }\nint popcount(int x) { return __builtin_popcount(x);\
-    \ }\nll popcount(ll x) { return __builtin_popcountll(x); }\n#pragma endregion\
-    \ Macros\n#line 1 \"graph/dinic.hpp\"\ntemplate <class Cap> class Dinic {\n  private:\n\
-    \    struct edge {\n        int to, rev;\n        Cap cap;\n    };\n    vector<vector<edge>>\
-    \ G;\n    vector<int> level, iter;\n    vector<pair<int, int>> pos;\n\n    void\
-    \ bfs(int s, int t) {\n        fill(level.begin(), level.end(), -1);\n       \
-    \ vector<int> que;\n        int head = 0, tail = 0;\n        level[s] = 0;\n \
-    \       que.emplace_back(s), tail++; // push\n        while(head != tail) {\n\
-    \            int v = que[head++]; // pop\n            for(const auto &e : G[v])\
-    \ {\n                if(e.cap > 0 && level[e.to] < 0) {\n                    level[e.to]\
-    \ = level[v] + 1;\n                    if(e.to == t) return;\n               \
-    \     que.emplace_back(e.to), tail++; // push\n                }\n           \
-    \ }\n        }\n    }\n\n    Cap dfs(const int &v, const int &s, Cap now) {\n\
-    \        if(v == s || now == 0) return now;\n        Cap res = 0;\n        int\
-    \ sz = (int)G[v].size();\n        for(int &i = iter[v]; i < sz; i++) {\n     \
-    \       edge &e = G[v][i], &re = G[e.to][e.rev];\n            if(level[v] <= level[e.to]\
-    \ || re.cap <= 0) continue;\n            Cap d = dfs(e.to, s, min(now - res, re.cap));\n\
-    \            if(d > 0) {\n                e.cap += d;\n                re.cap\
-    \ -= d;\n                res += d;\n                if(res == now) break;\n  \
-    \          }\n        }\n        return res;\n    }\n\n  public:\n    Dinic(int\
-    \ n) : G(n), level(n), iter(n) {}\n\n    int add_edge(int from, int to, Cap cap)\
-    \ {\n        int n = (int)G.size();\n        assert(0 <= from && from < n);\n\
-    \        assert(0 <= to && to < n);\n        assert(0 <= cap);\n        int m\
-    \ = (int)pos.size();\n        pos.emplace_back(from, (int)G[from].size());\n \
-    \       G[from].emplace_back(edge{to, (int)G[to].size(), cap});\n        G[to].emplace_back(edge{from,\
-    \ (int)G[from].size() - 1, 0});\n        return m;\n    }\n\n    struct res_edge\
-    \ {\n        int from, to;\n        Cap cap, flow;\n    };\n\n    res_edge get_edge(int\
-    \ i) {\n        int m = (int)pos.size();\n        assert(0 <= i && i < m);\n \
-    \       auto e = G[pos[i].first][pos[i].second];\n        auto re = G[e.to][e.rev];\n\
-    \        return res_edge{pos[i].first, e.to, e.cap + re.cap, re.cap};\n    }\n\
-    \n    vector<res_edge> edges() {\n        int m = (int)pos.size();\n        vector<res_edge>\
-    \ res;\n        for(int i = 0; i < m; i++) res.emplace_back(get_edge(i));\n  \
-    \      return res;\n    }\n\n    void change_edge(int i, Cap new_cap, Cap new_flow)\
-    \ {\n        int m = (int)pos.size();\n        assert(0 <= i && i < m);\n    \
-    \    assert(0 <= new_flow && new_flow <= new_cap);\n        auto &e = G[pos[i].first][pos[i].second];\n\
-    \        auto &re = G[e.to][e.rev];\n        e.cap = new_cap - new_flow;\n   \
-    \     re.cap = new_flow;\n    }\n\n    Cap max_flow(int s, int t, Cap limit =\
-    \ numeric_limits<Cap>::max()) {\n        Cap flow = 0;\n        while(flow < limit)\
-    \ {\n            bfs(s, t);\n            if(level[t] < 0) return flow;\n     \
-    \       fill(iter.begin(), iter.end(), 0);\n            while(flow < limit) {\n\
-    \                Cap f = dfs(t, s, limit - flow);\n                if(f == 0)\
-    \ break;\n                flow += f;\n            }\n        }\n        return\
-    \ flow;\n    }\n};\n#line 4 \"test/dinic.test.cpp\"\n\nint main() {\n    int L,\
-    \ R, M;\n    cin >> L >> R >> M;\n    Dinic<int> G(L + R + 2);\n    int s = L\
-    \ + R;\n    int t = s + 1;\n    for(int i = 0; i < M; i++) {\n        int a, b;\n\
-    \        cin >> a >> b;\n        b += L;\n        G.add_edge(a, b, 1);\n    }\n\
-    \    for(int i = 0; i < L; i++) {\n        G.add_edge(s, i, 1);\n    }\n    for(int\
-    \ i = 0; i < R; i++) {\n        G.add_edge(i + L, t, 1);\n    }\n    int ans =\
-    \ G.max_flow(s, t);\n    cout << ans << \"\\n\";\n    const auto es = G.edges();\n\
-    \    for(const auto &e : es) {\n        if(0 <= e.from && e.from < L && L <= e.to\
-    \ && e.to < L + R &&\n           e.flow == 1) {\n            cout << e.from <<\
-    \ \" \" << e.to - L << \"\\n\";\n        }\n    }\n}\n"
+    const ll LLINF = 1LL << 60;\nconstexpr int MOD = 1000000007;\nconstexpr int MOD2\
+    \ = 998244353;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0,\
+    \ -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\nint popcount(int\
+    \ x) { return __builtin_popcount(x); }\nll popcount(ll x) { return __builtin_popcountll(x);\
+    \ }\n#pragma endregion Macros\n#line 1 \"graph/dinic.hpp\"\ntemplate <class Cap>\
+    \ class Dinic {\n  private:\n    struct edge {\n        int to, rev;\n       \
+    \ Cap cap;\n    };\n    vector<vector<edge>> G;\n    vector<int> level, iter;\n\
+    \    vector<pair<int, int>> pos;\n\n    void bfs(int s, int t) {\n        fill(level.begin(),\
+    \ level.end(), -1);\n        vector<int> que;\n        int head = 0, tail = 0;\n\
+    \        level[s] = 0;\n        que.emplace_back(s), tail++; // push\n       \
+    \ while(head != tail) {\n            int v = que[head++]; // pop\n           \
+    \ for(const auto &e : G[v]) {\n                if(e.cap > 0 && level[e.to] < 0)\
+    \ {\n                    level[e.to] = level[v] + 1;\n                    if(e.to\
+    \ == t) return;\n                    que.emplace_back(e.to), tail++; // push\n\
+    \                }\n            }\n        }\n    }\n\n    Cap dfs(const int &v,\
+    \ const int &s, Cap now) {\n        if(v == s || now == 0) return now;\n     \
+    \   Cap res = 0;\n        int sz = (int)G[v].size();\n        for(int &i = iter[v];\
+    \ i < sz; i++) {\n            edge &e = G[v][i], &re = G[e.to][e.rev];\n     \
+    \       if(level[v] <= level[e.to] || re.cap <= 0) continue;\n            Cap\
+    \ d = dfs(e.to, s, min(now - res, re.cap));\n            if(d > 0) {\n       \
+    \         e.cap += d;\n                re.cap -= d;\n                res += d;\n\
+    \                if(res == now) break;\n            }\n        }\n        return\
+    \ res;\n    }\n\n  public:\n    Dinic(int n) : G(n), level(n), iter(n) {}\n\n\
+    \    int add_edge(int from, int to, Cap cap) {\n        int n = (int)G.size();\n\
+    \        assert(0 <= from && from < n);\n        assert(0 <= to && to < n);\n\
+    \        assert(0 <= cap);\n        int m = (int)pos.size();\n        pos.emplace_back(from,\
+    \ (int)G[from].size());\n        G[from].emplace_back(edge{to, (int)G[to].size(),\
+    \ cap});\n        G[to].emplace_back(edge{from, (int)G[from].size() - 1, 0});\n\
+    \        return m;\n    }\n\n    struct res_edge {\n        int from, to;\n  \
+    \      Cap cap, flow;\n    };\n\n    res_edge get_edge(int i) {\n        int m\
+    \ = (int)pos.size();\n        assert(0 <= i && i < m);\n        auto e = G[pos[i].first][pos[i].second];\n\
+    \        auto re = G[e.to][e.rev];\n        return res_edge{pos[i].first, e.to,\
+    \ e.cap + re.cap, re.cap};\n    }\n\n    vector<res_edge> edges() {\n        int\
+    \ m = (int)pos.size();\n        vector<res_edge> res;\n        for(int i = 0;\
+    \ i < m; i++) res.emplace_back(get_edge(i));\n        return res;\n    }\n\n \
+    \   void change_edge(int i, Cap new_cap, Cap new_flow) {\n        int m = (int)pos.size();\n\
+    \        assert(0 <= i && i < m);\n        assert(0 <= new_flow && new_flow <=\
+    \ new_cap);\n        auto &e = G[pos[i].first][pos[i].second];\n        auto &re\
+    \ = G[e.to][e.rev];\n        e.cap = new_cap - new_flow;\n        re.cap = new_flow;\n\
+    \    }\n\n    Cap max_flow(int s, int t, Cap limit = numeric_limits<Cap>::max())\
+    \ {\n        Cap flow = 0;\n        while(flow < limit) {\n            bfs(s,\
+    \ t);\n            if(level[t] < 0) return flow;\n            fill(iter.begin(),\
+    \ iter.end(), 0);\n            while(flow < limit) {\n                Cap f =\
+    \ dfs(t, s, limit - flow);\n                if(f == 0) break;\n              \
+    \  flow += f;\n            }\n        }\n        return flow;\n    }\n};\n#line\
+    \ 4 \"test/dinic.test.cpp\"\n\nint main() {\n    int L, R, M;\n    cin >> L >>\
+    \ R >> M;\n    Dinic<int> G(L + R + 2);\n    int s = L + R;\n    int t = s + 1;\n\
+    \    for(int i = 0; i < M; i++) {\n        int a, b;\n        cin >> a >> b;\n\
+    \        b += L;\n        G.add_edge(a, b, 1);\n    }\n    for(int i = 0; i <\
+    \ L; i++) {\n        G.add_edge(s, i, 1);\n    }\n    for(int i = 0; i < R; i++)\
+    \ {\n        G.add_edge(i + L, t, 1);\n    }\n    int ans = G.max_flow(s, t);\n\
+    \    cout << ans << \"\\n\";\n    const auto es = G.edges();\n    for(const auto\
+    \ &e : es) {\n        if(0 <= e.from && e.from < L && L <= e.to && e.to < L +\
+    \ R &&\n           e.flow == 1) {\n            cout << e.from << \" \" << e.to\
+    \ - L << \"\\n\";\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/bipartitematching\"\n#include\
     \ \"../template/template.cpp\"\n#include \"../graph/dinic.hpp\"\n\nint main()\
     \ {\n    int L, R, M;\n    cin >> L >> R >> M;\n    Dinic<int> G(L + R + 2);\n\
@@ -113,7 +114,7 @@ data:
   isVerificationFile: true
   path: test/dinic.test.cpp
   requiredBy: []
-  timestamp: '2021-10-04 10:02:11+09:00'
+  timestamp: '2021-10-12 21:25:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/dinic.test.cpp

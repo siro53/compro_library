@@ -62,8 +62,8 @@ data:
   verifiedWith:
   - test/staticrangesum.test.cpp
   - test/static_range_inversions_query.test.cpp
-  - test/inversion_number.test.cpp
   - test/rangeBIT.test.cpp
+  - test/inversion_number.test.cpp
 documentation_of: data_structure/BIT.hpp
 layout: document
 title: Binary Indexed Tree

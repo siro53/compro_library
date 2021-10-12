@@ -38,8 +38,8 @@ data:
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/static_range_inversions_query.test.cpp
-  - test/inversion_number.test.cpp
   - test/AOJ2426.test.cpp
+  - test/inversion_number.test.cpp
 documentation_of: data_structure/compress.hpp
 layout: document
 title: "\u5EA7\u6A19\u5727\u7E2E"

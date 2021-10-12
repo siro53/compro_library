@@ -41,18 +41,18 @@ data:
     \ i = 0; i < (n); i++)\n#define REP2(i, a, b) for(int i = (a); i < int(b); i++)\n\
     #define REP(...) OVERLOAD3(__VA_ARGS__, REP2, REP1)(__VA_ARGS__)\n#define UNIQUE(v)\
     \ sort(ALL(v)), (v).erase(unique(ALL(v)), (v).end())\nconst int INF = 1 << 30;\n\
-    const ll LLINF = 1LL << 60;\nconstexpr int MOD = 1000000007;\nconst int dx[4]\
-    \ = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0, -1};\n\nvoid Case(int i) { cout\
-    \ << \"Case #\" << i << \": \"; }\nint popcount(int x) { return __builtin_popcount(x);\
-    \ }\nll popcount(ll x) { return __builtin_popcountll(x); }\n#pragma endregion\
-    \ Macros\n#line 1 \"math/eratosthenes.hpp\"\nvector<bool> eratosthenes(int n)\
-    \ {\n    vector<bool> isp(n + 1, true);\n    isp[0] = isp[1] = false;\n    for(int\
-    \ i = 2; i * i <= n; i++) {\n        if(!isp[i]) continue;\n        for(int j\
-    \ = i+i; j <= n; j += i) isp[j] = false;\n    }\n    return isp;\n}\n#line 4 \"\
-    test/erathosthenes.test.cpp\"\n\nint main() {\n    int t; cin >> t;\n\n    auto\
-    \ isp = eratosthenes(100000000);\n    int ans = 0;\n\n    while(t--) {\n     \
-    \   int n; cin >> n;\n        ans += isp[n];\n    }\n\n    cout << ans << endl;\n\
-    }\n"
+    const ll LLINF = 1LL << 60;\nconstexpr int MOD = 1000000007;\nconstexpr int MOD2\
+    \ = 998244353;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0,\
+    \ -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\nint popcount(int\
+    \ x) { return __builtin_popcount(x); }\nll popcount(ll x) { return __builtin_popcountll(x);\
+    \ }\n#pragma endregion Macros\n#line 1 \"math/eratosthenes.hpp\"\nvector<bool>\
+    \ eratosthenes(int n) {\n    vector<bool> isp(n + 1, true);\n    isp[0] = isp[1]\
+    \ = false;\n    for(int i = 2; i * i <= n; i++) {\n        if(!isp[i]) continue;\n\
+    \        for(int j = i+i; j <= n; j += i) isp[j] = false;\n    }\n    return isp;\n\
+    }\n#line 4 \"test/erathosthenes.test.cpp\"\n\nint main() {\n    int t; cin >>\
+    \ t;\n\n    auto isp = eratosthenes(100000000);\n    int ans = 0;\n\n    while(t--)\
+    \ {\n        int n; cin >> n;\n        ans += isp[n];\n    }\n\n    cout << ans\
+    \ << endl;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_C&lang=jp\"\
     \n#include \"../compro_library/template/template.cpp\"\n#include \"../compro_library/math/eratosthenes.hpp\"\
     \n\nint main() {\n    int t; cin >> t;\n\n    auto isp = eratosthenes(100000000);\n\
@@ -64,7 +64,7 @@ data:
   isVerificationFile: true
   path: test/erathosthenes.test.cpp
   requiredBy: []
-  timestamp: '2021-10-04 10:02:11+09:00'
+  timestamp: '2021-10-12 21:25:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/erathosthenes.test.cpp
