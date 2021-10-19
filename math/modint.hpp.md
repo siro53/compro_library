@@ -12,6 +12,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/queue_operate_all_compose.test.cpp
     title: test/queue_operate_all_compose.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki1333.test.cpp
+    title: test/yuki1333.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -74,6 +77,7 @@ data:
   timestamp: '2021-02-13 09:10:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/yuki1333.test.cpp
   - test/queue_operate_all_compose.test.cpp
   - test/determinant.test.cpp
 documentation_of: math/modint.hpp

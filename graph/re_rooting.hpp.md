@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/yuki1333.test.cpp
+    title: test/yuki1333.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"graph/re_rooting.hpp\"\ntemplate<class S, S (*op)(S, int),\
@@ -120,8 +123,9 @@ data:
   path: graph/re_rooting.hpp
   requiredBy: []
   timestamp: '2021-10-19 16:40:30+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/yuki1333.test.cpp
 documentation_of: graph/re_rooting.hpp
 layout: document
 title: "rerooting(\u5168\u65B9\u4F4D\u6728DP)"

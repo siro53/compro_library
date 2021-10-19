@@ -69,7 +69,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/maximum_independent_set.hpp
       title: "\u6700\u5927\u72EC\u7ACB\u96C6\u5408"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: graph/re_rooting.hpp
       title: "rerooting(\u5168\u65B9\u4F4D\u6728DP)"
     - icon: ':heavy_check_mark:'
@@ -263,6 +263,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yuki0206.test.cpp
       title: test/yuki0206.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yuki1333.test.cpp
+      title: test/yuki1333.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/zalgorothm.test.cpp
       title: test/zalgorothm.test.cpp

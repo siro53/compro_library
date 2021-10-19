@@ -91,6 +91,9 @@ data:
     path: test/yuki0206.test.cpp
     title: test/yuki0206.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yuki1333.test.cpp
+    title: test/yuki1333.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/zalgorothm.test.cpp
     title: test/zalgorothm.test.cpp
   _isVerificationFailed: false
@@ -174,6 +177,7 @@ data:
   - test/two_sat.test.cpp
   - test/lca.test.cpp
   - test/AOJ2821.test.cpp
+  - test/yuki1333.test.cpp
   - test/two_edge_connected_components.test.cpp
   - test/scc.test.cpp
   - test/union-find.test.cpp
