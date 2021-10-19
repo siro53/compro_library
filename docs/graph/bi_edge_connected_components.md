@@ -17,3 +17,6 @@ documentation_of: ../../graph/bi_edge_connected_components.hpp
 
 ## 計算量
 - 二重辺連結成分分解は$O(N+M)$で実行できる。
+
+## 出題例
+- [2020-2021 Winter Petrozavodsk Camp, UPC contest K問題](https://codeforces.com/gym/103098/problem/K)
