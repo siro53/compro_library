@@ -57,45 +57,45 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/queue_operate_all_compose.test.cpp
     title: test/queue_operate_all_compose.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/rangeBIT.test.cpp
     title: test/rangeBIT.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/sa-is.test.cpp
     title: test/sa-is.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/scc.test.cpp
     title: test/scc.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/set_xor_min.test.cpp
     title: test/set_xor_min.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/static_range_inversions_query.test.cpp
     title: test/static_range_inversions_query.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/staticrangesum.test.cpp
     title: test/staticrangesum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/staticrmq.test.cpp
     title: test/staticrmq.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/two_edge_connected_components.test.cpp
     title: test/two_edge_connected_components.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/two_sat.test.cpp
     title: test/two_sat.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/union-find.test.cpp
     title: test/union-find.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yuki0206.test.cpp
     title: test/yuki0206.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/zalgorothm.test.cpp
     title: test/zalgorothm.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"template/template.cpp\"\n#pragma region Macros\n#include\
@@ -159,7 +159,7 @@ data:
   path: template/template.cpp
   requiredBy: []
   timestamp: '2021-10-12 21:25:46+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/sa-is.test.cpp
   - test/staticrangesum.test.cpp

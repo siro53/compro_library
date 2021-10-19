@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/two_edge_connected_components.test.cpp
     title: test/two_edge_connected_components.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"graph/bi_edge_connected_components.hpp\"\nclass BECC {\n\
@@ -67,7 +67,7 @@ data:
   path: graph/bi_edge_connected_components.hpp
   requiredBy: []
   timestamp: '2021-09-07 12:05:44+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/two_edge_connected_components.test.cpp
 documentation_of: graph/bi_edge_connected_components.hpp
@@ -89,3 +89,6 @@ title: "\u4E8C\u91CD\u8FBA\u9023\u7D50\u6210\u5206\u5206\u89E3(BECC)"
 
 ## 計算量
 - 二重辺連結成分分解は$O(N+M)$で実行できる。
+
+## 出題例
+- [2020-2021 Winter Petrozavodsk Camp, UPC contest K問題](https://codeforces.com/gym/103098/problem/K)

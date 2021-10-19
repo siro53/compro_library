@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/sa-is.test.cpp
     title: test/sa-is.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"string/sa-is.hpp\"\nclass SA_IS {\n  private:\n    vector<int>\
@@ -152,7 +152,7 @@ data:
   path: string/sa-is.hpp
   requiredBy: []
   timestamp: '2021-02-13 09:00:55+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/sa-is.test.cpp
 documentation_of: string/sa-is.hpp

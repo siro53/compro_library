@@ -3,25 +3,25 @@ data:
   libraryCategories:
   - name: data_structure
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/BIT.hpp
       title: Binary Indexed Tree
     - icon: ':heavy_check_mark:'
       path: data_structure/LiChaoTree.hpp
       title: Li Chao Tree
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/binary_trie.hpp
       title: Binary Trie
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/compress.hpp
       title: "\u5EA7\u6A19\u5727\u7E2E"
     - icon: ':heavy_check_mark:'
       path: data_structure/inversion_number.hpp
       title: "\u8EE2\u5012\u6570"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/mo.hpp
       title: Mo's Algorithm
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/rangeBIT.hpp
       title: range BIT
     - icon: ':heavy_check_mark:'
@@ -35,7 +35,7 @@ data:
     - icon: ':warning:'
       path: data_structure/segtree/lazy_segtree.hpp
       title: data_structure/segtree/lazy_segtree.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/segtree/segtree.hpp
       title: data_structure/segtree/segtree.hpp
   - name: geometry
@@ -45,7 +45,7 @@ data:
       title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA"
   - name: graph
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/bi_edge_connected_components.hpp
       title: "\u4E8C\u91CD\u8FBA\u9023\u7D50\u6210\u5206\u5206\u89E3(BECC)"
     - icon: ':heavy_check_mark:'
@@ -60,7 +60,7 @@ data:
     - icon: ':warning:'
       path: graph/doubling_tree.hpp
       title: "\u6728\u4E0A\u306E\u30C0\u30D6\u30EA\u30F3\u30B0"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/dsu.hpp
       title: UnionFind
     - icon: ':heavy_check_mark:'
@@ -69,7 +69,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/maximum_independent_set.hpp
       title: "\u6700\u5927\u72EC\u7ACB\u96C6\u5408"
-    - icon: ':question:'
+    - icon: ':warning:'
+      path: graph/re_rooting.hpp
+      title: "rerooting(\u5168\u65B9\u4F4D\u6728DP)"
+    - icon: ':heavy_check_mark:'
       path: graph/scc.hpp
       title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3(SCC)"
     - icon: ':warning:'
@@ -78,7 +81,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/tree_hash.hpp
       title: "\u6728\u306E\u540C\u578B\u6027\u5224\u5B9A(\u6728hash)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/two_sat.hpp
       title: 2-SAT
   - name: math
@@ -101,7 +104,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/euler_phi.hpp
       title: "\u30AA\u30A4\u30E9\u30FC\u306Ephi\u95A2\u6570"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/fft.hpp
       title: "\u9AD8\u901F\u30D5\u30FC\u30EA\u30A8\u5909\u63DB(FFT)"
     - icon: ':warning:'
@@ -148,18 +151,18 @@ data:
     - icon: ':warning:'
       path: string/rolling_hash.hpp
       title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: string/sa-is.hpp
       title: SA-IS
     - icon: ':warning:'
       path: string/trie.hpp
       title: "Trie\u6728"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: string/z_algo.hpp
       title: Z Algorithm
   - name: template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/template.cpp
       title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   - name: util
@@ -227,40 +230,40 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/queue_operate_all_compose.test.cpp
       title: test/queue_operate_all_compose.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/rangeBIT.test.cpp
       title: test/rangeBIT.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/sa-is.test.cpp
       title: test/sa-is.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/scc.test.cpp
       title: test/scc.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/set_xor_min.test.cpp
       title: test/set_xor_min.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/static_range_inversions_query.test.cpp
       title: test/static_range_inversions_query.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/staticrangesum.test.cpp
       title: test/staticrangesum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/staticrmq.test.cpp
       title: test/staticrmq.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/two_edge_connected_components.test.cpp
       title: test/two_edge_connected_components.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/two_sat.test.cpp
       title: test/two_sat.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/union-find.test.cpp
       title: test/union-find.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yuki0206.test.cpp
       title: test/yuki0206.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/zalgorothm.test.cpp
       title: test/zalgorothm.test.cpp
 layout: toppage
