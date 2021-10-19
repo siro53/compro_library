@@ -5,9 +5,7 @@ documentation_of: ../../graph/re_rooting.hpp
 
 ## 内容
 - 全方位木DPを抽象化したもの。
-- 頂点属性のみ対応していて、辺属性には対応していない。
-
-TODO：辺属性にも対応させる
+- 頂点属性の場合は`re_rooting`、辺属性の場合は`re_rooting_edge`を使う
 
 ## 使い方
 - `add_edge(u, v)` : 無向辺(u, v)を追加
