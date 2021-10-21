@@ -304,7 +304,7 @@ namespace geometry {
     }
 
     // 凸包 O(NlogN)
-    vector<Point> ConvexHull(vector<Point> &p) {
+    vector<Point> ConvexHull(vector<Point> p) {
         int n = (int)p.size(), k = 0;
         sort(ALL(p), [](const Point &a, const Point &b) {
             return (real(a) != real(b) ? real(a) < real(b) : imag(a) < imag(b));
