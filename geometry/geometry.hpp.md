@@ -170,8 +170,8 @@ data:
     \ {\n            pre = (i - 1 + n) % n;\n            nxt = (i + 1) % n;\n    \
     \        now = i;\n            if(ccw(p[pre], p[now], p[nxt]) == -1) return false;\n\
     \        }\n        return true;\n    }\n\n    // \u51F8\u5305 O(NlogN)\n    vector<Point>\
-    \ ConvexHull(vector<Point> &p) {\n        int n = (int)p.size(), k = 0;\n    \
-    \    sort(ALL(p), [](const Point &a, const Point &b) {\n            return (real(a)\
+    \ ConvexHull(vector<Point> p) {\n        int n = (int)p.size(), k = 0;\n     \
+    \   sort(ALL(p), [](const Point &a, const Point &b) {\n            return (real(a)\
     \ != real(b) ? real(a) < real(b) : imag(a) < imag(b));\n        });\n        vector<Point>\
     \ ch(2 * n);\n        // \u4E00\u76F4\u7DDA\u4E0A\u306E3\u70B9\u3092\u542B\u3081\
     \u308B -> (< -EPS)\n        // \u542B\u3081\u7121\u3044 -> (< EPS)\n        for(int\
@@ -352,8 +352,8 @@ data:
     \ {\n            pre = (i - 1 + n) % n;\n            nxt = (i + 1) % n;\n    \
     \        now = i;\n            if(ccw(p[pre], p[now], p[nxt]) == -1) return false;\n\
     \        }\n        return true;\n    }\n\n    // \u51F8\u5305 O(NlogN)\n    vector<Point>\
-    \ ConvexHull(vector<Point> &p) {\n        int n = (int)p.size(), k = 0;\n    \
-    \    sort(ALL(p), [](const Point &a, const Point &b) {\n            return (real(a)\
+    \ ConvexHull(vector<Point> p) {\n        int n = (int)p.size(), k = 0;\n     \
+    \   sort(ALL(p), [](const Point &a, const Point &b) {\n            return (real(a)\
     \ != real(b) ? real(a) < real(b) : imag(a) < imag(b));\n        });\n        vector<Point>\
     \ ch(2 * n);\n        // \u4E00\u76F4\u7DDA\u4E0A\u306E3\u70B9\u3092\u542B\u3081\
     \u308B -> (< -EPS)\n        // \u542B\u3081\u7121\u3044 -> (< EPS)\n        for(int\
@@ -376,7 +376,7 @@ data:
   isVerificationFile: false
   path: geometry/geometry.hpp
   requiredBy: []
-  timestamp: '2021-02-12 13:21:22+09:00'
+  timestamp: '2021-10-21 16:41:17+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/geometry.hpp
