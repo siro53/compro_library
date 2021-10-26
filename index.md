@@ -69,6 +69,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/maximum_independent_set.hpp
       title: "\u6700\u5927\u72EC\u7ACB\u96C6\u5408"
+    - icon: ':warning:'
+      path: graph/range_edge_graph.hpp
+      title: "\u533A\u9593\u306B\u8FBA\u3092\u8CBC\u308B\u30C6\u30AF"
     - icon: ':heavy_check_mark:'
       path: graph/re_rooting.hpp
       title: "rerooting(\u5168\u65B9\u4F4D\u6728DP)"
