@@ -58,13 +58,10 @@ $i_1 < i_2$ のとき、$\mathop {\rm arg \, min} f(i_1, *) \leq {\rm arg \, min
 - [参考資料2](https://topcoder-g-hatena-ne-jp.jag-icpc.org/spaghetti_source/20120923/1348327542.html)
 
 ## 使い方
-- `monotone_minima(H, W, f, compare)` : $H × W$ のmonotoneである行列に対して、$i$ 行 $j$ 列目の要素が $f(i, j)$ である時、各行の最小値とその最左のindexを返す。
+- `monotone_minima(H, W, f, compare)` : $H × W$ のmonotoneである行列に対して、$i$ 行 $j$ 列目の要素が $f(i, j)$ である時、各行の最小値とその最左のindexを返す。compareは比較関数
 
 ## 計算量
 $O(H + W\log{H})$
-
-計算量解析はかなり難しそうで理解を放棄... 参考資料を参照してください
-直感的には分割統治なので...
 
 ## 出題例
 - https://atcoder.jp/contests/colopl2018-final/tasks/colopl2018_final_c
