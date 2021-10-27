@@ -38,6 +38,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/segtree/segtree.hpp
       title: data_structure/segtree/segtree.hpp
+  - name: dp
+    pages:
+    - icon: ':warning:'
+      path: dp/monotone_minima.hpp
+      title: monotone_minima
   - name: geometry
     pages:
     - icon: ':warning:'
