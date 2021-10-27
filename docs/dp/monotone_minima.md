@@ -6,7 +6,7 @@ documentation_of: ../../dp/monotone_minima.hpp
 ## 内容
 $i_1 < i_2$ のとき、$\mathop {\rm arg \, min} f(i_1, *) \leq {\rm arg \, min} f(i_2, *)$ を満たすならば、$f(i, j)$ は **monotone** であるという。
 
-つまり、$H × W$ の行列において、 $i$ 行目の最小値のうち、最も左に位置する要素の列番号を $g(j)$ とすると、
+つまり、$H × W$ の行列において、 $i$ 行目の最小値のうち、最も左に位置する要素の列番号を $g(i)$ とすると、
 
 - $ g(1) \leq g(2) \leq ... \leq g(H)$
 
