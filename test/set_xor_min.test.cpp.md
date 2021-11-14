@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/binary_trie.hpp
     title: Binary Trie
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/set_xor_min
@@ -38,21 +38,22 @@ data:
     \        cout << fixed << setprecision(15);\n    }\n} __Setup;\n\nusing ll = long\
     \ long;\n#define OVERLOAD3(_1, _2, _3, name, ...) name\n#define ALL(v) (v).begin(),\
     \ (v).end()\n#define RALL(v) (v).rbegin(), (v).rend()\n#define REP1(i, n) for(int\
-    \ i = 0; i < (n); i++)\n#define REP2(i, a, b) for(int i = (a); i < int(b); i++)\n\
-    #define REP(...) OVERLOAD3(__VA_ARGS__, REP2, REP1)(__VA_ARGS__)\n#define UNIQUE(v)\
-    \ sort(ALL(v)), (v).erase(unique(ALL(v)), (v).end())\nconst int INF = 1 << 30;\n\
-    const ll LLINF = 1LL << 60;\nconstexpr int MOD = 1000000007;\nconstexpr int MOD2\
-    \ = 998244353;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0,\
-    \ -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\nint popcount(int\
-    \ x) { return __builtin_popcount(x); }\nll popcount(ll x) { return __builtin_popcountll(x);\
-    \ }\n#pragma endregion Macros\n#line 1 \"data_structure/binary_trie.hpp\"\nstruct\
-    \ BinaryTrie {\n    static const int B = 64;\n    using ull = uint64_t;\n    struct\
-    \ Node {\n        int cnt;\n        Node *child[2];\n        Node() : cnt(0),\
-    \ child{nullptr, nullptr} {}\n    };\n    Node *root;\n    BinaryTrie() : root(nullptr)\
-    \ {}\n    int count(ull val) const {\n        if(!root) {\n            return\
-    \ 0;\n        }\n        Node *now = root;\n        for(int i = B - 1; i >= 0;\
-    \ i--) {\n            now = now->child[(val >> i) & 1ULL];\n            if(!now)\
-    \ {\n                return 0;\n            }\n        }\n        return now->cnt;\n\
+    \ i = 0; i < int(n); i++)\n#define REP2(i, a, b) for(int i = (a); i < int(b);\
+    \ i++)\n#define REP(...) OVERLOAD3(__VA_ARGS__, REP2, REP1)(__VA_ARGS__)\n#define\
+    \ UNIQUE(v) sort(ALL(v)), (v).erase(unique(ALL(v)), (v).end())\n#define SZ(v)\
+    \ ((int)(v).size())\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\nconstexpr\
+    \ int MOD = 1000000007;\nconstexpr int MOD2 = 998244353;\nconst int dx[4] = {1,\
+    \ 0, -1, 0};\nconst int dy[4] = {0, 1, 0, -1};\n\nvoid Case(int i) { cout << \"\
+    Case #\" << i << \": \"; }\nint popcount(int x) { return __builtin_popcount(x);\
+    \ }\nll popcount(ll x) { return __builtin_popcountll(x); }\n#pragma endregion\
+    \ Macros\n#line 1 \"data_structure/binary_trie.hpp\"\nstruct BinaryTrie {\n  \
+    \  static const int B = 64;\n    using ull = uint64_t;\n    struct Node {\n  \
+    \      int cnt;\n        Node *child[2];\n        Node() : cnt(0), child{nullptr,\
+    \ nullptr} {}\n    };\n    Node *root;\n    BinaryTrie() : root(nullptr) {}\n\
+    \    int count(ull val) const {\n        if(!root) {\n            return 0;\n\
+    \        }\n        Node *now = root;\n        for(int i = B - 1; i >= 0; i--)\
+    \ {\n            now = now->child[(val >> i) & 1ULL];\n            if(!now) {\n\
+    \                return 0;\n            }\n        }\n        return now->cnt;\n\
     \    }\n    Node *insert(Node *now, ull val, int i = B - 1) {\n        if(!now)\
     \ {\n            now = new Node();\n        }\n        now->cnt++;\n        if(i\
     \ < 0) {\n            return now;\n        }\n        bool dir = (val >> i) &\
@@ -89,8 +90,8 @@ data:
   isVerificationFile: true
   path: test/set_xor_min.test.cpp
   requiredBy: []
-  timestamp: '2021-10-12 21:25:46+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-11-14 12:43:46+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/set_xor_min.test.cpp
 layout: document

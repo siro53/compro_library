@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/chromatic_number.hpp
     title: "\u5F69\u8272\u6570"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -38,35 +38,35 @@ data:
     \        cout << fixed << setprecision(15);\n    }\n} __Setup;\n\nusing ll = long\
     \ long;\n#define OVERLOAD3(_1, _2, _3, name, ...) name\n#define ALL(v) (v).begin(),\
     \ (v).end()\n#define RALL(v) (v).rbegin(), (v).rend()\n#define REP1(i, n) for(int\
-    \ i = 0; i < (n); i++)\n#define REP2(i, a, b) for(int i = (a); i < int(b); i++)\n\
-    #define REP(...) OVERLOAD3(__VA_ARGS__, REP2, REP1)(__VA_ARGS__)\n#define UNIQUE(v)\
-    \ sort(ALL(v)), (v).erase(unique(ALL(v)), (v).end())\nconst int INF = 1 << 30;\n\
-    const ll LLINF = 1LL << 60;\nconstexpr int MOD = 1000000007;\nconstexpr int MOD2\
-    \ = 998244353;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0,\
-    \ -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\nint popcount(int\
-    \ x) { return __builtin_popcount(x); }\nll popcount(ll x) { return __builtin_popcountll(x);\
-    \ }\n#pragma endregion Macros\n#line 1 \"graph/chromatic_number.hpp\"\n// \u5F69\
-    \u8272\u6570 O(n*2^n)\nint chromatic_number(int N, const vector<vector<int>>&\
-    \ G) {\n    // \u672C\u5F53\u306Frandom\u306B\u7D20\u6570\u3092\u53D6\u3063\u305F\
-    \u65B9\u304C\u3044\u3044\n    constexpr int mod = int(1e9) + 9;\n    // ind[S]\
-    \ = \u9802\u70B9\u96C6\u5408S\u306E\u90E8\u5206\u96C6\u5408\u3067\u3042\u3063\u3066\
-    \u3001\u72EC\u7ACB\u96C6\u5408\u3092\u306A\u3059\u3082\u306E\u306E\u500B\u6570\
-    \n    vector<int> ind(1 << N, 0);\n    // adj_bit[v] = v\u3068\u96A3\u63A5\u3057\
-    \u3066\u308B\u9802\u70B9\u306E\u5834\u6240\u306Bbit\u3092\u7ACB\u3066\u305F\u3082\
-    \u306E\n    vector<int> adj_bit(N, 0);\n    for(int i = 0; i < N; i++) {\n   \
-    \     for(int j = 0; j < N; j++) if(G[i][j]) adj_bit[i] |= (1 << j);\n    }\n\
-    \    ind[0] = 1;\n    for(int S = 1; S < (1 << N); S++) {\n        int v = __builtin_ctz(S);\n\
-    \        ind[S] = ind[S ^ (1 << v)] + ind[(S ^ (1 << v)) & ~adj_bit[v]];\n   \
-    \     if(ind[S] >= mod) ind[S] -= mod;\n    }\n    vector<ll> sum(1 << N);\n \
-    \   for(int S = 0; S < (1 << N); S++) sum[S] = ((N - (int)__builtin_popcount(S))\
-    \ & 1 ? mod-1 : 1);\n    for(int K = 1; K < N; K++) {\n        ll res = 0;\n \
-    \       for(int S = 0; S < (1 << N); S++) {\n            (sum[S] *= ind[S]) %=\
-    \ mod;\n            res += sum[S];\n        }\n        if(res % mod > 0) return\
-    \ K;\n    } \n    return N;\n}\n#line 4 \"test/chromatic_number.test.cpp\"\n\n\
-    int main() {\n    int N, M;\n    cin >> N >> M;\n    vector<vector<int>> G(N,\
-    \ vector<int>(N, 0));\n    REP(i, M) {\n        int u, v;\n        cin >> u >>\
-    \ v;\n        G[u][v] = G[v][u] = 1;\n    }\n    cout << chromatic_number(N, G)\
-    \ << \"\\n\";\n}\n"
+    \ i = 0; i < int(n); i++)\n#define REP2(i, a, b) for(int i = (a); i < int(b);\
+    \ i++)\n#define REP(...) OVERLOAD3(__VA_ARGS__, REP2, REP1)(__VA_ARGS__)\n#define\
+    \ UNIQUE(v) sort(ALL(v)), (v).erase(unique(ALL(v)), (v).end())\n#define SZ(v)\
+    \ ((int)(v).size())\nconst int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\nconstexpr\
+    \ int MOD = 1000000007;\nconstexpr int MOD2 = 998244353;\nconst int dx[4] = {1,\
+    \ 0, -1, 0};\nconst int dy[4] = {0, 1, 0, -1};\n\nvoid Case(int i) { cout << \"\
+    Case #\" << i << \": \"; }\nint popcount(int x) { return __builtin_popcount(x);\
+    \ }\nll popcount(ll x) { return __builtin_popcountll(x); }\n#pragma endregion\
+    \ Macros\n#line 1 \"graph/chromatic_number.hpp\"\n// \u5F69\u8272\u6570 O(n*2^n)\n\
+    int chromatic_number(int N, const vector<vector<int>>& G) {\n    // \u672C\u5F53\
+    \u306Frandom\u306B\u7D20\u6570\u3092\u53D6\u3063\u305F\u65B9\u304C\u3044\u3044\
+    \n    constexpr int mod = int(1e9) + 9;\n    // ind[S] = \u9802\u70B9\u96C6\u5408\
+    S\u306E\u90E8\u5206\u96C6\u5408\u3067\u3042\u3063\u3066\u3001\u72EC\u7ACB\u96C6\
+    \u5408\u3092\u306A\u3059\u3082\u306E\u306E\u500B\u6570\n    vector<int> ind(1\
+    \ << N, 0);\n    // adj_bit[v] = v\u3068\u96A3\u63A5\u3057\u3066\u308B\u9802\u70B9\
+    \u306E\u5834\u6240\u306Bbit\u3092\u7ACB\u3066\u305F\u3082\u306E\n    vector<int>\
+    \ adj_bit(N, 0);\n    for(int i = 0; i < N; i++) {\n        for(int j = 0; j <\
+    \ N; j++) if(G[i][j]) adj_bit[i] |= (1 << j);\n    }\n    ind[0] = 1;\n    for(int\
+    \ S = 1; S < (1 << N); S++) {\n        int v = __builtin_ctz(S);\n        ind[S]\
+    \ = ind[S ^ (1 << v)] + ind[(S ^ (1 << v)) & ~adj_bit[v]];\n        if(ind[S]\
+    \ >= mod) ind[S] -= mod;\n    }\n    vector<ll> sum(1 << N);\n    for(int S =\
+    \ 0; S < (1 << N); S++) sum[S] = ((N - (int)__builtin_popcount(S)) & 1 ? mod-1\
+    \ : 1);\n    for(int K = 1; K < N; K++) {\n        ll res = 0;\n        for(int\
+    \ S = 0; S < (1 << N); S++) {\n            (sum[S] *= ind[S]) %= mod;\n      \
+    \      res += sum[S];\n        }\n        if(res % mod > 0) return K;\n    } \n\
+    \    return N;\n}\n#line 4 \"test/chromatic_number.test.cpp\"\n\nint main() {\n\
+    \    int N, M;\n    cin >> N >> M;\n    vector<vector<int>> G(N, vector<int>(N,\
+    \ 0));\n    REP(i, M) {\n        int u, v;\n        cin >> u >> v;\n        G[u][v]\
+    \ = G[v][u] = 1;\n    }\n    cout << chromatic_number(N, G) << \"\\n\";\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/chromatic_number\"\n#include\
     \ \"../template/template.cpp\"\n#include \"../graph/chromatic_number.hpp\"\n\n\
     int main() {\n    int N, M;\n    cin >> N >> M;\n    vector<vector<int>> G(N,\
@@ -79,7 +79,7 @@ data:
   isVerificationFile: true
   path: test/chromatic_number.test.cpp
   requiredBy: []
-  timestamp: '2021-10-12 21:25:46+09:00'
+  timestamp: '2021-11-14 12:43:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/chromatic_number.test.cpp
