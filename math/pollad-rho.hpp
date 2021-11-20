@@ -10,6 +10,7 @@ struct FastFactorize {
         return res;
     }
     bool isPrime(ll n) {
+        if(n <= 1) return false;
         if(!(n & 1) && n != 2) { return false; }
         ll d = n - 1;
         int s = __builtin_ctzll(d);
