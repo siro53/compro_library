@@ -5,25 +5,25 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/inversion_number.hpp
     title: "\u8EE2\u5012\u6570"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/rangeBIT.hpp
     title: range BIT
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/inversion_number.test.cpp
     title: test/inversion_number.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/rangeBIT.test.cpp
     title: test/rangeBIT.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/static_range_inversions_query.test.cpp
     title: test/static_range_inversions_query.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/staticrangesum.test.cpp
     title: test/staticrangesum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"data_structure/BIT.hpp\"\ntemplate <typename T> struct BIT\
@@ -55,15 +55,15 @@ data:
   isVerificationFile: false
   path: data_structure/BIT.hpp
   requiredBy:
-  - data_structure/inversion_number.hpp
   - data_structure/rangeBIT.hpp
+  - data_structure/inversion_number.hpp
   timestamp: '2021-09-04 16:29:23+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/static_range_inversions_query.test.cpp
-  - test/rangeBIT.test.cpp
   - test/inversion_number.test.cpp
+  - test/static_range_inversions_query.test.cpp
   - test/staticrangesum.test.cpp
+  - test/rangeBIT.test.cpp
 documentation_of: data_structure/BIT.hpp
 layout: document
 title: Binary Indexed Tree
