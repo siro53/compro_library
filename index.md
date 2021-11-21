@@ -40,7 +40,7 @@ data:
       title: data_structure/segtree/segtree.hpp
     - icon: ':warning:'
       path: data_structure/segtree/segtree_2d.hpp
-      title: data_structure/segtree/segtree_2d.hpp
+      title: "2\u6B21\u5143\u30BB\u30B0\u30E1\u30F3\u30C8\u6728"
   - name: dp
     pages:
     - icon: ':warning:'
