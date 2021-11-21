@@ -38,6 +38,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/segtree/segtree.hpp
       title: data_structure/segtree/segtree.hpp
+    - icon: ':warning:'
+      path: data_structure/segtree/segtree_2d.hpp
+      title: data_structure/segtree/segtree_2d.hpp
   - name: dp
     pages:
     - icon: ':warning:'
