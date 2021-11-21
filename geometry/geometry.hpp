@@ -1,7 +1,7 @@
 namespace geometry {
     // Point : 複素数型を位置ベクトルとして扱う
     // 実軸(real)をx軸、挙軸(imag)をy軸として見る
-    using D = double;
+    using D = long double;
     using Point = complex<D>;
     const D EPS = 1e-7;
     const D PI = acosl(-1);
@@ -80,6 +80,9 @@ namespace geometry {
         Segment() = default;
 
         Segment(Point a, Point b) : Line(a, b) {}
+        D get_dist() {
+            return abs(a - b);
+        }
     };
 
     // Circle : 円を表す構造体
@@ -338,6 +341,21 @@ namespace geometry {
             if(cross(a, b) == 0 && dot(a, b) <= 0) return 1;
         }
         return (in ? 2 : 0);
+    }
+
+    // 凸多角形pを直線lで切断し、その左側を返す
+    vector<Point> ConvexCut(vector<Point> p, Line l) {
+        vector<Point> ret;
+        int sz = (int)p.size();
+        REP(i, sz) {
+            Point now = p[i];
+            Point nxt = p[i == sz-1 ? 0 : i+1];
+            if(ccw(l.a, l.b, now) != -1) ret.emplace_back(now);
+            if(ccw(l.a, l.b, now) * ccw(l.a, l.b, nxt) < 0) {
+                ret.emplace_back(crossPoint(Line(now, nxt), l));
+            }
+        }
+        return ret;
     }
 
 } // namespace geometry
