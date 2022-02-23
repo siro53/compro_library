@@ -165,37 +165,37 @@ data:
   timestamp: '2021-11-14 12:43:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/inversion_number.test.cpp
   - test/Hopcroft-Karp.test.cpp
-  - test/union-find.test.cpp
-  - test/static_range_inversions_query.test.cpp
-  - test/erathosthenes.test.cpp
-  - test/yuki0206.test.cpp
-  - test/a_plus_b.test.cpp
-  - test/AOJ2426.test.cpp
-  - test/fast_factorize.test.cpp
-  - test/maximum_independent_set.test.cpp
-  - test/staticrangesum.test.cpp
-  - test/line_add_get_min.test.cpp
-  - test/yuki1333.test.cpp
-  - test/zalgorothm.test.cpp
-  - test/two_edge_connected_components.test.cpp
-  - test/dinic.test.cpp
-  - test/rangeBIT.test.cpp
-  - test/chromatic_number.test.cpp
-  - test/two_sat.test.cpp
-  - test/lca.test.cpp
-  - test/staticrmq.test.cpp
-  - test/scc.test.cpp
-  - test/AOJ2821.test.cpp
-  - test/euler_phi.test.cpp
   - test/is_prime.test.cpp
-  - test/sa-is.test.cpp
-  - test/AOJ2858.test.cpp
-  - test/determinant.test.cpp
-  - test/queue_operate_all_compose.test.cpp
+  - test/static_range_inversions_query.test.cpp
   - test/set_xor_min.test.cpp
+  - test/two_sat.test.cpp
+  - test/rangeBIT.test.cpp
+  - test/line_add_get_min.test.cpp
+  - test/AOJ2821.test.cpp
+  - test/queue_operate_all_compose.test.cpp
+  - test/staticrmq.test.cpp
+  - test/inversion_number.test.cpp
   - test/AOJ2748.test.cpp
+  - test/erathosthenes.test.cpp
+  - test/two_edge_connected_components.test.cpp
+  - test/lca.test.cpp
+  - test/union-find.test.cpp
+  - test/determinant.test.cpp
+  - test/dinic.test.cpp
+  - test/yuki0206.test.cpp
+  - test/AOJ2858.test.cpp
+  - test/a_plus_b.test.cpp
+  - test/zalgorothm.test.cpp
+  - test/fast_factorize.test.cpp
+  - test/staticrangesum.test.cpp
+  - test/maximum_independent_set.test.cpp
+  - test/yuki1333.test.cpp
+  - test/AOJ2426.test.cpp
+  - test/chromatic_number.test.cpp
+  - test/sa-is.test.cpp
+  - test/euler_phi.test.cpp
+  - test/scc.test.cpp
 documentation_of: template/template.cpp
 layout: document
 title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
