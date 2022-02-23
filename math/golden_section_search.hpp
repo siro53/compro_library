@@ -1,6 +1,6 @@
 // [l, r]
 // 詳細：https://twitter.com/noshi91/status/1316352023609004033
-template<class F> golden_section_search(ll l, ll r, F f) {
+template<class F> ll golden_section_search(ll l, ll r, F f) {
     l--, r++;
     ll a = 1, b = 1;
     while(a + b < r - l) {
