@@ -23,7 +23,7 @@ template <class S, S (*op)(S, S), S (*e)()> class segtree {
         S vl = e(), vr = e();
         for(l += sz, r += sz; l < r; l >>= 1, r >>= 1) {
             if(l & 1) vl = op(vl, node[l++]);
-            if(r & 1) vr = op(vr, node[--r]);
+            if(r & 1) vr = op(node[--r], vr);
         }
         return op(vl, vr);
     }
