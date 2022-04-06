@@ -90,7 +90,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/vertex_add_subtree_sum.test.cpp
     title: test/vertex_add_subtree_sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/vertex_set_path_composite.test.cpp
     title: test/vertex_set_path_composite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -102,9 +102,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/zalgorothm.test.cpp
     title: test/zalgorothm.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"template/template.cpp\"\n#pragma region Macros\n#include\
@@ -169,7 +169,7 @@ data:
   path: template/template.cpp
   requiredBy: []
   timestamp: '2021-11-14 12:43:46+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/queue_operate_all_compose.test.cpp
   - test/a_plus_b.test.cpp

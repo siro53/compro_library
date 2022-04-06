@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/segtree/segtree.hpp
     title: data_structure/segtree/segtree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/hld.hpp
     title: "Heavy Light Decomposition (HL\u5206\u89E3)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: ModInt
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/vertex_set_path_composite
@@ -136,7 +136,7 @@ data:
     \ = op(node[2 * p], node[2 * p + 1]);\n    }\n    S get(int p) { return node[p\
     \ + sz]; }\n    S prod(int l, int r) {\n        S vl = e(), vr = e();\n      \
     \  for(l += sz, r += sz; l < r; l >>= 1, r >>= 1) {\n            if(l & 1) vl\
-    \ = op(vl, node[l++]);\n            if(r & 1) vr = op(vr, node[--r]);\n      \
+    \ = op(vl, node[l++]);\n            if(r & 1) vr = op(node[--r], vr);\n      \
     \  }\n        return op(vl, vr);\n    }\n    S all_prod() { return node[1]; }\n\
     };\n#line 8 \"test/vertex_set_path_composite.test.cpp\"\n\nstruct S {\n    mint\
     \ a, b;\n    S() {}\n    S(mint a, mint b): a(a), b(b) {}\n    inline mint eval(mint\
@@ -191,8 +191,8 @@ data:
   isVerificationFile: true
   path: test/vertex_set_path_composite.test.cpp
   requiredBy: []
-  timestamp: '2022-04-06 16:19:19+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-04-06 16:25:23+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/vertex_set_path_composite.test.cpp
 layout: document

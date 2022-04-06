@@ -35,7 +35,7 @@ data:
     - icon: ':warning:'
       path: data_structure/segtree/lazy_segtree.hpp
       title: data_structure/segtree/lazy_segtree.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/segtree/segtree.hpp
       title: data_structure/segtree/segtree.hpp
     - icon: ':warning:'
@@ -71,7 +71,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/dsu.hpp
       title: UnionFind
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: graph/hld.hpp
       title: "Heavy Light Decomposition (HL\u5206\u89E3)"
     - icon: ':heavy_check_mark:'
@@ -139,7 +139,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: "\u884C\u5217\u30E9\u30A4\u30D6\u30E9\u30EA"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/modint.hpp
       title: ModInt
     - icon: ':warning:'
@@ -176,7 +176,7 @@ data:
       title: Z Algorithm
   - name: template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/template.cpp
       title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   - name: util
@@ -277,7 +277,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/vertex_add_subtree_sum.test.cpp
       title: test/vertex_add_subtree_sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/vertex_set_path_composite.test.cpp
       title: test/vertex_set_path_composite.test.cpp
     - icon: ':heavy_check_mark:'

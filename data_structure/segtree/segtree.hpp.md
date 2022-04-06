@@ -9,12 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/vertex_add_subtree_sum.test.cpp
     title: test/vertex_add_subtree_sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/vertex_set_path_composite.test.cpp
     title: test/vertex_set_path_composite.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"data_structure/segtree/segtree.hpp\"\ntemplate <class S,\
@@ -28,7 +28,7 @@ data:
     \ node[p] = op(node[2 * p], node[2 * p + 1]);\n    }\n    S get(int p) { return\
     \ node[p + sz]; }\n    S prod(int l, int r) {\n        S vl = e(), vr = e();\n\
     \        for(l += sz, r += sz; l < r; l >>= 1, r >>= 1) {\n            if(l &\
-    \ 1) vl = op(vl, node[l++]);\n            if(r & 1) vr = op(vr, node[--r]);\n\
+    \ 1) vl = op(vl, node[l++]);\n            if(r & 1) vr = op(node[--r], vr);\n\
     \        }\n        return op(vl, vr);\n    }\n    S all_prod() { return node[1];\
     \ }\n};\n"
   code: "template <class S, S (*op)(S, S), S (*e)()> class segtree {\n    int N, sz;\n\
@@ -42,14 +42,14 @@ data:
     \   S get(int p) { return node[p + sz]; }\n    S prod(int l, int r) {\n      \
     \  S vl = e(), vr = e();\n        for(l += sz, r += sz; l < r; l >>= 1, r >>=\
     \ 1) {\n            if(l & 1) vl = op(vl, node[l++]);\n            if(r & 1) vr\
-    \ = op(vr, node[--r]);\n        }\n        return op(vl, vr);\n    }\n    S all_prod()\
+    \ = op(node[--r], vr);\n        }\n        return op(vl, vr);\n    }\n    S all_prod()\
     \ { return node[1]; }\n};"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/segtree/segtree.hpp
   requiredBy: []
-  timestamp: '2022-04-06 16:19:19+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2022-04-06 16:25:23+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/staticrmq.test.cpp
   - test/vertex_add_subtree_sum.test.cpp
