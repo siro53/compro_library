@@ -1,8 +1,10 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/staticrmq"
 
 #include "../template/template.cpp"
-
 #include "../data_structure/segtree/segtree.hpp"
+
+int op(int a, int b) { return min(a, b); }
+int e() { return INF; }
 
 int main(){
     int n, q;
@@ -11,11 +13,10 @@ int main(){
     for(int i = 0; i < n; i++) {
         cin >> a[i];
     }
-    SegmentTree<int> seg(a, INF,
-                         [](const int &p, const int &q) { return min(p, q); });
-    int l, r;
+    segtree<int, op, e> seg(a);
     while(q--) {
+        int l, r;
         cin >> l >> r;
-        cout << seg.query(l, r) << "\n";
+        cout << seg.prod(l, r) << '\n';
     }
 }

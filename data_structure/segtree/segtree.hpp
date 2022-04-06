@@ -1,51 +1,31 @@
-template <typename Monoid> struct SegmentTree {
-    using F = function<Monoid(Monoid, Monoid)>;
-
-  private:
-    int n;
-    vector<Monoid> node;
-    Monoid E;
-    F f;
+template <class S, S (*op)(S, S), S (*e)()> class segtree {
+    int N, sz;
+    vector<S> node;
 
   public:
-    SegmentTree(vector<Monoid> &v, Monoid e, const F func) : f(func), E(e) {
-        int sz = v.size();
-        n = 1;
-        while(n < sz) {
-            n *= 2;
-        }
-        node.resize(2 * n - 1, E);
-        for(int i = 0; i < sz; i++) {
-            node[i + n - 1] = v[i];
-        }
-        for(int i = n - 2; i >= 0; i--) {
-            node[i] = f(node[2 * i + 1], node[2 * i + 2]);
-        }
+    segtree() {}
+    segtree(vector<S> v) : N(int(v.size())) {
+        sz = 1;
+        while(sz < N) sz <<= 1;
+        node.resize(2 * sz, e());
+        for(int i = 0; i < N; i++) node[i + sz] = v[i];
+        for(int i = sz - 1; i >= 1; i--)
+            node[i] = op(node[2 * i], node[2 * i + 1]);
     }
-
-    void update(int i, Monoid val) {
-        i += (n - 1);
-        node[i] = val;
-        while(i > 0) {
-            i = (i - 1) / 2;
-            node[i] = f(node[2 * i + 1], node[2 * i + 2]);
-        }
+    segtree(int n) : segtree(vector<S>(n, e())) {}
+    void set(int p, S val) {
+        p += sz;
+        node[p] = val;
+        while(p >>= 1) node[p] = op(node[2 * p], node[2 * p + 1]);
     }
-
-    Monoid query(int a, int b, int i = 0, int l = 0, int r = -1) {
-        if(r < 0) {
-            r = n;
+    S get(int p) { return node[p + sz]; }
+    S prod(int l, int r) {
+        S vl = e(), vr = e();
+        for(l += sz, r += sz; l < r; l >>= 1, r >>= 1) {
+            if(l & 1) vl = op(vl, node[l++]);
+            if(r & 1) vr = op(vr, node[--r]);
         }
-        if(r <= a || b <= l) {
-            return E;
-        }
-        if(a <= l && r <= b) {
-            return node[i];
-        }
-        Monoid vl = query(a, b, 2 * i + 1, l, (l + r) / 2);
-        Monoid vr = query(a, b, 2 * i + 2, (l + r) / 2, r);
-        return f(vl, vr);
+        return op(vl, vr);
     }
-
-    Monoid operator[](const int &i) const { return node[i + n - 1]; }
+    S all_prod() { return node[1]; }
 };
