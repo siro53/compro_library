@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/segtree/segtree.hpp
     title: data_structure/segtree/segtree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -46,43 +46,39 @@ data:
     \ 0, -1, 0};\nconst int dy[4] = {0, 1, 0, -1};\n\nvoid Case(int i) { cout << \"\
     Case #\" << i << \": \"; }\nint popcount(int x) { return __builtin_popcount(x);\
     \ }\nll popcount(ll x) { return __builtin_popcountll(x); }\n#pragma endregion\
-    \ Macros\n#line 4 \"test/staticrmq.test.cpp\"\n\n#line 1 \"data_structure/segtree/segtree.hpp\"\
-    \ntemplate <typename Monoid> struct SegmentTree {\n    using F = function<Monoid(Monoid,\
-    \ Monoid)>;\n\n  private:\n    int n;\n    vector<Monoid> node;\n    Monoid E;\n\
-    \    F f;\n\n  public:\n    SegmentTree(vector<Monoid> &v, Monoid e, const F func)\
-    \ : f(func), E(e) {\n        int sz = v.size();\n        n = 1;\n        while(n\
-    \ < sz) {\n            n *= 2;\n        }\n        node.resize(2 * n - 1, E);\n\
-    \        for(int i = 0; i < sz; i++) {\n            node[i + n - 1] = v[i];\n\
-    \        }\n        for(int i = n - 2; i >= 0; i--) {\n            node[i] = f(node[2\
-    \ * i + 1], node[2 * i + 2]);\n        }\n    }\n\n    void update(int i, Monoid\
-    \ val) {\n        i += (n - 1);\n        node[i] = val;\n        while(i > 0)\
-    \ {\n            i = (i - 1) / 2;\n            node[i] = f(node[2 * i + 1], node[2\
-    \ * i + 2]);\n        }\n    }\n\n    Monoid query(int a, int b, int i = 0, int\
-    \ l = 0, int r = -1) {\n        if(r < 0) {\n            r = n;\n        }\n \
-    \       if(r <= a || b <= l) {\n            return E;\n        }\n        if(a\
-    \ <= l && r <= b) {\n            return node[i];\n        }\n        Monoid vl\
-    \ = query(a, b, 2 * i + 1, l, (l + r) / 2);\n        Monoid vr = query(a, b, 2\
-    \ * i + 2, (l + r) / 2, r);\n        return f(vl, vr);\n    }\n\n    Monoid operator[](const\
-    \ int &i) const { return node[i + n - 1]; }\n};\n#line 6 \"test/staticrmq.test.cpp\"\
-    \n\nint main(){\n    int n, q;\n    cin >> n >> q;\n    vector<int> a(n);\n  \
-    \  for(int i = 0; i < n; i++) {\n        cin >> a[i];\n    }\n    SegmentTree<int>\
-    \ seg(a, INF,\n                         [](const int &p, const int &q) { return\
-    \ min(p, q); });\n    int l, r;\n    while(q--) {\n        cin >> l >> r;\n  \
-    \      cout << seg.query(l, r) << \"\\n\";\n    }\n}\n"
+    \ Macros\n#line 1 \"data_structure/segtree/segtree.hpp\"\ntemplate <class S, S\
+    \ (*op)(S, S), S (*e)()> class segtree {\n    int N, sz;\n    vector<S> node;\n\
+    \n  public:\n    segtree() {}\n    segtree(vector<S> v) : N(int(v.size())) {\n\
+    \        sz = 1;\n        while(sz < N) sz <<= 1;\n        node.resize(2 * sz,\
+    \ e());\n        for(int i = 0; i < N; i++) node[i + sz] = v[i];\n        for(int\
+    \ i = sz - 1; i >= 1; i--)\n            node[i] = op(node[2 * i], node[2 * i +\
+    \ 1]);\n    }\n    segtree(int n) : segtree(vector<S>(n, e())) {}\n    void set(int\
+    \ p, S val) {\n        p += sz;\n        node[p] = val;\n        while(p >>= 1)\
+    \ node[p] = op(node[2 * p], node[2 * p + 1]);\n    }\n    S get(int p) { return\
+    \ node[p + sz]; }\n    S prod(int l, int r) {\n        S vl = e(), vr = e();\n\
+    \        for(l += sz, r += sz; l < r; l >>= 1, r >>= 1) {\n            if(l &\
+    \ 1) vl = op(vl, node[l++]);\n            if(r & 1) vr = op(vr, node[--r]);\n\
+    \        }\n        return op(vl, vr);\n    }\n    S all_prod() { return node[1];\
+    \ }\n};\n#line 5 \"test/staticrmq.test.cpp\"\n\nint op(int a, int b) { return\
+    \ min(a, b); }\nint e() { return INF; }\n\nint main(){\n    int n, q;\n    cin\
+    \ >> n >> q;\n    vector<int> a(n);\n    for(int i = 0; i < n; i++) {\n      \
+    \  cin >> a[i];\n    }\n    segtree<int, op, e> seg(a);\n    while(q--) {\n  \
+    \      int l, r;\n        cin >> l >> r;\n        cout << seg.prod(l, r) << '\\\
+    n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/staticrmq\"\n\n#include\
-    \ \"../template/template.cpp\"\n\n#include \"../data_structure/segtree/segtree.hpp\"\
-    \n\nint main(){\n    int n, q;\n    cin >> n >> q;\n    vector<int> a(n);\n  \
-    \  for(int i = 0; i < n; i++) {\n        cin >> a[i];\n    }\n    SegmentTree<int>\
-    \ seg(a, INF,\n                         [](const int &p, const int &q) { return\
-    \ min(p, q); });\n    int l, r;\n    while(q--) {\n        cin >> l >> r;\n  \
-    \      cout << seg.query(l, r) << \"\\n\";\n    }\n}"
+    \ \"../template/template.cpp\"\n#include \"../data_structure/segtree/segtree.hpp\"\
+    \n\nint op(int a, int b) { return min(a, b); }\nint e() { return INF; }\n\nint\
+    \ main(){\n    int n, q;\n    cin >> n >> q;\n    vector<int> a(n);\n    for(int\
+    \ i = 0; i < n; i++) {\n        cin >> a[i];\n    }\n    segtree<int, op, e> seg(a);\n\
+    \    while(q--) {\n        int l, r;\n        cin >> l >> r;\n        cout <<\
+    \ seg.prod(l, r) << '\\n';\n    }\n}"
   dependsOn:
   - template/template.cpp
   - data_structure/segtree/segtree.hpp
   isVerificationFile: true
   path: test/staticrmq.test.cpp
   requiredBy: []
-  timestamp: '2021-11-14 12:43:46+09:00'
+  timestamp: '2022-04-06 16:19:19+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/staticrmq.test.cpp

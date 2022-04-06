@@ -12,12 +12,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/queue_operate_all_compose.test.cpp
     title: test/queue_operate_all_compose.test.cpp
+  - icon: ':x:'
+    path: test/vertex_set_path_composite.test.cpp
+    title: test/vertex_set_path_composite.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki1333.test.cpp
     title: test/yuki1333.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/modint.hpp\"\ntemplate <int mod> struct ModInt {\n\
@@ -75,11 +78,12 @@ data:
   requiredBy:
   - math/lagrange_interpolation.hpp
   timestamp: '2021-02-13 09:10:17+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/queue_operate_all_compose.test.cpp
   - test/determinant.test.cpp
   - test/yuki1333.test.cpp
+  - test/vertex_set_path_composite.test.cpp
 documentation_of: math/modint.hpp
 layout: document
 title: ModInt

@@ -6,54 +6,54 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/staticrmq.test.cpp
     title: test/staticrmq.test.cpp
-  _isVerificationFailed: false
+  - icon: ':heavy_check_mark:'
+    path: test/vertex_add_subtree_sum.test.cpp
+    title: test/vertex_add_subtree_sum.test.cpp
+  - icon: ':x:'
+    path: test/vertex_set_path_composite.test.cpp
+    title: test/vertex_set_path_composite.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"data_structure/segtree/segtree.hpp\"\ntemplate <typename\
-    \ Monoid> struct SegmentTree {\n    using F = function<Monoid(Monoid, Monoid)>;\n\
-    \n  private:\n    int n;\n    vector<Monoid> node;\n    Monoid E;\n    F f;\n\n\
-    \  public:\n    SegmentTree(vector<Monoid> &v, Monoid e, const F func) : f(func),\
-    \ E(e) {\n        int sz = v.size();\n        n = 1;\n        while(n < sz) {\n\
-    \            n *= 2;\n        }\n        node.resize(2 * n - 1, E);\n        for(int\
-    \ i = 0; i < sz; i++) {\n            node[i + n - 1] = v[i];\n        }\n    \
-    \    for(int i = n - 2; i >= 0; i--) {\n            node[i] = f(node[2 * i + 1],\
-    \ node[2 * i + 2]);\n        }\n    }\n\n    void update(int i, Monoid val) {\n\
-    \        i += (n - 1);\n        node[i] = val;\n        while(i > 0) {\n     \
-    \       i = (i - 1) / 2;\n            node[i] = f(node[2 * i + 1], node[2 * i\
-    \ + 2]);\n        }\n    }\n\n    Monoid query(int a, int b, int i = 0, int l\
-    \ = 0, int r = -1) {\n        if(r < 0) {\n            r = n;\n        }\n   \
-    \     if(r <= a || b <= l) {\n            return E;\n        }\n        if(a <=\
-    \ l && r <= b) {\n            return node[i];\n        }\n        Monoid vl =\
-    \ query(a, b, 2 * i + 1, l, (l + r) / 2);\n        Monoid vr = query(a, b, 2 *\
-    \ i + 2, (l + r) / 2, r);\n        return f(vl, vr);\n    }\n\n    Monoid operator[](const\
-    \ int &i) const { return node[i + n - 1]; }\n};\n"
-  code: "template <typename Monoid> struct SegmentTree {\n    using F = function<Monoid(Monoid,\
-    \ Monoid)>;\n\n  private:\n    int n;\n    vector<Monoid> node;\n    Monoid E;\n\
-    \    F f;\n\n  public:\n    SegmentTree(vector<Monoid> &v, Monoid e, const F func)\
-    \ : f(func), E(e) {\n        int sz = v.size();\n        n = 1;\n        while(n\
-    \ < sz) {\n            n *= 2;\n        }\n        node.resize(2 * n - 1, E);\n\
-    \        for(int i = 0; i < sz; i++) {\n            node[i + n - 1] = v[i];\n\
-    \        }\n        for(int i = n - 2; i >= 0; i--) {\n            node[i] = f(node[2\
-    \ * i + 1], node[2 * i + 2]);\n        }\n    }\n\n    void update(int i, Monoid\
-    \ val) {\n        i += (n - 1);\n        node[i] = val;\n        while(i > 0)\
-    \ {\n            i = (i - 1) / 2;\n            node[i] = f(node[2 * i + 1], node[2\
-    \ * i + 2]);\n        }\n    }\n\n    Monoid query(int a, int b, int i = 0, int\
-    \ l = 0, int r = -1) {\n        if(r < 0) {\n            r = n;\n        }\n \
-    \       if(r <= a || b <= l) {\n            return E;\n        }\n        if(a\
-    \ <= l && r <= b) {\n            return node[i];\n        }\n        Monoid vl\
-    \ = query(a, b, 2 * i + 1, l, (l + r) / 2);\n        Monoid vr = query(a, b, 2\
-    \ * i + 2, (l + r) / 2, r);\n        return f(vl, vr);\n    }\n\n    Monoid operator[](const\
-    \ int &i) const { return node[i + n - 1]; }\n};"
+  bundledCode: "#line 1 \"data_structure/segtree/segtree.hpp\"\ntemplate <class S,\
+    \ S (*op)(S, S), S (*e)()> class segtree {\n    int N, sz;\n    vector<S> node;\n\
+    \n  public:\n    segtree() {}\n    segtree(vector<S> v) : N(int(v.size())) {\n\
+    \        sz = 1;\n        while(sz < N) sz <<= 1;\n        node.resize(2 * sz,\
+    \ e());\n        for(int i = 0; i < N; i++) node[i + sz] = v[i];\n        for(int\
+    \ i = sz - 1; i >= 1; i--)\n            node[i] = op(node[2 * i], node[2 * i +\
+    \ 1]);\n    }\n    segtree(int n) : segtree(vector<S>(n, e())) {}\n    void set(int\
+    \ p, S val) {\n        p += sz;\n        node[p] = val;\n        while(p >>= 1)\
+    \ node[p] = op(node[2 * p], node[2 * p + 1]);\n    }\n    S get(int p) { return\
+    \ node[p + sz]; }\n    S prod(int l, int r) {\n        S vl = e(), vr = e();\n\
+    \        for(l += sz, r += sz; l < r; l >>= 1, r >>= 1) {\n            if(l &\
+    \ 1) vl = op(vl, node[l++]);\n            if(r & 1) vr = op(vr, node[--r]);\n\
+    \        }\n        return op(vl, vr);\n    }\n    S all_prod() { return node[1];\
+    \ }\n};\n"
+  code: "template <class S, S (*op)(S, S), S (*e)()> class segtree {\n    int N, sz;\n\
+    \    vector<S> node;\n\n  public:\n    segtree() {}\n    segtree(vector<S> v)\
+    \ : N(int(v.size())) {\n        sz = 1;\n        while(sz < N) sz <<= 1;\n   \
+    \     node.resize(2 * sz, e());\n        for(int i = 0; i < N; i++) node[i + sz]\
+    \ = v[i];\n        for(int i = sz - 1; i >= 1; i--)\n            node[i] = op(node[2\
+    \ * i], node[2 * i + 1]);\n    }\n    segtree(int n) : segtree(vector<S>(n, e()))\
+    \ {}\n    void set(int p, S val) {\n        p += sz;\n        node[p] = val;\n\
+    \        while(p >>= 1) node[p] = op(node[2 * p], node[2 * p + 1]);\n    }\n \
+    \   S get(int p) { return node[p + sz]; }\n    S prod(int l, int r) {\n      \
+    \  S vl = e(), vr = e();\n        for(l += sz, r += sz; l < r; l >>= 1, r >>=\
+    \ 1) {\n            if(l & 1) vl = op(vl, node[l++]);\n            if(r & 1) vr\
+    \ = op(vr, node[--r]);\n        }\n        return op(vl, vr);\n    }\n    S all_prod()\
+    \ { return node[1]; }\n};"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/segtree/segtree.hpp
   requiredBy: []
-  timestamp: '2021-02-12 13:21:22+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2022-04-06 16:19:19+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/staticrmq.test.cpp
+  - test/vertex_add_subtree_sum.test.cpp
+  - test/vertex_set_path_composite.test.cpp
 documentation_of: data_structure/segtree/segtree.hpp
 layout: document
 redirect_from:

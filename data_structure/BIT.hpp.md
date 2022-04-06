@@ -61,9 +61,9 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/static_range_inversions_query.test.cpp
-  - test/rangeBIT.test.cpp
-  - test/inversion_number.test.cpp
   - test/staticrangesum.test.cpp
+  - test/inversion_number.test.cpp
+  - test/rangeBIT.test.cpp
 documentation_of: data_structure/BIT.hpp
 layout: document
 title: Binary Indexed Tree
