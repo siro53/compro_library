@@ -161,6 +161,8 @@ HL分解とは、木を $O(\log{N})$ 本のパスに分解することである�
 - `path_edge(u, v)`
     - `path(u, v)`の辺属性 ver.
     - $(u, v)$ という辺があったとしたら、子になる方の頂点が辺に対応した値を持つように実装すればOK（根に対応する値はないものとする。）
+    - [使用例1](https://atcoder.jp/contests/past202004-open/submissions/30753354)
+    - [使用例2](https://atcoder.jp/contests/abc133/submissions/30753644)
 - `subtree(u)`
     - 頂点 $u$ を根とする部分木に対応する区間が返る。
 
