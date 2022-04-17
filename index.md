@@ -16,6 +16,9 @@ data:
       path: data_structure/compress.hpp
       title: "\u5EA7\u6A19\u5727\u7E2E"
     - icon: ':heavy_check_mark:'
+      path: data_structure/disjoint_sparse_table.hpp
+      title: data_structure/disjoint_sparse_table.hpp
+    - icon: ':heavy_check_mark:'
       path: data_structure/inversion_number.hpp
       title: "\u8EE2\u5012\u6570"
     - icon: ':heavy_check_mark:'

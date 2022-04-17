@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: data_structure/segtree/segtree.hpp
-    title: data_structure/segtree/segtree.hpp
+    path: data_structure/disjoint_sparse_table.hpp
+    title: data_structure/disjoint_sparse_table.hpp
   - icon: ':heavy_check_mark:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
@@ -46,39 +46,43 @@ data:
     \ 0, -1, 0};\nconst int dy[4] = {0, 1, 0, -1};\n\nvoid Case(int i) { cout << \"\
     Case #\" << i << \": \"; }\nint popcount(int x) { return __builtin_popcount(x);\
     \ }\nll popcount(ll x) { return __builtin_popcountll(x); }\n#pragma endregion\
-    \ Macros\n#line 1 \"data_structure/segtree/segtree.hpp\"\ntemplate <class S, S\
-    \ (*op)(S, S), S (*e)()> class segtree {\n    int N, sz;\n    vector<S> node;\n\
-    \n  public:\n    segtree() {}\n    segtree(vector<S> v) : N(int(v.size())) {\n\
-    \        sz = 1;\n        while(sz < N) sz <<= 1;\n        node.resize(2 * sz,\
-    \ e());\n        for(int i = 0; i < N; i++) node[i + sz] = v[i];\n        for(int\
-    \ i = sz - 1; i >= 1; i--)\n            node[i] = op(node[2 * i], node[2 * i +\
-    \ 1]);\n    }\n    segtree(int n) : segtree(vector<S>(n, e())) {}\n    void set(int\
-    \ p, S val) {\n        p += sz;\n        node[p] = val;\n        while(p >>= 1)\
-    \ node[p] = op(node[2 * p], node[2 * p + 1]);\n    }\n    S get(int p) { return\
-    \ node[p + sz]; }\n    S prod(int l, int r) {\n        S vl = e(), vr = e();\n\
-    \        for(l += sz, r += sz; l < r; l >>= 1, r >>= 1) {\n            if(l &\
-    \ 1) vl = op(vl, node[l++]);\n            if(r & 1) vr = op(node[--r], vr);\n\
-    \        }\n        return op(vl, vr);\n    }\n    S all_prod() { return node[1];\
-    \ }\n};\n#line 5 \"test/staticrmq.test.cpp\"\n\nint op(int a, int b) { return\
-    \ min(a, b); }\nint e() { return INF; }\n\nint main(){\n    int n, q;\n    cin\
-    \ >> n >> q;\n    vector<int> a(n);\n    for(int i = 0; i < n; i++) {\n      \
-    \  cin >> a[i];\n    }\n    segtree<int, op, e> seg(a);\n    while(q--) {\n  \
-    \      int l, r;\n        cin >> l >> r;\n        cout << seg.prod(l, r) << '\\\
-    n';\n    }\n}\n"
+    \ Macros\n#line 1 \"data_structure/disjoint_sparse_table.hpp\"\ntemplate<class\
+    \ S, S (*op)(S, S), S (*e)()> \nclass DisjointSparseTable {\n    vector<vector<S>>\
+    \ table;\n    vector<int> lookup;\n\npublic:\n    DisjointSparseTable() {}\n \
+    \   DisjointSparseTable(vector<S> v) {\n        int b = 0;\n        while((1 <<\
+    \ b) <= (int)v.size()) b++;\n        table.resize(b, vector<S>(v.size(), e()));\n\
+    \n        for(int i = 0; i < (int)v.size(); i++) table[0][i] = v[i];\n       \
+    \ for(int i = 1; i < b; i++) {\n            int shift = (1 << i);\n          \
+    \  for(int j = 0; j < (int)v.size(); j += (shift << 1)) {\n                int\
+    \ t = min(j + shift, (int)v.size());\n                table[i][t-1] = v[t-1];\n\
+    \                for(int k = t - 2; k >= j; k--) table[i][k] = op(v[k], table[i][k\
+    \ + 1]);\n                if((int)v.size() <= t) break;\n                table[i][t]\
+    \ = v[t];\n                int r = min(t + shift, (int)v.size());\n          \
+    \      for(int k = t + 1; k < r; k++) table[i][k] = op(table[i][k - 1], v[k]);\n\
+    \            }\n        }\n        lookup.resize(1 << b);\n        for(int i =\
+    \ 2; i < (int)lookup.size(); i++) {\n            lookup[i] = lookup[i >> 1] +\
+    \ 1;\n        }\n    }\n\n    S prod(int l, int r) {\n        if(l >= --r) return\
+    \ table[0][l];\n        int p = lookup[l ^ r];\n        return op(table[p][l],\
+    \ table[p][r]);\n    }\n};\n#line 5 \"test/staticrmq.test.cpp\"\n\nint op(int\
+    \ a, int b) { return min(a, b); }\nint e() { return INF; }\n\nint main(){\n  \
+    \  int n, q;\n    cin >> n >> q;\n    vector<int> a(n);\n    for(int i = 0; i\
+    \ < n; i++) {\n        cin >> a[i];\n    }\n    DisjointSparseTable<int, op, e>\
+    \ dst(a);\n    while(q--) {\n        int l, r;\n        cin >> l >> r;\n     \
+    \   cout << dst.prod(l, r) << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/staticrmq\"\n\n#include\
-    \ \"../template/template.cpp\"\n#include \"../data_structure/segtree/segtree.hpp\"\
+    \ \"../template/template.cpp\"\n#include \"../data_structure/disjoint_sparse_table.hpp\"\
     \n\nint op(int a, int b) { return min(a, b); }\nint e() { return INF; }\n\nint\
     \ main(){\n    int n, q;\n    cin >> n >> q;\n    vector<int> a(n);\n    for(int\
-    \ i = 0; i < n; i++) {\n        cin >> a[i];\n    }\n    segtree<int, op, e> seg(a);\n\
-    \    while(q--) {\n        int l, r;\n        cin >> l >> r;\n        cout <<\
-    \ seg.prod(l, r) << '\\n';\n    }\n}"
+    \ i = 0; i < n; i++) {\n        cin >> a[i];\n    }\n    DisjointSparseTable<int,\
+    \ op, e> dst(a);\n    while(q--) {\n        int l, r;\n        cin >> l >> r;\n\
+    \        cout << dst.prod(l, r) << '\\n';\n    }\n}"
   dependsOn:
   - template/template.cpp
-  - data_structure/segtree/segtree.hpp
+  - data_structure/disjoint_sparse_table.hpp
   isVerificationFile: true
   path: test/staticrmq.test.cpp
   requiredBy: []
-  timestamp: '2022-04-06 16:25:23+09:00'
+  timestamp: '2022-04-17 17:28:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/staticrmq.test.cpp

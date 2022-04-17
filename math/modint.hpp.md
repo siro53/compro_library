@@ -80,10 +80,10 @@ data:
   timestamp: '2021-02-13 09:10:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/vertex_set_path_composite.test.cpp
   - test/queue_operate_all_compose.test.cpp
   - test/determinant.test.cpp
   - test/yuki1333.test.cpp
-  - test/vertex_set_path_composite.test.cpp
 documentation_of: math/modint.hpp
 layout: document
 title: ModInt
