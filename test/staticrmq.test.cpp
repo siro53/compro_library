@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/staticrmq"
 
 #include "../template/template.cpp"
-#include "../data_structure/segtree/segtree.hpp"
+#include "../data_structure/disjoint_sparse_table.hpp"
 
 int op(int a, int b) { return min(a, b); }
 int e() { return INF; }
@@ -13,10 +13,10 @@ int main(){
     for(int i = 0; i < n; i++) {
         cin >> a[i];
     }
-    segtree<int, op, e> seg(a);
+    DisjointSparseTable<int, op, e> dst(a);
     while(q--) {
         int l, r;
         cin >> l >> r;
-        cout << seg.prod(l, r) << '\n';
+        cout << dst.prod(l, r) << '\n';
     }
 }
