@@ -70,15 +70,17 @@ data:
     \        vector<vector<int>> h(sz);\n        for(int u = 0; u < N; u++) {\n  \
     \          for(const int& v : G[u]) {\n                int x = comp[u], y = comp[v];\n\
     \                if(x == y) continue;\n                h[x].push_back(y);\n  \
-    \              h[y].push_back(x);\n            }\n        }\n        return h;\n\
-    \    }\n\n    int operator[](int k) const { return comp[k]; }\n    int size()\
-    \ const { return sz; }\n};\n#line 4 \"test/two_edge_connected_components.test.cpp\"\
-    \n\nint main() {\n    int N, M;\n    cin >> N >> M;\n    BECC becc(N);\n    REP(i,\
-    \ M) {\n        int a, b;\n        cin >> a >> b;\n        becc.add_edge(a, b);\n\
-    \    }\n    becc.build();\n    int K = becc.size();\n    vector<vector<int>> res(K);\n\
-    \    REP(i, N) res[becc[i]].push_back(i);\n    \n    cout << K << \"\\n\";\n \
-    \   REP(i, K) {\n        int sz = res[i].size();\n        cout << sz << \" \"\
-    ;\n        REP(j, sz) cout << res[i][j] << \" \\n\"[j == sz-1];\n    }\n}\n"
+    \              h[y].push_back(x);\n            }\n        }\n        REP(i, sz)\
+    \ {\n            sort(h[i].begin(), h[i].end());\n            h[i].erase(unique(h[i].begin(),\
+    \ h[i].end()), h[i].end());\n        }\n        return h;\n    }\n\n    int operator[](int\
+    \ k) const { return comp[k]; }\n    int size() const { return sz; }\n};\n#line\
+    \ 4 \"test/two_edge_connected_components.test.cpp\"\n\nint main() {\n    int N,\
+    \ M;\n    cin >> N >> M;\n    BECC becc(N);\n    REP(i, M) {\n        int a, b;\n\
+    \        cin >> a >> b;\n        becc.add_edge(a, b);\n    }\n    becc.build();\n\
+    \    int K = becc.size();\n    vector<vector<int>> res(K);\n    REP(i, N) res[becc[i]].push_back(i);\n\
+    \    \n    cout << K << \"\\n\";\n    REP(i, K) {\n        int sz = res[i].size();\n\
+    \        cout << sz << \" \";\n        REP(j, sz) cout << res[i][j] << \" \\n\"\
+    [j == sz-1];\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/two_edge_connected_components\"\
     \n#include \"../template/template.cpp\"\n#include \"../graph/bi_edge_connected_components.hpp\"\
     \n\nint main() {\n    int N, M;\n    cin >> N >> M;\n    BECC becc(N);\n    REP(i,\
@@ -93,7 +95,7 @@ data:
   isVerificationFile: true
   path: test/two_edge_connected_components.test.cpp
   requiredBy: []
-  timestamp: '2021-11-14 12:43:46+09:00'
+  timestamp: '2022-05-04 18:48:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/two_edge_connected_components.test.cpp

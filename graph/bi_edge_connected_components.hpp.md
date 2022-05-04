@@ -34,9 +34,10 @@ data:
     \        vector<vector<int>> h(sz);\n        for(int u = 0; u < N; u++) {\n  \
     \          for(const int& v : G[u]) {\n                int x = comp[u], y = comp[v];\n\
     \                if(x == y) continue;\n                h[x].push_back(y);\n  \
-    \              h[y].push_back(x);\n            }\n        }\n        return h;\n\
-    \    }\n\n    int operator[](int k) const { return comp[k]; }\n    int size()\
-    \ const { return sz; }\n};\n"
+    \              h[y].push_back(x);\n            }\n        }\n        REP(i, sz)\
+    \ {\n            sort(h[i].begin(), h[i].end());\n            h[i].erase(unique(h[i].begin(),\
+    \ h[i].end()), h[i].end());\n        }\n        return h;\n    }\n\n    int operator[](int\
+    \ k) const { return comp[k]; }\n    int size() const { return sz; }\n};\n"
   code: "class BECC {\nprivate:\n    int N, sz;\n    vector<vector<int>> G;\n    vector<int>\
     \ seen, imos, comp;\n\n    void dfs1(int u, int p) {\n        seen[u] = 1;\n \
     \       bool is_skipped_par = false;\n        for(int v : G[u]) {\n          \
@@ -60,13 +61,15 @@ data:
     \ u = 0; u < N; u++) {\n            for(const int& v : G[u]) {\n             \
     \   int x = comp[u], y = comp[v];\n                if(x == y) continue;\n    \
     \            h[x].push_back(y);\n                h[y].push_back(x);\n        \
-    \    }\n        }\n        return h;\n    }\n\n    int operator[](int k) const\
-    \ { return comp[k]; }\n    int size() const { return sz; }\n};"
+    \    }\n        }\n        REP(i, sz) {\n            sort(h[i].begin(), h[i].end());\n\
+    \            h[i].erase(unique(h[i].begin(), h[i].end()), h[i].end());\n     \
+    \   }\n        return h;\n    }\n\n    int operator[](int k) const { return comp[k];\
+    \ }\n    int size() const { return sz; }\n};"
   dependsOn: []
   isVerificationFile: false
   path: graph/bi_edge_connected_components.hpp
   requiredBy: []
-  timestamp: '2021-09-07 12:05:44+09:00'
+  timestamp: '2022-05-04 18:48:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/two_edge_connected_components.test.cpp

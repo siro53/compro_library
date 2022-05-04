@@ -29,8 +29,8 @@ data:
   timestamp: '2021-03-15 20:37:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/AOJ2858.test.cpp
   - test/erathosthenes.test.cpp
+  - test/AOJ2858.test.cpp
 documentation_of: math/eratosthenes.hpp
 layout: document
 title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"

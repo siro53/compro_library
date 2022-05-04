@@ -115,8 +115,8 @@ data:
   timestamp: '2022-04-06 16:19:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/vertex_set_path_composite.test.cpp
   - test/vertex_add_subtree_sum.test.cpp
+  - test/vertex_set_path_composite.test.cpp
 documentation_of: graph/hld.hpp
 layout: document
 title: "Heavy Light Decomposition (HL\u5206\u89E3)"

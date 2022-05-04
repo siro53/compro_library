@@ -37,9 +37,9 @@ data:
   timestamp: '2021-02-12 13:21:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/static_range_inversions_query.test.cpp
   - test/inversion_number.test.cpp
   - test/AOJ2426.test.cpp
-  - test/static_range_inversions_query.test.cpp
 documentation_of: data_structure/compress.hpp
 layout: document
 title: "\u5EA7\u6A19\u5727\u7E2E"
