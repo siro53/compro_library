@@ -63,6 +63,10 @@ public:
                 h[y].push_back(x);
             }
         }
+        REP(i, sz) {
+            sort(h[i].begin(), h[i].end());
+            h[i].erase(unique(h[i].begin(), h[i].end()), h[i].end());
+        }
         return h;
     }
 
