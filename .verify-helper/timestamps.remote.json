@@ -29,7 +29,7 @@
 "test/union-find.test.cpp": "2021-11-14 12:43:46 +0900",
 "test/vertex_add_subtree_sum.test.cpp": "2022-04-06 16:25:23 +0900",
 "test/vertex_set_path_composite.test.cpp": "2022-04-06 16:25:23 +0900",
-"test/yuki0206.test.cpp": "2021-11-14 12:43:46 +0900",
+"test/xor_convolution.test.cpp": "2022-06-04 11:27:38 +0900",
 "test/yuki1333.test.cpp": "2021-11-14 12:43:46 +0900",
 "test/zalgorothm.test.cpp": "2021-11-14 12:43:46 +0900"
 }
