@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/yuki0206.test.cpp
+    title: test/yuki0206.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/convolution/fft.hpp\"\nnamespace FFT {\n    using D\
@@ -65,8 +68,9 @@ data:
   path: math/convolution/fft.hpp
   requiredBy: []
   timestamp: '2022-06-04 11:27:38+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/yuki0206.test.cpp
 documentation_of: math/convolution/fft.hpp
 layout: document
 redirect_from:

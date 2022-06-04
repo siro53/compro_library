@@ -162,7 +162,7 @@ data:
       title: "\u533A\u9593\u7BE9"
   - name: math/convolution
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/convolution/fft.hpp
       title: math/convolution/fft.hpp
     - icon: ':heavy_check_mark:'
@@ -291,7 +291,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/xor_convolution.test.cpp
       title: test/xor_convolution.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yuki0206.test.cpp
       title: test/yuki0206.test.cpp
     - icon: ':heavy_check_mark:'

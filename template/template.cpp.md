@@ -97,6 +97,9 @@ data:
     path: test/xor_convolution.test.cpp
     title: test/xor_convolution.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yuki0206.test.cpp
+    title: test/yuki0206.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yuki1333.test.cpp
     title: test/yuki1333.test.cpp
   - icon: ':heavy_check_mark:'
@@ -176,6 +179,7 @@ data:
   - test/inversion_number.test.cpp
   - test/a_plus_b.test.cpp
   - test/is_prime.test.cpp
+  - test/yuki0206.test.cpp
   - test/erathosthenes.test.cpp
   - test/fast_factorize.test.cpp
   - test/euler_phi.test.cpp
