@@ -121,9 +121,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/euler_phi.hpp
       title: "\u30AA\u30A4\u30E9\u30FC\u306Ephi\u95A2\u6570"
-    - icon: ':heavy_check_mark:'
-      path: math/fft.hpp
-      title: "\u9AD8\u901F\u30D5\u30FC\u30EA\u30A8\u5909\u63DB(FFT)"
     - icon: ':warning:'
       path: math/floor_ceil_sqrt.hpp
       title: "\u5E73\u65B9\u6839(floor, ceil)"
@@ -163,6 +160,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/segment_sieve.hpp
       title: "\u533A\u9593\u7BE9"
+  - name: math/convolution
+    pages:
+    - icon: ':warning:'
+      path: math/convolution/fft.hpp
+      title: math/convolution/fft.hpp
+    - icon: ':heavy_check_mark:'
+      path: math/convolution/xor_convolution.hpp
+      title: math/convolution/xor_convolution.hpp
   - name: string
     pages:
     - icon: ':warning:'
@@ -284,6 +289,9 @@ data:
       path: test/vertex_set_path_composite.test.cpp
       title: test/vertex_set_path_composite.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/xor_convolution.test.cpp
+      title: test/xor_convolution.test.cpp
+    - icon: ':x:'
       path: test/yuki0206.test.cpp
       title: test/yuki0206.test.cpp
     - icon: ':heavy_check_mark:'

@@ -2,22 +2,19 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/yuki0206.test.cpp
-    title: test/yuki0206.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"math/fft.hpp\"\nnamespace FFT {\n    using D = double;\n\
-    \    struct C {\n        D x, y;\n        C() : x(0), y(0) {}\n        C(D x,\
-    \ D y) : x(x), y(y) {}\n        C(complex<D> c) : x(c.real()), y(c.imag()) {}\n\
-    \        inline C operator+(const C &c) const { return C(x + c.x, y + c.y); }\n\
-    \        inline C operator-(const C &c) const { return C(x - c.x, y - c.y); }\n\
-    \        inline C operator*(const C &c) const {\n            return C(x * c.x\
-    \ - y * c.y, x * c.y + y * c.x);\n        }\n    };\n    const D PI = acosl(-1);\n\
+  bundledCode: "#line 1 \"math/convolution/fft.hpp\"\nnamespace FFT {\n    using D\
+    \ = double;\n    struct C {\n        D x, y;\n        C() : x(0), y(0) {}\n  \
+    \      C(D x, D y) : x(x), y(y) {}\n        C(complex<D> c) : x(c.real()), y(c.imag())\
+    \ {}\n        inline C operator+(const C &c) const { return C(x + c.x, y + c.y);\
+    \ }\n        inline C operator-(const C &c) const { return C(x - c.x, y - c.y);\
+    \ }\n        inline C operator*(const C &c) const {\n            return C(x *\
+    \ c.x - y * c.y, x * c.y + y * c.x);\n        }\n    };\n    const D PI = acosl(-1);\n\
     \n    vector<C> fft(vector<C> a, bool inv = false) {\n        int n = int(a.size());\n\
     \        int h = 0;\n        for(int i = 0; 1 << i < n; i++) h++;\n        for(int\
     \ i = 0; i < n; i++) {\n            int j = 0;\n            for(int k = 0; k <\
@@ -65,13 +62,15 @@ data:
     \ FFT"
   dependsOn: []
   isVerificationFile: false
-  path: math/fft.hpp
+  path: math/convolution/fft.hpp
   requiredBy: []
-  timestamp: '2021-02-12 13:21:22+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/yuki0206.test.cpp
-documentation_of: math/fft.hpp
+  timestamp: '2022-06-04 11:27:38+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
+documentation_of: math/convolution/fft.hpp
 layout: document
-title: "\u9AD8\u901F\u30D5\u30FC\u30EA\u30A8\u5909\u63DB(FFT)"
+redirect_from:
+- /library/math/convolution/fft.hpp
+- /library/math/convolution/fft.hpp.html
+title: math/convolution/fft.hpp
 ---

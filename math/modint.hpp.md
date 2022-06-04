@@ -16,6 +16,9 @@ data:
     path: test/vertex_set_path_composite.test.cpp
     title: test/vertex_set_path_composite.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/xor_convolution.test.cpp
+    title: test/xor_convolution.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yuki1333.test.cpp
     title: test/yuki1333.test.cpp
   _isVerificationFailed: false
@@ -80,10 +83,11 @@ data:
   timestamp: '2021-02-13 09:10:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/determinant.test.cpp
-  - test/queue_operate_all_compose.test.cpp
   - test/yuki1333.test.cpp
   - test/vertex_set_path_composite.test.cpp
+  - test/determinant.test.cpp
+  - test/xor_convolution.test.cpp
+  - test/queue_operate_all_compose.test.cpp
 documentation_of: math/modint.hpp
 layout: document
 title: ModInt
