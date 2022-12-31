@@ -55,14 +55,14 @@ data:
   isVerificationFile: false
   path: data_structure/BIT.hpp
   requiredBy:
-  - data_structure/inversion_number.hpp
   - data_structure/rangeBIT.hpp
+  - data_structure/inversion_number.hpp
   timestamp: '2021-09-04 16:29:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/staticrangesum.test.cpp
   - test/inversion_number.test.cpp
   - test/rangeBIT.test.cpp
-  - test/staticrangesum.test.cpp
   - test/static_range_inversions_query.test.cpp
 documentation_of: data_structure/BIT.hpp
 layout: document

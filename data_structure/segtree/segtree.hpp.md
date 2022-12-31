@@ -48,8 +48,8 @@ data:
   timestamp: '2022-04-06 16:25:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/vertex_add_subtree_sum.test.cpp
   - test/vertex_set_path_composite.test.cpp
+  - test/vertex_add_subtree_sum.test.cpp
 documentation_of: data_structure/segtree/segtree.hpp
 layout: document
 redirect_from:

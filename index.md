@@ -101,6 +101,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/two_sat.hpp
       title: 2-SAT
+    - icon: ':heavy_check_mark:'
+      path: graph/weighted_dsu.hpp
+      title: graph/weighted_dsu.hpp
   - name: math
     pages:
     - icon: ':warning:'
@@ -198,6 +201,9 @@ data:
   verificationCategories:
   - name: test
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/AOJ1330.test.cpp
+      title: test/AOJ1330.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/AOJ2426.test.cpp
       title: test/AOJ2426.test.cpp
