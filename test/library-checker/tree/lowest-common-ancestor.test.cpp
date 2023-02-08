@@ -1,4 +1,4 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/tree_diameter"
+#define PROBLEM "https://judge.yosupo.jp/problem/lca"
 #include "../../../template/template.cpp"
 #include "../../../graph/tree/lca.hpp"
 
