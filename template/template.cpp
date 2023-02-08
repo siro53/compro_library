@@ -60,6 +60,7 @@ using ll = long long;
 #define REP2(i, a, b) for(int i = (a); i < int(b); i++)
 #define REP(...) OVERLOAD3(__VA_ARGS__, REP2, REP1)(__VA_ARGS__)
 #define UNIQUE(v) sort(ALL(v)), (v).erase(unique(ALL(v)), (v).end())
+#define REVERSE(v) reverse(ALL(v))
 #define SZ(v) ((int)(v).size())
 const int INF = 1 << 30;
 const ll LLINF = 1LL << 60;
