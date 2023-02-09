@@ -1,6 +1,7 @@
 {
 "test/library-checker/graph/scc.test.cpp": "2023-02-09 15:23:07 +0900",
 "test/library-checker/graph/shortest-path.test.cpp": "2023-02-09 15:23:07 +0900",
+"test/library-checker/math/two-sat.test.cpp": "2023-02-09 15:51:10 +0900",
 "test/library-checker/tree/lowest-common-ancestor.test.cpp": "2023-02-09 15:46:38 +0900",
 "test/library-checker/tree/tree-diameter.test.cpp": "2023-02-09 15:23:07 +0900"
 }
