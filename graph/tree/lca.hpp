@@ -5,15 +5,15 @@
 
 #include "../graph_template.hpp"
 
-template <class Cost> class LCA {
+template <class Cost = int> class LCA {
   public:
     LCA() = default;
     explicit LCA(const Graph<Cost> &G, int root = 0)
-        : G(G), root(root), LOG((int)log2(G.N) + 1), depth(G.N),
-          parent(LOG, std::vector<int>(G.N)) {
+        : G(G), root(root), LOG((int)log2(G.size()) + 1), depth(G.size()),
+          parent(LOG, std::vector<int>(G.size())) {
         dfs(root, -1, 0);
         for(int k = 0; k + 1 < LOG; k++) {
-            for(int i = 0; i < G.N; i++) {
+            for(int i = 0; i < (int)G.size(); i++) {
                 if(parent[k][i] < 0) {
                     parent[k + 1][i] = -1;
                 } else {
@@ -22,7 +22,7 @@ template <class Cost> class LCA {
             }
         }
     }
-    int getLCA(int u, int v) {
+    int get_lca(int u, int v) {
         if(depth[u] > depth[v]) std::swap(u, v);
         for(int k = 0; k < LOG; k++) {
             if((depth[u] - depth[v]) >> k & 1) v = parent[k][v];
@@ -36,7 +36,7 @@ template <class Cost> class LCA {
         }
         return parent[0][u];
     }
-    int getDist(int u, int v) {
+    int get_dist(int u, int v) {
         return (depth[u] + depth[v] - 2 * depth[getLCA(u, v)]);
     }
 

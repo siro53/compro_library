@@ -15,6 +15,6 @@ int main() {
     REP(_, Q) {
         int u, v;
         cin >> u >> v;
-        cout << lca.getLCA(u, v) << '\n';
+        cout << lca.get_lca(u, v) << '\n';
     }
 }

@@ -12,30 +12,33 @@ template <class Cost = int> struct Edge {
         : from(from), to(to), cost(cost), id(id) {}
 };
 
-template <class Cost> struct Graph {
-    int N, M;
-    std::vector<std::vector<Edge<Cost>>> G;
-
+template <class Cost = int> class Graph {
+  public:
     Graph() = default;
     explicit Graph(int N) : N(N), M(0), G(N) {}
 
-    void add_directed_edge(int from, int to, Cost cost = 1) {
+    inline void add_directed_edge(int from, int to, Cost cost = 1) {
         assert(0 <= from && from < N);
         assert(0 <= to && to < N);
         G[from].emplace_back(from, to, cost, M++);
     }
 
-    void add_undirected_edge(int from, int to, Cost cost = 1) {
+    inline void add_undirected_edge(int from, int to, Cost cost = 1) {
         assert(0 <= from && from < N);
         assert(0 <= to && to < N);
         G[from].emplace_back(from, to, cost, M);
         G[to].emplace_back(to, from, cost, M++);
     }
 
+    inline size_t size() const { return G.size(); }
     inline std::vector<Edge<Cost>> &operator[](const int &i) { return G[i]; }
     inline const std::vector<Edge<Cost>> &operator[](const int &i) const {
         return G[i];
     }
+
+  private:
+    int N, M;
+    std::vector<std::vector<Edge<Cost>>> G;
 };
 
-template <class Cost> using Edges = std::vector<Edge<Cost>>;
+template <class Cost = int> using Edges = std::vector<Edge<Cost>>;

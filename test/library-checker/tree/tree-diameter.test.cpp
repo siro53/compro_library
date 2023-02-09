@@ -12,7 +12,7 @@ int main() {
         cin >> a >> b >> c;
         G.add_undirected_edge(a, b, c);
     }
-    auto [diam, path] = getDiameter(G);
+    auto [diam, path] = get_diameter(G);
     cout << diam << ' ' << SZ(path) << '\n';
     REP(i, SZ(path)) cout << path[i] << " \n"[i == SZ(path) - 1];
 }

@@ -6,10 +6,10 @@
 
 #include "../graph_template.hpp"
 
-template <class Cost>
-std::pair<Cost, std::vector<int>> getDiameter(const Graph<Cost> &G) {
-    std::vector<Cost> depth(G.N);
-    std::vector<int> par(G.N, -1);
+template <class Cost = int>
+std::pair<Cost, std::vector<int>> get_diameter(const Graph<Cost> &G) {
+    std::vector<Cost> depth(G.size());
+    std::vector<int> par(G.size(), -1);
     auto dfs = [&](auto &&self, int u, int p, Cost d) -> void {
         depth[u] = d;
         par[u] = p;
