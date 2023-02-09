@@ -37,7 +37,7 @@ template <class Cost = int> class LCA {
         return parent[0][u];
     }
     int get_dist(int u, int v) {
-        return (depth[u] + depth[v] - 2 * depth[getLCA(u, v)]);
+        return (depth[u] + depth[v] - 2 * depth[get_lca(u, v)]);
     }
 
   private:
