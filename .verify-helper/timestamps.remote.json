@@ -13,5 +13,6 @@
 "test/library-checker/math/two-sat.test.cpp": "2023-02-09 15:51:10 +0900",
 "test/library-checker/tree/lowest-common-ancestor.test.cpp": "2023-02-09 15:46:38 +0900",
 "test/library-checker/tree/tree-diameter.test.cpp": "2023-02-09 15:23:07 +0900",
-"test/mytest/data-structure/binary-trie.test.cpp": "2023-02-11 15:15:07 +0900"
+"test/mytest/data-structure/binary-trie.test.cpp": "2023-02-11 15:15:07 +0900",
+"test/yukicoder/yuki1435.test.cpp": "2023-02-13 15:27:30 +0900"
 }
