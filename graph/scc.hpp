@@ -6,7 +6,7 @@
 
 #include "graph_template.hpp"
 
-template <class Cost = int> class SCC {
+template <typename Cost = int> class SCC {
   public:
     explicit SCC(int N)
         : G(N), G_rev(N), comp(N, -1), seen(N, false), isBuilt(false) {}

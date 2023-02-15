@@ -5,7 +5,7 @@
 
 #include "../graph_template.hpp"
 
-template <class Cost = int> class LCA {
+template <typename Cost = int> class LCA {
   public:
     LCA() = default;
     explicit LCA(const Graph<Cost> &G, int root = 0)

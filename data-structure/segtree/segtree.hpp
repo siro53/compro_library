@@ -3,10 +3,6 @@
 #include <cassert>
 #include <vector>
 
-/*
-    テンプレート引数にモノイドを受け取る
-    モノイドには静的メンバ関数 op(), e() が実装されている必要がある
-*/
 template <class Monoid> class Segtree {
   public:
     using T = typename Monoid::value_type;

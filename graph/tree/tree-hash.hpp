@@ -3,7 +3,7 @@
 #include "../../random/rng.hpp"
 #include "diameter.hpp"
 
-template <class Cost> class TreeHash {
+template <typename Cost = int> class TreeHash {
   public:
     explicit TreeHash(int n) : G(n) {
         RNG64 rng;

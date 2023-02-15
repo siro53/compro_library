@@ -3,7 +3,7 @@
 #include <cassert>
 #include <vector>
 
-template <class Cost = int> struct Edge {
+template <typename Cost = int> struct Edge {
     int from, to;
     Cost cost;
     int id;
@@ -12,7 +12,7 @@ template <class Cost = int> struct Edge {
         : from(from), to(to), cost(cost), id(id) {}
 };
 
-template <class Cost = int> class Graph {
+template <typename Cost = int> class Graph {
   public:
     Graph() = default;
     explicit Graph(int N) : N(N), M(0), G(N) {}
