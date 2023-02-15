@@ -7,7 +7,7 @@ std::vector<bool> eratosthenes(int n) {
     res[0] = res[1] = false;
     for(int i = 2; i * i < n; i++) {
         if(!res[i]) continue;
-        for(int j = i + i; j < n; j++) res[j] = false;
+        for(int j = i + i; j < n; j += i) res[j] = false;
     }
     return res;
 }
