@@ -7,12 +7,12 @@ template <typename T> class BIT {
   public:
     BIT() = default;
     explicit BIT(int N) : N(N), dat(N + 1, 0) {}
-    T sum(int r) const {
+    T sum(int r) {
         T ret = 0;
         for(; r >= 1; r -= lsb(r)) ret += dat[r];
         return ret;
     }
-    T sum(int l, int r) const {
+    T sum(int l, int r) {
         assert(l <= r);
         if(l == r) return T(0);
         return (sum(r) - sum(l));
@@ -20,7 +20,7 @@ template <typename T> class BIT {
     void add(int pos, T val) {
         for(int i = pos + 1; i <= N; i += lsb(i)) dat[i] += val;
     }
-    int lower_bound(T val) const {
+    int lower_bound(T val) {
         int pos = 0;
         int k = 1;
         while(2 * k <= N) k <<= 1;

@@ -44,7 +44,7 @@ template <typename T = unsigned int, int LOG = 32> class BinaryTrie {
         now->count--;
         return true;
     }
-    T min_element() const {
+    T min_element() {
         assert(root != nullptr);
         T ret = 0;
         Node *now = root;
@@ -60,7 +60,7 @@ template <typename T = unsigned int, int LOG = 32> class BinaryTrie {
         }
         return ret;
     }
-    T max_element() const {
+    T max_element() {
         assert(root != nullptr);
         T ret = 0;
         Node *now = root;
@@ -77,7 +77,7 @@ template <typename T = unsigned int, int LOG = 32> class BinaryTrie {
         }
         return ret;
     }
-    T get_kth_element(int k) const { // 小さい方からk番目の値(0-indexed)
+    T get_kth_element(int k) { // 小さい方からk番目の値(0-indexed)
         assert(0 <= k and k < size());
         Node *now = root;
         T ret = 0;
@@ -97,7 +97,7 @@ template <typename T = unsigned int, int LOG = 32> class BinaryTrie {
         }
         return ret;
     }
-    int lower_bound(T val) const {
+    int lower_bound(T val) {
         int ret = 0;
         Node* now = root;
         for(int i = LOG - 1; i >= 0; i--) {
@@ -121,7 +121,7 @@ template <typename T = unsigned int, int LOG = 32> class BinaryTrie {
         }
         return ret;
     }
-    int upper_bound(T val) const {
+    int upper_bound(T val) {
         int id = lower_bound(val);
         T kth_element = get_kth_element(id);
         if(kth_element != val) return id;
