@@ -67,7 +67,7 @@ template <class Monoid> class Segtree {
         } while((l & -l) != l);
         return N;
     }
-    template <class F> int min_left(int r, F f) {
+    template <class F> int min_left(int r, F f) const {
         assert(0 <= r && r <= N);
         assert(f(Monoid::e()));
         if(r == 0) return 0;

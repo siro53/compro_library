@@ -20,7 +20,7 @@ template <class T, int LOG = 4> struct PersistentArray {
     const int full_bit = (1 << LOG) - 1;
 
     PersistentArray() {}
-    PersistentArray(int N, const T &id = 0)
+    explicit PersistentArray(int N, const T &id = 0)
         : root(new Node()), depth(0), identity(id) {
         PersistentArray(std::vector<T>(N, id));
     }

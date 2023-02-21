@@ -10,7 +10,7 @@ struct PersistentUnionFind {
     using Node = decltype(par)::Node;
     Node* root;
 
-    PersistentUnionFind(int n): par(std::vector<int>(n, -1)) {
+    explicit PersistentUnionFind(int n): par(std::vector<int>(n, -1)) {
         root = par.root;
     }
     // (leader, size)

@@ -13,8 +13,8 @@ template <typename T> class RangeBIT {
         bt2.add(r, -val);
     }
     void add(int pos, T val) { add(pos, pos + 1, val); }
-    T sum(int r) { return bt1.sum(r) + bt2.sum(r) * r; }
-    T sum(int l, int r) {
+    T sum(int r) const { return bt1.sum(r) + bt2.sum(r) * r; }
+    T sum(int l, int r) const {
         assert(l <= r);
         if(l == r) return T(0);
         return (sum(r) - sum(l));
