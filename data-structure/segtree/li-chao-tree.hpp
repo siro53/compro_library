@@ -20,7 +20,7 @@ public:
     }
     // 直線 ax + b を追加
     void add_line(T a, T b) {
-        update(a, b, 0, sz);
+        update(a, b, 0, sz, 1);
     }
     // 線分 ax + b (x_l <= x < x_r) を追加
     void add_segment(T a, T b, T x_l, T x_r) {
