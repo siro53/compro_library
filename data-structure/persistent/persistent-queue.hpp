@@ -4,7 +4,7 @@ template <class T, int LOG = 20> struct PersistentQueue {
     struct Node {
         T val;
         int idx;
-        Node *pre[LOG]; // node[k] := このノードの2^k個前のノード
+        Node *pre[LOG]; // pre[k] := このノードの2^k個前のノード
 
         Node(T val, int idx) : val(val), idx(idx) {}
     };
