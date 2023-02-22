@@ -17,7 +17,7 @@ class Mo {
     }
     void set_bucketsize(int bs) {
         assert(!isBuilt);
-        BUCKET_SIZE = bs;
+        BUCKET_SIZE = std::max(1, bs);
     }
     void build() {
         ord.resize(L.size());
