@@ -5,7 +5,7 @@
 int main() {
     int t; 
     cin >> t;
-    auto isp = eratosthenes(100000000 + 1);
+    Eratosthenes isp(100000000);
     int ans = 0;
     while(t--) {
         int n; 
