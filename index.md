@@ -20,7 +20,7 @@ data:
       title: data-structure/unionfind.hpp
   - name: data-structure/monoid
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/monoid/add.hpp
       title: data-structure/monoid/add.hpp
     - icon: ':heavy_check_mark:'
@@ -57,13 +57,13 @@ data:
       title: data-structure/persistent/persistent-unionfind.hpp
   - name: data-structure/segtree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/segtree/dynamic-segtree.hpp
       title: data-structure/segtree/dynamic-segtree.hpp
     - icon: ':heavy_check_mark:'
       path: data-structure/segtree/li-chao-tree.hpp
       title: data-structure/segtree/li-chao-tree.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/segtree/segtree.hpp
       title: data-structure/segtree/segtree.hpp
   - name: graph
@@ -98,10 +98,10 @@ data:
       title: graph/tree/tree-hash.hpp
   - name: math
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/barrett-reduction.hpp
       title: math/barrett-reduction.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/binom.hpp
       title: math/binom.hpp
     - icon: ':warning:'
@@ -116,7 +116,7 @@ data:
     - icon: ':warning:'
       path: math/linear-sieve.hpp
       title: math/linear-sieve.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: math/matrix.hpp
     - icon: ':warning:'
@@ -147,10 +147,10 @@ data:
       title: misc/mo.hpp
   - name: modint
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: modint/dynamic-modint.hpp
       title: modint/dynamic-modint.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: modint/modint.hpp
       title: modint/modint.hpp
   - name: random
@@ -165,7 +165,7 @@ data:
       title: string/rolling-hash.hpp
   - name: template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/template.cpp
       title: template/template.cpp
   - name: test/library-checker/data-structure
@@ -196,7 +196,7 @@ data:
       title: test/aoj/aoj2858.test.cpp
   - name: test/atcoder
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/atcoder/arc104d.test.cpp
       title: test/atcoder/arc104d.test.cpp
   - name: test/library-checker/data-structure
@@ -265,16 +265,16 @@ data:
       title: test/mytest/data-structure/binary-trie.test.cpp
   - name: test/yukicoder
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yukicoder/yuki117.test.cpp
       title: test/yukicoder/yuki117.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yukicoder/yuki1435.test.cpp
       title: test/yukicoder/yuki1435.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yukicoder/yuki1750.test.cpp
       title: test/yukicoder/yuki1750.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yukicoder/yuki789.test.cpp
       title: test/yukicoder/yuki789.test.cpp
 layout: toppage
