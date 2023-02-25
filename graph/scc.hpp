@@ -1,65 +1,79 @@
-// グラフを構築したらbuild()を必ず呼ぶこと!!!
-class SCC {
-  private:
-    vector<vector<int>> G;
-    vector<vector<int>> revG;
-    vector<int> vs, comp;
-    vector<bool> seen;
-    int cnt;
-    void dfs(int v) {
-        seen[v] = true;
-        for(const int &u : G[v]) {
-            if(!seen[u]) { dfs(u); }
-        }
-        vs.emplace_back(v);
-    }
-    void rev_dfs(int v, int id) {
-        seen[v] = true;
-        comp[v] = id;
-        for(const int &u : revG[v]) {
-            if(comp[u] == -1) { rev_dfs(u, id); }
-        }
-    }
+#pragma once
 
+#include <algorithm>
+#include <cassert>
+#include <vector>
+
+#include "graph_template.hpp"
+
+template <typename Cost = int> class SCC {
   public:
-    SCC(int N) : G(N), revG(N), comp(N, -1), seen(N, false) {}
-    SCC(vector<vector<int>> g)
-        : G(g), revG(g.size()), comp(g.size(), -1), seen(g.size(), false) {
-        int n = (int)g.size();
-        for(int i = 0; i < n; i++) {
-            for(const auto &u : g[i]) { revG[u].emplace_back(i); }
+    explicit SCC(int N)
+        : G(N), G_rev(N), comp(N, -1), seen(N, false), isBuilt(false) {}
+    explicit SCC(const Graph<Cost> &g)
+        : G(g), G_rev(g.size()), comp(g.size(), -1), seen(g.size(), false) {
+        for(int i = 0; i < (int)g.size(); i++) {
+            for(const auto &e : g[i]) G_rev.add_directed_edge(e.to, i);
         }
+        build();
     }
-    void add_edge(int i, int j) {
-        G[i].emplace_back(j);
-        revG[j].emplace_back(i);
+    inline void add_directed_edge(int from, int to) {
+        assert(!isBuilt &&
+               "This scc_graph is already built, but you tried to add edge.");
+        G.add_directed_edge(from, to);
+        G_rev.add_directed_edge(to, from);
     }
     void build() {
-        int n = (int)G.size();
-        for(int i = 0; i < n; i++) {
+        assert(!isBuilt && "This scc_graph is already built.");
+        for(int i = 0; i < (int)G.size(); i++) {
             if(!seen[i]) dfs(i);
         }
-        reverse(ALL(vs));
-        cnt = 0;
-        for(const int &v : vs) {
+        std::reverse(vs.begin(), vs.end());
+        count = 0;
+        for(const int v : vs) {
             if(comp[v] == -1) {
-                rev_dfs(v, cnt);
-                cnt++;
+                dfs_rev(v, count);
+                count++;
             }
         }
+        isBuilt = true;
     }
-    // 必ずbuild()した後に呼び出すこと!!!
-    vector<vector<int>> get_contract_graph() {
-        vector<vector<int>> res_g(cnt);
-        for(int i = 0; i < int(G.size()); i++) {
-            for(const int& to : G[i]) {
-                int a = comp[i], b = comp[to];
-                if(a == b) continue;
-                res_g[a].push_back(b);
+    Graph<Cost> get_contracted_graph() {
+        assert(isBuilt && "This scc_graph is not yet built.");
+        Graph<Cost> new_g(count);
+        for(int i = 0; i < (int)G.size(); i++) {
+            for(const auto &e : G[i]) {
+                int from = comp[i];
+                int to = comp[e.to];
+                if(from != to) new_g.add_directed_edge(from, to, e.cost);
             }
         }
-        return res_g;
+        return new_g;
     }
-    int operator[](int k) const { return comp[k]; }
-    int size() const { return cnt; }
+    int operator[](const int &k) const {
+        assert(isBuilt && "This scc_graph is not yet built.");
+        return comp[k];
+    }
+    size_t size() { return (size_t)count; }
+
+  private:
+    Graph<Cost> G, G_rev;
+    std::vector<int> vs, comp;
+    std::vector<bool> seen;
+    int count;
+    bool isBuilt;
+
+    void dfs(int u) {
+        seen[u] = true;
+        for(const auto &e : G[u]) {
+            if(!seen[e.to]) dfs(e.to);
+        }
+        vs.push_back(u);
+    }
+    void dfs_rev(int u, int idx) {
+        comp[u] = idx;
+        for(const auto &e : G_rev[u]) {
+            if(comp[e.to] == -1) dfs_rev(e.to, idx);
+        }
+    }
 };
