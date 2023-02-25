@@ -1,6 +1,6 @@
 #define PROBLEM "https://atcoder.jp/contests/arc104/tasks/arc104_d"
-#include "../../template/template.cpp"
 #include "../../modint/dynamic-modint.hpp"
+#include "../../template/template.cpp"
 
 using mint = DynamicModInt;
 
