@@ -4,34 +4,42 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/AOJ2858.test.cpp
-    title: test/AOJ2858.test.cpp
+    path: test/aoj/aoj-ALDS1-1-C_2.test.cpp
+    title: test/aoj/aoj-ALDS1-1-C_2.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/erathosthenes.test.cpp
-    title: test/erathosthenes.test.cpp
+    path: test/aoj/aoj2858.test.cpp
+    title: test/aoj/aoj2858.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"math/eratosthenes.hpp\"\nvector<bool> eratosthenes(int n)\
-    \ {\n    vector<bool> isp(n + 1, true);\n    isp[0] = isp[1] = false;\n    for(int\
-    \ i = 2; i * i <= n; i++) {\n        if(!isp[i]) continue;\n        for(int j\
-    \ = i+i; j <= n; j += i) isp[j] = false;\n    }\n    return isp;\n}\n"
-  code: "vector<bool> eratosthenes(int n) {\n    vector<bool> isp(n + 1, true);\n\
-    \    isp[0] = isp[1] = false;\n    for(int i = 2; i * i <= n; i++) {\n       \
-    \ if(!isp[i]) continue;\n        for(int j = i+i; j <= n; j += i) isp[j] = false;\n\
-    \    }\n    return isp;\n}"
+  bundledCode: "#line 2 \"math/eratosthenes.hpp\"\n\n#include <vector>\n\nclass Eratosthenes\
+    \ {\n  public:\n    Eratosthenes() {}\n    explicit Eratosthenes(int n) : n(n),\
+    \ isp(n + 1, true) {\n        isp[0] = isp[1] = false;\n        for(int i = 2;\
+    \ i * i <= n; i++) {\n            if(!isp[i]) continue;\n            for(int j\
+    \ = i * i; j <= n; j += i) isp[j] = false;\n        }\n    }\n    bool operator[](int\
+    \ k) const { return isp[k]; }\n\n  private:\n    int n;\n    std::vector<bool>\
+    \ isp;\n};\n"
+  code: "#pragma once\n\n#include <vector>\n\nclass Eratosthenes {\n  public:\n  \
+    \  Eratosthenes() {}\n    explicit Eratosthenes(int n) : n(n), isp(n + 1, true)\
+    \ {\n        isp[0] = isp[1] = false;\n        for(int i = 2; i * i <= n; i++)\
+    \ {\n            if(!isp[i]) continue;\n            for(int j = i * i; j <= n;\
+    \ j += i) isp[j] = false;\n        }\n    }\n    bool operator[](int k) const\
+    \ { return isp[k]; }\n\n  private:\n    int n;\n    std::vector<bool> isp;\n};"
   dependsOn: []
   isVerificationFile: false
   path: math/eratosthenes.hpp
   requiredBy: []
-  timestamp: '2021-03-15 20:37:34+09:00'
+  timestamp: '2023-02-25 23:57:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/AOJ2858.test.cpp
-  - test/erathosthenes.test.cpp
+  - test/aoj/aoj-ALDS1-1-C_2.test.cpp
+  - test/aoj/aoj2858.test.cpp
 documentation_of: math/eratosthenes.hpp
 layout: document
-title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
+redirect_from:
+- /library/math/eratosthenes.hpp
+- /library/math/eratosthenes.hpp.html
+title: math/eratosthenes.hpp
 ---
