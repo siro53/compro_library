@@ -66,6 +66,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/segtree/segtree.hpp
       title: data-structure/segtree/segtree.hpp
+  - name: geometry
+    pages:
+    - icon: ':warning:'
+      path: geometry/geometry.hpp
+      title: geometry/geometry.hpp
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
