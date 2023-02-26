@@ -8,6 +8,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/scc.hpp
     title: graph/scc.hpp
+  - icon: ':warning:'
+    path: graph/shortest-path/bfs.hpp
+    title: graph/shortest-path/bfs.hpp
   - icon: ':heavy_check_mark:'
     path: graph/shortest-path/dijkstra.hpp
     title: graph/shortest-path/dijkstra.hpp
@@ -97,6 +100,7 @@ data:
   path: graph/graph_template.hpp
   requiredBy:
   - math/two_sat.hpp
+  - graph/shortest-path/bfs.hpp
   - graph/shortest-path/dijkstra.hpp
   - graph/tree/lca.hpp
   - graph/tree/diameter.hpp

@@ -84,6 +84,9 @@ data:
       title: graph/scc.hpp
   - name: graph/shortest-path
     pages:
+    - icon: ':warning:'
+      path: graph/shortest-path/bfs.hpp
+      title: graph/shortest-path/bfs.hpp
     - icon: ':heavy_check_mark:'
       path: graph/shortest-path/dijkstra.hpp
       title: graph/shortest-path/dijkstra.hpp
