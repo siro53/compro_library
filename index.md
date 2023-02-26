@@ -82,6 +82,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/scc.hpp
       title: graph/scc.hpp
+    - icon: ':warning:'
+      path: graph/topological-sort.hpp
+      title: graph/topological-sort.hpp
   - name: graph/shortest-path
     pages:
     - icon: ':warning:'

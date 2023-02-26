@@ -14,6 +14,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/shortest-path/dijkstra.hpp
     title: graph/shortest-path/dijkstra.hpp
+  - icon: ':warning:'
+    path: graph/topological-sort.hpp
+    title: graph/topological-sort.hpp
   - icon: ':heavy_check_mark:'
     path: graph/tree/diameter.hpp
     title: graph/tree/diameter.hpp
@@ -108,6 +111,7 @@ data:
   - graph/tree/tree-hash.hpp
   - graph/range-edge-graph.hpp
   - graph/scc.hpp
+  - graph/topological-sort.hpp
   timestamp: '2023-02-25 23:57:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
