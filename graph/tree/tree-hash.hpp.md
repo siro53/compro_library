@@ -35,31 +35,32 @@ data:
     \n\n#include <cassert>\n#line 5 \"graph/graph_template.hpp\"\n\ntemplate <typename\
     \ Cost = int> struct Edge {\n    int from, to;\n    Cost cost;\n    int id;\n\
     \    Edge() = default;\n    explicit Edge(int from, int to, Cost cost = 1, int\
-    \ id = -1)\n        : from(from), to(to), cost(cost), id(id) {}\n};\n\ntemplate\
-    \ <typename Cost = int> class Graph {\n  public:\n    Graph() = default;\n   \
-    \ explicit Graph(int N) : N(N), M(0), G(N) {}\n\n    inline void add_directed_edge(int\
-    \ from, int to, Cost cost = 1) {\n        assert(0 <= from && from < N);\n   \
-    \     assert(0 <= to && to < N);\n        G[from].emplace_back(from, to, cost,\
-    \ M++);\n    }\n\n    inline void add_undirected_edge(int from, int to, Cost cost\
-    \ = 1) {\n        assert(0 <= from && from < N);\n        assert(0 <= to && to\
-    \ < N);\n        G[from].emplace_back(from, to, cost, M);\n        G[to].emplace_back(to,\
-    \ from, cost, M++);\n    }\n\n    inline size_t size() const { return G.size();\
-    \ }\n    inline std::vector<Edge<Cost>> &operator[](const int &i) { return G[i];\
-    \ }\n    inline const std::vector<Edge<Cost>> &operator[](const int &i) const\
-    \ {\n        return G[i];\n    }\n\n  private:\n    int N, M;\n    std::vector<std::vector<Edge<Cost>>>\
-    \ G;\n};\n\ntemplate <class Cost = int> using Edges = std::vector<Edge<Cost>>;\n\
-    #line 8 \"graph/tree/diameter.hpp\"\n\ntemplate <typename Cost = int>\nstd::pair<Cost,\
-    \ std::vector<int>> get_diameter(const Graph<Cost> &G) {\n    std::vector<Cost>\
-    \ depth(G.size());\n    std::vector<int> par(G.size(), -1);\n    auto dfs = [&](auto\
-    \ &&self, int u, int p, Cost d) -> void {\n        depth[u] = d;\n        par[u]\
-    \ = p;\n        for(const auto &e : G[u]) {\n            if(e.to == p) continue;\n\
-    \            self(self, e.to, u, d + e.cost);\n        }\n    };\n    dfs(dfs,\
-    \ 0, -1, 0);\n    int from = std::max_element(depth.begin(), depth.end()) - depth.begin();\n\
-    \    dfs(dfs, from, -1, 0);\n    int to = std::max_element(depth.begin(), depth.end())\
-    \ - depth.begin();\n    std::vector<int> path = {to};\n    while(1) {\n      \
-    \  int nxt = par[path.back()];\n        if(nxt == -1) break;\n        path.push_back(nxt);\n\
-    \    }\n    return std::make_pair(depth[to], path);\n}\n#line 5 \"graph/tree/tree-hash.hpp\"\
-    \n\ntemplate <typename Cost = int> class TreeHash {\n  public:\n    explicit TreeHash(int\
+    \ id = -1)\n        : from(from), to(to), cost(cost), id(id) {}\n    operator\
+    \ int() const { return to; }\n};\n\ntemplate <typename Cost = int> class Graph\
+    \ {\n  public:\n    Graph() = default;\n    explicit Graph(int N) : N(N), M(0),\
+    \ G(N) {}\n\n    inline void add_directed_edge(int from, int to, Cost cost = 1)\
+    \ {\n        assert(0 <= from && from < N);\n        assert(0 <= to && to < N);\n\
+    \        G[from].emplace_back(from, to, cost, M++);\n    }\n\n    inline void\
+    \ add_undirected_edge(int from, int to, Cost cost = 1) {\n        assert(0 <=\
+    \ from && from < N);\n        assert(0 <= to && to < N);\n        G[from].emplace_back(from,\
+    \ to, cost, M);\n        G[to].emplace_back(to, from, cost, M++);\n    }\n\n \
+    \   inline size_t size() const { return G.size(); }\n    inline std::vector<Edge<Cost>>\
+    \ &operator[](const int &i) { return G[i]; }\n    inline const std::vector<Edge<Cost>>\
+    \ &operator[](const int &i) const {\n        return G[i];\n    }\n\n  private:\n\
+    \    int N, M;\n    std::vector<std::vector<Edge<Cost>>> G;\n};\n\ntemplate <class\
+    \ Cost = int> using Edges = std::vector<Edge<Cost>>;\n#line 8 \"graph/tree/diameter.hpp\"\
+    \n\ntemplate <typename Cost = int>\nstd::pair<Cost, std::vector<int>> get_diameter(const\
+    \ Graph<Cost> &G) {\n    std::vector<Cost> depth(G.size());\n    std::vector<int>\
+    \ par(G.size(), -1);\n    auto dfs = [&](auto &&self, int u, int p, Cost d) ->\
+    \ void {\n        depth[u] = d;\n        par[u] = p;\n        for(const auto &e\
+    \ : G[u]) {\n            if(e.to == p) continue;\n            self(self, e.to,\
+    \ u, d + e.cost);\n        }\n    };\n    dfs(dfs, 0, -1, 0);\n    int from =\
+    \ std::max_element(depth.begin(), depth.end()) - depth.begin();\n    dfs(dfs,\
+    \ from, -1, 0);\n    int to = std::max_element(depth.begin(), depth.end()) - depth.begin();\n\
+    \    std::vector<int> path = {to};\n    while(1) {\n        int nxt = par[path.back()];\n\
+    \        if(nxt == -1) break;\n        path.push_back(nxt);\n    }\n    return\
+    \ std::make_pair(depth[to], path);\n}\n#line 5 \"graph/tree/tree-hash.hpp\"\n\n\
+    template <typename Cost = int> class TreeHash {\n  public:\n    explicit TreeHash(int\
     \ n) : G(n) {\n        RNG64 rng;\n        for(int i = 0; i < n; i++) rnd.push_back(rng.randint(1,\
     \ mod - 1));\n    }\n    explicit TreeHash(const Graph<Cost> &g) : G(g) {\n  \
     \      RNG64 rng;\n        for(int i = 0; i < (int)G.size(); i++)\n          \
@@ -119,7 +120,7 @@ data:
   isVerificationFile: false
   path: graph/tree/tree-hash.hpp
   requiredBy: []
-  timestamp: '2023-02-25 23:57:16+09:00'
+  timestamp: '2023-02-28 22:24:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj2821.test.cpp
