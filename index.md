@@ -95,6 +95,9 @@ data:
       title: graph/shortest-path/dijkstra.hpp
   - name: graph/tree
     pages:
+    - icon: ':warning:'
+      path: graph/tree/centroid-decomposition.hpp
+      title: graph/tree/centroid-decomposition.hpp
     - icon: ':heavy_check_mark:'
       path: graph/tree/diameter.hpp
       title: graph/tree/diameter.hpp

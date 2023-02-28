@@ -17,6 +17,9 @@ data:
   - icon: ':warning:'
     path: graph/topological-sort.hpp
     title: graph/topological-sort.hpp
+  - icon: ':warning:'
+    path: graph/tree/centroid-decomposition.hpp
+    title: graph/tree/centroid-decomposition.hpp
   - icon: ':heavy_check_mark:'
     path: graph/tree/diameter.hpp
     title: graph/tree/diameter.hpp
@@ -106,6 +109,7 @@ data:
   - math/two_sat.hpp
   - graph/shortest-path/bfs.hpp
   - graph/shortest-path/dijkstra.hpp
+  - graph/tree/centroid-decomposition.hpp
   - graph/tree/lca.hpp
   - graph/tree/diameter.hpp
   - graph/tree/hld.hpp
