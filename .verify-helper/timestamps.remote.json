@@ -22,6 +22,7 @@
 "test/library-checker/graph/shortest-path.test.cpp": "2023-02-28 22:24:07 +0900",
 "test/library-checker/math/two-sat.test.cpp": "2023-02-28 22:24:07 +0900",
 "test/library-checker/tree/lowest-common-ancestor.test.cpp": "2023-02-28 22:24:07 +0900",
+"test/library-checker/tree/lowest-common-ancestor2.test.cpp": "2023-03-01 00:10:37 +0900",
 "test/library-checker/tree/tree-diameter.test.cpp": "2023-02-28 22:24:07 +0900",
 "test/mytest/data-structure/binary-trie.test.cpp": "2023-02-25 23:57:16 +0900",
 "test/yukicoder/yuki117.test.cpp": "2023-02-25 23:57:16 +0900",
