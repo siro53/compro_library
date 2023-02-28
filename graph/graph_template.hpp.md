@@ -61,6 +61,9 @@ data:
     path: test/library-checker/tree/lowest-common-ancestor.test.cpp
     title: test/library-checker/tree/lowest-common-ancestor.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/library-checker/tree/lowest-common-ancestor2.test.cpp
+    title: test/library-checker/tree/lowest-common-ancestor2.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/library-checker/tree/tree-diameter.test.cpp
     title: test/library-checker/tree/tree-diameter.test.cpp
   _isVerificationFailed: false
@@ -127,6 +130,7 @@ data:
   - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
   - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
   - test/library-checker/tree/tree-diameter.test.cpp
+  - test/library-checker/tree/lowest-common-ancestor2.test.cpp
   - test/library-checker/tree/lowest-common-ancestor.test.cpp
   - test/aoj/aoj2821.test.cpp
 documentation_of: graph/graph_template.hpp

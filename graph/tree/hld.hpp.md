@@ -15,6 +15,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/vertex-set-path-composite.test.cpp
     title: test/library-checker/data-structure/vertex-set-path-composite.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/library-checker/tree/lowest-common-ancestor2.test.cpp
+    title: test/library-checker/tree/lowest-common-ancestor2.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -138,6 +141,7 @@ data:
   - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
   - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
   - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
+  - test/library-checker/tree/lowest-common-ancestor2.test.cpp
 documentation_of: graph/tree/hld.hpp
 layout: document
 redirect_from:

@@ -28,50 +28,46 @@ data:
     \ }\n    inline const std::vector<Edge<Cost>> &operator[](const int &i) const\
     \ {\n        return G[i];\n    }\n\n  private:\n    int N, M;\n    std::vector<std::vector<Edge<Cost>>>\
     \ G;\n};\n\ntemplate <class Cost = int> using Edges = std::vector<Edge<Cost>>;\n\
-    #line 4 \"graph/tree/centroid-decomposition.hpp\"\n\n// TODO: \u3082\u3063\u3068\
-    \u3044\u3044\u611F\u3058\u306E\u30E9\u30A4\u30D6\u30E9\u30EA\u5316\u3092\u6A21\
-    \u7D22\u3059\u308B\nstruct CentroidDecomposition {\n    const Graph<int>& G;\n\
-    \    std::vector<int> subtree_size, parent;\n    std::vector<bool> removed;\n\n\
-    \    explicit CentroidDecomposition(const Graph<int>& g): G(g), subtree_size(g.size(),\
-    \ 0), parent(g.size(), -1), removed(g.size(), false) {}\n\n    void get_subtree_size(int\
-    \ u, int p) {\n        subtree_size[u] = 1;\n        for(int v : G[u]) {\n   \
-    \         if(v == p or removed[v]) continue;\n            get_subtree_size(v,\
-    \ u);\n            subtree_size[u] += subtree_size[v];\n        }\n    }\n\n \
-    \   void decomp(int u, int p) {\n        get_subtree_size(u, -1);\n        int\
-    \ sz = subtree_size[u];\n        int pre = -1;\n        while(1) {\n         \
-    \   int mx = -1, mx_v = -1;\n            for(int v : G[u]) {\n               \
-    \ if(v == pre or removed[v]) continue;\n                if(mx < subtree_size[v])\
+    #line 4 \"graph/tree/centroid-decomposition.hpp\"\n\n// TODO: \u826F\u3044\u30A4\
+    \u30F3\u30BF\u30FC\u30D5\u30A7\u30A4\u30B9\u3092\u6A21\u7D22\u3059\u308B\nstruct\
+    \ CentroidDecomposition {\n    const Graph<int>& G;\n    std::vector<int> subtree_size,\
+    \ parent;\n    std::vector<bool> removed;\n\n    explicit CentroidDecomposition(const\
+    \ Graph<int>& g): G(g), subtree_size(g.size(), 0), parent(g.size(), -1), removed(g.size(),\
+    \ false) {}\n\n    void get_subtree_size(int u, int p) {\n        subtree_size[u]\
+    \ = 1;\n        for(int v : G[u]) {\n            if(v == p or removed[v]) continue;\n\
+    \            get_subtree_size(v, u);\n            subtree_size[u] += subtree_size[v];\n\
+    \        }\n    }\n\n    void decomp(int u, int p) {\n        get_subtree_size(u,\
+    \ -1);\n        int sz = subtree_size[u];\n        int pre = -1;\n        while(1)\
+    \ {\n            int mx = -1, mx_v = -1;\n            for(int v : G[u]) {\n  \
+    \              if(v == pre or removed[v]) continue;\n                if(mx < subtree_size[v])\
     \ {\n                    mx = subtree_size[v];\n                    mx_v = v;\n\
     \                }\n            }\n            if(mx * 2 <= sz) break;\n     \
     \       pre = u;\n            u = mx_v;\n        }\n        removed[u] = true;\n\
-    \        parent[u] = p;\n        \n        process(u);\n\n        for(int v :\
-    \ G[u]) {\n            if(removed[v]) continue;\n            decomp(v, u);\n \
-    \       }\n    }\n\n    void process(int centroid);\n};\n"
-  code: "#pragma once\n\n#include \"../graph_template.hpp\"\n\n// TODO: \u3082\u3063\
-    \u3068\u3044\u3044\u611F\u3058\u306E\u30E9\u30A4\u30D6\u30E9\u30EA\u5316\u3092\
-    \u6A21\u7D22\u3059\u308B\nstruct CentroidDecomposition {\n    const Graph<int>&\
-    \ G;\n    std::vector<int> subtree_size, parent;\n    std::vector<bool> removed;\n\
-    \n    explicit CentroidDecomposition(const Graph<int>& g): G(g), subtree_size(g.size(),\
-    \ 0), parent(g.size(), -1), removed(g.size(), false) {}\n\n    void get_subtree_size(int\
-    \ u, int p) {\n        subtree_size[u] = 1;\n        for(int v : G[u]) {\n   \
-    \         if(v == p or removed[v]) continue;\n            get_subtree_size(v,\
-    \ u);\n            subtree_size[u] += subtree_size[v];\n        }\n    }\n\n \
-    \   void decomp(int u, int p) {\n        get_subtree_size(u, -1);\n        int\
-    \ sz = subtree_size[u];\n        int pre = -1;\n        while(1) {\n         \
-    \   int mx = -1, mx_v = -1;\n            for(int v : G[u]) {\n               \
-    \ if(v == pre or removed[v]) continue;\n                if(mx < subtree_size[v])\
+    \        parent[u] = p;\n        for(int v : G[u]) {\n            if(removed[v])\
+    \ continue;\n            decomp(v, u);\n        }\n    }\n};\n"
+  code: "#pragma once\n\n#include \"../graph_template.hpp\"\n\n// TODO: \u826F\u3044\
+    \u30A4\u30F3\u30BF\u30FC\u30D5\u30A7\u30A4\u30B9\u3092\u6A21\u7D22\u3059\u308B\
+    \nstruct CentroidDecomposition {\n    const Graph<int>& G;\n    std::vector<int>\
+    \ subtree_size, parent;\n    std::vector<bool> removed;\n\n    explicit CentroidDecomposition(const\
+    \ Graph<int>& g): G(g), subtree_size(g.size(), 0), parent(g.size(), -1), removed(g.size(),\
+    \ false) {}\n\n    void get_subtree_size(int u, int p) {\n        subtree_size[u]\
+    \ = 1;\n        for(int v : G[u]) {\n            if(v == p or removed[v]) continue;\n\
+    \            get_subtree_size(v, u);\n            subtree_size[u] += subtree_size[v];\n\
+    \        }\n    }\n\n    void decomp(int u, int p) {\n        get_subtree_size(u,\
+    \ -1);\n        int sz = subtree_size[u];\n        int pre = -1;\n        while(1)\
+    \ {\n            int mx = -1, mx_v = -1;\n            for(int v : G[u]) {\n  \
+    \              if(v == pre or removed[v]) continue;\n                if(mx < subtree_size[v])\
     \ {\n                    mx = subtree_size[v];\n                    mx_v = v;\n\
     \                }\n            }\n            if(mx * 2 <= sz) break;\n     \
     \       pre = u;\n            u = mx_v;\n        }\n        removed[u] = true;\n\
-    \        parent[u] = p;\n        \n        process(u);\n\n        for(int v :\
-    \ G[u]) {\n            if(removed[v]) continue;\n            decomp(v, u);\n \
-    \       }\n    }\n\n    void process(int centroid);\n};"
+    \        parent[u] = p;\n        for(int v : G[u]) {\n            if(removed[v])\
+    \ continue;\n            decomp(v, u);\n        }\n    }\n};"
   dependsOn:
   - graph/graph_template.hpp
   isVerificationFile: false
   path: graph/tree/centroid-decomposition.hpp
   requiredBy: []
-  timestamp: '2023-02-28 22:39:41+09:00'
+  timestamp: '2023-03-01 00:10:37+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: graph/tree/centroid-decomposition.hpp

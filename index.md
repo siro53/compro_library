@@ -270,6 +270,9 @@ data:
       path: test/library-checker/tree/lowest-common-ancestor.test.cpp
       title: test/library-checker/tree/lowest-common-ancestor.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/library-checker/tree/lowest-common-ancestor2.test.cpp
+      title: test/library-checker/tree/lowest-common-ancestor2.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/library-checker/tree/tree-diameter.test.cpp
       title: test/library-checker/tree/tree-diameter.test.cpp
   - name: test/mytest/data-structure
