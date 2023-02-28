@@ -2,7 +2,7 @@
 
 #include "../graph_template.hpp"
 
-// TODO: もっといい感じのライブラリ化を模索する
+// TODO: 良いインターフェイスを模索する
 struct CentroidDecomposition {
     const Graph<int>& G;
     std::vector<int> subtree_size, parent;
@@ -38,14 +38,9 @@ struct CentroidDecomposition {
         }
         removed[u] = true;
         parent[u] = p;
-        
-        process(u);
-
         for(int v : G[u]) {
             if(removed[v]) continue;
             decomp(v, u);
         }
     }
-
-    void process(int centroid);
 };
