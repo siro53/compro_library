@@ -44,15 +44,15 @@ template <typename Cost = int> class LCA {
     Graph<Cost> G;
     const int root;
     const int LOG;
-    std::vector<Cost> depth;
+    std::vector<int> depth;
     std::vector<std::vector<int>> parent;
 
-    void dfs(int u, int p, Cost d) {
+    void dfs(int u, int p, int d) {
         depth[u] = d;
         parent[0][u] = p;
-        for(const auto &e : G[u]) {
-            if(e.to == p) continue;
-            dfs(e.to, u, d + e.cost);
+        for(int v : G[u]) {
+            if(v == p) continue;
+            dfs(v, u, d + 1);
         }
     }
 };

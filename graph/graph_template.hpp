@@ -10,6 +10,7 @@ template <typename Cost = int> struct Edge {
     Edge() = default;
     explicit Edge(int from, int to, Cost cost = 1, int id = -1)
         : from(from), to(to), cost(cost), id(id) {}
+    operator int() const { return to; }
 };
 
 template <typename Cost = int> class Graph {
