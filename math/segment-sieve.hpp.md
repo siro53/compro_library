@@ -37,8 +37,5 @@ data:
   verifiedWith: []
 documentation_of: math/segment-sieve.hpp
 layout: document
-redirect_from:
-- /library/math/segment-sieve.hpp
-- /library/math/segment-sieve.hpp.html
-title: math/segment-sieve.hpp
+title: "\u533A\u9593\u7BE9(\u7D20\u6570\u5224\u5B9A\u306E\u307F)"
 ---

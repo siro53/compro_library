@@ -30,8 +30,5 @@ data:
   - test/aoj/aoj-ALDS1-1-C.test.cpp
 documentation_of: math/is-prime.hpp
 layout: document
-redirect_from:
-- /library/math/is-prime.hpp
-- /library/math/is-prime.hpp.html
-title: math/is-prime.hpp
+title: "\u7D20\u6570\u5224\u5B9A"
 ---

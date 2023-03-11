@@ -7,7 +7,7 @@ data:
     title: data-structure/range-BIT.hpp
   - icon: ':heavy_check_mark:'
     path: misc/inversion-number.hpp
-    title: misc/inversion-number.hpp
+    title: "\u8EE2\u5012\u6570"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj-ALDS1-5-D.test.cpp
@@ -61,10 +61,10 @@ data:
   timestamp: '2023-02-25 23:57:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/data-structure/static-range-sum.test.cpp
+  - test/aoj/aoj-ALDS1-5-D.test.cpp
   - test/library-checker/data-structure/static-range-inversions-query.test.cpp
   - test/library-checker/data-structure/point-add-range-sum.test.cpp
-  - test/aoj/aoj-ALDS1-5-D.test.cpp
+  - test/library-checker/data-structure/static-range-sum.test.cpp
 documentation_of: data-structure/BIT.hpp
 layout: document
 redirect_from:

@@ -6,7 +6,7 @@ data:
     title: data-structure/monoid/affine.hpp
   - icon: ':heavy_check_mark:'
     path: data-structure/segtree/segtree.hpp
-    title: data-structure/segtree/segtree.hpp
+    title: Segment Tree
   - icon: ':heavy_check_mark:'
     path: modint/modint.hpp
     title: modint/modint.hpp

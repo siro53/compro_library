@@ -3,10 +3,10 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
-    title: graph/graph_template.hpp
+    title: "\u30B0\u30E9\u30D5\u69CB\u9020\u4F53"
   - icon: ':heavy_check_mark:'
     path: graph/shortest-path/dijkstra.hpp
-    title: graph/shortest-path/dijkstra.hpp
+    title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
   - icon: ':heavy_check_mark:'
     path: template/template.cpp
     title: template/template.cpp

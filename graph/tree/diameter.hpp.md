@@ -3,11 +3,11 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
-    title: graph/graph_template.hpp
+    title: "\u30B0\u30E9\u30D5\u69CB\u9020\u4F53"
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: graph/tree/tree-hash.hpp
-    title: graph/tree/tree-hash.hpp
+    title: "\u6728\u30CF\u30C3\u30B7\u30E5"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj2821.test.cpp
@@ -71,12 +71,9 @@ data:
   timestamp: '2023-02-28 22:24:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/tree/tree-diameter.test.cpp
   - test/aoj/aoj2821.test.cpp
+  - test/library-checker/tree/tree-diameter.test.cpp
 documentation_of: graph/tree/diameter.hpp
 layout: document
-redirect_from:
-- /library/graph/tree/diameter.hpp
-- /library/graph/tree/diameter.hpp.html
-title: graph/tree/diameter.hpp
+title: "\u6728\u306E\u76F4\u5F84"
 ---

@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
-    title: graph/graph_template.hpp
+    title: "\u30B0\u30E9\u30D5\u69CB\u9020\u4F53"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -72,8 +72,5 @@ data:
   verifiedWith: []
 documentation_of: graph/tree/centroid-decomposition.hpp
 layout: document
-redirect_from:
-- /library/graph/tree/centroid-decomposition.hpp
-- /library/graph/tree/centroid-decomposition.hpp.html
-title: graph/tree/centroid-decomposition.hpp
+title: "\u91CD\u5FC3\u5206\u89E3"
 ---

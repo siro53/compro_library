@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: math/barrett-reduction.hpp
-    title: math/barrett-reduction.hpp
+    title: Barrett Reduction
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'

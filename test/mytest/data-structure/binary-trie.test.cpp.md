@@ -6,7 +6,7 @@ data:
     title: data-structure/binary-trie.hpp
   - icon: ':heavy_check_mark:'
     path: random/rng.hpp
-    title: random/rng.hpp
+    title: "\u4E71\u6570\u751F\u6210"
   - icon: ':heavy_check_mark:'
     path: template/template.cpp
     title: template/template.cpp

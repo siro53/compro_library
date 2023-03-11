@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: data-structure/segtree/li-chao-tree.hpp
-    title: data-structure/segtree/li-chao-tree.hpp
+    title: Li Chao Tree
   - icon: ':heavy_check_mark:'
     path: template/template.cpp
     title: template/template.cpp

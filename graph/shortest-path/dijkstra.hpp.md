@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
-    title: graph/graph_template.hpp
+    title: "\u30B0\u30E9\u30D5\u69CB\u9020\u4F53"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -68,8 +68,5 @@ data:
   - test/library-checker/graph/shortest-path.test.cpp
 documentation_of: graph/shortest-path/dijkstra.hpp
 layout: document
-redirect_from:
-- /library/graph/shortest-path/dijkstra.hpp
-- /library/graph/shortest-path/dijkstra.hpp.html
-title: graph/shortest-path/dijkstra.hpp
+title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
 ---

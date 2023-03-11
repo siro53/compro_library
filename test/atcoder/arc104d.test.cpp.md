@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: math/barrett-reduction.hpp
-    title: math/barrett-reduction.hpp
+    title: Barrett Reduction
   - icon: ':heavy_check_mark:'
     path: modint/dynamic-modint.hpp
     title: modint/dynamic-modint.hpp

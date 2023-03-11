@@ -111,8 +111,6 @@ data:
   - test/library-checker/data-structure/segment-add-get-min.test.cpp
 documentation_of: data-structure/segtree/li-chao-tree.hpp
 layout: document
-redirect_from:
-- /library/data-structure/segtree/li-chao-tree.hpp
-- /library/data-structure/segtree/li-chao-tree.hpp.html
-title: data-structure/segtree/li-chao-tree.hpp
+link: https://smijake3.hatenablog.com/entry/2018/06/16/144548
+title: Li Chao Tree
 ---

@@ -6,7 +6,7 @@ data:
     title: data-structure/monoid/add.hpp
   - icon: ':heavy_check_mark:'
     path: data-structure/segtree/dynamic-segtree.hpp
-    title: data-structure/segtree/dynamic-segtree.hpp
+    title: Dynamic Segment Tree
   - icon: ':heavy_check_mark:'
     path: template/template.cpp
     title: template/template.cpp

@@ -43,8 +43,5 @@ data:
   verifiedWith: []
 documentation_of: math/linear-sieve.hpp
 layout: document
-redirect_from:
-- /library/math/linear-sieve.hpp
-- /library/math/linear-sieve.hpp.html
-title: math/linear-sieve.hpp
+title: "\u7DDA\u5F62\u7BE9"
 ---

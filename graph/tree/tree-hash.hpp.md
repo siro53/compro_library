@@ -3,13 +3,13 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
-    title: graph/graph_template.hpp
+    title: "\u30B0\u30E9\u30D5\u69CB\u9020\u4F53"
   - icon: ':heavy_check_mark:'
     path: graph/tree/diameter.hpp
-    title: graph/tree/diameter.hpp
+    title: "\u6728\u306E\u76F4\u5F84"
   - icon: ':heavy_check_mark:'
     path: random/rng.hpp
-    title: random/rng.hpp
+    title: "\u4E71\u6570\u751F\u6210"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -126,8 +126,6 @@ data:
   - test/aoj/aoj2821.test.cpp
 documentation_of: graph/tree/tree-hash.hpp
 layout: document
-redirect_from:
-- /library/graph/tree/tree-hash.hpp
-- /library/graph/tree/tree-hash.hpp.html
-title: graph/tree/tree-hash.hpp
+link: https://snuke.hatenablog.com/entry/2017/02/03/054210
+title: "\u6728\u30CF\u30C3\u30B7\u30E5"
 ---

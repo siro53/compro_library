@@ -72,8 +72,6 @@ data:
   verifiedWith: []
 documentation_of: string/rolling-hash.hpp
 layout: document
-redirect_from:
-- /library/string/rolling-hash.hpp
-- /library/string/rolling-hash.hpp.html
-title: string/rolling-hash.hpp
+link: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6
+title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
 ---

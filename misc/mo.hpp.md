@@ -59,8 +59,6 @@ data:
   - test/library-checker/data-structure/static-range-inversions-query.test.cpp
 documentation_of: misc/mo.hpp
 layout: document
-redirect_from:
-- /library/misc/mo.hpp
-- /library/misc/mo.hpp.html
-title: misc/mo.hpp
+link: https://ei1333.hateblo.jp/entry/2017/09/11/211011
+title: Mo's Algorithm
 ---

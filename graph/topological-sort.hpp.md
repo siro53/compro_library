@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
-    title: graph/graph_template.hpp
+    title: "\u30B0\u30E9\u30D5\u69CB\u9020\u4F53"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -57,8 +57,5 @@ data:
   verifiedWith: []
 documentation_of: graph/topological-sort.hpp
 layout: document
-redirect_from:
-- /library/graph/topological-sort.hpp
-- /library/graph/topological-sort.hpp.html
-title: graph/topological-sort.hpp
+title: "\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8"
 ---

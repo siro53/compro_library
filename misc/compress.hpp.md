@@ -40,13 +40,10 @@ data:
   timestamp: '2023-02-25 23:57:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/data-structure/static-range-inversions-query.test.cpp
   - test/aoj/aoj2426.test.cpp
   - test/aoj/aoj-ALDS1-5-D.test.cpp
+  - test/library-checker/data-structure/static-range-inversions-query.test.cpp
 documentation_of: misc/compress.hpp
 layout: document
-redirect_from:
-- /library/misc/compress.hpp
-- /library/misc/compress.hpp.html
-title: misc/compress.hpp
+title: "\u5EA7\u5727"
 ---

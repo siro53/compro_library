@@ -3,10 +3,10 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
-    title: graph/graph_template.hpp
+    title: "\u30B0\u30E9\u30D5\u69CB\u9020\u4F53"
   - icon: ':heavy_check_mark:'
     path: graph/tree/lca.hpp
-    title: graph/tree/lca.hpp
+    title: "\u6700\u5C0F\u5171\u901A\u7956\u5148(LCA)"
   - icon: ':heavy_check_mark:'
     path: template/template.cpp
     title: template/template.cpp

@@ -34,12 +34,9 @@ data:
   timestamp: '2023-02-25 23:57:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/aoj-ALDS1-1-C_2.test.cpp
   - test/aoj/aoj2858.test.cpp
+  - test/aoj/aoj-ALDS1-1-C_2.test.cpp
 documentation_of: math/eratosthenes.hpp
 layout: document
-redirect_from:
-- /library/math/eratosthenes.hpp
-- /library/math/eratosthenes.hpp.html
-title: math/eratosthenes.hpp
+title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
 ---

@@ -3,10 +3,10 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
-    title: graph/graph_template.hpp
+    title: "\u30B0\u30E9\u30D5\u69CB\u9020\u4F53"
   - icon: ':heavy_check_mark:'
     path: graph/scc.hpp
-    title: graph/scc.hpp
+    title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3(SCC)"
   - icon: ':heavy_check_mark:'
     path: template/template.cpp
     title: template/template.cpp

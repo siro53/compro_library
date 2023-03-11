@@ -73,8 +73,5 @@ data:
   - test/yukicoder/yuki117.test.cpp
 documentation_of: math/binom.hpp
 layout: document
-redirect_from:
-- /library/math/binom.hpp
-- /library/math/binom.hpp.html
-title: math/binom.hpp
+title: "\u4E8C\u9805\u4FC2\u6570"
 ---

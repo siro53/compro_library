@@ -6,10 +6,10 @@ data:
     title: data-structure/BIT.hpp
   - icon: ':heavy_check_mark:'
     path: misc/compress.hpp
-    title: misc/compress.hpp
+    title: "\u5EA7\u5727"
   - icon: ':heavy_check_mark:'
     path: misc/mo.hpp
-    title: misc/mo.hpp
+    title: Mo's Algorithm
   - icon: ':heavy_check_mark:'
     path: template/template.cpp
     title: template/template.cpp

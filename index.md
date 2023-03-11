@@ -59,13 +59,13 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: data-structure/segtree/dynamic-segtree.hpp
-      title: data-structure/segtree/dynamic-segtree.hpp
+      title: Dynamic Segment Tree
     - icon: ':heavy_check_mark:'
       path: data-structure/segtree/li-chao-tree.hpp
-      title: data-structure/segtree/li-chao-tree.hpp
+      title: Li Chao Tree
     - icon: ':heavy_check_mark:'
       path: data-structure/segtree/segtree.hpp
-      title: data-structure/segtree/segtree.hpp
+      title: Segment Tree
   - name: geometry
     pages:
     - icon: ':warning:'
@@ -75,90 +75,90 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: graph/graph_template.hpp
-      title: graph/graph_template.hpp
+      title: "\u30B0\u30E9\u30D5\u69CB\u9020\u4F53"
     - icon: ':warning:'
       path: graph/range-edge-graph.hpp
-      title: graph/range-edge-graph.hpp
+      title: "\u533A\u9593\u306B\u8FBA\u3092\u5F35\u308B\u30C6\u30AF"
     - icon: ':heavy_check_mark:'
       path: graph/scc.hpp
-      title: graph/scc.hpp
+      title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3(SCC)"
     - icon: ':warning:'
       path: graph/topological-sort.hpp
-      title: graph/topological-sort.hpp
+      title: "\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8"
   - name: graph/shortest-path
     pages:
     - icon: ':warning:'
       path: graph/shortest-path/bfs.hpp
-      title: graph/shortest-path/bfs.hpp
+      title: BFS
     - icon: ':heavy_check_mark:'
       path: graph/shortest-path/dijkstra.hpp
-      title: graph/shortest-path/dijkstra.hpp
+      title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
   - name: graph/tree
     pages:
     - icon: ':warning:'
       path: graph/tree/centroid-decomposition.hpp
-      title: graph/tree/centroid-decomposition.hpp
+      title: "\u91CD\u5FC3\u5206\u89E3"
     - icon: ':heavy_check_mark:'
       path: graph/tree/diameter.hpp
-      title: graph/tree/diameter.hpp
+      title: "\u6728\u306E\u76F4\u5F84"
     - icon: ':heavy_check_mark:'
       path: graph/tree/hld.hpp
-      title: graph/tree/hld.hpp
+      title: "HL\u5206\u89E3"
     - icon: ':heavy_check_mark:'
       path: graph/tree/lca.hpp
-      title: graph/tree/lca.hpp
+      title: "\u6700\u5C0F\u5171\u901A\u7956\u5148(LCA)"
     - icon: ':heavy_check_mark:'
       path: graph/tree/tree-hash.hpp
-      title: graph/tree/tree-hash.hpp
+      title: "\u6728\u30CF\u30C3\u30B7\u30E5"
   - name: math
     pages:
     - icon: ':heavy_check_mark:'
       path: math/barrett-reduction.hpp
-      title: math/barrett-reduction.hpp
+      title: Barrett Reduction
     - icon: ':heavy_check_mark:'
       path: math/binom.hpp
-      title: math/binom.hpp
+      title: "\u4E8C\u9805\u4FC2\u6570"
     - icon: ':warning:'
       path: math/divisor.hpp
-      title: math/divisor.hpp
+      title: "\u7D04\u6570\u5217\u6319"
     - icon: ':heavy_check_mark:'
       path: math/eratosthenes.hpp
-      title: math/eratosthenes.hpp
+      title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
     - icon: ':heavy_check_mark:'
       path: math/is-prime.hpp
-      title: math/is-prime.hpp
+      title: "\u7D20\u6570\u5224\u5B9A"
     - icon: ':warning:'
       path: math/linear-sieve.hpp
-      title: math/linear-sieve.hpp
+      title: "\u7DDA\u5F62\u7BE9"
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
-      title: math/matrix.hpp
+      title: "\u884C\u5217\u30E9\u30A4\u30D6\u30E9\u30EA"
     - icon: ':warning:'
       path: math/prime-factor.hpp
-      title: math/prime-factor.hpp
+      title: "\u7D20\u56E0\u6570\u5206\u89E3"
     - icon: ':heavy_check_mark:'
       path: math/segment-factorize.hpp
-      title: math/segment-factorize.hpp
+      title: "\u533A\u9593\u7BE9(\u7D20\u56E0\u6570\u5206\u89E3\u4ED8\u304D)"
     - icon: ':warning:'
       path: math/segment-sieve.hpp
-      title: math/segment-sieve.hpp
+      title: "\u533A\u9593\u7BE9(\u7D20\u6570\u5224\u5B9A\u306E\u307F)"
     - icon: ':heavy_check_mark:'
       path: math/two_sat.hpp
-      title: math/two_sat.hpp
+      title: 2-SAT
   - name: misc
     pages:
     - icon: ':heavy_check_mark:'
       path: misc/compress.hpp
-      title: misc/compress.hpp
+      title: "\u5EA7\u5727"
     - icon: ':warning:'
       path: misc/floor-ceil-div.hpp
-      title: misc/floor-ceil-div.hpp
+      title: "\u5207\u308A\u6368\u3066/\u5207\u308A\u4E0A\u3052"
     - icon: ':heavy_check_mark:'
       path: misc/inversion-number.hpp
-      title: misc/inversion-number.hpp
+      title: "\u8EE2\u5012\u6570"
     - icon: ':heavy_check_mark:'
       path: misc/mo.hpp
-      title: misc/mo.hpp
+      title: Mo's Algorithm
   - name: modint
     pages:
     - icon: ':heavy_check_mark:'
@@ -171,12 +171,12 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: random/rng.hpp
-      title: random/rng.hpp
+      title: "\u4E71\u6570\u751F\u6210"
   - name: string
     pages:
     - icon: ':warning:'
       path: string/rolling-hash.hpp
-      title: string/rolling-hash.hpp
+      title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
   - name: template
     pages:
     - icon: ':heavy_check_mark:'
@@ -296,5 +296,7 @@ data:
       title: test/yukicoder/yuki789.test.cpp
 layout: toppage
 ---
-- このページは競技プログラミング用のスニペットを集めたページです。動作環境はc++17(gcc)を仮定しています。
+- このページは競技プログラミング用のスニペットを集めたページです。
+- 動作環境はc++17(gcc)を仮定しています。
 - バグ等を発見しましたら、[GitHubのissue](https://github.com/siro53/compro_library/issues)にご一報下さるととても喜びます！
+- コピペ等ご自由にどうぞ。

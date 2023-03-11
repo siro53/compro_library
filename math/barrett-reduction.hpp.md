@@ -60,8 +60,5 @@ data:
   - test/atcoder/arc104d.test.cpp
 documentation_of: math/barrett-reduction.hpp
 layout: document
-redirect_from:
-- /library/math/barrett-reduction.hpp
-- /library/math/barrett-reduction.hpp.html
-title: math/barrett-reduction.hpp
+title: Barrett Reduction
 ---

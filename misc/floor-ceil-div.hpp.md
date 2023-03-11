@@ -25,8 +25,5 @@ data:
   verifiedWith: []
 documentation_of: misc/floor-ceil-div.hpp
 layout: document
-redirect_from:
-- /library/misc/floor-ceil-div.hpp
-- /library/misc/floor-ceil-div.hpp.html
-title: misc/floor-ceil-div.hpp
+title: "\u5207\u308A\u6368\u3066/\u5207\u308A\u4E0A\u3052"
 ---

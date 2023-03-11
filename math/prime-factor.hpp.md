@@ -31,8 +31,5 @@ data:
   verifiedWith: []
 documentation_of: math/prime-factor.hpp
 layout: document
-redirect_from:
-- /library/math/prime-factor.hpp
-- /library/math/prime-factor.hpp.html
-title: math/prime-factor.hpp
+title: "\u7D20\u56E0\u6570\u5206\u89E3"
 ---

@@ -4,7 +4,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: graph/tree/tree-hash.hpp
-    title: graph/tree/tree-hash.hpp
+    title: "\u6728\u30CF\u30C3\u30B7\u30E5"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj2821.test.cpp
@@ -49,8 +49,5 @@ data:
   - test/aoj/aoj2821.test.cpp
 documentation_of: random/rng.hpp
 layout: document
-redirect_from:
-- /library/random/rng.hpp
-- /library/random/rng.hpp.html
-title: random/rng.hpp
+title: "\u4E71\u6570\u751F\u6210"
 ---

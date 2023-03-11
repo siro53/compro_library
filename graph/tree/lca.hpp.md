@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
-    title: graph/graph_template.hpp
+    title: "\u30B0\u30E9\u30D5\u69CB\u9020\u4F53"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -84,8 +84,9 @@ data:
   - test/library-checker/tree/lowest-common-ancestor.test.cpp
 documentation_of: graph/tree/lca.hpp
 layout: document
-redirect_from:
-- /library/graph/tree/lca.hpp
-- /library/graph/tree/lca.hpp.html
-title: graph/tree/lca.hpp
+title: "\u6700\u5C0F\u5171\u901A\u7956\u5148(LCA)"
 ---
+
+ダブリングによる実装。
+
+HL分解でLCAを求める方が早いような気がするので、これが必要かどうかは不明。

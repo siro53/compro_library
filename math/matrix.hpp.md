@@ -83,8 +83,5 @@ data:
   - test/yukicoder/yuki1750.test.cpp
 documentation_of: math/matrix.hpp
 layout: document
-redirect_from:
-- /library/math/matrix.hpp
-- /library/math/matrix.hpp.html
-title: math/matrix.hpp
+title: "\u884C\u5217\u30E9\u30A4\u30D6\u30E9\u30EA"
 ---

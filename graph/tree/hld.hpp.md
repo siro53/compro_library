@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
-    title: graph/graph_template.hpp
+    title: "\u30B0\u30E9\u30D5\u69CB\u9020\u4F53"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -144,8 +144,5 @@ data:
   - test/library-checker/tree/lowest-common-ancestor2.test.cpp
 documentation_of: graph/tree/hld.hpp
 layout: document
-redirect_from:
-- /library/graph/tree/hld.hpp
-- /library/graph/tree/hld.hpp.html
-title: graph/tree/hld.hpp
+title: "HL\u5206\u89E3"
 ---

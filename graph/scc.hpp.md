@@ -3,11 +3,11 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
-    title: graph/graph_template.hpp
+    title: "\u30B0\u30E9\u30D5\u69CB\u9020\u4F53"
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: math/two_sat.hpp
-    title: math/two_sat.hpp
+    title: 2-SAT
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/graph/scc.test.cpp
@@ -106,12 +106,9 @@ data:
   timestamp: '2023-02-28 22:24:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/math/two-sat.test.cpp
   - test/library-checker/graph/scc.test.cpp
+  - test/library-checker/math/two-sat.test.cpp
 documentation_of: graph/scc.hpp
 layout: document
-redirect_from:
-- /library/graph/scc.hpp
-- /library/graph/scc.hpp.html
-title: graph/scc.hpp
+title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3(SCC)"
 ---

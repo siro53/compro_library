@@ -61,8 +61,5 @@ data:
   - test/aoj/aoj2858.test.cpp
 documentation_of: math/segment-factorize.hpp
 layout: document
-redirect_from:
-- /library/math/segment-factorize.hpp
-- /library/math/segment-factorize.hpp.html
-title: math/segment-factorize.hpp
+title: "\u533A\u9593\u7BE9(\u7D20\u56E0\u6570\u5206\u89E3\u4ED8\u304D)"
 ---

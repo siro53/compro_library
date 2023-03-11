@@ -47,8 +47,5 @@ data:
   - test/aoj/aoj-ALDS1-5-D.test.cpp
 documentation_of: misc/inversion-number.hpp
 layout: document
-redirect_from:
-- /library/misc/inversion-number.hpp
-- /library/misc/inversion-number.hpp.html
-title: misc/inversion-number.hpp
+title: "\u8EE2\u5012\u6570"
 ---

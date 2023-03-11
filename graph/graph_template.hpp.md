@@ -4,37 +4,37 @@ data:
   _extendedRequiredBy:
   - icon: ':warning:'
     path: graph/range-edge-graph.hpp
-    title: graph/range-edge-graph.hpp
+    title: "\u533A\u9593\u306B\u8FBA\u3092\u5F35\u308B\u30C6\u30AF"
   - icon: ':heavy_check_mark:'
     path: graph/scc.hpp
-    title: graph/scc.hpp
+    title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3(SCC)"
   - icon: ':warning:'
     path: graph/shortest-path/bfs.hpp
-    title: graph/shortest-path/bfs.hpp
+    title: BFS
   - icon: ':heavy_check_mark:'
     path: graph/shortest-path/dijkstra.hpp
-    title: graph/shortest-path/dijkstra.hpp
+    title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
   - icon: ':warning:'
     path: graph/topological-sort.hpp
-    title: graph/topological-sort.hpp
+    title: "\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8"
   - icon: ':warning:'
     path: graph/tree/centroid-decomposition.hpp
-    title: graph/tree/centroid-decomposition.hpp
+    title: "\u91CD\u5FC3\u5206\u89E3"
   - icon: ':heavy_check_mark:'
     path: graph/tree/diameter.hpp
-    title: graph/tree/diameter.hpp
+    title: "\u6728\u306E\u76F4\u5F84"
   - icon: ':heavy_check_mark:'
     path: graph/tree/hld.hpp
-    title: graph/tree/hld.hpp
+    title: "HL\u5206\u89E3"
   - icon: ':heavy_check_mark:'
     path: graph/tree/lca.hpp
-    title: graph/tree/lca.hpp
+    title: "\u6700\u5C0F\u5171\u901A\u7956\u5148(LCA)"
   - icon: ':heavy_check_mark:'
     path: graph/tree/tree-hash.hpp
-    title: graph/tree/tree-hash.hpp
+    title: "\u6728\u30CF\u30C3\u30B7\u30E5"
   - icon: ':heavy_check_mark:'
     path: math/two_sat.hpp
-    title: math/two_sat.hpp
+    title: 2-SAT
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj2821.test.cpp
@@ -109,34 +109,31 @@ data:
   isVerificationFile: false
   path: graph/graph_template.hpp
   requiredBy:
-  - math/two_sat.hpp
-  - graph/shortest-path/bfs.hpp
-  - graph/shortest-path/dijkstra.hpp
+  - graph/topological-sort.hpp
+  - graph/scc.hpp
   - graph/tree/centroid-decomposition.hpp
-  - graph/tree/lca.hpp
   - graph/tree/diameter.hpp
   - graph/tree/hld.hpp
   - graph/tree/tree-hash.hpp
+  - graph/tree/lca.hpp
+  - graph/shortest-path/bfs.hpp
+  - graph/shortest-path/dijkstra.hpp
   - graph/range-edge-graph.hpp
-  - graph/scc.hpp
-  - graph/topological-sort.hpp
+  - math/two_sat.hpp
   timestamp: '2023-02-28 22:24:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/math/two-sat.test.cpp
-  - test/library-checker/graph/scc.test.cpp
-  - test/library-checker/graph/shortest-path.test.cpp
+  - test/aoj/aoj2821.test.cpp
   - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
   - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
   - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
-  - test/library-checker/tree/tree-diameter.test.cpp
-  - test/library-checker/tree/lowest-common-ancestor2.test.cpp
+  - test/library-checker/graph/shortest-path.test.cpp
+  - test/library-checker/graph/scc.test.cpp
   - test/library-checker/tree/lowest-common-ancestor.test.cpp
-  - test/aoj/aoj2821.test.cpp
+  - test/library-checker/tree/lowest-common-ancestor2.test.cpp
+  - test/library-checker/tree/tree-diameter.test.cpp
+  - test/library-checker/math/two-sat.test.cpp
 documentation_of: graph/graph_template.hpp
 layout: document
-redirect_from:
-- /library/graph/graph_template.hpp
-- /library/graph/graph_template.hpp.html
-title: graph/graph_template.hpp
+title: "\u30B0\u30E9\u30D5\u69CB\u9020\u4F53"
 ---
