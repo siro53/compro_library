@@ -97,7 +97,7 @@ template <typename Cost = int> class HeavyLightDecomposition {
     void dfs1(int u, int p, int d) {
         dep[u] = d;
         sz[u] = 1;
-        if(G[u].empty() && G[u].front().to == p) {
+        if(!G[u].empty() && G[u].front().to == p) {
             std::swap(G[u].front(), G[u].back());
         }
         for(auto &e : G[u]) {
