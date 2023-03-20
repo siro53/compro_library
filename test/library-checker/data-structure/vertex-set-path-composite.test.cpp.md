@@ -156,7 +156,7 @@ data:
     \ u) const {\n\t\tassert(isBuilt);\n\t\tassert(0 <= u && u < (int)G.size());\n\
     \t\treturn in[u];\n\t}\n\n  private:\n    Graph<Cost> G;\n    std::vector<int>\
     \ in, out, sz, head, par, dep, rev;\n    bool isBuilt;\n\n    void dfs1(int u,\
-    \ int p, int d) {\n        dep[u] = d;\n        sz[u] = 1;\n        if(G[u].empty()\
+    \ int p, int d) {\n        dep[u] = d;\n        sz[u] = 1;\n        if(!G[u].empty()\
     \ && G[u].front().to == p) {\n            std::swap(G[u].front(), G[u].back());\n\
     \        }\n        for(auto &e : G[u]) {\n            if(e.to == p) continue;\n\
     \            dfs1(e.to, u, d + 1);\n            sz[u] += sz[e.to];\n         \
@@ -246,7 +246,7 @@ data:
   isVerificationFile: true
   path: test/library-checker/data-structure/vertex-set-path-composite.test.cpp
   requiredBy: []
-  timestamp: '2023-02-28 22:24:07+09:00'
+  timestamp: '2023-03-20 10:39:09+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/library-checker/data-structure/vertex-set-path-composite.test.cpp

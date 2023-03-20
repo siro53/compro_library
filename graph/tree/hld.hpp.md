@@ -75,7 +75,7 @@ data:
     \ u) const {\n\t\tassert(isBuilt);\n\t\tassert(0 <= u && u < (int)G.size());\n\
     \t\treturn in[u];\n\t}\n\n  private:\n    Graph<Cost> G;\n    std::vector<int>\
     \ in, out, sz, head, par, dep, rev;\n    bool isBuilt;\n\n    void dfs1(int u,\
-    \ int p, int d) {\n        dep[u] = d;\n        sz[u] = 1;\n        if(G[u].empty()\
+    \ int p, int d) {\n        dep[u] = d;\n        sz[u] = 1;\n        if(!G[u].empty()\
     \ && G[u].front().to == p) {\n            std::swap(G[u].front(), G[u].back());\n\
     \        }\n        for(auto &e : G[u]) {\n            if(e.to == p) continue;\n\
     \            dfs1(e.to, u, d + 1);\n            sz[u] += sz[e.to];\n         \
@@ -120,7 +120,7 @@ data:
     \ u) const {\n\t\tassert(isBuilt);\n\t\tassert(0 <= u && u < (int)G.size());\n\
     \t\treturn in[u];\n\t}\n\n  private:\n    Graph<Cost> G;\n    std::vector<int>\
     \ in, out, sz, head, par, dep, rev;\n    bool isBuilt;\n\n    void dfs1(int u,\
-    \ int p, int d) {\n        dep[u] = d;\n        sz[u] = 1;\n        if(G[u].empty()\
+    \ int p, int d) {\n        dep[u] = d;\n        sz[u] = 1;\n        if(!G[u].empty()\
     \ && G[u].front().to == p) {\n            std::swap(G[u].front(), G[u].back());\n\
     \        }\n        for(auto &e : G[u]) {\n            if(e.to == p) continue;\n\
     \            dfs1(e.to, u, d + 1);\n            sz[u] += sz[e.to];\n         \
@@ -129,17 +129,17 @@ data:
     \        in[u] = idx++;\n        rev[in[u]] = u;\n        for(const auto &e :\
     \ G[u]) {\n            if(e.to == p) continue;\n            head[e.to] = (e.to\
     \ == G[u].front().to ? head[u] : e.to);\n            dfs2(e.to, u, idx);\n   \
-    \     }\n        out[u] = idx;\n    }\n};"
+    \     }\n        out[u] = idx;\n    }\n};\n"
   dependsOn:
   - graph/graph_template.hpp
   isVerificationFile: false
   path: graph/tree/hld.hpp
   requiredBy: []
-  timestamp: '2023-02-28 22:24:07+09:00'
+  timestamp: '2023-03-20 10:39:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
   - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
+  - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
   - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
   - test/library-checker/tree/lowest-common-ancestor2.test.cpp
 documentation_of: graph/tree/hld.hpp
