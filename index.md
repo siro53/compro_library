@@ -23,7 +23,7 @@ data:
       title: data-structure/unionfind.hpp
     - icon: ':heavy_check_mark:'
       path: data-structure/wavelet-matrix.hpp
-      title: Segment Tree
+      title: Wavelet Matrix
   - name: data-structure/monoid
     pages:
     - icon: ':heavy_check_mark:'

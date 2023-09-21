@@ -4,7 +4,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: data-structure/wavelet-matrix.hpp
-    title: Segment Tree
+    title: Wavelet Matrix
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj1549.test.cpp

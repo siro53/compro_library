@@ -6,7 +6,7 @@ data:
     title: data-structure/compact-bitvector.hpp
   - icon: ':heavy_check_mark:'
     path: data-structure/wavelet-matrix.hpp
-    title: Segment Tree
+    title: Wavelet Matrix
   - icon: ':heavy_check_mark:'
     path: template/template.cpp
     title: template/template.cpp

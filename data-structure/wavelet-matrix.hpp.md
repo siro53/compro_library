@@ -166,7 +166,7 @@ data:
   - test/library-checker/data-structure/range-kth-smallest.test.cpp
 documentation_of: data-structure/wavelet-matrix.hpp
 layout: document
-title: Segment Tree
+title: Wavelet Matrix
 ---
 
 ## 概要
