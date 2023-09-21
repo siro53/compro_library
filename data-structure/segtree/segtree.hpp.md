@@ -110,10 +110,10 @@ data:
   timestamp: '2023-02-25 23:57:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
-  - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
-  - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
   - test/yukicoder/yuki1435.test.cpp
+  - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
+  - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
+  - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
 documentation_of: data-structure/segtree/segtree.hpp
 layout: document
 title: Segment Tree

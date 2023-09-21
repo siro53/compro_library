@@ -9,6 +9,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/binary-trie.hpp
       title: data-structure/binary-trie.hpp
+    - icon: ':heavy_check_mark:'
+      path: data-structure/compact-bitvector.hpp
+      title: data-structure/compact-bitvector.hpp
     - icon: ':warning:'
       path: data-structure/range-BIT.hpp
       title: data-structure/range-BIT.hpp
@@ -18,6 +21,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/unionfind.hpp
       title: data-structure/unionfind.hpp
+    - icon: ':heavy_check_mark:'
+      path: data-structure/wavelet-matrix.hpp
+      title: Segment Tree
   - name: data-structure/monoid
     pages:
     - icon: ':heavy_check_mark:'
@@ -200,8 +206,14 @@ data:
       path: test/aoj/aoj-ALDS1-5-D.test.cpp
       title: test/aoj/aoj-ALDS1-5-D.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/aoj/aoj1549.test.cpp
+      title: test/aoj/aoj1549.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/aoj/aoj2426.test.cpp
       title: test/aoj/aoj2426.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/aoj2674.test.cpp
+      title: test/aoj/aoj2674.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/aoj/aoj2821.test.cpp
       title: test/aoj/aoj2821.test.cpp
@@ -227,6 +239,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/library-checker/data-structure/point-add-range-sum.test.cpp
       title: test/library-checker/data-structure/point-add-range-sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/library-checker/data-structure/range-kth-smallest.test.cpp
+      title: test/library-checker/data-structure/range-kth-smallest.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/library-checker/data-structure/segment-add-get-min.test.cpp
       title: test/library-checker/data-structure/segment-add-get-min.test.cpp

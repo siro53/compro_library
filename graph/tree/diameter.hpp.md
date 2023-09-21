@@ -71,8 +71,8 @@ data:
   timestamp: '2023-02-28 22:24:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/tree/tree-diameter.test.cpp
   - test/aoj/aoj2821.test.cpp
+  - test/library-checker/tree/tree-diameter.test.cpp
 documentation_of: graph/tree/diameter.hpp
 layout: document
 title: "\u6728\u306E\u76F4\u5F84"
