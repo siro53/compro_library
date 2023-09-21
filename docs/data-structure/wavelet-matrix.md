@@ -1,5 +1,5 @@
 ---
-title: Segment Tree
+title: Wavelet Matrix
 documentation_of: //data-structure/wavelet-matrix.hpp
 ---
 
