@@ -36,6 +36,9 @@ data:
       path: data-structure/monoid/gcd.hpp
       title: data-structure/monoid/gcd.hpp
     - icon: ':warning:'
+      path: data-structure/monoid/kadane.hpp
+      title: data-structure/monoid/kadane.hpp
+    - icon: ':warning:'
       path: data-structure/monoid/lcm.hpp
       title: data-structure/monoid/lcm.hpp
     - icon: ':warning:'
