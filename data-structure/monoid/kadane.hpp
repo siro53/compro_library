@@ -3,6 +3,7 @@
 #include <limits>
 #include <algorithm>
 
+// ref: https://hotman78.hatenablog.com/entry/2020/06/17/102519
 template <typename T> struct MonoidKadane {
     struct S {
         T lmax, rmax, allmax, sum;
