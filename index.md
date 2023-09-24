@@ -168,7 +168,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: misc/mo.hpp
       title: Mo's Algorithm
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: misc/rle.hpp
       title: misc/rle.hpp
   - name: modint
@@ -309,6 +309,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yukicoder/yuki1435.test.cpp
       title: test/yukicoder/yuki1435.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yukicoder/yuki1469.test.cpp
+      title: test/yukicoder/yuki1469.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yukicoder/yuki1750.test.cpp
       title: test/yukicoder/yuki1750.test.cpp

@@ -97,6 +97,9 @@ data:
     path: test/yukicoder/yuki1435.test.cpp
     title: test/yukicoder/yuki1435.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yukicoder/yuki1469.test.cpp
+    title: test/yukicoder/yuki1469.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki1750.test.cpp
     title: test/yukicoder/yuki1750.test.cpp
   - icon: ':heavy_check_mark:'
@@ -175,6 +178,7 @@ data:
   - test/atcoder/arc104d.test.cpp
   - test/yukicoder/yuki789.test.cpp
   - test/yukicoder/yuki1435.test.cpp
+  - test/yukicoder/yuki1469.test.cpp
   - test/yukicoder/yuki1750.test.cpp
   - test/aoj/aoj2426.test.cpp
   - test/aoj/aoj2674.test.cpp
