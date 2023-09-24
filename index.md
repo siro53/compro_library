@@ -168,6 +168,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: misc/mo.hpp
       title: Mo's Algorithm
+    - icon: ':warning:'
+      path: misc/rle.hpp
+      title: misc/rle.hpp
   - name: modint
     pages:
     - icon: ':heavy_check_mark:'
