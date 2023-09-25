@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data-structure/segtree/dynamic-segtree.hpp
     title: Dynamic Segment Tree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []

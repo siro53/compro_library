@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/convolution/fft.hpp
     title: math/convolution/fft.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://yukicoder.me/problems/no/440
+    PROBLEM: https://yukicoder.me/problems/no/206
     links:
-    - https://yukicoder.me/problems/no/440
-  bundledCode: "#line 1 \"test/yukicoder/yuki440.test.cpp\"\n#define PROBLEM \"https://yukicoder.me/problems/no/440\"\
+    - https://yukicoder.me/problems/no/206
+  bundledCode: "#line 1 \"test/yukicoder/yuki440.test.cpp\"\n#define PROBLEM \"https://yukicoder.me/problems/no/206\"\
     \n#line 1 \"template/template.cpp\"\n#pragma region Macros\n#include <bits/stdc++.h>\n\
     using namespace std;\ntemplate <class T> inline bool chmax(T &a, T b) {\n    if(a\
     \ < b) {\n        a = b;\n        return 1;\n    }\n    return 0;\n}\ntemplate\
@@ -104,7 +104,7 @@ data:
     \ }\n    REP(i, M) {\n        int b;\n        cin >> b;\n        fb[N - b] +=\
     \ 1;\n    }\n    auto c = fft::convolution<double>(fa, fb);\n    int Q;\n    cin\
     \ >> Q;\n    REP(v, Q) cout << (ll)(c[N + v] + 0.5) << '\\n';\n}\n"
-  code: "#define PROBLEM \"https://yukicoder.me/problems/no/440\"\n#include \"../../template/template.cpp\"\
+  code: "#define PROBLEM \"https://yukicoder.me/problems/no/206\"\n#include \"../../template/template.cpp\"\
     \n#include \"../../math/convolution/fft.hpp\"\n\nint main() {\n    int L, M, N;\n\
     \    cin >> L >> M >> N;\n    vector<double> fa(N+1, 0), fb(N+1, 0);\n    REP(i,\
     \ L) {\n        int a;\n        cin >> a;\n        fa[a] += 1;\n    }\n    REP(i,\
@@ -117,8 +117,8 @@ data:
   isVerificationFile: true
   path: test/yukicoder/yuki440.test.cpp
   requiredBy: []
-  timestamp: '2023-09-26 00:52:28+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-09-26 00:54:55+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yukicoder/yuki440.test.cpp
 layout: document
