@@ -102,12 +102,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki1750.test.cpp
     title: test/yukicoder/yuki1750.test.cpp
+  - icon: ':x:'
+    path: test/yukicoder/yuki440.test.cpp
+    title: test/yukicoder/yuki440.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki789.test.cpp
     title: test/yukicoder/yuki789.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"template/template.cpp\"\n#pragma region Macros\n#include\
@@ -173,9 +176,10 @@ data:
   requiredBy:
   - test/library-checker/data-structure/point-set-range-composite.cpp
   timestamp: '2023-02-25 23:57:16+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/atcoder/arc104d.test.cpp
+  - test/yukicoder/yuki440.test.cpp
   - test/yukicoder/yuki789.test.cpp
   - test/yukicoder/yuki1435.test.cpp
   - test/yukicoder/yuki1469.test.cpp

@@ -154,6 +154,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/two_sat.hpp
       title: 2-SAT
+  - name: math/convolution
+    pages:
+    - icon: ':x:'
+      path: math/convolution/fft.hpp
+      title: math/convolution/fft.hpp
   - name: misc
     pages:
     - icon: ':heavy_check_mark:'
@@ -191,7 +196,7 @@ data:
       title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
   - name: template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/template.cpp
       title: template/template.cpp
   - name: test/library-checker/data-structure
@@ -315,6 +320,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yukicoder/yuki1750.test.cpp
       title: test/yukicoder/yuki1750.test.cpp
+    - icon: ':x:'
+      path: test/yukicoder/yuki440.test.cpp
+      title: test/yukicoder/yuki440.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yukicoder/yuki789.test.cpp
       title: test/yukicoder/yuki789.test.cpp
