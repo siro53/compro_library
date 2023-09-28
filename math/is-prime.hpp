@@ -30,16 +30,16 @@ constexpr bool is_prime(int n) {
 
 constexpr bool is_prime(long long n) {
     if(n <= 1) return false;
-    if(n == 2 or n == 3 or n == 5 or n == 7 or n == 11 or n == 13 or n == 17 or
-       n == 19 or n == 23 or n == 29 or n == 31 or n == 37)
-        return true;
+    if(n == 2) return true;
     if((n & 1) == 0) return false;
     long long d = n - 1;
     while((d & 1) == 0) d >>= 1;
-    constexpr std::array<int, 12> bases = {
-        2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37,
+    constexpr std::array<long long, 7> bases = {
+        2, 325, 9375, 28178, 450775, 9780504, 1795265022
     };
-    for(int a : bases) {
+    for(long long a : bases) {
+        a %= n;
+        if(a == 0) continue;
         long long t = d;
         long long y = pow_mod(a, t, n);
         while(t != n - 1 && y != 1 && y != n - 1) {
