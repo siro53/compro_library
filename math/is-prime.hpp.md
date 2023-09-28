@@ -82,7 +82,9 @@ $p$ を法とした剰余において、$1$ の平方根として $-1,1$ が存�
 
 $1$ の平方根を $x (\neq 1,-1) \pmod p$ とすると、
 
-$\begin{aligned} x^2 &\equiv 1 \pmod p \\ (x-1)(x+1) &\equiv 0 \pmod p\end{aligned}$
+$x^2 \equiv 1 \pmod p$
+
+$(x-1)(x+1) \equiv 0 \pmod p$
 
 $p$ は素数なので、$x+1,x-1$ のどちらか一方は必ず $p$ で割り切れる。
 しかし、$x \neq 1,-1 \pmod p$ より $x+1,x-1$ は $p$ で割り切れない。よって矛盾が生じる。
