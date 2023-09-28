@@ -9,30 +9,34 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj-ALDS1-1-C.test.cpp
     title: test/aoj/aoj-ALDS1-1-C.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/library-checker/math/primality-test.test.cpp
+    title: test/library-checker/math/primality-test.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/pow_mod.hpp\"\n\nconstexpr long long pow_mod(long long\
-    \ x, long long k, int m) {\n    unsigned int mod = m;\n    unsigned long long\
-    \ res = 1;\n    unsigned long long mul = (x >= 0 ? x % mod : x % mod + mod);\n\
-    \    while(k) {\n        if(k & 1) (res *= mul) %= m;\n        (mul *= mul) %=\
-    \ m;\n        k >>= 1;\n    }\n    return res;\n}\n"
-  code: "#pragma once\n\nconstexpr long long pow_mod(long long x, long long k, int\
-    \ m) {\n    unsigned int mod = m;\n    unsigned long long res = 1;\n    unsigned\
-    \ long long mul = (x >= 0 ? x % mod : x % mod + mod);\n    while(k) {\n      \
-    \  if(k & 1) (res *= mul) %= m;\n        (mul *= mul) %= m;\n        k >>= 1;\n\
-    \    }\n    return res;\n}"
+    \ x, long long k, long long m) {\n    long long res = 1;\n    long long mul =\
+    \ (x >= 0 ? x % m : x % m + m);\n    while(k) {\n        if(k & 1) res = (__int128_t)res\
+    \ * mul % m;\n        mul = (__int128_t)mul * mul % m;\n        k >>= 1;\n   \
+    \ }\n    return res;\n}\n"
+  code: "#pragma once\n\nconstexpr long long pow_mod(long long x, long long k, long\
+    \ long m) {\n    long long res = 1;\n    long long mul = (x >= 0 ? x % m : x %\
+    \ m + m);\n    while(k) {\n        if(k & 1) res = (__int128_t)res * mul % m;\n\
+    \        mul = (__int128_t)mul * mul % m;\n        k >>= 1;\n    }\n    return\
+    \ res;\n}"
   dependsOn: []
   isVerificationFile: false
   path: math/pow_mod.hpp
   requiredBy:
   - math/is-prime.hpp
-  timestamp: '2023-09-29 00:04:11+09:00'
+  timestamp: '2023-09-29 01:34:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj-ALDS1-1-C.test.cpp
+  - test/library-checker/math/primality-test.test.cpp
 documentation_of: math/pow_mod.hpp
 layout: document
 redirect_from:

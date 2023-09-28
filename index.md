@@ -291,6 +291,9 @@ data:
   - name: test/library-checker/math
     pages:
     - icon: ':heavy_check_mark:'
+      path: test/library-checker/math/primality-test.test.cpp
+      title: test/library-checker/math/primality-test.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/library-checker/math/two-sat.test.cpp
       title: test/library-checker/math/two-sat.test.cpp
   - name: test/library-checker/tree

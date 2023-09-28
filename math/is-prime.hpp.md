@@ -9,35 +9,37 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj-ALDS1-1-C.test.cpp
     title: test/aoj/aoj-ALDS1-1-C.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/library-checker/math/primality-test.test.cpp
+    title: test/library-checker/math/primality-test.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/is-prime.hpp\"\n\n#include <array>\n\n#line 2 \"math/pow_mod.hpp\"\
-    \n\nconstexpr long long pow_mod(long long x, long long k, int m) {\n    unsigned\
-    \ int mod = m;\n    unsigned long long res = 1;\n    unsigned long long mul =\
-    \ (x >= 0 ? x % mod : x % mod + mod);\n    while(k) {\n        if(k & 1) (res\
-    \ *= mul) %= m;\n        (mul *= mul) %= m;\n        k >>= 1;\n    }\n    return\
-    \ res;\n}\n#line 6 \"math/is-prime.hpp\"\n\n/*\nref: Fast Primality Testing for\
-    \ Integers That Fit into a Machine Word\nMichal Fori\u02C7sek and Jakub Jan\u02C7\
-    cina\n*/\n\nconstexpr bool is_prime(int n) {\n    if(n <= 1) return false;\n \
-    \   if(n == 2 or n == 7 or n == 61) return true;\n    if((n & 1) == 0) return\
-    \ false;\n    long long d = n - 1;\n    while((d & 1) == 0) d >>= 1;\n    constexpr\
-    \ std::array<int, 3> bases = {2, 7, 61};\n    for(int a : bases) {\n        long\
-    \ long t = d;\n        long long y = pow_mod(a, t, n);\n        while(t != n -\
-    \ 1 && y != 1 && y != n - 1) {\n            (y *= y) %= n;\n            t <<=\
-    \ 1;\n        }\n        if(y != n - 1 && (t & 1) == 0) return false;\n    }\n\
-    \    return true;\n}\n\nconstexpr bool is_prime(long long n) {\n    if(n <= 1)\
-    \ return false;\n    if(n == 2 or n == 3 or n == 5 or n == 7 or n == 11 or n ==\
-    \ 13 or n == 17 or\n       n == 19 or n == 23 or n == 29 or n == 31 or n == 37)\n\
-    \        return true;\n    if((n & 1) == 0) return false;\n    long long d = n\
-    \ - 1;\n    while((d & 1) == 0) d >>= 1;\n    constexpr std::array<int, 12> bases\
-    \ = {\n        2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37,\n    };\n    for(int\
-    \ a : bases) {\n        long long t = d;\n        long long y = pow_mod(a, t,\
-    \ n);\n        while(t != n - 1 && y != 1 && y != n - 1) {\n            y = (__int128_t)y\
-    \ * y % n;\n            t <<= 1;\n        }\n        if(y != n - 1 && (t & 1)\
-    \ == 0) return false;\n    }\n    return true;\n}\n"
+    \n\nconstexpr long long pow_mod(long long x, long long k, long long m) {\n   \
+    \ long long res = 1;\n    long long mul = (x >= 0 ? x % m : x % m + m);\n    while(k)\
+    \ {\n        if(k & 1) res = (__int128_t)res * mul % m;\n        mul = (__int128_t)mul\
+    \ * mul % m;\n        k >>= 1;\n    }\n    return res;\n}\n#line 6 \"math/is-prime.hpp\"\
+    \n\n/*\nref: Fast Primality Testing for Integers That Fit into a Machine Word\n\
+    Michal Fori\u02C7sek and Jakub Jan\u02C7cina\n*/\n\nconstexpr bool is_prime(int\
+    \ n) {\n    if(n <= 1) return false;\n    if(n == 2 or n == 7 or n == 61) return\
+    \ true;\n    if((n & 1) == 0) return false;\n    long long d = n - 1;\n    while((d\
+    \ & 1) == 0) d >>= 1;\n    constexpr std::array<int, 3> bases = {2, 7, 61};\n\
+    \    for(int a : bases) {\n        long long t = d;\n        long long y = pow_mod(a,\
+    \ t, n);\n        while(t != n - 1 && y != 1 && y != n - 1) {\n            (y\
+    \ *= y) %= n;\n            t <<= 1;\n        }\n        if(y != n - 1 && (t &\
+    \ 1) == 0) return false;\n    }\n    return true;\n}\n\nconstexpr bool is_prime(long\
+    \ long n) {\n    if(n <= 1) return false;\n    if(n == 2) return true;\n    if((n\
+    \ & 1) == 0) return false;\n    long long d = n - 1;\n    while((d & 1) == 0)\
+    \ d >>= 1;\n    constexpr std::array<long long, 7> bases = {\n        2, 325,\
+    \ 9375, 28178, 450775, 9780504, 1795265022\n    };\n    for(long long a : bases)\
+    \ {\n        a %= n;\n        if(a == 0) continue;\n        long long t = d;\n\
+    \        long long y = pow_mod(a, t, n);\n        while(t != n - 1 && y != 1 &&\
+    \ y != n - 1) {\n            y = (__int128_t)y * y % n;\n            t <<= 1;\n\
+    \        }\n        if(y != n - 1 && (t & 1) == 0) return false;\n    }\n    return\
+    \ true;\n}\n"
   code: "#pragma once\n\n#include <array>\n\n#include \"pow_mod.hpp\"\n\n/*\nref:\
     \ Fast Primality Testing for Integers That Fit into a Machine Word\nMichal Fori\u02C7\
     sek and Jakub Jan\u02C7cina\n*/\n\nconstexpr bool is_prime(int n) {\n    if(n\
@@ -48,25 +50,25 @@ data:
     \ n);\n        while(t != n - 1 && y != 1 && y != n - 1) {\n            (y *=\
     \ y) %= n;\n            t <<= 1;\n        }\n        if(y != n - 1 && (t & 1)\
     \ == 0) return false;\n    }\n    return true;\n}\n\nconstexpr bool is_prime(long\
-    \ long n) {\n    if(n <= 1) return false;\n    if(n == 2 or n == 3 or n == 5 or\
-    \ n == 7 or n == 11 or n == 13 or n == 17 or\n       n == 19 or n == 23 or n ==\
-    \ 29 or n == 31 or n == 37)\n        return true;\n    if((n & 1) == 0) return\
-    \ false;\n    long long d = n - 1;\n    while((d & 1) == 0) d >>= 1;\n    constexpr\
-    \ std::array<int, 12> bases = {\n        2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31,\
-    \ 37,\n    };\n    for(int a : bases) {\n        long long t = d;\n        long\
-    \ long y = pow_mod(a, t, n);\n        while(t != n - 1 && y != 1 && y != n - 1)\
-    \ {\n            y = (__int128_t)y * y % n;\n            t <<= 1;\n        }\n\
-    \        if(y != n - 1 && (t & 1) == 0) return false;\n    }\n    return true;\n\
-    }"
+    \ long n) {\n    if(n <= 1) return false;\n    if(n == 2) return true;\n    if((n\
+    \ & 1) == 0) return false;\n    long long d = n - 1;\n    while((d & 1) == 0)\
+    \ d >>= 1;\n    constexpr std::array<long long, 7> bases = {\n        2, 325,\
+    \ 9375, 28178, 450775, 9780504, 1795265022\n    };\n    for(long long a : bases)\
+    \ {\n        a %= n;\n        if(a == 0) continue;\n        long long t = d;\n\
+    \        long long y = pow_mod(a, t, n);\n        while(t != n - 1 && y != 1 &&\
+    \ y != n - 1) {\n            y = (__int128_t)y * y % n;\n            t <<= 1;\n\
+    \        }\n        if(y != n - 1 && (t & 1) == 0) return false;\n    }\n    return\
+    \ true;\n}"
   dependsOn:
   - math/pow_mod.hpp
   isVerificationFile: false
   path: math/is-prime.hpp
   requiredBy: []
-  timestamp: '2023-09-29 00:04:11+09:00'
+  timestamp: '2023-09-29 01:34:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj-ALDS1-1-C.test.cpp
+  - test/library-checker/math/primality-test.test.cpp
 documentation_of: math/is-prime.hpp
 layout: document
 title: "\u7D20\u6570\u5224\u5B9A"
@@ -109,7 +111,7 @@ $a^{n-1} \equiv a^{d \cdot 2^{s}} \equiv 1 \pmod n$
 
 よって、$a^{n-1} \pmod n$ の平方根は $-1$ または $1 \pmod n$ である。
 
-平方根が $-1$ の時は 2番目の式が成立する。$1$ だった時はまた平方根を考える。このように平方根を取り続け、1度も平方根にならず $r=0$ となった時を考える。
+平方根が $-1$ の時は 2番目の式が成立する。$1$ だった時はまた平方根を考える。このように平方根を取り続け、1度も $-1$ にならず $r=0$ となった時を考える。
 
 この時 $a^d \equiv 1 \pmod n$ が成り立ち、1番目の式が成立する。
 
