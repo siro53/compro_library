@@ -142,6 +142,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: "\u884C\u5217\u30E9\u30A4\u30D6\u30E9\u30EA"
+    - icon: ':heavy_check_mark:'
+      path: math/pow_mod.hpp
+      title: math/pow_mod.hpp
     - icon: ':warning:'
       path: math/prime-factor.hpp
       title: "\u7D20\u56E0\u6570\u5206\u89E3"

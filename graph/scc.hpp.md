@@ -106,8 +106,8 @@ data:
   timestamp: '2023-02-28 22:24:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/math/two-sat.test.cpp
   - test/library-checker/graph/scc.test.cpp
+  - test/library-checker/math/two-sat.test.cpp
 documentation_of: graph/scc.hpp
 layout: document
 title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3(SCC)"

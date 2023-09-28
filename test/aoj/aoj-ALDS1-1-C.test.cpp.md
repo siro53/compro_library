@@ -5,6 +5,9 @@ data:
     path: math/is-prime.hpp
     title: "\u7D20\u6570\u5224\u5B9A"
   - icon: ':heavy_check_mark:'
+    path: math/pow_mod.hpp
+    title: math/pow_mod.hpp
+  - icon: ':heavy_check_mark:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
@@ -46,14 +49,33 @@ data:
     \ = 998244353;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0,\
     \ -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\nint popcount(int\
     \ x) { return __builtin_popcount(x); }\nll popcount(ll x) { return __builtin_popcountll(x);\
-    \ }\n#pragma endregion Macros\n#line 2 \"math/is-prime.hpp\"\n\n#include <type_traits>\n\
-    \ntemplate <class T = int> bool is_prime(T n) {\n    static_assert(std::is_integral<T>::value\
-    \ == true, \"type 'T' should be integer.\");\n    if(n <= 1) return false;\n \
-    \   for(T i = 2; i * i <= n; i++) {\n        if(n % i == 0) return false;\n  \
-    \  }\n    return true;\n}\n#line 4 \"test/aoj/aoj-ALDS1-1-C.test.cpp\"\n\nint\
-    \ main() {\n    int n;\n    cin >> n;\n    int ans = 0;\n    while(n--) {\n  \
-    \      int p;\n        cin >> p;\n        ans += is_prime(p);\n    }\n    cout\
-    \ << ans << endl;\n}\n"
+    \ }\n#pragma endregion Macros\n#line 2 \"math/is-prime.hpp\"\n\n#line 4 \"math/is-prime.hpp\"\
+    \n\n#line 2 \"math/pow_mod.hpp\"\n\nconstexpr long long pow_mod(long long x, long\
+    \ long k, int m) {\n    unsigned int mod = m;\n    unsigned long long res = 1;\n\
+    \    unsigned long long mul = (x >= 0 ? x % mod : x % mod + mod);\n    while(k)\
+    \ {\n        if(k & 1) (res *= mul) %= m;\n        (mul *= mul) %= m;\n      \
+    \  k >>= 1;\n    }\n    return res;\n}\n#line 6 \"math/is-prime.hpp\"\n\n/*\n\
+    ref: Fast Primality Testing for Integers That Fit into a Machine Word\nMichal\
+    \ Fori\u02C7sek and Jakub Jan\u02C7cina\n*/\n\nconstexpr bool is_prime(int n)\
+    \ {\n    if(n <= 1) return false;\n    if(n == 2 or n == 7 or n == 61) return\
+    \ true;\n    if((n & 1) == 0) return false;\n    long long d = n - 1;\n    while((d\
+    \ & 1) == 0) d >>= 1;\n    constexpr std::array<int, 3> bases = {2, 7, 61};\n\
+    \    for(int a : bases) {\n        long long t = d;\n        long long y = pow_mod(a,\
+    \ t, n);\n        while(t != n - 1 && y != 1 && y != n - 1) {\n            (y\
+    \ *= y) %= n;\n            t <<= 1;\n        }\n        if(y != n - 1 && (t &\
+    \ 1) == 0) return false;\n    }\n    return true;\n}\n\nconstexpr bool is_prime(long\
+    \ long n) {\n    if(n <= 1) return false;\n    if(n == 2 or n == 3 or n == 5 or\
+    \ n == 7 or n == 11 or n == 13 or n == 17 or\n       n == 19 or n == 23 or n ==\
+    \ 29 or n == 31 or n == 37)\n        return true;\n    if((n & 1) == 0) return\
+    \ false;\n    long long d = n - 1;\n    while((d & 1) == 0) d >>= 1;\n    constexpr\
+    \ std::array<int, 12> bases = {\n        2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31,\
+    \ 37,\n    };\n    for(int a : bases) {\n        long long t = d;\n        long\
+    \ long y = pow_mod(a, t, n);\n        while(t != n - 1 && y != 1 && y != n - 1)\
+    \ {\n            y = (__int128_t)y * y % n;\n            t <<= 1;\n        }\n\
+    \        if(y != n - 1 && (t & 1) == 0) return false;\n    }\n    return true;\n\
+    }\n#line 4 \"test/aoj/aoj-ALDS1-1-C.test.cpp\"\n\nint main() {\n    int n;\n \
+    \   cin >> n;\n    int ans = 0;\n    while(n--) {\n        int p;\n        cin\
+    \ >> p;\n        ans += is_prime(p);\n    }\n    cout << ans << endl;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_C&lang=jp\"\
     \n#include \"../../template/template.cpp\"\n#include \"../../math/is-prime.hpp\"\
     \n\nint main() {\n    int n;\n    cin >> n;\n    int ans = 0;\n    while(n--)\
@@ -62,10 +84,11 @@ data:
   dependsOn:
   - template/template.cpp
   - math/is-prime.hpp
+  - math/pow_mod.hpp
   isVerificationFile: true
   path: test/aoj/aoj-ALDS1-1-C.test.cpp
   requiredBy: []
-  timestamp: '2023-02-25 23:57:16+09:00'
+  timestamp: '2023-09-29 00:04:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/aoj-ALDS1-1-C.test.cpp
