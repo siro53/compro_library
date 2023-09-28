@@ -34,7 +34,7 @@ $n$ が素数ならば、全ての $a \in \{0,1,2,...,n-1\}$ について:
 #### 証明
 フェルマーの小定理より、
 
-$\begin{aligned}a^{n-1} &\equiv 1 \pmod n \\ a^{d \cdot 2^s} &\equiv 1 \pmod n\end{aligned}$
+$a^{n-1} \equiv a^{d \cdot 2^{s}} \equiv 1 \pmod n$
 
 よって、$a^{n-1} \pmod n$ の平方根は $-1$ または $1 \pmod n$ である。
 
