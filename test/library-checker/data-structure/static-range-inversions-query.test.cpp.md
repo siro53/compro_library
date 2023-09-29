@@ -40,16 +40,17 @@ data:
     \ lsb(int i) { return i & (-i); }\n};\n#line 2 \"misc/compress.hpp\"\n\n#include\
     \ <algorithm>\n#line 5 \"misc/compress.hpp\"\n\ntemplate <typename T> class Compress\
     \ {\n  public:\n    Compress() = default;\n    explicit Compress(const std::vector<T>\
-    \ &v) : dat(v) {\n        std::sort(dat.begin(), dat.end());\n        dat.erase(std::unique(dat.begin(),\
-    \ dat.end()), dat.end());\n    }\n    int get(T val) const {\n        int pos\
-    \ = std::lower_bound(dat.begin(), dat.end(), val) - dat.begin();\n        return\
-    \ pos;\n    }\n    T operator[](const int &i) const { return dat[i]; }\n    size_t\
-    \ size() const { return dat.size(); }\n\n  private:\n    std::vector<T> dat;\n\
-    };\n#line 2 \"misc/mo.hpp\"\n\n#line 5 \"misc/mo.hpp\"\n#include <cmath>\n#include\
-    \ <numeric>\n#line 8 \"misc/mo.hpp\"\n\nclass Mo {\n  public:\n    explicit Mo(int\
-    \ n)\n        : n(n), l(0), r(0), idx(0), BUCKET_SIZE(std::sqrt(n)), isBuilt(false)\
-    \ {}\n    void insert(int l, int r) {\n        assert(0 <= l and l < r and r <=\
-    \ n);\n        L.push_back(l);\n        R.push_back(r);\n    }\n    void set_bucketsize(int\
+    \ &v) : dat(v) {\n        build();\n    }\n    void push_back(T val) { dat.push_back(val);\
+    \ }\n\tvoid build() {\n\t\tstd::sort(dat.begin(), dat.end());\n        dat.erase(std::unique(dat.begin(),\
+    \ dat.end()), dat.end());\n\t}\n    int get(T val) const {\n        int pos =\
+    \ std::lower_bound(dat.begin(), dat.end(), val) - dat.begin();\n        return\
+    \ pos;\n    }\n    T operator[](int i) const { return dat[i]; }\n    size_t size()\
+    \ const { return dat.size(); }\n\n  private:\n    std::vector<T> dat;\n};\n#line\
+    \ 2 \"misc/mo.hpp\"\n\n#line 5 \"misc/mo.hpp\"\n#include <cmath>\n#include <numeric>\n\
+    #line 8 \"misc/mo.hpp\"\n\nclass Mo {\n  public:\n    explicit Mo(int n)\n   \
+    \     : n(n), l(0), r(0), idx(0), BUCKET_SIZE(std::sqrt(n)), isBuilt(false) {}\n\
+    \    void insert(int l, int r) {\n        assert(0 <= l and l < r and r <= n);\n\
+    \        L.push_back(l);\n        R.push_back(r);\n    }\n    void set_bucketsize(int\
     \ bs) {\n        assert(!isBuilt);\n        BUCKET_SIZE = std::max(1, bs);\n \
     \   }\n    void build() {\n        ord.resize(L.size());\n        std::iota(ord.begin(),\
     \ ord.end(), 0);\n        std::sort(ord.begin(), ord.end(), [&](int a, int b)\
@@ -133,7 +134,7 @@ data:
   isVerificationFile: true
   path: test/library-checker/data-structure/static-range-inversions-query.test.cpp
   requiredBy: []
-  timestamp: '2023-02-25 23:57:16+09:00'
+  timestamp: '2023-09-30 04:41:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/library-checker/data-structure/static-range-inversions-query.test.cpp
