@@ -1,19 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':warning:'
     path: math/barrett-reduction.hpp
     title: Barrett Reduction
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: test/atcoder/arc104d.test.cpp
-    title: test/atcoder/arc104d.test.cpp
-  _isVerificationFailed: true
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
-    links: []
+    links:
+    - https://atcoder.jp/contests/arc104/submissions/38888866
   bundledCode: "#line 2 \"modint/dynamic-modint.hpp\"\n\n#include <cassert>\n#include\
     \ <istream>\n#include <ostream>\n\n#line 2 \"math/barrett-reduction.hpp\"\n\n\
     #include <utility>\n\nclass BarrettReduction {\npublic:\n    BarrettReduction():\
@@ -32,21 +30,22 @@ data:
     \ v =  (unsigned long long)(((__uint128_t)a * m_inv) >> 64);\n        unsigned\
     \ int r = (unsigned int)((unsigned long long)a - v * m);\n        if(m <= r) r\
     \ += m;\n        return {v, r};\n    }\nprivate:\n    unsigned int m;\n    unsigned\
-    \ long long m_inv;\n};\n#line 8 \"modint/dynamic-modint.hpp\"\n\nclass DynamicModInt\
-    \ {\n  public:\n    DynamicModInt() : x(0) {}\n    DynamicModInt(long long y)\n\
-    \        : x(y >= 0\n                ? y % (long long)mod\n                : ((long\
-    \ long)mod - (-y) % (long long)mod) % (long long)mod) {}\n    static void set_mod(unsigned\
-    \ int m) {\n        assert(m > 0);\n        mod = m;\n        bt = BarrettReduction(m);\n\
-    \    }\n    unsigned int val() const { return x; }\n    DynamicModInt &operator+=(const\
-    \ DynamicModInt &p) {\n        if((x += p.x) >= mod) x -= mod;\n        return\
-    \ *this;\n    }\n    DynamicModInt &operator-=(const DynamicModInt &p) {\n   \
-    \     if((x += (mod - p.x)) >= mod) x -= mod;\n        return *this;\n    }\n\
-    \    DynamicModInt &operator*=(const DynamicModInt &p) {\n        x = bt.mul(x,\
-    \ p.x);\n        return *this;\n    }\n    DynamicModInt &operator/=(const DynamicModInt\
-    \ &p) {\n        *this *= p.inv();\n        return *this;\n    }\n    DynamicModInt\
-    \ operator-() const { return DynamicModInt(-x); }\n    DynamicModInt operator+(const\
-    \ DynamicModInt &p) const {\n        return DynamicModInt(*this) += p;\n    }\n\
-    \    DynamicModInt operator-(const DynamicModInt &p) const {\n        return DynamicModInt(*this)\
+    \ long long m_inv;\n};\n#line 8 \"modint/dynamic-modint.hpp\"\n\n// verify: https://atcoder.jp/contests/arc104/submissions/38888866\n\
+    class DynamicModInt {\n  public:\n    DynamicModInt() : x(0) {}\n    DynamicModInt(long\
+    \ long y)\n        : x(y >= 0\n                ? y % (long long)mod\n        \
+    \        : ((long long)mod - (-y) % (long long)mod) % (long long)mod) {}\n   \
+    \ static void set_mod(unsigned int m) {\n        assert(m > 0);\n        mod =\
+    \ m;\n        bt = BarrettReduction(m);\n    }\n    unsigned int val() const {\
+    \ return x; }\n    DynamicModInt &operator+=(const DynamicModInt &p) {\n     \
+    \   if((x += p.x) >= mod) x -= mod;\n        return *this;\n    }\n    DynamicModInt\
+    \ &operator-=(const DynamicModInt &p) {\n        if((x += (mod - p.x)) >= mod)\
+    \ x -= mod;\n        return *this;\n    }\n    DynamicModInt &operator*=(const\
+    \ DynamicModInt &p) {\n        x = bt.mul(x, p.x);\n        return *this;\n  \
+    \  }\n    DynamicModInt &operator/=(const DynamicModInt &p) {\n        *this *=\
+    \ p.inv();\n        return *this;\n    }\n    DynamicModInt operator-() const\
+    \ { return DynamicModInt(-x); }\n    DynamicModInt operator+(const DynamicModInt\
+    \ &p) const {\n        return DynamicModInt(*this) += p;\n    }\n    DynamicModInt\
+    \ operator-(const DynamicModInt &p) const {\n        return DynamicModInt(*this)\
     \ -= p;\n    }\n    DynamicModInt operator*(const DynamicModInt &p) const {\n\
     \        return DynamicModInt(*this) *= p;\n    }\n    DynamicModInt operator/(const\
     \ DynamicModInt &p) const {\n        return DynamicModInt(*this) /= p;\n    }\n\
@@ -66,21 +65,22 @@ data:
     \ { return mod; }\n\n  private:\n    unsigned int x;\n    static inline unsigned\
     \ int mod;\n    static inline BarrettReduction bt;\n};\n"
   code: "#pragma once\n\n#include <cassert>\n#include <istream>\n#include <ostream>\n\
-    \n#include \"../math/barrett-reduction.hpp\"\n\nclass DynamicModInt {\n  public:\n\
-    \    DynamicModInt() : x(0) {}\n    DynamicModInt(long long y)\n        : x(y\
-    \ >= 0\n                ? y % (long long)mod\n                : ((long long)mod\
-    \ - (-y) % (long long)mod) % (long long)mod) {}\n    static void set_mod(unsigned\
-    \ int m) {\n        assert(m > 0);\n        mod = m;\n        bt = BarrettReduction(m);\n\
-    \    }\n    unsigned int val() const { return x; }\n    DynamicModInt &operator+=(const\
-    \ DynamicModInt &p) {\n        if((x += p.x) >= mod) x -= mod;\n        return\
-    \ *this;\n    }\n    DynamicModInt &operator-=(const DynamicModInt &p) {\n   \
-    \     if((x += (mod - p.x)) >= mod) x -= mod;\n        return *this;\n    }\n\
-    \    DynamicModInt &operator*=(const DynamicModInt &p) {\n        x = bt.mul(x,\
-    \ p.x);\n        return *this;\n    }\n    DynamicModInt &operator/=(const DynamicModInt\
-    \ &p) {\n        *this *= p.inv();\n        return *this;\n    }\n    DynamicModInt\
-    \ operator-() const { return DynamicModInt(-x); }\n    DynamicModInt operator+(const\
-    \ DynamicModInt &p) const {\n        return DynamicModInt(*this) += p;\n    }\n\
-    \    DynamicModInt operator-(const DynamicModInt &p) const {\n        return DynamicModInt(*this)\
+    \n#include \"../math/barrett-reduction.hpp\"\n\n// verify: https://atcoder.jp/contests/arc104/submissions/38888866\n\
+    class DynamicModInt {\n  public:\n    DynamicModInt() : x(0) {}\n    DynamicModInt(long\
+    \ long y)\n        : x(y >= 0\n                ? y % (long long)mod\n        \
+    \        : ((long long)mod - (-y) % (long long)mod) % (long long)mod) {}\n   \
+    \ static void set_mod(unsigned int m) {\n        assert(m > 0);\n        mod =\
+    \ m;\n        bt = BarrettReduction(m);\n    }\n    unsigned int val() const {\
+    \ return x; }\n    DynamicModInt &operator+=(const DynamicModInt &p) {\n     \
+    \   if((x += p.x) >= mod) x -= mod;\n        return *this;\n    }\n    DynamicModInt\
+    \ &operator-=(const DynamicModInt &p) {\n        if((x += (mod - p.x)) >= mod)\
+    \ x -= mod;\n        return *this;\n    }\n    DynamicModInt &operator*=(const\
+    \ DynamicModInt &p) {\n        x = bt.mul(x, p.x);\n        return *this;\n  \
+    \  }\n    DynamicModInt &operator/=(const DynamicModInt &p) {\n        *this *=\
+    \ p.inv();\n        return *this;\n    }\n    DynamicModInt operator-() const\
+    \ { return DynamicModInt(-x); }\n    DynamicModInt operator+(const DynamicModInt\
+    \ &p) const {\n        return DynamicModInt(*this) += p;\n    }\n    DynamicModInt\
+    \ operator-(const DynamicModInt &p) const {\n        return DynamicModInt(*this)\
     \ -= p;\n    }\n    DynamicModInt operator*(const DynamicModInt &p) const {\n\
     \        return DynamicModInt(*this) *= p;\n    }\n    DynamicModInt operator/(const\
     \ DynamicModInt &p) const {\n        return DynamicModInt(*this) /= p;\n    }\n\
@@ -104,10 +104,9 @@ data:
   isVerificationFile: false
   path: modint/dynamic-modint.hpp
   requiredBy: []
-  timestamp: '2023-10-01 12:02:47+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - test/atcoder/arc104d.test.cpp
+  timestamp: '2023-10-01 12:14:26+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: modint/dynamic-modint.hpp
 layout: document
 redirect_from:

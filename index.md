@@ -121,7 +121,7 @@ data:
       title: "\u6728\u30CF\u30C3\u30B7\u30E5"
   - name: math
     pages:
-    - icon: ':x:'
+    - icon: ':warning:'
       path: math/barrett-reduction.hpp
       title: Barrett Reduction
     - icon: ':heavy_check_mark:'
@@ -187,7 +187,7 @@ data:
       title: misc/rle.hpp
   - name: modint
     pages:
-    - icon: ':x:'
+    - icon: ':warning:'
       path: modint/dynamic-modint.hpp
       title: modint/dynamic-modint.hpp
     - icon: ':heavy_check_mark:'
@@ -205,7 +205,7 @@ data:
       title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
   - name: template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/template.cpp
       title: template/template.cpp
   - name: test/library-checker/data-structure
@@ -240,11 +240,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/aoj/aoj2858.test.cpp
       title: test/aoj/aoj2858.test.cpp
-  - name: test/atcoder
-    pages:
-    - icon: ':x:'
-      path: test/atcoder/arc104d.test.cpp
-      title: test/atcoder/arc104d.test.cpp
   - name: test/library-checker/convolution
     pages:
     - icon: ':heavy_check_mark:'
