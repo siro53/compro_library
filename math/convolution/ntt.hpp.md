@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/pow_mod.hpp
     title: math/pow_mod.hpp
   - icon: ':heavy_check_mark:'
@@ -52,8 +52,8 @@ data:
     \ { return mod; }\n};\n#line 2 \"math/primitive-root.hpp\"\n\n#line 2 \"math/pow_mod.hpp\"\
     \n\nconstexpr long long pow_mod(long long x, long long k, long long m) {\n   \
     \ long long res = 1;\n    long long mul = (x >= 0 ? x % m : x % m + m);\n    while(k)\
-    \ {\n        if(k & 1) res = res * mul % m;\n        mul = mul * mul % m;\n  \
-    \      k >>= 1;\n    }\n    return res;\n}\n#line 4 \"math/primitive-root.hpp\"\
+    \ {\n        if(k & 1) res = (__int128_t)res * mul % m;\n        mul = (__int128_t)mul\
+    \ * mul % m;\n        k >>= 1;\n    }\n    return res;\n}\n#line 4 \"math/primitive-root.hpp\"\
     \n\nconstexpr int primitive_root(int p) {\n    if(p == 2) return 1;\n    if(p\
     \ == 998244353) return 3;\n    int primes[31] = {};\n    int sz = 0, t = p - 1;\n\
     \    for(int i = 2; i * i <= t; i++) {\n        if(t % i == 0) {\n           \
@@ -157,7 +157,7 @@ data:
   isVerificationFile: false
   path: math/convolution/ntt.hpp
   requiredBy: []
-  timestamp: '2023-10-01 12:02:47+09:00'
+  timestamp: '2023-10-01 12:06:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/convolution/convolution-mod.test.cpp

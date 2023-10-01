@@ -133,7 +133,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/eratosthenes.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/is-prime.hpp
       title: "\u7D20\u6570\u5224\u5B9A"
     - icon: ':warning:'
@@ -142,7 +142,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: "\u884C\u5217\u30E9\u30A4\u30D6\u30E9\u30EA"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/pow_mod.hpp
       title: math/pow_mod.hpp
     - icon: ':warning:'
@@ -301,7 +301,7 @@ data:
       title: test/library-checker/graph/shortest-path.test.cpp
   - name: test/library-checker/math
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/library-checker/math/primality-test.test.cpp
       title: test/library-checker/math/primality-test.test.cpp
     - icon: ':heavy_check_mark:'

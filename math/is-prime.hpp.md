@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/pow_mod.hpp
     title: math/pow_mod.hpp
   _extendedRequiredBy: []
@@ -9,22 +9,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj-ALDS1-1-C.test.cpp
     title: test/aoj/aoj-ALDS1-1-C.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/library-checker/math/primality-test.test.cpp
     title: test/library-checker/math/primality-test.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/is-prime.hpp\"\n\n#include <array>\n\n#line 2 \"math/pow_mod.hpp\"\
     \n\nconstexpr long long pow_mod(long long x, long long k, long long m) {\n   \
     \ long long res = 1;\n    long long mul = (x >= 0 ? x % m : x % m + m);\n    while(k)\
-    \ {\n        if(k & 1) res = res * mul % m;\n        mul = mul * mul % m;\n  \
-    \      k >>= 1;\n    }\n    return res;\n}\n#line 6 \"math/is-prime.hpp\"\n\n\
-    /*\nref: Fast Primality Testing for Integers That Fit into a Machine Word\nMichal\
-    \ Fori\u02C7sek and Jakub Jan\u02C7cina\n*/\n\nconstexpr bool is_prime(int n)\
-    \ {\n    if(n <= 1) return false;\n    if(n == 2 or n == 7 or n == 61) return\
+    \ {\n        if(k & 1) res = (__int128_t)res * mul % m;\n        mul = (__int128_t)mul\
+    \ * mul % m;\n        k >>= 1;\n    }\n    return res;\n}\n#line 6 \"math/is-prime.hpp\"\
+    \n\n/*\nref: Fast Primality Testing for Integers That Fit into a Machine Word\n\
+    Michal Fori\u02C7sek and Jakub Jan\u02C7cina\n*/\n\nconstexpr bool is_prime(int\
+    \ n) {\n    if(n <= 1) return false;\n    if(n == 2 or n == 7 or n == 61) return\
     \ true;\n    if((n & 1) == 0) return false;\n    long long d = n - 1;\n    while((d\
     \ & 1) == 0) d >>= 1;\n    constexpr std::array<int, 3> bases = {2, 7, 61};\n\
     \    for(int a : bases) {\n        long long t = d;\n        long long y = pow_mod(a,\
@@ -64,8 +64,8 @@ data:
   isVerificationFile: false
   path: math/is-prime.hpp
   requiredBy: []
-  timestamp: '2023-10-01 12:02:47+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2023-10-01 12:06:18+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj-ALDS1-1-C.test.cpp
   - test/library-checker/math/primality-test.test.cpp

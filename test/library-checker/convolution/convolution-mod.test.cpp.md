@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/convolution/ntt.hpp
     title: math/convolution/ntt.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/pow_mod.hpp
     title: math/pow_mod.hpp
   - icon: ':heavy_check_mark:'
@@ -87,16 +87,16 @@ data:
     \n\n#line 2 \"math/primitive-root.hpp\"\n\n#line 2 \"math/pow_mod.hpp\"\n\nconstexpr\
     \ long long pow_mod(long long x, long long k, long long m) {\n    long long res\
     \ = 1;\n    long long mul = (x >= 0 ? x % m : x % m + m);\n    while(k) {\n  \
-    \      if(k & 1) res = res * mul % m;\n        mul = mul * mul % m;\n        k\
-    \ >>= 1;\n    }\n    return res;\n}\n#line 4 \"math/primitive-root.hpp\"\n\nconstexpr\
-    \ int primitive_root(int p) {\n    if(p == 2) return 1;\n    if(p == 998244353)\
-    \ return 3;\n    int primes[31] = {};\n    int sz = 0, t = p - 1;\n    for(int\
-    \ i = 2; i * i <= t; i++) {\n        if(t % i == 0) {\n            primes[sz++]\
-    \ = i;\n            while(t % i == 0) t /= i;\n        }\n    }\n    if(t > 1)\
-    \ primes[sz++] = t;\n    for(int g = 2;;g++) {\n        bool f = true;\n     \
-    \   for(int i = 0; i < sz; i++) {\n            if(pow_mod(g, (p - 1) / primes[i],\
-    \ p) == 1) {\n                f = false;\n                break;\n           \
-    \ }\n        }   \n        if(f) return g;\n    }\n}\n#line 9 \"math/convolution/ntt.hpp\"\
+    \      if(k & 1) res = (__int128_t)res * mul % m;\n        mul = (__int128_t)mul\
+    \ * mul % m;\n        k >>= 1;\n    }\n    return res;\n}\n#line 4 \"math/primitive-root.hpp\"\
+    \n\nconstexpr int primitive_root(int p) {\n    if(p == 2) return 1;\n    if(p\
+    \ == 998244353) return 3;\n    int primes[31] = {};\n    int sz = 0, t = p - 1;\n\
+    \    for(int i = 2; i * i <= t; i++) {\n        if(t % i == 0) {\n           \
+    \ primes[sz++] = i;\n            while(t % i == 0) t /= i;\n        }\n    }\n\
+    \    if(t > 1) primes[sz++] = t;\n    for(int g = 2;;g++) {\n        bool f =\
+    \ true;\n        for(int i = 0; i < sz; i++) {\n            if(pow_mod(g, (p -\
+    \ 1) / primes[i], p) == 1) {\n                f = false;\n                break;\n\
+    \            }\n        }   \n        if(f) return g;\n    }\n}\n#line 9 \"math/convolution/ntt.hpp\"\
     \n\nnamespace ntt {\n    constexpr int exp_limit(int mod) { return __builtin_ctz(mod\
     \ - 1); }\n\n    template <class mint, int mod = mint::get_mod(),\n          \
     \    int g = primitive_root(mod)>\n    struct ntt_info {\n        static constexpr\
@@ -159,7 +159,7 @@ data:
   isVerificationFile: true
   path: test/library-checker/convolution/convolution-mod.test.cpp
   requiredBy: []
-  timestamp: '2023-10-01 12:02:47+09:00'
+  timestamp: '2023-10-01 12:06:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/library-checker/convolution/convolution-mod.test.cpp
