@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/convolution/fft.hpp
     title: math/convolution/fft.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []

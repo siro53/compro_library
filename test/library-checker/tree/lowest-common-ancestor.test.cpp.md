@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/tree/lca.hpp
     title: "\u6700\u5C0F\u5171\u901A\u7956\u5148(LCA)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []

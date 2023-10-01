@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/barrett-reduction.hpp
     title: Barrett Reduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: modint/dynamic-modint.hpp
     title: modint/dynamic-modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://atcoder.jp/contests/arc104/tasks/arc104_d
@@ -69,46 +69,46 @@ data:
     \    friend std::ostream &operator<<(std::ostream &os, const DynamicModInt &p)\
     \ {\n        return os << p.x;\n    }\n    friend std::istream &operator>>(std::istream\
     \ &is, DynamicModInt &a) {\n        long long t;\n        is >> t;\n        a\
-    \ = DynamicModInt(t);\n        return (is);\n    }\n\n  private:\n    unsigned\
-    \ int x;\n    static inline unsigned int mod;\n    static inline BarrettReduction\
-    \ bt;\n};\n#line 1 \"template/template.cpp\"\n#pragma region Macros\n#include\
-    \ <bits/stdc++.h>\nusing namespace std;\ntemplate <class T> inline bool chmax(T\
-    \ &a, T b) {\n    if(a < b) {\n        a = b;\n        return 1;\n    }\n    return\
-    \ 0;\n}\ntemplate <class T> inline bool chmin(T &a, T b) {\n    if(a > b) {\n\
-    \        a = b;\n        return 1;\n    }\n    return 0;\n}\n#ifdef DEBUG\ntemplate\
-    \ <class T, class U>\nostream &operator<<(ostream &os, const pair<T, U> &p) {\n\
-    \    os << '(' << p.first << ',' << p.second << ')';\n    return os;\n}\ntemplate\
-    \ <class T> ostream &operator<<(ostream &os, const vector<T> &v) {\n    os <<\
-    \ '{';\n    for(int i = 0; i < (int)v.size(); i++) {\n        if(i) { os << ',';\
-    \ }\n        os << v[i];\n    }\n    os << '}';\n    return os;\n}\nvoid debugg()\
-    \ { cerr << endl; }\ntemplate <class T, class... Args>\nvoid debugg(const T &x,\
-    \ const Args &... args) {\n    cerr << \" \" << x;\n    debugg(args...);\n}\n\
-    #define debug(...)                                                           \
-    \  \\\n    cerr << __LINE__ << \" [\" << #__VA_ARGS__ << \"]: \", debugg(__VA_ARGS__)\n\
-    #define dump(x) cerr << __LINE__ << \" \" << #x << \" = \" << (x) << endl\n#else\n\
-    #define debug(...) (void(0))\n#define dump(x) (void(0))\n#endif\n\nstruct Setup\
-    \ {\n    Setup() {\n        cin.tie(0);\n        ios::sync_with_stdio(false);\n\
-    \        cout << fixed << setprecision(15);\n    }\n} __Setup;\n\nusing ll = long\
-    \ long;\n#define OVERLOAD3(_1, _2, _3, name, ...) name\n#define ALL(v) (v).begin(),\
-    \ (v).end()\n#define RALL(v) (v).rbegin(), (v).rend()\n#define REP1(i, n) for(int\
-    \ i = 0; i < int(n); i++)\n#define REP2(i, a, b) for(int i = (a); i < int(b);\
-    \ i++)\n#define REP(...) OVERLOAD3(__VA_ARGS__, REP2, REP1)(__VA_ARGS__)\n#define\
-    \ UNIQUE(v) sort(ALL(v)), (v).erase(unique(ALL(v)), (v).end())\n#define REVERSE(v)\
-    \ reverse(ALL(v))\n#define SZ(v) ((int)(v).size())\nconst int INF = 1 << 30;\n\
-    const ll LLINF = 1LL << 60;\nconstexpr int MOD = 1000000007;\nconstexpr int MOD2\
-    \ = 998244353;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0,\
-    \ -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\nint popcount(int\
-    \ x) { return __builtin_popcount(x); }\nll popcount(ll x) { return __builtin_popcountll(x);\
-    \ }\n#pragma endregion Macros\n#line 4 \"test/atcoder/arc104d.test.cpp\"\n\nusing\
-    \ mint = DynamicModInt;\n\nmint dp[101][1000001];\n\nint main() {\n    int N,\
-    \ K, mod;\n    cin >> N >> K >> mod;\n    mint::set_mod(mod);\n    dp[0][0] =\
-    \ 1;\n    int lim = 0;\n    REP(i, 1, N + 1) {\n        vector<mint> pre(i, 0);\n\
-    \        lim += i;\n        REP(j, lim * K + 1) {\n            pre[j % i] += dp[i\
-    \ - 1][j];\n            if(j - i * (K + 1) >= 0) pre[j % i] -= dp[i - 1][j - i\
-    \ * (K + 1)];\n            dp[i][j] = pre[j % i];\n        }\n    }\n    lim =\
-    \ 0;\n    REP(x, 1, N + 1) {\n        lim += x;\n        mint ans = 0;\n     \
-    \   REP(j, lim * K + 1) ans += dp[N - x][j] * dp[x - 1][j];\n        ans = (ans\
-    \ * (K + 1) - 1);\n        cout << ans << '\\n';\n    }\n}\n"
+    \ = DynamicModInt(t);\n        return (is);\n    }\n    static unsigned int get_mod()\
+    \ { return mod; }\n\n  private:\n    unsigned int x;\n    static inline unsigned\
+    \ int mod;\n    static inline BarrettReduction bt;\n};\n#line 1 \"template/template.cpp\"\
+    \n#pragma region Macros\n#include <bits/stdc++.h>\nusing namespace std;\ntemplate\
+    \ <class T> inline bool chmax(T &a, T b) {\n    if(a < b) {\n        a = b;\n\
+    \        return 1;\n    }\n    return 0;\n}\ntemplate <class T> inline bool chmin(T\
+    \ &a, T b) {\n    if(a > b) {\n        a = b;\n        return 1;\n    }\n    return\
+    \ 0;\n}\n#ifdef DEBUG\ntemplate <class T, class U>\nostream &operator<<(ostream\
+    \ &os, const pair<T, U> &p) {\n    os << '(' << p.first << ',' << p.second <<\
+    \ ')';\n    return os;\n}\ntemplate <class T> ostream &operator<<(ostream &os,\
+    \ const vector<T> &v) {\n    os << '{';\n    for(int i = 0; i < (int)v.size();\
+    \ i++) {\n        if(i) { os << ','; }\n        os << v[i];\n    }\n    os <<\
+    \ '}';\n    return os;\n}\nvoid debugg() { cerr << endl; }\ntemplate <class T,\
+    \ class... Args>\nvoid debugg(const T &x, const Args &... args) {\n    cerr <<\
+    \ \" \" << x;\n    debugg(args...);\n}\n#define debug(...)                   \
+    \                                          \\\n    cerr << __LINE__ << \" [\"\
+    \ << #__VA_ARGS__ << \"]: \", debugg(__VA_ARGS__)\n#define dump(x) cerr << __LINE__\
+    \ << \" \" << #x << \" = \" << (x) << endl\n#else\n#define debug(...) (void(0))\n\
+    #define dump(x) (void(0))\n#endif\n\nstruct Setup {\n    Setup() {\n        cin.tie(0);\n\
+    \        ios::sync_with_stdio(false);\n        cout << fixed << setprecision(15);\n\
+    \    }\n} __Setup;\n\nusing ll = long long;\n#define OVERLOAD3(_1, _2, _3, name,\
+    \ ...) name\n#define ALL(v) (v).begin(), (v).end()\n#define RALL(v) (v).rbegin(),\
+    \ (v).rend()\n#define REP1(i, n) for(int i = 0; i < int(n); i++)\n#define REP2(i,\
+    \ a, b) for(int i = (a); i < int(b); i++)\n#define REP(...) OVERLOAD3(__VA_ARGS__,\
+    \ REP2, REP1)(__VA_ARGS__)\n#define UNIQUE(v) sort(ALL(v)), (v).erase(unique(ALL(v)),\
+    \ (v).end())\n#define REVERSE(v) reverse(ALL(v))\n#define SZ(v) ((int)(v).size())\n\
+    const int INF = 1 << 30;\nconst ll LLINF = 1LL << 60;\nconstexpr int MOD = 1000000007;\n\
+    constexpr int MOD2 = 998244353;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4]\
+    \ = {0, 1, 0, -1};\n\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\n\
+    int popcount(int x) { return __builtin_popcount(x); }\nll popcount(ll x) { return\
+    \ __builtin_popcountll(x); }\n#pragma endregion Macros\n#line 4 \"test/atcoder/arc104d.test.cpp\"\
+    \n\nusing mint = DynamicModInt;\n\nmint dp[101][1000001];\n\nint main() {\n  \
+    \  int N, K, mod;\n    cin >> N >> K >> mod;\n    mint::set_mod(mod);\n    dp[0][0]\
+    \ = 1;\n    int lim = 0;\n    REP(i, 1, N + 1) {\n        vector<mint> pre(i,\
+    \ 0);\n        lim += i;\n        REP(j, lim * K + 1) {\n            pre[j % i]\
+    \ += dp[i - 1][j];\n            if(j - i * (K + 1) >= 0) pre[j % i] -= dp[i -\
+    \ 1][j - i * (K + 1)];\n            dp[i][j] = pre[j % i];\n        }\n    }\n\
+    \    lim = 0;\n    REP(x, 1, N + 1) {\n        lim += x;\n        mint ans = 0;\n\
+    \        REP(j, lim * K + 1) ans += dp[N - x][j] * dp[x - 1][j];\n        ans\
+    \ = (ans * (K + 1) - 1);\n        cout << ans << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://atcoder.jp/contests/arc104/tasks/arc104_d\"\n#include\
     \ \"../../modint/dynamic-modint.hpp\"\n#include \"../../template/template.cpp\"\
     \n\nusing mint = DynamicModInt;\n\nmint dp[101][1000001];\n\nint main() {\n  \
@@ -127,8 +127,8 @@ data:
   isVerificationFile: true
   path: test/atcoder/arc104d.test.cpp
   requiredBy: []
-  timestamp: '2023-02-26 00:21:29+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-01 12:02:47+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/atcoder/arc104d.test.cpp
 layout: document

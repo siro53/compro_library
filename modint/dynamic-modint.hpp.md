@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/barrett-reduction.hpp
     title: Barrett Reduction
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/atcoder/arc104d.test.cpp
     title: test/atcoder/arc104d.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"modint/dynamic-modint.hpp\"\n\n#include <cassert>\n#include\
@@ -62,9 +62,9 @@ data:
     \    friend std::ostream &operator<<(std::ostream &os, const DynamicModInt &p)\
     \ {\n        return os << p.x;\n    }\n    friend std::istream &operator>>(std::istream\
     \ &is, DynamicModInt &a) {\n        long long t;\n        is >> t;\n        a\
-    \ = DynamicModInt(t);\n        return (is);\n    }\n\n  private:\n    unsigned\
-    \ int x;\n    static inline unsigned int mod;\n    static inline BarrettReduction\
-    \ bt;\n};\n"
+    \ = DynamicModInt(t);\n        return (is);\n    }\n    static unsigned int get_mod()\
+    \ { return mod; }\n\n  private:\n    unsigned int x;\n    static inline unsigned\
+    \ int mod;\n    static inline BarrettReduction bt;\n};\n"
   code: "#pragma once\n\n#include <cassert>\n#include <istream>\n#include <ostream>\n\
     \n#include \"../math/barrett-reduction.hpp\"\n\nclass DynamicModInt {\n  public:\n\
     \    DynamicModInt() : x(0) {}\n    DynamicModInt(long long y)\n        : x(y\
@@ -96,16 +96,16 @@ data:
     \    friend std::ostream &operator<<(std::ostream &os, const DynamicModInt &p)\
     \ {\n        return os << p.x;\n    }\n    friend std::istream &operator>>(std::istream\
     \ &is, DynamicModInt &a) {\n        long long t;\n        is >> t;\n        a\
-    \ = DynamicModInt(t);\n        return (is);\n    }\n\n  private:\n    unsigned\
-    \ int x;\n    static inline unsigned int mod;\n    static inline BarrettReduction\
-    \ bt;\n};"
+    \ = DynamicModInt(t);\n        return (is);\n    }\n    static unsigned int get_mod()\
+    \ { return mod; }\n\n  private:\n    unsigned int x;\n    static inline unsigned\
+    \ int mod;\n    static inline BarrettReduction bt;\n};"
   dependsOn:
   - math/barrett-reduction.hpp
   isVerificationFile: false
   path: modint/dynamic-modint.hpp
   requiredBy: []
-  timestamp: '2023-02-25 23:57:16+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-10-01 12:02:47+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/atcoder/arc104d.test.cpp
 documentation_of: modint/dynamic-modint.hpp

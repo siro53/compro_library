@@ -2,10 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: math/convolution/ntt.hpp
+    title: math/convolution/ntt.hpp
   - icon: ':warning:'
     path: test/library-checker/data-structure/point-set-range-composite.cpp
     title: test/library-checker/data-structure/point-set-range-composite.cpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/library-checker/convolution/convolution-mod.test.cpp
+    title: test/library-checker/convolution/convolution-mod.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/vertex-set-path-composite.test.cpp
     title: test/library-checker/data-structure/vertex-set-path-composite.test.cpp
@@ -81,12 +87,14 @@ data:
   path: modint/modint.hpp
   requiredBy:
   - test/library-checker/data-structure/point-set-range-composite.cpp
+  - math/convolution/ntt.hpp
   timestamp: '2023-02-25 23:57:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yukicoder/yuki1750.test.cpp
   - test/yukicoder/yuki117.test.cpp
   - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
+  - test/library-checker/convolution/convolution-mod.test.cpp
 documentation_of: modint/modint.hpp
 layout: document
 redirect_from:

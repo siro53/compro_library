@@ -121,7 +121,7 @@ data:
       title: "\u6728\u30CF\u30C3\u30B7\u30E5"
   - name: math
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/barrett-reduction.hpp
       title: Barrett Reduction
     - icon: ':heavy_check_mark:'
@@ -133,7 +133,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/eratosthenes.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/is-prime.hpp
       title: "\u7D20\u6570\u5224\u5B9A"
     - icon: ':warning:'
@@ -142,12 +142,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: "\u884C\u5217\u30E9\u30A4\u30D6\u30E9\u30EA"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/pow_mod.hpp
       title: math/pow_mod.hpp
     - icon: ':warning:'
       path: math/prime-factor.hpp
       title: "\u7D20\u56E0\u6570\u5206\u89E3"
+    - icon: ':heavy_check_mark:'
+      path: math/primitive-root.hpp
+      title: math/primitive-root.hpp
     - icon: ':heavy_check_mark:'
       path: math/segment-factorize.hpp
       title: "\u533A\u9593\u7BE9(\u7D20\u56E0\u6570\u5206\u89E3\u4ED8\u304D)"
@@ -162,6 +165,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/convolution/fft.hpp
       title: math/convolution/fft.hpp
+    - icon: ':heavy_check_mark:'
+      path: math/convolution/ntt.hpp
+      title: math/convolution/ntt.hpp
   - name: misc
     pages:
     - icon: ':heavy_check_mark:'
@@ -181,7 +187,7 @@ data:
       title: misc/rle.hpp
   - name: modint
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: modint/dynamic-modint.hpp
       title: modint/dynamic-modint.hpp
     - icon: ':heavy_check_mark:'
@@ -199,7 +205,7 @@ data:
       title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
   - name: template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/template.cpp
       title: template/template.cpp
   - name: test/library-checker/data-structure
@@ -236,9 +242,14 @@ data:
       title: test/aoj/aoj2858.test.cpp
   - name: test/atcoder
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/atcoder/arc104d.test.cpp
       title: test/atcoder/arc104d.test.cpp
+  - name: test/library-checker/convolution
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/library-checker/convolution/convolution-mod.test.cpp
+      title: test/library-checker/convolution/convolution-mod.test.cpp
   - name: test/library-checker/data-structure
     pages:
     - icon: ':heavy_check_mark:'
@@ -290,7 +301,7 @@ data:
       title: test/library-checker/graph/shortest-path.test.cpp
   - name: test/library-checker/math
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/library-checker/math/primality-test.test.cpp
       title: test/library-checker/math/primality-test.test.cpp
     - icon: ':heavy_check_mark:'

@@ -2,16 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: modint/dynamic-modint.hpp
     title: modint/dynamic-modint.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/atcoder/arc104d.test.cpp
     title: test/atcoder/arc104d.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/barrett-reduction.hpp\"\n\n#include <utility>\n\nclass\
@@ -55,7 +55,7 @@ data:
   requiredBy:
   - modint/dynamic-modint.hpp
   timestamp: '2023-02-25 23:57:16+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/atcoder/arc104d.test.cpp
 documentation_of: math/barrett-reduction.hpp
