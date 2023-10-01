@@ -6,6 +6,7 @@
 
 #include "../math/barrett-reduction.hpp"
 
+// verify: https://atcoder.jp/contests/arc104/submissions/38888866
 class DynamicModInt {
   public:
     DynamicModInt() : x(0) {}
