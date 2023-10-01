@@ -79,6 +79,7 @@ class DynamicModInt {
         a = DynamicModInt(t);
         return (is);
     }
+    static unsigned int get_mod() { return mod; }
 
   private:
     unsigned int x;
