@@ -39,8 +39,5 @@ data:
   - test/yukicoder/yuki1469.test.cpp
 documentation_of: misc/rle.hpp
 layout: document
-redirect_from:
-- /library/misc/rle.hpp
-- /library/misc/rle.hpp.html
-title: misc/rle.hpp
+title: "\u30E9\u30F3\u30EC\u30F3\u30B0\u30B9\u5727\u7E2E"
 ---

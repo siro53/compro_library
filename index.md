@@ -184,7 +184,7 @@ data:
       title: Mo's Algorithm
     - icon: ':heavy_check_mark:'
       path: misc/rle.hpp
-      title: misc/rle.hpp
+      title: "\u30E9\u30F3\u30EC\u30F3\u30B0\u30B9\u5727\u7E2E"
   - name: modint
     pages:
     - icon: ':warning:'
