@@ -15,6 +15,6 @@ template <typename T = int> std::map<T, int> prime_factor(T n) {
             ret[i] = cnt;
         }
     }
-    if(n != 0) ret[n] = 1;
+    if(n != 1) ret[n] = 1;
     return ret;
 }
