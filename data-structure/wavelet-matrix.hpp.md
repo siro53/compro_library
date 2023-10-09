@@ -54,7 +54,7 @@ data:
     \            }\n        }\n    }\n    T access(int pos) const {\n        T res\
     \ = 0; \n        for(int k = BITLEN - 1; k >= 0; k--) {\n            int b = B[k][pos];\n\
     \            res |= (T(b) << k);\n            pos = B[k].rank(pos, b) + zero_num[k]\
-    \ * b;\n        }\n        return pos;\n    }\n    // [0, i) \u306E\u7BC4\u56F2\
+    \ * b;\n        }\n        return res;\n    }\n    // [0, i) \u306E\u7BC4\u56F2\
     \u5185\u306B\u5024 x \u304C\u4F55\u500B\u51FA\u73FE\u3057\u305F\u304B. O(log(\u03C3\
     ))\n    int rank(int i, T x) {\n        int l = 0, r = i;\n        for(int k =\
     \ BITLEN - 1; k >= 0; k--) {\n            int b = (x >> k & 1);\n            l\
@@ -110,7 +110,7 @@ data:
     \ ones[i - (int)zeros.size()];\n            }\n        }\n    }\n    T access(int\
     \ pos) const {\n        T res = 0; \n        for(int k = BITLEN - 1; k >= 0; k--)\
     \ {\n            int b = B[k][pos];\n            res |= (T(b) << k);\n       \
-    \     pos = B[k].rank(pos, b) + zero_num[k] * b;\n        }\n        return pos;\n\
+    \     pos = B[k].rank(pos, b) + zero_num[k] * b;\n        }\n        return res;\n\
     \    }\n    // [0, i) \u306E\u7BC4\u56F2\u5185\u306B\u5024 x \u304C\u4F55\u500B\
     \u51FA\u73FE\u3057\u305F\u304B. O(log(\u03C3))\n    int rank(int i, T x) {\n \
     \       int l = 0, r = i;\n        for(int k = BITLEN - 1; k >= 0; k--) {\n  \
@@ -158,7 +158,7 @@ data:
   isVerificationFile: false
   path: data-structure/wavelet-matrix.hpp
   requiredBy: []
-  timestamp: '2023-09-21 16:47:57+09:00'
+  timestamp: '2023-10-09 16:02:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj2674.test.cpp
