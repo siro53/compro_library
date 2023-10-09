@@ -35,7 +35,7 @@ public:
             res |= (T(b) << k);
             pos = B[k].rank(pos, b) + zero_num[k] * b;
         }
-        return pos;
+        return res;
     }
     // [0, i) の範囲内に値 x が何個出現したか. O(log(σ))
     int rank(int i, T x) {
