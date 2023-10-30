@@ -30,6 +30,9 @@ template <class Monoid> class Segtree {
         assert(0 <= pos && pos < N);
         return node[pos + sz];
     }
+    void apply(int pos, T val) {
+        this->set(pos, Monoid::op(this->get(pos), val));
+    }
     T prod(int l, int r) const {
         assert(0 <= l && l <= r && r <= N);
         T value_l = Monoid::e(), value_r = Monoid::e();
