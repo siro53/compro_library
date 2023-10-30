@@ -62,8 +62,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj-ALDS1-5-D.test.cpp
-  - test/library-checker/data-structure/static-range-inversions-query.test.cpp
   - test/library-checker/data-structure/static-range-sum.test.cpp
+  - test/library-checker/data-structure/static-range-inversions-query.test.cpp
   - test/library-checker/data-structure/point-add-range-sum.test.cpp
 documentation_of: data-structure/BIT.hpp
 layout: document

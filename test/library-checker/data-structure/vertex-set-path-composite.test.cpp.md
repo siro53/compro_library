@@ -78,40 +78,41 @@ data:
     \ > 1) {\n            pos >>= 1;\n            node[pos] = Monoid::op(node[pos\
     \ << 1], node[pos << 1 | 1]);\n        }\n    }\n    T get(int pos) const {\n\
     \        assert(0 <= pos && pos < N);\n        return node[pos + sz];\n    }\n\
-    \    T prod(int l, int r) const {\n        assert(0 <= l && l <= r && r <= N);\n\
-    \        T value_l = Monoid::e(), value_r = Monoid::e();\n        l += sz;\n \
-    \       r += sz;\n        while(l < r) {\n            if(l & 1) value_l = Monoid::op(value_l,\
-    \ node[l++]);\n            if(r & 1) value_r = Monoid::op(node[--r], value_r);\n\
-    \            l >>= 1;\n            r >>= 1;\n        }\n        return Monoid::op(value_l,\
-    \ value_r);\n    }\n    T all_prod() const { return node[1]; }\n    template <class\
-    \ F> int max_right(int l, F f) const {\n        assert(0 <= l && l <= N);\n  \
-    \      assert(f(Monoid::e()));\n        if(l == N) return N;\n        l += sz;\n\
-    \        T value_now = Monoid::e();\n        do {\n            while((l & 1) ==\
-    \ 0) l >>= 1;\n            if(!f(Monoid::op(value_now, node[l]))) {\n        \
-    \        while(l < sz) {\n                    l = 2 * l;\n                   \
-    \ if(f(Monoid::op(value_now, node[l]))) {\n                        value_now =\
-    \ Monoid::op(value_now, node[l]);\n                        l++;\n            \
-    \        }\n                }\n                return (l - sz);\n            }\n\
-    \            value_now = Monoid::op(value_now, node[l]);\n            l++;\n \
-    \       } while((l & -l) != l);\n        return N;\n    }\n    template <class\
-    \ F> int min_left(int r, F f) const {\n        assert(0 <= r && r <= N);\n   \
-    \     assert(f(Monoid::e()));\n        if(r == 0) return 0;\n        r += sz;\n\
-    \        T value_now = Monoid::e();\n        do {\n            r--;\n        \
-    \    while(r > 1 && (r & 1)) r >>= 1;\n            if(!f(Monoid::op(node[r], value_now)))\
-    \ {\n                while(r < sz) {\n                    r = 2 * r + 1;\n   \
-    \                 if(f(Monoid::op(node[r], value_now))) {\n                  \
-    \      value_now = Monoid::op(node[r], value_now);\n                        r--;\n\
-    \                    }\n                }\n                return ((r + 1) - sz);\n\
-    \            }\n            value_now = Monoid::op(node[r], value_now);\n    \
-    \    } while((r & -r) != r);\n        return 0;\n    }\n\n  private:\n    int\
-    \ N, sz;\n    std::vector<T> node;\n};\n#line 2 \"graph/tree/hld.hpp\"\n\n#line\
-    \ 4 \"graph/tree/hld.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\n\n#line 5\
-    \ \"graph/graph_template.hpp\"\n\ntemplate <typename Cost = int> struct Edge {\n\
-    \    int from, to;\n    Cost cost;\n    int id;\n    Edge() = default;\n    explicit\
-    \ Edge(int from, int to, Cost cost = 1, int id = -1)\n        : from(from), to(to),\
-    \ cost(cost), id(id) {}\n    operator int() const { return to; }\n};\n\ntemplate\
-    \ <typename Cost = int> class Graph {\n  public:\n    Graph() = default;\n   \
-    \ explicit Graph(int N) : N(N), M(0), G(N) {}\n\n    inline void add_directed_edge(int\
+    \    void apply(int pos, T val) {\n        this->set(pos, Monoid::op(this->get(pos),\
+    \ val));\n    }\n    T prod(int l, int r) const {\n        assert(0 <= l && l\
+    \ <= r && r <= N);\n        T value_l = Monoid::e(), value_r = Monoid::e();\n\
+    \        l += sz;\n        r += sz;\n        while(l < r) {\n            if(l\
+    \ & 1) value_l = Monoid::op(value_l, node[l++]);\n            if(r & 1) value_r\
+    \ = Monoid::op(node[--r], value_r);\n            l >>= 1;\n            r >>= 1;\n\
+    \        }\n        return Monoid::op(value_l, value_r);\n    }\n    T all_prod()\
+    \ const { return node[1]; }\n    template <class F> int max_right(int l, F f)\
+    \ const {\n        assert(0 <= l && l <= N);\n        assert(f(Monoid::e()));\n\
+    \        if(l == N) return N;\n        l += sz;\n        T value_now = Monoid::e();\n\
+    \        do {\n            while((l & 1) == 0) l >>= 1;\n            if(!f(Monoid::op(value_now,\
+    \ node[l]))) {\n                while(l < sz) {\n                    l = 2 * l;\n\
+    \                    if(f(Monoid::op(value_now, node[l]))) {\n               \
+    \         value_now = Monoid::op(value_now, node[l]);\n                      \
+    \  l++;\n                    }\n                }\n                return (l -\
+    \ sz);\n            }\n            value_now = Monoid::op(value_now, node[l]);\n\
+    \            l++;\n        } while((l & -l) != l);\n        return N;\n    }\n\
+    \    template <class F> int min_left(int r, F f) const {\n        assert(0 <=\
+    \ r && r <= N);\n        assert(f(Monoid::e()));\n        if(r == 0) return 0;\n\
+    \        r += sz;\n        T value_now = Monoid::e();\n        do {\n        \
+    \    r--;\n            while(r > 1 && (r & 1)) r >>= 1;\n            if(!f(Monoid::op(node[r],\
+    \ value_now))) {\n                while(r < sz) {\n                    r = 2 *\
+    \ r + 1;\n                    if(f(Monoid::op(node[r], value_now))) {\n      \
+    \                  value_now = Monoid::op(node[r], value_now);\n             \
+    \           r--;\n                    }\n                }\n                return\
+    \ ((r + 1) - sz);\n            }\n            value_now = Monoid::op(node[r],\
+    \ value_now);\n        } while((r & -r) != r);\n        return 0;\n    }\n\n \
+    \ private:\n    int N, sz;\n    std::vector<T> node;\n};\n#line 2 \"graph/tree/hld.hpp\"\
+    \n\n#line 4 \"graph/tree/hld.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\n\n\
+    #line 5 \"graph/graph_template.hpp\"\n\ntemplate <typename Cost = int> struct\
+    \ Edge {\n    int from, to;\n    Cost cost;\n    int id;\n    Edge() = default;\n\
+    \    explicit Edge(int from, int to, Cost cost = 1, int id = -1)\n        : from(from),\
+    \ to(to), cost(cost), id(id) {}\n    operator int() const { return to; }\n};\n\
+    \ntemplate <typename Cost = int> class Graph {\n  public:\n    Graph() = default;\n\
+    \    explicit Graph(int N) : N(N), M(0), G(N) {}\n\n    inline void add_directed_edge(int\
     \ from, int to, Cost cost = 1) {\n        assert(0 <= from && from < N);\n   \
     \     assert(0 <= to && to < N);\n        G[from].emplace_back(from, to, cost,\
     \ M++);\n    }\n\n    inline void add_undirected_edge(int from, int to, Cost cost\
@@ -246,7 +247,7 @@ data:
   isVerificationFile: true
   path: test/library-checker/data-structure/vertex-set-path-composite.test.cpp
   requiredBy: []
-  timestamp: '2023-03-20 10:39:09+09:00'
+  timestamp: '2023-10-30 20:10:44+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/library-checker/data-structure/vertex-set-path-composite.test.cpp

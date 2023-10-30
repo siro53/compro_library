@@ -32,8 +32,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yukicoder/yuki789.test.cpp
-  - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
   - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
+  - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
 documentation_of: data-structure/monoid/add.hpp
 layout: document
 redirect_from:

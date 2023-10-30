@@ -29,25 +29,23 @@ data:
     \ + 1), bt2(N + 1){};\n    void add(int l, int r, T val) {\n        bt1.add(l,\
     \ -val * l);\n        bt1.add(r, val * r);\n        bt2.add(l, val);\n       \
     \ bt2.add(r, -val);\n    }\n    void add(int pos, T val) { add(pos, pos + 1, val);\
-    \ }\n    T sum(int r) const { return bt1.sum(r) + bt2.sum(r) * r; }\n    T sum(int\
-    \ l, int r) const {\n        assert(l <= r);\n        if(l == r) return T(0);\n\
-    \        return (sum(r) - sum(l));\n    }\n\n  private:\n    BIT<T> bt1, bt2;\n\
-    };\n"
+    \ }\n    T sum(int r) { return bt1.sum(r) + bt2.sum(r) * r; }\n    T sum(int l,\
+    \ int r) {\n        assert(l <= r);\n        if(l == r) return T(0);\n       \
+    \ return (sum(r) - sum(l));\n    }\n\n  private:\n    BIT<T> bt1, bt2;\n};\n"
   code: "#pragma once\n\n#include \"BIT.hpp\"\n\ntemplate <typename T> class RangeBIT\
     \ {\n  public:\n    RangeBIT() = default;\n    explicit RangeBIT(int N) : bt1(N\
     \ + 1), bt2(N + 1){};\n    void add(int l, int r, T val) {\n        bt1.add(l,\
     \ -val * l);\n        bt1.add(r, val * r);\n        bt2.add(l, val);\n       \
     \ bt2.add(r, -val);\n    }\n    void add(int pos, T val) { add(pos, pos + 1, val);\
-    \ }\n    T sum(int r) const { return bt1.sum(r) + bt2.sum(r) * r; }\n    T sum(int\
-    \ l, int r) const {\n        assert(l <= r);\n        if(l == r) return T(0);\n\
-    \        return (sum(r) - sum(l));\n    }\n\n  private:\n    BIT<T> bt1, bt2;\n\
-    };"
+    \ }\n    T sum(int r) { return bt1.sum(r) + bt2.sum(r) * r; }\n    T sum(int l,\
+    \ int r) {\n        assert(l <= r);\n        if(l == r) return T(0);\n       \
+    \ return (sum(r) - sum(l));\n    }\n\n  private:\n    BIT<T> bt1, bt2;\n};"
   dependsOn:
   - data-structure/BIT.hpp
   isVerificationFile: false
   path: data-structure/range-BIT.hpp
   requiredBy: []
-  timestamp: '2023-02-25 23:57:16+09:00'
+  timestamp: '2023-10-30 20:10:44+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: data-structure/range-BIT.hpp

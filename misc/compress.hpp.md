@@ -42,8 +42,8 @@ data:
   timestamp: '2023-09-30 04:41:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/aoj-ALDS1-5-D.test.cpp
   - test/aoj/aoj2426.test.cpp
+  - test/aoj/aoj-ALDS1-5-D.test.cpp
   - test/library-checker/data-structure/static-range-inversions-query.test.cpp
 documentation_of: misc/compress.hpp
 layout: document

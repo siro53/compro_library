@@ -86,13 +86,13 @@ data:
   isVerificationFile: false
   path: modint/modint.hpp
   requiredBy:
-  - test/library-checker/data-structure/point-set-range-composite.cpp
   - math/convolution/ntt.hpp
+  - test/library-checker/data-structure/point-set-range-composite.cpp
   timestamp: '2023-02-25 23:57:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yukicoder/yuki1750.test.cpp
   - test/yukicoder/yuki117.test.cpp
+  - test/yukicoder/yuki1750.test.cpp
   - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
   - test/library-checker/convolution/convolution-mod.test.cpp
 documentation_of: modint/modint.hpp
