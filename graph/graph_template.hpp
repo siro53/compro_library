@@ -37,7 +37,7 @@ template <typename Cost = int> class Graph {
         return G[i];
     }
 
-  private:
+  protected:
     int N, M;
     std::vector<std::vector<Edge<Cost>>> G;
 };
