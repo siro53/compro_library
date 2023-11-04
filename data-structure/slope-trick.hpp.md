@@ -114,7 +114,7 @@ title: Slope Trick
 - `add_const(T a)` : 定数関数 $f(x) = a$ を追加する。$O(1)$
 - `add_right(T a)` : $f(x)$ に関数 $\max(x - a, 0)$ を追加する。$O(\log N)$
 - `add_left(T a)` : $f(x)$ に関数 $\max(a - x, 0)$ を追加する。$O(\log N)$
-- `add_abs(T a)` : $f(x)$ に関数 $|x-a|$ を追加する。$O(\log N)$
+- `add_abs(T a)` : $f(x)$ に関数 $\mathrm{abs}(x-a)$ を追加する。$O(\log N)$
 - `clear_right()` : $f(x)$ を $g(x) = \min_{y \leq x} f(y)$ に変更する。$O(1)$
 - `clear_left()` : $f(x)$ を $g(x) = \min_{y \geq x} f(y)$ に変更する。$O(1)$
 - `shift(T a, T b)` : $f(x)$ を $g(x) = \min_{x - b \leq y \leq x - a} f(y)$ に変更する。ただし $a \leq b$ が条件。$O(1)$
