@@ -15,6 +15,9 @@ data:
     - icon: ':warning:'
       path: data-structure/range-BIT.hpp
       title: data-structure/range-BIT.hpp
+    - icon: ':warning:'
+      path: data-structure/slope-trick.hpp
+      title: Slope Trick
     - icon: ':heavy_check_mark:'
       path: data-structure/sum2D.hpp
       title: data-structure/sum2D.hpp
