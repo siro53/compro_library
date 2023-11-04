@@ -36,7 +36,7 @@ data:
     \ M);\n        G[to].emplace_back(to, from, cost, M++);\n    }\n\n    inline size_t\
     \ size() const { return G.size(); }\n    inline std::vector<Edge<Cost>> &operator[](const\
     \ int &i) { return G[i]; }\n    inline const std::vector<Edge<Cost>> &operator[](const\
-    \ int &i) const {\n        return G[i];\n    }\n\n  private:\n    int N, M;\n\
+    \ int &i) const {\n        return G[i];\n    }\n\n  protected:\n    int N, M;\n\
     \    std::vector<std::vector<Edge<Cost>>> G;\n};\n\ntemplate <class Cost = int>\
     \ using Edges = std::vector<Edge<Cost>>;\n#line 8 \"graph/tree/diameter.hpp\"\n\
     \ntemplate <typename Cost = int>\nstd::pair<Cost, std::vector<int>> get_diameter(const\
@@ -68,11 +68,11 @@ data:
   path: graph/tree/diameter.hpp
   requiredBy:
   - graph/tree/tree-hash.hpp
-  timestamp: '2023-02-28 22:24:07+09:00'
+  timestamp: '2023-11-04 18:06:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/aoj2821.test.cpp
   - test/library-checker/tree/tree-diameter.test.cpp
+  - test/aoj/aoj2821.test.cpp
 documentation_of: graph/tree/diameter.hpp
 layout: document
 title: "\u6728\u306E\u76F4\u5F84"

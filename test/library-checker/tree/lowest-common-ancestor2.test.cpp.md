@@ -65,7 +65,7 @@ data:
     \ from, cost, M++);\n    }\n\n    inline size_t size() const { return G.size();\
     \ }\n    inline std::vector<Edge<Cost>> &operator[](const int &i) { return G[i];\
     \ }\n    inline const std::vector<Edge<Cost>> &operator[](const int &i) const\
-    \ {\n        return G[i];\n    }\n\n  private:\n    int N, M;\n    std::vector<std::vector<Edge<Cost>>>\
+    \ {\n        return G[i];\n    }\n\n  protected:\n    int N, M;\n    std::vector<std::vector<Edge<Cost>>>\
     \ G;\n};\n\ntemplate <class Cost = int> using Edges = std::vector<Edge<Cost>>;\n\
     #line 6 \"graph/tree/hld.hpp\"\n\ntemplate <typename Cost = int> class HeavyLightDecomposition\
     \ {\n  public:\n    explicit HeavyLightDecomposition(int N)\n        : G(N), in(N),\
@@ -128,7 +128,7 @@ data:
   isVerificationFile: true
   path: test/library-checker/tree/lowest-common-ancestor2.test.cpp
   requiredBy: []
-  timestamp: '2023-03-20 10:39:09+09:00'
+  timestamp: '2023-11-04 18:06:00+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/library-checker/tree/lowest-common-ancestor2.test.cpp

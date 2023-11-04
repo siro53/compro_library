@@ -86,6 +86,9 @@ data:
       path: graph/graph_template.hpp
       title: "\u30B0\u30E9\u30D5\u69CB\u9020\u4F53"
     - icon: ':warning:'
+      path: graph/namori.hpp
+      title: graph/namori.hpp
+    - icon: ':warning:'
       path: graph/range-edge-graph.hpp
       title: "\u533A\u9593\u306B\u8FBA\u3092\u5F35\u308B\u30C6\u30AF"
     - icon: ':heavy_check_mark:'

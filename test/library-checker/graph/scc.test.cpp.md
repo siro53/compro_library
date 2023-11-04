@@ -65,7 +65,7 @@ data:
     \ from, cost, M++);\n    }\n\n    inline size_t size() const { return G.size();\
     \ }\n    inline std::vector<Edge<Cost>> &operator[](const int &i) { return G[i];\
     \ }\n    inline const std::vector<Edge<Cost>> &operator[](const int &i) const\
-    \ {\n        return G[i];\n    }\n\n  private:\n    int N, M;\n    std::vector<std::vector<Edge<Cost>>>\
+    \ {\n        return G[i];\n    }\n\n  protected:\n    int N, M;\n    std::vector<std::vector<Edge<Cost>>>\
     \ G;\n};\n\ntemplate <class Cost = int> using Edges = std::vector<Edge<Cost>>;\n\
     #line 8 \"graph/scc.hpp\"\n\ntemplate <typename Cost = int> class SCC {\n  public:\n\
     \    explicit SCC(int N)\n        : G(N), G_rev(N), comp(N, -1), seen(N, false),\
@@ -117,7 +117,7 @@ data:
   isVerificationFile: true
   path: test/library-checker/graph/scc.test.cpp
   requiredBy: []
-  timestamp: '2023-02-28 22:24:07+09:00'
+  timestamp: '2023-11-04 18:06:00+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/library-checker/graph/scc.test.cpp

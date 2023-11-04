@@ -30,7 +30,7 @@ data:
     \ from, cost, M++);\n    }\n\n    inline size_t size() const { return G.size();\
     \ }\n    inline std::vector<Edge<Cost>> &operator[](const int &i) { return G[i];\
     \ }\n    inline const std::vector<Edge<Cost>> &operator[](const int &i) const\
-    \ {\n        return G[i];\n    }\n\n  private:\n    int N, M;\n    std::vector<std::vector<Edge<Cost>>>\
+    \ {\n        return G[i];\n    }\n\n  protected:\n    int N, M;\n    std::vector<std::vector<Edge<Cost>>>\
     \ G;\n};\n\ntemplate <class Cost = int> using Edges = std::vector<Edge<Cost>>;\n\
     #line 7 \"graph/tree/lca.hpp\"\n\ntemplate <typename Cost = int> class LCA {\n\
     \  public:\n    LCA() = default;\n    explicit LCA(const Graph<Cost> &G, int root\
@@ -78,7 +78,7 @@ data:
   isVerificationFile: false
   path: graph/tree/lca.hpp
   requiredBy: []
-  timestamp: '2023-02-28 22:24:07+09:00'
+  timestamp: '2023-11-04 18:06:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/tree/lowest-common-ancestor.test.cpp

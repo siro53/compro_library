@@ -38,7 +38,7 @@ data:
     \ to, cost, M);\n        G[to].emplace_back(to, from, cost, M++);\n    }\n\n \
     \   inline size_t size() const { return G.size(); }\n    inline std::vector<Edge<Cost>>\
     \ &operator[](const int &i) { return G[i]; }\n    inline const std::vector<Edge<Cost>>\
-    \ &operator[](const int &i) const {\n        return G[i];\n    }\n\n  private:\n\
+    \ &operator[](const int &i) const {\n        return G[i];\n    }\n\n  protected:\n\
     \    int N, M;\n    std::vector<std::vector<Edge<Cost>>> G;\n};\n\ntemplate <class\
     \ Cost = int> using Edges = std::vector<Edge<Cost>>;\n#line 6 \"graph/tree/hld.hpp\"\
     \n\ntemplate <typename Cost = int> class HeavyLightDecomposition {\n  public:\n\
@@ -135,13 +135,13 @@ data:
   isVerificationFile: false
   path: graph/tree/hld.hpp
   requiredBy: []
-  timestamp: '2023-03-20 10:39:09+09:00'
+  timestamp: '2023-11-04 18:06:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/tree/lowest-common-ancestor2.test.cpp
+  - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
   - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
   - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
-  - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
 documentation_of: graph/tree/hld.hpp
 layout: document
 title: "HL\u5206\u89E3"

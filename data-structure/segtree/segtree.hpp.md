@@ -113,9 +113,9 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yukicoder/yuki1435.test.cpp
+  - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
   - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
   - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
-  - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
 documentation_of: data-structure/segtree/segtree.hpp
 layout: document
 title: Segment Tree

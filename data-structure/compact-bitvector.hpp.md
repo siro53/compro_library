@@ -66,9 +66,9 @@ data:
   timestamp: '2023-09-21 16:47:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/aoj2674.test.cpp
-  - test/aoj/aoj1549.test.cpp
   - test/library-checker/data-structure/range-kth-smallest.test.cpp
+  - test/aoj/aoj1549.test.cpp
+  - test/aoj/aoj2674.test.cpp
 documentation_of: data-structure/compact-bitvector.hpp
 layout: document
 redirect_from:

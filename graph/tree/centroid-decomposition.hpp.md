@@ -26,7 +26,7 @@ data:
     \ from, cost, M++);\n    }\n\n    inline size_t size() const { return G.size();\
     \ }\n    inline std::vector<Edge<Cost>> &operator[](const int &i) { return G[i];\
     \ }\n    inline const std::vector<Edge<Cost>> &operator[](const int &i) const\
-    \ {\n        return G[i];\n    }\n\n  private:\n    int N, M;\n    std::vector<std::vector<Edge<Cost>>>\
+    \ {\n        return G[i];\n    }\n\n  protected:\n    int N, M;\n    std::vector<std::vector<Edge<Cost>>>\
     \ G;\n};\n\ntemplate <class Cost = int> using Edges = std::vector<Edge<Cost>>;\n\
     #line 4 \"graph/tree/centroid-decomposition.hpp\"\n\n// TODO: \u826F\u3044\u30A4\
     \u30F3\u30BF\u30FC\u30D5\u30A7\u30A4\u30B9\u3092\u6A21\u7D22\u3059\u308B\nstruct\
@@ -67,7 +67,7 @@ data:
   isVerificationFile: false
   path: graph/tree/centroid-decomposition.hpp
   requiredBy: []
-  timestamp: '2023-03-01 00:10:37+09:00'
+  timestamp: '2023-11-04 18:06:00+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: graph/tree/centroid-decomposition.hpp

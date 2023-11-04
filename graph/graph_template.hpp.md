@@ -3,6 +3,9 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
+    path: graph/namori.hpp
+    title: graph/namori.hpp
+  - icon: ':warning:'
     path: graph/range-edge-graph.hpp
     title: "\u533A\u9593\u306B\u8FBA\u3092\u5F35\u308B\u30C6\u30AF"
   - icon: ':heavy_check_mark:'
@@ -86,7 +89,7 @@ data:
     \ from, cost, M++);\n    }\n\n    inline size_t size() const { return G.size();\
     \ }\n    inline std::vector<Edge<Cost>> &operator[](const int &i) { return G[i];\
     \ }\n    inline const std::vector<Edge<Cost>> &operator[](const int &i) const\
-    \ {\n        return G[i];\n    }\n\n  private:\n    int N, M;\n    std::vector<std::vector<Edge<Cost>>>\
+    \ {\n        return G[i];\n    }\n\n  protected:\n    int N, M;\n    std::vector<std::vector<Edge<Cost>>>\
     \ G;\n};\n\ntemplate <class Cost = int> using Edges = std::vector<Edge<Cost>>;\n"
   code: "#pragma once\n\n#include <cassert>\n#include <vector>\n\ntemplate <typename\
     \ Cost = int> struct Edge {\n    int from, to;\n    Cost cost;\n    int id;\n\
@@ -102,37 +105,38 @@ data:
     \ to, cost, M);\n        G[to].emplace_back(to, from, cost, M++);\n    }\n\n \
     \   inline size_t size() const { return G.size(); }\n    inline std::vector<Edge<Cost>>\
     \ &operator[](const int &i) { return G[i]; }\n    inline const std::vector<Edge<Cost>>\
-    \ &operator[](const int &i) const {\n        return G[i];\n    }\n\n  private:\n\
+    \ &operator[](const int &i) const {\n        return G[i];\n    }\n\n  protected:\n\
     \    int N, M;\n    std::vector<std::vector<Edge<Cost>>> G;\n};\n\ntemplate <class\
     \ Cost = int> using Edges = std::vector<Edge<Cost>>;"
   dependsOn: []
   isVerificationFile: false
   path: graph/graph_template.hpp
   requiredBy:
-  - math/two_sat.hpp
+  - graph/tree/hld.hpp
+  - graph/tree/diameter.hpp
+  - graph/tree/centroid-decomposition.hpp
+  - graph/tree/tree-hash.hpp
+  - graph/tree/lca.hpp
   - graph/range-edge-graph.hpp
   - graph/shortest-path/dijkstra.hpp
   - graph/shortest-path/bfs.hpp
-  - graph/tree/diameter.hpp
-  - graph/tree/lca.hpp
-  - graph/tree/centroid-decomposition.hpp
-  - graph/tree/hld.hpp
-  - graph/tree/tree-hash.hpp
   - graph/topological-sort.hpp
+  - graph/namori.hpp
   - graph/scc.hpp
-  timestamp: '2023-02-28 22:24:07+09:00'
+  - math/two_sat.hpp
+  timestamp: '2023-11-04 18:06:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/aoj2821.test.cpp
-  - test/library-checker/math/two-sat.test.cpp
-  - test/library-checker/tree/lowest-common-ancestor2.test.cpp
-  - test/library-checker/tree/lowest-common-ancestor.test.cpp
-  - test/library-checker/tree/tree-diameter.test.cpp
   - test/library-checker/graph/scc.test.cpp
   - test/library-checker/graph/shortest-path.test.cpp
+  - test/library-checker/tree/lowest-common-ancestor2.test.cpp
+  - test/library-checker/tree/tree-diameter.test.cpp
+  - test/library-checker/tree/lowest-common-ancestor.test.cpp
+  - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
   - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
   - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
-  - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
+  - test/library-checker/math/two-sat.test.cpp
+  - test/aoj/aoj2821.test.cpp
 documentation_of: graph/graph_template.hpp
 layout: document
 title: "\u30B0\u30E9\u30D5\u69CB\u9020\u4F53"
