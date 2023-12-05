@@ -3,14 +3,12 @@
 #include "../../math/eratosthenes.hpp"
 
 int main() {
-    int t; 
-    cin >> t;
+    INT(t);
     Eratosthenes isp(100000000);
     int ans = 0;
     while(t--) {
-        int n; 
-        cin >> n;
+        INT(n);
         ans += isp[n];
     }
-    cout << ans << endl;
+    print(ans);
 }

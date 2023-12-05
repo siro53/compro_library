@@ -4,8 +4,7 @@
 
 int main() {
     const int OFFSET = 1000000;
-    int N;
-    cin >> N;
+    INT(N);
     vector<int> a(N);
     REP(i, N) {
         cin >> a[i];
@@ -15,8 +14,7 @@ int main() {
     int Q;
     cin >> Q;
     REP(_, Q) {
-        int l, r, D;
-        cin >> l >> r >> D;
+        INT(l, r, D);
         r++;
         D += OFFSET;
         int res = INF;
@@ -24,6 +22,6 @@ int main() {
         if(x != -1) chmin(res, abs(x - D));
         x = wm.next_value(l, r, D);
         if(x != -1) chmin(res, abs(x - D));
-        cout << res << '\n';
+        print(res);
     }
 }

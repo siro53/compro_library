@@ -3,21 +3,18 @@
 #include "../../graph/tree/tree-hash.hpp"
 
 int main() {
-    int N1, M1, N2;
-    cin >> N1 >> M1;
+    INT(N1, M1);
     Graph<int> G1(N1);
     for(int i = 0; i < M1; i++) {
-        int a, b;
-        cin >> a >> b;
+        INT(a, b);
         a--;
         b--;
         G1.add_undirected_edge(a, b);
     }
-    cin >> N2;
+    INT(N2);
     TreeHash<int> G2(N2);
     for(int i = 0; i < N2 - 1; i++) {
-        int a, b;
-        cin >> a >> b;
+        INT(a, b);
         a--;
         b--;
         G2.add_edge(a, b);
@@ -57,5 +54,5 @@ int main() {
         }
     }
 
-    cout << ans << endl;
+    print(ans);
 }

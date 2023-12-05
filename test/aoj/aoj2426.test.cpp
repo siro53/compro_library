@@ -4,12 +4,11 @@
 #include "../../misc/compress.hpp"
 
 using P = pair<int, int>;
-int N, M;
 P treasure[5001];
-vector<int> xs, ys;
 
 int main() {
-    cin >> N >> M;
+    INT(N, M);
+    vector<int> xs, ys;
 
     REP(i, N) {
         int x, y;
@@ -45,6 +44,6 @@ int main() {
         int gy = cy.get(y2);
         if(gy < ylen && cy[gy] == y2) gy++;
 
-        cout << sum2d.get_sum(sx, gx, sy, gy) << '\n';
+        print(sum2d.get_sum(sx, gx, sy, gy));
     }
 }

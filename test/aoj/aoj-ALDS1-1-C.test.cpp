@@ -3,13 +3,11 @@
 #include "../../math/is-prime.hpp"
 
 int main() {
-    int n;
-    cin >> n;
+    INT(n);
     int ans = 0;
     while(n--) {
-        int p;
-        cin >> p;
+        INT(p);
         ans += is_prime(p);
     }
-    cout << ans << endl;
+    print(ans);
 }

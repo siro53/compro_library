@@ -4,8 +4,7 @@
 #include "../../misc/inversion-number.hpp"
 
 int main() {
-    int N;
-    cin >> N;
+    INT(N);
     vector<int> a(N);
     REP(i, N) cin >> a[i];
     
@@ -13,5 +12,5 @@ int main() {
     vector<int> v(N);
     REP(i, N) v[i] = comp.get(a[i]);
 
-    cout << inversion_number<ll>(v) << endl;
+    print(inversion_number<ll>(v));
 }
