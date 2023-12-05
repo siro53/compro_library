@@ -40,9 +40,9 @@ data:
   isVerificationFile: false
   path: math/pow_mod.hpp
   requiredBy:
-  - math/convolution/ntt.hpp
-  - math/is-prime.hpp
   - math/primitive-root.hpp
+  - math/is-prime.hpp
+  - math/convolution/ntt.hpp
   timestamp: '2023-10-01 12:06:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

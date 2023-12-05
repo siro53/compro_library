@@ -6,7 +6,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/BIT.hpp
       title: data-structure/BIT.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data-structure/binary-trie.hpp
       title: data-structure/binary-trie.hpp
     - icon: ':heavy_check_mark:'
@@ -29,7 +29,7 @@ data:
       title: Wavelet Matrix
   - name: data-structure/monoid
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data-structure/monoid/add.hpp
       title: data-structure/monoid/add.hpp
     - icon: ':heavy_check_mark:'
@@ -69,13 +69,13 @@ data:
       title: data-structure/persistent/persistent-unionfind.hpp
   - name: data-structure/segtree
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data-structure/segtree/dynamic-segtree.hpp
       title: Dynamic Segment Tree
     - icon: ':heavy_check_mark:'
       path: data-structure/segtree/li-chao-tree.hpp
       title: Li Chao Tree
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data-structure/segtree/segtree.hpp
       title: Segment Tree
   - name: geometry
@@ -145,7 +145,7 @@ data:
     - icon: ':warning:'
       path: math/linear-sieve.hpp
       title: "\u7DDA\u5F62\u7BE9"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/matrix.hpp
       title: "\u884C\u5217\u30E9\u30A4\u30D6\u30E9\u30EA"
     - icon: ':heavy_check_mark:'
@@ -168,7 +168,7 @@ data:
       title: 2-SAT
   - name: math/convolution
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/convolution/fft.hpp
       title: math/convolution/fft.hpp
     - icon: ':heavy_check_mark:'
@@ -188,7 +188,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: misc/mo.hpp
       title: Mo's Algorithm
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: misc/rle.hpp
       title: "\u30E9\u30F3\u30EC\u30F3\u30B0\u30B9\u5727\u7E2E"
   - name: modint
@@ -196,12 +196,12 @@ data:
     - icon: ':warning:'
       path: modint/dynamic-modint.hpp
       title: modint/dynamic-modint.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: modint/modint.hpp
       title: modint/modint.hpp
   - name: random
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: random/rng.hpp
       title: "\u4E71\u6570\u751F\u6210"
   - name: string
@@ -211,7 +211,7 @@ data:
       title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
   - name: template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/template.cpp
       title: template/template.cpp
   - name: test/library-checker/data-structure
@@ -321,7 +321,7 @@ data:
       title: test/library-checker/tree/tree-diameter.test.cpp
   - name: test/mytest/data-structure
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/mytest/data-structure/binary-trie.test.cpp
       title: test/mytest/data-structure/binary-trie.test.cpp
   - name: test/yukicoder
@@ -329,19 +329,19 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yukicoder/yuki117.test.cpp
       title: test/yukicoder/yuki117.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yukicoder/yuki1435.test.cpp
       title: test/yukicoder/yuki1435.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yukicoder/yuki1469.test.cpp
       title: test/yukicoder/yuki1469.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yukicoder/yuki1750.test.cpp
       title: test/yukicoder/yuki1750.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yukicoder/yuki440.test.cpp
       title: test/yukicoder/yuki440.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yukicoder/yuki789.test.cpp
       title: test/yukicoder/yuki789.test.cpp
 layout: toppage
