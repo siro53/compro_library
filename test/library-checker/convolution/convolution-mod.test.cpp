@@ -4,8 +4,7 @@
 #include "../../../math/convolution/ntt.hpp"
 
 int main() {
-    int N, M;
-    cin >> N >> M;
+    INT(N, M);
     using mint = ModInt<MOD2>;
     vector<mint> a(N), b(M);
     REP(i, N) cin >> a[i];

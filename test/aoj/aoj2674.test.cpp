@@ -5,8 +5,7 @@
 const int OFFSET = 300000000;
 
 int main() {
-    int D;
-    cin >> D;
+    INT(D);
     vector<int> x(D);
     REP(i, D) {
         cin >> x[i];
@@ -16,11 +15,10 @@ int main() {
     int Q;
     cin >> Q;
     REP(_, Q) {
-        int l, r, e;
-        cin >> l >> r >> e;
+        INT(l, r, e);
         l--;
         auto [a, b] = minmax(x[l], x[r-1]);
         int cnt = wm.rangefreq(l, r, a-e, b+e+1);
-        cout << (r - l - cnt) << '\n';
+        print(r - l - cnt);
     }
 }

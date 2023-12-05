@@ -4,8 +4,7 @@
 #include "../../math/segment-factorize.hpp"
 
 int main() {
-    ll L, R;
-    cin >> L >> R;
+    LL(L, R);
     Eratosthenes is_prime(70);
     SegmentFactorize sieve(L, R+1);
     int ans = 0;
@@ -13,5 +12,5 @@ int main() {
         auto v = sieve.factor(n);
         ans += is_prime[v.size()];
     }
-    cout << ans << endl;
+    print(ans);
 }
