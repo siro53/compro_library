@@ -11,7 +11,6 @@
 class RollingHash {
 public:
     using u64 = unsigned long long;
-    using u128 = __uint128_t;
     using mint = ModInt_2_61;
 
     explicit RollingHash(const std::vector<int>& v, u64 base): base(base) {
@@ -25,9 +24,14 @@ public:
         }
     }
     explicit RollingHash(const std::string& s, u64 base): base(base) {
-        std::vector<int> v(s.size());
-        for(int i = 0; i < (int)s.size(); i++) v[i] = s[i];
-        RollingHash(v, base);
+        int n = (int)s.size();
+        hashed.assign(n + 1, 0);
+        power.assign(n + 1, 0);
+        power[0] = 1;
+        for(int i = 0; i < n; i++) {
+            power[i + 1] = power[i] * base;
+            hashed[i + 1] = (hashed[i] * base) + s[i];
+        }
     }
     static inline u64 gen_base() {
         std::random_device seed_gen;
@@ -36,6 +40,9 @@ public:
         return rand(engine);
     }
     mint get(int l, int r) {
+        assert(0 <= l);
+        assert(l <= r);
+        assert(r < (int)power.size());
         return (hashed[r] - (hashed[l] * power[r - l]));
     }
     mint connect(mint h1, mint h2, int h2len) {
@@ -57,7 +64,7 @@ public:
     }
 
 private:
-    static constexpr u64 mod = (1LL << 61) - 1;
+    static constexpr u64 mod = (1ULL << 61) - 1;
     const u64 base;
     std::vector<mint> hashed, power;
 };
