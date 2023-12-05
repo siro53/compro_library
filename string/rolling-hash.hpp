@@ -8,12 +8,14 @@
 
 #include "../modint/modint_2_61.hpp"
 
-class RollingHash {
-public:
+struct RollingHash {
     using u64 = unsigned long long;
     using mint = ModInt_2_61;
+    static constexpr u64 mod = (1ULL << 61) - 1;
+    const u64 base;
+    std::vector<mint> hashed, power;
 
-    explicit RollingHash(const std::vector<int>& v, u64 base): base(base) {
+    explicit RollingHash(const std::vector<int> &v, u64 base) : base(base) {
         int n = (int)v.size();
         hashed.assign(n + 1, 0);
         power.assign(n + 1, 0);
@@ -23,7 +25,7 @@ public:
             hashed[i + 1] = (hashed[i] * base) + v[i];
         }
     }
-    explicit RollingHash(const std::string& s, u64 base): base(base) {
+    explicit RollingHash(const std::string &s, u64 base) : base(base) {
         int n = (int)s.size();
         hashed.assign(n + 1, 0);
         power.assign(n + 1, 0);
@@ -62,9 +64,4 @@ public:
         }
         return low;
     }
-
-private:
-    static constexpr u64 mod = (1ULL << 61) - 1;
-    const u64 base;
-    std::vector<mint> hashed, power;
 };
