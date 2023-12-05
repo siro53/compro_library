@@ -1,11 +1,11 @@
 #pragma once
 
 #include <algorithm>
+#include <type_traits>
 #include <vector>
 
-template<typename T>
+template <typename T, std::enable_if_t<std::is_integral<T>::value, int> = 0>
 std::vector<T> divisor(T n) {
-    static_assert(std::is_integral<T>::value == true, "type 'T' should be integer.");
     std::vector<T> ret;
     for(T i = 1; i * i <= n; i++) {
         if(n % i == 0) {

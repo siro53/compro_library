@@ -1,9 +1,10 @@
 #pragma once
 
 #include <map>
+#include <type_traits>
 
-template <typename T = int> std::map<T, int> prime_factor(T n) {
-    static_assert(std::is_integral<T>::value == true, "type 'T' should be integer.");
+template <class T, std::enable_if_t<std::is_integral<T>::value, int> = 0>
+std::map<T, int> prime_factor(T n) {
     std::map<T, int> ret;
     for(T i = 2; i * i <= n; i++) {
         if(n % i == 0) {
