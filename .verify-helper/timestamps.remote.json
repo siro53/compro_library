@@ -28,5 +28,11 @@
 "test/library-checker/tree/lowest-common-ancestor.test.cpp": "2023-12-05 16:11:09 +0900",
 "test/library-checker/tree/lowest-common-ancestor2.test.cpp": "2023-12-05 16:11:09 +0900",
 "test/library-checker/tree/tree-diameter.test.cpp": "2023-12-05 16:11:09 +0900",
-"test/yukicoder/yuki117.test.cpp": "2023-02-25 23:57:16 +0900"
+"test/mytest/data-structure/binary-trie.test.cpp": "2023-12-05 16:11:09 +0900",
+"test/yukicoder/yuki117.test.cpp": "2023-02-25 23:57:16 +0900",
+"test/yukicoder/yuki1435.test.cpp": "2023-12-05 16:11:09 +0900",
+"test/yukicoder/yuki1469.test.cpp": "2023-12-05 16:11:09 +0900",
+"test/yukicoder/yuki1750.test.cpp": "2023-12-05 16:11:09 +0900",
+"test/yukicoder/yuki440.test.cpp": "2023-12-05 16:11:09 +0900",
+"test/yukicoder/yuki789.test.cpp": "2023-12-05 16:11:09 +0900"
 }
