@@ -106,6 +106,12 @@ data:
     path: test/yukicoder/yuki1750.test.cpp
     title: test/yukicoder/yuki1750.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yukicoder/yuki2102.test.cpp
+    title: test/yukicoder/yuki2102.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yukicoder/yuki430.test.cpp
+    title: test/yukicoder/yuki430.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki440.test.cpp
     title: test/yukicoder/yuki440.test.cpp
   - icon: ':heavy_check_mark:'
@@ -430,8 +436,10 @@ data:
   - test/library-checker/math/primality-test.test.cpp
   - test/library-checker/math/two-sat.test.cpp
   - test/mytest/data-structure/binary-trie.test.cpp
+  - test/yukicoder/yuki430.test.cpp
   - test/yukicoder/yuki1435.test.cpp
   - test/yukicoder/yuki440.test.cpp
+  - test/yukicoder/yuki2102.test.cpp
   - test/yukicoder/yuki1469.test.cpp
   - test/yukicoder/yuki1750.test.cpp
   - test/yukicoder/yuki789.test.cpp

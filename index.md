@@ -56,6 +56,9 @@ data:
     - icon: ':warning:'
       path: data-structure/monoid/min_index.hpp
       title: data-structure/monoid/min_index.hpp
+    - icon: ':warning:'
+      path: data-structure/monoid/rolling_hash.hpp
+      title: data-structure/monoid/rolling_hash.hpp
   - name: data-structure/persistent
     pages:
     - icon: ':heavy_check_mark:'
@@ -199,6 +202,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: modint/modint.hpp
       title: modint/modint.hpp
+    - icon: ':heavy_check_mark:'
+      path: modint/modint_2_61.hpp
+      title: modint/modint_2_61.hpp
   - name: random
     pages:
     - icon: ':heavy_check_mark:'
@@ -206,7 +212,7 @@ data:
       title: "\u4E71\u6570\u751F\u6210"
   - name: string
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: string/rolling-hash.hpp
       title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
   - name: template
@@ -338,6 +344,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yukicoder/yuki1750.test.cpp
       title: test/yukicoder/yuki1750.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yukicoder/yuki2102.test.cpp
+      title: test/yukicoder/yuki2102.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yukicoder/yuki430.test.cpp
+      title: test/yukicoder/yuki430.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yukicoder/yuki440.test.cpp
       title: test/yukicoder/yuki440.test.cpp
