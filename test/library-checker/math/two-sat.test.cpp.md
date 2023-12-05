@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/two_sat.hpp
     title: 2-SAT
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []

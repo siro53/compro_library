@@ -9,12 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj2821.test.cpp
     title: test/aoj/aoj2821.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/binary-trie.test.cpp
     title: test/mytest/data-structure/binary-trie.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"random/rng.hpp\"\n\n#include <chrono>\n#include <random>\n\
@@ -43,7 +43,7 @@ data:
   requiredBy:
   - graph/tree/tree-hash.hpp
   timestamp: '2023-02-25 23:57:16+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/mytest/data-structure/binary-trie.test.cpp
   - test/aoj/aoj2821.test.cpp

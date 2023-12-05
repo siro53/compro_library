@@ -6,12 +6,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/set-xor-min.test.cpp
     title: test/library-checker/data-structure/set-xor-min.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/binary-trie.test.cpp
     title: test/mytest/data-structure/binary-trie.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data-structure/binary-trie.hpp\"\n\n#include <array>\n#include\
@@ -137,7 +137,7 @@ data:
   path: data-structure/binary-trie.hpp
   requiredBy: []
   timestamp: '2023-02-25 23:57:16+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/data-structure/set-xor-min.test.cpp
   - test/mytest/data-structure/binary-trie.test.cpp

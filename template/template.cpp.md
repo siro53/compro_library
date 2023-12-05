@@ -93,27 +93,27 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/tree/tree-diameter.test.cpp
     title: test/library-checker/tree/tree-diameter.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/binary-trie.test.cpp
     title: test/mytest/data-structure/binary-trie.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki1435.test.cpp
     title: test/yukicoder/yuki1435.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki1469.test.cpp
     title: test/yukicoder/yuki1469.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki1750.test.cpp
     title: test/yukicoder/yuki1750.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki440.test.cpp
     title: test/yukicoder/yuki440.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki789.test.cpp
     title: test/yukicoder/yuki789.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://maspypy.github.io/library/other/io_old.hpp
@@ -406,7 +406,7 @@ data:
   requiredBy:
   - test/library-checker/data-structure/point-set-range-composite.cpp
   timestamp: '2023-12-05 16:11:09+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/tree/lowest-common-ancestor2.test.cpp
   - test/library-checker/tree/lowest-common-ancestor.test.cpp
