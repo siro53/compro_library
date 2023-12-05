@@ -37,7 +37,7 @@ namespace siro53_io {
             n = -n;
         }
         string s;
-        while (n > 0) {
+        while(n > 0) {
             s += (char)('0' + n % 10);
             n /= 10;
         }
@@ -50,12 +50,16 @@ namespace siro53_io {
         for(int i = 0; i < n; i++) cerr << s[i];
     }
     template <class T1, class T2> void dump(const pair<T1, T2> &p) {
-        cerr << '(' << p.first << ',' << p.second << ')';
+        cerr << '(';
+        dump(p.first);
+        cerr << ',';
+        dump(p.second);
+        cerr << ')';
     }
     template <class T> void dump(const vector<T> &v) {
         cerr << '{';
         for(int i = 0; i < (int)v.size(); i++) {
-            cerr << v[i];
+            dump(v[i]);
             if(i < (int)v.size() - 1) cerr << ',';
         }
         cerr << '}';
@@ -63,7 +67,7 @@ namespace siro53_io {
     template <class T> void dump(const set<T> &s) {
         cerr << '{';
         for(auto it = s.begin(); it != s.end(); it++) {
-            cerr << *it;
+            dump(*it);
             if(next(it) != s.end()) cerr << ',';
         }
         cerr << '}';
@@ -71,7 +75,7 @@ namespace siro53_io {
     template <class Key, class Value> void dump(const map<Key, Value> &mp) {
         cerr << '{';
         for(auto it = mp.begin(); it != mp.end(); it++) {
-            cerr << '(' << it->first << ',' << it->second << ')';
+            dump(*it);
             if(next(it) != mp.end()) cerr << ',';
         }
         cerr << '}';
@@ -80,7 +84,7 @@ namespace siro53_io {
     void dump(const unordered_map<Key, Value> &mp) {
         cerr << '{';
         for(auto it = mp.begin(); it != mp.end(); it++) {
-            cerr << '(' << it->first << ',' << it->second << ')';
+            dump(*it);
             if(next(it) != mp.end()) cerr << ',';
         }
         cerr << '}';
@@ -88,7 +92,7 @@ namespace siro53_io {
     template <class T> void dump(const deque<T> &v) {
         cerr << '{';
         for(int i = 0; i < (int)v.size(); i++) {
-            cerr << v[i];
+            dump(v[i]);
             if(i < (int)v.size() - 1) cerr << ',';
         }
         cerr << '}';
@@ -96,7 +100,7 @@ namespace siro53_io {
     template <class T> void dump(queue<T> q) {
         cerr << '{';
         while(!q.empty()) {
-            cerr << q.front();
+            dump(q.front());
             if((int)q.size() > 1) cerr << ',';
             q.pop();
         }
@@ -132,7 +136,7 @@ namespace siro53_io {
             n = -n;
         }
         string s;
-        while (n > 0) {
+        while(n > 0) {
             s += (char)('0' + n % 10);
             n /= 10;
         }
@@ -145,29 +149,31 @@ namespace siro53_io {
         for(int i = 0; i < n; i++) cout << s[i];
     }
     template <class T1, class T2> void print_single(const pair<T1, T2> &p) {
-        cout << p.first << ' ' << p.second;
+        print_single(p.first);
+        cout << ' ';
+        print_single(p.second);
     }
     template <class T> void print_single(const vector<T> &v) {
         for(int i = 0; i < (int)v.size(); i++) {
-            cout << v[i];
+            print_single(v[i]);
             if(i < (int)v.size() - 1) cout << ' ';
         }
     }
     template <class T> void print_single(const set<T> &s) {
         for(auto it = s.begin(); it != s.end(); it++) {
-            cout << *it;
+            print_single(*it);
             if(next(it) != s.end()) cout << ' ';
         }
     }
     template <class T> void print_single(const deque<T> &v) {
         for(int i = 0; i < (int)v.size(); i++) {
-            cout << v[i];
+            print_single(v[i]);
             if(i < (int)v.size() - 1) cout << ' ';
         }
     }
     template <class T> void print_single(queue<T> q) {
         while(!q.empty()) {
-            cout << q.front();
+            print_single(q.front());
             if((int)q.size() > 1) cout << ' ';
             q.pop();
         }
@@ -182,7 +188,47 @@ namespace siro53_io {
     }
 
     // input
-    template <class... T> void input(T &...t) { (cin >> ... >> t); }
+    template <class T, enable_if_t<is_integral<T>::value, int> = 0>
+    void input_single(T &t) {
+        cin >> t;
+    }
+    template <class T, enable_if_t<is_floating_point<T>::value, int> = 0>
+    void input_single(T &t) {
+        cin >> t;
+    }
+    template <class T, typename enable_if<has_val<T>::value>::type * = nullptr>
+    void input_single(T &t) {
+        cin >> t;
+    }
+    void input_single(__int128_t &n) {
+        string s;
+        cin >> s;
+        if(s == "0") {
+            n = 0;
+            return;
+        }
+        bool is_minus = false;
+        if(s[0] == '-') {
+            s = s.substr(1);
+            is_minus = true;
+        }
+        n = 0;
+        for(int i = 0; i < (int)s.size(); i++) n = n * 10 + (int)(s[i] - '0');
+        if(is_minus) n = -n;
+    }
+    void input_single(string &s) { cin >> s; }
+    template <class T1, class T2> void input_single(pair<T1, T2> &p) {
+        input_single(p.first);
+        input_single(p.second);
+    }
+    template <class T> void input_single(vector<T> &v) {
+        for(auto &e : v) input_single(e);
+    }
+    void input() {}
+    template <class Head, class... Tail> void input(Head &h, Tail &...t) {
+        input_single(h);
+        input(t...);
+    }
 }; // namespace siro53_io
 #ifdef DEBUG
 #define debug(...)                                                             \
@@ -227,6 +273,12 @@ using i128 = __int128_t;
 #define ULL(...)                                                               \
     unsigned long long __VA_ARGS__;                                            \
     input(__VA_ARGS__)
+#define VEC(name, type, len)                                                   \
+    vector<type> name(len);                                                    \
+    input(name);
+#define VEC2(name, type, len1, len2)                                           \
+    vector name(len1, vector<type>(len2));                                     \
+    input(name);
 // other macros
 // https://trap.jp/post/1224/
 #define OVERLOAD3(_1, _2, _3, name, ...) name
