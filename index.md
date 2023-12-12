@@ -29,7 +29,7 @@ data:
       title: Wavelet Matrix
   - name: data-structure/monoid
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data-structure/monoid/add.hpp
       title: data-structure/monoid/add.hpp
     - icon: ':heavy_check_mark:'
@@ -72,7 +72,7 @@ data:
       title: data-structure/persistent/persistent-unionfind.hpp
   - name: data-structure/segtree
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data-structure/segtree/dynamic-segtree.hpp
       title: Dynamic Segment Tree
     - icon: ':heavy_check_mark:'
@@ -171,7 +171,7 @@ data:
       title: 2-SAT
   - name: math/convolution
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/convolution/fft.hpp
       title: math/convolution/fft.hpp
     - icon: ':heavy_check_mark:'
@@ -202,7 +202,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: modint/modint.hpp
       title: modint/modint.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: modint/modint_2_61.hpp
       title: modint/modint_2_61.hpp
   - name: random
@@ -212,12 +212,12 @@ data:
       title: "\u4E71\u6570\u751F\u6210"
   - name: string
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: string/rolling-hash.hpp
       title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
   - name: template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/template.cpp
       title: template/template.cpp
   - name: test/library-checker/data-structure
@@ -344,16 +344,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yukicoder/yuki1750.test.cpp
       title: test/yukicoder/yuki1750.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yukicoder/yuki2102.test.cpp
       title: test/yukicoder/yuki2102.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yukicoder/yuki430.test.cpp
       title: test/yukicoder/yuki430.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yukicoder/yuki440.test.cpp
       title: test/yukicoder/yuki440.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yukicoder/yuki789.test.cpp
       title: test/yukicoder/yuki789.test.cpp
 layout: toppage

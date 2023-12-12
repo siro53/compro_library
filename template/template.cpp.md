@@ -105,21 +105,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki1750.test.cpp
     title: test/yukicoder/yuki1750.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/yuki2102.test.cpp
     title: test/yukicoder/yuki2102.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/yuki430.test.cpp
     title: test/yukicoder/yuki430.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/yuki440.test.cpp
     title: test/yukicoder/yuki440.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/yuki789.test.cpp
     title: test/yukicoder/yuki789.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://maspypy.github.io/library/other/io_old.hpp
@@ -257,12 +257,12 @@ data:
     \ popcnt(int x) { return __builtin_popcount(x); }\nint popcnt(ll x) { return __builtin_popcountll(x);\
     \ }\ntemplate <class T> inline bool chmax(T &a, T b) {\n    return (a < b ? a\
     \ = b, true : false);\n}\ntemplate <class T> inline bool chmin(T &a, T b) {\n\
-    \    return (a > b ? a = b, true : false);\n}\ntemplate <class T, size_t dim>\n\
-    auto make_vector_impl(vector<size_t>& sizes, const T &e) {\n    if constexpr(dim\
-    \ == 1) {\n        return vector(sizes[0], e);\n    } else {\n        size_t n\
-    \ = sizes[dim - 1];\n        sizes.pop_back();\n        return vector(n, make_vector_impl<T,\
-    \ dim - 1>(sizes, e));\n    }\n}\ntemplate <class T, size_t dim>\nauto make_vector(const\
-    \ size_t (&sizes)[dim], const T &e) {\n    vector<size_t> s(dim);\n    for(size_t\
+    \    return (a > b ? a = b, true : false);\n}\ntemplate <class T, int dim>\nauto\
+    \ make_vector_impl(vector<int>& sizes, const T &e) {\n    if constexpr(dim ==\
+    \ 1) {\n        return vector(sizes[0], e);\n    } else {\n        int n = sizes[dim\
+    \ - 1];\n        sizes.pop_back();\n        return vector(n, make_vector_impl<T,\
+    \ dim - 1>(sizes, e));\n    }\n}\ntemplate <class T, int dim>\nauto make_vector(const\
+    \ int (&sizes)[dim], const T &e = T()) {\n    vector<int> s(dim);\n    for(int\
     \ i = 0; i < dim; i++) s[i] = sizes[dim - i - 1];\n    return make_vector_impl<T,\
     \ dim>(s, e);\n}\n#pragma endregion Macros\n"
   code: "#pragma region Macros\n#include <bits/stdc++.h>\nusing namespace std;\n//\
@@ -398,12 +398,12 @@ data:
     \ popcnt(int x) { return __builtin_popcount(x); }\nint popcnt(ll x) { return __builtin_popcountll(x);\
     \ }\ntemplate <class T> inline bool chmax(T &a, T b) {\n    return (a < b ? a\
     \ = b, true : false);\n}\ntemplate <class T> inline bool chmin(T &a, T b) {\n\
-    \    return (a > b ? a = b, true : false);\n}\ntemplate <class T, size_t dim>\n\
-    auto make_vector_impl(vector<size_t>& sizes, const T &e) {\n    if constexpr(dim\
-    \ == 1) {\n        return vector(sizes[0], e);\n    } else {\n        size_t n\
-    \ = sizes[dim - 1];\n        sizes.pop_back();\n        return vector(n, make_vector_impl<T,\
-    \ dim - 1>(sizes, e));\n    }\n}\ntemplate <class T, size_t dim>\nauto make_vector(const\
-    \ size_t (&sizes)[dim], const T &e) {\n    vector<size_t> s(dim);\n    for(size_t\
+    \    return (a > b ? a = b, true : false);\n}\ntemplate <class T, int dim>\nauto\
+    \ make_vector_impl(vector<int>& sizes, const T &e) {\n    if constexpr(dim ==\
+    \ 1) {\n        return vector(sizes[0], e);\n    } else {\n        int n = sizes[dim\
+    \ - 1];\n        sizes.pop_back();\n        return vector(n, make_vector_impl<T,\
+    \ dim - 1>(sizes, e));\n    }\n}\ntemplate <class T, int dim>\nauto make_vector(const\
+    \ int (&sizes)[dim], const T &e = T()) {\n    vector<int> s(dim);\n    for(int\
     \ i = 0; i < dim; i++) s[i] = sizes[dim - i - 1];\n    return make_vector_impl<T,\
     \ dim>(s, e);\n}\n#pragma endregion Macros\n"
   dependsOn: []
@@ -411,46 +411,46 @@ data:
   path: template/template.cpp
   requiredBy:
   - test/library-checker/data-structure/point-set-range-composite.cpp
-  timestamp: '2023-12-05 16:11:09+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-12-13 04:53:24+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/library-checker/tree/lowest-common-ancestor2.test.cpp
-  - test/library-checker/tree/lowest-common-ancestor.test.cpp
-  - test/library-checker/tree/tree-diameter.test.cpp
-  - test/library-checker/data-structure/point-add-range-sum.test.cpp
-  - test/library-checker/data-structure/unionfind.test.cpp
-  - test/library-checker/data-structure/line-add-get-min.test.cpp
-  - test/library-checker/data-structure/persistent-queue.test.cpp
-  - test/library-checker/data-structure/range-kth-smallest.test.cpp
-  - test/library-checker/data-structure/set-xor-min.test.cpp
-  - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
-  - test/library-checker/data-structure/persistent-unionfind.test.cpp
-  - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
-  - test/library-checker/data-structure/static-range-inversions-query.test.cpp
-  - test/library-checker/data-structure/static-range-sum.test.cpp
-  - test/library-checker/data-structure/segment-add-get-min.test.cpp
-  - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
-  - test/library-checker/graph/shortest-path.test.cpp
-  - test/library-checker/graph/scc.test.cpp
-  - test/library-checker/convolution/convolution-mod.test.cpp
   - test/library-checker/math/primality-test.test.cpp
   - test/library-checker/math/two-sat.test.cpp
+  - test/library-checker/tree/tree-diameter.test.cpp
+  - test/library-checker/tree/lowest-common-ancestor.test.cpp
+  - test/library-checker/tree/lowest-common-ancestor2.test.cpp
+  - test/library-checker/convolution/convolution-mod.test.cpp
+  - test/library-checker/graph/shortest-path.test.cpp
+  - test/library-checker/graph/scc.test.cpp
+  - test/library-checker/data-structure/static-range-inversions-query.test.cpp
+  - test/library-checker/data-structure/set-xor-min.test.cpp
+  - test/library-checker/data-structure/line-add-get-min.test.cpp
+  - test/library-checker/data-structure/static-range-sum.test.cpp
+  - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
+  - test/library-checker/data-structure/unionfind.test.cpp
+  - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
+  - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
+  - test/library-checker/data-structure/segment-add-get-min.test.cpp
+  - test/library-checker/data-structure/range-kth-smallest.test.cpp
+  - test/library-checker/data-structure/persistent-unionfind.test.cpp
+  - test/library-checker/data-structure/point-add-range-sum.test.cpp
+  - test/library-checker/data-structure/persistent-queue.test.cpp
   - test/mytest/data-structure/binary-trie.test.cpp
-  - test/yukicoder/yuki430.test.cpp
+  - test/aoj/aoj2674.test.cpp
+  - test/aoj/aoj1549.test.cpp
+  - test/aoj/aoj-ALDS1-5-D.test.cpp
+  - test/aoj/aoj2426.test.cpp
+  - test/aoj/aoj-ALDS1-1-C.test.cpp
+  - test/aoj/aoj2821.test.cpp
+  - test/aoj/aoj-ALDS1-1-C_2.test.cpp
+  - test/aoj/aoj2858.test.cpp
+  - test/yukicoder/yuki789.test.cpp
   - test/yukicoder/yuki1435.test.cpp
   - test/yukicoder/yuki440.test.cpp
+  - test/yukicoder/yuki1750.test.cpp
+  - test/yukicoder/yuki430.test.cpp
   - test/yukicoder/yuki2102.test.cpp
   - test/yukicoder/yuki1469.test.cpp
-  - test/yukicoder/yuki1750.test.cpp
-  - test/yukicoder/yuki789.test.cpp
-  - test/aoj/aoj2821.test.cpp
-  - test/aoj/aoj2858.test.cpp
-  - test/aoj/aoj2674.test.cpp
-  - test/aoj/aoj-ALDS1-1-C.test.cpp
-  - test/aoj/aoj-ALDS1-1-C_2.test.cpp
-  - test/aoj/aoj-ALDS1-5-D.test.cpp
-  - test/aoj/aoj1549.test.cpp
-  - test/aoj/aoj2426.test.cpp
 documentation_of: template/template.cpp
 layout: document
 redirect_from:

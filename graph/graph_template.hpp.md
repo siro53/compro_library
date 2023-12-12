@@ -112,30 +112,30 @@ data:
   isVerificationFile: false
   path: graph/graph_template.hpp
   requiredBy:
+  - math/two_sat.hpp
+  - graph/scc.hpp
+  - graph/tree/lca.hpp
   - graph/tree/tree-hash.hpp
-  - graph/tree/centroid-decomposition.hpp
   - graph/tree/hld.hpp
   - graph/tree/diameter.hpp
-  - graph/tree/lca.hpp
-  - graph/shortest-path/bfs.hpp
-  - graph/shortest-path/dijkstra.hpp
-  - graph/range-edge-graph.hpp
+  - graph/tree/centroid-decomposition.hpp
   - graph/topological-sort.hpp
-  - graph/scc.hpp
   - graph/namori.hpp
-  - math/two_sat.hpp
+  - graph/shortest-path/dijkstra.hpp
+  - graph/shortest-path/bfs.hpp
+  - graph/range-edge-graph.hpp
   timestamp: '2023-11-04 18:06:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/tree/lowest-common-ancestor2.test.cpp
-  - test/library-checker/tree/lowest-common-ancestor.test.cpp
+  - test/library-checker/math/two-sat.test.cpp
   - test/library-checker/tree/tree-diameter.test.cpp
-  - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
-  - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
-  - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
+  - test/library-checker/tree/lowest-common-ancestor.test.cpp
+  - test/library-checker/tree/lowest-common-ancestor2.test.cpp
   - test/library-checker/graph/shortest-path.test.cpp
   - test/library-checker/graph/scc.test.cpp
-  - test/library-checker/math/two-sat.test.cpp
+  - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
+  - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
+  - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
   - test/aoj/aoj2821.test.cpp
 documentation_of: graph/graph_template.hpp
 layout: document

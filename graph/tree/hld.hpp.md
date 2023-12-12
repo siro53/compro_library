@@ -139,9 +139,9 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/tree/lowest-common-ancestor2.test.cpp
+  - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
   - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
   - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
-  - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
 documentation_of: graph/tree/hld.hpp
 layout: document
 title: "HL\u5206\u89E3"

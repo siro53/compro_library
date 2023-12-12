@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: random/rng.hpp
     title: "\u4E71\u6570\u751F\u6210"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
@@ -155,12 +155,12 @@ data:
     \ popcnt(int x) { return __builtin_popcount(x); }\nint popcnt(ll x) { return __builtin_popcountll(x);\
     \ }\ntemplate <class T> inline bool chmax(T &a, T b) {\n    return (a < b ? a\
     \ = b, true : false);\n}\ntemplate <class T> inline bool chmin(T &a, T b) {\n\
-    \    return (a > b ? a = b, true : false);\n}\ntemplate <class T, size_t dim>\n\
-    auto make_vector_impl(vector<size_t>& sizes, const T &e) {\n    if constexpr(dim\
-    \ == 1) {\n        return vector(sizes[0], e);\n    } else {\n        size_t n\
-    \ = sizes[dim - 1];\n        sizes.pop_back();\n        return vector(n, make_vector_impl<T,\
-    \ dim - 1>(sizes, e));\n    }\n}\ntemplate <class T, size_t dim>\nauto make_vector(const\
-    \ size_t (&sizes)[dim], const T &e) {\n    vector<size_t> s(dim);\n    for(size_t\
+    \    return (a > b ? a = b, true : false);\n}\ntemplate <class T, int dim>\nauto\
+    \ make_vector_impl(vector<int>& sizes, const T &e) {\n    if constexpr(dim ==\
+    \ 1) {\n        return vector(sizes[0], e);\n    } else {\n        int n = sizes[dim\
+    \ - 1];\n        sizes.pop_back();\n        return vector(n, make_vector_impl<T,\
+    \ dim - 1>(sizes, e));\n    }\n}\ntemplate <class T, int dim>\nauto make_vector(const\
+    \ int (&sizes)[dim], const T &e = T()) {\n    vector<int> s(dim);\n    for(int\
     \ i = 0; i < dim; i++) s[i] = sizes[dim - i - 1];\n    return make_vector_impl<T,\
     \ dim>(s, e);\n}\n#pragma endregion Macros\n#line 2 \"random/rng.hpp\"\n\n#line\
     \ 5 \"random/rng.hpp\"\n\nclass RNG32 {\n  public:\n    RNG32() : mt(std::chrono::steady_clock::now().time_since_epoch().count())\
@@ -283,7 +283,7 @@ data:
   isVerificationFile: true
   path: test/mytest/data-structure/binary-trie.test.cpp
   requiredBy: []
-  timestamp: '2023-12-05 16:11:09+09:00'
+  timestamp: '2023-12-13 04:53:24+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/mytest/data-structure/binary-trie.test.cpp
