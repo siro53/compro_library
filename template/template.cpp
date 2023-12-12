@@ -312,20 +312,20 @@ template <class T> inline bool chmax(T &a, T b) {
 template <class T> inline bool chmin(T &a, T b) {
     return (a > b ? a = b, true : false);
 }
-template <class T, size_t dim>
-auto make_vector_impl(vector<size_t>& sizes, const T &e) {
+template <class T, int dim>
+auto make_vector_impl(vector<int>& sizes, const T &e) {
     if constexpr(dim == 1) {
         return vector(sizes[0], e);
     } else {
-        size_t n = sizes[dim - 1];
+        int n = sizes[dim - 1];
         sizes.pop_back();
         return vector(n, make_vector_impl<T, dim - 1>(sizes, e));
     }
 }
-template <class T, size_t dim>
-auto make_vector(const size_t (&sizes)[dim], const T &e) {
-    vector<size_t> s(dim);
-    for(size_t i = 0; i < dim; i++) s[i] = sizes[dim - i - 1];
+template <class T, int dim>
+auto make_vector(const int (&sizes)[dim], const T &e = T()) {
+    vector<int> s(dim);
+    for(int i = 0; i < dim; i++) s[i] = sizes[dim - i - 1];
     return make_vector_impl<T, dim>(s, e);
 }
 #pragma endregion Macros
