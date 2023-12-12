@@ -6,37 +6,49 @@
 #include <string>
 #include <vector>
 
-class RollingHash {
-public:
-    using u64 = unsigned long long;
-    using u128 = __uint128_t;
+#include "../modint/modint_2_61.hpp"
 
-    explicit RollingHash(const std::vector<int>& v, u64 base): base(base) {
+struct RollingHash {
+    using u64 = unsigned long long;
+    using mint = ModInt_2_61;
+    static constexpr u64 mod = (1ULL << 61) - 1;
+    const u64 base;
+    std::vector<mint> hashed, power;
+
+    explicit RollingHash(const std::vector<int> &v, u64 base) : base(base) {
         int n = (int)v.size();
         hashed.assign(n + 1, 0);
         power.assign(n + 1, 0);
         power[0] = 1;
         for(int i = 0; i < n; i++) {
-            power[i + 1] = mul(power[i], base);
-            hashed[i + 1] = add(mul(hashed[i], base), v[i]);
+            power[i + 1] = power[i] * base;
+            hashed[i + 1] = (hashed[i] * base) + v[i];
         }
     }
-    explicit RollingHash(const std::string& s, u64 base): base(base) {
-        std::vector<int> v(s.size());
-        for(int i = 0; i < (int)s.size(); i++) v[i] = s[i];
-        RollingHash(v, base);
+    explicit RollingHash(const std::string &s, u64 base) : base(base) {
+        int n = (int)s.size();
+        hashed.assign(n + 1, 0);
+        power.assign(n + 1, 0);
+        power[0] = 1;
+        for(int i = 0; i < n; i++) {
+            power[i + 1] = power[i] * base;
+            hashed[i + 1] = (hashed[i] * base) + s[i];
+        }
     }
-    static inline u64 genBase() {
+    static inline u64 gen_base() {
         std::random_device seed_gen;
         std::mt19937_64 engine(seed_gen());
         std::uniform_int_distribution<u64> rand(2, mod - 2);
         return rand(engine);
     }
-    u64 get(int l, int r) {
-        return add(hashed[r], mod - mul(hashed[l], power[r - l]));
+    mint get(int l, int r) {
+        assert(0 <= l);
+        assert(l <= r);
+        assert(r < (int)power.size());
+        return (hashed[r] - (hashed[l] * power[r - l]));
     }
-    u64 connect(u64 h1, u64 h2, int h2len) {
-        return add(mul(h1, power[h2len]), h2);
+    mint connect(mint h1, mint h2, int h2len) {
+        return (h1 * power[h2len] + h2);
     }
     int get_lcp(RollingHash &b, int l1, int r1, int l2, int r2) {
         assert(mod == b.mod);
@@ -51,22 +63,5 @@ public:
             }
         }
         return low;
-    }
-
-private:
-    static const u64 mod = (1ULL << 61) - 1;
-    const u64 base;
-    std::vector<u64> hashed, power;
-
-    inline u64 add(u64 a, u64 b) const {
-        if((a += b) >= mod) a -= mod;
-        return a;
-    }
-    inline u64 mul(u64 a, u64 b) const {
-        u128 t = (u128)a * b;
-        u64 na = t >> 61;
-        u64 nb = t & mod;
-        if((na += nb) >= mod) na -= mod;
-        return na;
     }
 };
