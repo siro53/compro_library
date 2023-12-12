@@ -317,7 +317,7 @@ auto make_vector_impl(vector<int>& sizes, const T &e) {
     if constexpr(dim == 1) {
         return vector(sizes[0], e);
     } else {
-        size_t n = sizes[dim - 1];
+        int n = sizes[dim - 1];
         sizes.pop_back();
         return vector(n, make_vector_impl<T, dim - 1>(sizes, e));
     }
