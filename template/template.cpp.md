@@ -105,21 +105,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki1750.test.cpp
     title: test/yukicoder/yuki1750.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki2102.test.cpp
     title: test/yukicoder/yuki2102.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki430.test.cpp
     title: test/yukicoder/yuki430.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki440.test.cpp
     title: test/yukicoder/yuki440.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki789.test.cpp
     title: test/yukicoder/yuki789.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://maspypy.github.io/library/other/io_old.hpp
@@ -412,45 +412,45 @@ data:
   requiredBy:
   - test/library-checker/data-structure/point-set-range-composite.cpp
   timestamp: '2023-12-13 04:53:24+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/math/primality-test.test.cpp
-  - test/library-checker/math/two-sat.test.cpp
-  - test/library-checker/tree/tree-diameter.test.cpp
-  - test/library-checker/tree/lowest-common-ancestor.test.cpp
-  - test/library-checker/tree/lowest-common-ancestor2.test.cpp
-  - test/library-checker/convolution/convolution-mod.test.cpp
-  - test/library-checker/graph/shortest-path.test.cpp
-  - test/library-checker/graph/scc.test.cpp
+  - test/library-checker/data-structure/persistent-unionfind.test.cpp
   - test/library-checker/data-structure/static-range-inversions-query.test.cpp
-  - test/library-checker/data-structure/set-xor-min.test.cpp
-  - test/library-checker/data-structure/line-add-get-min.test.cpp
-  - test/library-checker/data-structure/static-range-sum.test.cpp
-  - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
-  - test/library-checker/data-structure/unionfind.test.cpp
+  - test/library-checker/data-structure/range-kth-smallest.test.cpp
   - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
+  - test/library-checker/data-structure/unionfind.test.cpp
+  - test/library-checker/data-structure/line-add-get-min.test.cpp
+  - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
+  - test/library-checker/data-structure/point-add-range-sum.test.cpp
   - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
   - test/library-checker/data-structure/segment-add-get-min.test.cpp
-  - test/library-checker/data-structure/range-kth-smallest.test.cpp
-  - test/library-checker/data-structure/persistent-unionfind.test.cpp
-  - test/library-checker/data-structure/point-add-range-sum.test.cpp
+  - test/library-checker/data-structure/static-range-sum.test.cpp
   - test/library-checker/data-structure/persistent-queue.test.cpp
-  - test/mytest/data-structure/binary-trie.test.cpp
+  - test/library-checker/data-structure/set-xor-min.test.cpp
+  - test/library-checker/math/primality-test.test.cpp
+  - test/library-checker/math/two-sat.test.cpp
+  - test/library-checker/convolution/convolution-mod.test.cpp
+  - test/library-checker/tree/lowest-common-ancestor2.test.cpp
+  - test/library-checker/tree/tree-diameter.test.cpp
+  - test/library-checker/tree/lowest-common-ancestor.test.cpp
+  - test/library-checker/graph/scc.test.cpp
+  - test/library-checker/graph/shortest-path.test.cpp
+  - test/aoj/aoj-ALDS1-5-D.test.cpp
   - test/aoj/aoj2674.test.cpp
   - test/aoj/aoj1549.test.cpp
-  - test/aoj/aoj-ALDS1-5-D.test.cpp
-  - test/aoj/aoj2426.test.cpp
   - test/aoj/aoj-ALDS1-1-C.test.cpp
-  - test/aoj/aoj2821.test.cpp
   - test/aoj/aoj-ALDS1-1-C_2.test.cpp
+  - test/aoj/aoj2821.test.cpp
   - test/aoj/aoj2858.test.cpp
+  - test/aoj/aoj2426.test.cpp
+  - test/mytest/data-structure/binary-trie.test.cpp
   - test/yukicoder/yuki789.test.cpp
-  - test/yukicoder/yuki1435.test.cpp
-  - test/yukicoder/yuki440.test.cpp
-  - test/yukicoder/yuki1750.test.cpp
-  - test/yukicoder/yuki430.test.cpp
-  - test/yukicoder/yuki2102.test.cpp
   - test/yukicoder/yuki1469.test.cpp
+  - test/yukicoder/yuki1750.test.cpp
+  - test/yukicoder/yuki1435.test.cpp
+  - test/yukicoder/yuki430.test.cpp
+  - test/yukicoder/yuki440.test.cpp
+  - test/yukicoder/yuki2102.test.cpp
 documentation_of: template/template.cpp
 layout: document
 redirect_from:

@@ -29,12 +29,15 @@ data:
       title: Wavelet Matrix
   - name: data-structure/monoid
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/monoid/add.hpp
       title: data-structure/monoid/add.hpp
     - icon: ':heavy_check_mark:'
       path: data-structure/monoid/affine.hpp
       title: data-structure/monoid/affine.hpp
+    - icon: ':warning:'
+      path: data-structure/monoid/and.hpp
+      title: data-structure/monoid/and.hpp
     - icon: ':warning:'
       path: data-structure/monoid/gcd.hpp
       title: data-structure/monoid/gcd.hpp
@@ -57,6 +60,9 @@ data:
       path: data-structure/monoid/min_index.hpp
       title: data-structure/monoid/min_index.hpp
     - icon: ':warning:'
+      path: data-structure/monoid/or.hpp
+      title: data-structure/monoid/or.hpp
+    - icon: ':warning:'
       path: data-structure/monoid/rolling_hash.hpp
       title: data-structure/monoid/rolling_hash.hpp
   - name: data-structure/persistent
@@ -72,7 +78,7 @@ data:
       title: data-structure/persistent/persistent-unionfind.hpp
   - name: data-structure/segtree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/segtree/dynamic-segtree.hpp
       title: Dynamic Segment Tree
     - icon: ':heavy_check_mark:'
@@ -171,7 +177,7 @@ data:
       title: 2-SAT
   - name: math/convolution
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/convolution/fft.hpp
       title: math/convolution/fft.hpp
     - icon: ':heavy_check_mark:'
@@ -202,7 +208,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: modint/modint.hpp
       title: modint/modint.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: modint/modint_2_61.hpp
       title: modint/modint_2_61.hpp
   - name: random
@@ -212,12 +218,12 @@ data:
       title: "\u4E71\u6570\u751F\u6210"
   - name: string
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: string/rolling-hash.hpp
       title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
   - name: template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/template.cpp
       title: template/template.cpp
   - name: test/library-checker/data-structure
@@ -344,16 +350,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yukicoder/yuki1750.test.cpp
       title: test/yukicoder/yuki1750.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yukicoder/yuki2102.test.cpp
       title: test/yukicoder/yuki2102.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yukicoder/yuki430.test.cpp
       title: test/yukicoder/yuki430.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yukicoder/yuki440.test.cpp
       title: test/yukicoder/yuki440.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yukicoder/yuki789.test.cpp
       title: test/yukicoder/yuki789.test.cpp
 layout: toppage
