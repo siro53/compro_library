@@ -46,8 +46,8 @@ data:
   timestamp: '2023-10-01 12:06:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/math/primality-test.test.cpp
   - test/library-checker/convolution/convolution-mod.test.cpp
+  - test/library-checker/math/primality-test.test.cpp
   - test/aoj/aoj-ALDS1-1-C.test.cpp
 documentation_of: math/pow_mod.hpp
 layout: document

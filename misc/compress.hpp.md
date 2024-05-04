@@ -43,8 +43,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/data-structure/static-range-inversions-query.test.cpp
-  - test/aoj/aoj-ALDS1-5-D.test.cpp
   - test/aoj/aoj2426.test.cpp
+  - test/aoj/aoj-ALDS1-5-D.test.cpp
 documentation_of: misc/compress.hpp
 layout: document
 title: "\u5EA7\u5727"

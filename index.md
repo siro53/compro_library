@@ -221,6 +221,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: string/rolling-hash.hpp
       title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
+    - icon: ':heavy_check_mark:'
+      path: string/z-algo.hpp
+      title: string/z-algo.hpp
   - name: template
     pages:
     - icon: ':heavy_check_mark:'
@@ -320,6 +323,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/library-checker/math/two-sat.test.cpp
       title: test/library-checker/math/two-sat.test.cpp
+  - name: test/library-checker/string
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/library-checker/string/z-algorithm.test.cpp
+      title: test/library-checker/string/z-algorithm.test.cpp
   - name: test/library-checker/tree
     pages:
     - icon: ':heavy_check_mark:'
