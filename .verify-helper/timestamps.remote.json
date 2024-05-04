@@ -25,6 +25,7 @@
 "test/library-checker/graph/shortest-path.test.cpp": "2023-12-13 04:53:24 +0900",
 "test/library-checker/math/primality-test.test.cpp": "2023-12-13 04:53:24 +0900",
 "test/library-checker/math/two-sat.test.cpp": "2023-12-13 04:53:24 +0900",
+"test/library-checker/string/z-algorithm.test.cpp": "2024-05-04 17:59:59 +0900",
 "test/library-checker/tree/lowest-common-ancestor.test.cpp": "2023-12-13 04:53:24 +0900",
 "test/library-checker/tree/lowest-common-ancestor2.test.cpp": "2023-12-13 04:53:24 +0900",
 "test/library-checker/tree/tree-diameter.test.cpp": "2023-12-13 04:53:24 +0900",
