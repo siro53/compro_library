@@ -328,4 +328,18 @@ auto make_vector(const int (&sizes)[dim], const T &e = T()) {
     for(int i = 0; i < dim; i++) s[i] = sizes[dim - i - 1];
     return make_vector_impl<T, dim>(s, e);
 }
+vector<int> iota_gen(int n, int start = 0) {
+    vector<int> ord(n);
+    iota(ord.begin(), ord.end(), start);
+    return ord;
+}
+template<typename T>
+vector<int> ord_sort(const vector<T>& v, bool greater = false) {
+    auto ord = iota_gen((int)v.size());
+    sort(ALL(ord), [&](int i, int j) {
+        if(greater) return v[i] > v[j];
+        return v[i] < v[j];
+    });
+    return ord;
+}
 #pragma endregion Macros
