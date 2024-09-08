@@ -99,30 +99,30 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/binary-trie.test.cpp
     title: test/mytest/data-structure/binary-trie.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/yuki1435.test.cpp
     title: test/yukicoder/yuki1435.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/yuki1469.test.cpp
     title: test/yukicoder/yuki1469.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/yuki1750.test.cpp
     title: test/yukicoder/yuki1750.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/yuki2102.test.cpp
     title: test/yukicoder/yuki2102.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/yuki430.test.cpp
     title: test/yukicoder/yuki430.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/yuki440.test.cpp
     title: test/yukicoder/yuki440.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/yuki789.test.cpp
     title: test/yukicoder/yuki789.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://maspypy.github.io/library/other/io_old.hpp
@@ -267,7 +267,12 @@ data:
     \ dim - 1>(sizes, e));\n    }\n}\ntemplate <class T, int dim>\nauto make_vector(const\
     \ int (&sizes)[dim], const T &e = T()) {\n    vector<int> s(dim);\n    for(int\
     \ i = 0; i < dim; i++) s[i] = sizes[dim - i - 1];\n    return make_vector_impl<T,\
-    \ dim>(s, e);\n}\n#pragma endregion Macros\n"
+    \ dim>(s, e);\n}\nvector<int> iota_gen(int n, int start = 0) {\n    vector<int>\
+    \ ord(n);\n    iota(ord.begin(), ord.end(), start);\n    return ord;\n}\ntemplate<typename\
+    \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
+    \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
+    \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
+    \    return ord;\n}\n#pragma endregion Macros\n"
   code: "#pragma region Macros\n#include <bits/stdc++.h>\nusing namespace std;\n//\
     \ input output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
     \    struct has_val_impl {\n        template <class T>\n        static auto check(T\
@@ -408,53 +413,58 @@ data:
     \ dim - 1>(sizes, e));\n    }\n}\ntemplate <class T, int dim>\nauto make_vector(const\
     \ int (&sizes)[dim], const T &e = T()) {\n    vector<int> s(dim);\n    for(int\
     \ i = 0; i < dim; i++) s[i] = sizes[dim - i - 1];\n    return make_vector_impl<T,\
-    \ dim>(s, e);\n}\n#pragma endregion Macros\n"
+    \ dim>(s, e);\n}\nvector<int> iota_gen(int n, int start = 0) {\n    vector<int>\
+    \ ord(n);\n    iota(ord.begin(), ord.end(), start);\n    return ord;\n}\ntemplate<typename\
+    \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
+    \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
+    \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
+    \    return ord;\n}\n#pragma endregion Macros\n"
   dependsOn: []
   isVerificationFile: false
   path: template/template.cpp
   requiredBy:
   - test/library-checker/data-structure/point-set-range-composite.cpp
-  timestamp: '2023-12-13 04:53:24+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-09-08 23:17:50+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/library-checker/data-structure/static-range-sum.test.cpp
-  - test/library-checker/data-structure/unionfind.test.cpp
-  - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
-  - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
-  - test/library-checker/data-structure/set-xor-min.test.cpp
-  - test/library-checker/data-structure/line-add-get-min.test.cpp
-  - test/library-checker/data-structure/point-add-range-sum.test.cpp
-  - test/library-checker/data-structure/persistent-unionfind.test.cpp
-  - test/library-checker/data-structure/persistent-queue.test.cpp
-  - test/library-checker/data-structure/range-kth-smallest.test.cpp
-  - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
-  - test/library-checker/data-structure/segment-add-get-min.test.cpp
-  - test/library-checker/data-structure/static-range-inversions-query.test.cpp
+  - test/yukicoder/yuki2102.test.cpp
+  - test/yukicoder/yuki440.test.cpp
+  - test/yukicoder/yuki1750.test.cpp
+  - test/yukicoder/yuki789.test.cpp
+  - test/yukicoder/yuki1435.test.cpp
+  - test/yukicoder/yuki430.test.cpp
+  - test/yukicoder/yuki1469.test.cpp
+  - test/library-checker/math/two-sat.test.cpp
+  - test/library-checker/math/primality-test.test.cpp
   - test/library-checker/convolution/convolution-mod.test.cpp
+  - test/library-checker/tree/lowest-common-ancestor2.test.cpp
+  - test/library-checker/tree/lowest-common-ancestor.test.cpp
+  - test/library-checker/tree/tree-diameter.test.cpp
   - test/library-checker/graph/scc.test.cpp
   - test/library-checker/graph/shortest-path.test.cpp
   - test/library-checker/string/z-algorithm.test.cpp
-  - test/library-checker/math/two-sat.test.cpp
-  - test/library-checker/math/primality-test.test.cpp
-  - test/library-checker/tree/tree-diameter.test.cpp
-  - test/library-checker/tree/lowest-common-ancestor2.test.cpp
-  - test/library-checker/tree/lowest-common-ancestor.test.cpp
-  - test/mytest/data-structure/binary-trie.test.cpp
-  - test/yukicoder/yuki1469.test.cpp
-  - test/yukicoder/yuki440.test.cpp
-  - test/yukicoder/yuki2102.test.cpp
-  - test/yukicoder/yuki430.test.cpp
-  - test/yukicoder/yuki1750.test.cpp
-  - test/yukicoder/yuki1435.test.cpp
-  - test/yukicoder/yuki789.test.cpp
-  - test/aoj/aoj2426.test.cpp
-  - test/aoj/aoj1549.test.cpp
-  - test/aoj/aoj-ALDS1-1-C.test.cpp
-  - test/aoj/aoj2858.test.cpp
-  - test/aoj/aoj2821.test.cpp
+  - test/library-checker/data-structure/static-range-inversions-query.test.cpp
+  - test/library-checker/data-structure/static-range-sum.test.cpp
+  - test/library-checker/data-structure/line-add-get-min.test.cpp
+  - test/library-checker/data-structure/unionfind.test.cpp
+  - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
+  - test/library-checker/data-structure/set-xor-min.test.cpp
+  - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
+  - test/library-checker/data-structure/range-kth-smallest.test.cpp
+  - test/library-checker/data-structure/persistent-queue.test.cpp
+  - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
+  - test/library-checker/data-structure/point-add-range-sum.test.cpp
+  - test/library-checker/data-structure/segment-add-get-min.test.cpp
+  - test/library-checker/data-structure/persistent-unionfind.test.cpp
   - test/aoj/aoj-ALDS1-1-C_2.test.cpp
-  - test/aoj/aoj2674.test.cpp
+  - test/aoj/aoj-ALDS1-1-C.test.cpp
   - test/aoj/aoj-ALDS1-5-D.test.cpp
+  - test/aoj/aoj2858.test.cpp
+  - test/aoj/aoj1549.test.cpp
+  - test/aoj/aoj2674.test.cpp
+  - test/aoj/aoj2426.test.cpp
+  - test/aoj/aoj2821.test.cpp
+  - test/mytest/data-structure/binary-trie.test.cpp
 documentation_of: template/template.cpp
 layout: document
 redirect_from:

@@ -15,12 +15,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/vertex-set-path-composite.test.cpp
     title: test/library-checker/data-structure/vertex-set-path-composite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/yuki1435.test.cpp
     title: test/yukicoder/yuki1435.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data-structure/segtree/segtree.hpp\"\n\n#include <cassert>\n\
@@ -110,12 +110,12 @@ data:
   requiredBy:
   - test/library-checker/data-structure/point-set-range-composite.cpp
   timestamp: '2023-10-30 20:10:44+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
-  - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
-  - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
   - test/yukicoder/yuki1435.test.cpp
+  - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
+  - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
+  - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
 documentation_of: data-structure/segtree/segtree.hpp
 layout: document
 title: Segment Tree

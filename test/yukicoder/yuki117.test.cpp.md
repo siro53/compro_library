@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/binom.hpp
     title: "\u4E8C\u9805\u4FC2\u6570"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
   _extendedRequiredBy: []

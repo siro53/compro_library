@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/eratosthenes.hpp
     title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
@@ -159,16 +159,21 @@ data:
     \ dim - 1>(sizes, e));\n    }\n}\ntemplate <class T, int dim>\nauto make_vector(const\
     \ int (&sizes)[dim], const T &e = T()) {\n    vector<int> s(dim);\n    for(int\
     \ i = 0; i < dim; i++) s[i] = sizes[dim - i - 1];\n    return make_vector_impl<T,\
-    \ dim>(s, e);\n}\n#pragma endregion Macros\n#line 2 \"math/eratosthenes.hpp\"\n\
-    \n#line 4 \"math/eratosthenes.hpp\"\n\nclass Eratosthenes {\n  public:\n    Eratosthenes()\
-    \ {}\n    explicit Eratosthenes(int n) : n(n), isp(n + 1, true) {\n        isp[0]\
-    \ = isp[1] = false;\n        for(int i = 2; i * i <= n; i++) {\n            if(!isp[i])\
-    \ continue;\n            for(int j = i * i; j <= n; j += i) isp[j] = false;\n\
-    \        }\n    }\n    bool operator[](int k) const { return isp[k]; }\n\n  private:\n\
-    \    int n;\n    std::vector<bool> isp;\n};\n#line 4 \"test/aoj/aoj-ALDS1-1-C_2.test.cpp\"\
-    \n\nint main() {\n    INT(t);\n    Eratosthenes isp(100000000);\n    int ans =\
-    \ 0;\n    while(t--) {\n        INT(n);\n        ans += isp[n];\n    }\n    print(ans);\n\
-    }\n"
+    \ dim>(s, e);\n}\nvector<int> iota_gen(int n, int start = 0) {\n    vector<int>\
+    \ ord(n);\n    iota(ord.begin(), ord.end(), start);\n    return ord;\n}\ntemplate<typename\
+    \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
+    \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
+    \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
+    \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"math/eratosthenes.hpp\"\
+    \n\n#line 4 \"math/eratosthenes.hpp\"\n\nclass Eratosthenes {\n  public:\n   \
+    \ Eratosthenes() {}\n    explicit Eratosthenes(int n) : n(n), isp(n + 1, true)\
+    \ {\n        isp[0] = isp[1] = false;\n        for(int i = 2; i * i <= n; i++)\
+    \ {\n            if(!isp[i]) continue;\n            for(int j = i * i; j <= n;\
+    \ j += i) isp[j] = false;\n        }\n    }\n    bool operator[](int k) const\
+    \ { return isp[k]; }\n\n  private:\n    int n;\n    std::vector<bool> isp;\n};\n\
+    #line 4 \"test/aoj/aoj-ALDS1-1-C_2.test.cpp\"\n\nint main() {\n    INT(t);\n \
+    \   Eratosthenes isp(100000000);\n    int ans = 0;\n    while(t--) {\n       \
+    \ INT(n);\n        ans += isp[n];\n    }\n    print(ans);\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_C&lang=jp\"\
     \n#include \"../../template/template.cpp\"\n#include \"../../math/eratosthenes.hpp\"\
     \n\nint main() {\n    INT(t);\n    Eratosthenes isp(100000000);\n    int ans =\
@@ -180,7 +185,7 @@ data:
   isVerificationFile: true
   path: test/aoj/aoj-ALDS1-1-C_2.test.cpp
   requiredBy: []
-  timestamp: '2023-12-13 04:53:24+09:00'
+  timestamp: '2024-09-08 23:17:50+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/aoj-ALDS1-1-C_2.test.cpp

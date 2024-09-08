@@ -9,12 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
     title: test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/yuki789.test.cpp
     title: test/yukicoder/yuki789.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data-structure/monoid/add.hpp\"\n\ntemplate <typename T>\
@@ -29,11 +29,11 @@ data:
   path: data-structure/monoid/add.hpp
   requiredBy: []
   timestamp: '2023-02-25 23:57:16+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
-  - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
   - test/yukicoder/yuki789.test.cpp
+  - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
+  - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
 documentation_of: data-structure/monoid/add.hpp
 layout: document
 redirect_from:

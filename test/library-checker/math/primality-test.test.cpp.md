@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/pow_mod.hpp
     title: math/pow_mod.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
@@ -162,7 +162,12 @@ data:
     \ dim - 1>(sizes, e));\n    }\n}\ntemplate <class T, int dim>\nauto make_vector(const\
     \ int (&sizes)[dim], const T &e = T()) {\n    vector<int> s(dim);\n    for(int\
     \ i = 0; i < dim; i++) s[i] = sizes[dim - i - 1];\n    return make_vector_impl<T,\
-    \ dim>(s, e);\n}\n#pragma endregion Macros\n#line 3 \"test/library-checker/math/primality-test.test.cpp\"\
+    \ dim>(s, e);\n}\nvector<int> iota_gen(int n, int start = 0) {\n    vector<int>\
+    \ ord(n);\n    iota(ord.begin(), ord.end(), start);\n    return ord;\n}\ntemplate<typename\
+    \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
+    \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
+    \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
+    \    return ord;\n}\n#pragma endregion Macros\n#line 3 \"test/library-checker/math/primality-test.test.cpp\"\
     \n\n#line 2 \"math/is-prime.hpp\"\n\n#line 4 \"math/is-prime.hpp\"\n\n#line 2\
     \ \"math/pow_mod.hpp\"\n\nconstexpr long long pow_mod(long long x, long long k,\
     \ long long m) {\n    long long res = 1;\n    long long mul = (x >= 0 ? x % m\
@@ -199,7 +204,7 @@ data:
   isVerificationFile: true
   path: test/library-checker/math/primality-test.test.cpp
   requiredBy: []
-  timestamp: '2023-12-13 04:53:24+09:00'
+  timestamp: '2024-09-08 23:17:50+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/library-checker/math/primality-test.test.cpp

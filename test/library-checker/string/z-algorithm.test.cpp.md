@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: string/z-algo.hpp
     title: string/z-algo.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
@@ -159,14 +159,19 @@ data:
     \ dim - 1>(sizes, e));\n    }\n}\ntemplate <class T, int dim>\nauto make_vector(const\
     \ int (&sizes)[dim], const T &e = T()) {\n    vector<int> s(dim);\n    for(int\
     \ i = 0; i < dim; i++) s[i] = sizes[dim - i - 1];\n    return make_vector_impl<T,\
-    \ dim>(s, e);\n}\n#pragma endregion Macros\n#line 2 \"string/z-algo.hpp\"\n\n\
-    #line 5 \"string/z-algo.hpp\"\n\nstd::vector<int> z_algo(const std::string& s)\
-    \ {\n    int n = (int)s.size();\n    std::vector<int> z(n);\n    z[0] = n;\n \
-    \   for(int i = 1, j = 0; i < n;) {\n        while(i + j < n and s[j] == s[i +\
-    \ j]) j++;\n        z[i] = j;\n        if(j == 0) {\n            i++;\n      \
-    \      continue;\n        }\n        int k = 1;\n        while(k < j and k + z[k]\
-    \ < j) {\n            z[i + k] = z[k];\n            k++;\n        }\n        i\
-    \ += k;\n        j -= k;\n    }\n    return z;\n}\n#line 4 \"test/library-checker/string/z-algorithm.test.cpp\"\
+    \ dim>(s, e);\n}\nvector<int> iota_gen(int n, int start = 0) {\n    vector<int>\
+    \ ord(n);\n    iota(ord.begin(), ord.end(), start);\n    return ord;\n}\ntemplate<typename\
+    \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
+    \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
+    \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
+    \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"string/z-algo.hpp\"\n\
+    \n#line 5 \"string/z-algo.hpp\"\n\nstd::vector<int> z_algo(const std::string&\
+    \ s) {\n    int n = (int)s.size();\n    std::vector<int> z(n);\n    z[0] = n;\n\
+    \    for(int i = 1, j = 0; i < n;) {\n        while(i + j < n and s[j] == s[i\
+    \ + j]) j++;\n        z[i] = j;\n        if(j == 0) {\n            i++;\n    \
+    \        continue;\n        }\n        int k = 1;\n        while(k < j and k +\
+    \ z[k] < j) {\n            z[i + k] = z[k];\n            k++;\n        }\n   \
+    \     i += k;\n        j -= k;\n    }\n    return z;\n}\n#line 4 \"test/library-checker/string/z-algorithm.test.cpp\"\
     \n\nint main() {\n    STRING(S);\n    print(z_algo(S));\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/zalgorithm\"\n#include\
     \ \"../../../template/template.cpp\"\n#include \"../../../string/z-algo.hpp\"\n\
@@ -177,7 +182,7 @@ data:
   isVerificationFile: true
   path: test/library-checker/string/z-algorithm.test.cpp
   requiredBy: []
-  timestamp: '2024-05-04 17:59:59+09:00'
+  timestamp: '2024-09-08 23:17:50+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/library-checker/string/z-algorithm.test.cpp
