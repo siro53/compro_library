@@ -12,6 +12,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/binary-trie.test.cpp
     title: test/mytest/data-structure/binary-trie.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/misc/fraction.test.cpp
+    title: test/mytest/misc/fraction.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -47,6 +50,7 @@ data:
   verifiedWith:
   - test/aoj/aoj2821.test.cpp
   - test/mytest/data-structure/binary-trie.test.cpp
+  - test/mytest/misc/fraction.test.cpp
 documentation_of: random/rng.hpp
 layout: document
 title: "\u4E71\u6570\u751F\u6210"

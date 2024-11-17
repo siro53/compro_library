@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki1469.test.cpp
     title: test/yukicoder/yuki1469.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"misc/rle.hpp\"\n\n#include <string>\n#include <vector>\n\
@@ -34,7 +34,7 @@ data:
   path: misc/rle.hpp
   requiredBy: []
   timestamp: '2023-09-25 02:57:46+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yukicoder/yuki1469.test.cpp
 documentation_of: misc/rle.hpp

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: modint/modint_2_61.hpp
     title: modint/modint_2_61.hpp
   _extendedRequiredBy:
@@ -9,15 +9,15 @@ data:
     path: data-structure/monoid/rolling_hash.hpp
     title: data-structure/monoid/rolling_hash.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki2102.test.cpp
     title: test/yukicoder/yuki2102.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki430.test.cpp
     title: test/yukicoder/yuki430.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"string/rolling-hash.hpp\"\n\n#include <algorithm>\n#include\
@@ -108,10 +108,10 @@ data:
   requiredBy:
   - data-structure/monoid/rolling_hash.hpp
   timestamp: '2023-12-05 19:29:40+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yukicoder/yuki2102.test.cpp
   - test/yukicoder/yuki430.test.cpp
+  - test/yukicoder/yuki2102.test.cpp
 documentation_of: string/rolling-hash.hpp
 layout: document
 link: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6
