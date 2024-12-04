@@ -50,48 +50,49 @@ data:
     \        Line(Point a, Point b) : a(a), b(b) {}\n        // Ax+By=C\n        Line(D\
     \ A, D B, D C) {\n            if(equal(A, 0)) {\n                a = Point(0,\
     \ C / B), b = Point(1, C / B);\n            } else if(equal(B, 0)) {\n       \
-    \         b = Point(C / A, 0), b = Point(C / A, 1);\n            } else {\n  \
-    \              a = Point(0, C / B), b = Point(C / A, 0);\n            }\n    \
-    \    }\n    };\n\n    // Segment : \u7DDA\u5206\u3092\u8868\u3059\u69CB\u9020\u4F53\
-    \n    // Line\u3068\u540C\u3058\n    struct Segment : Line {\n        Segment()\
-    \ = default;\n\n        Segment(Point a, Point b) : Line(a, b) {}\n        D get_dist()\
-    \ { return std::abs(a - b); }\n    };\n\n    // Circle : \u5186\u3092\u8868\u3059\
-    \u69CB\u9020\u4F53\n    // p\u304C\u4E2D\u5FC3\u306E\u4F4D\u7F6E\u30D9\u30AF\u30C8\
-    \u30EB\u3001r\u306F\u534A\u5F84\n    struct Circle {\n        Point p;\n     \
-    \   D r;\n\n        Circle() = default;\n\n        Circle(Point p, D r) : p(p),\
-    \ r(r) {}\n    };\n\n    // 2\u76F4\u7DDA\u306E\u76F4\u4EA4\u5224\u5B9A : a\u22A5\
-    b <=> dot(a, b) = 0\n    bool isOrthogonal(const Line &a, const Line &b) {\n \
-    \       return equal(dot(a.b - a.a, b.b - b.a), 0);\n    }\n    // 2\u76F4\u7DDA\
-    \u306E\u5E73\u884C\u5224\u5B9A : a//b <=> cross(a, b) = 0\n    bool isParallel(const\
-    \ Line &a, const Line &b) {\n        return equal(cross(a.b - a.a, b.b - b.a),\
-    \ 0);\n    }\n\n    // \u70B9c\u304C\u76F4\u7DDAab\u4E0A\u306B\u3042\u308B\u304B\
-    \n    bool isPointOnLine(const Point &a, const Point &b, const Point &c) {\n \
-    \       return isParallel(Line(a, b), Line(a, c));\n    }\n\n    // \u70B9c\u304C\
-    \"\u7DDA\u5206\"ab\u4E0A\u306B\u3042\u308B\u304B\n    bool isPointOnSegment(const\
-    \ Point &a, const Point &b, const Point &c) {\n        // |a-c| + |c-b| <= |a-b|\
-    \ \u306A\u3089\u7DDA\u5206\u4E0A\n        return (std::abs(a - c) + std::abs(c\
-    \ - b) < std::abs(a - b) + EPS);\n    }\n\n    // \u76F4\u7DDAl\u3068\u70B9p\u306E\
-    \u8DDD\u96E2\u3092\u6C42\u3081\u308B\n    D distanceBetweenLineAndPoint(const\
-    \ Line &l, const Point &p) {\n        return std::abs(cross(l.b - l.a, p - l.a))\
-    \ / std::abs(l.b - l.a);\n    }\n\n    // \u7DDA\u5206l\u3068\u70B9p\u306E\u8DDD\
-    \u96E2\u3092\u6C42\u3081\u308B\n    // \u5B9A\u7FA9\uFF1A\u70B9p\u304B\u3089\u300C\
-    \u7DDA\u5206l\u306E\u3069\u3053\u304B\u300D\u3078\u306E\u6700\u77ED\u8DDD\u96E2\
-    \n    D distanceBetweenSegmentAndPoint(const Segment &l, const Point &p) {\n \
-    \       if(dot(l.b - l.a, p - l.a) < EPS) return std::abs(p - l.a);\n        if(dot(l.a\
-    \ - l.b, p - l.b) < EPS) return std::abs(p - l.b);\n        return std::abs(cross(l.b\
-    \ - l.a, p - l.a)) / std::abs(l.b - l.a);\n    }\n\n    // \u76F4\u7DDAs, t\u306E\
-    \u4EA4\u70B9\u306E\u8A08\u7B97\n    Point crossPoint(const Line &s, const Line\
-    \ &t) {\n        D d1 = cross(s.b - s.a, t.b - t.a);\n        D d2 = cross(s.b\
-    \ - s.a, s.b - t.a);\n        if(equal(std::abs(d1), 0) && equal(std::abs(d2),\
-    \ 0)) return t.a;\n        return t.a + (t.b - t.a) * (d2 / d1);\n    }\n\n  \
-    \  // \u7DDA\u5206s, t\u306E\u4EA4\u70B9\u306E\u8A08\u7B97\n    Point crossPoint(const\
-    \ Segment &s, const Segment &t) {\n        return crossPoint(Line(s), Line(t));\n\
-    \    }\n\n    // \u7DDA\u5206s\u3068\u7DDA\u5206t\u304C\u4EA4\u5DEE\u3057\u3066\
-    \u3044\u308B\u304B\u3069\u3046\u304B\n    // bound:\u7DDA\u5206\u306E\u7AEF\u70B9\
-    \u3092\u542B\u3080\u304B\n    bool isIntersect(const Segment &s, const Segment\
-    \ &t, bool bound) {\n        return ccw(s.a, s.b, t.a) * ccw(s.a, s.b, t.b) <\
-    \ bound &&\n               ccw(t.a, t.b, s.a) * ccw(t.a, t.b, s.b) < bound;\n\
-    \    }\n\n    // \u7DDA\u5206s\u3068t\u306E\u8DDD\u96E2\n    D distanceBetweenSegments(const\
+    \         a = Point(C / A, 0), b = Point(C / A, 1);\n            } else if(equal(C,\
+    \ 0)) {\n                a = Point(0, C / B), b = Point(1, (C - A) / B);\n   \
+    \         } else {\n                a = Point(0, C / B), b = Point(C / A, 0);\n\
+    \            }\n        }\n    };\n\n    // Segment : \u7DDA\u5206\u3092\u8868\
+    \u3059\u69CB\u9020\u4F53\n    // Line\u3068\u540C\u3058\n    struct Segment :\
+    \ Line {\n        Segment() = default;\n\n        Segment(Point a, Point b) :\
+    \ Line(a, b) {}\n        D get_dist() { return std::abs(a - b); }\n    };\n\n\
+    \    // Circle : \u5186\u3092\u8868\u3059\u69CB\u9020\u4F53\n    // p\u304C\u4E2D\
+    \u5FC3\u306E\u4F4D\u7F6E\u30D9\u30AF\u30C8\u30EB\u3001r\u306F\u534A\u5F84\n  \
+    \  struct Circle {\n        Point p;\n        D r;\n\n        Circle() = default;\n\
+    \n        Circle(Point p, D r) : p(p), r(r) {}\n    };\n\n    // 2\u76F4\u7DDA\
+    \u306E\u76F4\u4EA4\u5224\u5B9A : a\u22A5b <=> dot(a, b) = 0\n    bool isOrthogonal(const\
+    \ Line &a, const Line &b) {\n        return equal(dot(a.b - a.a, b.b - b.a), 0);\n\
+    \    }\n    // 2\u76F4\u7DDA\u306E\u5E73\u884C\u5224\u5B9A : a//b <=> cross(a,\
+    \ b) = 0\n    bool isParallel(const Line &a, const Line &b) {\n        return\
+    \ equal(cross(a.b - a.a, b.b - b.a), 0);\n    }\n\n    // \u70B9c\u304C\u76F4\u7DDA\
+    ab\u4E0A\u306B\u3042\u308B\u304B\n    bool isPointOnLine(const Point &a, const\
+    \ Point &b, const Point &c) {\n        return isParallel(Line(a, b), Line(a, c));\n\
+    \    }\n\n    // \u70B9c\u304C\"\u7DDA\u5206\"ab\u4E0A\u306B\u3042\u308B\u304B\
+    \n    bool isPointOnSegment(const Point &a, const Point &b, const Point &c) {\n\
+    \        // |a-c| + |c-b| <= |a-b| \u306A\u3089\u7DDA\u5206\u4E0A\n        return\
+    \ (std::abs(a - c) + std::abs(c - b) < std::abs(a - b) + EPS);\n    }\n\n    //\
+    \ \u76F4\u7DDAl\u3068\u70B9p\u306E\u8DDD\u96E2\u3092\u6C42\u3081\u308B\n    D\
+    \ distanceBetweenLineAndPoint(const Line &l, const Point &p) {\n        return\
+    \ std::abs(cross(l.b - l.a, p - l.a)) / std::abs(l.b - l.a);\n    }\n\n    //\
+    \ \u7DDA\u5206l\u3068\u70B9p\u306E\u8DDD\u96E2\u3092\u6C42\u3081\u308B\n    //\
+    \ \u5B9A\u7FA9\uFF1A\u70B9p\u304B\u3089\u300C\u7DDA\u5206l\u306E\u3069\u3053\u304B\
+    \u300D\u3078\u306E\u6700\u77ED\u8DDD\u96E2\n    D distanceBetweenSegmentAndPoint(const\
+    \ Segment &l, const Point &p) {\n        if(dot(l.b - l.a, p - l.a) < EPS) return\
+    \ std::abs(p - l.a);\n        if(dot(l.a - l.b, p - l.b) < EPS) return std::abs(p\
+    \ - l.b);\n        return std::abs(cross(l.b - l.a, p - l.a)) / std::abs(l.b -\
+    \ l.a);\n    }\n\n    // \u76F4\u7DDAs, t\u306E\u4EA4\u70B9\u306E\u8A08\u7B97\n\
+    \    Point crossPoint(const Line &s, const Line &t) {\n        D d1 = cross(s.b\
+    \ - s.a, t.b - t.a);\n        D d2 = cross(s.b - s.a, s.b - t.a);\n        if(equal(std::abs(d1),\
+    \ 0) && equal(std::abs(d2), 0)) return t.a;\n        return t.a + (t.b - t.a)\
+    \ * (d2 / d1);\n    }\n\n    // \u7DDA\u5206s, t\u306E\u4EA4\u70B9\u306E\u8A08\
+    \u7B97\n    Point crossPoint(const Segment &s, const Segment &t) {\n        return\
+    \ crossPoint(Line(s), Line(t));\n    }\n\n    // \u7DDA\u5206s\u3068\u7DDA\u5206\
+    t\u304C\u4EA4\u5DEE\u3057\u3066\u3044\u308B\u304B\u3069\u3046\u304B\n    // bound:\u7DDA\
+    \u5206\u306E\u7AEF\u70B9\u3092\u542B\u3080\u304B\n    bool isIntersect(const Segment\
+    \ &s, const Segment &t, bool bound) {\n        return ccw(s.a, s.b, t.a) * ccw(s.a,\
+    \ s.b, t.b) < bound &&\n               ccw(t.a, t.b, s.a) * ccw(t.a, t.b, s.b)\
+    \ < bound;\n    }\n\n    // \u7DDA\u5206s\u3068t\u306E\u8DDD\u96E2\n    D distanceBetweenSegments(const\
     \ Segment &s, const Segment &t) {\n        if(isIntersect(s, t, 1)) return (D)(0);\n\
     \        D ans = distanceBetweenSegmentAndPoint(s, t.a);\n        ans = std::min(ans,\
     \ distanceBetweenSegmentAndPoint(s, t.b));\n        ans = std::min(ans, distanceBetweenSegmentAndPoint(t,\
@@ -244,48 +245,50 @@ data:
     \n    struct Line {\n        Point a, b;\n        Line() = default;\n        Line(Point\
     \ a, Point b) : a(a), b(b) {}\n        // Ax+By=C\n        Line(D A, D B, D C)\
     \ {\n            if(equal(A, 0)) {\n                a = Point(0, C / B), b = Point(1,\
-    \ C / B);\n            } else if(equal(B, 0)) {\n                b = Point(C /\
-    \ A, 0), b = Point(C / A, 1);\n            } else {\n                a = Point(0,\
-    \ C / B), b = Point(C / A, 0);\n            }\n        }\n    };\n\n    // Segment\
-    \ : \u7DDA\u5206\u3092\u8868\u3059\u69CB\u9020\u4F53\n    // Line\u3068\u540C\u3058\
-    \n    struct Segment : Line {\n        Segment() = default;\n\n        Segment(Point\
-    \ a, Point b) : Line(a, b) {}\n        D get_dist() { return std::abs(a - b);\
-    \ }\n    };\n\n    // Circle : \u5186\u3092\u8868\u3059\u69CB\u9020\u4F53\n  \
-    \  // p\u304C\u4E2D\u5FC3\u306E\u4F4D\u7F6E\u30D9\u30AF\u30C8\u30EB\u3001r\u306F\
-    \u534A\u5F84\n    struct Circle {\n        Point p;\n        D r;\n\n        Circle()\
-    \ = default;\n\n        Circle(Point p, D r) : p(p), r(r) {}\n    };\n\n    //\
-    \ 2\u76F4\u7DDA\u306E\u76F4\u4EA4\u5224\u5B9A : a\u22A5b <=> dot(a, b) = 0\n \
-    \   bool isOrthogonal(const Line &a, const Line &b) {\n        return equal(dot(a.b\
-    \ - a.a, b.b - b.a), 0);\n    }\n    // 2\u76F4\u7DDA\u306E\u5E73\u884C\u5224\u5B9A\
-    \ : a//b <=> cross(a, b) = 0\n    bool isParallel(const Line &a, const Line &b)\
-    \ {\n        return equal(cross(a.b - a.a, b.b - b.a), 0);\n    }\n\n    // \u70B9\
-    c\u304C\u76F4\u7DDAab\u4E0A\u306B\u3042\u308B\u304B\n    bool isPointOnLine(const\
-    \ Point &a, const Point &b, const Point &c) {\n        return isParallel(Line(a,\
-    \ b), Line(a, c));\n    }\n\n    // \u70B9c\u304C\"\u7DDA\u5206\"ab\u4E0A\u306B\
-    \u3042\u308B\u304B\n    bool isPointOnSegment(const Point &a, const Point &b,\
-    \ const Point &c) {\n        // |a-c| + |c-b| <= |a-b| \u306A\u3089\u7DDA\u5206\
-    \u4E0A\n        return (std::abs(a - c) + std::abs(c - b) < std::abs(a - b) +\
-    \ EPS);\n    }\n\n    // \u76F4\u7DDAl\u3068\u70B9p\u306E\u8DDD\u96E2\u3092\u6C42\
-    \u3081\u308B\n    D distanceBetweenLineAndPoint(const Line &l, const Point &p)\
-    \ {\n        return std::abs(cross(l.b - l.a, p - l.a)) / std::abs(l.b - l.a);\n\
-    \    }\n\n    // \u7DDA\u5206l\u3068\u70B9p\u306E\u8DDD\u96E2\u3092\u6C42\u3081\
-    \u308B\n    // \u5B9A\u7FA9\uFF1A\u70B9p\u304B\u3089\u300C\u7DDA\u5206l\u306E\u3069\
-    \u3053\u304B\u300D\u3078\u306E\u6700\u77ED\u8DDD\u96E2\n    D distanceBetweenSegmentAndPoint(const\
-    \ Segment &l, const Point &p) {\n        if(dot(l.b - l.a, p - l.a) < EPS) return\
-    \ std::abs(p - l.a);\n        if(dot(l.a - l.b, p - l.b) < EPS) return std::abs(p\
-    \ - l.b);\n        return std::abs(cross(l.b - l.a, p - l.a)) / std::abs(l.b -\
-    \ l.a);\n    }\n\n    // \u76F4\u7DDAs, t\u306E\u4EA4\u70B9\u306E\u8A08\u7B97\n\
-    \    Point crossPoint(const Line &s, const Line &t) {\n        D d1 = cross(s.b\
-    \ - s.a, t.b - t.a);\n        D d2 = cross(s.b - s.a, s.b - t.a);\n        if(equal(std::abs(d1),\
-    \ 0) && equal(std::abs(d2), 0)) return t.a;\n        return t.a + (t.b - t.a)\
-    \ * (d2 / d1);\n    }\n\n    // \u7DDA\u5206s, t\u306E\u4EA4\u70B9\u306E\u8A08\
-    \u7B97\n    Point crossPoint(const Segment &s, const Segment &t) {\n        return\
-    \ crossPoint(Line(s), Line(t));\n    }\n\n    // \u7DDA\u5206s\u3068\u7DDA\u5206\
-    t\u304C\u4EA4\u5DEE\u3057\u3066\u3044\u308B\u304B\u3069\u3046\u304B\n    // bound:\u7DDA\
-    \u5206\u306E\u7AEF\u70B9\u3092\u542B\u3080\u304B\n    bool isIntersect(const Segment\
-    \ &s, const Segment &t, bool bound) {\n        return ccw(s.a, s.b, t.a) * ccw(s.a,\
-    \ s.b, t.b) < bound &&\n               ccw(t.a, t.b, s.a) * ccw(t.a, t.b, s.b)\
-    \ < bound;\n    }\n\n    // \u7DDA\u5206s\u3068t\u306E\u8DDD\u96E2\n    D distanceBetweenSegments(const\
+    \ C / B);\n            } else if(equal(B, 0)) {\n                a = Point(C /\
+    \ A, 0), b = Point(C / A, 1);\n            } else if(equal(C, 0)) {\n        \
+    \        a = Point(0, C / B), b = Point(1, (C - A) / B);\n            } else {\n\
+    \                a = Point(0, C / B), b = Point(C / A, 0);\n            }\n  \
+    \      }\n    };\n\n    // Segment : \u7DDA\u5206\u3092\u8868\u3059\u69CB\u9020\
+    \u4F53\n    // Line\u3068\u540C\u3058\n    struct Segment : Line {\n        Segment()\
+    \ = default;\n\n        Segment(Point a, Point b) : Line(a, b) {}\n        D get_dist()\
+    \ { return std::abs(a - b); }\n    };\n\n    // Circle : \u5186\u3092\u8868\u3059\
+    \u69CB\u9020\u4F53\n    // p\u304C\u4E2D\u5FC3\u306E\u4F4D\u7F6E\u30D9\u30AF\u30C8\
+    \u30EB\u3001r\u306F\u534A\u5F84\n    struct Circle {\n        Point p;\n     \
+    \   D r;\n\n        Circle() = default;\n\n        Circle(Point p, D r) : p(p),\
+    \ r(r) {}\n    };\n\n    // 2\u76F4\u7DDA\u306E\u76F4\u4EA4\u5224\u5B9A : a\u22A5\
+    b <=> dot(a, b) = 0\n    bool isOrthogonal(const Line &a, const Line &b) {\n \
+    \       return equal(dot(a.b - a.a, b.b - b.a), 0);\n    }\n    // 2\u76F4\u7DDA\
+    \u306E\u5E73\u884C\u5224\u5B9A : a//b <=> cross(a, b) = 0\n    bool isParallel(const\
+    \ Line &a, const Line &b) {\n        return equal(cross(a.b - a.a, b.b - b.a),\
+    \ 0);\n    }\n\n    // \u70B9c\u304C\u76F4\u7DDAab\u4E0A\u306B\u3042\u308B\u304B\
+    \n    bool isPointOnLine(const Point &a, const Point &b, const Point &c) {\n \
+    \       return isParallel(Line(a, b), Line(a, c));\n    }\n\n    // \u70B9c\u304C\
+    \"\u7DDA\u5206\"ab\u4E0A\u306B\u3042\u308B\u304B\n    bool isPointOnSegment(const\
+    \ Point &a, const Point &b, const Point &c) {\n        // |a-c| + |c-b| <= |a-b|\
+    \ \u306A\u3089\u7DDA\u5206\u4E0A\n        return (std::abs(a - c) + std::abs(c\
+    \ - b) < std::abs(a - b) + EPS);\n    }\n\n    // \u76F4\u7DDAl\u3068\u70B9p\u306E\
+    \u8DDD\u96E2\u3092\u6C42\u3081\u308B\n    D distanceBetweenLineAndPoint(const\
+    \ Line &l, const Point &p) {\n        return std::abs(cross(l.b - l.a, p - l.a))\
+    \ / std::abs(l.b - l.a);\n    }\n\n    // \u7DDA\u5206l\u3068\u70B9p\u306E\u8DDD\
+    \u96E2\u3092\u6C42\u3081\u308B\n    // \u5B9A\u7FA9\uFF1A\u70B9p\u304B\u3089\u300C\
+    \u7DDA\u5206l\u306E\u3069\u3053\u304B\u300D\u3078\u306E\u6700\u77ED\u8DDD\u96E2\
+    \n    D distanceBetweenSegmentAndPoint(const Segment &l, const Point &p) {\n \
+    \       if(dot(l.b - l.a, p - l.a) < EPS) return std::abs(p - l.a);\n        if(dot(l.a\
+    \ - l.b, p - l.b) < EPS) return std::abs(p - l.b);\n        return std::abs(cross(l.b\
+    \ - l.a, p - l.a)) / std::abs(l.b - l.a);\n    }\n\n    // \u76F4\u7DDAs, t\u306E\
+    \u4EA4\u70B9\u306E\u8A08\u7B97\n    Point crossPoint(const Line &s, const Line\
+    \ &t) {\n        D d1 = cross(s.b - s.a, t.b - t.a);\n        D d2 = cross(s.b\
+    \ - s.a, s.b - t.a);\n        if(equal(std::abs(d1), 0) && equal(std::abs(d2),\
+    \ 0)) return t.a;\n        return t.a + (t.b - t.a) * (d2 / d1);\n    }\n\n  \
+    \  // \u7DDA\u5206s, t\u306E\u4EA4\u70B9\u306E\u8A08\u7B97\n    Point crossPoint(const\
+    \ Segment &s, const Segment &t) {\n        return crossPoint(Line(s), Line(t));\n\
+    \    }\n\n    // \u7DDA\u5206s\u3068\u7DDA\u5206t\u304C\u4EA4\u5DEE\u3057\u3066\
+    \u3044\u308B\u304B\u3069\u3046\u304B\n    // bound:\u7DDA\u5206\u306E\u7AEF\u70B9\
+    \u3092\u542B\u3080\u304B\n    bool isIntersect(const Segment &s, const Segment\
+    \ &t, bool bound) {\n        return ccw(s.a, s.b, t.a) * ccw(s.a, s.b, t.b) <\
+    \ bound &&\n               ccw(t.a, t.b, s.a) * ccw(t.a, t.b, s.b) < bound;\n\
+    \    }\n\n    // \u7DDA\u5206s\u3068t\u306E\u8DDD\u96E2\n    D distanceBetweenSegments(const\
     \ Segment &s, const Segment &t) {\n        if(isIntersect(s, t, 1)) return (D)(0);\n\
     \        D ans = distanceBetweenSegmentAndPoint(s, t.a);\n        ans = std::min(ans,\
     \ distanceBetweenSegmentAndPoint(s, t.b));\n        ans = std::min(ans, distanceBetweenSegmentAndPoint(t,\
@@ -401,7 +404,7 @@ data:
   isVerificationFile: false
   path: geometry/geometry.hpp
   requiredBy: []
-  timestamp: '2023-02-26 00:34:24+09:00'
+  timestamp: '2024-12-05 08:39:33+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/geometry.hpp
