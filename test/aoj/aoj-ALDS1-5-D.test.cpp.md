@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: misc/inversion-number.hpp
     title: "\u8EE2\u5012\u6570"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []

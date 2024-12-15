@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/pow_mod.hpp
     title: math/pow_mod.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []

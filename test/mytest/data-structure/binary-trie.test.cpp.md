@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: random/rng.hpp
     title: "\u4E71\u6570\u751F\u6210"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []

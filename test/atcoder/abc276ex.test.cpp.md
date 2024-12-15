@@ -1,29 +1,31 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: math/is-prime.hpp
-    title: "\u7D20\u6570\u5224\u5B9A"
-  - icon: ':heavy_check_mark:'
-    path: math/pow_mod.hpp
-    title: math/pow_mod.hpp
+  - icon: ':x:'
+    path: data-structure/imos2D.hpp
+    title: data-structure/imos2D.hpp
+  - icon: ':question:'
+    path: data-structure/sum2D.hpp
+    title: data-structure/sum2D.hpp
+  - icon: ':x:'
+    path: math/F2.hpp
+    title: math/F2.hpp
   - icon: ':question:'
     path: template/template.cpp
     title: template/template.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/primality_test
+    PROBLEM: https://atcoder.jp/contests/abc276/tasks/abc276_h
     links:
-    - https://judge.yosupo.jp/problem/primality_test
-  bundledCode: "#line 1 \"test/library-checker/math/primality-test.test.cpp\"\n#define\
-    \ PROBLEM \"https://judge.yosupo.jp/problem/primality_test\"\n#line 1 \"template/template.cpp\"\
-    \n#pragma region Macros\n#include <bits/stdc++.h>\nusing namespace std;\n// input\
-    \ output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
+    - https://atcoder.jp/contests/abc276/tasks/abc276_h
+  bundledCode: "#line 1 \"test/atcoder/abc276ex.test.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc276/tasks/abc276_h\"\
+    \n#line 1 \"template/template.cpp\"\n#pragma region Macros\n#include <bits/stdc++.h>\n\
+    using namespace std;\n// input output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
     \    struct has_val_impl {\n        template <class T>\n        static auto check(T\
     \ &&x) -> decltype(x.val(), std::true_type{});\n\n        template <class T> static\
     \ auto check(...) -> std::false_type;\n    };\n\n    template <class T>\n    class\
@@ -167,50 +169,139 @@ data:
     \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
     \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
     \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
-    \    return ord;\n}\n#pragma endregion Macros\n#line 3 \"test/library-checker/math/primality-test.test.cpp\"\
-    \n\n#line 2 \"math/is-prime.hpp\"\n\n#line 4 \"math/is-prime.hpp\"\n\n#line 2\
-    \ \"math/pow_mod.hpp\"\n\nconstexpr long long pow_mod(long long x, long long k,\
-    \ long long m) {\n    long long res = 1;\n    long long mul = (x >= 0 ? x % m\
-    \ : x % m + m);\n    while(k) {\n        if(k & 1) res = (__int128_t)res * mul\
-    \ % m;\n        mul = (__int128_t)mul * mul % m;\n        k >>= 1;\n    }\n  \
-    \  return res;\n}\n#line 6 \"math/is-prime.hpp\"\n\n/*\nref: Fast Primality Testing\
-    \ for Integers That Fit into a Machine Word\nMichal Fori\u02C7sek and Jakub Jan\u02C7\
-    cina\n*/\n\nconstexpr bool is_prime(int n) {\n    if(n <= 1) return false;\n \
-    \   if(n == 2 or n == 7 or n == 61) return true;\n    if((n & 1) == 0) return\
-    \ false;\n    long long d = n - 1;\n    while((d & 1) == 0) d >>= 1;\n    constexpr\
-    \ std::array<int, 3> bases = {2, 7, 61};\n    for(int a : bases) {\n        long\
-    \ long t = d;\n        long long y = pow_mod(a, t, n);\n        while(t != n -\
-    \ 1 && y != 1 && y != n - 1) {\n            (y *= y) %= n;\n            t <<=\
-    \ 1;\n        }\n        if(y != n - 1 && (t & 1) == 0) return false;\n    }\n\
-    \    return true;\n}\n\nconstexpr bool is_prime(long long n) {\n    if(n <= 1)\
-    \ return false;\n    if(n == 2) return true;\n    if((n & 1) == 0) return false;\n\
-    \    long long d = n - 1;\n    while((d & 1) == 0) d >>= 1;\n    constexpr std::array<long\
-    \ long, 7> bases = {\n        2, 325, 9375, 28178, 450775, 9780504, 1795265022\n\
-    \    };\n    for(long long a : bases) {\n        a %= n;\n        if(a == 0) continue;\n\
-    \        long long t = d;\n        long long y = pow_mod(a, t, n);\n        while(t\
-    \ != n - 1 && y != 1 && y != n - 1) {\n            y = (__int128_t)y * y % n;\n\
-    \            t <<= 1;\n        }\n        if(y != n - 1 && (t & 1) == 0) return\
-    \ false;\n    }\n    return true;\n}\n#line 5 \"test/library-checker/math/primality-test.test.cpp\"\
-    \n\nint main() {\n    INT(Q);\n    while(Q--) {\n        LL(n);\n        print(is_prime(n)\
-    \ ? \"Yes\" : \"No\");\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/primality_test\"\n#include\
-    \ \"../../../template/template.cpp\"\n\n#include \"../../../math/is-prime.hpp\"\
-    \n\nint main() {\n    INT(Q);\n    while(Q--) {\n        LL(n);\n        print(is_prime(n)\
-    \ ? \"Yes\" : \"No\");\n    }\n}"
+    \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"data-structure/imos2D.hpp\"\
+    \n\n#line 5 \"data-structure/imos2D.hpp\"\n\ntemplate <typename T> \nclass imos2D\
+    \ {\npublic:\n    int H, W;\n\n    imos2D() = default;\n    explicit imos2D(int\
+    \ H, int W): H(H), W(W), imos(H + 1, std::vector<T>(W + 1, 0)), isBuilt(false)\
+    \ {}\n\n    void add(int li, int lj, int ri, int rj, T val) {\n        assert(0\
+    \ <= li and li < H);\n        assert(li <= ri and ri <= H);\n        assert(0\
+    \ <= lj and lj < W);\n        assert(lj <= rj and rj <= W);\n        imos[li][lj]\
+    \ += val;\n        imos[li][rj] -= val;\n        imos[ri][lj] -= val;\n      \
+    \  imos[ri][rj] += val;\n    } \n\n    void build() {\n        for(int i = 0;\
+    \ i <= H; i++) {\n            for(int j = 1; j <= W; j++) {\n                imos[i][j]\
+    \ += imos[i][j - 1];\n            }\n        }\n        for(int j = 0; j <= W;\
+    \ j++) {\n            for(int i = 1; i <= H; i++) {\n                imos[i][j]\
+    \ += imos[i - 1][j];\n            }\n        }\n        isBuilt = true;\n    }\n\
+    \n    inline std::vector<T>& operator[](int i) {\n        assert(isBuilt);\n \
+    \       return imos[i];\n    }\n\nprivate:\n    std::vector<std::vector<T>> imos;\n\
+    \    bool isBuilt;\n};\n#line 2 \"data-structure/sum2D.hpp\"\n\n#line 5 \"data-structure/sum2D.hpp\"\
+    \n\ntemplate <typename T> class sum2D {\n  public:\n    sum2D() = default;\n \
+    \   explicit sum2D(int height, int width)\n        : sum(height + 1, std::vector<T>(width\
+    \ + 1, 0)), isBuilt(false) {}\n    void add(int row, int column, T val) {\n  \
+    \      assert(0 <= row + 1 && row + 1 < (int)sum.size());\n        assert(0 <=\
+    \ column + 1 && column + 1 < (int)sum[0].size());\n        sum[row + 1][column\
+    \ + 1] += val;\n    }\n    void build() {\n        for(int i = 1; i < (int)sum.size();\
+    \ i++) {\n            for(int j = 1; j < (int)sum[0].size(); j++) {\n        \
+    \        sum[i][j] += sum[i - 1][j] + sum[i][j - 1] - sum[i - 1][j - 1];\n   \
+    \         }\n        }\n        isBuilt = true;\n    }\n    T get_sum(int row_l,\
+    \ int row_r, int column_l, int column_r) const {\n        assert(row_l <= row_r);\n\
+    \        assert(column_l <= column_r);\n        assert(isBuilt);\n        return\
+    \ (sum[row_r][column_r] - sum[row_l][column_r] -\n                sum[row_r][column_l]\
+    \ + sum[row_l][column_l]);\n    }\n\n  private:\n    std::vector<std::vector<T>>\
+    \ sum;\n    bool isBuilt;\n};\n#line 2 \"math/F2.hpp\"\n\n#line 7 \"math/F2.hpp\"\
+    \n\ntemplate<int MAX_WIDTH>\nclass BitMatrix {\npublic:\n    int H, W;\n\n   \
+    \ BitMatrix(): H(1), W(1), mat(1) {\n        assert(W <= MAX_WIDTH);\n    }\n\n\
+    \    BitMatrix(int H, int W): H(H), W(W), mat(H) {\n        assert(W <= MAX_WIDTH);\n\
+    \    }\n\n    inline std::bitset<MAX_WIDTH>& operator[](int i) { return mat[i];\
+    \ }\n\n    // \u6383\u304D\u51FA\u3057\u6CD5\n    // https://drken1215.hatenablog.com/entry/2019/03/20/202800\n\
+    \    int row_reduction(vector<int>& b) {\n        assert((int)b.size() == H);\n\
+    \        int rank = 0;\n        for(int j = 0; j < W; j++) {\n            int\
+    \ pivot = -1;\n            for(int i = rank; i < H; i++) {\n                if(mat[i][j])\
+    \ {\n                    pivot = i;\n                    break;\n            \
+    \    }\n            }\n            if(pivot == -1) continue;\n            std::swap(mat[pivot],\
+    \ mat[rank]);\n            std::swap(b[pivot], b[rank]);\n            for(int\
+    \ i = 0; i < H; i++) {\n                if(i != rank and mat[i][j]) {\n      \
+    \              mat[i] ^= mat[rank];\n                    b[i] ^= b[rank];\n  \
+    \              }\n            }\n            rank++;\n        }\n        return\
+    \ rank;\n    }\n\n    // \u6383\u304D\u51FA\u3057\u6CD5\n    // https://drken1215.hatenablog.com/entry/2019/03/20/202800\n\
+    \    int row_reduction() {\n        std::vector<int> b(H, 0);\n        return\
+    \ row_reduction(b);\n    }\n\nprivate:\n    std::vector<std::bitset<MAX_WIDTH>>\
+    \ mat;\n};\n\n// {rank, Ax = b\u306E\u89E3\u306E\u3046\u30611\u3064} \u3092\u8FD4\
+    \u3059\n// \u89E3\u306A\u3057\u306E\u5834\u5408\u306F {-1, {}} \u3092\u8FD4\u3059\
+    \ntemplate<int MAX_WIDTH>\nstd::pair<int, std::vector<int>> linear_equation_F2(BitMatrix<MAX_WIDTH>\
+    \ A, std::vector<int> b) {\n    int H = A.H, W = A.W;\n    int rank = A.row_reduction(b);\n\
+    \    // \u89E3\u306E\u5B58\u5728\u30C1\u30A7\u30C3\u30AF\n    for(int i = rank;\
+    \ i < H; i++) if(b[i]) {\n        return {-1, {}};\n    }\n    std::vector<int>\
+    \ ret(W);\n    for(int i = 0; i < rank; i++) {\n        int p = -1;\n        for(int\
+    \ j = 0; j < W; j++) {\n            if(A[i][j]) {\n                p = j;\n  \
+    \              break;\n            }\n        }\n        if(p == -1) continue;\n\
+    \        ret[p] = b[i];\n    }\n    return {rank, ret};\n}\n#line 6 \"test/atcoder/abc276ex.test.cpp\"\
+    \n\nusing Query = tuple<int, int, int, int, int>;\nconst int MAX_H = 2048;\nconst\
+    \ int MAX_W = MAX_H * 4;\n\nint main() {\n    map<pair<int, int>, int> ID;\n \
+    \   vector<pair<int, int>> rev;\n    auto f = [&](int i, int j) -> int {\n   \
+    \     if(ID.count({i, j})) return ID[{i, j}];\n        int ret = SZ(ID);\n   \
+    \     ID[{i, j}] = ret;\n        rev.emplace_back(i, j);\n        return ret;\n\
+    \    };\n\n    INT(N, Q);\n    vector<Query> qs(Q);\n    int eq_num = 0;\n   \
+    \ for(auto& [a, b, c, d, e] : qs) {\n        cin >> a >> b >> c >> d >> e;\n \
+    \       a--;\n        c--;\n        if(e == 0) continue;\n        f(a, c);\n \
+    \       f(a, d);\n        f(b, c);\n        f(b, d);\n        eq_num++;\n    }\n\
+    \n    int sz = SZ(ID);\n    BitMatrix<MAX_W> mat(eq_num, sz);\n    vector<int>\
+    \ res(eq_num, 0);\n    {\n        int i = 0;\n        for(auto& [a, b, c, d, e]\
+    \ : qs) {\n            if(e == 0) continue;\n            for(int ii : {a, b})\
+    \ {\n                for(int jj : {c, d}) {\n                    mat[i][f(ii,\
+    \ jj)] = 1;\n                }\n            }\n            res[i] = (e == 2 ?\
+    \ 1 : 0);\n            i++;\n        }\n    }\n    auto [rank, answer] = linear_equation_F2<MAX_W>(mat,\
+    \ res);\n    if(rank == -1) {\n        print(\"No\");\n        return 0;\n   \
+    \ }\n\n    auto out = make_vector<int>({N, N}, 0);\n    {\n        auto tmp =\
+    \ make_vector<int>({N + 1, N + 1}, 0);\n        REP(i, sz) {\n            auto\
+    \ [ii, jj] = rev[i];\n            tmp[ii][jj] = answer[i];\n        }\n      \
+    \  REP(i, N) REP(j, N) {\n            out[i][j] = (tmp[i + 1][j + 1] ^ tmp[i][j\
+    \ + 1] ^ tmp[i + 1][j] ^ tmp[i][j]) + 1;\n        }\n    }\n    {\n        imos2D<int>\
+    \ imos(N, N);\n        for(const auto& [a, b, c, d, e] : qs) {\n            if(e\
+    \ == 0) continue;\n            imos.add(a, c, b, d, 1);\n        }\n        imos.build();\n\
+    \        sum2D<int> sum(N, N);\n        REP(i, N) REP(j, N) {\n            if(imos[i][j]\
+    \ == 0) {\n                out[i][j] = 0;\n                sum.add(i, j, 1);\n\
+    \            }\n        }\n        sum.build();\n        for(auto& [a, b, c, d,\
+    \ e] : qs) {\n            if(e == 0 and sum.get_sum(a, b, c, d) == 0) {\n    \
+    \            print(\"No\");\n                return 0;\n            }\n      \
+    \  }\n    }\n    print(\"Yes\");\n    REP(i, N) print(out[i]);\n}\n"
+  code: "#define PROBLEM \"https://atcoder.jp/contests/abc276/tasks/abc276_h\"\n#include\
+    \ \"../../template/template.cpp\"\n#include \"../../data-structure/imos2D.hpp\"\
+    \n#include \"../../data-structure/sum2D.hpp\"\n#include \"../../math/F2.hpp\"\n\
+    \nusing Query = tuple<int, int, int, int, int>;\nconst int MAX_H = 2048;\nconst\
+    \ int MAX_W = MAX_H * 4;\n\nint main() {\n    map<pair<int, int>, int> ID;\n \
+    \   vector<pair<int, int>> rev;\n    auto f = [&](int i, int j) -> int {\n   \
+    \     if(ID.count({i, j})) return ID[{i, j}];\n        int ret = SZ(ID);\n   \
+    \     ID[{i, j}] = ret;\n        rev.emplace_back(i, j);\n        return ret;\n\
+    \    };\n\n    INT(N, Q);\n    vector<Query> qs(Q);\n    int eq_num = 0;\n   \
+    \ for(auto& [a, b, c, d, e] : qs) {\n        cin >> a >> b >> c >> d >> e;\n \
+    \       a--;\n        c--;\n        if(e == 0) continue;\n        f(a, c);\n \
+    \       f(a, d);\n        f(b, c);\n        f(b, d);\n        eq_num++;\n    }\n\
+    \n    int sz = SZ(ID);\n    BitMatrix<MAX_W> mat(eq_num, sz);\n    vector<int>\
+    \ res(eq_num, 0);\n    {\n        int i = 0;\n        for(auto& [a, b, c, d, e]\
+    \ : qs) {\n            if(e == 0) continue;\n            for(int ii : {a, b})\
+    \ {\n                for(int jj : {c, d}) {\n                    mat[i][f(ii,\
+    \ jj)] = 1;\n                }\n            }\n            res[i] = (e == 2 ?\
+    \ 1 : 0);\n            i++;\n        }\n    }\n    auto [rank, answer] = linear_equation_F2<MAX_W>(mat,\
+    \ res);\n    if(rank == -1) {\n        print(\"No\");\n        return 0;\n   \
+    \ }\n\n    auto out = make_vector<int>({N, N}, 0);\n    {\n        auto tmp =\
+    \ make_vector<int>({N + 1, N + 1}, 0);\n        REP(i, sz) {\n            auto\
+    \ [ii, jj] = rev[i];\n            tmp[ii][jj] = answer[i];\n        }\n      \
+    \  REP(i, N) REP(j, N) {\n            out[i][j] = (tmp[i + 1][j + 1] ^ tmp[i][j\
+    \ + 1] ^ tmp[i + 1][j] ^ tmp[i][j]) + 1;\n        }\n    }\n    {\n        imos2D<int>\
+    \ imos(N, N);\n        for(const auto& [a, b, c, d, e] : qs) {\n            if(e\
+    \ == 0) continue;\n            imos.add(a, c, b, d, 1);\n        }\n        imos.build();\n\
+    \        sum2D<int> sum(N, N);\n        REP(i, N) REP(j, N) {\n            if(imos[i][j]\
+    \ == 0) {\n                out[i][j] = 0;\n                sum.add(i, j, 1);\n\
+    \            }\n        }\n        sum.build();\n        for(auto& [a, b, c, d,\
+    \ e] : qs) {\n            if(e == 0 and sum.get_sum(a, b, c, d) == 0) {\n    \
+    \            print(\"No\");\n                return 0;\n            }\n      \
+    \  }\n    }\n    print(\"Yes\");\n    REP(i, N) print(out[i]);\n}"
   dependsOn:
   - template/template.cpp
-  - math/is-prime.hpp
-  - math/pow_mod.hpp
+  - data-structure/imos2D.hpp
+  - data-structure/sum2D.hpp
+  - math/F2.hpp
   isVerificationFile: true
-  path: test/library-checker/math/primality-test.test.cpp
+  path: test/atcoder/abc276ex.test.cpp
   requiredBy: []
-  timestamp: '2024-09-08 23:17:50+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-12-15 14:15:56+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: test/library-checker/math/primality-test.test.cpp
+documentation_of: test/atcoder/abc276ex.test.cpp
 layout: document
 redirect_from:
-- /verify/test/library-checker/math/primality-test.test.cpp
-- /verify/test/library-checker/math/primality-test.test.cpp.html
-title: test/library-checker/math/primality-test.test.cpp
+- /verify/test/atcoder/abc276ex.test.cpp
+- /verify/test/atcoder/abc276ex.test.cpp.html
+title: test/atcoder/abc276ex.test.cpp
 ---
