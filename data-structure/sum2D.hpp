@@ -24,6 +24,7 @@ template <typename T> class sum2D {
     T get_sum(int row_l, int row_r, int column_l, int column_r) const {
         assert(row_l <= row_r);
         assert(column_l <= column_r);
+        assert(isBuilt);
         return (sum[row_r][column_r] - sum[row_l][column_r] -
                 sum[row_r][column_l] + sum[row_l][column_l]);
     }
