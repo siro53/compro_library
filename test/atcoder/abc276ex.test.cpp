@@ -1,4 +1,10 @@
-#define PROBLEM "https://atcoder.jp/contests/abc276/tasks/abc276_h"
+/** 
+ * 本当の問題のURLは https://atcoder.jp/contests/abc276/tasks/abc276_h
+ * だが、テストケースは Ex/ というフォルダに入っていて
+ * テストケースをダウンロード出来ないので、↓のURLにすることでテストケースを
+ * 持ってくるようにする
+*/
+#define PROBLEM "https://atcoder.jp/contests/abc276/tasks/abc276_ex"
 #include "../../template/template.cpp"
 #include "../../data-structure/imos2D.hpp"
 #include "../../data-structure/sum2D.hpp"
