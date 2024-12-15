@@ -20,10 +20,18 @@ data:
   _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://atcoder.jp/contests/abc276/tasks/abc276_h
+    PROBLEM: https://atcoder.jp/contests/abc276/tasks/abc276_ex
     links:
+    - https://atcoder.jp/contests/abc276/tasks/abc276_ex
     - https://atcoder.jp/contests/abc276/tasks/abc276_h
-  bundledCode: "#line 1 \"test/atcoder/abc276ex.test.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc276/tasks/abc276_h\"\
+  bundledCode: "#line 1 \"test/atcoder/abc276ex.test.cpp\"\n/** \n * \u672C\u5F53\u306E\
+    \u554F\u984C\u306EURL\u306F https://atcoder.jp/contests/abc276/tasks/abc276_h\n\
+    \ * \u3060\u304C\u3001\u30C6\u30B9\u30C8\u30B1\u30FC\u30B9\u306F Ex/ \u3068\u3044\
+    \u3046\u30D5\u30A9\u30EB\u30C0\u306B\u5165\u3063\u3066\u3044\u3066\n * \u30C6\u30B9\
+    \u30C8\u30B1\u30FC\u30B9\u3092\u30C0\u30A6\u30F3\u30ED\u30FC\u30C9\u51FA\u6765\
+    \u306A\u3044\u306E\u3067\u3001\u2193\u306EURL\u306B\u3059\u308B\u3053\u3068\u3067\
+    \u30C6\u30B9\u30C8\u30B1\u30FC\u30B9\u3092\n * \u6301\u3063\u3066\u304F\u308B\u3088\
+    \u3046\u306B\u3059\u308B\n*/\n#define PROBLEM \"https://atcoder.jp/contests/abc276/tasks/abc276_ex\"\
     \n#line 1 \"template/template.cpp\"\n#pragma region Macros\n#include <bits/stdc++.h>\n\
     using namespace std;\n// input output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
     \    struct has_val_impl {\n        template <class T>\n        static auto check(T\
@@ -225,7 +233,7 @@ data:
     \ ret(W);\n    for(int i = 0; i < rank; i++) {\n        int p = -1;\n        for(int\
     \ j = 0; j < W; j++) {\n            if(A[i][j]) {\n                p = j;\n  \
     \              break;\n            }\n        }\n        if(p == -1) continue;\n\
-    \        ret[p] = b[i];\n    }\n    return {rank, ret};\n}\n#line 6 \"test/atcoder/abc276ex.test.cpp\"\
+    \        ret[p] = b[i];\n    }\n    return {rank, ret};\n}\n#line 12 \"test/atcoder/abc276ex.test.cpp\"\
     \n\nusing Query = tuple<int, int, int, int, int>;\nconst int MAX_H = 2048;\nconst\
     \ int MAX_W = MAX_H * 4;\n\nint main() {\n    map<pair<int, int>, int> ID;\n \
     \   vector<pair<int, int>> rev;\n    auto f = [&](int i, int j) -> int {\n   \
@@ -255,8 +263,14 @@ data:
     \ e] : qs) {\n            if(e == 0 and sum.get_sum(a, b, c, d) == 0) {\n    \
     \            print(\"No\");\n                return 0;\n            }\n      \
     \  }\n    }\n    print(\"Yes\");\n    REP(i, N) print(out[i]);\n}\n"
-  code: "#define PROBLEM \"https://atcoder.jp/contests/abc276/tasks/abc276_h\"\n#include\
-    \ \"../../template/template.cpp\"\n#include \"../../data-structure/imos2D.hpp\"\
+  code: "/** \n * \u672C\u5F53\u306E\u554F\u984C\u306EURL\u306F https://atcoder.jp/contests/abc276/tasks/abc276_h\n\
+    \ * \u3060\u304C\u3001\u30C6\u30B9\u30C8\u30B1\u30FC\u30B9\u306F Ex/ \u3068\u3044\
+    \u3046\u30D5\u30A9\u30EB\u30C0\u306B\u5165\u3063\u3066\u3044\u3066\n * \u30C6\u30B9\
+    \u30C8\u30B1\u30FC\u30B9\u3092\u30C0\u30A6\u30F3\u30ED\u30FC\u30C9\u51FA\u6765\
+    \u306A\u3044\u306E\u3067\u3001\u2193\u306EURL\u306B\u3059\u308B\u3053\u3068\u3067\
+    \u30C6\u30B9\u30C8\u30B1\u30FC\u30B9\u3092\n * \u6301\u3063\u3066\u304F\u308B\u3088\
+    \u3046\u306B\u3059\u308B\n*/\n#define PROBLEM \"https://atcoder.jp/contests/abc276/tasks/abc276_ex\"\
+    \n#include \"../../template/template.cpp\"\n#include \"../../data-structure/imos2D.hpp\"\
     \n#include \"../../data-structure/sum2D.hpp\"\n#include \"../../math/F2.hpp\"\n\
     \nusing Query = tuple<int, int, int, int, int>;\nconst int MAX_H = 2048;\nconst\
     \ int MAX_W = MAX_H * 4;\n\nint main() {\n    map<pair<int, int>, int> ID;\n \
@@ -295,7 +309,7 @@ data:
   isVerificationFile: true
   path: test/atcoder/abc276ex.test.cpp
   requiredBy: []
-  timestamp: '2024-12-15 14:15:56+09:00'
+  timestamp: '2024-12-15 14:34:33+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/atcoder/abc276ex.test.cpp
