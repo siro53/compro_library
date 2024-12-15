@@ -5,6 +5,8 @@
 #include <utility>
 #include <vector>
 
+// verify: https://atcoder.jp/contests/abc276/submissions/60797388
+
 template<int MAX_WIDTH>
 class BitMatrix {
 public:

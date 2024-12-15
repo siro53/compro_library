@@ -3,6 +3,8 @@
 #include <cassert>
 #include <vector>
 
+// verify: https://atcoder.jp/contests/abc276/submissions/60797388
+
 template <typename T> 
 class imos2D {
 public:
