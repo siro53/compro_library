@@ -12,7 +12,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/compact-bitvector.hpp
       title: data-structure/compact-bitvector.hpp
-    - icon: ':x:'
+    - icon: ':warning:'
       path: data-structure/imos2D.hpp
       title: data-structure/imos2D.hpp
     - icon: ':warning:'
@@ -21,7 +21,7 @@ data:
     - icon: ':warning:'
       path: data-structure/slope-trick.hpp
       title: Slope Trick
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/sum2D.hpp
       title: data-structure/sum2D.hpp
     - icon: ':heavy_check_mark:'
@@ -139,7 +139,7 @@ data:
       title: "\u6728\u30CF\u30C3\u30B7\u30E5"
   - name: math
     pages:
-    - icon: ':x:'
+    - icon: ':warning:'
       path: math/F2.hpp
       title: math/F2.hpp
     - icon: ':warning:'
@@ -235,7 +235,7 @@ data:
       title: string/z-algo.hpp
   - name: template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/template.cpp
       title: template/template.cpp
   - name: test/library-checker/data-structure
@@ -270,11 +270,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/aoj/aoj2858.test.cpp
       title: test/aoj/aoj2858.test.cpp
-  - name: test/atcoder
-    pages:
-    - icon: ':x:'
-      path: test/atcoder/abc276ex.test.cpp
-      title: test/atcoder/abc276ex.test.cpp
   - name: test/library-checker/convolution
     pages:
     - icon: ':heavy_check_mark:'

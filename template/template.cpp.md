@@ -30,9 +30,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj2858.test.cpp
     title: test/aoj/aoj2858.test.cpp
-  - icon: ':x:'
-    path: test/atcoder/abc276ex.test.cpp
-    title: test/atcoder/abc276ex.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/library-checker/convolution/convolution-mod.test.cpp
     title: test/library-checker/convolution/convolution-mod.test.cpp
@@ -126,9 +123,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki789.test.cpp
     title: test/yukicoder/yuki789.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://maspypy.github.io/library/other/io_old.hpp
@@ -431,7 +428,7 @@ data:
   requiredBy:
   - test/library-checker/data-structure/point-set-range-composite.cpp
   timestamp: '2024-09-08 23:17:50+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/math/two-sat.test.cpp
   - test/library-checker/math/primality-test.test.cpp
@@ -455,7 +452,6 @@ data:
   - test/library-checker/tree/lowest-common-ancestor.test.cpp
   - test/library-checker/tree/tree-diameter.test.cpp
   - test/library-checker/tree/lowest-common-ancestor2.test.cpp
-  - test/atcoder/abc276ex.test.cpp
   - test/aoj/aoj-ALDS1-1-C.test.cpp
   - test/aoj/aoj-ALDS1-5-D.test.cpp
   - test/aoj/aoj2821.test.cpp

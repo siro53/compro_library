@@ -6,12 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj2426.test.cpp
     title: test/aoj/aoj2426.test.cpp
-  - icon: ':x:'
-    path: test/atcoder/abc276ex.test.cpp
-    title: test/atcoder/abc276ex.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data-structure/sum2D.hpp\"\n\n#include <cassert>\n#include\
@@ -49,9 +46,8 @@ data:
   path: data-structure/sum2D.hpp
   requiredBy: []
   timestamp: '2024-12-15 14:15:56+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/atcoder/abc276ex.test.cpp
   - test/aoj/aoj2426.test.cpp
 documentation_of: data-structure/sum2D.hpp
 layout: document
