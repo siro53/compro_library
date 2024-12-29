@@ -209,6 +209,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: misc/rle.hpp
       title: "\u30E9\u30F3\u30EC\u30F3\u30B0\u30B9\u5727\u7E2E"
+    - icon: ':warning:'
+      path: misc/subset-iterator.hpp
+      title: misc/subset-iterator.hpp
   - name: modint
     pages:
     - icon: ':warning:'
