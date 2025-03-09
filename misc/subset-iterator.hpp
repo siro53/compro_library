@@ -42,7 +42,7 @@ struct Subset_k {
         __attribute__((target("bmi")))
         auto operator++() {
             uint32_t y = T + _blsi_u32(T);
-            T = y | ((y ^ T) >> _tzcnt_u32(T << 2));
+            T = y | (__andn_u32(y, T) >> _tzcnt_u32(T << 1));
         }
         auto operator!=(std::nullptr_t) const { return T < n; }
     };
