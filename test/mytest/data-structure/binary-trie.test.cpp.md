@@ -176,17 +176,20 @@ data:
     \ {}\n    // [l, r)\n    long long randint(long long l, long long r) {\n     \
     \   std::uniform_int_distribution<long long> dist(l, r - 1);\n        return dist(mt);\n\
     \    }\n    long long randint(long long r) { return randint(0, r); }\n\n  private:\n\
-    \    std::mt19937_64 mt;\n};\n#line 2 \"data-structure/binary-trie.hpp\"\n\n#line\
-    \ 7 \"data-structure/binary-trie.hpp\"\n\ntemplate <typename T = unsigned int,\
-    \ int LOG = 32> class BinaryTrie {\n  public:\n    explicit BinaryTrie() : root(nullptr),\
-    \ lazy_xor_value(0) {}\n    int count(T val) {\n        if(!root) return 0;\n\
-    \        Node *now = root;\n        for(int i = LOG - 1; i >= 0; i--) {\n    \
-    \        now = now->child[val >> i & 1];\n            if(!now or now->count ==\
-    \ 0) return 0;\n        }\n        return now->count;\n    }\n    void insert(T\
-    \ val) {\n        if(!root) root = new Node();\n        Node *now = root;\n  \
-    \      now->count++;\n        for(int i = LOG - 1; i >= 0; i--) {\n          \
-    \  int dir = val >> i & 1;\n            Node *nxt = now->child[dir];\n       \
-    \     if(!nxt) {\n                nxt = new Node();\n                now->child[dir]\
+    \    std::mt19937_64 mt;\n};\n\nclass RNG_0_1 {\n  public:\n    RNG_0_1() : mt(std::chrono::steady_clock::now().time_since_epoch().count())\
+    \ {}\n\n    // [0.0, 1.0)\n    double rand() {\n      auto bits = mt() >> 11;\n\
+    \      return (double)bits / denomitor;\n    }\n\n    auto operator()() { return\
+    \ rand(); }\n\n  private:\n    std::mt19937_64 mt;\n    const double denomitor\
+    \ = 1LL << 53;\n};\n#line 2 \"data-structure/binary-trie.hpp\"\n\n#line 7 \"data-structure/binary-trie.hpp\"\
+    \n\ntemplate <typename T = unsigned int, int LOG = 32> class BinaryTrie {\n  public:\n\
+    \    explicit BinaryTrie() : root(nullptr), lazy_xor_value(0) {}\n    int count(T\
+    \ val) {\n        if(!root) return 0;\n        Node *now = root;\n        for(int\
+    \ i = LOG - 1; i >= 0; i--) {\n            now = now->child[val >> i & 1];\n \
+    \           if(!now or now->count == 0) return 0;\n        }\n        return now->count;\n\
+    \    }\n    void insert(T val) {\n        if(!root) root = new Node();\n     \
+    \   Node *now = root;\n        now->count++;\n        for(int i = LOG - 1; i >=\
+    \ 0; i--) {\n            int dir = val >> i & 1;\n            Node *nxt = now->child[dir];\n\
+    \            if(!nxt) {\n                nxt = new Node();\n                now->child[dir]\
     \ = nxt;\n            }\n            now = nxt;\n            now->count++;\n \
     \       }\n    }\n    bool erase(T val) {\n        if(count(val) == 0) return\
     \ false;\n        Node *now = root;\n        for(int i = LOG - 1; i >= 0; i--)\
@@ -288,7 +291,7 @@ data:
   isVerificationFile: true
   path: test/mytest/data-structure/binary-trie.test.cpp
   requiredBy: []
-  timestamp: '2024-09-08 23:17:50+09:00'
+  timestamp: '2025-03-09 11:07:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/mytest/data-structure/binary-trie.test.cpp

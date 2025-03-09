@@ -139,8 +139,8 @@ data:
   timestamp: '2023-02-25 23:57:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/data-structure/binary-trie.test.cpp
   - test/library-checker/data-structure/set-xor-min.test.cpp
+  - test/mytest/data-structure/binary-trie.test.cpp
 documentation_of: data-structure/binary-trie.hpp
 layout: document
 redirect_from:

@@ -30,9 +30,13 @@ data:
     \ {}\n    // [l, r)\n    long long randint(long long l, long long r) {\n     \
     \   std::uniform_int_distribution<long long> dist(l, r - 1);\n        return dist(mt);\n\
     \    }\n    long long randint(long long r) { return randint(0, r); }\n\n  private:\n\
-    \    std::mt19937_64 mt;\n};\n#line 2 \"graph/tree/diameter.hpp\"\n\n#include\
-    \ <algorithm>\n#include <utility>\n#include <vector>\n\n#line 2 \"graph/graph_template.hpp\"\
-    \n\n#include <cassert>\n#line 5 \"graph/graph_template.hpp\"\n\ntemplate <typename\
+    \    std::mt19937_64 mt;\n};\n\nclass RNG_0_1 {\n  public:\n    RNG_0_1() : mt(std::chrono::steady_clock::now().time_since_epoch().count())\
+    \ {}\n\n    // [0.0, 1.0)\n    double rand() {\n      auto bits = mt() >> 11;\n\
+    \      return (double)bits / denomitor;\n    }\n\n    auto operator()() { return\
+    \ rand(); }\n\n  private:\n    std::mt19937_64 mt;\n    const double denomitor\
+    \ = 1LL << 53;\n};\n#line 2 \"graph/tree/diameter.hpp\"\n\n#include <algorithm>\n\
+    #include <utility>\n#include <vector>\n\n#line 2 \"graph/graph_template.hpp\"\n\
+    \n#include <cassert>\n#line 5 \"graph/graph_template.hpp\"\n\ntemplate <typename\
     \ Cost = int> struct Edge {\n    int from, to;\n    Cost cost;\n    int id;\n\
     \    Edge() = default;\n    explicit Edge(int from, int to, Cost cost = 1, int\
     \ id = -1)\n        : from(from), to(to), cost(cost), id(id) {}\n    operator\
@@ -120,7 +124,7 @@ data:
   isVerificationFile: false
   path: graph/tree/tree-hash.hpp
   requiredBy: []
-  timestamp: '2023-11-04 18:06:00+09:00'
+  timestamp: '2025-03-09 11:07:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj2821.test.cpp

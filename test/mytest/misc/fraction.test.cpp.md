@@ -203,18 +203,21 @@ data:
     \ {}\n    // [l, r)\n    long long randint(long long l, long long r) {\n     \
     \   std::uniform_int_distribution<long long> dist(l, r - 1);\n        return dist(mt);\n\
     \    }\n    long long randint(long long r) { return randint(0, r); }\n\n  private:\n\
-    \    std::mt19937_64 mt;\n};\n#line 5 \"test/mytest/misc/fraction.test.cpp\"\n\
-    \nusing F = Fraction<i128>;\nRNG32 r;\n\nF generate_random_frac() {\n    ll a\
-    \ = r.randint(-100000, 100000 + 1);\n    ll b = r.randint(-100000, 100000 + 1);\n\
-    \    while(b == 0) {\n        b = r.randint(-100000, 100000 + 1);\n    }\n   \
-    \ return F(a, b);\n}\n\nvoid fraction_test() {\n    REP(_, 100) {\n        F f1\
-    \ = generate_random_frac();\n        F f2 = generate_random_frac();\n        F\
-    \ f = f1 * f2 / f2;\n        assert(f == f1);\n        f = f1 + f2 - f2;\n   \
-    \     assert(f == f1);\n        f = f1 - f2 + f2;\n        assert(f == f1);\n\
-    \        f = f1 / f2 * f2;\n        assert(f == f1);\n        f = f2 / f1 * f1;\n\
-    \        assert(f != f1);\n        f = f1 + f2 * 2;\n        assert(f != f1);\n\
-    \    }\n}\n\nint main() {\n    fraction_test();\n    INT(a, b);\n    print(a +\
-    \ b);\n}\n"
+    \    std::mt19937_64 mt;\n};\n\nclass RNG_0_1 {\n  public:\n    RNG_0_1() : mt(std::chrono::steady_clock::now().time_since_epoch().count())\
+    \ {}\n\n    // [0.0, 1.0)\n    double rand() {\n      auto bits = mt() >> 11;\n\
+    \      return (double)bits / denomitor;\n    }\n\n    auto operator()() { return\
+    \ rand(); }\n\n  private:\n    std::mt19937_64 mt;\n    const double denomitor\
+    \ = 1LL << 53;\n};\n#line 5 \"test/mytest/misc/fraction.test.cpp\"\n\nusing F\
+    \ = Fraction<i128>;\nRNG32 r;\n\nF generate_random_frac() {\n    ll a = r.randint(-100000,\
+    \ 100000 + 1);\n    ll b = r.randint(-100000, 100000 + 1);\n    while(b == 0)\
+    \ {\n        b = r.randint(-100000, 100000 + 1);\n    }\n    return F(a, b);\n\
+    }\n\nvoid fraction_test() {\n    REP(_, 100) {\n        F f1 = generate_random_frac();\n\
+    \        F f2 = generate_random_frac();\n        F f = f1 * f2 / f2;\n       \
+    \ assert(f == f1);\n        f = f1 + f2 - f2;\n        assert(f == f1);\n    \
+    \    f = f1 - f2 + f2;\n        assert(f == f1);\n        f = f1 / f2 * f2;\n\
+    \        assert(f == f1);\n        f = f2 / f1 * f1;\n        assert(f != f1);\n\
+    \        f = f1 + f2 * 2;\n        assert(f != f1);\n    }\n}\n\nint main() {\n\
+    \    fraction_test();\n    INT(a, b);\n    print(a + b);\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../template/template.cpp\"\
     \n#include \"../../../misc/fraction.hpp\"\n#include \"../../../random/rng.hpp\"\
     \n\nusing F = Fraction<i128>;\nRNG32 r;\n\nF generate_random_frac() {\n    ll\
@@ -235,7 +238,7 @@ data:
   isVerificationFile: true
   path: test/mytest/misc/fraction.test.cpp
   requiredBy: []
-  timestamp: '2024-11-17 22:22:03+09:00'
+  timestamp: '2025-03-09 11:07:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/mytest/misc/fraction.test.cpp

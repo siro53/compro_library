@@ -84,8 +84,8 @@ data:
   isVerificationFile: false
   path: modint/modint_2_61.hpp
   requiredBy:
-  - string/rolling-hash.hpp
   - data-structure/monoid/rolling_hash.hpp
+  - string/rolling-hash.hpp
   timestamp: '2023-12-05 19:29:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

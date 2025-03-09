@@ -161,9 +161,9 @@ data:
   timestamp: '2023-10-09 16:02:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/data-structure/range-kth-smallest.test.cpp
   - test/aoj/aoj1549.test.cpp
   - test/aoj/aoj2674.test.cpp
+  - test/library-checker/data-structure/range-kth-smallest.test.cpp
 documentation_of: data-structure/wavelet-matrix.hpp
 layout: document
 title: Wavelet Matrix

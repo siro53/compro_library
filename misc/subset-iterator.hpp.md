@@ -26,8 +26,8 @@ data:
     \ k(k), S(S), T((uint32_t(1) << k) - 1) {}\n\n        __attribute__((target(\"\
     bmi2\")))\n        auto operator*() const { return _pdep_u32(T, S); }\n\n    \
     \    __attribute__((target(\"bmi\")))\n        auto operator++() {\n         \
-    \   uint32_t y = T + _blsi_u32(T);\n            T = y | ((y ^ T) >> _tzcnt_u32(T\
-    \ << 2));\n        }\n        auto operator!=(std::nullptr_t) const { return T\
+    \   uint32_t y = T + _blsi_u32(T);\n            T = y | (__andn_u32(y, T) >> _tzcnt_u32(T\
+    \ << 1));\n        }\n        auto operator!=(std::nullptr_t) const { return T\
     \ < n; }\n    };\n\n    uint32_t S, k;\n    \n    Subset_k(uint32_t S, uint32_t\
     \ k): S(S), k(k) {\n        assert(k != 0);\n    }\n\n    auto begin() { return\
     \ SubsetIter_k(S, k); }\n    auto end() { return nullptr; }\n};\n\n// SetBit(S)\
@@ -57,7 +57,7 @@ data:
     \    __attribute__((target(\"bmi2\")))\n        auto operator*() const { return\
     \ _pdep_u32(T, S); }\n\n        __attribute__((target(\"bmi\")))\n        auto\
     \ operator++() {\n            uint32_t y = T + _blsi_u32(T);\n            T =\
-    \ y | ((y ^ T) >> _tzcnt_u32(T << 2));\n        }\n        auto operator!=(std::nullptr_t)\
+    \ y | (__andn_u32(y, T) >> _tzcnt_u32(T << 1));\n        }\n        auto operator!=(std::nullptr_t)\
     \ const { return T < n; }\n    };\n\n    uint32_t S, k;\n    \n    Subset_k(uint32_t\
     \ S, uint32_t k): S(S), k(k) {\n        assert(k != 0);\n    }\n\n    auto begin()\
     \ { return SubsetIter_k(S, k); }\n    auto end() { return nullptr; }\n};\n\n//\
@@ -74,7 +74,7 @@ data:
   isVerificationFile: false
   path: misc/subset-iterator.hpp
   requiredBy: []
-  timestamp: '2024-12-31 17:09:18+09:00'
+  timestamp: '2025-03-09 11:06:22+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: misc/subset-iterator.hpp

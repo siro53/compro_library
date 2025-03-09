@@ -67,8 +67,8 @@ data:
   timestamp: '2023-10-01 12:06:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/math/primality-test.test.cpp
   - test/aoj/aoj-ALDS1-1-C.test.cpp
+  - test/library-checker/math/primality-test.test.cpp
 documentation_of: math/is-prime.hpp
 layout: document
 title: "\u7D20\u6570\u5224\u5B9A"

@@ -41,8 +41,8 @@ data:
     #line 8 \"graph/scc.hpp\"\n\ntemplate <typename Cost = int> class SCC {\n  public:\n\
     \    explicit SCC(int N)\n        : G(N), G_rev(N), comp(N, -1), seen(N, false),\
     \ isBuilt(false) {}\n    explicit SCC(const Graph<Cost> &g)\n        : G(g), G_rev(g.size()),\
-    \ comp(g.size(), -1), seen(g.size(), false) {\n        for(int i = 0; i < (int)g.size();\
-    \ i++) {\n            for(const auto &e : g[i]) G_rev.add_directed_edge(e.to,\
+    \ comp(g.size(), -1), seen(g.size(), false), isBuilt(false) {\n        for(int\
+    \ i = 0; i < (int)g.size(); i++) {\n            for(const auto &e : g[i]) G_rev.add_directed_edge(e.to,\
     \ i);\n        }\n        build();\n    }\n    inline void add_directed_edge(int\
     \ from, int to) {\n        assert(!isBuilt &&\n               \"This scc_graph\
     \ is already built, but you tried to add edge.\");\n        G.add_directed_edge(from,\
@@ -71,8 +71,8 @@ data:
     \n#include \"graph_template.hpp\"\n\ntemplate <typename Cost = int> class SCC\
     \ {\n  public:\n    explicit SCC(int N)\n        : G(N), G_rev(N), comp(N, -1),\
     \ seen(N, false), isBuilt(false) {}\n    explicit SCC(const Graph<Cost> &g)\n\
-    \        : G(g), G_rev(g.size()), comp(g.size(), -1), seen(g.size(), false) {\n\
-    \        for(int i = 0; i < (int)g.size(); i++) {\n            for(const auto\
+    \        : G(g), G_rev(g.size()), comp(g.size(), -1), seen(g.size(), false), isBuilt(false)\
+    \ {\n        for(int i = 0; i < (int)g.size(); i++) {\n            for(const auto\
     \ &e : g[i]) G_rev.add_directed_edge(e.to, i);\n        }\n        build();\n\
     \    }\n    inline void add_directed_edge(int from, int to) {\n        assert(!isBuilt\
     \ &&\n               \"This scc_graph is already built, but you tried to add edge.\"\
@@ -103,7 +103,7 @@ data:
   path: graph/scc.hpp
   requiredBy:
   - math/two_sat.hpp
-  timestamp: '2023-11-04 18:06:00+09:00'
+  timestamp: '2025-03-09 11:05:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/math/two-sat.test.cpp

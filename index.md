@@ -212,6 +212,9 @@ data:
     - icon: ':warning:'
       path: misc/subset-iterator.hpp
       title: misc/subset-iterator.hpp
+    - icon: ':warning:'
+      path: misc/timer.hpp
+      title: misc/timer.hpp
   - name: modint
     pages:
     - icon: ':warning:'
