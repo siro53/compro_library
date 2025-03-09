@@ -30,3 +30,20 @@ class RNG64 {
   private:
     std::mt19937_64 mt;
 };
+
+class RNG_0_1 {
+  public:
+    RNG_0_1() : mt(std::chrono::steady_clock::now().time_since_epoch().count()) {}
+
+    // [0.0, 1.0)
+    double rand() {
+      auto bits = mt() >> 11;
+      return (double)bits / denomitor;
+    }
+
+    auto operator()() { return rand(); }
+
+  private:
+    std::mt19937_64 mt;
+    const double denomitor = 1LL << 53;
+};
