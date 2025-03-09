@@ -11,7 +11,7 @@ template <typename Cost = int> class SCC {
     explicit SCC(int N)
         : G(N), G_rev(N), comp(N, -1), seen(N, false), isBuilt(false) {}
     explicit SCC(const Graph<Cost> &g)
-        : G(g), G_rev(g.size()), comp(g.size(), -1), seen(g.size(), false) {
+        : G(g), G_rev(g.size()), comp(g.size(), -1), seen(g.size(), false), isBuilt(false) {
         for(int i = 0; i < (int)g.size(); i++) {
             for(const auto &e : g[i]) G_rev.add_directed_edge(e.to, i);
         }
