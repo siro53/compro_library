@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: data-structure/utils/sum_count_manager.hpp
+    title: data-structure/utils/sum_count_manager.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj-ALDS1-5-D.test.cpp
@@ -38,7 +41,8 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: misc/compress.hpp
-  requiredBy: []
+  requiredBy:
+  - data-structure/utils/sum_count_manager.hpp
   timestamp: '2023-09-30 04:41:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

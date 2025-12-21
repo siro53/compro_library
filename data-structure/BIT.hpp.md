@@ -56,15 +56,15 @@ data:
   isVerificationFile: false
   path: data-structure/BIT.hpp
   requiredBy:
-  - data-structure/range-BIT.hpp
   - misc/inversion-number.hpp
+  - data-structure/range-BIT.hpp
   timestamp: '2023-02-25 23:57:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj-ALDS1-5-D.test.cpp
   - test/library-checker/data-structure/point-add-range-sum.test.cpp
-  - test/library-checker/data-structure/static-range-inversions-query.test.cpp
   - test/library-checker/data-structure/static-range-sum.test.cpp
+  - test/library-checker/data-structure/static-range-inversions-query.test.cpp
 documentation_of: data-structure/BIT.hpp
 layout: document
 redirect_from:

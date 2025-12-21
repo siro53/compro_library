@@ -68,6 +68,9 @@ data:
     - icon: ':warning:'
       path: data-structure/monoid/rolling_hash.hpp
       title: data-structure/monoid/rolling_hash.hpp
+    - icon: ':warning:'
+      path: data-structure/monoid/sum_count.hpp
+      title: data-structure/monoid/sum_count.hpp
   - name: data-structure/persistent
     pages:
     - icon: ':heavy_check_mark:'
@@ -90,6 +93,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/segtree/segtree.hpp
       title: Segment Tree
+  - name: data-structure/utils
+    pages:
+    - icon: ':warning:'
+      path: data-structure/utils/sum_count_manager.hpp
+      title: data-structure/utils/sum_count_manager.hpp
   - name: geometry
     pages:
     - icon: ':warning:'

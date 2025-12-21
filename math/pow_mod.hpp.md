@@ -40,15 +40,15 @@ data:
   isVerificationFile: false
   path: math/pow_mod.hpp
   requiredBy:
-  - math/primitive-root.hpp
-  - math/convolution/ntt.hpp
   - math/is-prime.hpp
+  - math/convolution/ntt.hpp
+  - math/primitive-root.hpp
   timestamp: '2023-10-01 12:06:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj-ALDS1-1-C.test.cpp
-  - test/library-checker/convolution/convolution-mod.test.cpp
   - test/library-checker/math/primality-test.test.cpp
+  - test/library-checker/convolution/convolution-mod.test.cpp
 documentation_of: math/pow_mod.hpp
 layout: document
 redirect_from:
