@@ -338,7 +338,7 @@ data:
       title: test/library-checker/data-structure/vertex-set-path-composite.test.cpp
   - name: test/library-checker/data-structure/range-affine-point-get
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/library-checker/data-structure/range-affine-point-get/lazysegtree.test.cpp
       title: test/library-checker/data-structure/range-affine-point-get/lazysegtree.test.cpp
   - name: test/library-checker/graph

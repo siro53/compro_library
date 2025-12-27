@@ -46,6 +46,9 @@ data:
     path: test/library-checker/data-structure/point-add-range-sum.test.cpp
     title: test/library-checker/data-structure/point-add-range-sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/library-checker/data-structure/range-affine-point-get/lazysegtree.test.cpp
+    title: test/library-checker/data-structure/range-affine-point-get/lazysegtree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/range-affine-range-sum.test.cpp
     title: test/library-checker/data-structure/range-affine-range-sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -454,6 +457,7 @@ data:
   - test/library-checker/data-structure/persistent-unionfind.test.cpp
   - test/library-checker/data-structure/persistent-queue.test.cpp
   - test/library-checker/data-structure/point-add-range-sum.test.cpp
+  - test/library-checker/data-structure/range-affine-point-get/lazysegtree.test.cpp
   - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
   - test/library-checker/data-structure/line-add-get-min.test.cpp
   - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp

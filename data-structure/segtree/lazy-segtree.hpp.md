@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/library-checker/data-structure/range-affine-point-get/lazysegtree.test.cpp
+    title: test/library-checker/data-structure/range-affine-point-get/lazysegtree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/range-affine-range-sum.test.cpp
     title: test/library-checker/data-structure/range-affine-range-sum.test.cpp
   _isVerificationFailed: false
@@ -149,6 +152,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/data-structure/range-affine-range-sum.test.cpp
+  - test/library-checker/data-structure/range-affine-point-get/lazysegtree.test.cpp
 documentation_of: data-structure/segtree/lazy-segtree.hpp
 layout: document
 redirect_from:
