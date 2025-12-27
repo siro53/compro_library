@@ -13,6 +13,9 @@ data:
     path: test/library-checker/convolution/convolution-mod.test.cpp
     title: test/library-checker/convolution/convolution-mod.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/library-checker/data-structure/range-affine-range-sum.test.cpp
+    title: test/library-checker/data-structure/range-affine-range-sum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/vertex-set-path-composite.test.cpp
     title: test/library-checker/data-structure/vertex-set-path-composite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -92,6 +95,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/convolution/convolution-mod.test.cpp
+  - test/library-checker/data-structure/range-affine-range-sum.test.cpp
   - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
   - test/yukicoder/yuki117.test.cpp
   - test/yukicoder/yuki1750.test.cpp

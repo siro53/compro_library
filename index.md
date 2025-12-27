@@ -88,6 +88,9 @@ data:
       path: data-structure/segtree/dynamic-segtree.hpp
       title: Dynamic Segment Tree
     - icon: ':heavy_check_mark:'
+      path: data-structure/segtree/lazy-segtree.hpp
+      title: data-structure/segtree/lazy-segtree.hpp
+    - icon: ':heavy_check_mark:'
       path: data-structure/segtree/li-chao-tree.hpp
       title: Li Chao Tree
     - icon: ':heavy_check_mark:'
@@ -304,6 +307,9 @@ data:
       path: test/library-checker/data-structure/point-add-range-sum.test.cpp
       title: test/library-checker/data-structure/point-add-range-sum.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/library-checker/data-structure/range-affine-range-sum.test.cpp
+      title: test/library-checker/data-structure/range-affine-range-sum.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/library-checker/data-structure/range-kth-smallest.test.cpp
       title: test/library-checker/data-structure/range-kth-smallest.test.cpp
     - icon: ':heavy_check_mark:'
@@ -330,6 +336,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/library-checker/data-structure/vertex-set-path-composite.test.cpp
       title: test/library-checker/data-structure/vertex-set-path-composite.test.cpp
+  - name: test/library-checker/data-structure/range-affine-point-get
+    pages:
+    - icon: ':x:'
+      path: test/library-checker/data-structure/range-affine-point-get/lazysegtree.test.cpp
+      title: test/library-checker/data-structure/range-affine-point-get/lazysegtree.test.cpp
   - name: test/library-checker/graph
     pages:
     - icon: ':heavy_check_mark:'
