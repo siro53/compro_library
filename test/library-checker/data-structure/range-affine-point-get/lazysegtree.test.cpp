@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/range_affine_point_get"
-#include "../../../template/template.cpp"
-#include "../../../data-structure/segtree/lazy-segtree.hpp"
-#include "../../../modint/modint.hpp"
+#include "../../../../template/template.cpp"
+#include "../../../../data-structure/segtree/lazy-segtree.hpp"
+#include "../../../../modint/modint.hpp"
 
 using mint = ModInt<MOD2>;
 
