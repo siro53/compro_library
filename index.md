@@ -94,6 +94,9 @@ data:
       path: data-structure/segtree/li-chao-tree.hpp
       title: Li Chao Tree
     - icon: ':heavy_check_mark:'
+      path: data-structure/segtree/segtree-beats.hpp
+      title: data-structure/segtree/segtree-beats.hpp
+    - icon: ':heavy_check_mark:'
       path: data-structure/segtree/segtree.hpp
       title: Segment Tree
   - name: data-structure/utils
@@ -309,6 +312,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/library-checker/data-structure/range-affine-range-sum.test.cpp
       title: test/library-checker/data-structure/range-affine-range-sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/library-checker/data-structure/range-chmin-chmax-add-range-sum.test.cpp
+      title: test/library-checker/data-structure/range-chmin-chmax-add-range-sum.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/library-checker/data-structure/range-kth-smallest.test.cpp
       title: test/library-checker/data-structure/range-kth-smallest.test.cpp

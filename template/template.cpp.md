@@ -52,6 +52,9 @@ data:
     path: test/library-checker/data-structure/range-affine-range-sum.test.cpp
     title: test/library-checker/data-structure/range-affine-range-sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/library-checker/data-structure/range-chmin-chmax-add-range-sum.test.cpp
+    title: test/library-checker/data-structure/range-chmin-chmax-add-range-sum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/range-kth-smallest.test.cpp
     title: test/library-checker/data-structure/range-kth-smallest.test.cpp
   - icon: ':heavy_check_mark:'
@@ -451,6 +454,7 @@ data:
   - test/library-checker/graph/scc.test.cpp
   - test/library-checker/convolution/convolution-mod.test.cpp
   - test/library-checker/data-structure/range-affine-range-sum.test.cpp
+  - test/library-checker/data-structure/range-chmin-chmax-add-range-sum.test.cpp
   - test/library-checker/data-structure/unionfind.test.cpp
   - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
   - test/library-checker/data-structure/segment-add-get-min.test.cpp
