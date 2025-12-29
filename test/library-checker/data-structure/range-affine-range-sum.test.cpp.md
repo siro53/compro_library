@@ -213,9 +213,9 @@ data:
     \ <<= 1;\n                    if (g(MonoidAct::op(now, node[l]))) {\n        \
     \                now = MonoidAct::op(now, node[l]);\n                        l++;\n\
     \                    }\n                }\n                return l - sz;\n  \
-    \          }\n            now = MonoidAct::op(now, node[l]);\n        } while\
-    \ ((l & -l) != l);\n        return N;\n    } \n\n    template <class G> int min_left(int\
-    \ r, G g) {\n        assert(0 <= r and r <= N);\n        assert(g(MonoidAct::e()));\n\
+    \          }\n            now = MonoidAct::op(now, node[l]);\n            l++;\n\
+    \        } while ((l & -l) != l);\n        return N;\n    } \n\n    template <class\
+    \ G> int min_left(int r, G g) {\n        assert(0 <= r and r <= N);\n        assert(g(MonoidAct::e()));\n\
     \        if (r == 0) return 0;\n        r += sz;\n        for(int i = lg; i >=\
     \ 1; i--) propagate((r - 1) >> i);\n        S now = MonoidAct::e();\n        do\
     \ {\n            r--;\n            while (r > 1 and (r & 1) == 0) r >>= 1;\n \
@@ -300,7 +300,7 @@ data:
   isVerificationFile: true
   path: test/library-checker/data-structure/range-affine-range-sum.test.cpp
   requiredBy: []
-  timestamp: '2025-12-27 17:47:09+09:00'
+  timestamp: '2025-12-29 15:38:26+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/library-checker/data-structure/range-affine-range-sum.test.cpp
