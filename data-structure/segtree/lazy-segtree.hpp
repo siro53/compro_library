@@ -111,6 +111,7 @@ public:
                 return l - sz;
             }
             now = MonoidAct::op(now, node[l]);
+            l++;
         } while ((l & -l) != l);
         return N;
     } 
