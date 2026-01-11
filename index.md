@@ -12,6 +12,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/compact-bitvector.hpp
       title: data-structure/compact-bitvector.hpp
+    - icon: ':heavy_check_mark:'
+      path: data-structure/erasable-priority-queue.hpp
+      title: "\u524A\u9664\u53EF\u80FD priority queue"
     - icon: ':warning:'
       path: data-structure/imos2D.hpp
       title: data-structure/imos2D.hpp
@@ -384,6 +387,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/mytest/data-structure/binary-trie.test.cpp
       title: test/mytest/data-structure/binary-trie.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/data-structure/erasable-priority-queue.test.cpp
+      title: test/mytest/data-structure/erasable-priority-queue.test.cpp
   - name: test/mytest/misc
     pages:
     - icon: ':heavy_check_mark:'

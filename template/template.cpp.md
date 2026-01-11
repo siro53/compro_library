@@ -109,6 +109,9 @@ data:
     path: test/mytest/data-structure/binary-trie.test.cpp
     title: test/mytest/data-structure/binary-trie.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/erasable-priority-queue.test.cpp
+    title: test/mytest/data-structure/erasable-priority-queue.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/mytest/misc/fraction.test.cpp
     title: test/mytest/misc/fraction.test.cpp
   - icon: ':heavy_check_mark:'
@@ -473,6 +476,7 @@ data:
   - test/library-checker/tree/lowest-common-ancestor.test.cpp
   - test/library-checker/tree/lowest-common-ancestor2.test.cpp
   - test/mytest/misc/fraction.test.cpp
+  - test/mytest/data-structure/erasable-priority-queue.test.cpp
   - test/mytest/data-structure/binary-trie.test.cpp
   - test/yukicoder/yuki1435.test.cpp
   - test/yukicoder/yuki789.test.cpp

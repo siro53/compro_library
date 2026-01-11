@@ -13,6 +13,9 @@ data:
     path: test/mytest/data-structure/binary-trie.test.cpp
     title: test/mytest/data-structure/binary-trie.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/erasable-priority-queue.test.cpp
+    title: test/mytest/data-structure/erasable-priority-queue.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/mytest/misc/fraction.test.cpp
     title: test/mytest/misc/fraction.test.cpp
   _isVerificationFailed: false
@@ -58,6 +61,7 @@ data:
   verifiedWith:
   - test/aoj/aoj2821.test.cpp
   - test/mytest/misc/fraction.test.cpp
+  - test/mytest/data-structure/erasable-priority-queue.test.cpp
   - test/mytest/data-structure/binary-trie.test.cpp
 documentation_of: random/rng.hpp
 layout: document
