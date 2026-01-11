@@ -33,6 +33,7 @@
 "test/library-checker/tree/lowest-common-ancestor2.test.cpp": "2024-09-08 23:17:50 +0900",
 "test/library-checker/tree/tree-diameter.test.cpp": "2024-09-08 23:17:50 +0900",
 "test/mytest/data-structure/binary-trie.test.cpp": "2025-03-09 11:07:17 +0900",
+"test/mytest/data-structure/erasable-priority-queue.test.cpp": "2026-01-12 01:17:47 +0900",
 "test/mytest/misc/fraction.test.cpp": "2025-03-09 11:07:17 +0900",
 "test/yukicoder/yuki117.test.cpp": "2023-02-25 23:57:16 +0900",
 "test/yukicoder/yuki1435.test.cpp": "2024-09-08 23:17:50 +0900",
