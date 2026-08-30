@@ -112,6 +112,9 @@ data:
     path: test/mytest/data-structure/erasable-priority-queue.test.cpp
     title: test/mytest/data-structure/erasable-priority-queue.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/mytest/geometry/geometry.test.cpp
+    title: test/mytest/geometry/geometry.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/mytest/misc/fraction.test.cpp
     title: test/mytest/misc/fraction.test.cpp
   - icon: ':heavy_check_mark:'
@@ -482,6 +485,7 @@ data:
   - test/yukicoder/yuki430.test.cpp
   - test/yukicoder/yuki1750.test.cpp
   - test/yukicoder/yuki1469.test.cpp
+  - test/mytest/geometry/geometry.test.cpp
   - test/mytest/data-structure/erasable-priority-queue.test.cpp
   - test/mytest/data-structure/binary-trie.test.cpp
   - test/mytest/misc/fraction.test.cpp

@@ -109,9 +109,102 @@ data:
       title: data-structure/utils/sum_count_manager.hpp
   - name: geometry
     pages:
+    - icon: ':heavy_check_mark:'
+      path: geometry/base.hpp
+      title: geometry/base.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/ccw.hpp
+      title: geometry/ccw.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/circle.hpp
+      title: geometry/circle.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/convex-cut.hpp
+      title: geometry/convex-cut.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/convex-hull.hpp
+      title: geometry/convex-hull.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/cross-point.hpp
+      title: geometry/cross-point.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/cross.hpp
+      title: geometry/cross.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/degree-to-radian.hpp
+      title: geometry/degree-to-radian.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/distance-between-line-and-point.hpp
+      title: geometry/distance-between-line-and-point.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/distance-between-segment-and-point.hpp
+      title: geometry/distance-between-segment-and-point.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/distance-between-segments.hpp
+      title: geometry/distance-between-segments.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/dot.hpp
+      title: geometry/dot.hpp
     - icon: ':warning:'
       path: geometry/geometry.hpp
-      title: geometry/geometry.hpp
+      title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA"
+    - icon: ':heavy_check_mark:'
+      path: geometry/is-contained.hpp
+      title: geometry/is-contained.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/is-convex.hpp
+      title: geometry/is-convex.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/is-in-circle.hpp
+      title: geometry/is-in-circle.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/is-intersect.hpp
+      title: geometry/is-intersect.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/is-orthogonal.hpp
+      title: geometry/is-orthogonal.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/is-parallel.hpp
+      title: geometry/is-parallel.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/is-point-on-line.hpp
+      title: geometry/is-point-on-line.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/is-point-on-segment.hpp
+      title: geometry/is-point-on-segment.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/line.hpp
+      title: geometry/line.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/normal-vector.hpp
+      title: geometry/normal-vector.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/polygon-area.hpp
+      title: geometry/polygon-area.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/projection.hpp
+      title: geometry/projection.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/radian-to-degree.hpp
+      title: geometry/radian-to-degree.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/reflection.hpp
+      title: geometry/reflection.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/rotate.hpp
+      title: geometry/rotate.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/segment.hpp
+      title: geometry/segment.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/tangent-to-circle.hpp
+      title: geometry/tangent-to-circle.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/tangent.hpp
+      title: geometry/tangent.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/unit-vector.hpp
+      title: geometry/unit-vector.hpp
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
@@ -390,6 +483,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/mytest/data-structure/erasable-priority-queue.test.cpp
       title: test/mytest/data-structure/erasable-priority-queue.test.cpp
+  - name: test/mytest/geometry
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/geometry/geometry.test.cpp
+      title: test/mytest/geometry/geometry.test.cpp
   - name: test/mytest/misc
     pages:
     - icon: ':heavy_check_mark:'
