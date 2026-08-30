@@ -60,9 +60,9 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj2821.test.cpp
-  - test/mytest/misc/fraction.test.cpp
   - test/mytest/data-structure/erasable-priority-queue.test.cpp
   - test/mytest/data-structure/binary-trie.test.cpp
+  - test/mytest/misc/fraction.test.cpp
 documentation_of: random/rng.hpp
 layout: document
 title: "\u4E71\u6570\u751F\u6210"
