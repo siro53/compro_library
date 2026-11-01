@@ -12,6 +12,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/initialization-and-monoids.test.cpp
     title: test/mytest/data-structure/initialization-and-monoids.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/persistent-api.test.cpp
+    title: test/mytest/data-structure/persistent-api.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -89,6 +92,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/data-structure/persistent-unionfind.test.cpp
+  - test/mytest/data-structure/persistent-api.test.cpp
   - test/mytest/data-structure/initialization-and-monoids.test.cpp
 documentation_of: data-structure/persistent/persistent-array.hpp
 layout: document

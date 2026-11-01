@@ -18,6 +18,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/mytest/math/convolution-regressions.test.cpp
     title: test/mytest/math/convolution-regressions.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/math/transforms-api.test.cpp
+    title: test/mytest/math/transforms-api.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -177,6 +180,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/convolution/convolution-mod.test.cpp
+  - test/mytest/math/transforms-api.test.cpp
   - test/mytest/math/convolution-regressions.test.cpp
 documentation_of: math/convolution/ntt.hpp
 layout: document

@@ -14,11 +14,14 @@ data:
     path: geometry/dot.hpp
     title: "\u5185\u7A4D"
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: geometry/geometry.hpp
     title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA\uFF08\u307E\u3068\u3081\u3066\
       \ include\uFF09"
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/geometry/geometry-api.test.cpp
+    title: test/mytest/geometry/geometry-api.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/mytest/geometry/geometry.test.cpp
     title: test/mytest/geometry/geometry.test.cpp
@@ -81,6 +84,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/mytest/geometry/geometry.test.cpp
+  - test/mytest/geometry/geometry-api.test.cpp
 documentation_of: geometry/is-convex.hpp
 layout: document
 title: "\u51F8\u591A\u89D2\u5F62\u5224\u5B9A"

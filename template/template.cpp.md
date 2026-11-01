@@ -1,10 +1,7 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: test/library-checker/data-structure/point-set-range-composite.cpp
-    title: test/library-checker/data-structure/point-set-range-composite.cpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj-ALDS1-1-C.test.cpp
@@ -13,8 +10,38 @@ data:
     path: test/aoj/aoj-ALDS1-1-C_2.test.cpp
     title: test/aoj/aoj-ALDS1-1-C_2.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj-ALDS1-11-C.test.cpp
+    title: test/aoj/aoj-ALDS1-11-C.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/aoj/aoj-ALDS1-5-D.test.cpp
     title: test/aoj/aoj-ALDS1-5-D.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj-DSL-2-A.test.cpp
+    title: test/aoj/aoj-DSL-2-A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj-DSL-2-G.test.cpp
+    title: test/aoj/aoj-DSL-2-G.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj-DSL-5-B.test.cpp
+    title: test/aoj/aoj-DSL-5-B.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj-GRL-4-A.test.cpp
+    title: test/aoj/aoj-GRL-4-A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj-ITP1-3-D.test.cpp
+    title: test/aoj/aoj-ITP1-3-D.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj-ITP2-11-C.test.cpp
+    title: test/aoj/aoj-ITP2-11-C.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj-NTL-1-A.test.cpp
+    title: test/aoj/aoj-NTL-1-A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj-NTL-1-B-dynamic-modint.test.cpp
+    title: test/aoj/aoj-NTL-1-B-dynamic-modint.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj-NTL-1-B.test.cpp
+    title: test/aoj/aoj-NTL-1-B.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj1549.test.cpp
     title: test/aoj/aoj1549.test.cpp
@@ -45,6 +72,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/point-add-range-sum.test.cpp
     title: test/library-checker/data-structure/point-add-range-sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/library-checker/data-structure/point-set-range-composite.test.cpp
+    title: test/library-checker/data-structure/point-set-range-composite.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/range-affine-point-get/lazysegtree.test.cpp
     title: test/library-checker/data-structure/range-affine-point-get/lazysegtree.test.cpp
@@ -88,6 +118,9 @@ data:
     path: test/library-checker/graph/shortest-path.test.cpp
     title: test/library-checker/graph/shortest-path.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/library-checker/math/matrix-det-mod-2.test.cpp
+    title: test/library-checker/math/matrix-det-mod-2.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/library-checker/math/primality-test.test.cpp
     title: test/library-checker/math/primality-test.test.cpp
   - icon: ':heavy_check_mark:'
@@ -106,6 +139,9 @@ data:
     path: test/library-checker/tree/tree-diameter.test.cpp
     title: test/library-checker/tree/tree-diameter.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/basic-api.test.cpp
+    title: test/mytest/data-structure/basic-api.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/binary-trie.test.cpp
     title: test/mytest/data-structure/binary-trie.test.cpp
   - icon: ':heavy_check_mark:'
@@ -118,17 +154,47 @@ data:
     path: test/mytest/data-structure/helper-regressions.test.cpp
     title: test/mytest/data-structure/helper-regressions.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/imos2D.test.cpp
+    title: test/mytest/data-structure/imos2D.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/initialization-and-monoids.test.cpp
     title: test/mytest/data-structure/initialization-and-monoids.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/li-chao-tree.test.cpp
     title: test/mytest/data-structure/li-chao-tree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/monoids.test.cpp
+    title: test/mytest/data-structure/monoids.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/persistent-api.test.cpp
+    title: test/mytest/data-structure/persistent-api.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/range-bit.test.cpp
+    title: test/mytest/data-structure/range-bit.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/segment-tree-api.test.cpp
+    title: test/mytest/data-structure/segment-tree-api.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/segtree-boundaries.test.cpp
     title: test/mytest/data-structure/segtree-boundaries.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/slope-trick.test.cpp
+    title: test/mytest/data-structure/slope-trick.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/wavelet-api.test.cpp
+    title: test/mytest/data-structure/wavelet-api.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/geometry/geometry-api.test.cpp
+    title: test/mytest/geometry/geometry-api.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/mytest/geometry/geometry.test.cpp
     title: test/mytest/geometry/geometry.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/graph/bfs-topological-sort.test.cpp
+    title: test/mytest/graph/bfs-topological-sort.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/graph/graph-scc-two-sat.test.cpp
+    title: test/mytest/graph/graph-scc-two-sat.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/mytest/graph/lca-and-empty-two-sat.test.cpp
     title: test/mytest/graph/lca-and-empty-two-sat.test.cpp
@@ -136,11 +202,32 @@ data:
     path: test/mytest/graph/range-edge-graph.test.cpp
     title: test/mytest/graph/range-edge-graph.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/mytest/graph/tree-api.test.cpp
+    title: test/mytest/graph/tree-api.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/mytest/math/arithmetic-regressions.test.cpp
     title: test/mytest/math/arithmetic-regressions.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/mytest/math/barrett-reduction.test.cpp
+    title: test/mytest/math/barrett-reduction.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/mytest/math/convolution-regressions.test.cpp
     title: test/mytest/math/convolution-regressions.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/math/f2.test.cpp
+    title: test/mytest/math/f2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/math/matrix-binom.test.cpp
+    title: test/mytest/math/matrix-binom.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/math/number-theory.test.cpp
+    title: test/mytest/math/number-theory.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/math/transforms-api.test.cpp
+    title: test/mytest/math/transforms-api.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/misc/fraction-api.test.cpp
+    title: test/mytest/misc/fraction-api.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/mytest/misc/fraction.test.cpp
     title: test/mytest/misc/fraction.test.cpp
@@ -148,8 +235,20 @@ data:
     path: test/mytest/misc/mo-and-fraction.test.cpp
     title: test/mytest/misc/mo-and-fraction.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/mytest/misc/subset-iterator.test.cpp
+    title: test/mytest/misc/subset-iterator.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/misc/utilities.test.cpp
+    title: test/mytest/misc/utilities.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/modint/dynamic-modint.test.cpp
+    title: test/mytest/modint/dynamic-modint.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/mytest/string/empty-inputs.test.cpp
     title: test/mytest/string/empty-inputs.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/string/string-api.test.cpp
+    title: test/mytest/string/string-api.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki1435.test.cpp
     title: test/yukicoder/yuki1435.test.cpp
@@ -473,8 +572,7 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: template/template.cpp
-  requiredBy:
-  - test/library-checker/data-structure/point-set-range-composite.cpp
+  requiredBy: []
   timestamp: '2024-09-08 23:17:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -487,6 +585,7 @@ data:
   - test/yukicoder/yuki430.test.cpp
   - test/library-checker/graph/scc.test.cpp
   - test/library-checker/graph/shortest-path.test.cpp
+  - test/library-checker/math/matrix-det-mod-2.test.cpp
   - test/library-checker/math/primality-test.test.cpp
   - test/library-checker/math/two-sat.test.cpp
   - test/library-checker/convolution/convolution-mod.test.cpp
@@ -509,30 +608,63 @@ data:
   - test/library-checker/data-structure/range-affine-range-sum.test.cpp
   - test/library-checker/data-structure/persistent-queue.test.cpp
   - test/library-checker/data-structure/range-chmin-chmax-add-range-sum.test.cpp
+  - test/library-checker/data-structure/point-set-range-composite.test.cpp
   - test/library-checker/string/z-algorithm.test.cpp
+  - test/mytest/modint/dynamic-modint.test.cpp
   - test/mytest/geometry/geometry.test.cpp
+  - test/mytest/geometry/geometry-api.test.cpp
   - test/mytest/graph/lca-and-empty-two-sat.test.cpp
   - test/mytest/graph/range-edge-graph.test.cpp
+  - test/mytest/graph/graph-scc-two-sat.test.cpp
+  - test/mytest/graph/bfs-topological-sort.test.cpp
+  - test/mytest/graph/tree-api.test.cpp
+  - test/mytest/math/transforms-api.test.cpp
+  - test/mytest/math/number-theory.test.cpp
   - test/mytest/math/convolution-regressions.test.cpp
+  - test/mytest/math/matrix-binom.test.cpp
   - test/mytest/math/arithmetic-regressions.test.cpp
+  - test/mytest/math/f2.test.cpp
+  - test/mytest/math/barrett-reduction.test.cpp
+  - test/mytest/data-structure/monoids.test.cpp
   - test/mytest/data-structure/li-chao-tree.test.cpp
+  - test/mytest/data-structure/basic-api.test.cpp
   - test/mytest/data-structure/binary-trie.test.cpp
+  - test/mytest/data-structure/persistent-api.test.cpp
+  - test/mytest/data-structure/wavelet-api.test.cpp
+  - test/mytest/data-structure/range-bit.test.cpp
   - test/mytest/data-structure/bit-queries.test.cpp
   - test/mytest/data-structure/erasable-priority-queue.test.cpp
+  - test/mytest/data-structure/segment-tree-api.test.cpp
+  - test/mytest/data-structure/imos2D.test.cpp
   - test/mytest/data-structure/initialization-and-monoids.test.cpp
+  - test/mytest/data-structure/slope-trick.test.cpp
   - test/mytest/data-structure/helper-regressions.test.cpp
   - test/mytest/data-structure/segtree-boundaries.test.cpp
+  - test/mytest/string/string-api.test.cpp
   - test/mytest/string/empty-inputs.test.cpp
+  - test/mytest/misc/fraction-api.test.cpp
+  - test/mytest/misc/subset-iterator.test.cpp
   - test/mytest/misc/mo-and-fraction.test.cpp
   - test/mytest/misc/fraction.test.cpp
+  - test/mytest/misc/utilities.test.cpp
   - test/aoj/aoj2858.test.cpp
+  - test/aoj/aoj-NTL-1-A.test.cpp
+  - test/aoj/aoj-NTL-1-B.test.cpp
+  - test/aoj/aoj-DSL-2-G.test.cpp
+  - test/aoj/aoj-NTL-1-B-dynamic-modint.test.cpp
   - test/aoj/aoj-ALDS1-5-D.test.cpp
+  - test/aoj/aoj-ALDS1-11-C.test.cpp
   - test/aoj/aoj1549.test.cpp
+  - test/aoj/aoj-DSL-2-A.test.cpp
+  - test/aoj/aoj-DSL-5-B.test.cpp
   - test/aoj/aoj2821.test.cpp
   - test/aoj/aoj-ALDS1-1-C_2.test.cpp
   - test/aoj/aoj2426.test.cpp
+  - test/aoj/aoj-ITP1-3-D.test.cpp
   - test/aoj/aoj2674.test.cpp
+  - test/aoj/aoj-ITP2-11-C.test.cpp
   - test/aoj/aoj-ALDS1-1-C.test.cpp
+  - test/aoj/aoj-GRL-4-A.test.cpp
 documentation_of: template/template.cpp
 layout: document
 title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"

@@ -2,14 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: data-structure/monoid/affine.hpp
-    title: "\u30A2\u30D5\u30A3\u30F3\u5909\u63DB\u30E2\u30CE\u30A4\u30C9"
+    path: data-structure/BIT.hpp
+    title: Binary Indexed Tree
   - icon: ':heavy_check_mark:'
-    path: data-structure/segtree/segtree.hpp
-    title: Segment Tree
-  - icon: ':heavy_check_mark:'
-    path: modint/modint.hpp
-    title: "\u56FA\u5B9A\u6CD5 modint"
+    path: data-structure/range-BIT.hpp
+    title: Range BIT
   - icon: ':heavy_check_mark:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
@@ -17,14 +14,16 @@ data:
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/aplusb
     links:
-    - https://judge.yosupo.jp/problem/point_set_range_composite
-  bundledCode: "#line 1 \"test/library-checker/data-structure/point-set-range-composite.cpp\"\
-    \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
-    \n#line 1 \"template/template.cpp\"\n#pragma region Macros\n#include <bits/stdc++.h>\n\
-    using namespace std;\n// input output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
+    - https://judge.yosupo.jp/problem/aplusb
+  bundledCode: "#line 1 \"test/mytest/data-structure/range-bit.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#line 1 \"template/template.cpp\"\
+    \n#pragma region Macros\n#include <bits/stdc++.h>\nusing namespace std;\n// input\
+    \ output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
     \    struct has_val_impl {\n        template <class T>\n        static auto check(T\
     \ &&x) -> decltype(x.val(), std::true_type{});\n\n        template <class T> static\
     \ auto check(...) -> std::false_type;\n    };\n\n    template <class T>\n    class\
@@ -168,114 +167,75 @@ data:
     \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
     \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
     \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
-    \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"modint/modint.hpp\"\n\
-    \n#line 6 \"modint/modint.hpp\"\n\ntemplate <int mod> class ModInt {\n  public:\n\
-    \    ModInt() : x(0) {}\n    ModInt(long long y)\n        : x(y >= 0 ? y % umod()\
-    \ : (umod() - (-y) % umod()) % umod()) {}\n    unsigned int val() const { return\
-    \ x; }\n    ModInt &operator+=(const ModInt &p) {\n        if((x += p.x) >= umod())\
-    \ x -= umod();\n        return *this;\n    }\n    ModInt &operator-=(const ModInt\
-    \ &p) {\n        if((x += umod() - p.x) >= umod()) x -= umod();\n        return\
-    \ *this;\n    }\n    ModInt &operator*=(const ModInt &p) {\n        x = (unsigned\
-    \ int)(1ULL * x * p.x % umod());\n        return *this;\n    }\n    ModInt &operator/=(const\
-    \ ModInt &p) {\n        *this *= p.inv();\n        return *this;\n    }\n    ModInt\
-    \ operator-() const { return ModInt(-(long long)x); }\n    ModInt operator+(const\
-    \ ModInt &p) const { return ModInt(*this) += p; }\n    ModInt operator-(const\
-    \ ModInt &p) const { return ModInt(*this) -= p; }\n    ModInt operator*(const\
-    \ ModInt &p) const { return ModInt(*this) *= p; }\n    ModInt operator/(const\
-    \ ModInt &p) const { return ModInt(*this) /= p; }\n    bool operator==(const ModInt\
-    \ &p) const { return x == p.x; }\n    bool operator!=(const ModInt &p) const {\
-    \ return x != p.x; }\n    ModInt inv() const {\n        long long a = x, b = mod,\
-    \ u = 1, v = 0, t;\n        while(b > 0) {\n            t = a / b;\n         \
-    \   std::swap(a -= t * b, b);\n            std::swap(u -= t * v, v);\n       \
-    \ }\n        return ModInt(u);\n    }\n    ModInt pow(unsigned long long n) const\
-    \ {\n        ModInt ret(1), mul(x);\n        while(n > 0) {\n            if(n\
-    \ & 1) ret *= mul;\n            mul *= mul;\n            n >>= 1;\n        }\n\
-    \        return ret;\n    }\n    friend std::ostream &operator<<(std::ostream\
-    \ &os, const ModInt &p) {\n        return os << p.x;\n    }\n    friend std::istream\
-    \ &operator>>(std::istream &is, ModInt &a) {\n        long long t;\n        is\
-    \ >> t;\n        a = ModInt<mod>(t);\n        return (is);\n    }\n    static\
-    \ constexpr int get_mod() { return mod; }\n\n  private:\n    unsigned int x;\n\
-    \    static constexpr unsigned int umod() { return mod; }\n};\n#line 2 \"data-structure/monoid/affine.hpp\"\
-    \n\n#line 4 \"data-structure/monoid/affine.hpp\"\n\ntemplate <typename T, bool\
-    \ rev = false> struct MonoidAffine {\n    using S = std::pair<T, T>;\n    using\
-    \ value_type = S;\n    inline static S op(const S &l, const S &r) {\n        if(rev)\
-    \ return S(r.first * l.first, r.first * l.second + r.second);\n        return\
-    \ S(l.first * r.first, l.first * r.second + l.second);\n    }\n    inline static\
-    \ S e() { return S(T(1), T(0)); }\n};\n#line 2 \"data-structure/segtree/segtree.hpp\"\
-    \n\n#line 5 \"data-structure/segtree/segtree.hpp\"\n\ntemplate <class Monoid>\
-    \ class Segtree {\n  public:\n    using T = typename Monoid::value_type;\n\n \
-    \   Segtree() : Segtree(0) {}\n    explicit Segtree(int n) : Segtree(std::vector<T>(n,\
-    \ Monoid::e())) {}\n    explicit Segtree(const std::vector<T> &v) : N((int)v.size()),\
-    \ sz(1) {\n        while(sz < N) sz <<= 1;\n        node.resize(sz * 2, Monoid::e());\n\
-    \        for(int i = 0; i < N; i++) node[i + sz] = v[i];\n        for(int i =\
-    \ sz - 1; i >= 1; i--) {\n            node[i] = Monoid::op(node[i << 1], node[i\
-    \ << 1 | 1]);\n        }\n    }\n    void set(int pos, T val) {\n        assert(0\
-    \ <= pos && pos < N);\n        pos += sz;\n        node[pos] = val;\n        while(pos\
-    \ > 1) {\n            pos >>= 1;\n            node[pos] = Monoid::op(node[pos\
-    \ << 1], node[pos << 1 | 1]);\n        }\n    }\n    T get(int pos) const {\n\
-    \        assert(0 <= pos && pos < N);\n        return node[pos + sz];\n    }\n\
-    \    void apply(int pos, T val) {\n        this->set(pos, Monoid::op(this->get(pos),\
-    \ val));\n    }\n    T prod(int l, int r) const {\n        assert(0 <= l && l\
-    \ <= r && r <= N);\n        T value_l = Monoid::e(), value_r = Monoid::e();\n\
-    \        l += sz;\n        r += sz;\n        while(l < r) {\n            if(l\
-    \ & 1) value_l = Monoid::op(value_l, node[l++]);\n            if(r & 1) value_r\
-    \ = Monoid::op(node[--r], value_r);\n            l >>= 1;\n            r >>= 1;\n\
-    \        }\n        return Monoid::op(value_l, value_r);\n    }\n    T all_prod()\
-    \ const { return node[1]; }\n    template <class F> int max_right(int l, F f)\
-    \ const {\n        assert(0 <= l && l <= N);\n        assert(f(Monoid::e()));\n\
-    \        if(l == N) return N;\n        l += sz;\n        T value_now = Monoid::e();\n\
-    \        do {\n            while((l & 1) == 0) l >>= 1;\n            if(!f(Monoid::op(value_now,\
-    \ node[l]))) {\n                while(l < sz) {\n                    l = 2 * l;\n\
-    \                    if(f(Monoid::op(value_now, node[l]))) {\n               \
-    \         value_now = Monoid::op(value_now, node[l]);\n                      \
-    \  l++;\n                    }\n                }\n                return (l -\
-    \ sz);\n            }\n            value_now = Monoid::op(value_now, node[l]);\n\
-    \            l++;\n        } while((l & -l) != l);\n        return N;\n    }\n\
-    \    template <class F> int min_left(int r, F f) const {\n        assert(0 <=\
-    \ r && r <= N);\n        assert(f(Monoid::e()));\n        if(r == 0) return 0;\n\
-    \        r += sz;\n        T value_now = Monoid::e();\n        do {\n        \
-    \    r--;\n            while(r > 1 && (r & 1)) r >>= 1;\n            if(!f(Monoid::op(node[r],\
-    \ value_now))) {\n                while(r < sz) {\n                    r = 2 *\
-    \ r + 1;\n                    if(f(Monoid::op(node[r], value_now))) {\n      \
-    \                  value_now = Monoid::op(node[r], value_now);\n             \
-    \           r--;\n                    }\n                }\n                return\
-    \ ((r + 1) - sz);\n            }\n            value_now = Monoid::op(node[r],\
-    \ value_now);\n        } while((r & -r) != r);\n        return 0;\n    }\n\n \
-    \ private:\n    int N, sz;\n    std::vector<T> node;\n};\n#line 6 \"test/library-checker/data-structure/point-set-range-composite.cpp\"\
-    \n\nusing mint = ModInt<MOD2>;\n\nint main() {\n    int N, Q;\n    cin >> N >>\
-    \ Q;\n    vector<pair<mint, mint>> v(N);\n    REP(i, N) {\n        int a, b;\n\
-    \        cin >> a >> b;\n        v[i] = {a, b};\n    }\n    Segtree<MonoidAffine<mint>>\
-    \ seg(v);\n    while(Q--) {\n        int t;\n        cin >> t;\n        if(t ==\
-    \ 0) {\n            int p, c, d;\n            cin >> p >> c >> d;\n          \
-    \  seg.set(p, pair<mint, mint>(c, d));\n        } else {\n            int l, r,\
-    \ x;\n            cin >> l >> r >> x;\n            auto [a, b] = seg.prod(l, r);\n\
-    \            cout << (a * x + b) << '\\n';\n        }\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
-    \n#include \"../../../template/template.cpp\"\n#include \"../../../modint/modint.hpp\"\
-    \n#include \"../../../data-structure/monoid/affine.hpp\"\n#include \"../../../data-structure/segtree/segtree.hpp\"\
-    \n\nusing mint = ModInt<MOD2>;\n\nint main() {\n    int N, Q;\n    cin >> N >>\
-    \ Q;\n    vector<pair<mint, mint>> v(N);\n    REP(i, N) {\n        int a, b;\n\
-    \        cin >> a >> b;\n        v[i] = {a, b};\n    }\n    Segtree<MonoidAffine<mint>>\
-    \ seg(v);\n    while(Q--) {\n        int t;\n        cin >> t;\n        if(t ==\
-    \ 0) {\n            int p, c, d;\n            cin >> p >> c >> d;\n          \
-    \  seg.set(p, pair<mint, mint>(c, d));\n        } else {\n            int l, r,\
-    \ x;\n            cin >> l >> r >> x;\n            auto [a, b] = seg.prod(l, r);\n\
-    \            cout << (a * x + b) << '\\n';\n        }\n    }\n}"
+    \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"data-structure/range-BIT.hpp\"\
+    \n\n#line 2 \"data-structure/BIT.hpp\"\n\n#line 5 \"data-structure/BIT.hpp\"\n\
+    \ntemplate <typename T> class BIT {\n  public:\n    BIT() = default;\n    explicit\
+    \ BIT(int N) : N(N), dat(N + 1, 0) {}\n    T sum(int r) {\n        T ret = 0;\n\
+    \        for(; r >= 1; r -= lsb(r)) ret += dat[r];\n        return ret;\n    }\n\
+    \    T sum(int l, int r) {\n        assert(l <= r);\n        if(l == r) return\
+    \ T(0);\n        return (sum(r) - sum(l));\n    }\n    void add(int pos, T val)\
+    \ {\n        for(int i = pos + 1; i <= N; i += lsb(i)) dat[i] += val;\n    }\n\
+    \    int lower_bound(T val) {\n        int pos = 0;\n        int k = 1;\n    \
+    \    while(2 * k <= N) k <<= 1;\n        for(; k >= 1; k >>= 1) {\n          \
+    \  if(pos + k <= N and dat[pos + k] < val) {\n                pos += k;\n    \
+    \            val -= dat[pos];\n            }\n        }\n        return pos +\
+    \ 1;\n    }\n\n  private:\n    int N;\n    std::vector<T> dat;\n\n    inline int\
+    \ lsb(int i) { return i & (-i); }\n};\n#line 4 \"data-structure/range-BIT.hpp\"\
+    \n\ntemplate <typename T> class RangeBIT {\n  public:\n    RangeBIT() = default;\n\
+    \    explicit RangeBIT(int N) : bt1(N + 1), bt2(N + 1){};\n    void add(int l,\
+    \ int r, T val) {\n        bt1.add(l, -val * l);\n        bt1.add(r, val * r);\n\
+    \        bt2.add(l, val);\n        bt2.add(r, -val);\n    }\n    void add(int\
+    \ pos, T val) { add(pos, pos + 1, val); }\n    T sum(int r) { return bt1.sum(r)\
+    \ + bt2.sum(r) * r; }\n    T sum(int l, int r) {\n        assert(l <= r);\n  \
+    \      if(l == r) return T(0);\n        return (sum(r) - sum(l));\n    }\n\n \
+    \ private:\n    BIT<T> bt1, bt2;\n};\n#line 4 \"test/mytest/data-structure/range-bit.test.cpp\"\
+    \n\nint main() {\n    mt19937 rng(20261101);\n    RangeBIT<ll> assigned;\n   \
+    \ assigned = RangeBIT<ll>(0);\n    assert(assigned.sum(0) == 0 && assigned.sum(0,\
+    \ 0) == 0);\n    for(int n : {1, 2, 3, 8, 31}) {\n        RangeBIT<ll> bit(n);\n\
+    \        vector<ll> values(n);\n        for(int step = 0; step < 300; ++step)\
+    \ {\n            int l = rng() % (n + 1), r = rng() % (n + 1);\n            if(l\
+    \ > r) swap(l, r);\n            ll delta = ll(rng() % 20000000001ULL) - 10000000000LL;\n\
+    \            if(step % 2 == 0) {\n                bit.add(l, r, delta);\n    \
+    \            for(int i = l; i < r; ++i) values[i] += delta;\n            } else\
+    \ {\n                int p = rng() % n;\n                bit.add(p, delta);\n\
+    \                values[p] += delta;\n            }\n            for(int a = 0;\
+    \ a <= n; ++a) {\n                assert(bit.sum(a) == accumulate(values.begin(),\
+    \ values.begin() + a, 0LL));\n                ll expected = 0;\n             \
+    \   for(int b = a; b <= n; ++b) {\n                    assert(bit.sum(a, b) ==\
+    \ expected);\n                    if(b < n) expected += values[b];\n         \
+    \       }\n            }\n        }\n    }\n    INT(a, b);\n    print(a + b);\n\
+    }\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../template/template.cpp\"\
+    \n#include \"../../../data-structure/range-BIT.hpp\"\n\nint main() {\n    mt19937\
+    \ rng(20261101);\n    RangeBIT<ll> assigned;\n    assigned = RangeBIT<ll>(0);\n\
+    \    assert(assigned.sum(0) == 0 && assigned.sum(0, 0) == 0);\n    for(int n :\
+    \ {1, 2, 3, 8, 31}) {\n        RangeBIT<ll> bit(n);\n        vector<ll> values(n);\n\
+    \        for(int step = 0; step < 300; ++step) {\n            int l = rng() %\
+    \ (n + 1), r = rng() % (n + 1);\n            if(l > r) swap(l, r);\n         \
+    \   ll delta = ll(rng() % 20000000001ULL) - 10000000000LL;\n            if(step\
+    \ % 2 == 0) {\n                bit.add(l, r, delta);\n                for(int\
+    \ i = l; i < r; ++i) values[i] += delta;\n            } else {\n             \
+    \   int p = rng() % n;\n                bit.add(p, delta);\n                values[p]\
+    \ += delta;\n            }\n            for(int a = 0; a <= n; ++a) {\n      \
+    \          assert(bit.sum(a) == accumulate(values.begin(), values.begin() + a,\
+    \ 0LL));\n                ll expected = 0;\n                for(int b = a; b <=\
+    \ n; ++b) {\n                    assert(bit.sum(a, b) == expected);\n        \
+    \            if(b < n) expected += values[b];\n                }\n           \
+    \ }\n        }\n    }\n    INT(a, b);\n    print(a + b);\n}\n"
   dependsOn:
   - template/template.cpp
-  - modint/modint.hpp
-  - data-structure/monoid/affine.hpp
-  - data-structure/segtree/segtree.hpp
-  isVerificationFile: false
-  path: test/library-checker/data-structure/point-set-range-composite.cpp
+  - data-structure/range-BIT.hpp
+  - data-structure/BIT.hpp
+  isVerificationFile: true
+  path: test/mytest/data-structure/range-bit.test.cpp
   requiredBy: []
-  timestamp: '2024-09-08 23:17:50+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
+  timestamp: '2026-11-01 17:12:16+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/library-checker/data-structure/point-set-range-composite.cpp
+documentation_of: test/mytest/data-structure/range-bit.test.cpp
 layout: document
 redirect_from:
-- /library/test/library-checker/data-structure/point-set-range-composite.cpp
-- /library/test/library-checker/data-structure/point-set-range-composite.cpp.html
-title: test/library-checker/data-structure/point-set-range-composite.cpp
+- /verify/test/mytest/data-structure/range-bit.test.cpp
+- /verify/test/mytest/data-structure/range-bit.test.cpp.html
+title: test/mytest/data-structure/range-bit.test.cpp
 ---

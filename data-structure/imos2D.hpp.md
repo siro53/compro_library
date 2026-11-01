@@ -2,10 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj-DSL-5-B.test.cpp
+    title: test/aoj/aoj-DSL-5-B.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/imos2D.test.cpp
+    title: test/mytest/data-structure/imos2D.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://atcoder.jp/contests/abc276/submissions/60797388
@@ -45,8 +51,10 @@ data:
   path: data-structure/imos2D.hpp
   requiredBy: []
   timestamp: '2024-12-15 14:47:58+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/mytest/data-structure/imos2D.test.cpp
+  - test/aoj/aoj-DSL-5-B.test.cpp
 documentation_of: data-structure/imos2D.hpp
 layout: document
 title: "\u4E8C\u6B21\u5143\u3044\u3082\u3059\u6CD5"

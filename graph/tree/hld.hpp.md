@@ -18,6 +18,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/tree/lowest-common-ancestor2.test.cpp
     title: test/library-checker/tree/lowest-common-ancestor2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/graph/tree-api.test.cpp
+    title: test/mytest/graph/tree-api.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -142,6 +145,7 @@ data:
   - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
   - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
   - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
+  - test/mytest/graph/tree-api.test.cpp
 documentation_of: graph/tree/hld.hpp
 layout: document
 title: Heavy Light Decomposition

@@ -9,6 +9,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj-ALDS1-5-D.test.cpp
     title: test/aoj/aoj-ALDS1-5-D.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/misc/utilities.test.cpp
+    title: test/mytest/misc/utilities.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -44,6 +47,7 @@ data:
   timestamp: '2023-02-25 23:57:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/mytest/misc/utilities.test.cpp
   - test/aoj/aoj-ALDS1-5-D.test.cpp
 documentation_of: misc/inversion-number.hpp
 layout: document

@@ -10,6 +10,12 @@ data:
     path: test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
     title: test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/monoids.test.cpp
+    title: test/mytest/data-structure/monoids.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/segment-tree-api.test.cpp
+    title: test/mytest/data-structure/segment-tree-api.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki789.test.cpp
     title: test/yukicoder/yuki789.test.cpp
   _isVerificationFailed: false
@@ -34,6 +40,8 @@ data:
   - test/yukicoder/yuki789.test.cpp
   - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
   - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
+  - test/mytest/data-structure/monoids.test.cpp
+  - test/mytest/data-structure/segment-tree-api.test.cpp
 documentation_of: data-structure/monoid/add.hpp
 layout: document
 title: "\u52A0\u7B97\u30E2\u30CE\u30A4\u30C9"

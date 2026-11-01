@@ -10,6 +10,9 @@ data:
     path: test/library-checker/graph/shortest-path.test.cpp
     title: test/library-checker/graph/shortest-path.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/mytest/graph/graph-scc-two-sat.test.cpp
+    title: test/mytest/graph/graph-scc-two-sat.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/mytest/graph/range-edge-graph.test.cpp
     title: test/mytest/graph/range-edge-graph.test.cpp
   _isVerificationFailed: false
@@ -70,6 +73,7 @@ data:
   verifiedWith:
   - test/library-checker/graph/shortest-path.test.cpp
   - test/mytest/graph/range-edge-graph.test.cpp
+  - test/mytest/graph/graph-scc-two-sat.test.cpp
 documentation_of: graph/shortest-path/dijkstra.hpp
 layout: document
 title: "Dijkstra \u6CD5"

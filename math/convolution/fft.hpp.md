@@ -7,6 +7,9 @@ data:
     path: test/mytest/math/convolution-regressions.test.cpp
     title: test/mytest/math/convolution-regressions.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/mytest/math/transforms-api.test.cpp
+    title: test/mytest/math/transforms-api.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki440.test.cpp
     title: test/yukicoder/yuki440.test.cpp
   _isVerificationFailed: false
@@ -128,6 +131,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yukicoder/yuki440.test.cpp
+  - test/mytest/math/transforms-api.test.cpp
   - test/mytest/math/convolution-regressions.test.cpp
 documentation_of: math/convolution/fft.hpp
 layout: document

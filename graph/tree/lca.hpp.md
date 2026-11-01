@@ -12,6 +12,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/mytest/graph/lca-and-empty-two-sat.test.cpp
     title: test/mytest/graph/lca-and-empty-two-sat.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/graph/tree-api.test.cpp
+    title: test/mytest/graph/tree-api.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -89,6 +92,7 @@ data:
   verifiedWith:
   - test/library-checker/tree/lowest-common-ancestor.test.cpp
   - test/mytest/graph/lca-and-empty-two-sat.test.cpp
+  - test/mytest/graph/tree-api.test.cpp
 documentation_of: graph/tree/lca.hpp
 layout: document
 title: "\u6700\u5C0F\u5171\u901A\u7956\u5148\uFF08\u30C0\u30D6\u30EA\u30F3\u30B0\uFF09"

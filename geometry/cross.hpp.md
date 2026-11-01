@@ -26,7 +26,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/distance-between-segments.hpp
     title: "\u7DDA\u5206\u9593\u306E\u8DDD\u96E2"
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: geometry/geometry.hpp
     title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA\uFF08\u307E\u3068\u3081\u3066\
       \ include\uFF09"
@@ -52,6 +52,9 @@ data:
     path: geometry/tangent-to-circle.hpp
     title: "\u70B9\u304B\u3089\u5186\u3078\u306E\u63A5\u7DDA"
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/geometry/geometry-api.test.cpp
+    title: test/mytest/geometry/geometry-api.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/mytest/geometry/geometry.test.cpp
     title: test/mytest/geometry/geometry.test.cpp
@@ -99,6 +102,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/mytest/geometry/geometry.test.cpp
+  - test/mytest/geometry/geometry-api.test.cpp
 documentation_of: geometry/cross.hpp
 layout: document
 title: "\u5916\u7A4D"

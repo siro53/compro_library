@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/segment-tree-api.test.cpp
+    title: test/mytest/data-structure/segment-tree-api.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki789.test.cpp
     title: test/yukicoder/yuki789.test.cpp
   _isVerificationFailed: false
@@ -72,6 +75,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yukicoder/yuki789.test.cpp
+  - test/mytest/data-structure/segment-tree-api.test.cpp
 documentation_of: data-structure/segtree/dynamic-segtree.hpp
 layout: document
 link: https://lorent-kyopro.hatenablog.com/entry/2021/03/12/025644

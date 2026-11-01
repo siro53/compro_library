@@ -15,6 +15,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj2821.test.cpp
     title: test/aoj/aoj2821.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/graph/tree-api.test.cpp
+    title: test/mytest/graph/tree-api.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -127,6 +130,7 @@ data:
   timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/mytest/graph/tree-api.test.cpp
   - test/aoj/aoj2821.test.cpp
 documentation_of: graph/tree/tree-hash.hpp
 layout: document

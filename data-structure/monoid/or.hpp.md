@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/monoids.test.cpp
+    title: test/mytest/data-structure/monoids.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data-structure/monoid/or.hpp\"\n\ntemplate <typename T>\
@@ -20,8 +23,9 @@ data:
   path: data-structure/monoid/or.hpp
   requiredBy: []
   timestamp: '2023-12-16 20:03:38+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/mytest/data-structure/monoids.test.cpp
 documentation_of: data-structure/monoid/or.hpp
 layout: document
 title: "\u30D3\u30C3\u30C8 OR\u30E2\u30CE\u30A4\u30C9"

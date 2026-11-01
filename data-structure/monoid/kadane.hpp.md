@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/initialization-and-monoids.test.cpp
     title: test/mytest/data-structure/initialization-and-monoids.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/monoids.test.cpp
+    title: test/mytest/data-structure/monoids.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -46,6 +49,7 @@ data:
   timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/mytest/data-structure/monoids.test.cpp
   - test/mytest/data-structure/initialization-and-monoids.test.cpp
 documentation_of: data-structure/monoid/kadane.hpp
 layout: document

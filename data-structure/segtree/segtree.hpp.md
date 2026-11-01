@@ -5,10 +5,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: data-structure/utils/sum_count_manager.hpp
     title: "\u5024\u3054\u3068\u306E\u548C\u30FB\u500B\u6570\u7BA1\u7406"
-  - icon: ':warning:'
-    path: test/library-checker/data-structure/point-set-range-composite.cpp
-    title: test/library-checker/data-structure/point-set-range-composite.cpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj-DSL-2-A.test.cpp
+    title: test/aoj/aoj-DSL-2-A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/library-checker/data-structure/point-set-range-composite.test.cpp
+    title: test/library-checker/data-structure/point-set-range-composite.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/vertex-add-path-sum.test.cpp
     title: test/library-checker/data-structure/vertex-add-path-sum.test.cpp
@@ -19,11 +22,17 @@ data:
     path: test/library-checker/data-structure/vertex-set-path-composite.test.cpp
     title: test/library-checker/data-structure/vertex-set-path-composite.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/basic-api.test.cpp
+    title: test/mytest/data-structure/basic-api.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/helper-regressions.test.cpp
     title: test/mytest/data-structure/helper-regressions.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/initialization-and-monoids.test.cpp
     title: test/mytest/data-structure/initialization-and-monoids.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/segment-tree-api.test.cpp
+    title: test/mytest/data-structure/segment-tree-api.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki1435.test.cpp
     title: test/yukicoder/yuki1435.test.cpp
@@ -117,7 +126,6 @@ data:
   isVerificationFile: false
   path: data-structure/segtree/segtree.hpp
   requiredBy:
-  - test/library-checker/data-structure/point-set-range-composite.cpp
   - data-structure/utils/sum_count_manager.hpp
   timestamp: '2023-10-30 20:10:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
@@ -126,8 +134,12 @@ data:
   - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
   - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
   - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
+  - test/library-checker/data-structure/point-set-range-composite.test.cpp
+  - test/mytest/data-structure/basic-api.test.cpp
+  - test/mytest/data-structure/segment-tree-api.test.cpp
   - test/mytest/data-structure/initialization-and-monoids.test.cpp
   - test/mytest/data-structure/helper-regressions.test.cpp
+  - test/aoj/aoj-DSL-2-A.test.cpp
 documentation_of: data-structure/segtree/segtree.hpp
 layout: document
 title: Segment Tree

@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/misc/utilities.test.cpp
+    title: test/mytest/misc/utilities.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"misc/timer.hpp\"\n\n#include <chrono>\n\nstruct Timer {\n\
@@ -37,8 +40,9 @@ data:
   path: misc/timer.hpp
   requiredBy: []
   timestamp: '2025-03-09 11:08:18+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/mytest/misc/utilities.test.cpp
 documentation_of: misc/timer.hpp
 layout: document
 title: "\u30BF\u30A4\u30DE\u30FC"

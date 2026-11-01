@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/misc/utilities.test.cpp
+    title: test/mytest/misc/utilities.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"misc/floor-ceil-div.hpp\"\n\ntemplate <typename T> T ceil_div(T\
@@ -21,8 +24,9 @@ data:
   path: misc/floor-ceil-div.hpp
   requiredBy: []
   timestamp: '2023-02-25 23:57:16+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/mytest/misc/utilities.test.cpp
 documentation_of: misc/floor-ceil-div.hpp
 layout: document
 title: "\u6574\u6570\u306E\u5207\u308A\u4E0A\u3052\u30FB\u5207\u308A\u6368\u3066\u9664\

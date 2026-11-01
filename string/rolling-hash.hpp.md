@@ -5,11 +5,17 @@ data:
     path: modint/modint_2_61.hpp
     title: "\u6CD5 2^61-1 \u306E modint"
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/monoid/rolling_hash.hpp
     title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5\u30E2\u30CE\u30A4\
       \u30C9"
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/monoids.test.cpp
+    title: test/mytest/data-structure/monoids.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/string/string-api.test.cpp
+    title: test/mytest/string/string-api.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki2102.test.cpp
     title: test/yukicoder/yuki2102.test.cpp
@@ -113,6 +119,8 @@ data:
   verifiedWith:
   - test/yukicoder/yuki2102.test.cpp
   - test/yukicoder/yuki430.test.cpp
+  - test/mytest/data-structure/monoids.test.cpp
+  - test/mytest/string/string-api.test.cpp
 documentation_of: string/rolling-hash.hpp
 layout: document
 link: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6

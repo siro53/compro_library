@@ -7,6 +7,9 @@ data:
     path: test/library-checker/data-structure/unionfind.test.cpp
     title: test/library-checker/data-structure/unionfind.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/basic-api.test.cpp
+    title: test/mytest/data-structure/basic-api.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/helper-regressions.test.cpp
     title: test/mytest/data-structure/helper-regressions.test.cpp
   _isVerificationFailed: false
@@ -64,6 +67,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/data-structure/unionfind.test.cpp
+  - test/mytest/data-structure/basic-api.test.cpp
   - test/mytest/data-structure/helper-regressions.test.cpp
 documentation_of: data-structure/unionfind.hpp
 layout: document

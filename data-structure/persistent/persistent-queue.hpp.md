@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/persistent-queue.test.cpp
     title: test/library-checker/data-structure/persistent-queue.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/persistent-api.test.cpp
+    title: test/mytest/data-structure/persistent-api.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -60,6 +63,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/data-structure/persistent-queue.test.cpp
+  - test/mytest/data-structure/persistent-api.test.cpp
 documentation_of: data-structure/persistent/persistent-queue.hpp
 layout: document
 title: "\u6C38\u7D9A\u30AD\u30E5\u30FC"

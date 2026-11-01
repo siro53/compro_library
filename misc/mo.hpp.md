@@ -9,6 +9,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/mytest/misc/mo-and-fraction.test.cpp
     title: test/mytest/misc/mo-and-fraction.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/misc/utilities.test.cpp
+    title: test/mytest/misc/utilities.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -61,6 +64,7 @@ data:
   verifiedWith:
   - test/library-checker/data-structure/static-range-inversions-query.test.cpp
   - test/mytest/misc/mo-and-fraction.test.cpp
+  - test/mytest/misc/utilities.test.cpp
 documentation_of: misc/mo.hpp
 layout: document
 link: https://ei1333.hateblo.jp/entry/2017/09/11/211011

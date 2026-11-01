@@ -16,8 +16,14 @@ data:
     path: test/mytest/data-structure/erasable-priority-queue.test.cpp
     title: test/mytest/data-structure/erasable-priority-queue.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/mytest/graph/tree-api.test.cpp
+    title: test/mytest/graph/tree-api.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/mytest/misc/fraction.test.cpp
     title: test/mytest/misc/fraction.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/misc/utilities.test.cpp
+    title: test/mytest/misc/utilities.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -59,9 +65,11 @@ data:
   timestamp: '2025-03-09 11:07:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/mytest/graph/tree-api.test.cpp
   - test/mytest/data-structure/binary-trie.test.cpp
   - test/mytest/data-structure/erasable-priority-queue.test.cpp
   - test/mytest/misc/fraction.test.cpp
+  - test/mytest/misc/utilities.test.cpp
   - test/aoj/aoj2821.test.cpp
 documentation_of: random/rng.hpp
 layout: document

@@ -2,10 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj-NTL-1-A.test.cpp
+    title: test/aoj/aoj-NTL-1-A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/math/number-theory.test.cpp
+    title: test/mytest/math/number-theory.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/prime-factor.hpp\"\n\n#include <map>\n#include <type_traits>\n\
@@ -27,8 +33,10 @@ data:
   path: math/prime-factor.hpp
   requiredBy: []
   timestamp: '2023-12-05 16:32:36+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/mytest/math/number-theory.test.cpp
+  - test/aoj/aoj-NTL-1-A.test.cpp
 documentation_of: math/prime-factor.hpp
 layout: document
 title: "\u8A66\u3057\u5272\u308A\u306B\u3088\u308B\u7D20\u56E0\u6570\u5206\u89E3"

@@ -15,6 +15,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/mytest/math/arithmetic-regressions.test.cpp
     title: test/mytest/math/arithmetic-regressions.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/math/number-theory.test.cpp
+    title: test/mytest/math/number-theory.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -71,6 +74,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/math/primality-test.test.cpp
+  - test/mytest/math/number-theory.test.cpp
   - test/mytest/math/arithmetic-regressions.test.cpp
   - test/aoj/aoj-ALDS1-1-C.test.cpp
 documentation_of: math/is-prime.hpp

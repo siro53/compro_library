@@ -7,8 +7,14 @@ data:
     title: "\u5024\u3054\u3068\u306E\u548C\u30FB\u500B\u6570\u7BA1\u7406"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/basic-api.test.cpp
+    title: test/mytest/data-structure/basic-api.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/helper-regressions.test.cpp
     title: test/mytest/data-structure/helper-regressions.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/monoids.test.cpp
+    title: test/mytest/data-structure/monoids.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -34,6 +40,8 @@ data:
   timestamp: '2025-12-21 17:21:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/mytest/data-structure/monoids.test.cpp
+  - test/mytest/data-structure/basic-api.test.cpp
   - test/mytest/data-structure/helper-regressions.test.cpp
 documentation_of: data-structure/monoid/sum_count.hpp
 layout: document

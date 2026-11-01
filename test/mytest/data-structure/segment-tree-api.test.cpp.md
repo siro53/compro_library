@@ -1,0 +1,493 @@
+---
+data:
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: data-structure/monoid/add.hpp
+    title: "\u52A0\u7B97\u30E2\u30CE\u30A4\u30C9"
+  - icon: ':heavy_check_mark:'
+    path: data-structure/segtree/dynamic-segtree.hpp
+    title: Dynamic Segment Tree
+  - icon: ':heavy_check_mark:'
+    path: data-structure/segtree/lazy-segtree.hpp
+    title: Lazy Segment Tree
+  - icon: ':heavy_check_mark:'
+    path: data-structure/segtree/segtree-beats.hpp
+    title: Segment Tree Beats
+  - icon: ':heavy_check_mark:'
+    path: data-structure/segtree/segtree.hpp
+    title: Segment Tree
+  - icon: ':heavy_check_mark:'
+    path: template/template.cpp
+    title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
+  _pathExtension: cpp
+  _verificationStatusIcon: ':heavy_check_mark:'
+  attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/aplusb
+    links:
+    - https://judge.yosupo.jp/problem/aplusb
+  bundledCode: "#line 1 \"test/mytest/data-structure/segment-tree-api.test.cpp\"\n\
+    #define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#line 1 \"template/template.cpp\"\
+    \n#pragma region Macros\n#include <bits/stdc++.h>\nusing namespace std;\n// input\
+    \ output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
+    \    struct has_val_impl {\n        template <class T>\n        static auto check(T\
+    \ &&x) -> decltype(x.val(), std::true_type{});\n\n        template <class T> static\
+    \ auto check(...) -> std::false_type;\n    };\n\n    template <class T>\n    class\
+    \ has_val : public decltype(has_val_impl::check<T>(std::declval<T>())) {\n   \
+    \ };\n\n    // debug\n    template <class T, enable_if_t<is_integral<T>::value,\
+    \ int> = 0>\n    void dump(const T t) {\n        cerr << t;\n    }\n    template\
+    \ <class T, enable_if_t<is_floating_point<T>::value, int> = 0>\n    void dump(const\
+    \ T t) {\n        cerr << t;\n    }\n    template <class T, typename enable_if<has_val<T>::value>::type\
+    \ * = nullptr>\n    void dump(const T &t) {\n        cerr << t.val();\n    }\n\
+    \    void dump(__int128_t n) {\n        if(n == 0) {\n            cerr << '0';\n\
+    \            return;\n        } else if(n < 0) {\n            cerr << '-';\n \
+    \           n = -n;\n        }\n        string s;\n        while(n > 0) {\n  \
+    \          s += (char)('0' + n % 10);\n            n /= 10;\n        }\n     \
+    \   reverse(s.begin(), s.end());\n        cerr << s;\n    }\n    void dump(const\
+    \ string &s) { cerr << s; }\n    void dump(const char *s) {\n        int n = (int)strlen(s);\n\
+    \        for(int i = 0; i < n; i++) cerr << s[i];\n    }\n    template <class\
+    \ T1, class T2> void dump(const pair<T1, T2> &p) {\n        cerr << '(';\n   \
+    \     dump(p.first);\n        cerr << ',';\n        dump(p.second);\n        cerr\
+    \ << ')';\n    }\n    template <class T> void dump(const vector<T> &v) {\n   \
+    \     cerr << '{';\n        for(int i = 0; i < (int)v.size(); i++) {\n       \
+    \     dump(v[i]);\n            if(i < (int)v.size() - 1) cerr << ',';\n      \
+    \  }\n        cerr << '}';\n    }\n    template <class T> void dump(const set<T>\
+    \ &s) {\n        cerr << '{';\n        for(auto it = s.begin(); it != s.end();\
+    \ it++) {\n            dump(*it);\n            if(next(it) != s.end()) cerr <<\
+    \ ',';\n        }\n        cerr << '}';\n    }\n    template <class Key, class\
+    \ Value> void dump(const map<Key, Value> &mp) {\n        cerr << '{';\n      \
+    \  for(auto it = mp.begin(); it != mp.end(); it++) {\n            dump(*it);\n\
+    \            if(next(it) != mp.end()) cerr << ',';\n        }\n        cerr <<\
+    \ '}';\n    }\n    template <class Key, class Value>\n    void dump(const unordered_map<Key,\
+    \ Value> &mp) {\n        cerr << '{';\n        for(auto it = mp.begin(); it !=\
+    \ mp.end(); it++) {\n            dump(*it);\n            if(next(it) != mp.end())\
+    \ cerr << ',';\n        }\n        cerr << '}';\n    }\n    template <class T>\
+    \ void dump(const deque<T> &v) {\n        cerr << '{';\n        for(int i = 0;\
+    \ i < (int)v.size(); i++) {\n            dump(v[i]);\n            if(i < (int)v.size()\
+    \ - 1) cerr << ',';\n        }\n        cerr << '}';\n    }\n    template <class\
+    \ T> void dump(queue<T> q) {\n        cerr << '{';\n        while(!q.empty())\
+    \ {\n            dump(q.front());\n            if((int)q.size() > 1) cerr << ',';\n\
+    \            q.pop();\n        }\n        cerr << '}';\n    }\n\n    void debug_print()\
+    \ { cerr << endl; }\n    template <class Head, class... Tail>\n    void debug_print(const\
+    \ Head &h, const Tail &...t) {\n        dump(h);\n        if(sizeof...(Tail))\
+    \ dump(' ');\n        debug_print(t...);\n    }\n    // print\n    template <class\
+    \ T, enable_if_t<is_integral<T>::value, int> = 0>\n    void print_single(const\
+    \ T t) {\n        cout << t;\n    }\n    template <class T, enable_if_t<is_floating_point<T>::value,\
+    \ int> = 0>\n    void print_single(const T t) {\n        cout << t;\n    }\n \
+    \   template <class T, typename enable_if<has_val<T>::value>::type * = nullptr>\n\
+    \    void print_single(const T t) {\n        cout << t.val();\n    }\n    void\
+    \ print_single(__int128_t n) {\n        if(n == 0) {\n            cout << '0';\n\
+    \            return;\n        } else if(n < 0) {\n            cout << '-';\n \
+    \           n = -n;\n        }\n        string s;\n        while(n > 0) {\n  \
+    \          s += (char)('0' + n % 10);\n            n /= 10;\n        }\n     \
+    \   reverse(s.begin(), s.end());\n        cout << s;\n    }\n    void print_single(const\
+    \ string &s) { cout << s; }\n    void print_single(const char *s) {\n        int\
+    \ n = (int)strlen(s);\n        for(int i = 0; i < n; i++) cout << s[i];\n    }\n\
+    \    template <class T1, class T2> void print_single(const pair<T1, T2> &p) {\n\
+    \        print_single(p.first);\n        cout << ' ';\n        print_single(p.second);\n\
+    \    }\n    template <class T> void print_single(const vector<T> &v) {\n     \
+    \   for(int i = 0; i < (int)v.size(); i++) {\n            print_single(v[i]);\n\
+    \            if(i < (int)v.size() - 1) cout << ' ';\n        }\n    }\n    template\
+    \ <class T> void print_single(const set<T> &s) {\n        for(auto it = s.begin();\
+    \ it != s.end(); it++) {\n            print_single(*it);\n            if(next(it)\
+    \ != s.end()) cout << ' ';\n        }\n    }\n    template <class T> void print_single(const\
+    \ deque<T> &v) {\n        for(int i = 0; i < (int)v.size(); i++) {\n         \
+    \   print_single(v[i]);\n            if(i < (int)v.size() - 1) cout << ' ';\n\
+    \        }\n    }\n    template <class T> void print_single(queue<T> q) {\n  \
+    \      while(!q.empty()) {\n            print_single(q.front());\n           \
+    \ if((int)q.size() > 1) cout << ' ';\n            q.pop();\n        }\n    }\n\
+    \n    void print() { cout << '\\n'; }\n    template <class Head, class... Tail>\n\
+    \    void print(const Head &h, const Tail &...t) {\n        print_single(h);\n\
+    \        if(sizeof...(Tail)) print_single(' ');\n        print(t...);\n    }\n\
+    \n    // input\n    template <class T, enable_if_t<is_integral<T>::value, int>\
+    \ = 0>\n    void input_single(T &t) {\n        cin >> t;\n    }\n    template\
+    \ <class T, enable_if_t<is_floating_point<T>::value, int> = 0>\n    void input_single(T\
+    \ &t) {\n        cin >> t;\n    }\n    template <class T, typename enable_if<has_val<T>::value>::type\
+    \ * = nullptr>\n    void input_single(T &t) {\n        cin >> t;\n    }\n    void\
+    \ input_single(__int128_t &n) {\n        string s;\n        cin >> s;\n      \
+    \  if(s == \"0\") {\n            n = 0;\n            return;\n        }\n    \
+    \    bool is_minus = false;\n        if(s[0] == '-') {\n            s = s.substr(1);\n\
+    \            is_minus = true;\n        }\n        n = 0;\n        for(int i =\
+    \ 0; i < (int)s.size(); i++) n = n * 10 + (int)(s[i] - '0');\n        if(is_minus)\
+    \ n = -n;\n    }\n    void input_single(string &s) { cin >> s; }\n    template\
+    \ <class T1, class T2> void input_single(pair<T1, T2> &p) {\n        input_single(p.first);\n\
+    \        input_single(p.second);\n    }\n    template <class T> void input_single(vector<T>\
+    \ &v) {\n        for(auto &e : v) input_single(e);\n    }\n    void input() {}\n\
+    \    template <class Head, class... Tail> void input(Head &h, Tail &...t) {\n\
+    \        input_single(h);\n        input(t...);\n    }\n}; // namespace siro53_io\n\
+    #ifdef DEBUG\n#define debug(...)                                             \
+    \                \\\n    cerr << __LINE__ << \" [\" << #__VA_ARGS__ << \"]: \"\
+    , debug_print(__VA_ARGS__)\n#else\n#define debug(...) (void(0))\n#endif\n// io\
+    \ setup\nstruct Setup {\n    Setup() {\n        cin.tie(0);\n        ios::sync_with_stdio(false);\n\
+    \        cout << fixed << setprecision(15);\n    }\n} __Setup;\nusing namespace\
+    \ siro53_io;\n// types\nusing ll = long long;\nusing i128 = __int128_t;\n// input\
+    \ macros\n#define INT(...)                                                   \
+    \            \\\n    int __VA_ARGS__;                                        \
+    \                   \\\n    input(__VA_ARGS__)\n#define LL(...)              \
+    \                                                  \\\n    ll __VA_ARGS__;   \
+    \                                                         \\\n    input(__VA_ARGS__)\n\
+    #define STRING(...)                                                          \
+    \  \\\n    string __VA_ARGS__;                                               \
+    \         \\\n    input(__VA_ARGS__)\n#define CHAR(...)                      \
+    \                                        \\\n    char __VA_ARGS__;           \
+    \                                               \\\n    input(__VA_ARGS__)\n#define\
+    \ DBL(...)                                                               \\\n\
+    \    double __VA_ARGS__;                                                     \
+    \   \\\n    input(__VA_ARGS__)\n#define LD(...)                              \
+    \                                  \\\n    long double __VA_ARGS__;          \
+    \                                         \\\n    input(__VA_ARGS__)\n#define\
+    \ UINT(...)                                                              \\\n\
+    \    unsigned int __VA_ARGS__;                                               \
+    \   \\\n    input(__VA_ARGS__)\n#define ULL(...)                             \
+    \                                  \\\n    unsigned long long __VA_ARGS__;   \
+    \                                         \\\n    input(__VA_ARGS__)\n#define\
+    \ VEC(name, type, len)                                                   \\\n\
+    \    vector<type> name(len);                                                 \
+    \   \\\n    input(name);\n#define VEC2(name, type, len1, len2)               \
+    \                            \\\n    vector name(len1, vector<type>(len2));  \
+    \                                   \\\n    input(name);\n// other macros\n//\
+    \ https://trap.jp/post/1224/\n#define OVERLOAD3(_1, _2, _3, name, ...) name\n\
+    #define ALL(v) (v).begin(), (v).end()\n#define RALL(v) (v).rbegin(), (v).rend()\n\
+    #define REP1(i, n) for(int i = 0; i < int(n); i++)\n#define REP2(i, a, b) for(int\
+    \ i = (a); i < int(b); i++)\n#define REP(...) OVERLOAD3(__VA_ARGS__, REP2, REP1)(__VA_ARGS__)\n\
+    #define SORT(v) sort(ALL(v))\n#define RSORT(v) sort(RALL(v))\n#define UNIQUE(v)\
+    \                                                              \\\n    sort(ALL(v)),\
+    \ (v).erase(unique(ALL(v)), (v).end()), v.shrink_to_fit()\n#define REV(v) reverse(ALL(v))\n\
+    #define SZ(v) ((int)(v).size())\n#define MIN(v) (*min_element(ALL(v)))\n#define\
+    \ MAX(v) (*max_element(ALL(v)))\n// util const\nconst int INF = 1 << 30;\nconst\
+    \ ll LLINF = 1LL << 60;\nconstexpr int MOD = 1000000007;\nconstexpr int MOD2 =\
+    \ 998244353;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0, -1};\n\
+    // util functions\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\nint\
+    \ popcnt(int x) { return __builtin_popcount(x); }\nint popcnt(ll x) { return __builtin_popcountll(x);\
+    \ }\ntemplate <class T> inline bool chmax(T &a, T b) {\n    return (a < b ? a\
+    \ = b, true : false);\n}\ntemplate <class T> inline bool chmin(T &a, T b) {\n\
+    \    return (a > b ? a = b, true : false);\n}\ntemplate <class T, int dim>\nauto\
+    \ make_vector_impl(vector<int>& sizes, const T &e) {\n    if constexpr(dim ==\
+    \ 1) {\n        return vector(sizes[0], e);\n    } else {\n        int n = sizes[dim\
+    \ - 1];\n        sizes.pop_back();\n        return vector(n, make_vector_impl<T,\
+    \ dim - 1>(sizes, e));\n    }\n}\ntemplate <class T, int dim>\nauto make_vector(const\
+    \ int (&sizes)[dim], const T &e = T()) {\n    vector<int> s(dim);\n    for(int\
+    \ i = 0; i < dim; i++) s[i] = sizes[dim - i - 1];\n    return make_vector_impl<T,\
+    \ dim>(s, e);\n}\nvector<int> iota_gen(int n, int start = 0) {\n    vector<int>\
+    \ ord(n);\n    iota(ord.begin(), ord.end(), start);\n    return ord;\n}\ntemplate<typename\
+    \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
+    \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
+    \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
+    \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"data-structure/segtree/segtree.hpp\"\
+    \n\n#line 5 \"data-structure/segtree/segtree.hpp\"\n\ntemplate <class Monoid>\
+    \ class Segtree {\n  public:\n    using T = typename Monoid::value_type;\n\n \
+    \   Segtree() : Segtree(0) {}\n    explicit Segtree(int n) : Segtree(std::vector<T>(n,\
+    \ Monoid::e())) {}\n    explicit Segtree(const std::vector<T> &v) : N((int)v.size()),\
+    \ sz(1) {\n        while(sz < N) sz <<= 1;\n        node.resize(sz * 2, Monoid::e());\n\
+    \        for(int i = 0; i < N; i++) node[i + sz] = v[i];\n        for(int i =\
+    \ sz - 1; i >= 1; i--) {\n            node[i] = Monoid::op(node[i << 1], node[i\
+    \ << 1 | 1]);\n        }\n    }\n    void set(int pos, T val) {\n        assert(0\
+    \ <= pos && pos < N);\n        pos += sz;\n        node[pos] = val;\n        while(pos\
+    \ > 1) {\n            pos >>= 1;\n            node[pos] = Monoid::op(node[pos\
+    \ << 1], node[pos << 1 | 1]);\n        }\n    }\n    T get(int pos) const {\n\
+    \        assert(0 <= pos && pos < N);\n        return node[pos + sz];\n    }\n\
+    \    void apply(int pos, T val) {\n        this->set(pos, Monoid::op(this->get(pos),\
+    \ val));\n    }\n    T prod(int l, int r) const {\n        assert(0 <= l && l\
+    \ <= r && r <= N);\n        T value_l = Monoid::e(), value_r = Monoid::e();\n\
+    \        l += sz;\n        r += sz;\n        while(l < r) {\n            if(l\
+    \ & 1) value_l = Monoid::op(value_l, node[l++]);\n            if(r & 1) value_r\
+    \ = Monoid::op(node[--r], value_r);\n            l >>= 1;\n            r >>= 1;\n\
+    \        }\n        return Monoid::op(value_l, value_r);\n    }\n    T all_prod()\
+    \ const { return node[1]; }\n    template <class F> int max_right(int l, F f)\
+    \ const {\n        assert(0 <= l && l <= N);\n        assert(f(Monoid::e()));\n\
+    \        if(l == N) return N;\n        l += sz;\n        T value_now = Monoid::e();\n\
+    \        do {\n            while((l & 1) == 0) l >>= 1;\n            if(!f(Monoid::op(value_now,\
+    \ node[l]))) {\n                while(l < sz) {\n                    l = 2 * l;\n\
+    \                    if(f(Monoid::op(value_now, node[l]))) {\n               \
+    \         value_now = Monoid::op(value_now, node[l]);\n                      \
+    \  l++;\n                    }\n                }\n                return (l -\
+    \ sz);\n            }\n            value_now = Monoid::op(value_now, node[l]);\n\
+    \            l++;\n        } while((l & -l) != l);\n        return N;\n    }\n\
+    \    template <class F> int min_left(int r, F f) const {\n        assert(0 <=\
+    \ r && r <= N);\n        assert(f(Monoid::e()));\n        if(r == 0) return 0;\n\
+    \        r += sz;\n        T value_now = Monoid::e();\n        do {\n        \
+    \    r--;\n            while(r > 1 && (r & 1)) r >>= 1;\n            if(!f(Monoid::op(node[r],\
+    \ value_now))) {\n                while(r < sz) {\n                    r = 2 *\
+    \ r + 1;\n                    if(f(Monoid::op(node[r], value_now))) {\n      \
+    \                  value_now = Monoid::op(node[r], value_now);\n             \
+    \           r--;\n                    }\n                }\n                return\
+    \ ((r + 1) - sz);\n            }\n            value_now = Monoid::op(node[r],\
+    \ value_now);\n        } while((r & -r) != r);\n        return 0;\n    }\n\n \
+    \ private:\n    int N, sz;\n    std::vector<T> node;\n};\n#line 2 \"data-structure/segtree/lazy-segtree.hpp\"\
+    \n\n#line 5 \"data-structure/segtree/lazy-segtree.hpp\"\n\ntemplate<class MonoidAct>\
+    \ class LazySegtree {\npublic:\n    using S = typename MonoidAct::value_type_S;\n\
+    \    using F = typename MonoidAct::value_type_F;\n\n    LazySegtree(): LazySegtree(0)\
+    \ {}\n    explicit LazySegtree(int n): LazySegtree(std::vector<S>(n, MonoidAct::e()))\
+    \ {}\n    explicit LazySegtree(const std::vector<S> &v): N((int)v.size()), sz(1),\
+    \ lg(0) {\n        while(sz < N) {\n            sz <<= 1;\n            lg++;\n\
+    \        }\n        node.resize(sz * 2, MonoidAct::e());\n        lazy.resize(sz,\
+    \ MonoidAct::id());\n        for(int i = 0; i < N; i++) node[i + sz] = v[i];\n\
+    \        for(int i = sz - 1; i >= 1; i--) update(i);\n    }\n\n    void set(int\
+    \ pos, S val) {\n        assert(0 <= pos && pos < N);\n        pos += sz;\n  \
+    \      for(int i = lg; i >= 1; i--) propagate(pos >> i);\n        node[pos] =\
+    \ val;\n        for(int i = 1; i <= lg; i++) update(pos >> i);\n    } \n\n   \
+    \ S get(int pos) {\n        assert(0 <= pos and pos < N);\n        pos += sz;\n\
+    \        for(int i = lg; i >= 1; i--) propagate(pos >> i);\n        return node[pos];\n\
+    \    }\n\n    S prod(int l, int r) {\n        assert(0 <= l and l <= r and r <=\
+    \ N);\n        if (l == r) return MonoidAct::e();\n        l += sz;\n        r\
+    \ += sz;\n        for(int i = lg; i >= 1; i--) {\n            if (((l >> i) <<\
+    \ i) != l) propagate(l >> i);\n            if (((r >> i) << i) != r) propagate((r\
+    \ - 1) >> i);\n        }   \n        S vl = MonoidAct::e(), vr = MonoidAct::e();\n\
+    \        while(l < r) {\n            if (l & 1) vl = MonoidAct::op(vl, node[l++]);\n\
+    \            if (r & 1) vr = MonoidAct::op(node[--r], vr);\n            l >>=\
+    \ 1;\n            r >>= 1;\n        }\n        return MonoidAct::op(vl, vr);\n\
+    \    }\n\n    S all_prod() const { return node[1]; }\n\n    void apply(int pos,\
+    \ F f) {\n        assert(0 <= pos and pos < N);\n        pos += sz;\n        for(int\
+    \ i = lg; i >= 1; i--) propagate(pos >> i);\n        node[pos] = MonoidAct::mapping(f,\
+    \ node[pos]);\n        for(int i = 1; i <= lg; i++) update(pos >> i);\n    }\n\
+    \n    void apply(int l, int r, F f) {\n        assert(0 <= l and l <= r and r\
+    \ <= N);\n        if (l == r) return;\n        l += sz;\n        r += sz;\n  \
+    \      for(int i = lg; i >= 1; i--) {\n            if (((l >> i) << i) != l) propagate(l\
+    \ >> i);\n            if (((r >> i) << i) != r) propagate((r - 1) >> i);\n   \
+    \     }\n        {\n            int tmp_l = l, tmp_r = r;\n            while(l\
+    \ < r) {\n                if (l & 1) apply_node(l++, f);\n                if (r\
+    \ & 1) apply_node(--r, f);\n                l >>= 1;\n                r >>= 1;\n\
+    \            }\n            l = tmp_l, r = tmp_r;\n        }\n        for(int\
+    \ i = 1; i <= lg; i++) {\n            if (((l >> i) << i) != l) update(l >> i);\n\
+    \            if (((r >> i) << i) != r) update((r - 1) >> i);\n        }\n    }\n\
+    \n    template <class G> int max_right(int l, G g) {\n        assert(0 <= l and\
+    \ l <= N);\n        assert(g(MonoidAct::e()));\n        if (l == N) return N;\n\
+    \        l += sz;\n        for(int i = lg; i >= 1; i--) propagate(l >> i);\n \
+    \       S now = MonoidAct::e();\n        do {\n            while ((l & 1) == 0)\
+    \ l >>= 1;\n            if (!g(MonoidAct::op(now, node[l]))) {\n             \
+    \   while (l < sz) {\n                    propagate(l);\n                    l\
+    \ <<= 1;\n                    if (g(MonoidAct::op(now, node[l]))) {\n        \
+    \                now = MonoidAct::op(now, node[l]);\n                        l++;\n\
+    \                    }\n                }\n                return l - sz;\n  \
+    \          }\n            now = MonoidAct::op(now, node[l]);\n            l++;\n\
+    \        } while ((l & -l) != l);\n        return N;\n    } \n\n    template <class\
+    \ G> int min_left(int r, G g) {\n        assert(0 <= r and r <= N);\n        assert(g(MonoidAct::e()));\n\
+    \        if (r == 0) return 0;\n        r += sz;\n        for(int i = lg; i >=\
+    \ 1; i--) propagate((r - 1) >> i);\n        S now = MonoidAct::e();\n        do\
+    \ {\n            r--;\n            while (r > 1 and (r & 1)) r >>= 1;\n      \
+    \      if (!g(MonoidAct::op(node[r], now))) {\n                while (r < sz)\
+    \ {\n                    propagate(r);\n                    r = (r << 1) + 1;\n\
+    \                    if (g(MonoidAct::op(node[r], now))) {\n                 \
+    \       now = MonoidAct::op(node[r], now);\n                        r--;\n   \
+    \                 }\n                }\n                return r + 1 - sz;\n \
+    \           }\n            now = MonoidAct::op(node[r], now);\n        } while((r\
+    \ & -r) != r);\n        return 0;\n    }\n\nprivate:\n    int N, sz, lg;\n   \
+    \ std::vector<S> node;\n    std::vector<F> lazy;\n\n    void update(int i) {\n\
+    \        node[i] = MonoidAct::op(node[i << 1], node[(i << 1) | 1]);\n    }\n \
+    \   \n    void apply_node(int i, F f) {\n        node[i] = MonoidAct::mapping(f,\
+    \ node[i]);\n        if (i < sz) lazy[i] = MonoidAct::composition(f, lazy[i]);\n\
+    \    }\n\n    void propagate(int i) {\n        apply_node(i << 1, lazy[i]);\n\
+    \        apply_node(i << 1 | 1, lazy[i]);\n        lazy[i] = MonoidAct::id();\n\
+    \    }\n};\n#line 2 \"data-structure/segtree/segtree-beats.hpp\"\n\n#line 5 \"\
+    data-structure/segtree/segtree-beats.hpp\"\n\ntemplate<class MonoidAct> class\
+    \ SegtreeBeats {\npublic:\n    using S = typename MonoidAct::value_type_S;\n \
+    \   using F = typename MonoidAct::value_type_F;\n\n    SegtreeBeats(): SegtreeBeats(0)\
+    \ {}\n    explicit SegtreeBeats(int n): SegtreeBeats(std::vector<S>(n, MonoidAct::e()))\
+    \ {}\n    explicit SegtreeBeats(const std::vector<S> &v): N((int)v.size()), sz(1),\
+    \ lg(0) {\n        while(sz < N) {\n            sz <<= 1;\n            lg++;\n\
+    \        }\n        node.resize(sz * 2, MonoidAct::e());\n        lazy.resize(sz,\
+    \ MonoidAct::id());\n        for(int i = 0; i < N; i++) node[i + sz] = v[i];\n\
+    \        for(int i = sz - 1; i >= 1; i--) update(i);\n    }\n\n    void set(int\
+    \ pos, S val) {\n        assert(0 <= pos && pos < N);\n        pos += sz;\n  \
+    \      for(int i = lg; i >= 1; i--) propagate(pos >> i);\n        node[pos] =\
+    \ val;\n        for(int i = 1; i <= lg; i++) update(pos >> i);\n    } \n\n   \
+    \ S get(int pos) {\n        assert(0 <= pos and pos < N);\n        pos += sz;\n\
+    \        for(int i = lg; i >= 1; i--) propagate(pos >> i);\n        return node[pos];\n\
+    \    }\n\n    S prod(int l, int r) {\n        assert(0 <= l and l <= r and r <=\
+    \ N);\n        if (l == r) return MonoidAct::e();\n        l += sz;\n        r\
+    \ += sz;\n        for(int i = lg; i >= 1; i--) {\n            if (((l >> i) <<\
+    \ i) != l) propagate(l >> i);\n            if (((r >> i) << i) != r) propagate((r\
+    \ - 1) >> i);\n        }   \n        S vl = MonoidAct::e(), vr = MonoidAct::e();\n\
+    \        while(l < r) {\n            if (l & 1) vl = MonoidAct::op(vl, node[l++]);\n\
+    \            if (r & 1) vr = MonoidAct::op(node[--r], vr);\n            l >>=\
+    \ 1;\n            r >>= 1;\n        }\n        return MonoidAct::op(vl, vr);\n\
+    \    }\n\n    S all_prod() const { return node[1]; }\n\n    void apply(int pos,\
+    \ F f) {\n        assert(0 <= pos and pos < N);\n        pos += sz;\n        for(int\
+    \ i = lg; i >= 1; i--) propagate(pos >> i);\n        node[pos] = MonoidAct::mapping(f,\
+    \ node[pos]);\n        for(int i = 1; i <= lg; i++) update(pos >> i);\n    }\n\
+    \n    void apply(int l, int r, F f) {\n        assert(0 <= l and l <= r and r\
+    \ <= N);\n        if (l == r) return;\n        l += sz;\n        r += sz;\n  \
+    \      for(int i = lg; i >= 1; i--) {\n            if (((l >> i) << i) != l) propagate(l\
+    \ >> i);\n            if (((r >> i) << i) != r) propagate((r - 1) >> i);\n   \
+    \     }\n        {\n            int tmp_l = l, tmp_r = r;\n            while(l\
+    \ < r) {\n                if (l & 1) apply_node(l++, f);\n                if (r\
+    \ & 1) apply_node(--r, f);\n                l >>= 1;\n                r >>= 1;\n\
+    \            }\n            l = tmp_l, r = tmp_r;\n        }\n        for(int\
+    \ i = 1; i <= lg; i++) {\n            if (((l >> i) << i) != l) update(l >> i);\n\
+    \            if (((r >> i) << i) != r) update((r - 1) >> i);\n        }\n    }\n\
+    \n    template <class G> int max_right(int l, G g) {\n        assert(0 <= l and\
+    \ l <= N);\n        assert(g(MonoidAct::e()));\n        if (l == N) return N;\n\
+    \        l += sz;\n        for(int i = lg; i >= 1; i--) propagate(l >> i);\n \
+    \       S now = MonoidAct::e();\n        do {\n            while ((l & 1) == 0)\
+    \ l >>= 1;\n            if (!g(MonoidAct::op(now, node[l]))) {\n             \
+    \   while (l < sz) {\n                    propagate(l);\n                    l\
+    \ <<= 1;\n                    if (g(MonoidAct::op(now, node[l]))) {\n        \
+    \                now = MonoidAct::op(now, node[l]);\n                        l++;\n\
+    \                    }\n                }\n                return l - sz;\n  \
+    \          }\n            now = MonoidAct::op(now, node[l]);\n            l++;\n\
+    \        } while ((l & -l) != l);\n        return N;\n    } \n\n    template <class\
+    \ G> int min_left(int r, G g) {\n        assert(0 <= r and r <= N);\n        assert(g(MonoidAct::e()));\n\
+    \        if (r == 0) return 0;\n        r += sz;\n        for(int i = lg; i >=\
+    \ 1; i--) propagate((r - 1) >> i);\n        S now = MonoidAct::e();\n        do\
+    \ {\n            r--;\n            while (r > 1 and (r & 1)) r >>= 1;\n      \
+    \      if (!g(MonoidAct::op(node[r], now))) {\n                while (r < sz)\
+    \ {\n                    propagate(r);\n                    r = (r << 1) + 1;\n\
+    \                    if (g(MonoidAct::op(node[r], now))) {\n                 \
+    \       now = MonoidAct::op(node[r], now);\n                        r--;\n   \
+    \                 }\n                }\n                return r + 1 - sz;\n \
+    \           }\n            now = MonoidAct::op(node[r], now);\n        } while((r\
+    \ & -r) != r);\n        return 0;\n    }\n\nprivate:\n    int N, sz, lg;\n   \
+    \ std::vector<S> node;\n    std::vector<F> lazy;\n\n    void update(int i) {\n\
+    \        node[i] = MonoidAct::op(node[i << 1], node[(i << 1) | 1]);\n    }\n \
+    \   \n    void apply_node(int i, F f) {\n        node[i] = MonoidAct::mapping(f,\
+    \ node[i]);\n        if (i < sz) {\n            lazy[i] = MonoidAct::composition(f,\
+    \ lazy[i]);\n            if (node[i].fail) {\n                propagate(i);\n\
+    \                update(i);\n            }\n        }\n    }\n\n    void propagate(int\
+    \ i) {\n        apply_node(i << 1, lazy[i]);\n        apply_node(i << 1 | 1, lazy[i]);\n\
+    \        lazy[i] = MonoidAct::id();\n    }\n};\n#line 2 \"data-structure/segtree/dynamic-segtree.hpp\"\
+    \n\n#line 6 \"data-structure/segtree/dynamic-segtree.hpp\"\n\ntemplate <class\
+    \ Monoid, long long id_min, long long id_max>\nclass DynamicSegtree {\n  public:\n\
+    \    using T = typename Monoid::value_type;\n\n    explicit DynamicSegtree() :\
+    \ root(nullptr) {}\n\n    void set(long long p, T val) { set(root, id_min, id_max,\
+    \ p, val); }\n    T get(long long p) { return get(root, id_min, id_max, p); }\n\
+    \    T prod(long long l, long long r) { return prod(root, id_min, id_max, l, r);\
+    \ }\n \n  private:\n    struct Node {\n        T val;\n        std::array<Node\
+    \ *, 2> ch;\n        Node() : val(Monoid::e()), ch({nullptr, nullptr}) {}\n  \
+    \      Node(T val) : val(val), ch({nullptr, nullptr}) {}\n    };\n\n    Node *root;\n\
+    \n    void set(Node *&node, long long l, long long r, long long p, T val) {\n\
+    \        if(node == nullptr) node = new Node();\n        if(r - l == 1) {\n  \
+    \          node->val = val;\n            return;\n        }\n        long long\
+    \ mid = (l + r) / 2;\n        if(p < mid)\n            set(node->ch[0], l, mid,\
+    \ p, val);\n        else\n            set(node->ch[1], mid, r, p, val);\n    \
+    \    node->val =\n            Monoid::op(node->ch[0] == nullptr ? Monoid::e()\
+    \ : node->ch[0]->val,\n                       node->ch[1] == nullptr ? Monoid::e()\
+    \ : node->ch[1]->val);\n    }\n\n    T get(Node *&node, long long l, long long\
+    \ r, long long p) {\n        if(node == nullptr) return Monoid::e();\n       \
+    \ if(r - l == 1) return node->val;\n        long long mid = (l + r) / 2;\n   \
+    \     if(p < mid)\n            return get(node->ch[0], l, mid, p);\n        else\n\
+    \            return get(node->ch[1], mid, r, p);\n    }\n\n    T prod(Node *&node,\
+    \ long long l, long long r, long long ql, long long qr) {\n        if(node ==\
+    \ nullptr or (qr <= l or r <= ql)) return Monoid::e();\n        if(ql <= l and\
+    \ r <= qr) return node->val;\n        long long mid = (l + r) / 2;\n        return\
+    \ Monoid::op(prod(node->ch[0], l, mid, ql, qr),\n                          prod(node->ch[1],\
+    \ mid, r, ql, qr));\n    }\n};\n#line 2 \"data-structure/monoid/add.hpp\"\n\n\
+    template <typename T> struct MonoidAdd {\n    using value_type = T;\n    inline\
+    \ static T op(const T &l, const T &r) { return (l + r); }\n    inline static T\
+    \ e() { return T(0); }\n};\n#line 8 \"test/mytest/data-structure/segment-tree-api.test.cpp\"\
+    \n\n\nstruct Action {\n    struct S { ll sum; int len; bool fail = false; };\n\
+    \    using value_type_S = S;\n    using value_type_F = pair<ll, ll>;\n    static\
+    \ S e() { return {0, 0}; }\n    static S op(S a, S b) { return {a.sum + b.sum,\
+    \ a.len + b.len}; }\n    static S mapping(value_type_F f, S x) { return {f.first\
+    \ * x.sum + f.second * x.len, x.len}; }\n    static value_type_F id() { return\
+    \ {1, 0}; }\n    static value_type_F composition(value_type_F f, value_type_F\
+    \ g) { return {f.first * g.first, f.first * g.second + f.second}; }\n};\ntemplate<class\
+    \ Tree> void lazy() {\n    Tree empty, sized(0);\n    assert(empty.all_prod().sum\
+    \ == 0 && sized.prod(0, 0).sum == 0);\n    Tree units(3); assert(units.all_prod().len\
+    \ == 0);\n    mt19937 rng(60);\n    for(int n = 1; n <= 12; ++n) {\n        vector<ll>\
+    \ a(n, 1);\n        Tree seg(vector<Action::S>(n, {1, 1}));\n        for(int t\
+    \ = 0; t < 100; ++t) {\n            int p = rng() % n, l = rng() % (n + 1), r\
+    \ = rng() % (n + 1);\n            if(l > r) swap(l, r);\n            ll value\
+    \ = rng() % 5;\n            if(t % 3 == 0) { seg.set(p, {value, 1}); a[p] = value;\
+    \ }\n            else if(t % 3 == 1) { seg.apply(p, {0, value}); a[p] = value;\
+    \ }\n            else { seg.apply(l, r, {1, value}); for(int i = l; i < r; ++i)\
+    \ a[i] += value; }\n            assert(seg.all_prod().sum == accumulate(a.begin(),\
+    \ a.end(), 0LL));\n            for(int i = 0; i < n; ++i) assert(seg.get(i).sum\
+    \ == a[i]);\n            for(int i = 0; i <= n; ++i) for(int j = i; j <= n; ++j)\
+    \ {\n                assert(seg.prod(i, j).sum == accumulate(a.begin() + i, a.begin()\
+    \ + j, 0LL));\n            }\n            for(int i = 0; i <= n; ++i) {\n    \
+    \            ll limit = rng() % 30, sum = 0;\n                int right = i, left\
+    \ = i;\n                while(right < n && sum + a[right] <= limit) sum += a[right++];\n\
+    \                sum = 0; while(left && sum + a[left - 1] <= limit) sum += a[--left];\n\
+    \                auto pred = [limit](auto s) { return s.sum <= limit; };\n   \
+    \             assert(seg.max_right(i, pred) == right && seg.min_left(i, pred)\
+    \ == left);\n            }\n        }\n    }\n}\nint main() {\n    lazy<LazySegtree<Action>>();\
+    \ lazy<SegtreeBeats<Action>>();\n    Segtree<MonoidAdd<ll>> empty, sized(0);\n\
+    \    assert(empty.prod(0, 0) == 0 && sized.all_prod() == 0);\n    Segtree<MonoidAdd<ll>>\
+    \ seg(10);\n    vector<ll> a(10);\n    for(int i = 0; i < 10; ++i) { seg.set(i,\
+    \ i); seg.apply(i, 1); a[i] = i + 1; }\n    for(int l = 0; l <= 10; ++l) for(int\
+    \ r = l; r <= 10; ++r) {\n        assert(seg.prod(l, r) == accumulate(a.begin()\
+    \ + l, a.begin() + r, 0LL));\n    }\n    assert(seg.all_prod() == 55);\n    for(int\
+    \ i = 0; i < 10; ++i) assert(seg.get(i) == a[i]);\n    for(int i = 0; i <= 10;\
+    \ ++i) for(int limit = 0; limit <= 55; ++limit) {\n        int l = i, r = i; ll\
+    \ sum = 0;\n        while(r < 10 && sum + a[r] <= limit) sum += a[r++];\n    \
+    \    sum = 0; while(l && sum + a[l - 1] <= limit) sum += a[--l];\n        auto\
+    \ pred = [limit](ll x) { return x <= limit; };\n        assert(seg.max_right(i,\
+    \ pred) == r && seg.min_left(i, pred) == l);\n    }\n    DynamicSegtree<MonoidAdd<ll>,\
+    \ 0, 1000000000000LL> dynamic;\n    assert(dynamic.prod(0, 1000000000000LL) ==\
+    \ 0 && dynamic.get(7) == 0);\n    dynamic.set(0, -3); dynamic.set(999999999999LL,\
+    \ 10); dynamic.set(7, 5);\n    assert(dynamic.get(0) == -3 && dynamic.get(7) ==\
+    \ 5);\n    assert(dynamic.prod(0, 1000000000000LL) == 12 && dynamic.prod(1, 999999999999LL)\
+    \ == 5);\n    assert(dynamic.prod(7, 7) == 0); dynamic.set(7, -1); assert(dynamic.get(7)\
+    \ == -1);\n    INT(a0, b0); print(a0 + b0);\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../template/template.cpp\"\
+    \n#include \"../../../data-structure/segtree/segtree.hpp\"\n#include \"../../../data-structure/segtree/lazy-segtree.hpp\"\
+    \n#include \"../../../data-structure/segtree/segtree-beats.hpp\"\n#include \"\
+    ../../../data-structure/segtree/dynamic-segtree.hpp\"\n#include \"../../../data-structure/monoid/add.hpp\"\
+    \n\n\nstruct Action {\n    struct S { ll sum; int len; bool fail = false; };\n\
+    \    using value_type_S = S;\n    using value_type_F = pair<ll, ll>;\n    static\
+    \ S e() { return {0, 0}; }\n    static S op(S a, S b) { return {a.sum + b.sum,\
+    \ a.len + b.len}; }\n    static S mapping(value_type_F f, S x) { return {f.first\
+    \ * x.sum + f.second * x.len, x.len}; }\n    static value_type_F id() { return\
+    \ {1, 0}; }\n    static value_type_F composition(value_type_F f, value_type_F\
+    \ g) { return {f.first * g.first, f.first * g.second + f.second}; }\n};\ntemplate<class\
+    \ Tree> void lazy() {\n    Tree empty, sized(0);\n    assert(empty.all_prod().sum\
+    \ == 0 && sized.prod(0, 0).sum == 0);\n    Tree units(3); assert(units.all_prod().len\
+    \ == 0);\n    mt19937 rng(60);\n    for(int n = 1; n <= 12; ++n) {\n        vector<ll>\
+    \ a(n, 1);\n        Tree seg(vector<Action::S>(n, {1, 1}));\n        for(int t\
+    \ = 0; t < 100; ++t) {\n            int p = rng() % n, l = rng() % (n + 1), r\
+    \ = rng() % (n + 1);\n            if(l > r) swap(l, r);\n            ll value\
+    \ = rng() % 5;\n            if(t % 3 == 0) { seg.set(p, {value, 1}); a[p] = value;\
+    \ }\n            else if(t % 3 == 1) { seg.apply(p, {0, value}); a[p] = value;\
+    \ }\n            else { seg.apply(l, r, {1, value}); for(int i = l; i < r; ++i)\
+    \ a[i] += value; }\n            assert(seg.all_prod().sum == accumulate(a.begin(),\
+    \ a.end(), 0LL));\n            for(int i = 0; i < n; ++i) assert(seg.get(i).sum\
+    \ == a[i]);\n            for(int i = 0; i <= n; ++i) for(int j = i; j <= n; ++j)\
+    \ {\n                assert(seg.prod(i, j).sum == accumulate(a.begin() + i, a.begin()\
+    \ + j, 0LL));\n            }\n            for(int i = 0; i <= n; ++i) {\n    \
+    \            ll limit = rng() % 30, sum = 0;\n                int right = i, left\
+    \ = i;\n                while(right < n && sum + a[right] <= limit) sum += a[right++];\n\
+    \                sum = 0; while(left && sum + a[left - 1] <= limit) sum += a[--left];\n\
+    \                auto pred = [limit](auto s) { return s.sum <= limit; };\n   \
+    \             assert(seg.max_right(i, pred) == right && seg.min_left(i, pred)\
+    \ == left);\n            }\n        }\n    }\n}\nint main() {\n    lazy<LazySegtree<Action>>();\
+    \ lazy<SegtreeBeats<Action>>();\n    Segtree<MonoidAdd<ll>> empty, sized(0);\n\
+    \    assert(empty.prod(0, 0) == 0 && sized.all_prod() == 0);\n    Segtree<MonoidAdd<ll>>\
+    \ seg(10);\n    vector<ll> a(10);\n    for(int i = 0; i < 10; ++i) { seg.set(i,\
+    \ i); seg.apply(i, 1); a[i] = i + 1; }\n    for(int l = 0; l <= 10; ++l) for(int\
+    \ r = l; r <= 10; ++r) {\n        assert(seg.prod(l, r) == accumulate(a.begin()\
+    \ + l, a.begin() + r, 0LL));\n    }\n    assert(seg.all_prod() == 55);\n    for(int\
+    \ i = 0; i < 10; ++i) assert(seg.get(i) == a[i]);\n    for(int i = 0; i <= 10;\
+    \ ++i) for(int limit = 0; limit <= 55; ++limit) {\n        int l = i, r = i; ll\
+    \ sum = 0;\n        while(r < 10 && sum + a[r] <= limit) sum += a[r++];\n    \
+    \    sum = 0; while(l && sum + a[l - 1] <= limit) sum += a[--l];\n        auto\
+    \ pred = [limit](ll x) { return x <= limit; };\n        assert(seg.max_right(i,\
+    \ pred) == r && seg.min_left(i, pred) == l);\n    }\n    DynamicSegtree<MonoidAdd<ll>,\
+    \ 0, 1000000000000LL> dynamic;\n    assert(dynamic.prod(0, 1000000000000LL) ==\
+    \ 0 && dynamic.get(7) == 0);\n    dynamic.set(0, -3); dynamic.set(999999999999LL,\
+    \ 10); dynamic.set(7, 5);\n    assert(dynamic.get(0) == -3 && dynamic.get(7) ==\
+    \ 5);\n    assert(dynamic.prod(0, 1000000000000LL) == 12 && dynamic.prod(1, 999999999999LL)\
+    \ == 5);\n    assert(dynamic.prod(7, 7) == 0); dynamic.set(7, -1); assert(dynamic.get(7)\
+    \ == -1);\n    INT(a0, b0); print(a0 + b0);\n}\n"
+  dependsOn:
+  - template/template.cpp
+  - data-structure/segtree/segtree.hpp
+  - data-structure/segtree/lazy-segtree.hpp
+  - data-structure/segtree/segtree-beats.hpp
+  - data-structure/segtree/dynamic-segtree.hpp
+  - data-structure/monoid/add.hpp
+  isVerificationFile: true
+  path: test/mytest/data-structure/segment-tree-api.test.cpp
+  requiredBy: []
+  timestamp: '2026-11-01 17:12:16+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: test/mytest/data-structure/segment-tree-api.test.cpp
+layout: document
+redirect_from:
+- /verify/test/mytest/data-structure/segment-tree-api.test.cpp
+- /verify/test/mytest/data-structure/segment-tree-api.test.cpp.html
+title: test/mytest/data-structure/segment-tree-api.test.cpp
+---

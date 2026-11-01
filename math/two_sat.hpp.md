@@ -13,6 +13,9 @@ data:
     path: test/library-checker/math/two-sat.test.cpp
     title: test/library-checker/math/two-sat.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/mytest/graph/graph-scc-two-sat.test.cpp
+    title: test/mytest/graph/graph-scc-two-sat.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/mytest/graph/lca-and-empty-two-sat.test.cpp
     title: test/mytest/graph/lca-and-empty-two-sat.test.cpp
   _isVerificationFailed: false
@@ -102,6 +105,7 @@ data:
   verifiedWith:
   - test/library-checker/math/two-sat.test.cpp
   - test/mytest/graph/lca-and-empty-two-sat.test.cpp
+  - test/mytest/graph/graph-scc-two-sat.test.cpp
 documentation_of: math/two_sat.hpp
 layout: document
 title: 2-SAT

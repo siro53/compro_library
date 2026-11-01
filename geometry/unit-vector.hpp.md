@@ -11,7 +11,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/cross-point.hpp
     title: "\u4EA4\u70B9"
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: geometry/geometry.hpp
     title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA\uFF08\u307E\u3068\u3081\u3066\
       \ include\uFF09"
@@ -22,6 +22,9 @@ data:
     path: geometry/tangent.hpp
     title: "2 \u5186\u306E\u5171\u901A\u63A5\u7DDA"
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/geometry/geometry-api.test.cpp
+    title: test/mytest/geometry/geometry-api.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/mytest/geometry/geometry.test.cpp
     title: test/mytest/geometry/geometry.test.cpp
@@ -59,6 +62,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/mytest/geometry/geometry.test.cpp
+  - test/mytest/geometry/geometry-api.test.cpp
 documentation_of: geometry/unit-vector.hpp
 layout: document
 title: "\u5358\u4F4D\u30D9\u30AF\u30C8\u30EB"

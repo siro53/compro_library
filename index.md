@@ -16,10 +16,10 @@ data:
       path: data-structure/erasable-priority-queue.hpp
       title: "\u524A\u9664\u53EF\u80FD\u306A\u512A\u5148\u5EA6\u4ED8\u304D\u30AD\u30E5\
         \u30FC"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/imos2D.hpp
       title: "\u4E8C\u6B21\u5143\u3044\u3082\u3059\u6CD5"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/range-BIT.hpp
       title: Range BIT
     - icon: ':heavy_check_mark:'
@@ -45,31 +45,31 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/monoid/and.hpp
       title: "\u30D3\u30C3\u30C8 AND\u30E2\u30CE\u30A4\u30C9"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/monoid/gcd.hpp
       title: "\u6700\u5927\u516C\u7D04\u6570\u30E2\u30CE\u30A4\u30C9"
     - icon: ':heavy_check_mark:'
       path: data-structure/monoid/kadane.hpp
       title: "\u6700\u5927\u90E8\u5206\u914D\u5217\u548C\u30E2\u30CE\u30A4\u30C9"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/monoid/lcm.hpp
       title: "\u6700\u5C0F\u516C\u500D\u6570\u30E2\u30CE\u30A4\u30C9"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/monoid/max.hpp
       title: "\u6700\u5927\u5024\u30E2\u30CE\u30A4\u30C9"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/monoid/max_index.hpp
       title: "\u6DFB\u5B57\u4ED8\u304D\u6700\u5927\u5024\u30E2\u30CE\u30A4\u30C9"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/monoid/min.hpp
       title: "\u6700\u5C0F\u5024\u30E2\u30CE\u30A4\u30C9"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/monoid/min_index.hpp
       title: "\u6DFB\u5B57\u4ED8\u304D\u6700\u5C0F\u5024\u30E2\u30CE\u30A4\u30C9"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/monoid/or.hpp
       title: "\u30D3\u30C3\u30C8 OR\u30E2\u30CE\u30A4\u30C9"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/monoid/rolling_hash.hpp
       title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5\u30E2\u30CE\u30A4\
         \u30C9"
@@ -147,7 +147,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: geometry/dot.hpp
       title: "\u5185\u7A4D"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: geometry/geometry.hpp
       title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA\uFF08\u307E\u3068\u3081\u3066\
         \ include\uFF09"
@@ -213,7 +213,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/graph_template.hpp
       title: "\u30B0\u30E9\u30D5\u69CB\u9020\u4F53"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: graph/namori.hpp
       title: "\u306A\u3082\u308A\u30B0\u30E9\u30D5\u306E\u5206\u89E3"
     - icon: ':heavy_check_mark:'
@@ -222,12 +222,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/scc.hpp
       title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: graph/topological-sort.hpp
       title: "\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8"
   - name: graph/shortest-path
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: graph/shortest-path/bfs.hpp
       title: "\u5E45\u512A\u5148\u63A2\u7D22"
     - icon: ':heavy_check_mark:'
@@ -235,7 +235,7 @@ data:
       title: "Dijkstra \u6CD5"
   - name: graph/tree
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: graph/tree/centroid-decomposition.hpp
       title: "\u91CD\u5FC3\u5206\u89E3"
     - icon: ':heavy_check_mark:'
@@ -262,7 +262,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/binom.hpp
       title: "\u4E8C\u9805\u4FC2\u6570"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/divisor.hpp
       title: "\u7D04\u6570\u5217\u6319"
     - icon: ':heavy_check_mark:'
@@ -271,7 +271,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/is-prime.hpp
       title: "\u7D20\u6570\u5224\u5B9A"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/linear-sieve.hpp
       title: "\u7DDA\u5F62\u7BE9"
     - icon: ':heavy_check_mark:'
@@ -280,7 +280,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/pow_mod.hpp
       title: "\u5270\u4F59\u4ED8\u304D\u7D2F\u4E57"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/prime-factor.hpp
       title: "\u8A66\u3057\u5272\u308A\u306B\u3088\u308B\u7D20\u56E0\u6570\u5206\u89E3"
     - icon: ':heavy_check_mark:'
@@ -308,7 +308,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: misc/compress.hpp
       title: "\u5EA7\u6A19\u5727\u7E2E"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: misc/floor-ceil-div.hpp
       title: "\u6574\u6570\u306E\u5207\u308A\u4E0A\u3052\u30FB\u5207\u308A\u6368\u3066\
         \u9664\u7B97"
@@ -324,10 +324,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: misc/rle.hpp
       title: "\u30E9\u30F3\u30EC\u30F3\u30B0\u30B9\u5727\u7E2E"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: misc/subset-iterator.hpp
       title: "bit \u96C6\u5408\u306E\u5217\u6319"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: misc/timer.hpp
       title: "\u30BF\u30A4\u30DE\u30FC"
   - name: modint
@@ -364,11 +364,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: template/template.cpp
       title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-  - name: test/library-checker/data-structure
-    pages:
-    - icon: ':warning:'
-      path: test/library-checker/data-structure/point-set-range-composite.cpp
-      title: test/library-checker/data-structure/point-set-range-composite.cpp
   - name: test/mytest/bundle/fixtures/include
     pages:
     - icon: ':warning:'
@@ -413,8 +408,38 @@ data:
       path: test/aoj/aoj-ALDS1-1-C_2.test.cpp
       title: test/aoj/aoj-ALDS1-1-C_2.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/aoj/aoj-ALDS1-11-C.test.cpp
+      title: test/aoj/aoj-ALDS1-11-C.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/aoj/aoj-ALDS1-5-D.test.cpp
       title: test/aoj/aoj-ALDS1-5-D.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/aoj-DSL-2-A.test.cpp
+      title: test/aoj/aoj-DSL-2-A.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/aoj-DSL-2-G.test.cpp
+      title: test/aoj/aoj-DSL-2-G.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/aoj-DSL-5-B.test.cpp
+      title: test/aoj/aoj-DSL-5-B.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/aoj-GRL-4-A.test.cpp
+      title: test/aoj/aoj-GRL-4-A.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/aoj-ITP1-3-D.test.cpp
+      title: test/aoj/aoj-ITP1-3-D.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/aoj-ITP2-11-C.test.cpp
+      title: test/aoj/aoj-ITP2-11-C.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/aoj-NTL-1-A.test.cpp
+      title: test/aoj/aoj-NTL-1-A.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/aoj-NTL-1-B-dynamic-modint.test.cpp
+      title: test/aoj/aoj-NTL-1-B-dynamic-modint.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/aoj-NTL-1-B.test.cpp
+      title: test/aoj/aoj-NTL-1-B.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/aoj/aoj1549.test.cpp
       title: test/aoj/aoj1549.test.cpp
@@ -449,6 +474,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/library-checker/data-structure/point-add-range-sum.test.cpp
       title: test/library-checker/data-structure/point-add-range-sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/library-checker/data-structure/point-set-range-composite.test.cpp
+      title: test/library-checker/data-structure/point-set-range-composite.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/library-checker/data-structure/range-affine-range-sum.test.cpp
       title: test/library-checker/data-structure/range-affine-range-sum.test.cpp
@@ -498,6 +526,9 @@ data:
   - name: test/library-checker/math
     pages:
     - icon: ':heavy_check_mark:'
+      path: test/library-checker/math/matrix-det-mod-2.test.cpp
+      title: test/library-checker/math/matrix-det-mod-2.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/library-checker/math/primality-test.test.cpp
       title: test/library-checker/math/primality-test.test.cpp
     - icon: ':heavy_check_mark:'
@@ -522,6 +553,9 @@ data:
   - name: test/mytest/data-structure
     pages:
     - icon: ':heavy_check_mark:'
+      path: test/mytest/data-structure/basic-api.test.cpp
+      title: test/mytest/data-structure/basic-api.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/mytest/data-structure/binary-trie.test.cpp
       title: test/mytest/data-structure/binary-trie.test.cpp
     - icon: ':heavy_check_mark:'
@@ -534,48 +568,113 @@ data:
       path: test/mytest/data-structure/helper-regressions.test.cpp
       title: test/mytest/data-structure/helper-regressions.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/mytest/data-structure/imos2D.test.cpp
+      title: test/mytest/data-structure/imos2D.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/mytest/data-structure/initialization-and-monoids.test.cpp
       title: test/mytest/data-structure/initialization-and-monoids.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/mytest/data-structure/li-chao-tree.test.cpp
       title: test/mytest/data-structure/li-chao-tree.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/mytest/data-structure/monoids.test.cpp
+      title: test/mytest/data-structure/monoids.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/data-structure/persistent-api.test.cpp
+      title: test/mytest/data-structure/persistent-api.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/data-structure/range-bit.test.cpp
+      title: test/mytest/data-structure/range-bit.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/data-structure/segment-tree-api.test.cpp
+      title: test/mytest/data-structure/segment-tree-api.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/mytest/data-structure/segtree-boundaries.test.cpp
       title: test/mytest/data-structure/segtree-boundaries.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/data-structure/slope-trick.test.cpp
+      title: test/mytest/data-structure/slope-trick.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/data-structure/wavelet-api.test.cpp
+      title: test/mytest/data-structure/wavelet-api.test.cpp
   - name: test/mytest/geometry
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/geometry/geometry-api.test.cpp
+      title: test/mytest/geometry/geometry-api.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/mytest/geometry/geometry.test.cpp
       title: test/mytest/geometry/geometry.test.cpp
   - name: test/mytest/graph
     pages:
     - icon: ':heavy_check_mark:'
+      path: test/mytest/graph/bfs-topological-sort.test.cpp
+      title: test/mytest/graph/bfs-topological-sort.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/graph/graph-scc-two-sat.test.cpp
+      title: test/mytest/graph/graph-scc-two-sat.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/mytest/graph/lca-and-empty-two-sat.test.cpp
       title: test/mytest/graph/lca-and-empty-two-sat.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/mytest/graph/range-edge-graph.test.cpp
       title: test/mytest/graph/range-edge-graph.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/graph/tree-api.test.cpp
+      title: test/mytest/graph/tree-api.test.cpp
   - name: test/mytest/math
     pages:
     - icon: ':heavy_check_mark:'
       path: test/mytest/math/arithmetic-regressions.test.cpp
       title: test/mytest/math/arithmetic-regressions.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/mytest/math/barrett-reduction.test.cpp
+      title: test/mytest/math/barrett-reduction.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/mytest/math/convolution-regressions.test.cpp
       title: test/mytest/math/convolution-regressions.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/math/f2.test.cpp
+      title: test/mytest/math/f2.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/math/matrix-binom.test.cpp
+      title: test/mytest/math/matrix-binom.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/math/number-theory.test.cpp
+      title: test/mytest/math/number-theory.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/math/transforms-api.test.cpp
+      title: test/mytest/math/transforms-api.test.cpp
   - name: test/mytest/misc
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/misc/fraction-api.test.cpp
+      title: test/mytest/misc/fraction-api.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/mytest/misc/fraction.test.cpp
       title: test/mytest/misc/fraction.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/mytest/misc/mo-and-fraction.test.cpp
       title: test/mytest/misc/mo-and-fraction.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/misc/subset-iterator.test.cpp
+      title: test/mytest/misc/subset-iterator.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/misc/utilities.test.cpp
+      title: test/mytest/misc/utilities.test.cpp
+  - name: test/mytest/modint
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/modint/dynamic-modint.test.cpp
+      title: test/mytest/modint/dynamic-modint.test.cpp
   - name: test/mytest/string
     pages:
     - icon: ':heavy_check_mark:'
       path: test/mytest/string/empty-inputs.test.cpp
       title: test/mytest/string/empty-inputs.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/string/string-api.test.cpp
+      title: test/mytest/string/string-api.test.cpp
   - name: test/yukicoder
     pages:
     - icon: ':heavy_check_mark:'

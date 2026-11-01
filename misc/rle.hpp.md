@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/mytest/misc/utilities.test.cpp
+    title: test/mytest/misc/utilities.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/mytest/string/empty-inputs.test.cpp
     title: test/mytest/string/empty-inputs.test.cpp
   - icon: ':heavy_check_mark:'
@@ -43,6 +46,7 @@ data:
   verifiedWith:
   - test/yukicoder/yuki1469.test.cpp
   - test/mytest/string/empty-inputs.test.cpp
+  - test/mytest/misc/utilities.test.cpp
 documentation_of: misc/rle.hpp
 layout: document
 title: "\u30E9\u30F3\u30EC\u30F3\u30B0\u30B9\u5727\u7E2E"

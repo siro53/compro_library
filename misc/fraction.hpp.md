@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/mytest/misc/fraction-api.test.cpp
+    title: test/mytest/misc/fraction-api.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/mytest/misc/fraction.test.cpp
     title: test/mytest/misc/fraction.test.cpp
   - icon: ':heavy_check_mark:'
@@ -76,6 +79,7 @@ data:
   timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/mytest/misc/fraction-api.test.cpp
   - test/mytest/misc/mo-and-fraction.test.cpp
   - test/mytest/misc/fraction.test.cpp
 documentation_of: misc/fraction.hpp

@@ -2,10 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj-ITP2-11-C.test.cpp
+    title: test/aoj/aoj-ITP2-11-C.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/misc/subset-iterator.test.cpp
+    title: test/mytest/misc/subset-iterator.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://atcoder.jp/contests/xmascon24/submissions/61272051
@@ -76,8 +82,10 @@ data:
   path: misc/subset-iterator.hpp
   requiredBy: []
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/mytest/misc/subset-iterator.test.cpp
+  - test/aoj/aoj-ITP2-11-C.test.cpp
 documentation_of: misc/subset-iterator.hpp
 layout: document
 title: "bit \u96C6\u5408\u306E\u5217\u6319"

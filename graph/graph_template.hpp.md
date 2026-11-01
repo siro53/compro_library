@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: graph/namori.hpp
     title: "\u306A\u3082\u308A\u30B0\u30E9\u30D5\u306E\u5206\u89E3"
   - icon: ':heavy_check_mark:'
@@ -11,16 +11,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/scc.hpp
     title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3"
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: graph/shortest-path/bfs.hpp
     title: "\u5E45\u512A\u5148\u63A2\u7D22"
   - icon: ':heavy_check_mark:'
     path: graph/shortest-path/dijkstra.hpp
     title: "Dijkstra \u6CD5"
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: graph/topological-sort.hpp
     title: "\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8"
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: graph/tree/centroid-decomposition.hpp
     title: "\u91CD\u5FC3\u5206\u89E3"
   - icon: ':heavy_check_mark:'
@@ -40,6 +40,12 @@ data:
     path: math/two_sat.hpp
     title: 2-SAT
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj-ALDS1-11-C.test.cpp
+    title: test/aoj/aoj-ALDS1-11-C.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj-GRL-4-A.test.cpp
+    title: test/aoj/aoj-GRL-4-A.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj2821.test.cpp
     title: test/aoj/aoj2821.test.cpp
@@ -71,11 +77,20 @@ data:
     path: test/library-checker/tree/tree-diameter.test.cpp
     title: test/library-checker/tree/tree-diameter.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/mytest/graph/bfs-topological-sort.test.cpp
+    title: test/mytest/graph/bfs-topological-sort.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/graph/graph-scc-two-sat.test.cpp
+    title: test/mytest/graph/graph-scc-two-sat.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/mytest/graph/lca-and-empty-two-sat.test.cpp
     title: test/mytest/graph/lca-and-empty-two-sat.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/mytest/graph/range-edge-graph.test.cpp
     title: test/mytest/graph/range-edge-graph.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/graph/tree-api.test.cpp
+    title: test/mytest/graph/tree-api.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -145,7 +160,12 @@ data:
   - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
   - test/mytest/graph/lca-and-empty-two-sat.test.cpp
   - test/mytest/graph/range-edge-graph.test.cpp
+  - test/mytest/graph/graph-scc-two-sat.test.cpp
+  - test/mytest/graph/bfs-topological-sort.test.cpp
+  - test/mytest/graph/tree-api.test.cpp
+  - test/aoj/aoj-ALDS1-11-C.test.cpp
   - test/aoj/aoj2821.test.cpp
+  - test/aoj/aoj-GRL-4-A.test.cpp
 documentation_of: graph/graph_template.hpp
 layout: document
 title: "\u30B0\u30E9\u30D5\u69CB\u9020\u4F53"

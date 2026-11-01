@@ -95,10 +95,13 @@ data:
     path: geometry/unit-vector.hpp
     title: "\u5358\u4F4D\u30D9\u30AF\u30C8\u30EB"
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/geometry/geometry-api.test.cpp
+    title: test/mytest/geometry/geometry-api.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/geometry.hpp\"\n\n// Compatibility header: include\
@@ -457,8 +460,9 @@ data:
   path: geometry/geometry.hpp
   requiredBy: []
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/mytest/geometry/geometry-api.test.cpp
 documentation_of: geometry/geometry.hpp
 layout: document
 link: https://bakamono1357.hatenablog.com/entry/2020/04/29/025320

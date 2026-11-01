@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/mytest/math/matrix-binom.test.cpp
+    title: test/mytest/math/matrix-binom.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki1750.test.cpp
     title: test/yukicoder/yuki1750.test.cpp
   _isVerificationFailed: false
@@ -83,6 +86,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yukicoder/yuki1750.test.cpp
+  - test/mytest/math/matrix-binom.test.cpp
 documentation_of: math/matrix.hpp
 layout: document
 title: "\u884C\u5217"

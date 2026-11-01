@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj2426.test.cpp
     title: test/aoj/aoj2426.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/basic-api.test.cpp
+    title: test/mytest/data-structure/basic-api.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -48,6 +51,7 @@ data:
   timestamp: '2024-12-15 14:15:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/mytest/data-structure/basic-api.test.cpp
   - test/aoj/aoj2426.test.cpp
 documentation_of: data-structure/sum2D.hpp
 layout: document

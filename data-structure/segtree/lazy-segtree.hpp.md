@@ -10,6 +10,9 @@ data:
     path: test/library-checker/data-structure/range-affine-range-sum.test.cpp
     title: test/library-checker/data-structure/range-affine-range-sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/segment-tree-api.test.cpp
+    title: test/mytest/data-structure/segment-tree-api.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/segtree-boundaries.test.cpp
     title: test/mytest/data-structure/segtree-boundaries.test.cpp
   _isVerificationFailed: false
@@ -156,6 +159,7 @@ data:
   verifiedWith:
   - test/library-checker/data-structure/range-affine-point-get/lazysegtree.test.cpp
   - test/library-checker/data-structure/range-affine-range-sum.test.cpp
+  - test/mytest/data-structure/segment-tree-api.test.cpp
   - test/mytest/data-structure/segtree-boundaries.test.cpp
 documentation_of: data-structure/segtree/lazy-segtree.hpp
 layout: document

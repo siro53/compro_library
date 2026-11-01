@@ -8,10 +8,13 @@ data:
     path: string/rolling-hash.hpp
     title: Rolling Hash
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/monoids.test.cpp
+    title: test/mytest/data-structure/monoids.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data-structure/monoid/rolling_hash.hpp\"\n\n#include <array>\n\
@@ -101,8 +104,9 @@ data:
   path: data-structure/monoid/rolling_hash.hpp
   requiredBy: []
   timestamp: '2023-12-05 19:29:40+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/mytest/data-structure/monoids.test.cpp
 documentation_of: data-structure/monoid/rolling_hash.hpp
 layout: document
 title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5\u30E2\u30CE\u30A4\u30C9"

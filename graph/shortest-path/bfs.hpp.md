@@ -5,10 +5,16 @@ data:
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u69CB\u9020\u4F53"
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj-ALDS1-11-C.test.cpp
+    title: test/aoj/aoj-ALDS1-11-C.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/graph/bfs-topological-sort.test.cpp
+    title: test/mytest/graph/bfs-topological-sort.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/shortest-path/bfs.hpp\"\n\n#include <functional>\n\
@@ -56,8 +62,10 @@ data:
   path: graph/shortest-path/bfs.hpp
   requiredBy: []
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/mytest/graph/bfs-topological-sort.test.cpp
+  - test/aoj/aoj-ALDS1-11-C.test.cpp
 documentation_of: graph/shortest-path/bfs.hpp
 layout: document
 title: "\u5E45\u512A\u5148\u63A2\u7D22"

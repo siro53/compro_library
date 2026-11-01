@@ -16,6 +16,9 @@ data:
     path: test/aoj/aoj-ALDS1-1-C.test.cpp
     title: test/aoj/aoj-ALDS1-1-C.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj-NTL-1-B.test.cpp
+    title: test/aoj/aoj-NTL-1-B.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/library-checker/convolution/convolution-mod.test.cpp
     title: test/library-checker/convolution/convolution-mod.test.cpp
   - icon: ':heavy_check_mark:'
@@ -27,6 +30,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/mytest/math/convolution-regressions.test.cpp
     title: test/mytest/math/convolution-regressions.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/math/number-theory.test.cpp
+    title: test/mytest/math/number-theory.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/math/transforms-api.test.cpp
+    title: test/mytest/math/transforms-api.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -54,8 +63,11 @@ data:
   verifiedWith:
   - test/library-checker/math/primality-test.test.cpp
   - test/library-checker/convolution/convolution-mod.test.cpp
+  - test/mytest/math/transforms-api.test.cpp
+  - test/mytest/math/number-theory.test.cpp
   - test/mytest/math/convolution-regressions.test.cpp
   - test/mytest/math/arithmetic-regressions.test.cpp
+  - test/aoj/aoj-NTL-1-B.test.cpp
   - test/aoj/aoj-ALDS1-1-C.test.cpp
 documentation_of: math/pow_mod.hpp
 layout: document

@@ -15,6 +15,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/tree/tree-diameter.test.cpp
     title: test/library-checker/tree/tree-diameter.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/graph/tree-api.test.cpp
+    title: test/mytest/graph/tree-api.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -72,6 +75,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/tree/tree-diameter.test.cpp
+  - test/mytest/graph/tree-api.test.cpp
   - test/aoj/aoj2821.test.cpp
 documentation_of: graph/tree/diameter.hpp
 layout: document

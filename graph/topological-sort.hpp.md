@@ -5,10 +5,16 @@ data:
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u69CB\u9020\u4F53"
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj-GRL-4-A.test.cpp
+    title: test/aoj/aoj-GRL-4-A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/graph/bfs-topological-sort.test.cpp
+    title: test/mytest/graph/bfs-topological-sort.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/topological-sort.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
@@ -54,8 +60,10 @@ data:
   path: graph/topological-sort.hpp
   requiredBy: []
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/mytest/graph/bfs-topological-sort.test.cpp
+  - test/aoj/aoj-GRL-4-A.test.cpp
 documentation_of: graph/topological-sort.hpp
 layout: document
 title: "\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8"

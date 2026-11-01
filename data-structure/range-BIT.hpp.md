@@ -5,10 +5,16 @@ data:
     path: data-structure/BIT.hpp
     title: Binary Indexed Tree
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj-DSL-2-G.test.cpp
+    title: test/aoj/aoj-DSL-2-G.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/range-bit.test.cpp
+    title: test/mytest/data-structure/range-bit.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data-structure/range-BIT.hpp\"\n\n#line 2 \"data-structure/BIT.hpp\"\
@@ -46,8 +52,10 @@ data:
   path: data-structure/range-BIT.hpp
   requiredBy: []
   timestamp: '2023-10-30 20:10:44+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/mytest/data-structure/range-bit.test.cpp
+  - test/aoj/aoj-DSL-2-G.test.cpp
 documentation_of: data-structure/range-BIT.hpp
 layout: document
 title: Range BIT

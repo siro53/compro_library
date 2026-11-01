@@ -2,10 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj-ITP1-3-D.test.cpp
+    title: test/aoj/aoj-ITP1-3-D.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/math/number-theory.test.cpp
+    title: test/mytest/math/number-theory.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/divisor.hpp\"\n\n#include <algorithm>\n#include <type_traits>\n\
@@ -25,8 +31,10 @@ data:
   path: math/divisor.hpp
   requiredBy: []
   timestamp: '2023-12-05 16:32:36+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/mytest/math/number-theory.test.cpp
+  - test/aoj/aoj-ITP1-3-D.test.cpp
 documentation_of: math/divisor.hpp
 layout: document
 title: "\u7D04\u6570\u5217\u6319"

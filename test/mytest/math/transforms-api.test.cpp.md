@@ -1,0 +1,409 @@
+---
+data:
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: math/convolution/fft.hpp
+    title: "FFT \u306B\u3088\u308B\u7573\u307F\u8FBC\u307F"
+  - icon: ':heavy_check_mark:'
+    path: math/convolution/ntt.hpp
+    title: "NTT \u306B\u3088\u308B\u7573\u307F\u8FBC\u307F"
+  - icon: ':heavy_check_mark:'
+    path: math/pow_mod.hpp
+    title: "\u5270\u4F59\u4ED8\u304D\u7D2F\u4E57"
+  - icon: ':heavy_check_mark:'
+    path: math/primitive-root.hpp
+    title: "\u539F\u59CB\u6839"
+  - icon: ':heavy_check_mark:'
+    path: modint/modint.hpp
+    title: "\u56FA\u5B9A\u6CD5 modint"
+  - icon: ':heavy_check_mark:'
+    path: template/template.cpp
+    title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
+  _pathExtension: cpp
+  _verificationStatusIcon: ':heavy_check_mark:'
+  attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/aplusb
+    links:
+    - https://judge.yosupo.jp/problem/aplusb
+  bundledCode: "#line 1 \"test/mytest/math/transforms-api.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/aplusb\"\n#line 1 \"template/template.cpp\"\
+    \n#pragma region Macros\n#include <bits/stdc++.h>\nusing namespace std;\n// input\
+    \ output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
+    \    struct has_val_impl {\n        template <class T>\n        static auto check(T\
+    \ &&x) -> decltype(x.val(), std::true_type{});\n\n        template <class T> static\
+    \ auto check(...) -> std::false_type;\n    };\n\n    template <class T>\n    class\
+    \ has_val : public decltype(has_val_impl::check<T>(std::declval<T>())) {\n   \
+    \ };\n\n    // debug\n    template <class T, enable_if_t<is_integral<T>::value,\
+    \ int> = 0>\n    void dump(const T t) {\n        cerr << t;\n    }\n    template\
+    \ <class T, enable_if_t<is_floating_point<T>::value, int> = 0>\n    void dump(const\
+    \ T t) {\n        cerr << t;\n    }\n    template <class T, typename enable_if<has_val<T>::value>::type\
+    \ * = nullptr>\n    void dump(const T &t) {\n        cerr << t.val();\n    }\n\
+    \    void dump(__int128_t n) {\n        if(n == 0) {\n            cerr << '0';\n\
+    \            return;\n        } else if(n < 0) {\n            cerr << '-';\n \
+    \           n = -n;\n        }\n        string s;\n        while(n > 0) {\n  \
+    \          s += (char)('0' + n % 10);\n            n /= 10;\n        }\n     \
+    \   reverse(s.begin(), s.end());\n        cerr << s;\n    }\n    void dump(const\
+    \ string &s) { cerr << s; }\n    void dump(const char *s) {\n        int n = (int)strlen(s);\n\
+    \        for(int i = 0; i < n; i++) cerr << s[i];\n    }\n    template <class\
+    \ T1, class T2> void dump(const pair<T1, T2> &p) {\n        cerr << '(';\n   \
+    \     dump(p.first);\n        cerr << ',';\n        dump(p.second);\n        cerr\
+    \ << ')';\n    }\n    template <class T> void dump(const vector<T> &v) {\n   \
+    \     cerr << '{';\n        for(int i = 0; i < (int)v.size(); i++) {\n       \
+    \     dump(v[i]);\n            if(i < (int)v.size() - 1) cerr << ',';\n      \
+    \  }\n        cerr << '}';\n    }\n    template <class T> void dump(const set<T>\
+    \ &s) {\n        cerr << '{';\n        for(auto it = s.begin(); it != s.end();\
+    \ it++) {\n            dump(*it);\n            if(next(it) != s.end()) cerr <<\
+    \ ',';\n        }\n        cerr << '}';\n    }\n    template <class Key, class\
+    \ Value> void dump(const map<Key, Value> &mp) {\n        cerr << '{';\n      \
+    \  for(auto it = mp.begin(); it != mp.end(); it++) {\n            dump(*it);\n\
+    \            if(next(it) != mp.end()) cerr << ',';\n        }\n        cerr <<\
+    \ '}';\n    }\n    template <class Key, class Value>\n    void dump(const unordered_map<Key,\
+    \ Value> &mp) {\n        cerr << '{';\n        for(auto it = mp.begin(); it !=\
+    \ mp.end(); it++) {\n            dump(*it);\n            if(next(it) != mp.end())\
+    \ cerr << ',';\n        }\n        cerr << '}';\n    }\n    template <class T>\
+    \ void dump(const deque<T> &v) {\n        cerr << '{';\n        for(int i = 0;\
+    \ i < (int)v.size(); i++) {\n            dump(v[i]);\n            if(i < (int)v.size()\
+    \ - 1) cerr << ',';\n        }\n        cerr << '}';\n    }\n    template <class\
+    \ T> void dump(queue<T> q) {\n        cerr << '{';\n        while(!q.empty())\
+    \ {\n            dump(q.front());\n            if((int)q.size() > 1) cerr << ',';\n\
+    \            q.pop();\n        }\n        cerr << '}';\n    }\n\n    void debug_print()\
+    \ { cerr << endl; }\n    template <class Head, class... Tail>\n    void debug_print(const\
+    \ Head &h, const Tail &...t) {\n        dump(h);\n        if(sizeof...(Tail))\
+    \ dump(' ');\n        debug_print(t...);\n    }\n    // print\n    template <class\
+    \ T, enable_if_t<is_integral<T>::value, int> = 0>\n    void print_single(const\
+    \ T t) {\n        cout << t;\n    }\n    template <class T, enable_if_t<is_floating_point<T>::value,\
+    \ int> = 0>\n    void print_single(const T t) {\n        cout << t;\n    }\n \
+    \   template <class T, typename enable_if<has_val<T>::value>::type * = nullptr>\n\
+    \    void print_single(const T t) {\n        cout << t.val();\n    }\n    void\
+    \ print_single(__int128_t n) {\n        if(n == 0) {\n            cout << '0';\n\
+    \            return;\n        } else if(n < 0) {\n            cout << '-';\n \
+    \           n = -n;\n        }\n        string s;\n        while(n > 0) {\n  \
+    \          s += (char)('0' + n % 10);\n            n /= 10;\n        }\n     \
+    \   reverse(s.begin(), s.end());\n        cout << s;\n    }\n    void print_single(const\
+    \ string &s) { cout << s; }\n    void print_single(const char *s) {\n        int\
+    \ n = (int)strlen(s);\n        for(int i = 0; i < n; i++) cout << s[i];\n    }\n\
+    \    template <class T1, class T2> void print_single(const pair<T1, T2> &p) {\n\
+    \        print_single(p.first);\n        cout << ' ';\n        print_single(p.second);\n\
+    \    }\n    template <class T> void print_single(const vector<T> &v) {\n     \
+    \   for(int i = 0; i < (int)v.size(); i++) {\n            print_single(v[i]);\n\
+    \            if(i < (int)v.size() - 1) cout << ' ';\n        }\n    }\n    template\
+    \ <class T> void print_single(const set<T> &s) {\n        for(auto it = s.begin();\
+    \ it != s.end(); it++) {\n            print_single(*it);\n            if(next(it)\
+    \ != s.end()) cout << ' ';\n        }\n    }\n    template <class T> void print_single(const\
+    \ deque<T> &v) {\n        for(int i = 0; i < (int)v.size(); i++) {\n         \
+    \   print_single(v[i]);\n            if(i < (int)v.size() - 1) cout << ' ';\n\
+    \        }\n    }\n    template <class T> void print_single(queue<T> q) {\n  \
+    \      while(!q.empty()) {\n            print_single(q.front());\n           \
+    \ if((int)q.size() > 1) cout << ' ';\n            q.pop();\n        }\n    }\n\
+    \n    void print() { cout << '\\n'; }\n    template <class Head, class... Tail>\n\
+    \    void print(const Head &h, const Tail &...t) {\n        print_single(h);\n\
+    \        if(sizeof...(Tail)) print_single(' ');\n        print(t...);\n    }\n\
+    \n    // input\n    template <class T, enable_if_t<is_integral<T>::value, int>\
+    \ = 0>\n    void input_single(T &t) {\n        cin >> t;\n    }\n    template\
+    \ <class T, enable_if_t<is_floating_point<T>::value, int> = 0>\n    void input_single(T\
+    \ &t) {\n        cin >> t;\n    }\n    template <class T, typename enable_if<has_val<T>::value>::type\
+    \ * = nullptr>\n    void input_single(T &t) {\n        cin >> t;\n    }\n    void\
+    \ input_single(__int128_t &n) {\n        string s;\n        cin >> s;\n      \
+    \  if(s == \"0\") {\n            n = 0;\n            return;\n        }\n    \
+    \    bool is_minus = false;\n        if(s[0] == '-') {\n            s = s.substr(1);\n\
+    \            is_minus = true;\n        }\n        n = 0;\n        for(int i =\
+    \ 0; i < (int)s.size(); i++) n = n * 10 + (int)(s[i] - '0');\n        if(is_minus)\
+    \ n = -n;\n    }\n    void input_single(string &s) { cin >> s; }\n    template\
+    \ <class T1, class T2> void input_single(pair<T1, T2> &p) {\n        input_single(p.first);\n\
+    \        input_single(p.second);\n    }\n    template <class T> void input_single(vector<T>\
+    \ &v) {\n        for(auto &e : v) input_single(e);\n    }\n    void input() {}\n\
+    \    template <class Head, class... Tail> void input(Head &h, Tail &...t) {\n\
+    \        input_single(h);\n        input(t...);\n    }\n}; // namespace siro53_io\n\
+    #ifdef DEBUG\n#define debug(...)                                             \
+    \                \\\n    cerr << __LINE__ << \" [\" << #__VA_ARGS__ << \"]: \"\
+    , debug_print(__VA_ARGS__)\n#else\n#define debug(...) (void(0))\n#endif\n// io\
+    \ setup\nstruct Setup {\n    Setup() {\n        cin.tie(0);\n        ios::sync_with_stdio(false);\n\
+    \        cout << fixed << setprecision(15);\n    }\n} __Setup;\nusing namespace\
+    \ siro53_io;\n// types\nusing ll = long long;\nusing i128 = __int128_t;\n// input\
+    \ macros\n#define INT(...)                                                   \
+    \            \\\n    int __VA_ARGS__;                                        \
+    \                   \\\n    input(__VA_ARGS__)\n#define LL(...)              \
+    \                                                  \\\n    ll __VA_ARGS__;   \
+    \                                                         \\\n    input(__VA_ARGS__)\n\
+    #define STRING(...)                                                          \
+    \  \\\n    string __VA_ARGS__;                                               \
+    \         \\\n    input(__VA_ARGS__)\n#define CHAR(...)                      \
+    \                                        \\\n    char __VA_ARGS__;           \
+    \                                               \\\n    input(__VA_ARGS__)\n#define\
+    \ DBL(...)                                                               \\\n\
+    \    double __VA_ARGS__;                                                     \
+    \   \\\n    input(__VA_ARGS__)\n#define LD(...)                              \
+    \                                  \\\n    long double __VA_ARGS__;          \
+    \                                         \\\n    input(__VA_ARGS__)\n#define\
+    \ UINT(...)                                                              \\\n\
+    \    unsigned int __VA_ARGS__;                                               \
+    \   \\\n    input(__VA_ARGS__)\n#define ULL(...)                             \
+    \                                  \\\n    unsigned long long __VA_ARGS__;   \
+    \                                         \\\n    input(__VA_ARGS__)\n#define\
+    \ VEC(name, type, len)                                                   \\\n\
+    \    vector<type> name(len);                                                 \
+    \   \\\n    input(name);\n#define VEC2(name, type, len1, len2)               \
+    \                            \\\n    vector name(len1, vector<type>(len2));  \
+    \                                   \\\n    input(name);\n// other macros\n//\
+    \ https://trap.jp/post/1224/\n#define OVERLOAD3(_1, _2, _3, name, ...) name\n\
+    #define ALL(v) (v).begin(), (v).end()\n#define RALL(v) (v).rbegin(), (v).rend()\n\
+    #define REP1(i, n) for(int i = 0; i < int(n); i++)\n#define REP2(i, a, b) for(int\
+    \ i = (a); i < int(b); i++)\n#define REP(...) OVERLOAD3(__VA_ARGS__, REP2, REP1)(__VA_ARGS__)\n\
+    #define SORT(v) sort(ALL(v))\n#define RSORT(v) sort(RALL(v))\n#define UNIQUE(v)\
+    \                                                              \\\n    sort(ALL(v)),\
+    \ (v).erase(unique(ALL(v)), (v).end()), v.shrink_to_fit()\n#define REV(v) reverse(ALL(v))\n\
+    #define SZ(v) ((int)(v).size())\n#define MIN(v) (*min_element(ALL(v)))\n#define\
+    \ MAX(v) (*max_element(ALL(v)))\n// util const\nconst int INF = 1 << 30;\nconst\
+    \ ll LLINF = 1LL << 60;\nconstexpr int MOD = 1000000007;\nconstexpr int MOD2 =\
+    \ 998244353;\nconst int dx[4] = {1, 0, -1, 0};\nconst int dy[4] = {0, 1, 0, -1};\n\
+    // util functions\nvoid Case(int i) { cout << \"Case #\" << i << \": \"; }\nint\
+    \ popcnt(int x) { return __builtin_popcount(x); }\nint popcnt(ll x) { return __builtin_popcountll(x);\
+    \ }\ntemplate <class T> inline bool chmax(T &a, T b) {\n    return (a < b ? a\
+    \ = b, true : false);\n}\ntemplate <class T> inline bool chmin(T &a, T b) {\n\
+    \    return (a > b ? a = b, true : false);\n}\ntemplate <class T, int dim>\nauto\
+    \ make_vector_impl(vector<int>& sizes, const T &e) {\n    if constexpr(dim ==\
+    \ 1) {\n        return vector(sizes[0], e);\n    } else {\n        int n = sizes[dim\
+    \ - 1];\n        sizes.pop_back();\n        return vector(n, make_vector_impl<T,\
+    \ dim - 1>(sizes, e));\n    }\n}\ntemplate <class T, int dim>\nauto make_vector(const\
+    \ int (&sizes)[dim], const T &e = T()) {\n    vector<int> s(dim);\n    for(int\
+    \ i = 0; i < dim; i++) s[i] = sizes[dim - i - 1];\n    return make_vector_impl<T,\
+    \ dim>(s, e);\n}\nvector<int> iota_gen(int n, int start = 0) {\n    vector<int>\
+    \ ord(n);\n    iota(ord.begin(), ord.end(), start);\n    return ord;\n}\ntemplate<typename\
+    \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
+    \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
+    \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
+    \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"math/convolution/fft.hpp\"\
+    \n\n#line 7 \"math/convolution/fft.hpp\"\n\nnamespace fft {\n    template <typename\
+    \ D> struct Complex {\n        D x, y;\n        Complex(): x(0), y(0) {};\n  \
+    \      Complex(D x, D y) : x(x), y(y) {}\n        Complex &operator+=(const Complex\
+    \ &c) {\n            x += c.x;\n            y += c.y;\n            return (*this);\n\
+    \        }\n        Complex &operator-=(const Complex &c) {\n            x -=\
+    \ c.x;\n            y -= c.y;\n            return (*this);\n        }\n      \
+    \  Complex &operator*=(const Complex &c) {\n            D nx = x * c.x - y * c.y;\n\
+    \            D ny = x * c.y + y * c.x;\n            x = nx, y = ny;\n        \
+    \    return (*this);\n        }\n        Complex &operator/=(const Complex& c)\
+    \ {\n            D nx = (x * c.x + y * c.y) / (c.x * c.x + c.y * c.y);\n     \
+    \       D ny = (y * c.x - x * c.y) / (c.x * c.x + c.y * c.y);\n            x =\
+    \ nx, y = ny;\n            return (*this);\n        }\n        Complex operator-()\
+    \ const { return Complex(-x, -y); }\n        Complex operator+(const Complex &c)\
+    \ const { return Complex(*this) += c; }\n        Complex operator-(const Complex\
+    \ &c) const { return Complex(*this) -= c; }\n        Complex operator*(const Complex\
+    \ &c) const { return Complex(*this) *= c; }\n        Complex operator/(const Complex\
+    \ &c) const { return Complex(*this) /= c; }\n    };\n\n    template<typename D>\n\
+    \    constexpr const D PI = std::acos(D(-1));\n\n    template<typename D>\n  \
+    \  inline Complex<D> omega(int k, int n) {\n        return Complex<D>(std::cos(D(k)\
+    \ * 2 * PI<D> / n), std::sin(D(k) * 2 * PI<D> / n));\n    }\n\n    inline int\
+    \ revbit(int mask, int bitlen) {\n        int res = 0;\n        while(bitlen--)\
+    \ {\n            res = (res << 1) | (mask & 1);\n            mask >>= 1;\n   \
+    \     }\n        return res;\n    }\n\n    template<typename D>\n    void fft(std::vector<Complex<D>>&\
+    \ a, int bitlen) {\n        int n = (int)a.size();\n        int len = n;\n   \
+    \     while(len > 1) {\n            for(int i = 0; i < n; i += len) {\n      \
+    \          int t = len >> 1;\n                for(int j = 0; j < t; j++) {\n \
+    \                   int p = i + j;\n                    auto l = a[p] + a[p +\
+    \ t];\n                    auto r = (a[p] - a[p + t]) * omega<D>(j, len);\n  \
+    \                  a[p] = l;\n                    a[p + t] = r;\n            \
+    \    }\n            }\n            len >>= 1;\n        }\n        for(int i =\
+    \ 0; i < n; i++) {\n            int j = revbit(i, bitlen);\n            if(i <\
+    \ j) std::swap(a[i], a[j]);\n        }\n    }\n\n    template<typename D>\n  \
+    \  void ifft(std::vector<Complex<D>>& a, int bitlen) {\n        int n = (int)a.size();\n\
+    \        for(int i = 0; i < n; i++) {\n            int j = revbit(i, bitlen);\n\
+    \            if(i < j) std::swap(a[i], a[j]);\n        }\n        int len = 2;\n\
+    \        while(len <= n) {\n            for(int i = 0; i < n; i += len) {\n  \
+    \              int t = len >> 1;\n                for(int j = 0; j < t; j++) {\n\
+    \                    int p = i + j;\n                    auto l = a[p] + a[p +\
+    \ t] * omega<D>(-j, len);\n                    auto r = a[p] - a[p + t] * omega<D>(-j,\
+    \ len);\n                    a[p] = l;\n                    a[p + t] = r;\n  \
+    \              }\n            }\n            len <<= 1;\n        }\n        for(int\
+    \ i = 0; i < n; i++) a[i] /= Complex<D>(n, 0);\n    }\n\n    template<typename\
+    \ D>\n    std::vector<D> convolution(const std::vector<D>& a, const std::vector<D>&\
+    \ b) {\n        if(a.empty() || b.empty()) return {};\n        int m = (int)a.size()\
+    \ + (int)b.size() - 1;\n        int n = 1, bitlen = 0;\n        while(n < m) {\n\
+    \            n <<= 1;\n            bitlen++;\n        }\n        std::vector<Complex<D>>\
+    \ A(n), B(n);\n        for(int i = 0; i < (int)a.size(); i++) A[i] = Complex<D>(a[i],\
+    \ 0);\n        for(int i = 0; i < (int)b.size(); i++) B[i] = Complex<D>(b[i],\
+    \ 0);\n        fft<D>(A, bitlen);\n        fft<D>(B, bitlen);\n        for(int\
+    \ i = 0; i < n; i++) A[i] *= B[i];\n        ifft<D>(A, bitlen);\n        std::vector<D>\
+    \ res(m);\n        for(int i = 0; i < m; i++) res[i] = A[i].x;\n        return\
+    \ res;\n    } \n}; // namespace fft\n#line 2 \"math/convolution/ntt.hpp\"\n\n\
+    #line 8 \"math/convolution/ntt.hpp\"\n\n#line 2 \"modint/modint.hpp\"\n\n#line\
+    \ 6 \"modint/modint.hpp\"\n\ntemplate <int mod> class ModInt {\n  public:\n  \
+    \  ModInt() : x(0) {}\n    ModInt(long long y)\n        : x(y >= 0 ? y % umod()\
+    \ : (umod() - (-y) % umod()) % umod()) {}\n    unsigned int val() const { return\
+    \ x; }\n    ModInt &operator+=(const ModInt &p) {\n        if((x += p.x) >= umod())\
+    \ x -= umod();\n        return *this;\n    }\n    ModInt &operator-=(const ModInt\
+    \ &p) {\n        if((x += umod() - p.x) >= umod()) x -= umod();\n        return\
+    \ *this;\n    }\n    ModInt &operator*=(const ModInt &p) {\n        x = (unsigned\
+    \ int)(1ULL * x * p.x % umod());\n        return *this;\n    }\n    ModInt &operator/=(const\
+    \ ModInt &p) {\n        *this *= p.inv();\n        return *this;\n    }\n    ModInt\
+    \ operator-() const { return ModInt(-(long long)x); }\n    ModInt operator+(const\
+    \ ModInt &p) const { return ModInt(*this) += p; }\n    ModInt operator-(const\
+    \ ModInt &p) const { return ModInt(*this) -= p; }\n    ModInt operator*(const\
+    \ ModInt &p) const { return ModInt(*this) *= p; }\n    ModInt operator/(const\
+    \ ModInt &p) const { return ModInt(*this) /= p; }\n    bool operator==(const ModInt\
+    \ &p) const { return x == p.x; }\n    bool operator!=(const ModInt &p) const {\
+    \ return x != p.x; }\n    ModInt inv() const {\n        long long a = x, b = mod,\
+    \ u = 1, v = 0, t;\n        while(b > 0) {\n            t = a / b;\n         \
+    \   std::swap(a -= t * b, b);\n            std::swap(u -= t * v, v);\n       \
+    \ }\n        return ModInt(u);\n    }\n    ModInt pow(unsigned long long n) const\
+    \ {\n        ModInt ret(1), mul(x);\n        while(n > 0) {\n            if(n\
+    \ & 1) ret *= mul;\n            mul *= mul;\n            n >>= 1;\n        }\n\
+    \        return ret;\n    }\n    friend std::ostream &operator<<(std::ostream\
+    \ &os, const ModInt &p) {\n        return os << p.x;\n    }\n    friend std::istream\
+    \ &operator>>(std::istream &is, ModInt &a) {\n        long long t;\n        is\
+    \ >> t;\n        a = ModInt<mod>(t);\n        return (is);\n    }\n    static\
+    \ constexpr int get_mod() { return mod; }\n\n  private:\n    unsigned int x;\n\
+    \    static constexpr unsigned int umod() { return mod; }\n};\n#line 2 \"math/primitive-root.hpp\"\
+    \n\n#line 2 \"math/pow_mod.hpp\"\n\nconstexpr long long pow_mod(long long x, long\
+    \ long k, long long m) {\n    long long res = 1 % m;\n    long long mul = (x >=\
+    \ 0 ? x % m : x % m + m);\n    while(k) {\n        if(k & 1) res = (__int128_t)res\
+    \ * mul % m;\n        mul = (__int128_t)mul * mul % m;\n        k >>= 1;\n   \
+    \ }\n    return res;\n}\n#line 4 \"math/primitive-root.hpp\"\n\nconstexpr int\
+    \ primitive_root(int p) {\n    if(p == 2) return 1;\n    if(p == 998244353) return\
+    \ 3;\n    int primes[31] = {};\n    int sz = 0, t = p - 1;\n    for(int i = 2;\
+    \ i * i <= t; i++) {\n        if(t % i == 0) {\n            primes[sz++] = i;\n\
+    \            while(t % i == 0) t /= i;\n        }\n    }\n    if(t > 1) primes[sz++]\
+    \ = t;\n    for(int g = 2;;g++) {\n        bool f = true;\n        for(int i =\
+    \ 0; i < sz; i++) {\n            if(pow_mod(g, (p - 1) / primes[i], p) == 1) {\n\
+    \                f = false;\n                break;\n            }\n        }\
+    \   \n        if(f) return g;\n    }\n}\n#line 11 \"math/convolution/ntt.hpp\"\
+    \n\nnamespace ntt {\n    constexpr int exp_limit(int mod) { return __builtin_ctz(mod\
+    \ - 1); }\n\n    template <class mint, int mod = mint::get_mod(),\n          \
+    \    int g = primitive_root(mod)>\n    struct ntt_info {\n        static constexpr\
+    \ int limit = exp_limit(mod);\n        std::array<mint, limit + 1> root;\n   \
+    \     std::array<mint, limit + 1> iroot;\n\n        ntt_info() {\n           \
+    \ root[limit] = mint(g).pow((mod - 1) >> limit);\n            iroot[limit] = root[limit].inv();\n\
+    \            for(int i = limit - 1; i >= 0; i--) {\n                root[i] =\
+    \ root[i + 1] * root[i + 1];\n                iroot[i] = iroot[i + 1] * iroot[i\
+    \ + 1];\n            }\n        }\n    };\n\n    inline uint64_t revbit(uint64_t\
+    \ mask, int bitlen) {\n        assert(0 <= bitlen && bitlen <= 64);\n        if(bitlen\
+    \ == 0) return 0;\n        uint64_t x = mask;\n        x = (x >> 32) | (x << 32);\n\
+    \        x = ((x >> 16) & 0x0000FFFF0000FFFF) | ((x << 16) & 0xFFFF0000FFFF0000);\n\
+    \        x = ((x >> 8) & 0x00FF00FF00FF00FF) | ((x << 8) & 0xFF00FF00FF00FF00);\n\
+    \        x = ((x >> 4) & 0x0F0F0F0F0F0F0F0F) | ((x << 4) & 0xF0F0F0F0F0F0F0F0);\n\
+    \        x = ((x >> 2) & 0x3333333333333333) | ((x << 2) & 0xCCCCCCCCCCCCCCCC);\n\
+    \        x = ((x >> 1) & 0x5555555555555555) | ((x << 1) & 0xAAAAAAAAAAAAAAAA);\n\
+    \        return (x >> (64 - bitlen));\n    }\n\n    inline uint64_t revbit(uint64_t\
+    \ mask) {\n        return mask == 0 ? 0 : revbit(mask, 64 - __builtin_clzll(mask));\n\
+    \    }\n\n    template<class mint>\n    void ntt(std::vector<mint>& a) {\n   \
+    \     int n = (int)a.size();\n        assert(n > 0 && (n & (n - 1)) == 0);\n \
+    \       int bitlen = __builtin_ctz(n);\n        static const ntt_info<mint> info;\n\
+    \        assert(bitlen <= info.limit);\n        for(int len = n, b = bitlen; len\
+    \ > 1; len >>= 1, b--) {\n            for(int i = 0; i < n; i += len) {\n    \
+    \            int t = len >> 1;\n                mint wj = 1;\n               \
+    \ for(int j = 0; j < t; j++) {\n                    int p = i + j;\n         \
+    \           mint l = a[p] + a[p + t];\n                    mint r = (a[p] - a[p\
+    \ + t]) * wj;\n                    a[p] = l, a[p + t] = r;\n                 \
+    \   wj *= info.root[b];\n                }\n            }\n        }\n       \
+    \ for(int i = 0; i < n; i++) {\n            int j = revbit(i, bitlen);\n     \
+    \       if(i < j) std::swap(a[i], a[j]);\n        }\n    }\n\n    template<class\
+    \ mint>\n    void intt(std::vector<mint>& a) {\n        int n = (int)a.size();\n\
+    \        assert(n > 0 && (n & (n - 1)) == 0);\n        int bitlen = __builtin_ctz(n);\n\
+    \        static const ntt_info<mint> info;\n        assert(bitlen <= info.limit);\n\
+    \        for(int i = 0; i < n; i++) {\n            int j = revbit(i, bitlen);\n\
+    \            if(i < j) std::swap(a[i], a[j]);\n        }\n        for(int len\
+    \ = 2, b = 1; len <= n; len <<= 1, b++) {\n            for(int i = 0; i < n; i\
+    \ += len) {\n                int t = len >> 1;\n                mint wj = 1;\n\
+    \                for(int j = 0; j < t; j++) {\n                    int p = i +\
+    \ j;\n                    auto l = a[p] + a[p + t] * wj;\n                   \
+    \ auto r = a[p] - a[p + t] * wj;\n                    a[p] = l, a[p + t] = r;\n\
+    \                    wj *= info.iroot[b];\n                }\n            }\n\
+    \        }\n        mint invn = mint(n).inv();\n        for(int i = 0; i < n;\
+    \ i++) a[i] *= invn;\n    }\n\n    template<class mint>\n    std::vector<mint>\
+    \ convolution(std::vector<mint> a, std::vector<mint> b) {\n        if(a.empty()\
+    \ || b.empty()) return {};\n        int m = (int)a.size() + (int)b.size() - 1;\n\
+    \        int n = 1;\n        while(n < m) n <<= 1;\n        a.resize(n), b.resize(n);\n\
+    \        ntt<mint>(a);\n        ntt<mint>(b);\n        for(int i = 0; i < n; i++)\
+    \ a[i] *= b[i];\n        intt<mint>(a);\n        a.resize(m);\n        return\
+    \ a;\n    }\n}; // namespace ntt\n#line 5 \"test/mytest/math/transforms-api.test.cpp\"\
+    \n\n\nint main() {\n    using C = fft::Complex<long double>;\n    auto close =\
+    \ [](C actual, complex<long double> expected) { assert(abs(complex<long double>(actual.x,\
+    \ actual.y) - expected) < 1e-9L); };\n    C zero; close(zero, {0, 0}); C a(3,\
+    \ -2), b(-1, 4); complex<long double> x(3, -2), y(-1, 4);\n    close(-a, -x);\
+    \ close(a + b, x + y); close(a - b, x - y); close(a * b, x * y); close(a / b,\
+    \ x / y);\n    C c = a; assert(&(c += b) == &c); close(c, x + y);\n    c = a;\
+    \ assert(&(c -= b) == &c); close(c, x - y);\n    c = a; assert(&(c *= b) == &c);\
+    \ close(c, x * y);\n    c = a; assert(&(c /= b) == &c); close(c, x / y);\n   \
+    \ using mint = ModInt<998244353>;\n    ntt::ntt_info<mint> info; assert(ntt::exp_limit(998244353)\
+    \ == 23 && info.limit == 23);\n    for(int k = 0; k <= info.limit; ++k) {\n  \
+    \      assert(info.root[k] * info.iroot[k] == mint(1));\n        assert(info.root[k].pow(1LL\
+    \ << k) == mint(1));\n        if(k) assert(info.root[k].pow(1LL << (k - 1)) !=\
+    \ mint(1));\n    }\n    for(int width = 0; width <= 8; ++width) for(int value\
+    \ = 0; value < (1 << width); ++value) {\n        int expected = 0; for(int i =\
+    \ 0; i < width; ++i) expected |= (value >> i & 1) << (width - i - 1);\n      \
+    \  assert(fft::revbit(value, width) == expected && ntt::revbit(value, width) ==\
+    \ unsigned(expected));\n        if(value == 0) assert(ntt::revbit(value) == 0);\n\
+    \        else { int bits = 32 - __builtin_clz(value); assert(ntt::revbit(value)\
+    \ == unsigned(fft::revbit(value, bits))); }\n    }\n    assert(ntt::revbit(1ULL,\
+    \ 64) == (1ULL << 63));\n    for(int width = 0; width <= 5; ++width) {\n     \
+    \   int n = 1 << width; vector<C> values(n); vector<mint> modular(n);\n      \
+    \  for(int i = 0; i < n; ++i) { values[i] = C(i % 7 - 3, 0); modular[i] = i %\
+    \ 7 - 3; }\n        auto original = values; auto original_mod = modular;\n   \
+    \     fft::fft(values, width); ntt::ntt(modular);\n        for(int k = 0; k <\
+    \ n; ++k) {\n            complex<long double> expected(0, 0); mint mod_expected\
+    \ = 0;\n            for(int i = 0; i < n; ++i) {\n                auto angle =\
+    \ 2 * acos(-1.0L) * i * k / n;\n                expected += original[i].x * polar(1.0L,\
+    \ angle);\n                mod_expected += original_mod[i] * info.root[width].pow(i\
+    \ * k);\n            }\n            close(values[k], expected); assert(modular[k]\
+    \ == mod_expected);\n            close(fft::omega<long double>(k, n), polar(1.0L,\
+    \ 2 * acos(-1.0L) * k / n));\n        }\n        fft::ifft(values, width); ntt::intt(modular);\n\
+    \        for(int i = 0; i < n; ++i) { close(values[i], {original[i].x, 0}); assert(modular[i]\
+    \ == original_mod[i]); }\n    }\n    INT(a0, b0); print(a0 + b0);\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../template/template.cpp\"\
+    \n#include \"../../../math/convolution/fft.hpp\"\n#include \"../../../math/convolution/ntt.hpp\"\
+    \n\n\nint main() {\n    using C = fft::Complex<long double>;\n    auto close =\
+    \ [](C actual, complex<long double> expected) { assert(abs(complex<long double>(actual.x,\
+    \ actual.y) - expected) < 1e-9L); };\n    C zero; close(zero, {0, 0}); C a(3,\
+    \ -2), b(-1, 4); complex<long double> x(3, -2), y(-1, 4);\n    close(-a, -x);\
+    \ close(a + b, x + y); close(a - b, x - y); close(a * b, x * y); close(a / b,\
+    \ x / y);\n    C c = a; assert(&(c += b) == &c); close(c, x + y);\n    c = a;\
+    \ assert(&(c -= b) == &c); close(c, x - y);\n    c = a; assert(&(c *= b) == &c);\
+    \ close(c, x * y);\n    c = a; assert(&(c /= b) == &c); close(c, x / y);\n   \
+    \ using mint = ModInt<998244353>;\n    ntt::ntt_info<mint> info; assert(ntt::exp_limit(998244353)\
+    \ == 23 && info.limit == 23);\n    for(int k = 0; k <= info.limit; ++k) {\n  \
+    \      assert(info.root[k] * info.iroot[k] == mint(1));\n        assert(info.root[k].pow(1LL\
+    \ << k) == mint(1));\n        if(k) assert(info.root[k].pow(1LL << (k - 1)) !=\
+    \ mint(1));\n    }\n    for(int width = 0; width <= 8; ++width) for(int value\
+    \ = 0; value < (1 << width); ++value) {\n        int expected = 0; for(int i =\
+    \ 0; i < width; ++i) expected |= (value >> i & 1) << (width - i - 1);\n      \
+    \  assert(fft::revbit(value, width) == expected && ntt::revbit(value, width) ==\
+    \ unsigned(expected));\n        if(value == 0) assert(ntt::revbit(value) == 0);\n\
+    \        else { int bits = 32 - __builtin_clz(value); assert(ntt::revbit(value)\
+    \ == unsigned(fft::revbit(value, bits))); }\n    }\n    assert(ntt::revbit(1ULL,\
+    \ 64) == (1ULL << 63));\n    for(int width = 0; width <= 5; ++width) {\n     \
+    \   int n = 1 << width; vector<C> values(n); vector<mint> modular(n);\n      \
+    \  for(int i = 0; i < n; ++i) { values[i] = C(i % 7 - 3, 0); modular[i] = i %\
+    \ 7 - 3; }\n        auto original = values; auto original_mod = modular;\n   \
+    \     fft::fft(values, width); ntt::ntt(modular);\n        for(int k = 0; k <\
+    \ n; ++k) {\n            complex<long double> expected(0, 0); mint mod_expected\
+    \ = 0;\n            for(int i = 0; i < n; ++i) {\n                auto angle =\
+    \ 2 * acos(-1.0L) * i * k / n;\n                expected += original[i].x * polar(1.0L,\
+    \ angle);\n                mod_expected += original_mod[i] * info.root[width].pow(i\
+    \ * k);\n            }\n            close(values[k], expected); assert(modular[k]\
+    \ == mod_expected);\n            close(fft::omega<long double>(k, n), polar(1.0L,\
+    \ 2 * acos(-1.0L) * k / n));\n        }\n        fft::ifft(values, width); ntt::intt(modular);\n\
+    \        for(int i = 0; i < n; ++i) { close(values[i], {original[i].x, 0}); assert(modular[i]\
+    \ == original_mod[i]); }\n    }\n    INT(a0, b0); print(a0 + b0);\n}\n"
+  dependsOn:
+  - template/template.cpp
+  - math/convolution/fft.hpp
+  - math/convolution/ntt.hpp
+  - modint/modint.hpp
+  - math/primitive-root.hpp
+  - math/pow_mod.hpp
+  isVerificationFile: true
+  path: test/mytest/math/transforms-api.test.cpp
+  requiredBy: []
+  timestamp: '2026-11-01 17:12:16+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: test/mytest/math/transforms-api.test.cpp
+layout: document
+redirect_from:
+- /verify/test/mytest/math/transforms-api.test.cpp
+- /verify/test/mytest/math/transforms-api.test.cpp.html
+title: test/mytest/math/transforms-api.test.cpp
+---

@@ -16,8 +16,14 @@ data:
     path: test/library-checker/data-structure/static-range-inversions-query.test.cpp
     title: test/library-checker/data-structure/static-range-inversions-query.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/basic-api.test.cpp
+    title: test/mytest/data-structure/basic-api.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/helper-regressions.test.cpp
     title: test/mytest/data-structure/helper-regressions.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/misc/utilities.test.cpp
+    title: test/mytest/misc/utilities.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -50,7 +56,9 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/data-structure/static-range-inversions-query.test.cpp
+  - test/mytest/data-structure/basic-api.test.cpp
   - test/mytest/data-structure/helper-regressions.test.cpp
+  - test/mytest/misc/utilities.test.cpp
   - test/aoj/aoj-ALDS1-5-D.test.cpp
   - test/aoj/aoj2426.test.cpp
 documentation_of: misc/compress.hpp

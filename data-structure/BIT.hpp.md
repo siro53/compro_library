@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/range-BIT.hpp
     title: Range BIT
   - icon: ':heavy_check_mark:'
@@ -13,6 +13,9 @@ data:
     path: test/aoj/aoj-ALDS1-5-D.test.cpp
     title: test/aoj/aoj-ALDS1-5-D.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj-DSL-2-G.test.cpp
+    title: test/aoj/aoj-DSL-2-G.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/point-add-range-sum.test.cpp
     title: test/library-checker/data-structure/point-add-range-sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -21,6 +24,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/static-range-sum.test.cpp
     title: test/library-checker/data-structure/static-range-sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/basic-api.test.cpp
+    title: test/mytest/data-structure/basic-api.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/range-bit.test.cpp
+    title: test/mytest/data-structure/range-bit.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/misc/utilities.test.cpp
+    title: test/mytest/misc/utilities.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -64,6 +76,10 @@ data:
   - test/library-checker/data-structure/static-range-sum.test.cpp
   - test/library-checker/data-structure/static-range-inversions-query.test.cpp
   - test/library-checker/data-structure/point-add-range-sum.test.cpp
+  - test/mytest/data-structure/basic-api.test.cpp
+  - test/mytest/data-structure/range-bit.test.cpp
+  - test/mytest/misc/utilities.test.cpp
+  - test/aoj/aoj-DSL-2-G.test.cpp
   - test/aoj/aoj-ALDS1-5-D.test.cpp
 documentation_of: data-structure/BIT.hpp
 layout: document

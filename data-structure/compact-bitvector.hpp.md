@@ -18,6 +18,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/bit-queries.test.cpp
     title: test/mytest/data-structure/bit-queries.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/wavelet-api.test.cpp
+    title: test/mytest/data-structure/wavelet-api.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -70,6 +73,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/data-structure/range-kth-smallest.test.cpp
+  - test/mytest/data-structure/wavelet-api.test.cpp
   - test/mytest/data-structure/bit-queries.test.cpp
   - test/aoj/aoj1549.test.cpp
   - test/aoj/aoj2674.test.cpp

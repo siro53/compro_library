@@ -1,14 +1,17 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: test/library-checker/data-structure/point-set-range-composite.cpp
-    title: test/library-checker/data-structure/point-set-range-composite.cpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/library-checker/data-structure/point-set-range-composite.test.cpp
+    title: test/library-checker/data-structure/point-set-range-composite.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/vertex-set-path-composite.test.cpp
     title: test/library-checker/data-structure/vertex-set-path-composite.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/monoids.test.cpp
+    title: test/mytest/data-structure/monoids.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -29,12 +32,13 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: data-structure/monoid/affine.hpp
-  requiredBy:
-  - test/library-checker/data-structure/point-set-range-composite.cpp
+  requiredBy: []
   timestamp: '2023-02-25 23:57:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
+  - test/library-checker/data-structure/point-set-range-composite.test.cpp
+  - test/mytest/data-structure/monoids.test.cpp
 documentation_of: data-structure/monoid/affine.hpp
 layout: document
 title: "\u30A2\u30D5\u30A3\u30F3\u5909\u63DB\u30E2\u30CE\u30A4\u30C9"

@@ -322,7 +322,12 @@ data:
     \        assert(trie.erase(x) == (it != stored.end()));\n            if(it !=\
     \ stored.end()) stored.erase(it);\n        }\n        auto visible = stored;\n\
     \        for(auto& v : visible) v ^= mask;\n        sort(visible.begin(), visible.end());\n\
-    \        for(unsigned q = 0; q < 64; q++) {\n            assert(trie.lower_bound(q)\
+    \        assert(trie.size() == int(stored.size()) && trie.empty() == stored.empty());\n\
+    \        for(unsigned q = 0; q < 64; ++q) assert(trie.count(q) == count(stored.begin(),\
+    \ stored.end(), q));\n        if(!visible.empty()) {\n            assert(trie.min_element()\
+    \ == visible.front() && trie.max_element() == visible.back());\n            for(int\
+    \ k = 0; k < int(visible.size()); ++k) assert(trie.get_kth_element(k) == visible[k]);\n\
+    \        }\n        for(unsigned q = 0; q < 64; q++) {\n            assert(trie.lower_bound(q)\
     \ == lower_bound(visible.begin(), visible.end(), q) - visible.begin());\n    \
     \        assert(trie.upper_bound(q) == upper_bound(visible.begin(), visible.end(),\
     \ q) - visible.begin());\n        }\n    }\n}\n\nint main() {\n    regression_test();\n\
@@ -354,7 +359,12 @@ data:
     \        assert(trie.erase(x) == (it != stored.end()));\n            if(it !=\
     \ stored.end()) stored.erase(it);\n        }\n        auto visible = stored;\n\
     \        for(auto& v : visible) v ^= mask;\n        sort(visible.begin(), visible.end());\n\
-    \        for(unsigned q = 0; q < 64; q++) {\n            assert(trie.lower_bound(q)\
+    \        assert(trie.size() == int(stored.size()) && trie.empty() == stored.empty());\n\
+    \        for(unsigned q = 0; q < 64; ++q) assert(trie.count(q) == count(stored.begin(),\
+    \ stored.end(), q));\n        if(!visible.empty()) {\n            assert(trie.min_element()\
+    \ == visible.front() && trie.max_element() == visible.back());\n            for(int\
+    \ k = 0; k < int(visible.size()); ++k) assert(trie.get_kth_element(k) == visible[k]);\n\
+    \        }\n        for(unsigned q = 0; q < 64; q++) {\n            assert(trie.lower_bound(q)\
     \ == lower_bound(visible.begin(), visible.end(), q) - visible.begin());\n    \
     \        assert(trie.upper_bound(q) == upper_bound(visible.begin(), visible.end(),\
     \ q) - visible.begin());\n        }\n    }\n}\n\nint main() {\n    regression_test();\n\
@@ -367,7 +377,7 @@ data:
   isVerificationFile: true
   path: test/mytest/data-structure/bit-queries.test.cpp
   requiredBy: []
-  timestamp: '2026-11-01 16:38:28+09:00'
+  timestamp: '2026-11-01 17:12:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/mytest/data-structure/bit-queries.test.cpp
