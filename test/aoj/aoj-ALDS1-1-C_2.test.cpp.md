@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/eratosthenes.hpp
     title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -19,7 +19,7 @@ data:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_C&lang=jp
   bundledCode: "#line 1 \"test/aoj/aoj-ALDS1-1-C_2.test.cpp\"\n#define PROBLEM \"\
     https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_C&lang=jp\"\n\
-    #line 1 \"template/template.cpp\"\n#pragma region Macros\n#include <bits/stdc++.h>\n\
+    #line 1 \"template/template.cpp\"\n// #region Macros\n#include <bits/stdc++.h>\n\
     using namespace std;\n// input output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
     \    struct has_val_impl {\n        template <class T>\n        static auto check(T\
     \ &&x) -> decltype(x.val(), std::true_type{});\n\n        template <class T> static\
@@ -164,16 +164,16 @@ data:
     \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
     \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
     \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
-    \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"math/eratosthenes.hpp\"\
-    \n\n#line 4 \"math/eratosthenes.hpp\"\n\nclass Eratosthenes {\n  public:\n   \
-    \ Eratosthenes() {}\n    explicit Eratosthenes(int n) : n(n), isp(n + 1, true)\
-    \ {\n        isp[0] = isp[1] = false;\n        for(int i = 2; i * i <= n; i++)\
-    \ {\n            if(!isp[i]) continue;\n            for(int j = i * i; j <= n;\
-    \ j += i) isp[j] = false;\n        }\n    }\n    bool operator[](int k) const\
-    \ { return isp[k]; }\n\n  private:\n    int n;\n    std::vector<bool> isp;\n};\n\
-    #line 4 \"test/aoj/aoj-ALDS1-1-C_2.test.cpp\"\n\nint main() {\n    INT(t);\n \
-    \   Eratosthenes isp(100000000);\n    int ans = 0;\n    while(t--) {\n       \
-    \ INT(n);\n        ans += isp[n];\n    }\n    print(ans);\n}\n"
+    \    return ord;\n}\n// #endregion Macros\n#line 2 \"math/eratosthenes.hpp\"\n\
+    \n#line 4 \"math/eratosthenes.hpp\"\n\nclass Eratosthenes {\n  public:\n    Eratosthenes()\
+    \ {}\n    explicit Eratosthenes(int n) : n(n), isp(n + 1, true) {\n        isp[0]\
+    \ = isp[1] = false;\n        for(int i = 2; i * i <= n; i++) {\n            if(!isp[i])\
+    \ continue;\n            for(int j = i * i; j <= n; j += i) isp[j] = false;\n\
+    \        }\n    }\n    bool operator[](int k) const { return isp[k]; }\n\n  private:\n\
+    \    int n;\n    std::vector<bool> isp;\n};\n#line 4 \"test/aoj/aoj-ALDS1-1-C_2.test.cpp\"\
+    \n\nint main() {\n    INT(t);\n    Eratosthenes isp(100000000);\n    int ans =\
+    \ 0;\n    while(t--) {\n        INT(n);\n        ans += isp[n];\n    }\n    print(ans);\n\
+    }\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_C&lang=jp\"\
     \n#include \"../../template/template.cpp\"\n#include \"../../math/eratosthenes.hpp\"\
     \n\nint main() {\n    INT(t);\n    Eratosthenes isp(100000000);\n    int ans =\
@@ -185,7 +185,7 @@ data:
   isVerificationFile: true
   path: test/aoj/aoj-ALDS1-1-C_2.test.cpp
   requiredBy: []
-  timestamp: '2024-09-08 23:17:50+09:00'
+  timestamp: '2026-11-01 17:39:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/aoj-ALDS1-1-C_2.test.cpp

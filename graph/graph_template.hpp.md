@@ -2,41 +2,41 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/namori.hpp
     title: "\u306A\u3082\u308A\u30B0\u30E9\u30D5\u306E\u5206\u89E3"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/range-edge-graph.hpp
     title: "\u533A\u9593\u306B\u8FBA\u3092\u5F35\u308B\u30B0\u30E9\u30D5"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/scc.hpp
     title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/shortest-path/bfs.hpp
     title: "\u5E45\u512A\u5148\u63A2\u7D22"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/shortest-path/dijkstra.hpp
     title: "Dijkstra \u6CD5"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/topological-sort.hpp
     title: "\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/tree/centroid-decomposition.hpp
     title: "\u91CD\u5FC3\u5206\u89E3"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/tree/diameter.hpp
     title: "\u6728\u306E\u76F4\u5F84"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/tree/hld.hpp
     title: Heavy Light Decomposition
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/tree/lca.hpp
     title: "\u6700\u5C0F\u5171\u901A\u7956\u5148\uFF08\u30C0\u30D6\u30EA\u30F3\u30B0\
       \uFF09"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/tree/tree-hash.hpp
     title: "\u6728\u30CF\u30C3\u30B7\u30E5"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/two_sat.hpp
     title: 2-SAT
   _extendedVerifiedWith:
@@ -55,45 +55,45 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
     title: test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/library-checker/data-structure/vertex-set-path-composite.test.cpp
     title: test/library-checker/data-structure/vertex-set-path-composite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/library-checker/graph/scc.test.cpp
     title: test/library-checker/graph/scc.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/library-checker/graph/shortest-path.test.cpp
     title: test/library-checker/graph/shortest-path.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/library-checker/math/two-sat.test.cpp
     title: test/library-checker/math/two-sat.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/library-checker/tree/lowest-common-ancestor.test.cpp
     title: test/library-checker/tree/lowest-common-ancestor.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/library-checker/tree/lowest-common-ancestor2.test.cpp
     title: test/library-checker/tree/lowest-common-ancestor2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/library-checker/tree/tree-diameter.test.cpp
     title: test/library-checker/tree/tree-diameter.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/graph/bfs-topological-sort.test.cpp
     title: test/mytest/graph/bfs-topological-sort.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/graph/graph-scc-two-sat.test.cpp
     title: test/mytest/graph/graph-scc-two-sat.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/graph/lca-and-empty-two-sat.test.cpp
     title: test/mytest/graph/lca-and-empty-two-sat.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/graph/range-edge-graph.test.cpp
     title: test/mytest/graph/range-edge-graph.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/graph/tree-api.test.cpp
     title: test/mytest/graph/tree-api.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/graph_template.hpp\"\n\n#include <cassert>\n#include\
@@ -147,7 +147,7 @@ data:
   - graph/namori.hpp
   - math/two_sat.hpp
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/library-checker/graph/scc.test.cpp
   - test/library-checker/graph/shortest-path.test.cpp

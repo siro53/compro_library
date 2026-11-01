@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/barrett-reduction.hpp
     title: Barrett Reduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/dynamic-modint.hpp
     title: "\u52D5\u7684\u6CD5 modint"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: "\u56FA\u5B9A\u6CD5 modint"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: modint/modint_2_61.hpp
     title: "\u6CD5 2^61-1 \u306E modint"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -28,7 +28,7 @@ data:
     - https://judge.yosupo.jp/problem/aplusb
   bundledCode: "#line 1 \"test/mytest/modint/dynamic-modint.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.yosupo.jp/problem/aplusb\"\n#line 1 \"template/template.cpp\"\
-    \n#pragma region Macros\n#include <bits/stdc++.h>\nusing namespace std;\n// input\
+    \n// #region Macros\n#include <bits/stdc++.h>\nusing namespace std;\n// input\
     \ output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
     \    struct has_val_impl {\n        template <class T>\n        static auto check(T\
     \ &&x) -> decltype(x.val(), std::true_type{});\n\n        template <class T> static\
@@ -173,7 +173,7 @@ data:
     \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
     \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
     \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
-    \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"modint/dynamic-modint.hpp\"\
+    \    return ord;\n}\n// #endregion Macros\n#line 2 \"modint/dynamic-modint.hpp\"\
     \n\n#line 6 \"modint/dynamic-modint.hpp\"\n\n#line 2 \"math/barrett-reduction.hpp\"\
     \n\n#line 4 \"math/barrett-reduction.hpp\"\n\nclass BarrettReduction {\npublic:\n\
     \    BarrettReduction(): BarrettReduction(1) {}\n    BarrettReduction(unsigned\
@@ -283,32 +283,33 @@ data:
     \ (is);\n    }\n    static constexpr unsigned long long get_mod() { return mod;\
     \ }\n\n  private:\n    unsigned long long x;\n    static constexpr unsigned long\
     \ long mod = (1LL << 61) - 1;\n};\n#line 6 \"test/mytest/modint/dynamic-modint.test.cpp\"\
-    \n\ntemplate<class mint> void check(ll mod) {\n    mt19937_64 rng(20261106);\n\
-    \    {\n        assert(mint::get_mod() == mod && mint().val() == 0);\n       \
+    \n\ntemplate<class mint> void check(ll mod) {\n    auto value = [](const mint\
+    \ &x) { return static_cast<ll>(x.val()); };\n    mt19937_64 rng(20261106);\n \
+    \   {\n        assert(mint::get_mod() == mod && value(mint()) == 0);\n       \
     \ auto normalize = [mod](ll x) { return (x % mod + mod) % mod; };\n        for(ll\
     \ x : {0LL, 1LL, -1LL, mod - 1, mod, -mod, LLONG_MAX, -LLONG_MAX}) {\n       \
-    \     assert(mint(x).val() == normalize(x));\n        }\n        for(int trial\
+    \     assert(value(mint(x)) == normalize(x));\n        }\n        for(int trial\
     \ = 0; trial < 500; ++trial) {\n            ll a = rng() % mod, b = rng() % mod;\n\
-    \            mint x(a), y(b);\n            assert((x + y).val() == (a + b) % mod);\n\
-    \            assert((x - y).val() == normalize(a - b));\n            assert((x\
-    \ * y).val() == (__int128)a * b % mod);\n            assert((-x).val() == normalize(-a));\n\
+    \            mint x(a), y(b);\n            assert(value(x + y) == (a + b) % mod);\n\
+    \            assert(value(x - y) == normalize(a - b));\n            assert(value(x\
+    \ * y) == (__int128)a * b % mod);\n            assert(value(-x) == normalize(-a));\n\
     \            assert((x == y) == (a == b) && (x != y) == (a != b));\n         \
     \   mint copy = x;\n            assert(&(copy += y) == &copy && copy == x + y);\n\
     \            copy = x;\n            assert(&(copy -= y) == &copy && copy == x\
     \ - y);\n            copy = x;\n            assert(&(copy *= y) == &copy && copy\
-    \ == x * y);\n            assert(x.val() == a && y.val() == b);\n            ll\
-    \ expected = 1;\n            for(int exponent = 0; exponent < 20; ++exponent)\
-    \ {\n                assert(x.pow(exponent).val() == expected);\n            \
-    \    expected = (__int128)expected * a % mod;\n            }\n            if(gcd(b,\
+    \ == x * y);\n            assert(value(x) == a && value(y) == b);\n          \
+    \  ll expected = 1;\n            for(int exponent = 0; exponent < 20; ++exponent)\
+    \ {\n                assert(value(x.pow(exponent)) == expected);\n           \
+    \     expected = (__int128)expected * a % mod;\n            }\n            if(gcd(b,\
     \ mod) == 1) {\n                // The inverse is characterized by b * inv(b)\
     \ == 1 mod m.\n                assert((__int128)y.inv().val() * b % mod == 1);\n\
     \                assert((x / y * y) == x);\n                copy = x;\n      \
     \          assert(&(copy /= y) == &copy && copy == x / y);\n            }\n  \
-    \      }\n        assert(mint(1).pow(LLONG_MAX).val() == 1);\n        stringstream\
+    \      }\n        assert(value(mint(1).pow(LLONG_MAX)) == 1);\n        stringstream\
     \ stream;\n        stream << mint(-1) << ' ' << mint(0);\n        assert(stream.str()\
     \ == to_string(mod - 1) + \" 0\");\n        mint x, y;\n        stream >> x >>\
-    \ y;\n        assert(x.val() == mod - 1 && y.val() == 0);\n        stringstream\
-    \ negative(\"-123456789012345\");\n        negative >> x;\n        assert(x.val()\
+    \ y;\n        assert(value(x) == mod - 1 && value(y) == 0);\n        stringstream\
+    \ negative(\"-123456789012345\");\n        negative >> x;\n        assert(value(x)\
     \ == normalize(-123456789012345LL));\n    }\n}\n\nint main() {\n    for(ll mod\
     \ : {2LL, 4LL, 7LL, 12LL, 998244353LL, 1000000007LL, 2147483647LL}) {\n      \
     \  DynamicModInt::set_mod(mod);\n        check<DynamicModInt>(mod);\n    }\n \
@@ -317,32 +318,33 @@ data:
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../template/template.cpp\"\
     \n#include \"../../../modint/dynamic-modint.hpp\"\n#include \"../../../modint/modint.hpp\"\
     \n#include \"../../../modint/modint_2_61.hpp\"\n\ntemplate<class mint> void check(ll\
-    \ mod) {\n    mt19937_64 rng(20261106);\n    {\n        assert(mint::get_mod()\
-    \ == mod && mint().val() == 0);\n        auto normalize = [mod](ll x) { return\
-    \ (x % mod + mod) % mod; };\n        for(ll x : {0LL, 1LL, -1LL, mod - 1, mod,\
-    \ -mod, LLONG_MAX, -LLONG_MAX}) {\n            assert(mint(x).val() == normalize(x));\n\
+    \ mod) {\n    auto value = [](const mint &x) { return static_cast<ll>(x.val());\
+    \ };\n    mt19937_64 rng(20261106);\n    {\n        assert(mint::get_mod() ==\
+    \ mod && value(mint()) == 0);\n        auto normalize = [mod](ll x) { return (x\
+    \ % mod + mod) % mod; };\n        for(ll x : {0LL, 1LL, -1LL, mod - 1, mod, -mod,\
+    \ LLONG_MAX, -LLONG_MAX}) {\n            assert(value(mint(x)) == normalize(x));\n\
     \        }\n        for(int trial = 0; trial < 500; ++trial) {\n            ll\
     \ a = rng() % mod, b = rng() % mod;\n            mint x(a), y(b);\n          \
-    \  assert((x + y).val() == (a + b) % mod);\n            assert((x - y).val() ==\
-    \ normalize(a - b));\n            assert((x * y).val() == (__int128)a * b % mod);\n\
-    \            assert((-x).val() == normalize(-a));\n            assert((x == y)\
+    \  assert(value(x + y) == (a + b) % mod);\n            assert(value(x - y) ==\
+    \ normalize(a - b));\n            assert(value(x * y) == (__int128)a * b % mod);\n\
+    \            assert(value(-x) == normalize(-a));\n            assert((x == y)\
     \ == (a == b) && (x != y) == (a != b));\n            mint copy = x;\n        \
     \    assert(&(copy += y) == &copy && copy == x + y);\n            copy = x;\n\
     \            assert(&(copy -= y) == &copy && copy == x - y);\n            copy\
     \ = x;\n            assert(&(copy *= y) == &copy && copy == x * y);\n        \
-    \    assert(x.val() == a && y.val() == b);\n            ll expected = 1;\n   \
-    \         for(int exponent = 0; exponent < 20; ++exponent) {\n               \
-    \ assert(x.pow(exponent).val() == expected);\n                expected = (__int128)expected\
+    \    assert(value(x) == a && value(y) == b);\n            ll expected = 1;\n \
+    \           for(int exponent = 0; exponent < 20; ++exponent) {\n             \
+    \   assert(value(x.pow(exponent)) == expected);\n                expected = (__int128)expected\
     \ * a % mod;\n            }\n            if(gcd(b, mod) == 1) {\n            \
     \    // The inverse is characterized by b * inv(b) == 1 mod m.\n             \
     \   assert((__int128)y.inv().val() * b % mod == 1);\n                assert((x\
     \ / y * y) == x);\n                copy = x;\n                assert(&(copy /=\
-    \ y) == &copy && copy == x / y);\n            }\n        }\n        assert(mint(1).pow(LLONG_MAX).val()\
+    \ y) == &copy && copy == x / y);\n            }\n        }\n        assert(value(mint(1).pow(LLONG_MAX))\
     \ == 1);\n        stringstream stream;\n        stream << mint(-1) << ' ' << mint(0);\n\
     \        assert(stream.str() == to_string(mod - 1) + \" 0\");\n        mint x,\
-    \ y;\n        stream >> x >> y;\n        assert(x.val() == mod - 1 && y.val()\
+    \ y;\n        stream >> x >> y;\n        assert(value(x) == mod - 1 && value(y)\
     \ == 0);\n        stringstream negative(\"-123456789012345\");\n        negative\
-    \ >> x;\n        assert(x.val() == normalize(-123456789012345LL));\n    }\n}\n\
+    \ >> x;\n        assert(value(x) == normalize(-123456789012345LL));\n    }\n}\n\
     \nint main() {\n    for(ll mod : {2LL, 4LL, 7LL, 12LL, 998244353LL, 1000000007LL,\
     \ 2147483647LL}) {\n        DynamicModInt::set_mod(mod);\n        check<DynamicModInt>(mod);\n\
     \    }\n    check<ModInt<7>>(7);\n    check<ModInt<12>>(12);\n    check<ModInt<998244353>>(998244353);\n\
@@ -356,8 +358,8 @@ data:
   isVerificationFile: true
   path: test/mytest/modint/dynamic-modint.test.cpp
   requiredBy: []
-  timestamp: '2026-11-01 17:12:16+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-11-01 17:39:57+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/mytest/modint/dynamic-modint.test.cpp
 layout: document

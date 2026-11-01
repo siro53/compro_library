@@ -1,107 +1,107 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/base.hpp
     title: "\u5E7E\u4F55\u306E\u57FA\u672C\u578B"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/ccw.hpp
     title: "3 \u70B9\u306E\u4F4D\u7F6E\u95A2\u4FC2"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/circle.hpp
     title: "\u5186"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/convex-cut.hpp
     title: "\u51F8\u591A\u89D2\u5F62\u306E\u5207\u65AD"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/convex-hull.hpp
     title: "\u51F8\u5305"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/cross-point.hpp
     title: "\u4EA4\u70B9"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/cross.hpp
     title: "\u5916\u7A4D"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/degree-to-radian.hpp
     title: "\u5EA6\u304B\u3089\u30E9\u30B8\u30A2\u30F3"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/distance-between-line-and-point.hpp
     title: "\u76F4\u7DDA\u3068\u70B9\u306E\u8DDD\u96E2"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/distance-between-segment-and-point.hpp
     title: "\u7DDA\u5206\u3068\u70B9\u306E\u8DDD\u96E2"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/distance-between-segments.hpp
     title: "\u7DDA\u5206\u9593\u306E\u8DDD\u96E2"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/dot.hpp
     title: "\u5185\u7A4D"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/is-contained.hpp
     title: "\u591A\u89D2\u5F62\u3078\u306E\u5305\u542B\u5224\u5B9A"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/is-convex.hpp
     title: "\u51F8\u591A\u89D2\u5F62\u5224\u5B9A"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/is-in-circle.hpp
     title: "\u5186\u3078\u306E\u5305\u542B\u5224\u5B9A"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/is-intersect.hpp
     title: "\u4EA4\u5DEE\u5224\u5B9A"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/is-orthogonal.hpp
     title: "\u76F4\u7DDA\u306E\u76F4\u4EA4\u5224\u5B9A"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/is-parallel.hpp
     title: "\u76F4\u7DDA\u306E\u5E73\u884C\u5224\u5B9A"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/is-point-on-line.hpp
     title: "\u70B9\u304C\u76F4\u7DDA\u4E0A\u306B\u3042\u308B\u304B"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/is-point-on-segment.hpp
     title: "\u70B9\u304C\u7DDA\u5206\u4E0A\u306B\u3042\u308B\u304B"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/line.hpp
     title: "\u76F4\u7DDA"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/normal-vector.hpp
     title: "\u6CD5\u7DDA\u30D9\u30AF\u30C8\u30EB"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/polygon-area.hpp
     title: "\u591A\u89D2\u5F62\u306E\u7B26\u53F7\u4ED8\u304D\u9762\u7A4D"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/projection.hpp
     title: "\u5C04\u5F71"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/radian-to-degree.hpp
     title: "\u30E9\u30B8\u30A2\u30F3\u304B\u3089\u5EA6"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/reflection.hpp
     title: "\u76F4\u7DDA\u306B\u5BFE\u3059\u308B\u53CD\u5C04"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/rotate.hpp
     title: "\u70B9\u30FB\u30D9\u30AF\u30C8\u30EB\u306E\u56DE\u8EE2"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/segment.hpp
     title: "\u7DDA\u5206"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/tangent-to-circle.hpp
     title: "\u70B9\u304B\u3089\u5186\u3078\u306E\u63A5\u7DDA"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/tangent.hpp
     title: "2 \u5186\u306E\u5171\u901A\u63A5\u7DDA"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/unit-vector.hpp
     title: "\u5358\u4F4D\u30D9\u30AF\u30C8\u30EB"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/geometry/geometry-api.test.cpp
     title: test/mytest/geometry/geometry-api.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/geometry.hpp\"\n\n// Compatibility header: include\
@@ -460,7 +460,7 @@ data:
   path: geometry/geometry.hpp
   requiredBy: []
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/mytest/geometry/geometry-api.test.cpp
 documentation_of: geometry/geometry.hpp

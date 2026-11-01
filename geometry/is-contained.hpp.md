@@ -1,30 +1,30 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/base.hpp
     title: "\u5E7E\u4F55\u306E\u57FA\u672C\u578B"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/cross.hpp
     title: "\u5916\u7A4D"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/dot.hpp
     title: "\u5185\u7A4D"
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/geometry.hpp
     title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA\uFF08\u307E\u3068\u3081\u3066\
       \ include\uFF09"
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/geometry/geometry-api.test.cpp
     title: test/mytest/geometry/geometry-api.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/geometry/geometry.test.cpp
     title: test/mytest/geometry/geometry.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/is-contained.hpp\"\n\n#include <vector>\n\n#line\
@@ -71,7 +71,7 @@ data:
   requiredBy:
   - geometry/geometry.hpp
   timestamp: '2026-08-30 15:33:14+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/mytest/geometry/geometry.test.cpp
   - test/mytest/geometry/geometry-api.test.cpp

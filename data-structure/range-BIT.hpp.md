@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/BIT.hpp
     title: Binary Indexed Tree
   _extendedRequiredBy: []
@@ -9,12 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj-DSL-2-G.test.cpp
     title: test/aoj/aoj-DSL-2-G.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/data-structure/range-bit.test.cpp
     title: test/mytest/data-structure/range-bit.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data-structure/range-BIT.hpp\"\n\n#line 2 \"data-structure/BIT.hpp\"\
@@ -52,7 +52,7 @@ data:
   path: data-structure/range-BIT.hpp
   requiredBy: []
   timestamp: '2023-10-30 20:10:44+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/mytest/data-structure/range-bit.test.cpp
   - test/aoj/aoj-DSL-2-G.test.cpp

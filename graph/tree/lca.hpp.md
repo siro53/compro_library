@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u69CB\u9020\u4F53"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/library-checker/tree/lowest-common-ancestor.test.cpp
     title: test/library-checker/tree/lowest-common-ancestor.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/graph/lca-and-empty-two-sat.test.cpp
     title: test/mytest/graph/lca-and-empty-two-sat.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/graph/tree-api.test.cpp
     title: test/mytest/graph/tree-api.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/tree/lca.hpp\"\n\n#include <cmath>\n#include <vector>\n\
@@ -88,7 +88,7 @@ data:
   path: graph/tree/lca.hpp
   requiredBy: []
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/library-checker/tree/lowest-common-ancestor.test.cpp
   - test/mytest/graph/lca-and-empty-two-sat.test.cpp

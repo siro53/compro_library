@@ -1,60 +1,60 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/monoid/add.hpp
     title: "\u52A0\u7B97\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/monoid/affine.hpp
     title: "\u30A2\u30D5\u30A3\u30F3\u5909\u63DB\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data-structure/monoid/and.hpp
     title: "\u30D3\u30C3\u30C8 AND\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data-structure/monoid/gcd.hpp
     title: "\u6700\u5927\u516C\u7D04\u6570\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data-structure/monoid/kadane.hpp
     title: "\u6700\u5927\u90E8\u5206\u914D\u5217\u548C\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data-structure/monoid/lcm.hpp
     title: "\u6700\u5C0F\u516C\u500D\u6570\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data-structure/monoid/max.hpp
     title: "\u6700\u5927\u5024\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data-structure/monoid/max_index.hpp
     title: "\u6DFB\u5B57\u4ED8\u304D\u6700\u5927\u5024\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/monoid/min.hpp
     title: "\u6700\u5C0F\u5024\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data-structure/monoid/min_index.hpp
     title: "\u6DFB\u5B57\u4ED8\u304D\u6700\u5C0F\u5024\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data-structure/monoid/or.hpp
     title: "\u30D3\u30C3\u30C8 OR\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data-structure/monoid/rolling_hash.hpp
     title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5\u30E2\u30CE\u30A4\
       \u30C9"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data-structure/monoid/sum_count.hpp
     title: "\u548C\u30FB\u500B\u6570\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: modint/modint_2_61.hpp
     title: "\u6CD5 2^61-1 \u306E modint"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: string/rolling-hash.hpp
     title: Rolling Hash
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -62,7 +62,7 @@ data:
     - https://judge.yosupo.jp/problem/aplusb
   bundledCode: "#line 1 \"test/mytest/data-structure/monoids.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.yosupo.jp/problem/aplusb\"\n#line 1 \"template/template.cpp\"\
-    \n#pragma region Macros\n#include <bits/stdc++.h>\nusing namespace std;\n// input\
+    \n// #region Macros\n#include <bits/stdc++.h>\nusing namespace std;\n// input\
     \ output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
     \    struct has_val_impl {\n        template <class T>\n        static auto check(T\
     \ &&x) -> decltype(x.val(), std::true_type{});\n\n        template <class T> static\
@@ -207,7 +207,7 @@ data:
     \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
     \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
     \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
-    \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"data-structure/monoid/add.hpp\"\
+    \    return ord;\n}\n// #endregion Macros\n#line 2 \"data-structure/monoid/add.hpp\"\
     \n\ntemplate <typename T> struct MonoidAdd {\n    using value_type = T;\n    inline\
     \ static T op(const T &l, const T &r) { return (l + r); }\n    inline static T\
     \ e() { return T(0); }\n};\n#line 2 \"data-structure/monoid/affine.hpp\"\n\n#line\
@@ -312,21 +312,21 @@ data:
     \n\ntemplate <int N> struct MonoidRollingHash {\n  public:\n    using mint = ModInt_2_61;\n\
     \    struct S {\n        mint h;\n        int len;\n        S() {}\n        S(mint\
     \ h, int len) : h(h), len(len) {}\n    };\n    using value_type = S;\n\n    static\
-    \ inline S op(const S &a, const S &b) {\n        static auto [base, powers] =\
-    \ gen();\n        mint h = a.h + b.h * powers[a.len];\n        int len = a.len\
-    \ + b.len;\n        return S(h, len);\n    }\n    static inline S e() { return\
-    \ S(0, 0); }\n\n  private:\n    static std::pair<mint, std::array<mint, N>> gen()\
-    \ {\n        mint base = RollingHash::gen_base();\n        std::array<mint, N>\
-    \ powers;\n        powers[0] = 1;\n        for(int i = 1; i < N; i++) powers[i]\
-    \ = powers[i - 1] * base;\n        return std::make_pair(base, powers);\n    }\n\
-    };\n#line 2 \"data-structure/monoid/kadane.hpp\"\n\n#line 5 \"data-structure/monoid/kadane.hpp\"\
-    \n\n// ref: https://hotman78.hatenablog.com/entry/2020/06/17/102519\ntemplate\
-    \ <typename T> struct MonoidKadane {\n    struct S {\n        T lmax, rmax, allmax,\
-    \ sum;\n        S() = default;\n        S(T lmax, T rmax, T allmax, T sum)\n \
-    \           : lmax(lmax), rmax(rmax), allmax(allmax), sum(sum) {}\n    };\n  \
-    \  using value_type = S;\n    inline static S op(const S &l, const S &r) {\n \
-    \       const T m = std::numeric_limits<T>::lowest();\n        if(l.lmax == m\
-    \ && l.rmax == m && l.allmax == m && l.sum == T(0)) return r;\n        if(r.lmax\
+    \ inline S op(const S &a, const S &b) {\n        static const auto parameters\
+    \ = gen();\n        const auto &powers = parameters.second;\n        mint h =\
+    \ a.h + b.h * powers[a.len];\n        int len = a.len + b.len;\n        return\
+    \ S(h, len);\n    }\n    static inline S e() { return S(0, 0); }\n\n  private:\n\
+    \    static std::pair<mint, std::array<mint, N>> gen() {\n        mint base =\
+    \ RollingHash::gen_base();\n        std::array<mint, N> powers;\n        powers[0]\
+    \ = 1;\n        for(int i = 1; i < N; i++) powers[i] = powers[i - 1] * base;\n\
+    \        return std::make_pair(base, powers);\n    }\n};\n#line 2 \"data-structure/monoid/kadane.hpp\"\
+    \n\n#line 5 \"data-structure/monoid/kadane.hpp\"\n\n// ref: https://hotman78.hatenablog.com/entry/2020/06/17/102519\n\
+    template <typename T> struct MonoidKadane {\n    struct S {\n        T lmax, rmax,\
+    \ allmax, sum;\n        S() = default;\n        S(T lmax, T rmax, T allmax, T\
+    \ sum)\n            : lmax(lmax), rmax(rmax), allmax(allmax), sum(sum) {}\n  \
+    \  };\n    using value_type = S;\n    inline static S op(const S &l, const S &r)\
+    \ {\n        const T m = std::numeric_limits<T>::lowest();\n        if(l.lmax\
+    \ == m && l.rmax == m && l.allmax == m && l.sum == T(0)) return r;\n        if(r.lmax\
     \ == m && r.rmax == m && r.allmax == m && r.sum == T(0)) return l;\n        T\
     \ lmax = std::max(l.lmax, l.sum + r.lmax);\n        T rmax = std::max(r.rmax,\
     \ l.rmax + r.sum);\n        T allmax = std::max({l.allmax, r.allmax, l.rmax +\
@@ -363,10 +363,12 @@ data:
     \ * (2 * x - 1) + b);\n            assert(right.first * x + right.second == 2\
     \ * (a * x + b) - 1);\n        }\n    }\n    using Hash = MonoidRollingHash<64>;\n\
     \    Hash::S h; h = Hash::e();\n    auto base = Hash::op(Hash::S(0, 1), Hash::S(1,\
-    \ 1)).h;\n    Hash::mint expected = 0, power = 1;\n    for(int i = 1; i <= 30;\
-    \ ++i) {\n        h = Hash::op(h, Hash::S(i, 1)); expected += power * i; power\
-    \ *= base;\n        assert(h.h == expected && h.len == i);\n        assert(Hash::op(Hash::e(),\
-    \ h).h == h.h && Hash::op(h, Hash::e()).h == h.h);\n    }\n    using K = MonoidKadane<ll>;\n\
+    \ 1)).h;\n    // Repeated calls must reuse the same base and powers in C++17.\n\
+    \    assert(Hash::op(Hash::S(0, 1), Hash::S(1, 1)).h == base);\n    Hash::mint\
+    \ expected = 0, power = 1;\n    for(int i = 1; i <= 30; ++i) {\n        h = Hash::op(h,\
+    \ Hash::S(i, 1)); expected += power * i; power *= base;\n        assert(h.h ==\
+    \ expected && h.len == i);\n        assert(Hash::op(Hash::e(), h).h == h.h &&\
+    \ Hash::op(h, Hash::e()).h == h.h);\n    }\n    using K = MonoidKadane<ll>;\n\
     \    vector<ll> a{-7, 2, 3, -8, 9, -1};\n    for(int l = 0; l < int(a.size());\
     \ ++l) for(int r = l + 1; r <= int(a.size()); ++r) {\n        K::S x; x = K::e();\n\
     \        ll sum = 0, prefix = LLONG_MIN, suffix = LLONG_MIN, best = LLONG_MIN;\n\
@@ -414,10 +416,12 @@ data:
     \ * (2 * x - 1) + b);\n            assert(right.first * x + right.second == 2\
     \ * (a * x + b) - 1);\n        }\n    }\n    using Hash = MonoidRollingHash<64>;\n\
     \    Hash::S h; h = Hash::e();\n    auto base = Hash::op(Hash::S(0, 1), Hash::S(1,\
-    \ 1)).h;\n    Hash::mint expected = 0, power = 1;\n    for(int i = 1; i <= 30;\
-    \ ++i) {\n        h = Hash::op(h, Hash::S(i, 1)); expected += power * i; power\
-    \ *= base;\n        assert(h.h == expected && h.len == i);\n        assert(Hash::op(Hash::e(),\
-    \ h).h == h.h && Hash::op(h, Hash::e()).h == h.h);\n    }\n    using K = MonoidKadane<ll>;\n\
+    \ 1)).h;\n    // Repeated calls must reuse the same base and powers in C++17.\n\
+    \    assert(Hash::op(Hash::S(0, 1), Hash::S(1, 1)).h == base);\n    Hash::mint\
+    \ expected = 0, power = 1;\n    for(int i = 1; i <= 30; ++i) {\n        h = Hash::op(h,\
+    \ Hash::S(i, 1)); expected += power * i; power *= base;\n        assert(h.h ==\
+    \ expected && h.len == i);\n        assert(Hash::op(Hash::e(), h).h == h.h &&\
+    \ Hash::op(h, Hash::e()).h == h.h);\n    }\n    using K = MonoidKadane<ll>;\n\
     \    vector<ll> a{-7, 2, 3, -8, 9, -1};\n    for(int l = 0; l < int(a.size());\
     \ ++l) for(int r = l + 1; r <= int(a.size()); ++r) {\n        K::S x; x = K::e();\n\
     \        ll sum = 0, prefix = LLONG_MIN, suffix = LLONG_MIN, best = LLONG_MIN;\n\
@@ -447,8 +451,8 @@ data:
   isVerificationFile: true
   path: test/mytest/data-structure/monoids.test.cpp
   requiredBy: []
-  timestamp: '2026-11-01 17:12:16+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-11-01 17:39:57+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/mytest/data-structure/monoids.test.cpp
 layout: document

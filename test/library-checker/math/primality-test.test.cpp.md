@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/is-prime.hpp
     title: "\u7D20\u6570\u5224\u5B9A"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/pow_mod.hpp
     title: "\u5270\u4F59\u4ED8\u304D\u7D2F\u4E57"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/primality_test
@@ -22,7 +22,7 @@ data:
     - https://judge.yosupo.jp/problem/primality_test
   bundledCode: "#line 1 \"test/library-checker/math/primality-test.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/primality_test\"\n#line 1 \"template/template.cpp\"\
-    \n#pragma region Macros\n#include <bits/stdc++.h>\nusing namespace std;\n// input\
+    \n// #region Macros\n#include <bits/stdc++.h>\nusing namespace std;\n// input\
     \ output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
     \    struct has_val_impl {\n        template <class T>\n        static auto check(T\
     \ &&x) -> decltype(x.val(), std::true_type{});\n\n        template <class T> static\
@@ -167,7 +167,7 @@ data:
     \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
     \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
     \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
-    \    return ord;\n}\n#pragma endregion Macros\n#line 3 \"test/library-checker/math/primality-test.test.cpp\"\
+    \    return ord;\n}\n// #endregion Macros\n#line 3 \"test/library-checker/math/primality-test.test.cpp\"\
     \n\n#line 2 \"math/is-prime.hpp\"\n\n#line 4 \"math/is-prime.hpp\"\n\n#line 2\
     \ \"math/pow_mod.hpp\"\n\nconstexpr long long pow_mod(long long x, long long k,\
     \ long long m) {\n    long long res = 1 % m;\n    long long mul = (x >= 0 ? x\
@@ -205,8 +205,8 @@ data:
   isVerificationFile: true
   path: test/library-checker/math/primality-test.test.cpp
   requiredBy: []
-  timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-11-01 17:39:57+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/library-checker/math/primality-test.test.cpp
 layout: document

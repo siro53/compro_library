@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/BIT.hpp
     title: Binary Indexed Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -19,8 +19,8 @@ data:
     - https://judge.yosupo.jp/problem/static_range_sum
   bundledCode: "#line 1 \"test/library-checker/data-structure/static-range-sum.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_sum\"\n#line\
-    \ 1 \"template/template.cpp\"\n#pragma region Macros\n#include <bits/stdc++.h>\n\
-    using namespace std;\n// input output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
+    \ 1 \"template/template.cpp\"\n// #region Macros\n#include <bits/stdc++.h>\nusing\
+    \ namespace std;\n// input output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
     \    struct has_val_impl {\n        template <class T>\n        static auto check(T\
     \ &&x) -> decltype(x.val(), std::true_type{});\n\n        template <class T> static\
     \ auto check(...) -> std::false_type;\n    };\n\n    template <class T>\n    class\
@@ -164,21 +164,20 @@ data:
     \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
     \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
     \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
-    \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"data-structure/BIT.hpp\"\
-    \n\n#line 5 \"data-structure/BIT.hpp\"\n\ntemplate <typename T> class BIT {\n\
-    \  public:\n    BIT() = default;\n    explicit BIT(int N) : N(N), dat(N + 1, 0)\
-    \ {}\n    T sum(int r) {\n        T ret = 0;\n        for(; r >= 1; r -= lsb(r))\
-    \ ret += dat[r];\n        return ret;\n    }\n    T sum(int l, int r) {\n    \
-    \    assert(l <= r);\n        if(l == r) return T(0);\n        return (sum(r)\
-    \ - sum(l));\n    }\n    void add(int pos, T val) {\n        for(int i = pos +\
-    \ 1; i <= N; i += lsb(i)) dat[i] += val;\n    }\n    int lower_bound(T val) {\n\
-    \        int pos = 0;\n        int k = 1;\n        while(2 * k <= N) k <<= 1;\n\
-    \        for(; k >= 1; k >>= 1) {\n            if(pos + k <= N and dat[pos + k]\
-    \ < val) {\n                pos += k;\n                val -= dat[pos];\n    \
-    \        }\n        }\n        return pos + 1;\n    }\n\n  private:\n    int N;\n\
-    \    std::vector<T> dat;\n\n    inline int lsb(int i) { return i & (-i); }\n};\n\
-    #line 4 \"test/library-checker/data-structure/static-range-sum.test.cpp\"\n\n\
-    int main() {\n    int N, Q;\n    cin >> N >> Q;\n    BIT<ll> bt(N);\n    REP(i,\
+    \    return ord;\n}\n// #endregion Macros\n#line 2 \"data-structure/BIT.hpp\"\n\
+    \n#line 5 \"data-structure/BIT.hpp\"\n\ntemplate <typename T> class BIT {\n  public:\n\
+    \    BIT() = default;\n    explicit BIT(int N) : N(N), dat(N + 1, 0) {}\n    T\
+    \ sum(int r) {\n        T ret = 0;\n        for(; r >= 1; r -= lsb(r)) ret +=\
+    \ dat[r];\n        return ret;\n    }\n    T sum(int l, int r) {\n        assert(l\
+    \ <= r);\n        if(l == r) return T(0);\n        return (sum(r) - sum(l));\n\
+    \    }\n    void add(int pos, T val) {\n        for(int i = pos + 1; i <= N; i\
+    \ += lsb(i)) dat[i] += val;\n    }\n    int lower_bound(T val) {\n        int\
+    \ pos = 0;\n        int k = 1;\n        while(2 * k <= N) k <<= 1;\n        for(;\
+    \ k >= 1; k >>= 1) {\n            if(pos + k <= N and dat[pos + k] < val) {\n\
+    \                pos += k;\n                val -= dat[pos];\n            }\n\
+    \        }\n        return pos + 1;\n    }\n\n  private:\n    int N;\n    std::vector<T>\
+    \ dat;\n\n    inline int lsb(int i) { return i & (-i); }\n};\n#line 4 \"test/library-checker/data-structure/static-range-sum.test.cpp\"\
+    \n\nint main() {\n    int N, Q;\n    cin >> N >> Q;\n    BIT<ll> bt(N);\n    REP(i,\
     \ N) {\n        ll a;\n        cin >> a;\n        bt.add(i, a);\n    }\n    while(Q--)\
     \ {\n        int l, r;\n        cin >> l >> r;\n        cout << bt.sum(l, r) <<\
     \ '\\n';\n    }\n}\n"
@@ -194,7 +193,7 @@ data:
   isVerificationFile: true
   path: test/library-checker/data-structure/static-range-sum.test.cpp
   requiredBy: []
-  timestamp: '2024-09-08 23:17:50+09:00'
+  timestamp: '2026-11-01 17:39:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/library-checker/data-structure/static-range-sum.test.cpp

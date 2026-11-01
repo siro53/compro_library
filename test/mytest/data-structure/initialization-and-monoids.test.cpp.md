@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data-structure/monoid/and.hpp
     title: "\u30D3\u30C3\u30C8 AND\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data-structure/monoid/kadane.hpp
     title: "\u6700\u5927\u90E8\u5206\u914D\u5217\u548C\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/persistent/persistent-array.hpp
     title: "\u6C38\u7D9A\u914D\u5217"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/segtree/segtree.hpp
     title: Segment Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -28,7 +28,7 @@ data:
     - https://judge.yosupo.jp/problem/aplusb
   bundledCode: "#line 1 \"test/mytest/data-structure/initialization-and-monoids.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#line 1 \"template/template.cpp\"\
-    \n#pragma region Macros\n#include <bits/stdc++.h>\nusing namespace std;\n// input\
+    \n// #region Macros\n#include <bits/stdc++.h>\nusing namespace std;\n// input\
     \ output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
     \    struct has_val_impl {\n        template <class T>\n        static auto check(T\
     \ &&x) -> decltype(x.val(), std::true_type{});\n\n        template <class T> static\
@@ -173,7 +173,7 @@ data:
     \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
     \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
     \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
-    \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"data-structure/persistent/persistent-array.hpp\"\
+    \    return ord;\n}\n// #endregion Macros\n#line 2 \"data-structure/persistent/persistent-array.hpp\"\
     \n\n#line 6 \"data-structure/persistent/persistent-array.hpp\"\n\ntemplate <class\
     \ T, int LOG = 4> struct PersistentArray {\n    struct Node {\n        T val;\n\
     \        Node *childs[1 << LOG];\n\n        Node(): val{} { memset(childs, 0,\
@@ -316,8 +316,8 @@ data:
   isVerificationFile: true
   path: test/mytest/data-structure/initialization-and-monoids.test.cpp
   requiredBy: []
-  timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-11-01 17:39:57+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/mytest/data-structure/initialization-and-monoids.test.cpp
 layout: document

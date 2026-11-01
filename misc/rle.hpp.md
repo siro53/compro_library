@@ -3,18 +3,18 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/misc/utilities.test.cpp
     title: test/mytest/misc/utilities.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/string/empty-inputs.test.cpp
     title: test/mytest/string/empty-inputs.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/yuki1469.test.cpp
     title: test/yukicoder/yuki1469.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"misc/rle.hpp\"\n\n#include <string>\n#include <vector>\n\
@@ -42,7 +42,7 @@ data:
   path: misc/rle.hpp
   requiredBy: []
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yukicoder/yuki1469.test.cpp
   - test/mytest/string/empty-inputs.test.cpp

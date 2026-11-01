@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u69CB\u9020\u4F53"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/scc.hpp
     title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/scc
@@ -22,8 +22,8 @@ data:
     - https://judge.yosupo.jp/problem/scc
   bundledCode: "#line 1 \"test/library-checker/graph/scc.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.yosupo.jp/problem/scc\"\n#line 1 \"template/template.cpp\"\n\
-    #pragma region Macros\n#include <bits/stdc++.h>\nusing namespace std;\n// input\
-    \ output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
+    // #region Macros\n#include <bits/stdc++.h>\nusing namespace std;\n// input output\
+    \ utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
     \    struct has_val_impl {\n        template <class T>\n        static auto check(T\
     \ &&x) -> decltype(x.val(), std::true_type{});\n\n        template <class T> static\
     \ auto check(...) -> std::false_type;\n    };\n\n    template <class T>\n    class\
@@ -167,7 +167,7 @@ data:
     \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
     \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
     \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
-    \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"graph/scc.hpp\"\n\n#line\
+    \    return ord;\n}\n// #endregion Macros\n#line 2 \"graph/scc.hpp\"\n\n#line\
     \ 6 \"graph/scc.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\n\n#line 6 \"graph/graph_template.hpp\"\
     \n\ntemplate <typename Cost = int> struct Edge {\n    int from, to;\n    Cost\
     \ cost;\n    int id;\n    Edge() = default;\n    explicit Edge(int from, int to,\
@@ -235,8 +235,8 @@ data:
   isVerificationFile: true
   path: test/library-checker/graph/scc.test.cpp
   requiredBy: []
-  timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-11-01 17:39:57+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/library-checker/graph/scc.test.cpp
 layout: document

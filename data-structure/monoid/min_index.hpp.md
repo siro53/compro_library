@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/data-structure/monoids.test.cpp
     title: test/mytest/data-structure/monoids.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data-structure/monoid/min_index.hpp\"\n\n#include <algorithm>\n\
@@ -27,7 +27,7 @@ data:
   path: data-structure/monoid/min_index.hpp
   requiredBy: []
   timestamp: '2023-12-24 03:50:37+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/mytest/data-structure/monoids.test.cpp
 documentation_of: data-structure/monoid/min_index.hpp

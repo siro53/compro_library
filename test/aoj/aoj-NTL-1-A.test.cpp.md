@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/prime-factor.hpp
     title: "\u8A66\u3057\u5272\u308A\u306B\u3088\u308B\u7D20\u56E0\u6570\u5206\u89E3"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -18,7 +18,7 @@ data:
     links:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_A
   bundledCode: "#line 1 \"test/aoj/aoj-NTL-1-A.test.cpp\"\n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_A\"\
-    \n#line 1 \"template/template.cpp\"\n#pragma region Macros\n#include <bits/stdc++.h>\n\
+    \n#line 1 \"template/template.cpp\"\n// #region Macros\n#include <bits/stdc++.h>\n\
     using namespace std;\n// input output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
     \    struct has_val_impl {\n        template <class T>\n        static auto check(T\
     \ &&x) -> decltype(x.val(), std::true_type{});\n\n        template <class T> static\
@@ -163,8 +163,8 @@ data:
     \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
     \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
     \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
-    \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"math/prime-factor.hpp\"\
-    \n\n#line 4 \"math/prime-factor.hpp\"\n#include <type_traits>\n\ntemplate <class\
+    \    return ord;\n}\n// #endregion Macros\n#line 2 \"math/prime-factor.hpp\"\n\
+    \n#line 4 \"math/prime-factor.hpp\"\n#include <type_traits>\n\ntemplate <class\
     \ T, std::enable_if_t<std::is_integral<T>::value, int> = 0>\nstd::map<T, int>\
     \ prime_factor(T n) {\n    std::map<T, int> ret;\n    for(T i = 2; i * i <= n;\
     \ i++) {\n        if(n % i == 0) {\n            int cnt = 0;\n            while(n\
@@ -184,7 +184,7 @@ data:
   isVerificationFile: true
   path: test/aoj/aoj-NTL-1-A.test.cpp
   requiredBy: []
-  timestamp: '2026-11-01 16:28:13+09:00'
+  timestamp: '2026-11-01 17:39:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/aoj-NTL-1-A.test.cpp

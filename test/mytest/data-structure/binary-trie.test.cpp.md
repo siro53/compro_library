@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/binary-trie.hpp
     title: Binary Trie
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: random/rng.hpp
     title: "\u4E71\u6570\u751F\u6210"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -22,7 +22,7 @@ data:
     - https://judge.yosupo.jp/problem/aplusb
   bundledCode: "#line 1 \"test/mytest/data-structure/binary-trie.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#line 1 \"template/template.cpp\"\
-    \n#pragma region Macros\n#include <bits/stdc++.h>\nusing namespace std;\n// input\
+    \n// #region Macros\n#include <bits/stdc++.h>\nusing namespace std;\n// input\
     \ output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
     \    struct has_val_impl {\n        template <class T>\n        static auto check(T\
     \ &&x) -> decltype(x.val(), std::true_type{});\n\n        template <class T> static\
@@ -167,8 +167,8 @@ data:
     \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
     \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
     \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
-    \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"random/rng.hpp\"\n\n\
-    #line 5 \"random/rng.hpp\"\n\nclass RNG32 {\n  public:\n    RNG32() : mt(std::chrono::steady_clock::now().time_since_epoch().count())\
+    \    return ord;\n}\n// #endregion Macros\n#line 2 \"random/rng.hpp\"\n\n#line\
+    \ 5 \"random/rng.hpp\"\n\nclass RNG32 {\n  public:\n    RNG32() : mt(std::chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    // [l, r)\n    int randint(int l, int r) {\n        std::uniform_int_distribution<int>\
     \ dist(l, r - 1);\n        return dist(mt);\n    }\n    int randint(int r) { return\
     \ randint(0, r); }\n\n  private:\n    std::mt19937 mt;\n};\n\nclass RNG64 {\n\
@@ -285,8 +285,8 @@ data:
   isVerificationFile: true
   path: test/mytest/data-structure/binary-trie.test.cpp
   requiredBy: []
-  timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-11-01 17:39:57+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/mytest/data-structure/binary-trie.test.cpp
 layout: document

@@ -2,31 +2,31 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/tree/tree-hash.hpp
     title: "\u6728\u30CF\u30C3\u30B7\u30E5"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj2821.test.cpp
     title: test/aoj/aoj2821.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/data-structure/binary-trie.test.cpp
     title: test/mytest/data-structure/binary-trie.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/data-structure/erasable-priority-queue.test.cpp
     title: test/mytest/data-structure/erasable-priority-queue.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/graph/tree-api.test.cpp
     title: test/mytest/graph/tree-api.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/misc/fraction.test.cpp
     title: test/mytest/misc/fraction.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/misc/utilities.test.cpp
     title: test/mytest/misc/utilities.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"random/rng.hpp\"\n\n#include <chrono>\n#include <random>\n\
@@ -63,7 +63,7 @@ data:
   requiredBy:
   - graph/tree/tree-hash.hpp
   timestamp: '2025-03-09 11:07:17+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/mytest/graph/tree-api.test.cpp
   - test/mytest/data-structure/binary-trie.test.cpp

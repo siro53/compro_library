@@ -6,15 +6,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/static-range-inversions-query.test.cpp
     title: test/library-checker/data-structure/static-range-inversions-query.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/misc/mo-and-fraction.test.cpp
     title: test/mytest/misc/mo-and-fraction.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/misc/utilities.test.cpp
     title: test/mytest/misc/utilities.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"misc/mo.hpp\"\n\n#include <algorithm>\n#include <cassert>\n\
@@ -60,7 +60,7 @@ data:
   path: misc/mo.hpp
   requiredBy: []
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/library-checker/data-structure/static-range-inversions-query.test.cpp
   - test/mytest/misc/mo-and-fraction.test.cpp

@@ -2,22 +2,22 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/persistent/persistent-unionfind.hpp
     title: "\u6C38\u7D9A Union Find"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/persistent-unionfind.test.cpp
     title: test/library-checker/data-structure/persistent-unionfind.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/data-structure/initialization-and-monoids.test.cpp
     title: test/mytest/data-structure/initialization-and-monoids.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/data-structure/persistent-api.test.cpp
     title: test/mytest/data-structure/persistent-api.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data-structure/persistent/persistent-array.hpp\"\n\n#include\
@@ -89,7 +89,7 @@ data:
   requiredBy:
   - data-structure/persistent/persistent-unionfind.hpp
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/library-checker/data-structure/persistent-unionfind.test.cpp
   - test/mytest/data-structure/persistent-api.test.cpp

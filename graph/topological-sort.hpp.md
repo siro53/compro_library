@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u69CB\u9020\u4F53"
   _extendedRequiredBy: []
@@ -9,12 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj-GRL-4-A.test.cpp
     title: test/aoj/aoj-GRL-4-A.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/graph/bfs-topological-sort.test.cpp
     title: test/mytest/graph/bfs-topological-sort.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/topological-sort.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
@@ -60,7 +60,7 @@ data:
   path: graph/topological-sort.hpp
   requiredBy: []
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/mytest/graph/bfs-topological-sort.test.cpp
   - test/aoj/aoj-GRL-4-A.test.cpp

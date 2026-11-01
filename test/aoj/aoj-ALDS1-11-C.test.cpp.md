@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u69CB\u9020\u4F53"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/shortest-path/bfs.hpp
     title: "\u5E45\u512A\u5148\u63A2\u7D22"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -21,7 +21,7 @@ data:
     links:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_11_C
   bundledCode: "#line 1 \"test/aoj/aoj-ALDS1-11-C.test.cpp\"\n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_11_C\"\
-    \n#line 1 \"template/template.cpp\"\n#pragma region Macros\n#include <bits/stdc++.h>\n\
+    \n#line 1 \"template/template.cpp\"\n// #region Macros\n#include <bits/stdc++.h>\n\
     using namespace std;\n// input output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
     \    struct has_val_impl {\n        template <class T>\n        static auto check(T\
     \ &&x) -> decltype(x.val(), std::true_type{});\n\n        template <class T> static\
@@ -166,7 +166,7 @@ data:
     \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
     \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
     \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
-    \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"graph/shortest-path/bfs.hpp\"\
+    \    return ord;\n}\n// #endregion Macros\n#line 2 \"graph/shortest-path/bfs.hpp\"\
     \n\n#line 7 \"graph/shortest-path/bfs.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
     \n\n#line 6 \"graph/graph_template.hpp\"\n\ntemplate <typename Cost = int> struct\
     \ Edge {\n    int from, to;\n    Cost cost;\n    int id;\n    Edge() = default;\n\
@@ -186,19 +186,18 @@ data:
     \ G;\n};\n\ntemplate <class Cost = int> using Edges = std::vector<Edge<Cost>>;\n\
     #line 9 \"graph/shortest-path/bfs.hpp\"\n\ntemplate <typename Cost = int>\nstd::pair<std::vector<Cost>,\
     \ std::vector<int>>\nbfs(const Graph<Cost> &G, int start, Cost iv = 0,\n    Cost\
-    \ inf = std::numeric_limits<Cost>::max()) {\n    using Data = std::pair<Cost,\
-    \ int>;\n    int N = (int)G.size();\n    std::vector<Cost> dist(N, inf);\n   \
-    \ std::vector<int> prev(N, -1);\n\n    dist[start] = iv;\n    std::queue<int>\
-    \ que;\n    que.emplace(start);\n    while(!que.empty()) {\n        int u = que.front();\n\
-    \        que.pop();\n        for(const auto &e : G[u]) {\n            if(dist[e.to]\
-    \ > dist[u] + 1) {\n                dist[e.to] = dist[u] + 1;\n              \
-    \  prev[e.to] = u;\n                que.emplace(e.to);\n            }\n      \
-    \  }\n    }\n\n    return std::make_pair(dist, prev);\n}\n#line 4 \"test/aoj/aoj-ALDS1-11-C.test.cpp\"\
-    \n\nint main() {\n    INT(N);\n    Graph<int> g(N);\n    REP(i, N) {\n       \
-    \ INT(u, k);\n        REP(j, k) {\n            INT(v);\n            g.add_directed_edge(u\
-    \ - 1, v - 1);\n        }\n    }\n    auto [dist, prev] = bfs(g, 0);\n    REP(i,\
-    \ N) {\n        print(i + 1, dist[i] == numeric_limits<int>::max() ? -1 : dist[i]);\n\
-    \    }\n}\n"
+    \ inf = std::numeric_limits<Cost>::max()) {\n    int N = (int)G.size();\n    std::vector<Cost>\
+    \ dist(N, inf);\n    std::vector<int> prev(N, -1);\n\n    dist[start] = iv;\n\
+    \    std::queue<int> que;\n    que.emplace(start);\n    while(!que.empty()) {\n\
+    \        int u = que.front();\n        que.pop();\n        for(const auto &e :\
+    \ G[u]) {\n            if(dist[e.to] > dist[u] + 1) {\n                dist[e.to]\
+    \ = dist[u] + 1;\n                prev[e.to] = u;\n                que.emplace(e.to);\n\
+    \            }\n        }\n    }\n\n    return std::make_pair(dist, prev);\n}\n\
+    #line 4 \"test/aoj/aoj-ALDS1-11-C.test.cpp\"\n\nint main() {\n    INT(N);\n  \
+    \  Graph<int> g(N);\n    REP(i, N) {\n        INT(u, k);\n        REP(j, k) {\n\
+    \            INT(v);\n            g.add_directed_edge(u - 1, v - 1);\n       \
+    \ }\n    }\n    auto [dist, prev] = bfs(g, 0);\n    REP(i, N) {\n        print(i\
+    \ + 1, dist[i] == numeric_limits<int>::max() ? -1 : dist[i]);\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_11_C\"\
     \n#include \"../../template/template.cpp\"\n#include \"../../graph/shortest-path/bfs.hpp\"\
     \n\nint main() {\n    INT(N);\n    Graph<int> g(N);\n    REP(i, N) {\n       \
@@ -213,7 +212,7 @@ data:
   isVerificationFile: true
   path: test/aoj/aoj-ALDS1-11-C.test.cpp
   requiredBy: []
-  timestamp: '2026-11-01 17:01:16+09:00'
+  timestamp: '2026-11-01 17:39:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/aoj-ALDS1-11-C.test.cpp

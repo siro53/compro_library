@@ -2,25 +2,25 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/dynamic-modint.hpp
     title: "\u52D5\u7684\u6CD5 modint"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj-NTL-1-B-dynamic-modint.test.cpp
     title: test/aoj/aoj-NTL-1-B-dynamic-modint.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/math/arithmetic-regressions.test.cpp
     title: test/mytest/math/arithmetic-regressions.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/math/barrett-reduction.test.cpp
     title: test/mytest/math/barrett-reduction.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/modint/dynamic-modint.test.cpp
     title: test/mytest/modint/dynamic-modint.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/barrett-reduction.hpp\"\n\n#include <utility>\n\nclass\
@@ -67,7 +67,7 @@ data:
   requiredBy:
   - modint/dynamic-modint.hpp
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/mytest/modint/dynamic-modint.test.cpp
   - test/mytest/math/arithmetic-regressions.test.cpp

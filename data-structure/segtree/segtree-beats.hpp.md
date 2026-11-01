@@ -6,15 +6,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/range-chmin-chmax-add-range-sum.test.cpp
     title: test/library-checker/data-structure/range-chmin-chmax-add-range-sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/data-structure/segment-tree-api.test.cpp
     title: test/mytest/data-structure/segment-tree-api.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/data-structure/segtree-boundaries.test.cpp
     title: test/mytest/data-structure/segtree-boundaries.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data-structure/segtree/segtree-beats.hpp\"\n\n#include <vector>\n\
@@ -154,7 +154,7 @@ data:
   path: data-structure/segtree/segtree-beats.hpp
   requiredBy: []
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/library-checker/data-structure/range-chmin-chmax-add-range-sum.test.cpp
   - test/mytest/data-structure/segment-tree-api.test.cpp

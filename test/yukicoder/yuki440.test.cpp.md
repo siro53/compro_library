@@ -1,24 +1,24 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/convolution/fft.hpp
     title: "FFT \u306B\u3088\u308B\u7573\u307F\u8FBC\u307F"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://yukicoder.me/problems/no/206
     links:
     - https://yukicoder.me/problems/no/206
   bundledCode: "#line 1 \"test/yukicoder/yuki440.test.cpp\"\n#define PROBLEM \"https://yukicoder.me/problems/no/206\"\
-    \n#line 1 \"template/template.cpp\"\n#pragma region Macros\n#include <bits/stdc++.h>\n\
+    \n#line 1 \"template/template.cpp\"\n// #region Macros\n#include <bits/stdc++.h>\n\
     using namespace std;\n// input output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
     \    struct has_val_impl {\n        template <class T>\n        static auto check(T\
     \ &&x) -> decltype(x.val(), std::true_type{});\n\n        template <class T> static\
@@ -163,7 +163,7 @@ data:
     \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
     \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
     \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
-    \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"math/convolution/fft.hpp\"\
+    \    return ord;\n}\n// #endregion Macros\n#line 2 \"math/convolution/fft.hpp\"\
     \n\n#line 7 \"math/convolution/fft.hpp\"\n\nnamespace fft {\n    template <typename\
     \ D> struct Complex {\n        D x, y;\n        Complex(): x(0), y(0) {};\n  \
     \      Complex(D x, D y) : x(x), y(y) {}\n        Complex &operator+=(const Complex\
@@ -235,8 +235,8 @@ data:
   isVerificationFile: true
   path: test/yukicoder/yuki440.test.cpp
   requiredBy: []
-  timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-11-01 17:39:57+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yukicoder/yuki440.test.cpp
 layout: document

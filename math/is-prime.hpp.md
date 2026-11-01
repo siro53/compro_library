@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/pow_mod.hpp
     title: "\u5270\u4F59\u4ED8\u304D\u7D2F\u4E57"
   _extendedRequiredBy: []
@@ -9,18 +9,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj-ALDS1-1-C.test.cpp
     title: test/aoj/aoj-ALDS1-1-C.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/library-checker/math/primality-test.test.cpp
     title: test/library-checker/math/primality-test.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/math/arithmetic-regressions.test.cpp
     title: test/mytest/math/arithmetic-regressions.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/math/number-theory.test.cpp
     title: test/mytest/math/number-theory.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/is-prime.hpp\"\n\n#include <array>\n\n#line 2 \"math/pow_mod.hpp\"\
@@ -71,7 +71,7 @@ data:
   path: math/is-prime.hpp
   requiredBy: []
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/library-checker/math/primality-test.test.cpp
   - test/mytest/math/number-theory.test.cpp

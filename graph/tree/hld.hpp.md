@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u69CB\u9020\u4F53"
   _extendedRequiredBy: []
@@ -12,18 +12,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
     title: test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/library-checker/data-structure/vertex-set-path-composite.test.cpp
     title: test/library-checker/data-structure/vertex-set-path-composite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/library-checker/tree/lowest-common-ancestor2.test.cpp
     title: test/library-checker/tree/lowest-common-ancestor2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/graph/tree-api.test.cpp
     title: test/mytest/graph/tree-api.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/tree/hld.hpp\"\n\n#include <utility>\n\n#line 2 \"\
@@ -139,7 +139,7 @@ data:
   path: graph/tree/hld.hpp
   requiredBy: []
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/library-checker/tree/lowest-common-ancestor2.test.cpp
   - test/library-checker/data-structure/vertex-set-path-composite.test.cpp

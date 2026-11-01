@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data-structure/utils/sum_count_manager.hpp
     title: "\u5024\u3054\u3068\u306E\u548C\u30FB\u500B\u6570\u7BA1\u7406"
   _extendedVerifiedWith:
@@ -15,18 +15,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/static-range-inversions-query.test.cpp
     title: test/library-checker/data-structure/static-range-inversions-query.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/data-structure/basic-api.test.cpp
     title: test/mytest/data-structure/basic-api.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/data-structure/helper-regressions.test.cpp
     title: test/mytest/data-structure/helper-regressions.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/misc/utilities.test.cpp
     title: test/mytest/misc/utilities.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"misc/compress.hpp\"\n\n#include <algorithm>\n#include <vector>\n\
@@ -53,7 +53,7 @@ data:
   requiredBy:
   - data-structure/utils/sum_count_manager.hpp
   timestamp: '2023-09-30 04:41:13+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/library-checker/data-structure/static-range-inversions-query.test.cpp
   - test/mytest/data-structure/basic-api.test.cpp

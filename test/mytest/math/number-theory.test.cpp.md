@@ -1,41 +1,41 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/divisor.hpp
     title: "\u7D04\u6570\u5217\u6319"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/eratosthenes.hpp
     title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/is-prime.hpp
     title: "\u7D20\u6570\u5224\u5B9A"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/linear-sieve.hpp
     title: "\u7DDA\u5F62\u7BE9"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/pow_mod.hpp
     title: "\u5270\u4F59\u4ED8\u304D\u7D2F\u4E57"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/prime-factor.hpp
     title: "\u8A66\u3057\u5272\u308A\u306B\u3088\u308B\u7D20\u56E0\u6570\u5206\u89E3"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/primitive-root.hpp
     title: "\u539F\u59CB\u6839"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/segment-factorize.hpp
     title: "\u533A\u9593\u7D20\u56E0\u6570\u5206\u89E3"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/segment-sieve.hpp
     title: "\u533A\u9593\u7D20\u6570\u5224\u5B9A"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -43,7 +43,7 @@ data:
     - https://judge.yosupo.jp/problem/aplusb
   bundledCode: "#line 1 \"test/mytest/math/number-theory.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.yosupo.jp/problem/aplusb\"\n#line 1 \"template/template.cpp\"\
-    \n#pragma region Macros\n#include <bits/stdc++.h>\nusing namespace std;\n// input\
+    \n// #region Macros\n#include <bits/stdc++.h>\nusing namespace std;\n// input\
     \ output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
     \    struct has_val_impl {\n        template <class T>\n        static auto check(T\
     \ &&x) -> decltype(x.val(), std::true_type{});\n\n        template <class T> static\
@@ -188,8 +188,8 @@ data:
     \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
     \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
     \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
-    \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"math/linear-sieve.hpp\"\
-    \n\n#line 5 \"math/linear-sieve.hpp\"\n\nclass LinearSieve {\n  public:\n    LinearSieve()\
+    \    return ord;\n}\n// #endregion Macros\n#line 2 \"math/linear-sieve.hpp\"\n\
+    \n#line 5 \"math/linear-sieve.hpp\"\n\nclass LinearSieve {\n  public:\n    LinearSieve()\
     \ {}\n    explicit LinearSieve(int n) : n(n), min_factor(n + 1, -1) {\n      \
     \  std::vector<int> prime_list;\n        for(int d = 2; d <= n; d++) {\n     \
     \       if(min_factor[d] == -1) {\n                min_factor[d] = d;\n      \
@@ -363,8 +363,8 @@ data:
   isVerificationFile: true
   path: test/mytest/math/number-theory.test.cpp
   requiredBy: []
-  timestamp: '2026-11-01 17:14:28+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-11-01 17:39:57+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/mytest/math/number-theory.test.cpp
 layout: document

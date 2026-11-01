@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/wavelet-matrix.hpp
     title: Wavelet Matrix
   _extendedVerifiedWith:
@@ -15,15 +15,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/range-kth-smallest.test.cpp
     title: test/library-checker/data-structure/range-kth-smallest.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/data-structure/bit-queries.test.cpp
     title: test/mytest/data-structure/bit-queries.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/data-structure/wavelet-api.test.cpp
     title: test/mytest/data-structure/wavelet-api.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data-structure/compact-bitvector.hpp\"\n\n#include <cassert>\n\
@@ -70,7 +70,7 @@ data:
   requiredBy:
   - data-structure/wavelet-matrix.hpp
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/library-checker/data-structure/range-kth-smallest.test.cpp
   - test/mytest/data-structure/wavelet-api.test.cpp

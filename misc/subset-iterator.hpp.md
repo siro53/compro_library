@@ -6,12 +6,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj-ITP2-11-C.test.cpp
     title: test/aoj/aoj-ITP2-11-C.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/misc/subset-iterator.test.cpp
     title: test/mytest/misc/subset-iterator.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://atcoder.jp/contests/xmascon24/submissions/61272051
@@ -82,7 +82,7 @@ data:
   path: misc/subset-iterator.hpp
   requiredBy: []
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/mytest/misc/subset-iterator.test.cpp
   - test/aoj/aoj-ITP2-11-C.test.cpp

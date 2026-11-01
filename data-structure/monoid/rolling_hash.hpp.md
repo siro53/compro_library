@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: modint/modint_2_61.hpp
     title: "\u6CD5 2^61-1 \u306E modint"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: string/rolling-hash.hpp
     title: Rolling Hash
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/data-structure/monoids.test.cpp
     title: test/mytest/data-structure/monoids.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data-structure/monoid/rolling_hash.hpp\"\n\n#include <array>\n\
@@ -77,34 +77,34 @@ data:
     \n\ntemplate <int N> struct MonoidRollingHash {\n  public:\n    using mint = ModInt_2_61;\n\
     \    struct S {\n        mint h;\n        int len;\n        S() {}\n        S(mint\
     \ h, int len) : h(h), len(len) {}\n    };\n    using value_type = S;\n\n    static\
-    \ inline S op(const S &a, const S &b) {\n        static auto [base, powers] =\
-    \ gen();\n        mint h = a.h + b.h * powers[a.len];\n        int len = a.len\
-    \ + b.len;\n        return S(h, len);\n    }\n    static inline S e() { return\
-    \ S(0, 0); }\n\n  private:\n    static std::pair<mint, std::array<mint, N>> gen()\
-    \ {\n        mint base = RollingHash::gen_base();\n        std::array<mint, N>\
-    \ powers;\n        powers[0] = 1;\n        for(int i = 1; i < N; i++) powers[i]\
-    \ = powers[i - 1] * base;\n        return std::make_pair(base, powers);\n    }\n\
-    };\n"
+    \ inline S op(const S &a, const S &b) {\n        static const auto parameters\
+    \ = gen();\n        const auto &powers = parameters.second;\n        mint h =\
+    \ a.h + b.h * powers[a.len];\n        int len = a.len + b.len;\n        return\
+    \ S(h, len);\n    }\n    static inline S e() { return S(0, 0); }\n\n  private:\n\
+    \    static std::pair<mint, std::array<mint, N>> gen() {\n        mint base =\
+    \ RollingHash::gen_base();\n        std::array<mint, N> powers;\n        powers[0]\
+    \ = 1;\n        for(int i = 1; i < N; i++) powers[i] = powers[i - 1] * base;\n\
+    \        return std::make_pair(base, powers);\n    }\n};\n"
   code: "#pragma once\n\n#include <array>\n#include <utility>\n\n#include \"../../string/rolling-hash.hpp\"\
     \n\ntemplate <int N> struct MonoidRollingHash {\n  public:\n    using mint = ModInt_2_61;\n\
     \    struct S {\n        mint h;\n        int len;\n        S() {}\n        S(mint\
     \ h, int len) : h(h), len(len) {}\n    };\n    using value_type = S;\n\n    static\
-    \ inline S op(const S &a, const S &b) {\n        static auto [base, powers] =\
-    \ gen();\n        mint h = a.h + b.h * powers[a.len];\n        int len = a.len\
-    \ + b.len;\n        return S(h, len);\n    }\n    static inline S e() { return\
-    \ S(0, 0); }\n\n  private:\n    static std::pair<mint, std::array<mint, N>> gen()\
-    \ {\n        mint base = RollingHash::gen_base();\n        std::array<mint, N>\
-    \ powers;\n        powers[0] = 1;\n        for(int i = 1; i < N; i++) powers[i]\
-    \ = powers[i - 1] * base;\n        return std::make_pair(base, powers);\n    }\n\
-    };"
+    \ inline S op(const S &a, const S &b) {\n        static const auto parameters\
+    \ = gen();\n        const auto &powers = parameters.second;\n        mint h =\
+    \ a.h + b.h * powers[a.len];\n        int len = a.len + b.len;\n        return\
+    \ S(h, len);\n    }\n    static inline S e() { return S(0, 0); }\n\n  private:\n\
+    \    static std::pair<mint, std::array<mint, N>> gen() {\n        mint base =\
+    \ RollingHash::gen_base();\n        std::array<mint, N> powers;\n        powers[0]\
+    \ = 1;\n        for(int i = 1; i < N; i++) powers[i] = powers[i - 1] * base;\n\
+    \        return std::make_pair(base, powers);\n    }\n};"
   dependsOn:
   - string/rolling-hash.hpp
   - modint/modint_2_61.hpp
   isVerificationFile: false
   path: data-structure/monoid/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2023-12-05 19:29:40+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-11-01 17:39:57+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/mytest/data-structure/monoids.test.cpp
 documentation_of: data-structure/monoid/rolling_hash.hpp
@@ -149,4 +149,4 @@ int main() {
 
 `N>=1` とし、すべての結合で左側の長さが `N` 未満になるようにしてください。扱う最大列長より大きい `N` を選ぶと境界を管理しやすくなります。`S()` のデフォルト構築では値が設定されません。
 
-ハッシュの一致は列の一致を保証しません。比較時は長さも確認してください。底は同じ `N` の型ごとに共有されますが、`RollingHash` 本体とは底の管理方法も次数の向きも異なるため、両者の値を直接比較できません。
+ハッシュの一致は列の一致を保証しません。比較時は長さも確認してください。累乗表は C++17 で利用できる関数内の静的変数として保持し、初回の `op` で一度だけ初期化します。底は同じ `N` の型ごとに共有されますが、`RollingHash` 本体とは底の管理方法も次数の向きも異なるため、両者の値を直接比較できません。

@@ -3,18 +3,18 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/math/convolution-regressions.test.cpp
     title: test/mytest/math/convolution-regressions.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/math/transforms-api.test.cpp
     title: test/mytest/math/transforms-api.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/yuki440.test.cpp
     title: test/yukicoder/yuki440.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/convolution/fft.hpp\"\n\n#include <cassert>\n#include\
@@ -128,7 +128,7 @@ data:
   path: math/convolution/fft.hpp
   requiredBy: []
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yukicoder/yuki440.test.cpp
   - test/mytest/math/transforms-api.test.cpp

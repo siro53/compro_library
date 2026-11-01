@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/pow_mod.hpp
     title: "\u5270\u4F59\u4ED8\u304D\u7D2F\u4E57"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/primitive-root.hpp
     title: "\u539F\u59CB\u6839"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: "\u56FA\u5B9A\u6CD5 modint"
   _extendedRequiredBy: []
@@ -15,15 +15,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/convolution/convolution-mod.test.cpp
     title: test/library-checker/convolution/convolution-mod.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/math/convolution-regressions.test.cpp
     title: test/mytest/math/convolution-regressions.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/math/transforms-api.test.cpp
     title: test/mytest/math/transforms-api.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/convolution/ntt.hpp\"\n\n#include <array>\n#include\
@@ -177,7 +177,7 @@ data:
   path: math/convolution/ntt.hpp
   requiredBy: []
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/library-checker/convolution/convolution-mod.test.cpp
   - test/mytest/math/transforms-api.test.cpp

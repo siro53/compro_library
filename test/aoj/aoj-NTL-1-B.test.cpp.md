@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/pow_mod.hpp
     title: "\u5270\u4F59\u4ED8\u304D\u7D2F\u4E57"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -18,7 +18,7 @@ data:
     links:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_B
   bundledCode: "#line 1 \"test/aoj/aoj-NTL-1-B.test.cpp\"\n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_B\"\
-    \n#line 1 \"template/template.cpp\"\n#pragma region Macros\n#include <bits/stdc++.h>\n\
+    \n#line 1 \"template/template.cpp\"\n// #region Macros\n#include <bits/stdc++.h>\n\
     using namespace std;\n// input output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
     \    struct has_val_impl {\n        template <class T>\n        static auto check(T\
     \ &&x) -> decltype(x.val(), std::true_type{});\n\n        template <class T> static\
@@ -163,10 +163,10 @@ data:
     \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
     \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
     \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
-    \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"math/pow_mod.hpp\"\n\n\
-    constexpr long long pow_mod(long long x, long long k, long long m) {\n    long\
-    \ long res = 1 % m;\n    long long mul = (x >= 0 ? x % m : x % m + m);\n    while(k)\
-    \ {\n        if(k & 1) res = (__int128_t)res * mul % m;\n        mul = (__int128_t)mul\
+    \    return ord;\n}\n// #endregion Macros\n#line 2 \"math/pow_mod.hpp\"\n\nconstexpr\
+    \ long long pow_mod(long long x, long long k, long long m) {\n    long long res\
+    \ = 1 % m;\n    long long mul = (x >= 0 ? x % m : x % m + m);\n    while(k) {\n\
+    \        if(k & 1) res = (__int128_t)res * mul % m;\n        mul = (__int128_t)mul\
     \ * mul % m;\n        k >>= 1;\n    }\n    return res;\n}\n#line 4 \"test/aoj/aoj-NTL-1-B.test.cpp\"\
     \n\nint main() {\n    LL(m, n);\n    print(pow_mod(m, n, 1000000007));\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_B\"\
@@ -178,7 +178,7 @@ data:
   isVerificationFile: true
   path: test/aoj/aoj-NTL-1-B.test.cpp
   requiredBy: []
-  timestamp: '2026-11-01 17:01:16+09:00'
+  timestamp: '2026-11-01 17:39:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/aoj-NTL-1-B.test.cpp

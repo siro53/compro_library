@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/BIT.hpp
     title: Binary Indexed Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/compress.hpp
     title: "\u5EA7\u6A19\u5727\u7E2E"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/inversion-number.hpp
     title: "\u8EE2\u5012\u6570"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -24,7 +24,7 @@ data:
     links:
     - https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_5_D
   bundledCode: "#line 1 \"test/aoj/aoj-ALDS1-5-D.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_5_D\"\
-    \n#line 1 \"template/template.cpp\"\n#pragma region Macros\n#include <bits/stdc++.h>\n\
+    \n#line 1 \"template/template.cpp\"\n// #region Macros\n#include <bits/stdc++.h>\n\
     using namespace std;\n// input output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
     \    struct has_val_impl {\n        template <class T>\n        static auto check(T\
     \ &&x) -> decltype(x.val(), std::true_type{});\n\n        template <class T> static\
@@ -169,8 +169,8 @@ data:
     \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
     \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
     \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
-    \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"misc/compress.hpp\"\n\
-    \n#line 5 \"misc/compress.hpp\"\n\ntemplate <typename T> class Compress {\n  public:\n\
+    \    return ord;\n}\n// #endregion Macros\n#line 2 \"misc/compress.hpp\"\n\n#line\
+    \ 5 \"misc/compress.hpp\"\n\ntemplate <typename T> class Compress {\n  public:\n\
     \    Compress() = default;\n    explicit Compress(const std::vector<T> &v) : dat(v)\
     \ {\n        build();\n    }\n    void push_back(T val) { dat.push_back(val);\
     \ }\n\tvoid build() {\n\t\tstd::sort(dat.begin(), dat.end());\n        dat.erase(std::unique(dat.begin(),\
@@ -212,7 +212,7 @@ data:
   isVerificationFile: true
   path: test/aoj/aoj-ALDS1-5-D.test.cpp
   requiredBy: []
-  timestamp: '2024-09-08 23:17:50+09:00'
+  timestamp: '2026-11-01 17:39:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/aoj-ALDS1-5-D.test.cpp

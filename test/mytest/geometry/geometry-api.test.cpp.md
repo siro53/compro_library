@@ -1,111 +1,111 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/base.hpp
     title: "\u5E7E\u4F55\u306E\u57FA\u672C\u578B"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/ccw.hpp
     title: "3 \u70B9\u306E\u4F4D\u7F6E\u95A2\u4FC2"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/circle.hpp
     title: "\u5186"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/convex-cut.hpp
     title: "\u51F8\u591A\u89D2\u5F62\u306E\u5207\u65AD"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/convex-hull.hpp
     title: "\u51F8\u5305"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/cross-point.hpp
     title: "\u4EA4\u70B9"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/cross.hpp
     title: "\u5916\u7A4D"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/degree-to-radian.hpp
     title: "\u5EA6\u304B\u3089\u30E9\u30B8\u30A2\u30F3"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/distance-between-line-and-point.hpp
     title: "\u76F4\u7DDA\u3068\u70B9\u306E\u8DDD\u96E2"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/distance-between-segment-and-point.hpp
     title: "\u7DDA\u5206\u3068\u70B9\u306E\u8DDD\u96E2"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/distance-between-segments.hpp
     title: "\u7DDA\u5206\u9593\u306E\u8DDD\u96E2"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/dot.hpp
     title: "\u5185\u7A4D"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/geometry.hpp
     title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA\uFF08\u307E\u3068\u3081\u3066\
       \ include\uFF09"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/is-contained.hpp
     title: "\u591A\u89D2\u5F62\u3078\u306E\u5305\u542B\u5224\u5B9A"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/is-convex.hpp
     title: "\u51F8\u591A\u89D2\u5F62\u5224\u5B9A"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/is-in-circle.hpp
     title: "\u5186\u3078\u306E\u5305\u542B\u5224\u5B9A"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/is-intersect.hpp
     title: "\u4EA4\u5DEE\u5224\u5B9A"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/is-orthogonal.hpp
     title: "\u76F4\u7DDA\u306E\u76F4\u4EA4\u5224\u5B9A"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/is-parallel.hpp
     title: "\u76F4\u7DDA\u306E\u5E73\u884C\u5224\u5B9A"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/is-point-on-line.hpp
     title: "\u70B9\u304C\u76F4\u7DDA\u4E0A\u306B\u3042\u308B\u304B"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/is-point-on-segment.hpp
     title: "\u70B9\u304C\u7DDA\u5206\u4E0A\u306B\u3042\u308B\u304B"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/line.hpp
     title: "\u76F4\u7DDA"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/normal-vector.hpp
     title: "\u6CD5\u7DDA\u30D9\u30AF\u30C8\u30EB"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/polygon-area.hpp
     title: "\u591A\u89D2\u5F62\u306E\u7B26\u53F7\u4ED8\u304D\u9762\u7A4D"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/projection.hpp
     title: "\u5C04\u5F71"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/radian-to-degree.hpp
     title: "\u30E9\u30B8\u30A2\u30F3\u304B\u3089\u5EA6"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/reflection.hpp
     title: "\u76F4\u7DDA\u306B\u5BFE\u3059\u308B\u53CD\u5C04"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/rotate.hpp
     title: "\u70B9\u30FB\u30D9\u30AF\u30C8\u30EB\u306E\u56DE\u8EE2"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/segment.hpp
     title: "\u7DDA\u5206"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/tangent-to-circle.hpp
     title: "\u70B9\u304B\u3089\u5186\u3078\u306E\u63A5\u7DDA"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/tangent.hpp
     title: "2 \u5186\u306E\u5171\u901A\u63A5\u7DDA"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/unit-vector.hpp
     title: "\u5358\u4F4D\u30D9\u30AF\u30C8\u30EB"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -113,7 +113,7 @@ data:
     - https://judge.yosupo.jp/problem/aplusb
   bundledCode: "#line 1 \"test/mytest/geometry/geometry-api.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.yosupo.jp/problem/aplusb\"\n#line 1 \"template/template.cpp\"\
-    \n#pragma region Macros\n#include <bits/stdc++.h>\nusing namespace std;\n// input\
+    \n// #region Macros\n#include <bits/stdc++.h>\nusing namespace std;\n// input\
     \ output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
     \    struct has_val_impl {\n        template <class T>\n        static auto check(T\
     \ &&x) -> decltype(x.val(), std::true_type{});\n\n        template <class T> static\
@@ -258,8 +258,8 @@ data:
     \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
     \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
     \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
-    \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"geometry/geometry.hpp\"\
-    \n\n// Compatibility header: include individual headers to use only selected features.\n\
+    \    return ord;\n}\n// #endregion Macros\n#line 2 \"geometry/geometry.hpp\"\n\
+    \n// Compatibility header: include individual headers to use only selected features.\n\
     #line 2 \"geometry/base.hpp\"\n\n#line 5 \"geometry/base.hpp\"\n\nnamespace geometry\
     \ {\n    // Point : \u8907\u7D20\u6570\u578B\u3092\u4F4D\u7F6E\u30D9\u30AF\u30C8\
     \u30EB\u3068\u3057\u3066\u6271\u3046\n    // \u5B9F\u8EF8(real)\u3092x\u8EF8\u3001\
@@ -633,8 +633,8 @@ data:
   isVerificationFile: true
   path: test/mytest/geometry/geometry-api.test.cpp
   requiredBy: []
-  timestamp: '2026-11-01 17:12:16+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-11-01 17:39:57+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/mytest/geometry/geometry-api.test.cpp
 layout: document

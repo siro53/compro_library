@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/math/arithmetic-regressions.test.cpp
     title: test/mytest/math/arithmetic-regressions.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/math/number-theory.test.cpp
     title: test/mytest/math/number-theory.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/segment-sieve.hpp\"\n\n#include <algorithm>\n#include\
@@ -49,7 +49,7 @@ data:
   path: math/segment-sieve.hpp
   requiredBy: []
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/mytest/math/number-theory.test.cpp
   - test/mytest/math/arithmetic-regressions.test.cpp

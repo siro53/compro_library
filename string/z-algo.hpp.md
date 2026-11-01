@@ -3,18 +3,18 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/library-checker/string/z-algorithm.test.cpp
     title: test/library-checker/string/z-algorithm.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/string/empty-inputs.test.cpp
     title: test/mytest/string/empty-inputs.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/string/string-api.test.cpp
     title: test/mytest/string/string-api.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"string/z-algo.hpp\"\n\n#include <vector>\n#include <string>\n\
@@ -38,7 +38,7 @@ data:
   path: string/z-algo.hpp
   requiredBy: []
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/library-checker/string/z-algorithm.test.cpp
   - test/mytest/string/string-api.test.cpp

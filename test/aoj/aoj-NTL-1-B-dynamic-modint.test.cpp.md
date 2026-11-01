@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/barrett-reduction.hpp
     title: Barrett Reduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/dynamic-modint.hpp
     title: "\u52D5\u7684\u6CD5 modint"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -22,7 +22,7 @@ data:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_B
   bundledCode: "#line 1 \"test/aoj/aoj-NTL-1-B-dynamic-modint.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_B\"\
-    \n#line 1 \"template/template.cpp\"\n#pragma region Macros\n#include <bits/stdc++.h>\n\
+    \n#line 1 \"template/template.cpp\"\n// #region Macros\n#include <bits/stdc++.h>\n\
     using namespace std;\n// input output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
     \    struct has_val_impl {\n        template <class T>\n        static auto check(T\
     \ &&x) -> decltype(x.val(), std::true_type{});\n\n        template <class T> static\
@@ -167,7 +167,7 @@ data:
     \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
     \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
     \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
-    \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"modint/dynamic-modint.hpp\"\
+    \    return ord;\n}\n// #endregion Macros\n#line 2 \"modint/dynamic-modint.hpp\"\
     \n\n#line 6 \"modint/dynamic-modint.hpp\"\n\n#line 2 \"math/barrett-reduction.hpp\"\
     \n\n#line 4 \"math/barrett-reduction.hpp\"\n\nclass BarrettReduction {\npublic:\n\
     \    BarrettReduction(): BarrettReduction(1) {}\n    BarrettReduction(unsigned\
@@ -234,7 +234,7 @@ data:
   isVerificationFile: true
   path: test/aoj/aoj-NTL-1-B-dynamic-modint.test.cpp
   requiredBy: []
-  timestamp: '2026-11-01 17:01:16+09:00'
+  timestamp: '2026-11-01 17:39:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/aoj-NTL-1-B-dynamic-modint.test.cpp

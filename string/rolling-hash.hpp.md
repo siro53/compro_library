@@ -1,30 +1,30 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: modint/modint_2_61.hpp
     title: "\u6CD5 2^61-1 \u306E modint"
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data-structure/monoid/rolling_hash.hpp
     title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5\u30E2\u30CE\u30A4\
       \u30C9"
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/data-structure/monoids.test.cpp
     title: test/mytest/data-structure/monoids.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/string/string-api.test.cpp
     title: test/mytest/string/string-api.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/yuki2102.test.cpp
     title: test/yukicoder/yuki2102.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/yuki430.test.cpp
     title: test/yukicoder/yuki430.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"string/rolling-hash.hpp\"\n\n#include <algorithm>\n#include\
@@ -115,7 +115,7 @@ data:
   requiredBy:
   - data-structure/monoid/rolling_hash.hpp
   timestamp: '2023-12-05 19:29:40+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yukicoder/yuki2102.test.cpp
   - test/yukicoder/yuki430.test.cpp

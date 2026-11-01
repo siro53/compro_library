@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/segtree/segtree-beats.hpp
     title: Segment Tree Beats
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -19,7 +19,7 @@ data:
     - https://judge.yosupo.jp/problem/range_chmin_chmax_add_range_sum
   bundledCode: "#line 1 \"test/library-checker/data-structure/range-chmin-chmax-add-range-sum.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/range_chmin_chmax_add_range_sum\"\
-    \n#line 1 \"template/template.cpp\"\n#pragma region Macros\n#include <bits/stdc++.h>\n\
+    \n#line 1 \"template/template.cpp\"\n// #region Macros\n#include <bits/stdc++.h>\n\
     using namespace std;\n// input output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
     \    struct has_val_impl {\n        template <class T>\n        static auto check(T\
     \ &&x) -> decltype(x.val(), std::true_type{});\n\n        template <class T> static\
@@ -164,7 +164,7 @@ data:
     \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
     \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
     \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
-    \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"data-structure/segtree/segtree-beats.hpp\"\
+    \    return ord;\n}\n// #endregion Macros\n#line 2 \"data-structure/segtree/segtree-beats.hpp\"\
     \n\n#line 5 \"data-structure/segtree/segtree-beats.hpp\"\n\ntemplate<class MonoidAct>\
     \ class SegtreeBeats {\npublic:\n    using S = typename MonoidAct::value_type_S;\n\
     \    using F = typename MonoidAct::value_type_F;\n\n    SegtreeBeats(): SegtreeBeats(0)\
@@ -319,7 +319,7 @@ data:
   isVerificationFile: true
   path: test/library-checker/data-structure/range-chmin-chmax-add-range-sum.test.cpp
   requiredBy: []
-  timestamp: '2026-11-01 16:38:28+09:00'
+  timestamp: '2026-11-01 17:39:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/library-checker/data-structure/range-chmin-chmax-add-range-sum.test.cpp

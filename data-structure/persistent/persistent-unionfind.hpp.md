@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/persistent/persistent-array.hpp
     title: "\u6C38\u7D9A\u914D\u5217"
   _extendedRequiredBy: []
@@ -9,12 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/persistent-unionfind.test.cpp
     title: test/library-checker/data-structure/persistent-unionfind.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/data-structure/persistent-api.test.cpp
     title: test/mytest/data-structure/persistent-api.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data-structure/persistent/persistent-unionfind.hpp\"\n\n\
@@ -97,7 +97,7 @@ data:
   path: data-structure/persistent/persistent-unionfind.hpp
   requiredBy: []
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/library-checker/data-structure/persistent-unionfind.test.cpp
   - test/mytest/data-structure/persistent-api.test.cpp

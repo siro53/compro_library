@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: misc/fraction.hpp
     title: "\u6709\u7406\u6570"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: random/rng.hpp
     title: "\u4E71\u6570\u751F\u6210"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -22,8 +22,8 @@ data:
     - https://judge.yosupo.jp/problem/aplusb
   bundledCode: "#line 1 \"test/mytest/misc/fraction.test.cpp\"\n#define PROBLEM \"\
     https://judge.yosupo.jp/problem/aplusb\"\n#line 1 \"template/template.cpp\"\n\
-    #pragma region Macros\n#include <bits/stdc++.h>\nusing namespace std;\n// input\
-    \ output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
+    // #region Macros\n#include <bits/stdc++.h>\nusing namespace std;\n// input output\
+    \ utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
     \    struct has_val_impl {\n        template <class T>\n        static auto check(T\
     \ &&x) -> decltype(x.val(), std::true_type{});\n\n        template <class T> static\
     \ auto check(...) -> std::false_type;\n    };\n\n    template <class T>\n    class\
@@ -167,17 +167,17 @@ data:
     \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
     \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
     \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
-    \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"misc/fraction.hpp\"\n\
-    \n#line 4 \"misc/fraction.hpp\"\n\ntemplate<typename Int = long long>\nstruct\
-    \ Fraction {\n    using F = Fraction;\n    Int a, b;\n\n    Fraction(): a(0),\
-    \ b(1) {}\n    Fraction(Int _a, Int _b): a(_a), b(_b) {\n        normalize();\n\
-    \    }\n    Fraction(Int _a): a(_a), b(1) {}\n    inline void normalize() {\n\
-    \        Int g = Fraction::gcd(a, b);\n        a /= g;\n        b /= g;\n    \
-    \    if(b < 0) {\n            a = -a, b = -b;\n        }\n    }\n    F &operator+=(const\
-    \ F& f) {\n        Int na = a * f.b + b * f.a;\n        Int nb = b * f.b;\n  \
-    \      a = na, b = nb;\n        normalize();\n        return *this;\n    }\n \
-    \   F &operator-=(const F& f) {\n        Int na = a * f.b - b * f.a;\n       \
-    \ Int nb = b * f.b;\n        a = na, b = nb;\n        normalize();\n        return\
+    \    return ord;\n}\n// #endregion Macros\n#line 2 \"misc/fraction.hpp\"\n\n#line\
+    \ 4 \"misc/fraction.hpp\"\n\ntemplate<typename Int = long long>\nstruct Fraction\
+    \ {\n    using F = Fraction;\n    Int a, b;\n\n    Fraction(): a(0), b(1) {}\n\
+    \    Fraction(Int _a, Int _b): a(_a), b(_b) {\n        normalize();\n    }\n \
+    \   Fraction(Int _a): a(_a), b(1) {}\n    inline void normalize() {\n        Int\
+    \ g = Fraction::gcd(a, b);\n        a /= g;\n        b /= g;\n        if(b < 0)\
+    \ {\n            a = -a, b = -b;\n        }\n    }\n    F &operator+=(const F&\
+    \ f) {\n        Int na = a * f.b + b * f.a;\n        Int nb = b * f.b;\n     \
+    \   a = na, b = nb;\n        normalize();\n        return *this;\n    }\n    F\
+    \ &operator-=(const F& f) {\n        Int na = a * f.b - b * f.a;\n        Int\
+    \ nb = b * f.b;\n        a = na, b = nb;\n        normalize();\n        return\
     \ *this;\n    }\n    F &operator*=(const F& f) {\n        a *= f.a;\n        b\
     \ *= f.b;\n        normalize();\n        return *this;\n    }\n    F &operator/=(const\
     \ F& f) {\n        Int na = a * f.b;\n        Int nb = b * f.a;\n        a = na,\
@@ -240,8 +240,8 @@ data:
   isVerificationFile: true
   path: test/mytest/misc/fraction.test.cpp
   requiredBy: []
-  timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-11-01 17:39:57+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/mytest/misc/fraction.test.cpp
 layout: document

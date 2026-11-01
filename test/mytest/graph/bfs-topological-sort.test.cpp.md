@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u69CB\u9020\u4F53"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/shortest-path/bfs.hpp
     title: "\u5E45\u512A\u5148\u63A2\u7D22"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/topological-sort.hpp
     title: "\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -25,7 +25,7 @@ data:
     - https://judge.yosupo.jp/problem/aplusb
   bundledCode: "#line 1 \"test/mytest/graph/bfs-topological-sort.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#line 1 \"template/template.cpp\"\
-    \n#pragma region Macros\n#include <bits/stdc++.h>\nusing namespace std;\n// input\
+    \n// #region Macros\n#include <bits/stdc++.h>\nusing namespace std;\n// input\
     \ output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
     \    struct has_val_impl {\n        template <class T>\n        static auto check(T\
     \ &&x) -> decltype(x.val(), std::true_type{});\n\n        template <class T> static\
@@ -170,7 +170,7 @@ data:
     \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
     \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
     \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
-    \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"graph/shortest-path/bfs.hpp\"\
+    \    return ord;\n}\n// #endregion Macros\n#line 2 \"graph/shortest-path/bfs.hpp\"\
     \n\n#line 7 \"graph/shortest-path/bfs.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
     \n\n#line 6 \"graph/graph_template.hpp\"\n\ntemplate <typename Cost = int> struct\
     \ Edge {\n    int from, to;\n    Cost cost;\n    int id;\n    Edge() = default;\n\
@@ -190,43 +190,43 @@ data:
     \ G;\n};\n\ntemplate <class Cost = int> using Edges = std::vector<Edge<Cost>>;\n\
     #line 9 \"graph/shortest-path/bfs.hpp\"\n\ntemplate <typename Cost = int>\nstd::pair<std::vector<Cost>,\
     \ std::vector<int>>\nbfs(const Graph<Cost> &G, int start, Cost iv = 0,\n    Cost\
-    \ inf = std::numeric_limits<Cost>::max()) {\n    using Data = std::pair<Cost,\
-    \ int>;\n    int N = (int)G.size();\n    std::vector<Cost> dist(N, inf);\n   \
-    \ std::vector<int> prev(N, -1);\n\n    dist[start] = iv;\n    std::queue<int>\
-    \ que;\n    que.emplace(start);\n    while(!que.empty()) {\n        int u = que.front();\n\
-    \        que.pop();\n        for(const auto &e : G[u]) {\n            if(dist[e.to]\
-    \ > dist[u] + 1) {\n                dist[e.to] = dist[u] + 1;\n              \
-    \  prev[e.to] = u;\n                que.emplace(e.to);\n            }\n      \
-    \  }\n    }\n\n    return std::make_pair(dist, prev);\n}\n#line 2 \"graph/topological-sort.hpp\"\
-    \n\n#line 4 \"graph/topological-sort.hpp\"\n\ntemplate<typename Cost = int>\n\
-    std::vector<int> topological_sort(const Graph<Cost>& G) {\n    int N = (int)G.size();\n\
-    \    std::vector<int> indeg(N, 0);\n    for(int i = 0; i < N; i++) {\n       \
-    \ for(const auto& e : G[i]) {\n            indeg[e.to]++;\n        }\n    }\n\
-    \    std::vector<int> st, ret;\n    for(int i = 0; i < N; i++) {\n        if(indeg[i]\
-    \ == 0) st.push_back(i);\n    }\n    while(!st.empty()) {\n        int u = st.back();\n\
-    \        st.pop_back();\n        ret.push_back(u);\n        for(const auto& e\
-    \ : G[u]) {\n            indeg[e.to]--;\n            if(indeg[e.to] == 0) st.push_back(e.to);\n\
-    \        }\n    }\n    return ret;\n}\n#line 5 \"test/mytest/graph/bfs-topological-sort.test.cpp\"\
-    \n\nint main() {\n    assert(topological_sort(Graph<int>(0)).empty());\n    mt19937\
-    \ rng(20261104);\n    for(int n = 1; n <= 10; ++n) for(int trial = 0; trial <\
-    \ 100; ++trial) {\n        Graph<ll> g(n);\n        vector<vector<int>> edges(n,\
-    \ vector<int>(n));\n        vector<vector<int>> distance(n, vector<int>(n, 1000));\n\
-    \        for(int i = 0; i < n; ++i) distance[i][i] = 0;\n        for(int u = 0;\
-    \ u < n; ++u) for(int v = 0; v < n; ++v) {\n            if(rng() % 5) continue;\n\
-    \            // Include self-loops, parallel edges and non-unit stored costs.\n\
-    \            edges[u][v] = 1;\n            g.add_directed_edge(u, v, 20);\n  \
-    \          if(rng() % 2) g.add_directed_edge(u, v, 30);\n            distance[u][v]\
-    \ = min(distance[u][v], 1);\n        }\n        for(int k = 0; k < n; ++k) for(int\
-    \ i = 0; i < n; ++i) {\n            for(int j = 0; j < n; ++j) {\n           \
-    \     distance[i][j] = min(distance[i][j], distance[i][k] + distance[k][j]);\n\
-    \            }\n        }\n        for(int source = 0; source < n; ++source) for(ll\
-    \ initial : {-13LL, 0LL, 29LL}) {\n            const ll unreachable = 1000000000000LL;\n\
-    \            auto [dist, prev] = bfs(g, source, initial, unreachable);\n     \
-    \       auto defaults = bfs(g, source);\n            auto initial_only = bfs(g,\
-    \ source, initial);\n            assert(int(dist.size()) == n && int(prev.size())\
-    \ == n);\n            for(int v = 0; v < n; ++v) {\n                if(distance[source][v]\
-    \ == 1000) {\n                    assert(dist[v] == unreachable && prev[v] ==\
-    \ -1);\n                    assert(defaults.first[v] == numeric_limits<ll>::max());\n\
+    \ inf = std::numeric_limits<Cost>::max()) {\n    int N = (int)G.size();\n    std::vector<Cost>\
+    \ dist(N, inf);\n    std::vector<int> prev(N, -1);\n\n    dist[start] = iv;\n\
+    \    std::queue<int> que;\n    que.emplace(start);\n    while(!que.empty()) {\n\
+    \        int u = que.front();\n        que.pop();\n        for(const auto &e :\
+    \ G[u]) {\n            if(dist[e.to] > dist[u] + 1) {\n                dist[e.to]\
+    \ = dist[u] + 1;\n                prev[e.to] = u;\n                que.emplace(e.to);\n\
+    \            }\n        }\n    }\n\n    return std::make_pair(dist, prev);\n}\n\
+    #line 2 \"graph/topological-sort.hpp\"\n\n#line 4 \"graph/topological-sort.hpp\"\
+    \n\ntemplate<typename Cost = int>\nstd::vector<int> topological_sort(const Graph<Cost>&\
+    \ G) {\n    int N = (int)G.size();\n    std::vector<int> indeg(N, 0);\n    for(int\
+    \ i = 0; i < N; i++) {\n        for(const auto& e : G[i]) {\n            indeg[e.to]++;\n\
+    \        }\n    }\n    std::vector<int> st, ret;\n    for(int i = 0; i < N; i++)\
+    \ {\n        if(indeg[i] == 0) st.push_back(i);\n    }\n    while(!st.empty())\
+    \ {\n        int u = st.back();\n        st.pop_back();\n        ret.push_back(u);\n\
+    \        for(const auto& e : G[u]) {\n            indeg[e.to]--;\n           \
+    \ if(indeg[e.to] == 0) st.push_back(e.to);\n        }\n    }\n    return ret;\n\
+    }\n#line 5 \"test/mytest/graph/bfs-topological-sort.test.cpp\"\n\nint main() {\n\
+    \    assert(topological_sort(Graph<int>(0)).empty());\n    mt19937 rng(20261104);\n\
+    \    for(int n = 1; n <= 10; ++n) for(int trial = 0; trial < 100; ++trial) {\n\
+    \        Graph<ll> g(n);\n        vector<vector<int>> edges(n, vector<int>(n));\n\
+    \        vector<vector<int>> distance(n, vector<int>(n, 1000));\n        for(int\
+    \ i = 0; i < n; ++i) distance[i][i] = 0;\n        for(int u = 0; u < n; ++u) for(int\
+    \ v = 0; v < n; ++v) {\n            if(rng() % 5) continue;\n            // Include\
+    \ self-loops, parallel edges and non-unit stored costs.\n            edges[u][v]\
+    \ = 1;\n            g.add_directed_edge(u, v, 20);\n            if(rng() % 2)\
+    \ g.add_directed_edge(u, v, 30);\n            distance[u][v] = min(distance[u][v],\
+    \ 1);\n        }\n        for(int k = 0; k < n; ++k) for(int i = 0; i < n; ++i)\
+    \ {\n            for(int j = 0; j < n; ++j) {\n                distance[i][j]\
+    \ = min(distance[i][j], distance[i][k] + distance[k][j]);\n            }\n   \
+    \     }\n        for(int source = 0; source < n; ++source) for(ll initial : {-13LL,\
+    \ 0LL, 29LL}) {\n            const ll unreachable = 1000000000000LL;\n       \
+    \     auto [dist, prev] = bfs(g, source, initial, unreachable);\n            auto\
+    \ defaults = bfs(g, source);\n            auto initial_only = bfs(g, source, initial);\n\
+    \            assert(int(dist.size()) == n && int(prev.size()) == n);\n       \
+    \     for(int v = 0; v < n; ++v) {\n                if(distance[source][v] ==\
+    \ 1000) {\n                    assert(dist[v] == unreachable && prev[v] == -1);\n\
+    \                    assert(defaults.first[v] == numeric_limits<ll>::max());\n\
     \                    assert(initial_only.first[v] == numeric_limits<ll>::max());\n\
     \                    continue;\n                }\n                assert(dist[v]\
     \ == initial + distance[source][v]);\n                assert(defaults.first[v]\
@@ -305,8 +305,8 @@ data:
   isVerificationFile: true
   path: test/mytest/graph/bfs-topological-sort.test.cpp
   requiredBy: []
-  timestamp: '2026-11-01 17:12:16+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-11-01 17:39:57+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/mytest/graph/bfs-topological-sort.test.cpp
 layout: document

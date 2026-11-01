@@ -3,18 +3,18 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/math/arithmetic-regressions.test.cpp
     title: test/mytest/math/arithmetic-regressions.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/math/matrix-binom.test.cpp
     title: test/mytest/math/matrix-binom.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki117.test.cpp
     title: test/yukicoder/yuki117.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/binom.hpp\"\n\n#include <algorithm>\n#include <cassert>\n\
@@ -74,7 +74,7 @@ data:
   path: math/binom.hpp
   requiredBy: []
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yukicoder/yuki117.test.cpp
   - test/mytest/math/matrix-binom.test.cpp

@@ -1,39 +1,39 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/BIT.hpp
     title: Binary Indexed Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data-structure/erasable-priority-queue.hpp
     title: "\u524A\u9664\u53EF\u80FD\u306A\u512A\u5148\u5EA6\u4ED8\u304D\u30AD\u30E5\
       \u30FC"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data-structure/monoid/sum_count.hpp
     title: "\u548C\u30FB\u500B\u6570\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/segtree/segtree.hpp
     title: Segment Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/sum2D.hpp
     title: "\u4E8C\u6B21\u5143\u7D2F\u7A4D\u548C"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/unionfind.hpp
     title: Union Find
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data-structure/utils/sum_count_manager.hpp
     title: "\u5024\u3054\u3068\u306E\u548C\u30FB\u500B\u6570\u7BA1\u7406"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/compress.hpp
     title: "\u5EA7\u6A19\u5727\u7E2E"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -41,7 +41,7 @@ data:
     - https://judge.yosupo.jp/problem/aplusb
   bundledCode: "#line 1 \"test/mytest/data-structure/basic-api.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#line 1 \"template/template.cpp\"\
-    \n#pragma region Macros\n#include <bits/stdc++.h>\nusing namespace std;\n// input\
+    \n// #region Macros\n#include <bits/stdc++.h>\nusing namespace std;\n// input\
     \ output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
     \    struct has_val_impl {\n        template <class T>\n        static auto check(T\
     \ &&x) -> decltype(x.val(), std::true_type{});\n\n        template <class T> static\
@@ -186,33 +186,32 @@ data:
     \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
     \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
     \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
-    \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"data-structure/BIT.hpp\"\
-    \n\n#line 5 \"data-structure/BIT.hpp\"\n\ntemplate <typename T> class BIT {\n\
-    \  public:\n    BIT() = default;\n    explicit BIT(int N) : N(N), dat(N + 1, 0)\
-    \ {}\n    T sum(int r) {\n        T ret = 0;\n        for(; r >= 1; r -= lsb(r))\
-    \ ret += dat[r];\n        return ret;\n    }\n    T sum(int l, int r) {\n    \
-    \    assert(l <= r);\n        if(l == r) return T(0);\n        return (sum(r)\
-    \ - sum(l));\n    }\n    void add(int pos, T val) {\n        for(int i = pos +\
-    \ 1; i <= N; i += lsb(i)) dat[i] += val;\n    }\n    int lower_bound(T val) {\n\
-    \        int pos = 0;\n        int k = 1;\n        while(2 * k <= N) k <<= 1;\n\
-    \        for(; k >= 1; k >>= 1) {\n            if(pos + k <= N and dat[pos + k]\
-    \ < val) {\n                pos += k;\n                val -= dat[pos];\n    \
-    \        }\n        }\n        return pos + 1;\n    }\n\n  private:\n    int N;\n\
-    \    std::vector<T> dat;\n\n    inline int lsb(int i) { return i & (-i); }\n};\n\
-    #line 2 \"data-structure/sum2D.hpp\"\n\n#line 5 \"data-structure/sum2D.hpp\"\n\
-    \ntemplate <typename T> class sum2D {\n  public:\n    sum2D() = default;\n   \
-    \ explicit sum2D(int height, int width)\n        : sum(height + 1, std::vector<T>(width\
-    \ + 1, 0)), isBuilt(false) {}\n    void add(int row, int column, T val) {\n  \
-    \      assert(0 <= row + 1 && row + 1 < (int)sum.size());\n        assert(0 <=\
-    \ column + 1 && column + 1 < (int)sum[0].size());\n        sum[row + 1][column\
-    \ + 1] += val;\n    }\n    void build() {\n        for(int i = 1; i < (int)sum.size();\
-    \ i++) {\n            for(int j = 1; j < (int)sum[0].size(); j++) {\n        \
-    \        sum[i][j] += sum[i - 1][j] + sum[i][j - 1] - sum[i - 1][j - 1];\n   \
-    \         }\n        }\n        isBuilt = true;\n    }\n    T get_sum(int row_l,\
-    \ int row_r, int column_l, int column_r) const {\n        assert(row_l <= row_r);\n\
-    \        assert(column_l <= column_r);\n        assert(isBuilt);\n        return\
-    \ (sum[row_r][column_r] - sum[row_l][column_r] -\n                sum[row_r][column_l]\
-    \ + sum[row_l][column_l]);\n    }\n\n  private:\n    std::vector<std::vector<T>>\
+    \    return ord;\n}\n// #endregion Macros\n#line 2 \"data-structure/BIT.hpp\"\n\
+    \n#line 5 \"data-structure/BIT.hpp\"\n\ntemplate <typename T> class BIT {\n  public:\n\
+    \    BIT() = default;\n    explicit BIT(int N) : N(N), dat(N + 1, 0) {}\n    T\
+    \ sum(int r) {\n        T ret = 0;\n        for(; r >= 1; r -= lsb(r)) ret +=\
+    \ dat[r];\n        return ret;\n    }\n    T sum(int l, int r) {\n        assert(l\
+    \ <= r);\n        if(l == r) return T(0);\n        return (sum(r) - sum(l));\n\
+    \    }\n    void add(int pos, T val) {\n        for(int i = pos + 1; i <= N; i\
+    \ += lsb(i)) dat[i] += val;\n    }\n    int lower_bound(T val) {\n        int\
+    \ pos = 0;\n        int k = 1;\n        while(2 * k <= N) k <<= 1;\n        for(;\
+    \ k >= 1; k >>= 1) {\n            if(pos + k <= N and dat[pos + k] < val) {\n\
+    \                pos += k;\n                val -= dat[pos];\n            }\n\
+    \        }\n        return pos + 1;\n    }\n\n  private:\n    int N;\n    std::vector<T>\
+    \ dat;\n\n    inline int lsb(int i) { return i & (-i); }\n};\n#line 2 \"data-structure/sum2D.hpp\"\
+    \n\n#line 5 \"data-structure/sum2D.hpp\"\n\ntemplate <typename T> class sum2D\
+    \ {\n  public:\n    sum2D() = default;\n    explicit sum2D(int height, int width)\n\
+    \        : sum(height + 1, std::vector<T>(width + 1, 0)), isBuilt(false) {}\n\
+    \    void add(int row, int column, T val) {\n        assert(0 <= row + 1 && row\
+    \ + 1 < (int)sum.size());\n        assert(0 <= column + 1 && column + 1 < (int)sum[0].size());\n\
+    \        sum[row + 1][column + 1] += val;\n    }\n    void build() {\n       \
+    \ for(int i = 1; i < (int)sum.size(); i++) {\n            for(int j = 1; j < (int)sum[0].size();\
+    \ j++) {\n                sum[i][j] += sum[i - 1][j] + sum[i][j - 1] - sum[i -\
+    \ 1][j - 1];\n            }\n        }\n        isBuilt = true;\n    }\n    T\
+    \ get_sum(int row_l, int row_r, int column_l, int column_r) const {\n        assert(row_l\
+    \ <= row_r);\n        assert(column_l <= column_r);\n        assert(isBuilt);\n\
+    \        return (sum[row_r][column_r] - sum[row_l][column_r] -\n             \
+    \   sum[row_r][column_l] + sum[row_l][column_l]);\n    }\n\n  private:\n    std::vector<std::vector<T>>\
     \ sum;\n    bool isBuilt;\n};\n#line 2 \"data-structure/unionfind.hpp\"\n\n#line\
     \ 7 \"data-structure/unionfind.hpp\"\n\nclass UnionFind {\n  public:\n    UnionFind()\
     \ = default;\n    explicit UnionFind(int n) : N(n), parent_or_size(n, -1) {}\n\
@@ -419,8 +418,8 @@ data:
   isVerificationFile: true
   path: test/mytest/data-structure/basic-api.test.cpp
   requiredBy: []
-  timestamp: '2026-11-01 17:12:16+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-11-01 17:39:57+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/mytest/data-structure/basic-api.test.cpp
 layout: document

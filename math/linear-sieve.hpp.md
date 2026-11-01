@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/math/number-theory.test.cpp
     title: test/mytest/math/number-theory.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/linear-sieve.hpp\"\n\n#include <cassert>\n#include\
@@ -42,7 +42,7 @@ data:
   path: math/linear-sieve.hpp
   requiredBy: []
   timestamp: '2023-02-25 23:57:16+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/mytest/math/number-theory.test.cpp
 documentation_of: math/linear-sieve.hpp

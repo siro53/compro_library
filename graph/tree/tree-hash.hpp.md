@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u69CB\u9020\u4F53"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/tree/diameter.hpp
     title: "\u6728\u306E\u76F4\u5F84"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: random/rng.hpp
     title: "\u4E71\u6570\u751F\u6210"
   _extendedRequiredBy: []
@@ -15,12 +15,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj2821.test.cpp
     title: test/aoj/aoj2821.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/graph/tree-api.test.cpp
     title: test/mytest/graph/tree-api.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/tree/tree-hash.hpp\"\n\n#line 2 \"random/rng.hpp\"\
@@ -128,7 +128,7 @@ data:
   path: graph/tree/tree-hash.hpp
   requiredBy: []
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/mytest/graph/tree-api.test.cpp
   - test/aoj/aoj2821.test.cpp

@@ -1,66 +1,66 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/base.hpp
     title: "\u5E7E\u4F55\u306E\u57FA\u672C\u578B"
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/convex-cut.hpp
     title: "\u51F8\u591A\u89D2\u5F62\u306E\u5207\u65AD"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/cross-point.hpp
     title: "\u4EA4\u70B9"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/distance-between-line-and-point.hpp
     title: "\u76F4\u7DDA\u3068\u70B9\u306E\u8DDD\u96E2"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/distance-between-segment-and-point.hpp
     title: "\u7DDA\u5206\u3068\u70B9\u306E\u8DDD\u96E2"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/distance-between-segments.hpp
     title: "\u7DDA\u5206\u9593\u306E\u8DDD\u96E2"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/geometry.hpp
     title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA\uFF08\u307E\u3068\u3081\u3066\
       \ include\uFF09"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/is-intersect.hpp
     title: "\u4EA4\u5DEE\u5224\u5B9A"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/is-orthogonal.hpp
     title: "\u76F4\u7DDA\u306E\u76F4\u4EA4\u5224\u5B9A"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/is-parallel.hpp
     title: "\u76F4\u7DDA\u306E\u5E73\u884C\u5224\u5B9A"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/is-point-on-line.hpp
     title: "\u70B9\u304C\u76F4\u7DDA\u4E0A\u306B\u3042\u308B\u304B"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/projection.hpp
     title: "\u5C04\u5F71"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/reflection.hpp
     title: "\u76F4\u7DDA\u306B\u5BFE\u3059\u308B\u53CD\u5C04"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/segment.hpp
     title: "\u7DDA\u5206"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/tangent-to-circle.hpp
     title: "\u70B9\u304B\u3089\u5186\u3078\u306E\u63A5\u7DDA"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/tangent.hpp
     title: "2 \u5186\u306E\u5171\u901A\u63A5\u7DDA"
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/geometry/geometry-api.test.cpp
     title: test/mytest/geometry/geometry-api.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/geometry/geometry.test.cpp
     title: test/mytest/geometry/geometry.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/line.hpp\"\n\n#line 2 \"geometry/base.hpp\"\n\n\
@@ -113,7 +113,7 @@ data:
   - geometry/convex-cut.hpp
   - geometry/distance-between-segment-and-point.hpp
   timestamp: '2026-08-30 15:33:14+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/mytest/geometry/geometry.test.cpp
   - test/mytest/geometry/geometry-api.test.cpp

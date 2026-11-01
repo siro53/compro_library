@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/binom.hpp
     title: "\u4E8C\u9805\u4FC2\u6570"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/matrix.hpp
     title: "\u884C\u5217"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: "\u56FA\u5B9A\u6CD5 modint"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -25,7 +25,7 @@ data:
     - https://judge.yosupo.jp/problem/aplusb
   bundledCode: "#line 1 \"test/mytest/math/matrix-binom.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.yosupo.jp/problem/aplusb\"\n#line 1 \"template/template.cpp\"\
-    \n#pragma region Macros\n#include <bits/stdc++.h>\nusing namespace std;\n// input\
+    \n// #region Macros\n#include <bits/stdc++.h>\nusing namespace std;\n// input\
     \ output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
     \    struct has_val_impl {\n        template <class T>\n        static auto check(T\
     \ &&x) -> decltype(x.val(), std::true_type{});\n\n        template <class T> static\
@@ -170,9 +170,9 @@ data:
     \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
     \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
     \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
-    \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"math/matrix.hpp\"\n\n\
-    #line 7 \"math/matrix.hpp\"\n\ntemplate <typename T> class Matrix {\n  public:\n\
-    \    Matrix() {}\n    explicit Matrix(int n) : Matrix(n, n) {}\n    explicit Matrix(int\
+    \    return ord;\n}\n// #endregion Macros\n#line 2 \"math/matrix.hpp\"\n\n#line\
+    \ 7 \"math/matrix.hpp\"\n\ntemplate <typename T> class Matrix {\n  public:\n \
+    \   Matrix() {}\n    explicit Matrix(int n) : Matrix(n, n) {}\n    explicit Matrix(int\
     \ n, int m) : dat(n, std::vector<T>(m)) {}\n    std::size_t height() const { return\
     \ dat.size(); }\n    std::size_t width() const { return dat[0].size(); }\n   \
     \ const std::vector<T> &operator[](int k) const { return dat[k]; }\n    std::vector<T>\
@@ -348,8 +348,8 @@ data:
   isVerificationFile: true
   path: test/mytest/math/matrix-binom.test.cpp
   requiredBy: []
-  timestamp: '2026-11-01 17:12:16+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-11-01 17:39:57+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/mytest/math/matrix-binom.test.cpp
 layout: document

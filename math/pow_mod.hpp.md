@@ -2,13 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/convolution/ntt.hpp
     title: "NTT \u306B\u3088\u308B\u7573\u307F\u8FBC\u307F"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/is-prime.hpp
     title: "\u7D20\u6570\u5224\u5B9A"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/primitive-root.hpp
     title: "\u539F\u59CB\u6839"
   _extendedVerifiedWith:
@@ -21,24 +21,24 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/convolution/convolution-mod.test.cpp
     title: test/library-checker/convolution/convolution-mod.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/library-checker/math/primality-test.test.cpp
     title: test/library-checker/math/primality-test.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/math/arithmetic-regressions.test.cpp
     title: test/mytest/math/arithmetic-regressions.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/math/convolution-regressions.test.cpp
     title: test/mytest/math/convolution-regressions.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/math/number-theory.test.cpp
     title: test/mytest/math/number-theory.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/math/transforms-api.test.cpp
     title: test/mytest/math/transforms-api.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/pow_mod.hpp\"\n\nconstexpr long long pow_mod(long long\
@@ -59,7 +59,7 @@ data:
   - math/primitive-root.hpp
   - math/is-prime.hpp
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/library-checker/math/primality-test.test.cpp
   - test/library-checker/convolution/convolution-mod.test.cpp

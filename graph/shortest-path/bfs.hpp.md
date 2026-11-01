@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u69CB\u9020\u4F53"
   _extendedRequiredBy: []
@@ -9,12 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj-ALDS1-11-C.test.cpp
     title: test/aoj/aoj-ALDS1-11-C.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/graph/bfs-topological-sort.test.cpp
     title: test/mytest/graph/bfs-topological-sort.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/shortest-path/bfs.hpp\"\n\n#include <functional>\n\
@@ -38,31 +38,31 @@ data:
     \ Cost = int> using Edges = std::vector<Edge<Cost>>;\n#line 9 \"graph/shortest-path/bfs.hpp\"\
     \n\ntemplate <typename Cost = int>\nstd::pair<std::vector<Cost>, std::vector<int>>\n\
     bfs(const Graph<Cost> &G, int start, Cost iv = 0,\n    Cost inf = std::numeric_limits<Cost>::max())\
-    \ {\n    using Data = std::pair<Cost, int>;\n    int N = (int)G.size();\n    std::vector<Cost>\
-    \ dist(N, inf);\n    std::vector<int> prev(N, -1);\n\n    dist[start] = iv;\n\
-    \    std::queue<int> que;\n    que.emplace(start);\n    while(!que.empty()) {\n\
-    \        int u = que.front();\n        que.pop();\n        for(const auto &e :\
-    \ G[u]) {\n            if(dist[e.to] > dist[u] + 1) {\n                dist[e.to]\
-    \ = dist[u] + 1;\n                prev[e.to] = u;\n                que.emplace(e.to);\n\
-    \            }\n        }\n    }\n\n    return std::make_pair(dist, prev);\n}\n"
+    \ {\n    int N = (int)G.size();\n    std::vector<Cost> dist(N, inf);\n    std::vector<int>\
+    \ prev(N, -1);\n\n    dist[start] = iv;\n    std::queue<int> que;\n    que.emplace(start);\n\
+    \    while(!que.empty()) {\n        int u = que.front();\n        que.pop();\n\
+    \        for(const auto &e : G[u]) {\n            if(dist[e.to] > dist[u] + 1)\
+    \ {\n                dist[e.to] = dist[u] + 1;\n                prev[e.to] = u;\n\
+    \                que.emplace(e.to);\n            }\n        }\n    }\n\n    return\
+    \ std::make_pair(dist, prev);\n}\n"
   code: "#pragma once\n\n#include <functional>\n#include <limits>\n#include <queue>\n\
     #include <utility>\n\n#include \"../graph_template.hpp\"\n\ntemplate <typename\
     \ Cost = int>\nstd::pair<std::vector<Cost>, std::vector<int>>\nbfs(const Graph<Cost>\
     \ &G, int start, Cost iv = 0,\n    Cost inf = std::numeric_limits<Cost>::max())\
-    \ {\n    using Data = std::pair<Cost, int>;\n    int N = (int)G.size();\n    std::vector<Cost>\
-    \ dist(N, inf);\n    std::vector<int> prev(N, -1);\n\n    dist[start] = iv;\n\
-    \    std::queue<int> que;\n    que.emplace(start);\n    while(!que.empty()) {\n\
-    \        int u = que.front();\n        que.pop();\n        for(const auto &e :\
-    \ G[u]) {\n            if(dist[e.to] > dist[u] + 1) {\n                dist[e.to]\
-    \ = dist[u] + 1;\n                prev[e.to] = u;\n                que.emplace(e.to);\n\
-    \            }\n        }\n    }\n\n    return std::make_pair(dist, prev);\n}"
+    \ {\n    int N = (int)G.size();\n    std::vector<Cost> dist(N, inf);\n    std::vector<int>\
+    \ prev(N, -1);\n\n    dist[start] = iv;\n    std::queue<int> que;\n    que.emplace(start);\n\
+    \    while(!que.empty()) {\n        int u = que.front();\n        que.pop();\n\
+    \        for(const auto &e : G[u]) {\n            if(dist[e.to] > dist[u] + 1)\
+    \ {\n                dist[e.to] = dist[u] + 1;\n                prev[e.to] = u;\n\
+    \                que.emplace(e.to);\n            }\n        }\n    }\n\n    return\
+    \ std::make_pair(dist, prev);\n}"
   dependsOn:
   - graph/graph_template.hpp
   isVerificationFile: false
   path: graph/shortest-path/bfs.hpp
   requiredBy: []
-  timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-11-01 17:39:57+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/mytest/graph/bfs-topological-sort.test.cpp
   - test/aoj/aoj-ALDS1-11-C.test.cpp

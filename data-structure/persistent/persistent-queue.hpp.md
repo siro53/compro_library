@@ -6,12 +6,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/persistent-queue.test.cpp
     title: test/library-checker/data-structure/persistent-queue.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/data-structure/persistent-api.test.cpp
     title: test/mytest/data-structure/persistent-api.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data-structure/persistent/persistent-queue.hpp\"\n\ntemplate\
@@ -60,7 +60,7 @@ data:
   path: data-structure/persistent/persistent-queue.hpp
   requiredBy: []
   timestamp: '2023-02-25 23:57:16+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/library-checker/data-structure/persistent-queue.test.cpp
   - test/mytest/data-structure/persistent-api.test.cpp

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/subset-iterator.hpp
     title: "bit \u96C6\u5408\u306E\u5217\u6319"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -18,7 +18,7 @@ data:
     links:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP2_11_C
   bundledCode: "#line 1 \"test/aoj/aoj-ITP2-11-C.test.cpp\"\n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP2_11_C\"\
-    \n#line 1 \"template/template.cpp\"\n#pragma region Macros\n#include <bits/stdc++.h>\n\
+    \n#line 1 \"template/template.cpp\"\n// #region Macros\n#include <bits/stdc++.h>\n\
     using namespace std;\n// input output utils\nnamespace siro53_io {\n    // https://maspypy.github.io/library/other/io_old.hpp\n\
     \    struct has_val_impl {\n        template <class T>\n        static auto check(T\
     \ &&x) -> decltype(x.val(), std::true_type{});\n\n        template <class T> static\
@@ -163,7 +163,7 @@ data:
     \ T>\nvector<int> ord_sort(const vector<T>& v, bool greater = false) {\n    auto\
     \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
     \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
-    \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"misc/subset-iterator.hpp\"\
+    \    return ord;\n}\n// #endregion Macros\n#line 2 \"misc/subset-iterator.hpp\"\
     \n\n#line 6 \"misc/subset-iterator.hpp\"\n#include <x86intrin.h>\n\n// Subset(S)\
     \ := S\u306E\u90E8\u5206\u96C6\u5408\u3092\u8D70\u67FB\u3059\u308B\nstruct Subset\
     \ {\n    struct SubsetIter {\n        uint32_t S, T;\n        bool is_end;\n\n\
@@ -215,7 +215,7 @@ data:
   isVerificationFile: true
   path: test/aoj/aoj-ITP2-11-C.test.cpp
   requiredBy: []
-  timestamp: '2026-11-01 17:01:16+09:00'
+  timestamp: '2026-11-01 17:39:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/aoj-ITP2-11-C.test.cpp

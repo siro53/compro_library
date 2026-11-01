@@ -1,57 +1,57 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/base.hpp
     title: "\u5E7E\u4F55\u306E\u57FA\u672C\u578B"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/ccw.hpp
     title: "3 \u70B9\u306E\u4F4D\u7F6E\u95A2\u4FC2"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/circle.hpp
     title: "\u5186"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/cross-point.hpp
     title: "\u4EA4\u70B9"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/cross.hpp
     title: "\u5916\u7A4D"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/distance-between-line-and-point.hpp
     title: "\u76F4\u7DDA\u3068\u70B9\u306E\u8DDD\u96E2"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/dot.hpp
     title: "\u5185\u7A4D"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/is-intersect.hpp
     title: "\u4EA4\u5DEE\u5224\u5B9A"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/line.hpp
     title: "\u76F4\u7DDA"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/projection.hpp
     title: "\u5C04\u5F71"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/segment.hpp
     title: "\u7DDA\u5206"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/unit-vector.hpp
     title: "\u5358\u4F4D\u30D9\u30AF\u30C8\u30EB"
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/geometry.hpp
     title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA\uFF08\u307E\u3068\u3081\u3066\
       \ include\uFF09"
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/geometry/geometry-api.test.cpp
     title: test/mytest/geometry/geometry-api.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/geometry/geometry.test.cpp
     title: test/mytest/geometry/geometry.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/convex-cut.hpp\"\n\n#include <vector>\n\n#line\
@@ -208,7 +208,7 @@ data:
   requiredBy:
   - geometry/geometry.hpp
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/mytest/geometry/geometry.test.cpp
   - test/mytest/geometry/geometry-api.test.cpp

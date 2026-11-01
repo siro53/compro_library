@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/compact-bitvector.hpp
     title: Compact Bit Vector
   _extendedRequiredBy: []
@@ -15,15 +15,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/range-kth-smallest.test.cpp
     title: test/library-checker/data-structure/range-kth-smallest.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/data-structure/bit-queries.test.cpp
     title: test/mytest/data-structure/bit-queries.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/mytest/data-structure/wavelet-api.test.cpp
     title: test/mytest/data-structure/wavelet-api.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data-structure/wavelet-matrix.hpp\"\n\n#include <cassert>\n\
@@ -167,7 +167,7 @@ data:
   path: data-structure/wavelet-matrix.hpp
   requiredBy: []
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/library-checker/data-structure/range-kth-smallest.test.cpp
   - test/mytest/data-structure/wavelet-api.test.cpp
