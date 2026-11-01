@@ -20,6 +20,9 @@ jobs:
     - name: Install dependencies
       run: pip3 install -U "setuptools<82" online-judge-verify-helper
 
+    - name: Run bundle snapshot tests
+      run: python3 -m unittest discover -s test/mytest/bundle -v
+
 
     # # required only if you want to verify Haskell code
     # - name: Install dependencies (Haskell)

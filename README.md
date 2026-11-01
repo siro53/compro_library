@@ -20,4 +20,17 @@ python3 /path/to/compro_library/scripts/bundle.py main.cpp -I /path/to/compro_li
 
 エディタなどから呼び出している場合も、`oj-bundle` の部分を `python3 /path/to/compro_library/scripts/bundle.py` に置き換えてください。bundleに失敗した場合は非ゼロで終了し、標準出力には何も出力しません。入力ファイルと出力先は別にしてください。
 
+動作確認用のスナップショットテストは、リポジトリのルートで次のコマンドを実行します（`oj-bundle`と`g++`が必要です）。CIでも同じテストを実行します。
+
+```sh
+python3 -m unittest discover -s test/mytest/bundle -v
+```
+
+期待値は`test/mytest/bundle/snapshots/`に保存しています。意図して出力を変更した場合は、`test/mytest/bundle/fixtures/`をカレントディレクトリにして次のコマンドで更新し、差分を確認してください。テスト実行時には期待値を更新しません。
+
+```sh
+python3 ../../../../scripts/bundle.py plain.cpp > ../snapshots/plain.cpp
+python3 ../../../../scripts/bundle.py includes.cpp -I include > ../snapshots/includes.cpp
+```
+
 [AtCoder生成AI対策ルール（20261014版）](https://info.atcoder.jp/entry/llm-rules-ja)では、生成AIで作成されたコードを利用する場合、コンテスト開始前のWeb公開と参照URLの添付が必要です。GitHubで事前公開したライブラリは、リポジトリへのリンクを提出コードに含めればよく、ファイルごとのリンクは不要とされています。このスクリプトはURLを付けるだけなので、使用するコードは別途コンテスト開始前に公開してください。他のリポジトリのコードを含める場合は、その出典も別途記載してください。
