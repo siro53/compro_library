@@ -108,171 +108,171 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
     title: test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/vertex-set-path-composite.test.cpp
     title: test/library-checker/data-structure/vertex-set-path-composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/library-checker/graph/scc.test.cpp
     title: test/library-checker/graph/scc.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/library-checker/graph/shortest-path.test.cpp
     title: test/library-checker/graph/shortest-path.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/library-checker/math/matrix-det-mod-2.test.cpp
     title: test/library-checker/math/matrix-det-mod-2.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/library-checker/math/primality-test.test.cpp
     title: test/library-checker/math/primality-test.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/library-checker/math/two-sat.test.cpp
     title: test/library-checker/math/two-sat.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/library-checker/string/z-algorithm.test.cpp
     title: test/library-checker/string/z-algorithm.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/library-checker/tree/lowest-common-ancestor.test.cpp
     title: test/library-checker/tree/lowest-common-ancestor.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/library-checker/tree/lowest-common-ancestor2.test.cpp
     title: test/library-checker/tree/lowest-common-ancestor2.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/library-checker/tree/tree-diameter.test.cpp
     title: test/library-checker/tree/tree-diameter.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/basic-api.test.cpp
     title: test/mytest/data-structure/basic-api.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/binary-trie.test.cpp
     title: test/mytest/data-structure/binary-trie.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/bit-queries.test.cpp
     title: test/mytest/data-structure/bit-queries.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/erasable-priority-queue.test.cpp
     title: test/mytest/data-structure/erasable-priority-queue.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/helper-regressions.test.cpp
     title: test/mytest/data-structure/helper-regressions.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/imos2D.test.cpp
     title: test/mytest/data-structure/imos2D.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/initialization-and-monoids.test.cpp
     title: test/mytest/data-structure/initialization-and-monoids.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/li-chao-tree.test.cpp
     title: test/mytest/data-structure/li-chao-tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/monoids.test.cpp
     title: test/mytest/data-structure/monoids.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/persistent-api.test.cpp
     title: test/mytest/data-structure/persistent-api.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/range-bit.test.cpp
     title: test/mytest/data-structure/range-bit.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/segment-tree-api.test.cpp
     title: test/mytest/data-structure/segment-tree-api.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/segtree-boundaries.test.cpp
     title: test/mytest/data-structure/segtree-boundaries.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/slope-trick.test.cpp
     title: test/mytest/data-structure/slope-trick.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/wavelet-api.test.cpp
     title: test/mytest/data-structure/wavelet-api.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/geometry/geometry-api.test.cpp
     title: test/mytest/geometry/geometry-api.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/geometry/geometry.test.cpp
     title: test/mytest/geometry/geometry.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/graph/bfs-topological-sort.test.cpp
     title: test/mytest/graph/bfs-topological-sort.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/graph/graph-scc-two-sat.test.cpp
     title: test/mytest/graph/graph-scc-two-sat.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/graph/lca-and-empty-two-sat.test.cpp
     title: test/mytest/graph/lca-and-empty-two-sat.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/graph/range-edge-graph.test.cpp
     title: test/mytest/graph/range-edge-graph.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/graph/tree-api.test.cpp
     title: test/mytest/graph/tree-api.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/math/arithmetic-regressions.test.cpp
     title: test/mytest/math/arithmetic-regressions.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/math/barrett-reduction.test.cpp
     title: test/mytest/math/barrett-reduction.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/math/convolution-regressions.test.cpp
     title: test/mytest/math/convolution-regressions.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/math/f2.test.cpp
     title: test/mytest/math/f2.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/math/matrix-binom.test.cpp
     title: test/mytest/math/matrix-binom.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/math/number-theory.test.cpp
     title: test/mytest/math/number-theory.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/math/transforms-api.test.cpp
     title: test/mytest/math/transforms-api.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/misc/fraction-api.test.cpp
     title: test/mytest/misc/fraction-api.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/misc/fraction.test.cpp
     title: test/mytest/misc/fraction.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/misc/mo-and-fraction.test.cpp
     title: test/mytest/misc/mo-and-fraction.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/misc/subset-iterator.test.cpp
     title: test/mytest/misc/subset-iterator.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/misc/utilities.test.cpp
     title: test/mytest/misc/utilities.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/modint/dynamic-modint.test.cpp
     title: test/mytest/modint/dynamic-modint.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/string/empty-inputs.test.cpp
     title: test/mytest/string/empty-inputs.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/string/string-api.test.cpp
     title: test/mytest/string/string-api.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki1435.test.cpp
     title: test/yukicoder/yuki1435.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki1469.test.cpp
     title: test/yukicoder/yuki1469.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki1750.test.cpp
     title: test/yukicoder/yuki1750.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki2102.test.cpp
     title: test/yukicoder/yuki2102.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki430.test.cpp
     title: test/yukicoder/yuki430.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki440.test.cpp
     title: test/yukicoder/yuki440.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki789.test.cpp
     title: test/yukicoder/yuki789.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://maspypy.github.io/library/other/io_old.hpp
@@ -574,7 +574,7 @@ data:
   path: template/template.cpp
   requiredBy: []
   timestamp: '2026-11-01 17:39:57+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yukicoder/yuki2102.test.cpp
   - test/yukicoder/yuki1435.test.cpp

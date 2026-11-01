@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/convolution/ntt.hpp
     title: "NTT \u306B\u3088\u308B\u7573\u307F\u8FBC\u307F"
   _extendedVerifiedWith:
@@ -18,33 +18,33 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/range-affine-range-sum.test.cpp
     title: test/library-checker/data-structure/range-affine-range-sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/vertex-set-path-composite.test.cpp
     title: test/library-checker/data-structure/vertex-set-path-composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/math/arithmetic-regressions.test.cpp
     title: test/mytest/math/arithmetic-regressions.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/math/convolution-regressions.test.cpp
     title: test/mytest/math/convolution-regressions.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/math/matrix-binom.test.cpp
     title: test/mytest/math/matrix-binom.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/math/transforms-api.test.cpp
     title: test/mytest/math/transforms-api.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/modint/dynamic-modint.test.cpp
     title: test/mytest/modint/dynamic-modint.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki117.test.cpp
     title: test/yukicoder/yuki117.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki1750.test.cpp
     title: test/yukicoder/yuki1750.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"modint/modint.hpp\"\n\n#include <istream>\n#include <ostream>\n\
@@ -109,7 +109,7 @@ data:
   requiredBy:
   - math/convolution/ntt.hpp
   timestamp: '2023-02-25 23:57:16+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yukicoder/yuki117.test.cpp
   - test/yukicoder/yuki1750.test.cpp

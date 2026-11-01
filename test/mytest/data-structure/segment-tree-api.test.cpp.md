@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/monoid/add.hpp
     title: "\u52A0\u7B97\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/segtree/dynamic-segtree.hpp
     title: Dynamic Segment Tree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/segtree/lazy-segtree.hpp
     title: Lazy Segment Tree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/segtree/segtree-beats.hpp
     title: Segment Tree Beats
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/segtree/segtree.hpp
     title: Segment Tree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -482,7 +482,7 @@ data:
   path: test/mytest/data-structure/segment-tree-api.test.cpp
   requiredBy: []
   timestamp: '2026-11-01 17:39:57+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/mytest/data-structure/segment-tree-api.test.cpp
 layout: document

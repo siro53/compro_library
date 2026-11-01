@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/BIT.hpp
     title: Binary Indexed Tree
   _extendedRequiredBy: []
@@ -9,12 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj-ALDS1-5-D.test.cpp
     title: test/aoj/aoj-ALDS1-5-D.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/misc/utilities.test.cpp
     title: test/mytest/misc/utilities.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"misc/inversion-number.hpp\"\n\n#line 2 \"data-structure/BIT.hpp\"\
@@ -45,7 +45,7 @@ data:
   path: misc/inversion-number.hpp
   requiredBy: []
   timestamp: '2023-02-25 23:57:16+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/mytest/misc/utilities.test.cpp
   - test/aoj/aoj-ALDS1-5-D.test.cpp

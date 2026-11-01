@@ -1,24 +1,24 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/base.hpp
     title: "\u5E7E\u4F55\u306E\u57FA\u672C\u578B"
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/geometry.hpp
     title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA\uFF08\u307E\u3068\u3081\u3066\
       \ include\uFF09"
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/geometry/geometry-api.test.cpp
     title: test/mytest/geometry/geometry-api.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/geometry/geometry.test.cpp
     title: test/mytest/geometry/geometry.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/is-point-on-segment.hpp\"\n\n#line 2 \"geometry/base.hpp\"\
@@ -46,7 +46,7 @@ data:
   requiredBy:
   - geometry/geometry.hpp
   timestamp: '2026-08-30 15:33:14+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/mytest/geometry/geometry.test.cpp
   - test/mytest/geometry/geometry-api.test.cpp
@@ -57,7 +57,7 @@ title: "\u70B9\u304C\u7DDA\u5206\u4E0A\u306B\u3042\u308B\u304B"
 
 ## このライブラリでできること
 
-`isPointOnSegment(a,b,c)` は、点 $c$ が端点を含む線分 $ab$ 上にあるかを調べます。数学的には、三角不等式が等号になる条件 $|a-c|+|c-b|=|a-b|$ を利用しています。
+`isPointOnSegment(a,b,c)` は、点 $c$ が端点を含む線分 $ab$ 上にあるかを調べます。数学的には、三角不等式が等号になる条件 $\lvert a-c\rvert+\lvert c-b\rvert=\lvert a-b\rvert$ を利用しています。
 
 ## 使い方
 
@@ -85,4 +85,4 @@ int main() {
 
 型と関数は `geometry` 名前空間にあります。座標型 `D` は long double、`Point` は `complex<D>` です。実部を $x$ 座標、虚部を $y$ 座標として扱います。
 
-実装は等号の代わりに $|a-c|+|c-b|<|a-b|+\mathrm{EPS}$ を用います。これは距離の和の差に対する許容誤差であり、点から線分への距離がEPS以下かを判定するものではありません。
+実装は等号の代わりに $\lvert a-c\rvert+\lvert c-b\rvert<\lvert a-b\rvert+\mathrm{EPS}$ を用います。これは距離の和の差に対する許容誤差であり、点から線分への距離がEPS以下かを判定するものではありません。

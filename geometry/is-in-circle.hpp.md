@@ -1,27 +1,27 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/base.hpp
     title: "\u5E7E\u4F55\u306E\u57FA\u672C\u578B"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/circle.hpp
     title: "\u5186"
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/geometry.hpp
     title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA\uFF08\u307E\u3068\u3081\u3066\
       \ include\uFF09"
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/geometry/geometry-api.test.cpp
     title: test/mytest/geometry/geometry-api.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/geometry/geometry.test.cpp
     title: test/mytest/geometry/geometry.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/is-in-circle.hpp\"\n\n#line 2 \"geometry/circle.hpp\"\
@@ -55,7 +55,7 @@ data:
   requiredBy:
   - geometry/geometry.hpp
   timestamp: '2026-08-30 15:33:14+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/mytest/geometry/geometry.test.cpp
   - test/mytest/geometry/geometry-api.test.cpp
@@ -66,7 +66,7 @@ title: "\u5186\u3078\u306E\u5305\u542B\u5224\u5B9A"
 
 ## このライブラリでできること
 
-`isInCircle(c,p)` は、点 $p$ が円の内部または円周上にあるかを判定します。数学的な条件は、中心を $c.p$、半径を $r$ として $|p-c.p|\le r$ です。円周だけを調べる関数ではありません。
+`isInCircle(c,p)` は、点 $p$ が円の内部または円周上にあるかを判定します。数学的な条件は、中心を $c.p$、半径を $r$ として $\lvert p-c.p\rvert\le r$ です。円周だけを調べる関数ではありません。
 
 ## 使い方
 

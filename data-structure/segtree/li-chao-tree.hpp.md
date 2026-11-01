@@ -9,12 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/segment-add-get-min.test.cpp
     title: test/library-checker/data-structure/segment-add-get-min.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/li-chao-tree.test.cpp
     title: test/mytest/data-structure/li-chao-tree.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data-structure/segtree/li-chao-tree.hpp\"\n\n#include <algorithm>\n\
@@ -111,7 +111,7 @@ data:
   path: data-structure/segtree/li-chao-tree.hpp
   requiredBy: []
   timestamp: '2026-11-01 15:55:54+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/data-structure/segment-add-get-min.test.cpp
   - test/library-checker/data-structure/line-add-get-min.test.cpp

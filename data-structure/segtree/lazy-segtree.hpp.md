@@ -9,15 +9,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/range-affine-range-sum.test.cpp
     title: test/library-checker/data-structure/range-affine-range-sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/segment-tree-api.test.cpp
     title: test/mytest/data-structure/segment-tree-api.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/segtree-boundaries.test.cpp
     title: test/mytest/data-structure/segtree-boundaries.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data-structure/segtree/lazy-segtree.hpp\"\n\n#include <vector>\n\
@@ -155,7 +155,7 @@ data:
   path: data-structure/segtree/lazy-segtree.hpp
   requiredBy: []
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/data-structure/range-affine-point-get/lazysegtree.test.cpp
   - test/library-checker/data-structure/range-affine-range-sum.test.cpp

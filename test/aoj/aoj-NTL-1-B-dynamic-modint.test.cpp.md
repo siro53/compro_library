@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/barrett-reduction.hpp
     title: Barrett Reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/dynamic-modint.hpp
     title: "\u52D5\u7684\u6CD5 modint"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []

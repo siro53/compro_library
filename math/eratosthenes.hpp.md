@@ -9,12 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj2858.test.cpp
     title: test/aoj/aoj2858.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/math/number-theory.test.cpp
     title: test/mytest/math/number-theory.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/eratosthenes.hpp\"\n\n#include <vector>\n\nclass Eratosthenes\
@@ -35,7 +35,7 @@ data:
   path: math/eratosthenes.hpp
   requiredBy: []
   timestamp: '2023-02-25 23:57:16+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/mytest/math/number-theory.test.cpp
   - test/aoj/aoj2858.test.cpp

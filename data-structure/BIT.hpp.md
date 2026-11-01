@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/range-BIT.hpp
     title: Range BIT
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/inversion-number.hpp
     title: "\u8EE2\u5012\u6570"
   _extendedVerifiedWith:
@@ -24,18 +24,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/static-range-sum.test.cpp
     title: test/library-checker/data-structure/static-range-sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/basic-api.test.cpp
     title: test/mytest/data-structure/basic-api.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/range-bit.test.cpp
     title: test/mytest/data-structure/range-bit.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/misc/utilities.test.cpp
     title: test/mytest/misc/utilities.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data-structure/BIT.hpp\"\n\n#include <cassert>\n#include\
@@ -71,7 +71,7 @@ data:
   - data-structure/range-BIT.hpp
   - misc/inversion-number.hpp
   timestamp: '2023-02-25 23:57:16+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/data-structure/static-range-sum.test.cpp
   - test/library-checker/data-structure/static-range-inversions-query.test.cpp

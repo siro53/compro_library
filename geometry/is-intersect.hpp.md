@@ -1,54 +1,54 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/base.hpp
     title: "\u5E7E\u4F55\u306E\u57FA\u672C\u578B"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/ccw.hpp
     title: "3 \u70B9\u306E\u4F4D\u7F6E\u95A2\u4FC2"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/circle.hpp
     title: "\u5186"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/cross.hpp
     title: "\u5916\u7A4D"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/dot.hpp
     title: "\u5185\u7A4D"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: "\u76F4\u7DDA"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/segment.hpp
     title: "\u7DDA\u5206"
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/convex-cut.hpp
     title: "\u51F8\u591A\u89D2\u5F62\u306E\u5207\u65AD"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/cross-point.hpp
     title: "\u4EA4\u70B9"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/distance-between-segments.hpp
     title: "\u7DDA\u5206\u9593\u306E\u8DDD\u96E2"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/geometry.hpp
     title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA\uFF08\u307E\u3068\u3081\u3066\
       \ include\uFF09"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/tangent-to-circle.hpp
     title: "\u70B9\u304B\u3089\u5186\u3078\u306E\u63A5\u7DDA"
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/geometry/geometry-api.test.cpp
     title: test/mytest/geometry/geometry-api.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/geometry/geometry.test.cpp
     title: test/mytest/geometry/geometry.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/is-intersect.hpp\"\n\n#line 2 \"geometry/ccw.hpp\"\
@@ -147,7 +147,7 @@ data:
   - geometry/cross-point.hpp
   - geometry/convex-cut.hpp
   timestamp: '2026-08-30 15:33:14+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/mytest/geometry/geometry.test.cpp
   - test/mytest/geometry/geometry-api.test.cpp

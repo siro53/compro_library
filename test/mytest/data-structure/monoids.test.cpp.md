@@ -1,60 +1,60 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/monoid/add.hpp
     title: "\u52A0\u7B97\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/monoid/affine.hpp
     title: "\u30A2\u30D5\u30A3\u30F3\u5909\u63DB\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/monoid/and.hpp
     title: "\u30D3\u30C3\u30C8 AND\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/monoid/gcd.hpp
     title: "\u6700\u5927\u516C\u7D04\u6570\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/monoid/kadane.hpp
     title: "\u6700\u5927\u90E8\u5206\u914D\u5217\u548C\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/monoid/lcm.hpp
     title: "\u6700\u5C0F\u516C\u500D\u6570\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/monoid/max.hpp
     title: "\u6700\u5927\u5024\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/monoid/max_index.hpp
     title: "\u6DFB\u5B57\u4ED8\u304D\u6700\u5927\u5024\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/monoid/min.hpp
     title: "\u6700\u5C0F\u5024\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/monoid/min_index.hpp
     title: "\u6DFB\u5B57\u4ED8\u304D\u6700\u5C0F\u5024\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/monoid/or.hpp
     title: "\u30D3\u30C3\u30C8 OR\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/monoid/rolling_hash.hpp
     title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5\u30E2\u30CE\u30A4\
       \u30C9"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/monoid/sum_count.hpp
     title: "\u548C\u30FB\u500B\u6570\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: modint/modint_2_61.hpp
     title: "\u6CD5 2^61-1 \u306E modint"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: string/rolling-hash.hpp
     title: Rolling Hash
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -452,7 +452,7 @@ data:
   path: test/mytest/data-structure/monoids.test.cpp
   requiredBy: []
   timestamp: '2026-11-01 17:39:57+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/mytest/data-structure/monoids.test.cpp
 layout: document

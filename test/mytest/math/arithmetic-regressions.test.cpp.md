@@ -1,38 +1,38 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/F2.hpp
     title: "F\u2082 \u4E0A\u306E\u884C\u5217\u30FB\u9023\u7ACB\u65B9\u7A0B\u5F0F"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/barrett-reduction.hpp
     title: Barrett Reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/binom.hpp
     title: "\u4E8C\u9805\u4FC2\u6570"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/is-prime.hpp
     title: "\u7D20\u6570\u5224\u5B9A"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/pow_mod.hpp
     title: "\u5270\u4F59\u4ED8\u304D\u7D2F\u4E57"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/segment-sieve.hpp
     title: "\u533A\u9593\u7D20\u6570\u5224\u5B9A"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/dynamic-modint.hpp
     title: "\u52D5\u7684\u6CD5 modint"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/modint.hpp
     title: "\u56FA\u5B9A\u6CD5 modint"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -404,7 +404,7 @@ data:
   path: test/mytest/math/arithmetic-regressions.test.cpp
   requiredBy: []
   timestamp: '2026-11-01 17:39:57+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/mytest/math/arithmetic-regressions.test.cpp
 layout: document

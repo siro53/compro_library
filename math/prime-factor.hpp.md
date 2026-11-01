@@ -6,12 +6,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj-NTL-1-A.test.cpp
     title: test/aoj/aoj-NTL-1-A.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/math/number-theory.test.cpp
     title: test/mytest/math/number-theory.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/prime-factor.hpp\"\n\n#include <map>\n#include <type_traits>\n\
@@ -33,7 +33,7 @@ data:
   path: math/prime-factor.hpp
   requiredBy: []
   timestamp: '2023-12-05 16:32:36+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/mytest/math/number-theory.test.cpp
   - test/aoj/aoj-NTL-1-A.test.cpp

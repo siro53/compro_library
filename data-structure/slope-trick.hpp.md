@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/helper-regressions.test.cpp
     title: test/mytest/data-structure/helper-regressions.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/slope-trick.test.cpp
     title: test/mytest/data-structure/slope-trick.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://maspypy.com/slope-trick-1-%E8%A7%A3%E8%AA%AC%E7%B7%A8
@@ -102,7 +102,7 @@ data:
   path: data-structure/slope-trick.hpp
   requiredBy: []
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/mytest/data-structure/slope-trick.test.cpp
   - test/mytest/data-structure/helper-regressions.test.cpp
@@ -113,13 +113,13 @@ title: Slope Trick
 
 ## このライブラリでできること
 
-`SlopeTrick<T>` は、区分線形な凸関数を、その折れ点と最小値で表すデータ構造です。関数全体を値の表として持たずに、$\max(x-a,0)$、$\max(a-x,0)$、$|x-a|$ の加算や、片側からの累積最小値を処理できます。絶対値の和を含む最適化や動的計画法で役立ちます。
+`SlopeTrick<T>` は、区分線形な凸関数を、その折れ点と最小値で表すデータ構造です。関数全体を値の表として持たずに、$\max(x-a,0)$、$\max(a-x,0)$、$\lvert x-a\rvert$ の加算や、片側からの累積最小値を処理できます。絶対値の和を含む最適化や動的計画法で役立ちます。
 
 初期状態は $f(x)=0$ です。左右のヒープ `L,R` に折れ点を持ち、`min_f` に最小値、`add_L,add_R` に折れ点の移動量を持ちます。折れ点数を $K$ とすると、折れ点を1つ加える操作は $O(\log(K+1))$ 時間です。
 
 ## 使い方
 
-例では $f(x)=|x-2|+|x-6|$ を作ります。$2\le x\le6$ では左右への距離の和が常に $4$ なので、`get_min()` は $4$ を返します。
+例では $f(x)=\lvert x-2\rvert+\lvert x-6\rvert$ を作ります。$2\le x\le6$ では左右への距離の和が常に $4$ なので、`get_min()` は $4$ を返します。
 
 `get_min()` は関数を変更しませんが、`eval(x)` はヒープを取り出しながら値を計算します。後でも同じ関数を使う場合は、例のようにコピーを評価してください。`shift(a,b)` は、$a\le b$ のもとで $g(x)=\min_{x-b\le y\le x-a}f(y)$ へ置き換える操作です。単なる平行移動は `shift(a)` で表せます。
 

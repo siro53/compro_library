@@ -3,18 +3,18 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/library-checker/string/z-algorithm.test.cpp
     title: test/library-checker/string/z-algorithm.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/string/empty-inputs.test.cpp
     title: test/mytest/string/empty-inputs.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/string/string-api.test.cpp
     title: test/mytest/string/string-api.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"string/z-algo.hpp\"\n\n#include <vector>\n#include <string>\n\
@@ -38,7 +38,7 @@ data:
   path: string/z-algo.hpp
   requiredBy: []
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/string/z-algorithm.test.cpp
   - test/mytest/string/string-api.test.cpp
@@ -58,7 +58,7 @@ title: Z algorithm
 
 例の `ababa` では、位置2からの接尾辞 `aba` が先頭の3文字と一致するため $z_2=3$ です。位置4では `a` だけが一致するので $z_4=1$ になります。
 
-パターン $P$ の出現を探したい場合は、どちらの文字列にも含まれない区切り文字を挟んだ $P+\#+S$ を作り、$S$ に対応する位置で Z 値が $|P|$ 以上かを調べる使い方ができます。
+パターン $P$ の出現を探したい場合は、どちらの文字列にも含まれない区切り文字を挟んだ $P+\#+S$ を作り、$S$ に対応する位置で Z 値が $\lvert P\rvert$ 以上かを調べる使い方ができます。
 
 ```cpp
 #include "template/template.cpp"

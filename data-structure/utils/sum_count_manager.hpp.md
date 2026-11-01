@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/monoid/sum_count.hpp
     title: "\u548C\u30FB\u500B\u6570\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/segtree/segtree.hpp
     title: Segment Tree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/compress.hpp
     title: "\u5EA7\u6A19\u5727\u7E2E"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/basic-api.test.cpp
     title: test/mytest/data-structure/basic-api.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/helper-regressions.test.cpp
     title: test/mytest/data-structure/helper-regressions.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data-structure/utils/sum_count_manager.hpp\"\n\n#include\
@@ -106,7 +106,7 @@ data:
   path: data-structure/utils/sum_count_manager.hpp
   requiredBy: []
   timestamp: '2026-11-01 16:38:28+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/mytest/data-structure/basic-api.test.cpp
   - test/mytest/data-structure/helper-regressions.test.cpp

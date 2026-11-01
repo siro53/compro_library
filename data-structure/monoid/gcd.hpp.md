@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/monoids.test.cpp
     title: test/mytest/data-structure/monoids.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data-structure/monoid/gcd.hpp\"\n\n#include <numeric>\n\n\
@@ -24,7 +24,7 @@ data:
   path: data-structure/monoid/gcd.hpp
   requiredBy: []
   timestamp: '2023-02-25 23:57:16+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/mytest/data-structure/monoids.test.cpp
 documentation_of: data-structure/monoid/gcd.hpp
@@ -34,7 +34,7 @@ title: "\u6700\u5927\u516C\u7D04\u6570\u30E2\u30CE\u30A4\u30C9"
 
 ## このライブラリでできること
 
-`MonoidGCD<T>` は区間内の整数の最大公約数を集約します。$\gcd(a,0)=|a|$ なので、非負整数を対象にすれば $0$ を単位元として使えます。
+`MonoidGCD<T>` は区間内の整数の最大公約数を集約します。$\gcd(a,0)=\lvert a\rvert$ なので、非負整数を対象にすれば $0$ を単位元として使えます。
 
 モノイド用の型は、値の型 `value_type`、2つの区間を結合する `op`、空区間を表す `e()` を提供します。`Segtree` などのテンプレート引数に渡して使います。
 

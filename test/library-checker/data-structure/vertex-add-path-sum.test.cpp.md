@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/monoid/add.hpp
     title: "\u52A0\u7B97\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/segtree/segtree.hpp
     title: Segment Tree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u69CB\u9020\u4F53"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/tree/hld.hpp
     title: Heavy Light Decomposition
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []

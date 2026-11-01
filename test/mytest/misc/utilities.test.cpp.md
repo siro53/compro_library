@@ -1,39 +1,39 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/BIT.hpp
     title: Binary Indexed Tree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/compress.hpp
     title: "\u5EA7\u6A19\u5727\u7E2E"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: misc/floor-ceil-div.hpp
     title: "\u6574\u6570\u306E\u5207\u308A\u4E0A\u3052\u30FB\u5207\u308A\u6368\u3066\
       \u9664\u7B97"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/inversion-number.hpp
     title: "\u8EE2\u5012\u6570"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/mo.hpp
     title: "Mo \u306E\u30A2\u30EB\u30B4\u30EA\u30BA\u30E0"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: misc/rle.hpp
     title: "\u30E9\u30F3\u30EC\u30F3\u30B0\u30B9\u5727\u7E2E"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: misc/timer.hpp
     title: "\u30BF\u30A4\u30DE\u30FC"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: random/rng.hpp
     title: "\u4E71\u6570\u751F\u6210"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.cpp
     title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -367,7 +367,7 @@ data:
   path: test/mytest/misc/utilities.test.cpp
   requiredBy: []
   timestamp: '2026-11-01 17:39:57+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/mytest/misc/utilities.test.cpp
 layout: document

@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: modint/modint_2_61.hpp
     title: "\u6CD5 2^61-1 \u306E modint"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: string/rolling-hash.hpp
     title: Rolling Hash
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/monoids.test.cpp
     title: test/mytest/data-structure/monoids.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data-structure/monoid/rolling_hash.hpp\"\n\n#include <array>\n\
@@ -104,7 +104,7 @@ data:
   path: data-structure/monoid/rolling_hash.hpp
   requiredBy: []
   timestamp: '2026-11-01 17:39:57+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/mytest/data-structure/monoids.test.cpp
 documentation_of: data-structure/monoid/rolling_hash.hpp
@@ -116,7 +116,7 @@ title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5\u30E2\u30CE\u30A4
 
 `MonoidRollingHash<N>` は、列のハッシュ値と長さを組にして、列同士の連結を表すモノイドです。セグメント木に載せると、1文字の変更を伴う文字列の部分列ハッシュなどに利用できます。ハッシュ値の型 `mint` は、法 $2^{61}-1$ の `ModInt_2_61` です。
 
-底を $b$、列 $A$ のハッシュを $H(A)=\sum_{i=0}^{|A|-1}A_i b^i$ とします。このとき $H(AB)=H(A)+b^{|A|}H(B)$ なので、2つのハッシュと長さだけから連結後のハッシュを計算できます。
+底を $b$、列 $A$ のハッシュを $H(A)=\sum_{i=0}^{\lvert A\rvert-1}A_i b^i$ とします。このとき $H(AB)=H(A)+b^{\lvert A\rvert}H(B)$ なので、2つのハッシュと長さだけから連結後のハッシュを計算できます。
 
 ## 使い方
 
