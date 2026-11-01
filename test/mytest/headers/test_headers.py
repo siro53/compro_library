@@ -9,7 +9,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[3]
 TOPICS = ("data-structure", "geometry", "graph", "math", "misc", "modint", "random", "string")
-FLAGS = ["g++", "-std=c++17", "-O2", "-Wall", "-Wextra", "-I", str(ROOT)]
+FLAGS = ["g++", "-std=c++17", "-O2", "-Wall", "-Wextra", "-Werror", "-I", str(ROOT)]
 
 
 class HeaderTests(unittest.TestCase):

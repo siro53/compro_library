@@ -8,6 +8,23 @@
 
 [ライブラリ一覧](docs/index.md)から各ファイルのドキュメントを参照できます。各ページでは、用途と考え方を説明した後、具体的な使用例、API の動作と計算量を紹介しています。数学的な成立条件や実装上の制約は「利用条件と実装上の注意」にまとめています。
 
+## 検証環境
+
+CI と同じツールを使う場合は、リポジトリのルートで専用の仮想環境を作ってください（Python 3.11 と g++ が必要です）。
+
+```sh
+python3 -m venv .venv
+. .venv/bin/activate
+python3 -m pip install -r .verify-helper/requirements.txt
+python3 .verify-helper/patch_dependencies.py
+python3 -m unittest discover -s test/mytest/ci -v
+oj-verify all
+```
+
+`patch_dependencies.py` は、固定した検証ツールのインストール先に互換修正を適用します。`pkg_resources` を標準の `importlib.resources` に置き換え、Library Checker の廃止された引数、更新確認キャッシュの未登録キー、未追跡の `.gitignore` の検査を修正します。繰り返し実行できますが、バージョンや修正対象のコードが想定と異なる場合は停止します。依存バージョンを更新する際は、このスクリプトと回帰テストも見直してください。
+
+ドキュメントの `exclude` は依存解析前にも適用し、開発用 Python スクリプトと bundle の fixture を解析対象から外します。ライブラリと C++ verifier は対象のままです。bundle のコメント除去専用の前処理では、未評価のマクロや `#pragma once` による警告だけが出るため、その前処理呼び出しに限って `-w` を指定します。通常のコンパイルの `-Wall -Wextra` と前処理のエラーは有効です。
+
 ## マージ前のドキュメント確認
 
 このリポジトリ内のブランチから PR を作ると、`verify` ワークフローの検証が成功した後に `Pages preview` ジョブがドキュメントを生成し、次の URL に公開します。Draft PR でも利用できます。

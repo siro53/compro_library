@@ -5,20 +5,21 @@
 #include "../../../modint/modint_2_61.hpp"
 
 template<class mint> void check(ll mod) {
+    auto value = [](const mint &x) { return static_cast<ll>(x.val()); };
     mt19937_64 rng(20261106);
     {
-        assert(mint::get_mod() == mod && mint().val() == 0);
+        assert(mint::get_mod() == mod && value(mint()) == 0);
         auto normalize = [mod](ll x) { return (x % mod + mod) % mod; };
         for(ll x : {0LL, 1LL, -1LL, mod - 1, mod, -mod, LLONG_MAX, -LLONG_MAX}) {
-            assert(mint(x).val() == normalize(x));
+            assert(value(mint(x)) == normalize(x));
         }
         for(int trial = 0; trial < 500; ++trial) {
             ll a = rng() % mod, b = rng() % mod;
             mint x(a), y(b);
-            assert((x + y).val() == (a + b) % mod);
-            assert((x - y).val() == normalize(a - b));
-            assert((x * y).val() == (__int128)a * b % mod);
-            assert((-x).val() == normalize(-a));
+            assert(value(x + y) == (a + b) % mod);
+            assert(value(x - y) == normalize(a - b));
+            assert(value(x * y) == (__int128)a * b % mod);
+            assert(value(-x) == normalize(-a));
             assert((x == y) == (a == b) && (x != y) == (a != b));
             mint copy = x;
             assert(&(copy += y) == &copy && copy == x + y);
@@ -26,10 +27,10 @@ template<class mint> void check(ll mod) {
             assert(&(copy -= y) == &copy && copy == x - y);
             copy = x;
             assert(&(copy *= y) == &copy && copy == x * y);
-            assert(x.val() == a && y.val() == b);
+            assert(value(x) == a && value(y) == b);
             ll expected = 1;
             for(int exponent = 0; exponent < 20; ++exponent) {
-                assert(x.pow(exponent).val() == expected);
+                assert(value(x.pow(exponent)) == expected);
                 expected = (__int128)expected * a % mod;
             }
             if(gcd(b, mod) == 1) {
@@ -40,16 +41,16 @@ template<class mint> void check(ll mod) {
                 assert(&(copy /= y) == &copy && copy == x / y);
             }
         }
-        assert(mint(1).pow(LLONG_MAX).val() == 1);
+        assert(value(mint(1).pow(LLONG_MAX)) == 1);
         stringstream stream;
         stream << mint(-1) << ' ' << mint(0);
         assert(stream.str() == to_string(mod - 1) + " 0");
         mint x, y;
         stream >> x >> y;
-        assert(x.val() == mod - 1 && y.val() == 0);
+        assert(value(x) == mod - 1 && value(y) == 0);
         stringstream negative("-123456789012345");
         negative >> x;
-        assert(x.val() == normalize(-123456789012345LL));
+        assert(value(x) == normalize(-123456789012345LL));
     }
 }
 

@@ -11,7 +11,6 @@ template <typename Cost = int>
 std::pair<std::vector<Cost>, std::vector<int>>
 bfs(const Graph<Cost> &G, int start, Cost iv = 0,
     Cost inf = std::numeric_limits<Cost>::max()) {
-    using Data = std::pair<Cost, int>;
     int N = (int)G.size();
     std::vector<Cost> dist(N, inf);
     std::vector<int> prev(N, -1);

@@ -61,6 +61,8 @@ int main() {
     using Hash = MonoidRollingHash<64>;
     Hash::S h; h = Hash::e();
     auto base = Hash::op(Hash::S(0, 1), Hash::S(1, 1)).h;
+    // Repeated calls must reuse the same base and powers in C++17.
+    assert(Hash::op(Hash::S(0, 1), Hash::S(1, 1)).h == base);
     Hash::mint expected = 0, power = 1;
     for(int i = 1; i <= 30; ++i) {
         h = Hash::op(h, Hash::S(i, 1)); expected += power * i; power *= base;

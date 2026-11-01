@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
       with:
         fetch-depth: 0
 
@@ -23,7 +23,12 @@ jobs:
         python-version: "3.11"
 
     - name: Install dependencies
-      run: pip3 install -U "setuptools<82" online-judge-verify-helper
+      run: |
+        pip3 install -r .verify-helper/requirements.txt
+        python3 .verify-helper/patch_dependencies.py
+
+    - name: Check verifier compatibility fixes
+      run: python3 -m unittest discover -s test/mytest/ci -v
 
     - name: Run bundle snapshot tests
       run: python3 -m unittest discover -s test/mytest/bundle -v
@@ -121,7 +126,7 @@ jobs:
     if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           persist-credentials: false
@@ -133,7 +138,8 @@ jobs:
 
       - name: Generate documentation
         run: |
-          pip3 install -U "setuptools<82" online-judge-verify-helper
+          pip3 install -r .verify-helper/requirements.txt
+          python3 .verify-helper/patch_dependencies.py
           env -u GITHUB_TOKEN oj-verify docs
 
       - name: Configure preview URLs
