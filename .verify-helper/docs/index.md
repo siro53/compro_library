@@ -6,7 +6,7 @@
 <details markdown="1">
 <summary>出典コメント付きでbundleするツール</summary>
 
-[`scripts/bundle.py`](https://github.com/siro53/compro_library/blob/main/scripts/bundle.py)を使うと、`oj-bundle`による展開結果の先頭に出典コメントを自動で付けられます。
+[`scripts/bundle.py`](https://github.com/siro53/compro_library/blob/main/scripts/bundle.py)を使うと、`oj-bundle`による各ライブラリの挿入位置に出典コメントを自動で付けられます。ネストした include も対象で、同じファイルには最初の挿入時だけ付けます。ライブラリを含まないソースには付けません。
 
 ```cpp
 // Source: https://github.com/siro53/compro_library
