@@ -19,7 +19,7 @@ documentation_of: //geometry/polygon-area.hpp
 
 int main() {
     using namespace geometry;
-    vector<Point> p{{0, 0}, {2, 0}, {2, 2}, {0, 2}};
+    vector<Point> p{ {0, 0}, {2, 0}, {2, 2}, {0, 2}};
     assert(equal(PolygonArea(p), 4));
 }
 ```

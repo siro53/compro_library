@@ -17,7 +17,7 @@ documentation_of: //geometry/is-convex.hpp
 
 int main() {
     using namespace geometry;
-    vector<Point> p{{0, 0}, {2, 0}, {2, 2}, {0, 2}};
+    vector<Point> p{ {0, 0}, {2, 0}, {2, 2}, {0, 2}};
     assert(isConvex(p));
 }
 ```

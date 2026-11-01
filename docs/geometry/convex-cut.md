@@ -19,7 +19,7 @@ documentation_of: //geometry/convex-cut.hpp
 
 int main() {
     using namespace geometry;
-    vector<Point> p{{0, 0}, {2, 0}, {2, 2}, {0, 2}};
+    vector<Point> p{ {0, 0}, {2, 0}, {2, 2}, {0, 2}};
     auto cut = ConvexCut(p, Line(Point(1, -1), Point(1, 3)));
     assert(cut.size() == 4);
 }

@@ -30,7 +30,7 @@ struct RangeAddSum {
 };
 
 int main() {
-    SegtreeBeats<RangeAddSum> seg(vector<RangeAddSum::S>{{1, 1}, {2, 1}, {3, 1}});
+    SegtreeBeats<RangeAddSum> seg(vector<RangeAddSum::S>{ {1, 1}, {2, 1}, {3, 1}});
     seg.apply(0, 2, 5);
     assert(seg.prod(0, 3).sum == 16);
 }

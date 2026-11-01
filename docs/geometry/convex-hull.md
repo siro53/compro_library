@@ -21,7 +21,7 @@ documentation_of: //geometry/convex-hull.hpp
 
 int main() {
     using namespace geometry;
-    vector<Point> p{{0, 0}, {2, 0}, {2, 2}, {0, 2}, {1, 1}};
+    vector<Point> p{ {0, 0}, {2, 0}, {2, 2}, {0, 2}, {1, 1}};
     auto hull = ConvexHull(p);
     assert(hull.size() == 4);
 }
