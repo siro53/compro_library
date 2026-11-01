@@ -3,13 +3,13 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: modint/modint_2_61.hpp
-    title: modint/modint_2_61.hpp
+    title: "\u6CD5 2^61-1 \u306E modint"
   - icon: ':heavy_check_mark:'
     path: string/rolling-hash.hpp
-    title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
+    title: Rolling Hash
   - icon: ':heavy_check_mark:'
     path: template/template.cpp
-    title: template/template.cpp
+    title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false

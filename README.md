@@ -4,6 +4,10 @@
 [![Actions Status](https://github.com/siro53/compro_library/workflows/verify/badge.svg)](https://github.com/siro53/compro_library/actions)
 [![GitHub Pages](https://img.shields.io/static/v1?label=GitHub+Pages&message=+&color=brightgreen&logo=github)](https://siro53.github.io/compro_library/)
 
+## ライブラリの使い方
+
+[ライブラリ一覧](docs/index.md)から各ファイルのドキュメントを参照できます。各ページでは、用途と考え方を説明した後、具体的な使用例、API の動作と計算量を紹介しています。数学的な成立条件や実装上の制約は「利用条件と実装上の注意」にまとめています。
+
 ## マージ前のドキュメント確認
 
 このリポジトリ内のブランチから PR を作ると、`verify` ワークフローの検証が成功した後に `Pages preview` ジョブがドキュメントを生成し、次の URL に公開します。Draft PR でも利用できます。

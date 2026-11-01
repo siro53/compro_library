@@ -3,44 +3,45 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: geometry/base.hpp
-    title: geometry/base.hpp
+    title: "\u5E7E\u4F55\u306E\u57FA\u672C\u578B"
   - icon: ':heavy_check_mark:'
     path: geometry/ccw.hpp
-    title: geometry/ccw.hpp
+    title: "3 \u70B9\u306E\u4F4D\u7F6E\u95A2\u4FC2"
   - icon: ':heavy_check_mark:'
     path: geometry/circle.hpp
-    title: geometry/circle.hpp
+    title: "\u5186"
   - icon: ':heavy_check_mark:'
     path: geometry/cross-point.hpp
-    title: geometry/cross-point.hpp
+    title: "\u4EA4\u70B9"
   - icon: ':heavy_check_mark:'
     path: geometry/cross.hpp
-    title: geometry/cross.hpp
+    title: "\u5916\u7A4D"
   - icon: ':heavy_check_mark:'
     path: geometry/distance-between-line-and-point.hpp
-    title: geometry/distance-between-line-and-point.hpp
+    title: "\u76F4\u7DDA\u3068\u70B9\u306E\u8DDD\u96E2"
   - icon: ':heavy_check_mark:'
     path: geometry/dot.hpp
-    title: geometry/dot.hpp
+    title: "\u5185\u7A4D"
   - icon: ':heavy_check_mark:'
     path: geometry/is-intersect.hpp
-    title: geometry/is-intersect.hpp
+    title: "\u4EA4\u5DEE\u5224\u5B9A"
   - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
-    title: geometry/line.hpp
+    title: "\u76F4\u7DDA"
   - icon: ':heavy_check_mark:'
     path: geometry/projection.hpp
-    title: geometry/projection.hpp
+    title: "\u5C04\u5F71"
   - icon: ':heavy_check_mark:'
     path: geometry/segment.hpp
-    title: geometry/segment.hpp
+    title: "\u7DDA\u5206"
   - icon: ':heavy_check_mark:'
     path: geometry/unit-vector.hpp
-    title: geometry/unit-vector.hpp
+    title: "\u5358\u4F4D\u30D9\u30AF\u30C8\u30EB"
   _extendedRequiredBy:
   - icon: ':warning:'
     path: geometry/geometry.hpp
-    title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA"
+    title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA\uFF08\u307E\u3068\u3081\u3066\
+      \ include\uFF09"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/mytest/geometry/geometry.test.cpp
@@ -203,8 +204,40 @@ data:
   - test/mytest/geometry/geometry.test.cpp
 documentation_of: geometry/tangent-to-circle.hpp
 layout: document
-redirect_from:
-- /library/geometry/tangent-to-circle.hpp
-- /library/geometry/tangent-to-circle.hpp.html
-title: geometry/tangent-to-circle.hpp
+title: "\u70B9\u304B\u3089\u5186\u3078\u306E\u63A5\u7DDA"
 ---
+
+## このライブラリでできること
+
+`tangentToCircle(p,c)` は、円の外部の点 $p$ から円へ引いた2本の接線について、その接点を返します。返り値は直線ではなく `vector<Point>` です。各接点と $p$ を結べば接線になります。
+
+接点 $t$ では半径と接線が直交するので、$|p-t|=\sqrt{|p-c.p|^2-c.r^2}$ です。この長さを半径とする補助円と元の円の交点を使って、接点を求めます。
+
+## 使い方
+
+例では原点中心・半径1の円に、外部の点 $(3,0)$ から接線を引いています。上下に1つずつ、合計2つの接点が得られます。必要なら各点 `t` について `Line(p,t)` を作ってください。
+
+```cpp
+#include "template/template.cpp"
+#include "geometry/tangent-to-circle.hpp"
+
+int main() {
+    using namespace geometry;
+    auto ps = tangentToCircle(Point(3, 0), Circle(Point(0, 0), 1));
+    assert(ps.size() == 2);
+}
+```
+
+## API・計算量
+
+必要な追加空間は $O(1)$ です。
+
+| API | 動作・返り値 | 時間計算量 |
+| --- | --- | --- |
+| `tangentToCircle(p,c)` | 接点の vector<Point>。通常は 2 点。 | O(1) |
+
+## 利用条件と実装上の注意
+
+型と関数は `geometry` 名前空間にあります。座標型 `D` は long double、`Point` は `complex<D>` です。実部を $x$ 座標、虚部を $y$ 座標として扱います。
+
+円は正半径とし、点は円の厳密な外側に置いてください。内部の点では平方根の中が負になります。円周上の点も退化ケースになるため、別処理を推奨します。外側でも境界に非常に近い場合は丸め誤差に注意が必要です。

@@ -3,35 +3,36 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: geometry/base.hpp
-    title: geometry/base.hpp
+    title: "\u5E7E\u4F55\u306E\u57FA\u672C\u578B"
   - icon: ':heavy_check_mark:'
     path: geometry/ccw.hpp
-    title: geometry/ccw.hpp
+    title: "3 \u70B9\u306E\u4F4D\u7F6E\u95A2\u4FC2"
   - icon: ':heavy_check_mark:'
     path: geometry/circle.hpp
-    title: geometry/circle.hpp
+    title: "\u5186"
   - icon: ':heavy_check_mark:'
     path: geometry/cross.hpp
-    title: geometry/cross.hpp
+    title: "\u5916\u7A4D"
   - icon: ':heavy_check_mark:'
     path: geometry/distance-between-segment-and-point.hpp
-    title: geometry/distance-between-segment-and-point.hpp
+    title: "\u7DDA\u5206\u3068\u70B9\u306E\u8DDD\u96E2"
   - icon: ':heavy_check_mark:'
     path: geometry/dot.hpp
-    title: geometry/dot.hpp
+    title: "\u5185\u7A4D"
   - icon: ':heavy_check_mark:'
     path: geometry/is-intersect.hpp
-    title: geometry/is-intersect.hpp
+    title: "\u4EA4\u5DEE\u5224\u5B9A"
   - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
-    title: geometry/line.hpp
+    title: "\u76F4\u7DDA"
   - icon: ':heavy_check_mark:'
     path: geometry/segment.hpp
-    title: geometry/segment.hpp
+    title: "\u7DDA\u5206"
   _extendedRequiredBy:
   - icon: ':warning:'
     path: geometry/geometry.hpp
-    title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA"
+    title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA\uFF08\u307E\u3068\u3081\u3066\
+      \ include\uFF09"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/mytest/geometry/geometry.test.cpp
@@ -148,8 +149,39 @@ data:
   - test/mytest/geometry/geometry.test.cpp
 documentation_of: geometry/distance-between-segments.hpp
 layout: document
-redirect_from:
-- /library/geometry/distance-between-segments.hpp
-- /library/geometry/distance-between-segments.hpp.html
-title: geometry/distance-between-segments.hpp
+title: "\u7DDA\u5206\u9593\u306E\u8DDD\u96E2"
 ---
+
+## このライブラリでできること
+
+`distanceBetweenSegments(s,t)` は、2本の線分にそれぞれ点を選んだときの最短距離を返します。交差や接触があれば0です。交差しない場合は、どちらかの線分の端点と、もう一方の線分との距離の最小値になります。
+
+## 使い方
+
+例の2本の線分は平行で、$y$ 座標が $0$ と $3$ なので距離は $3$ です。端点同士だけで距離を比べると最短距離を見落とす場合があるため、関数内では端点から線分への距離を4通り調べます。
+
+```cpp
+#include "template/template.cpp"
+#include "geometry/distance-between-segments.hpp"
+
+int main() {
+    using namespace geometry;
+    Segment s(Point(0, 0), Point(2, 0));
+    Segment t(Point(0, 3), Point(2, 3));
+    assert(equal(distanceBetweenSegments(s, t), 3));
+}
+```
+
+## API・計算量
+
+必要な追加空間は $O(1)$ です。
+
+| API | 動作・返り値 | 時間計算量 |
+| --- | --- | --- |
+| `distanceBetweenSegments(s,t)` | 線分間の非負の最短距離。 | O(1) |
+
+## 利用条件と実装上の注意
+
+型と関数は `geometry` 名前空間にあります。座標型 `D` は long double、`Point` は `complex<D>` です。実部を $x$ 座標、虚部を $y$ 座標として扱います。
+
+通常の非零長線分を渡してください。内部の交差判定も使用するため、零長の図形や退化した配置を含めて扱いたい場合は別途処理が必要です。端点での接触も距離0として扱います。

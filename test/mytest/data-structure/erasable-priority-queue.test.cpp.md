@@ -3,13 +3,14 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: data-structure/erasable-priority-queue.hpp
-    title: "\u524A\u9664\u53EF\u80FD priority queue"
+    title: "\u524A\u9664\u53EF\u80FD\u306A\u512A\u5148\u5EA6\u4ED8\u304D\u30AD\u30E5\
+      \u30FC"
   - icon: ':heavy_check_mark:'
     path: random/rng.hpp
     title: "\u4E71\u6570\u751F\u6210"
   - icon: ':heavy_check_mark:'
     path: template/template.cpp
-    title: template/template.cpp
+    title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false

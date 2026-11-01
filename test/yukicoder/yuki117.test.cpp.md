@@ -6,7 +6,7 @@ data:
     title: "\u4E8C\u9805\u4FC2\u6570"
   - icon: ':heavy_check_mark:'
     path: modint/modint.hpp
-    title: modint/modint.hpp
+    title: "\u56FA\u5B9A\u6CD5 modint"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false

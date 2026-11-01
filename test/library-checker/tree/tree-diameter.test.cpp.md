@@ -9,7 +9,7 @@ data:
     title: "\u6728\u306E\u76F4\u5F84"
   - icon: ':heavy_check_mark:'
     path: template/template.cpp
-    title: template/template.cpp
+    title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false

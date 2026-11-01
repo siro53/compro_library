@@ -3,20 +3,21 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: geometry/base.hpp
-    title: geometry/base.hpp
+    title: "\u5E7E\u4F55\u306E\u57FA\u672C\u578B"
   - icon: ':heavy_check_mark:'
     path: geometry/cross.hpp
-    title: geometry/cross.hpp
+    title: "\u5916\u7A4D"
   - icon: ':heavy_check_mark:'
     path: geometry/is-parallel.hpp
-    title: geometry/is-parallel.hpp
+    title: "\u76F4\u7DDA\u306E\u5E73\u884C\u5224\u5B9A"
   - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
-    title: geometry/line.hpp
+    title: "\u76F4\u7DDA"
   _extendedRequiredBy:
   - icon: ':warning:'
     path: geometry/geometry.hpp
-    title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA"
+    title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA\uFF08\u307E\u3068\u3081\u3066\
+      \ include\uFF09"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/mytest/geometry/geometry.test.cpp
@@ -75,8 +76,37 @@ data:
   - test/mytest/geometry/geometry.test.cpp
 documentation_of: geometry/is-point-on-line.hpp
 layout: document
-redirect_from:
-- /library/geometry/is-point-on-line.hpp
-- /library/geometry/is-point-on-line.hpp.html
-title: geometry/is-point-on-line.hpp
+title: "\u70B9\u304C\u76F4\u7DDA\u4E0A\u306B\u3042\u308B\u304B"
 ---
+
+## このライブラリでできること
+
+`isPointOnLine(a,b,c)` は、点 $c$ が2点 $a,b$ を通る無限直線上にあるかを調べます。ベクトル $b-a$ と $c-a$ の外積が0に近いことを、平行判定によって確認します。
+
+## 使い方
+
+例の $(3,0)$ は、$(0,0)$ と $(1,0)$ の間にはありませんが、同じ水平直線上にあるので真を返します。端点の間にあることも必要なら、`isPointOnSegment` を使ってください。
+
+```cpp
+#include "template/template.cpp"
+#include "geometry/is-point-on-line.hpp"
+
+int main() {
+    using namespace geometry;
+    assert(isPointOnLine(Point(0, 0), Point(1, 0), Point(3, 0)));
+}
+```
+
+## API・計算量
+
+必要な追加空間は $O(1)$ です。
+
+| API | 動作・返り値 | 時間計算量 |
+| --- | --- | --- |
+| `isPointOnLine(a,b,c)` | 直線上なら true。 | O(1) |
+
+## 利用条件と実装上の注意
+
+型と関数は `geometry` 名前空間にあります。座標型 `D` は long double、`Point` は `complex<D>` です。実部を $x$ 座標、虚部を $y$ 座標として扱います。
+
+$a,b$ は異なる点にしてください。判定にはEPSを使いますが、点と直線の距離を直接EPSと比較しているわけではありません。方向ベクトルの長さによって、同じ距離の点でも判定が変わり得ます。

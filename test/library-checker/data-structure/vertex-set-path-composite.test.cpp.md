@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: data-structure/monoid/affine.hpp
-    title: data-structure/monoid/affine.hpp
+    title: "\u30A2\u30D5\u30A3\u30F3\u5909\u63DB\u30E2\u30CE\u30A4\u30C9"
   - icon: ':heavy_check_mark:'
     path: data-structure/segtree/segtree.hpp
     title: Segment Tree
@@ -12,13 +12,13 @@ data:
     title: "\u30B0\u30E9\u30D5\u69CB\u9020\u4F53"
   - icon: ':heavy_check_mark:'
     path: graph/tree/hld.hpp
-    title: "HL\u5206\u89E3"
+    title: Heavy Light Decomposition
   - icon: ':heavy_check_mark:'
     path: modint/modint.hpp
-    title: modint/modint.hpp
+    title: "\u56FA\u5B9A\u6CD5 modint"
   - icon: ':heavy_check_mark:'
     path: template/template.cpp
-    title: template/template.cpp
+    title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false

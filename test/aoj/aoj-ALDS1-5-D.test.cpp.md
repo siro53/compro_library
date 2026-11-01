@@ -3,16 +3,16 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: data-structure/BIT.hpp
-    title: data-structure/BIT.hpp
+    title: Binary Indexed Tree
   - icon: ':heavy_check_mark:'
     path: misc/compress.hpp
-    title: "\u5EA7\u5727"
+    title: "\u5EA7\u6A19\u5727\u7E2E"
   - icon: ':heavy_check_mark:'
     path: misc/inversion-number.hpp
     title: "\u8EE2\u5012\u6570"
   - icon: ':heavy_check_mark:'
     path: template/template.cpp
-    title: template/template.cpp
+    title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false

@@ -3,13 +3,13 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: data-structure/persistent/persistent-array.hpp
-    title: data-structure/persistent/persistent-array.hpp
+    title: "\u6C38\u7D9A\u914D\u5217"
   - icon: ':heavy_check_mark:'
     path: data-structure/persistent/persistent-unionfind.hpp
-    title: data-structure/persistent/persistent-unionfind.hpp
+    title: "\u6C38\u7D9A Union Find"
   - icon: ':heavy_check_mark:'
     path: template/template.cpp
-    title: template/template.cpp
+    title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false

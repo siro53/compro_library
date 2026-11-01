@@ -3,53 +3,54 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: geometry/base.hpp
-    title: geometry/base.hpp
+    title: "\u5E7E\u4F55\u306E\u57FA\u672C\u578B"
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: geometry/convex-cut.hpp
-    title: geometry/convex-cut.hpp
+    title: "\u51F8\u591A\u89D2\u5F62\u306E\u5207\u65AD"
   - icon: ':heavy_check_mark:'
     path: geometry/cross-point.hpp
-    title: geometry/cross-point.hpp
+    title: "\u4EA4\u70B9"
   - icon: ':heavy_check_mark:'
     path: geometry/distance-between-line-and-point.hpp
-    title: geometry/distance-between-line-and-point.hpp
+    title: "\u76F4\u7DDA\u3068\u70B9\u306E\u8DDD\u96E2"
   - icon: ':heavy_check_mark:'
     path: geometry/distance-between-segment-and-point.hpp
-    title: geometry/distance-between-segment-and-point.hpp
+    title: "\u7DDA\u5206\u3068\u70B9\u306E\u8DDD\u96E2"
   - icon: ':heavy_check_mark:'
     path: geometry/distance-between-segments.hpp
-    title: geometry/distance-between-segments.hpp
+    title: "\u7DDA\u5206\u9593\u306E\u8DDD\u96E2"
   - icon: ':warning:'
     path: geometry/geometry.hpp
-    title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA"
+    title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA\uFF08\u307E\u3068\u3081\u3066\
+      \ include\uFF09"
   - icon: ':heavy_check_mark:'
     path: geometry/is-intersect.hpp
-    title: geometry/is-intersect.hpp
+    title: "\u4EA4\u5DEE\u5224\u5B9A"
   - icon: ':heavy_check_mark:'
     path: geometry/is-orthogonal.hpp
-    title: geometry/is-orthogonal.hpp
+    title: "\u76F4\u7DDA\u306E\u76F4\u4EA4\u5224\u5B9A"
   - icon: ':heavy_check_mark:'
     path: geometry/is-parallel.hpp
-    title: geometry/is-parallel.hpp
+    title: "\u76F4\u7DDA\u306E\u5E73\u884C\u5224\u5B9A"
   - icon: ':heavy_check_mark:'
     path: geometry/is-point-on-line.hpp
-    title: geometry/is-point-on-line.hpp
+    title: "\u70B9\u304C\u76F4\u7DDA\u4E0A\u306B\u3042\u308B\u304B"
   - icon: ':heavy_check_mark:'
     path: geometry/projection.hpp
-    title: geometry/projection.hpp
+    title: "\u5C04\u5F71"
   - icon: ':heavy_check_mark:'
     path: geometry/reflection.hpp
-    title: geometry/reflection.hpp
+    title: "\u76F4\u7DDA\u306B\u5BFE\u3059\u308B\u53CD\u5C04"
   - icon: ':heavy_check_mark:'
     path: geometry/segment.hpp
-    title: geometry/segment.hpp
+    title: "\u7DDA\u5206"
   - icon: ':heavy_check_mark:'
     path: geometry/tangent-to-circle.hpp
-    title: geometry/tangent-to-circle.hpp
+    title: "\u70B9\u304B\u3089\u5186\u3078\u306E\u63A5\u7DDA"
   - icon: ':heavy_check_mark:'
     path: geometry/tangent.hpp
-    title: geometry/tangent.hpp
+    title: "2 \u5186\u306E\u5171\u901A\u63A5\u7DDA"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/mytest/geometry/geometry.test.cpp
@@ -114,8 +115,46 @@ data:
   - test/mytest/geometry/geometry.test.cpp
 documentation_of: geometry/line.hpp
 layout: document
-redirect_from:
-- /library/geometry/line.hpp
-- /library/geometry/line.hpp.html
-title: geometry/line.hpp
+title: "\u76F4\u7DDA"
 ---
+
+## このライブラリでできること
+
+`Line` は、異なる2点 `a,b` を通る無限に長い直線を表します。両端で切られた線分ではありません。切断などの向きを使う処理では、`a` から `b` へ向かう方向をその直線の向きとします。
+
+点を直接渡す方法のほか、直線の方程式 $Ax+By=C$ の係数を渡して作ることもできます。
+
+## 使い方
+
+例の `Line(1,1,2)` は $x+y=2$ を表します。コンストラクタがこの直線上の2点を選んで `a,b` に保存するので、それ以降は点指定で作った直線と同じように使えます。
+
+点指定なら `Line(Point(0,0),Point(1,1))` のように書きます。向きを反転したい場合は2点の順序を逆にしてください。
+
+```cpp
+#include "template/template.cpp"
+#include "geometry/line.hpp"
+
+int main() {
+    using namespace geometry;
+    Line l(1, 1, 2);
+    assert(equal(l.a.real() + l.a.imag(), 2));
+}
+```
+
+## API・計算量
+
+必要な追加空間は $O(1)$ です。
+
+| API | 動作・返り値 | 時間計算量 |
+| --- | --- | --- |
+| `Line()` | デフォルト構築。使用前に異なる 2 点を設定する。 | O(1) |
+| `Line(a,b)` | 2 点から直線を作る。 | O(1) |
+| `Line(A,B,C)` | Ax+By=C を表す 2 点を計算。 | O(1) |
+
+## 利用条件と実装上の注意
+
+型と関数は `geometry` 名前空間にあります。座標型 `D` は long double、`Point` は `complex<D>` です。実部を $x$ 座標、虚部を $y$ 座標として扱います。
+
+点指定では `a!=b` としてください。係数指定では $A,B$ が同時に0であってはいけません。実装は係数の0判定にEPSを使うため、どちらもEPS内の値でも不適切な分岐に入ります。
+
+デフォルト構築した直線は有効な方向を持たないので、演算前に異なる2点を設定してください。

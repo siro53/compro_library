@@ -5,31 +5,32 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: data-structure/BIT.hpp
-      title: data-structure/BIT.hpp
+      title: Binary Indexed Tree
     - icon: ':heavy_check_mark:'
       path: data-structure/binary-trie.hpp
-      title: data-structure/binary-trie.hpp
+      title: Binary Trie
     - icon: ':heavy_check_mark:'
       path: data-structure/compact-bitvector.hpp
-      title: data-structure/compact-bitvector.hpp
+      title: Compact Bit Vector
     - icon: ':heavy_check_mark:'
       path: data-structure/erasable-priority-queue.hpp
-      title: "\u524A\u9664\u53EF\u80FD priority queue"
+      title: "\u524A\u9664\u53EF\u80FD\u306A\u512A\u5148\u5EA6\u4ED8\u304D\u30AD\u30E5\
+        \u30FC"
     - icon: ':warning:'
       path: data-structure/imos2D.hpp
-      title: data-structure/imos2D.hpp
+      title: "\u4E8C\u6B21\u5143\u3044\u3082\u3059\u6CD5"
     - icon: ':warning:'
       path: data-structure/range-BIT.hpp
-      title: data-structure/range-BIT.hpp
+      title: Range BIT
     - icon: ':warning:'
       path: data-structure/slope-trick.hpp
       title: Slope Trick
     - icon: ':heavy_check_mark:'
       path: data-structure/sum2D.hpp
-      title: data-structure/sum2D.hpp
+      title: "\u4E8C\u6B21\u5143\u7D2F\u7A4D\u548C"
     - icon: ':heavy_check_mark:'
       path: data-structure/unionfind.hpp
-      title: data-structure/unionfind.hpp
+      title: Union Find
     - icon: ':heavy_check_mark:'
       path: data-structure/wavelet-matrix.hpp
       title: Wavelet Matrix
@@ -37,54 +38,55 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: data-structure/monoid/add.hpp
-      title: data-structure/monoid/add.hpp
+      title: "\u52A0\u7B97\u30E2\u30CE\u30A4\u30C9"
     - icon: ':heavy_check_mark:'
       path: data-structure/monoid/affine.hpp
-      title: data-structure/monoid/affine.hpp
+      title: "\u30A2\u30D5\u30A3\u30F3\u5909\u63DB\u30E2\u30CE\u30A4\u30C9"
     - icon: ':warning:'
       path: data-structure/monoid/and.hpp
-      title: data-structure/monoid/and.hpp
+      title: "\u30D3\u30C3\u30C8 AND\u30E2\u30CE\u30A4\u30C9"
     - icon: ':warning:'
       path: data-structure/monoid/gcd.hpp
-      title: data-structure/monoid/gcd.hpp
+      title: "\u6700\u5927\u516C\u7D04\u6570\u30E2\u30CE\u30A4\u30C9"
     - icon: ':warning:'
       path: data-structure/monoid/kadane.hpp
-      title: data-structure/monoid/kadane.hpp
+      title: "\u6700\u5927\u90E8\u5206\u914D\u5217\u548C\u30E2\u30CE\u30A4\u30C9"
     - icon: ':warning:'
       path: data-structure/monoid/lcm.hpp
-      title: data-structure/monoid/lcm.hpp
+      title: "\u6700\u5C0F\u516C\u500D\u6570\u30E2\u30CE\u30A4\u30C9"
     - icon: ':warning:'
       path: data-structure/monoid/max.hpp
-      title: data-structure/monoid/max.hpp
+      title: "\u6700\u5927\u5024\u30E2\u30CE\u30A4\u30C9"
     - icon: ':warning:'
       path: data-structure/monoid/max_index.hpp
-      title: data-structure/monoid/max_index.hpp
+      title: "\u6DFB\u5B57\u4ED8\u304D\u6700\u5927\u5024\u30E2\u30CE\u30A4\u30C9"
     - icon: ':warning:'
       path: data-structure/monoid/min.hpp
-      title: data-structure/monoid/min.hpp
+      title: "\u6700\u5C0F\u5024\u30E2\u30CE\u30A4\u30C9"
     - icon: ':warning:'
       path: data-structure/monoid/min_index.hpp
-      title: data-structure/monoid/min_index.hpp
+      title: "\u6DFB\u5B57\u4ED8\u304D\u6700\u5C0F\u5024\u30E2\u30CE\u30A4\u30C9"
     - icon: ':warning:'
       path: data-structure/monoid/or.hpp
-      title: data-structure/monoid/or.hpp
+      title: "\u30D3\u30C3\u30C8 OR\u30E2\u30CE\u30A4\u30C9"
     - icon: ':warning:'
       path: data-structure/monoid/rolling_hash.hpp
-      title: data-structure/monoid/rolling_hash.hpp
+      title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5\u30E2\u30CE\u30A4\
+        \u30C9"
     - icon: ':warning:'
       path: data-structure/monoid/sum_count.hpp
-      title: data-structure/monoid/sum_count.hpp
+      title: "\u548C\u30FB\u500B\u6570\u30E2\u30CE\u30A4\u30C9"
   - name: data-structure/persistent
     pages:
     - icon: ':heavy_check_mark:'
       path: data-structure/persistent/persistent-array.hpp
-      title: data-structure/persistent/persistent-array.hpp
+      title: "\u6C38\u7D9A\u914D\u5217"
     - icon: ':heavy_check_mark:'
       path: data-structure/persistent/persistent-queue.hpp
-      title: data-structure/persistent/persistent-queue.hpp
+      title: "\u6C38\u7D9A\u30AD\u30E5\u30FC"
     - icon: ':heavy_check_mark:'
       path: data-structure/persistent/persistent-unionfind.hpp
-      title: data-structure/persistent/persistent-unionfind.hpp
+      title: "\u6C38\u7D9A Union Find"
   - name: data-structure/segtree
     pages:
     - icon: ':heavy_check_mark:'
@@ -98,7 +100,7 @@ data:
       title: Li Chao Tree
     - icon: ':heavy_check_mark:'
       path: data-structure/segtree/segtree-beats.hpp
-      title: data-structure/segtree/segtree-beats.hpp
+      title: Segment Tree Beats
     - icon: ':heavy_check_mark:'
       path: data-structure/segtree/segtree.hpp
       title: Segment Tree
@@ -106,105 +108,106 @@ data:
     pages:
     - icon: ':warning:'
       path: data-structure/utils/sum_count_manager.hpp
-      title: data-structure/utils/sum_count_manager.hpp
+      title: "\u5024\u3054\u3068\u306E\u548C\u30FB\u500B\u6570\u7BA1\u7406"
   - name: geometry
     pages:
     - icon: ':heavy_check_mark:'
       path: geometry/base.hpp
-      title: geometry/base.hpp
+      title: "\u5E7E\u4F55\u306E\u57FA\u672C\u578B"
     - icon: ':heavy_check_mark:'
       path: geometry/ccw.hpp
-      title: geometry/ccw.hpp
+      title: "3 \u70B9\u306E\u4F4D\u7F6E\u95A2\u4FC2"
     - icon: ':heavy_check_mark:'
       path: geometry/circle.hpp
-      title: geometry/circle.hpp
+      title: "\u5186"
     - icon: ':heavy_check_mark:'
       path: geometry/convex-cut.hpp
-      title: geometry/convex-cut.hpp
+      title: "\u51F8\u591A\u89D2\u5F62\u306E\u5207\u65AD"
     - icon: ':heavy_check_mark:'
       path: geometry/convex-hull.hpp
-      title: geometry/convex-hull.hpp
+      title: "\u51F8\u5305"
     - icon: ':heavy_check_mark:'
       path: geometry/cross-point.hpp
-      title: geometry/cross-point.hpp
+      title: "\u4EA4\u70B9"
     - icon: ':heavy_check_mark:'
       path: geometry/cross.hpp
-      title: geometry/cross.hpp
+      title: "\u5916\u7A4D"
     - icon: ':heavy_check_mark:'
       path: geometry/degree-to-radian.hpp
-      title: geometry/degree-to-radian.hpp
+      title: "\u5EA6\u304B\u3089\u30E9\u30B8\u30A2\u30F3"
     - icon: ':heavy_check_mark:'
       path: geometry/distance-between-line-and-point.hpp
-      title: geometry/distance-between-line-and-point.hpp
+      title: "\u76F4\u7DDA\u3068\u70B9\u306E\u8DDD\u96E2"
     - icon: ':heavy_check_mark:'
       path: geometry/distance-between-segment-and-point.hpp
-      title: geometry/distance-between-segment-and-point.hpp
+      title: "\u7DDA\u5206\u3068\u70B9\u306E\u8DDD\u96E2"
     - icon: ':heavy_check_mark:'
       path: geometry/distance-between-segments.hpp
-      title: geometry/distance-between-segments.hpp
+      title: "\u7DDA\u5206\u9593\u306E\u8DDD\u96E2"
     - icon: ':heavy_check_mark:'
       path: geometry/dot.hpp
-      title: geometry/dot.hpp
+      title: "\u5185\u7A4D"
     - icon: ':warning:'
       path: geometry/geometry.hpp
-      title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA"
+      title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA\uFF08\u307E\u3068\u3081\u3066\
+        \ include\uFF09"
     - icon: ':heavy_check_mark:'
       path: geometry/is-contained.hpp
-      title: geometry/is-contained.hpp
+      title: "\u591A\u89D2\u5F62\u3078\u306E\u5305\u542B\u5224\u5B9A"
     - icon: ':heavy_check_mark:'
       path: geometry/is-convex.hpp
-      title: geometry/is-convex.hpp
+      title: "\u51F8\u591A\u89D2\u5F62\u5224\u5B9A"
     - icon: ':heavy_check_mark:'
       path: geometry/is-in-circle.hpp
-      title: geometry/is-in-circle.hpp
+      title: "\u5186\u3078\u306E\u5305\u542B\u5224\u5B9A"
     - icon: ':heavy_check_mark:'
       path: geometry/is-intersect.hpp
-      title: geometry/is-intersect.hpp
+      title: "\u4EA4\u5DEE\u5224\u5B9A"
     - icon: ':heavy_check_mark:'
       path: geometry/is-orthogonal.hpp
-      title: geometry/is-orthogonal.hpp
+      title: "\u76F4\u7DDA\u306E\u76F4\u4EA4\u5224\u5B9A"
     - icon: ':heavy_check_mark:'
       path: geometry/is-parallel.hpp
-      title: geometry/is-parallel.hpp
+      title: "\u76F4\u7DDA\u306E\u5E73\u884C\u5224\u5B9A"
     - icon: ':heavy_check_mark:'
       path: geometry/is-point-on-line.hpp
-      title: geometry/is-point-on-line.hpp
+      title: "\u70B9\u304C\u76F4\u7DDA\u4E0A\u306B\u3042\u308B\u304B"
     - icon: ':heavy_check_mark:'
       path: geometry/is-point-on-segment.hpp
-      title: geometry/is-point-on-segment.hpp
+      title: "\u70B9\u304C\u7DDA\u5206\u4E0A\u306B\u3042\u308B\u304B"
     - icon: ':heavy_check_mark:'
       path: geometry/line.hpp
-      title: geometry/line.hpp
+      title: "\u76F4\u7DDA"
     - icon: ':heavy_check_mark:'
       path: geometry/normal-vector.hpp
-      title: geometry/normal-vector.hpp
+      title: "\u6CD5\u7DDA\u30D9\u30AF\u30C8\u30EB"
     - icon: ':heavy_check_mark:'
       path: geometry/polygon-area.hpp
-      title: geometry/polygon-area.hpp
+      title: "\u591A\u89D2\u5F62\u306E\u7B26\u53F7\u4ED8\u304D\u9762\u7A4D"
     - icon: ':heavy_check_mark:'
       path: geometry/projection.hpp
-      title: geometry/projection.hpp
+      title: "\u5C04\u5F71"
     - icon: ':heavy_check_mark:'
       path: geometry/radian-to-degree.hpp
-      title: geometry/radian-to-degree.hpp
+      title: "\u30E9\u30B8\u30A2\u30F3\u304B\u3089\u5EA6"
     - icon: ':heavy_check_mark:'
       path: geometry/reflection.hpp
-      title: geometry/reflection.hpp
+      title: "\u76F4\u7DDA\u306B\u5BFE\u3059\u308B\u53CD\u5C04"
     - icon: ':heavy_check_mark:'
       path: geometry/rotate.hpp
-      title: geometry/rotate.hpp
+      title: "\u70B9\u30FB\u30D9\u30AF\u30C8\u30EB\u306E\u56DE\u8EE2"
     - icon: ':heavy_check_mark:'
       path: geometry/segment.hpp
-      title: geometry/segment.hpp
+      title: "\u7DDA\u5206"
     - icon: ':heavy_check_mark:'
       path: geometry/tangent-to-circle.hpp
-      title: geometry/tangent-to-circle.hpp
+      title: "\u70B9\u304B\u3089\u5186\u3078\u306E\u63A5\u7DDA"
     - icon: ':heavy_check_mark:'
       path: geometry/tangent.hpp
-      title: geometry/tangent.hpp
+      title: "2 \u5186\u306E\u5171\u901A\u63A5\u7DDA"
     - icon: ':heavy_check_mark:'
       path: geometry/unit-vector.hpp
-      title: geometry/unit-vector.hpp
+      title: "\u5358\u4F4D\u30D9\u30AF\u30C8\u30EB"
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
@@ -212,13 +215,13 @@ data:
       title: "\u30B0\u30E9\u30D5\u69CB\u9020\u4F53"
     - icon: ':warning:'
       path: graph/namori.hpp
-      title: graph/namori.hpp
+      title: "\u306A\u3082\u308A\u30B0\u30E9\u30D5\u306E\u5206\u89E3"
     - icon: ':warning:'
       path: graph/range-edge-graph.hpp
-      title: "\u533A\u9593\u306B\u8FBA\u3092\u5F35\u308B\u30C6\u30AF"
+      title: "\u533A\u9593\u306B\u8FBA\u3092\u5F35\u308B\u30B0\u30E9\u30D5"
     - icon: ':heavy_check_mark:'
       path: graph/scc.hpp
-      title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3(SCC)"
+      title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3"
     - icon: ':warning:'
       path: graph/topological-sort.hpp
       title: "\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8"
@@ -226,10 +229,10 @@ data:
     pages:
     - icon: ':warning:'
       path: graph/shortest-path/bfs.hpp
-      title: BFS
+      title: "\u5E45\u512A\u5148\u63A2\u7D22"
     - icon: ':heavy_check_mark:'
       path: graph/shortest-path/dijkstra.hpp
-      title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
+      title: "Dijkstra \u6CD5"
   - name: graph/tree
     pages:
     - icon: ':warning:'
@@ -240,10 +243,11 @@ data:
       title: "\u6728\u306E\u76F4\u5F84"
     - icon: ':heavy_check_mark:'
       path: graph/tree/hld.hpp
-      title: "HL\u5206\u89E3"
+      title: Heavy Light Decomposition
     - icon: ':heavy_check_mark:'
       path: graph/tree/lca.hpp
-      title: "\u6700\u5C0F\u5171\u901A\u7956\u5148(LCA)"
+      title: "\u6700\u5C0F\u5171\u901A\u7956\u5148\uFF08\u30C0\u30D6\u30EA\u30F3\u30B0\
+        \uFF09"
     - icon: ':heavy_check_mark:'
       path: graph/tree/tree-hash.hpp
       title: "\u6728\u30CF\u30C3\u30B7\u30E5"
@@ -251,7 +255,7 @@ data:
     pages:
     - icon: ':warning:'
       path: math/F2.hpp
-      title: math/F2.hpp
+      title: "F\u2082 \u4E0A\u306E\u884C\u5217\u30FB\u9023\u7ACB\u65B9\u7A0B\u5F0F"
     - icon: ':warning:'
       path: math/barrett-reduction.hpp
       title: Barrett Reduction
@@ -272,22 +276,22 @@ data:
       title: "\u7DDA\u5F62\u7BE9"
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
-      title: "\u884C\u5217\u30E9\u30A4\u30D6\u30E9\u30EA"
+      title: "\u884C\u5217"
     - icon: ':heavy_check_mark:'
       path: math/pow_mod.hpp
-      title: math/pow_mod.hpp
+      title: "\u5270\u4F59\u4ED8\u304D\u7D2F\u4E57"
     - icon: ':warning:'
       path: math/prime-factor.hpp
-      title: "\u7D20\u56E0\u6570\u5206\u89E3"
+      title: "\u8A66\u3057\u5272\u308A\u306B\u3088\u308B\u7D20\u56E0\u6570\u5206\u89E3"
     - icon: ':heavy_check_mark:'
       path: math/primitive-root.hpp
-      title: math/primitive-root.hpp
+      title: "\u539F\u59CB\u6839"
     - icon: ':heavy_check_mark:'
       path: math/segment-factorize.hpp
-      title: "\u533A\u9593\u7BE9(\u7D20\u56E0\u6570\u5206\u89E3\u4ED8\u304D)"
+      title: "\u533A\u9593\u7D20\u56E0\u6570\u5206\u89E3"
     - icon: ':warning:'
       path: math/segment-sieve.hpp
-      title: "\u533A\u9593\u7BE9(\u7D20\u6570\u5224\u5B9A\u306E\u307F)"
+      title: "\u533A\u9593\u7D20\u6570\u5224\u5B9A"
     - icon: ':heavy_check_mark:'
       path: math/two_sat.hpp
       title: 2-SAT
@@ -295,47 +299,48 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: math/convolution/fft.hpp
-      title: math/convolution/fft.hpp
+      title: "FFT \u306B\u3088\u308B\u7573\u307F\u8FBC\u307F"
     - icon: ':heavy_check_mark:'
       path: math/convolution/ntt.hpp
-      title: math/convolution/ntt.hpp
+      title: "NTT \u306B\u3088\u308B\u7573\u307F\u8FBC\u307F"
   - name: misc
     pages:
     - icon: ':heavy_check_mark:'
       path: misc/compress.hpp
-      title: "\u5EA7\u5727"
+      title: "\u5EA7\u6A19\u5727\u7E2E"
     - icon: ':warning:'
       path: misc/floor-ceil-div.hpp
-      title: "\u5207\u308A\u6368\u3066/\u5207\u308A\u4E0A\u3052"
+      title: "\u6574\u6570\u306E\u5207\u308A\u4E0A\u3052\u30FB\u5207\u308A\u6368\u3066\
+        \u9664\u7B97"
     - icon: ':heavy_check_mark:'
       path: misc/fraction.hpp
-      title: misc/fraction.hpp
+      title: "\u6709\u7406\u6570"
     - icon: ':heavy_check_mark:'
       path: misc/inversion-number.hpp
       title: "\u8EE2\u5012\u6570"
     - icon: ':heavy_check_mark:'
       path: misc/mo.hpp
-      title: Mo's Algorithm
+      title: "Mo \u306E\u30A2\u30EB\u30B4\u30EA\u30BA\u30E0"
     - icon: ':heavy_check_mark:'
       path: misc/rle.hpp
       title: "\u30E9\u30F3\u30EC\u30F3\u30B0\u30B9\u5727\u7E2E"
     - icon: ':warning:'
       path: misc/subset-iterator.hpp
-      title: misc/subset-iterator.hpp
+      title: "bit \u96C6\u5408\u306E\u5217\u6319"
     - icon: ':warning:'
       path: misc/timer.hpp
-      title: misc/timer.hpp
+      title: "\u30BF\u30A4\u30DE\u30FC"
   - name: modint
     pages:
     - icon: ':warning:'
       path: modint/dynamic-modint.hpp
-      title: modint/dynamic-modint.hpp
+      title: "\u52D5\u7684\u6CD5 modint"
     - icon: ':heavy_check_mark:'
       path: modint/modint.hpp
-      title: modint/modint.hpp
+      title: "\u56FA\u5B9A\u6CD5 modint"
     - icon: ':heavy_check_mark:'
       path: modint/modint_2_61.hpp
-      title: modint/modint_2_61.hpp
+      title: "\u6CD5 2^61-1 \u306E modint"
   - name: random
     pages:
     - icon: ':heavy_check_mark:'
@@ -350,15 +355,15 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: string/rolling-hash.hpp
-      title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
+      title: Rolling Hash
     - icon: ':heavy_check_mark:'
       path: string/z-algo.hpp
-      title: string/z-algo.hpp
+      title: Z algorithm
   - name: template
     pages:
     - icon: ':heavy_check_mark:'
       path: template/template.cpp
-      title: template/template.cpp
+      title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   - name: test/library-checker/data-structure
     pages:
     - icon: ':warning:'

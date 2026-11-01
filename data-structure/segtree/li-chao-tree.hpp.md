@@ -124,31 +124,33 @@ title: Li Chao Tree
 
 ## このライブラリでできること
 
-`LiChaoTree<T, inf>` は、直線を追加しながら、あらかじめ登録した座標での最小値を求めます。区間内だけで有効な直線（線分）も追加できます。問い合わせに使う座標を事前に集められる場合に利用します。
+`LiChaoTree<T,inf>` は、直線 $y=a_ix+b_i$ を追加しながら、指定した $x$ における最小値 $\min_i(a_ix+b_i)$ を求めます。一次式の最小値を繰り返し使う動的計画法などで役立ちます。有効な $x$ の範囲を限定した線分の追加にも対応します。
+
+この実装では、問い合わせる $x$ 座標を最初にすべて登録します。重複を除いた登録座標数を $N$ とすると、直線の追加と最小値の取得は $O(\log(N+1))$、区間を限定した追加は $O(\log^2(N+1))$ 時間です。空の木への追加は何もせず、$O(1)$ 時間で終了します。
 
 ## 使い方
 
-座標配列で初期化し、`add_line(a, b)` で直線 $y=ax+b$ を追加します。`add_segment(a, b, xl, xr)` は半開区間 $[xl,xr)$ にだけ直線を追加します。
+まず問い合わせ予定の座標を配列で渡します。`add_line(a,b)` は全登録座標で有効な直線、`add_segment(a,b,xl,xr)` は $xl\le x<xr$ だけで有効な直線を追加します。
 
-次の例では、$x=0$ で線分の値 $-4$ が最小になります。$x=3$ は線分の右端なので含まれず、直線の値 $9$ が返ります。
+例では $y=2x+3$ と、$[2,6)$ でだけ有効な $y=-x+8$ を追加しています。$x=5$ での値はそれぞれ $13,3$ なので、`get_min(5)` は $3$ を返します。
 
 ```cpp
-#include <cassert>
-#include <vector>
+#include "template/template.cpp"
 #include "data-structure/segtree/li-chao-tree.hpp"
 
 int main() {
-    using Tree = LiChaoTree<long long, (1LL << 60)>;
-    Tree tree(std::vector<long long>{-2, 0, 3});
+    LiChaoTree<long long, (1LL << 60)> tree(vector<long long>{0, 2, 5});
     tree.add_line(2, 3);
-    tree.add_segment(-1, -4, 0, 3);
-    assert(tree.get_min(0) == -4);
-    assert(tree.get_min(3) == 9);
+    tree.add_segment(-1, 8, 2, 6);
+    assert(tree.get_min(5) == 3);
 
-    Tree empty(std::vector<long long>{});
-    empty.add_line(1, 2); // 登録座標がないので何もしません。
+    LiChaoTree<long long, (1LL << 60)> empty;
+    empty.add_line(1, 2); // 登録座標がないため何もしません。
+    empty.add_segment(1, 2, 0, 3);
 }
 ```
+
+空配列から、または引数なしで構築すると、登録座標がない空の木になります。例の `empty` への追加は安全に呼べますが、直線は保存されず、`get_min` も呼べません。
 
 ## API・計算量
 

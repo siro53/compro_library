@@ -3,17 +3,18 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: geometry/base.hpp
-    title: geometry/base.hpp
+    title: "\u5E7E\u4F55\u306E\u57FA\u672C\u578B"
   - icon: ':heavy_check_mark:'
     path: geometry/cross.hpp
-    title: geometry/cross.hpp
+    title: "\u5916\u7A4D"
   - icon: ':heavy_check_mark:'
     path: geometry/dot.hpp
-    title: geometry/dot.hpp
+    title: "\u5185\u7A4D"
   _extendedRequiredBy:
   - icon: ':warning:'
     path: geometry/geometry.hpp
-    title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA"
+    title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA\uFF08\u307E\u3068\u3081\u3066\
+      \ include\uFF09"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/mytest/geometry/geometry.test.cpp
@@ -72,8 +73,40 @@ data:
   - test/mytest/geometry/geometry.test.cpp
 documentation_of: geometry/is-contained.hpp
 layout: document
-redirect_from:
-- /library/geometry/is-contained.hpp
-- /library/geometry/is-contained.hpp.html
-title: geometry/is-contained.hpp
+title: "\u591A\u89D2\u5F62\u3078\u306E\u5305\u542B\u5224\u5B9A"
 ---
+
+## このライブラリでできること
+
+`isContained(g,p)` は、点と単純多角形の位置関係を調べ、内部なら2、辺上なら1、外部なら0を返します。凸多角形である必要はなく、凹んだ形も扱えます。頂点数を $N$ とすると、辺を一周する $O(N)$ 時間です。
+
+点から伸ばした半直線が境界を横切る回数の偶奇によって内外を区別し、同時に点が辺上にあるかを確認します。
+
+## 使い方
+
+多角形の頂点は境界に沿った順に渡します。例の正方形の中心 $(1,1)$ は内部なので2です。先頭の頂点を末尾へ重ねて追加する必要はありません。
+
+```cpp
+#include "template/template.cpp"
+#include "geometry/is-contained.hpp"
+
+int main() {
+    using namespace geometry;
+    vector<Point> p{ {0, 0}, {2, 0}, {2, 2}, {0, 2}};
+    assert(isContained(p, Point(1, 1)) == 2);
+}
+```
+
+## API・計算量
+
+必要な追加空間は $O(1)$ です。
+
+| API | 動作・返り値 | 時間計算量 |
+| --- | --- | --- |
+| `isContained(g,p)` | 内部 2、辺上 1、外部 0。 | O(N) |
+
+## 利用条件と実装上の注意
+
+型と関数は `geometry` 名前空間にあります。座標型 `D` は long double、`Point` は `complex<D>` です。実部を $x$ 座標、虚部を $y$ 座標として扱います。
+
+自己交差しない多角形を渡してください。内部判定にはEPSを使う箇所がありますが、辺上の判定では外積を `==0` で比較しています。そのため、丸め誤差を含む点が数学的には辺上でも、必ず1に分類されるとは限りません。

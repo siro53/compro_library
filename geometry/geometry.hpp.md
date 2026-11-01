@@ -3,97 +3,97 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: geometry/base.hpp
-    title: geometry/base.hpp
+    title: "\u5E7E\u4F55\u306E\u57FA\u672C\u578B"
   - icon: ':heavy_check_mark:'
     path: geometry/ccw.hpp
-    title: geometry/ccw.hpp
+    title: "3 \u70B9\u306E\u4F4D\u7F6E\u95A2\u4FC2"
   - icon: ':heavy_check_mark:'
     path: geometry/circle.hpp
-    title: geometry/circle.hpp
+    title: "\u5186"
   - icon: ':heavy_check_mark:'
     path: geometry/convex-cut.hpp
-    title: geometry/convex-cut.hpp
+    title: "\u51F8\u591A\u89D2\u5F62\u306E\u5207\u65AD"
   - icon: ':heavy_check_mark:'
     path: geometry/convex-hull.hpp
-    title: geometry/convex-hull.hpp
+    title: "\u51F8\u5305"
   - icon: ':heavy_check_mark:'
     path: geometry/cross-point.hpp
-    title: geometry/cross-point.hpp
+    title: "\u4EA4\u70B9"
   - icon: ':heavy_check_mark:'
     path: geometry/cross.hpp
-    title: geometry/cross.hpp
+    title: "\u5916\u7A4D"
   - icon: ':heavy_check_mark:'
     path: geometry/degree-to-radian.hpp
-    title: geometry/degree-to-radian.hpp
+    title: "\u5EA6\u304B\u3089\u30E9\u30B8\u30A2\u30F3"
   - icon: ':heavy_check_mark:'
     path: geometry/distance-between-line-and-point.hpp
-    title: geometry/distance-between-line-and-point.hpp
+    title: "\u76F4\u7DDA\u3068\u70B9\u306E\u8DDD\u96E2"
   - icon: ':heavy_check_mark:'
     path: geometry/distance-between-segment-and-point.hpp
-    title: geometry/distance-between-segment-and-point.hpp
+    title: "\u7DDA\u5206\u3068\u70B9\u306E\u8DDD\u96E2"
   - icon: ':heavy_check_mark:'
     path: geometry/distance-between-segments.hpp
-    title: geometry/distance-between-segments.hpp
+    title: "\u7DDA\u5206\u9593\u306E\u8DDD\u96E2"
   - icon: ':heavy_check_mark:'
     path: geometry/dot.hpp
-    title: geometry/dot.hpp
+    title: "\u5185\u7A4D"
   - icon: ':heavy_check_mark:'
     path: geometry/is-contained.hpp
-    title: geometry/is-contained.hpp
+    title: "\u591A\u89D2\u5F62\u3078\u306E\u5305\u542B\u5224\u5B9A"
   - icon: ':heavy_check_mark:'
     path: geometry/is-convex.hpp
-    title: geometry/is-convex.hpp
+    title: "\u51F8\u591A\u89D2\u5F62\u5224\u5B9A"
   - icon: ':heavy_check_mark:'
     path: geometry/is-in-circle.hpp
-    title: geometry/is-in-circle.hpp
+    title: "\u5186\u3078\u306E\u5305\u542B\u5224\u5B9A"
   - icon: ':heavy_check_mark:'
     path: geometry/is-intersect.hpp
-    title: geometry/is-intersect.hpp
+    title: "\u4EA4\u5DEE\u5224\u5B9A"
   - icon: ':heavy_check_mark:'
     path: geometry/is-orthogonal.hpp
-    title: geometry/is-orthogonal.hpp
+    title: "\u76F4\u7DDA\u306E\u76F4\u4EA4\u5224\u5B9A"
   - icon: ':heavy_check_mark:'
     path: geometry/is-parallel.hpp
-    title: geometry/is-parallel.hpp
+    title: "\u76F4\u7DDA\u306E\u5E73\u884C\u5224\u5B9A"
   - icon: ':heavy_check_mark:'
     path: geometry/is-point-on-line.hpp
-    title: geometry/is-point-on-line.hpp
+    title: "\u70B9\u304C\u76F4\u7DDA\u4E0A\u306B\u3042\u308B\u304B"
   - icon: ':heavy_check_mark:'
     path: geometry/is-point-on-segment.hpp
-    title: geometry/is-point-on-segment.hpp
+    title: "\u70B9\u304C\u7DDA\u5206\u4E0A\u306B\u3042\u308B\u304B"
   - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
-    title: geometry/line.hpp
+    title: "\u76F4\u7DDA"
   - icon: ':heavy_check_mark:'
     path: geometry/normal-vector.hpp
-    title: geometry/normal-vector.hpp
+    title: "\u6CD5\u7DDA\u30D9\u30AF\u30C8\u30EB"
   - icon: ':heavy_check_mark:'
     path: geometry/polygon-area.hpp
-    title: geometry/polygon-area.hpp
+    title: "\u591A\u89D2\u5F62\u306E\u7B26\u53F7\u4ED8\u304D\u9762\u7A4D"
   - icon: ':heavy_check_mark:'
     path: geometry/projection.hpp
-    title: geometry/projection.hpp
+    title: "\u5C04\u5F71"
   - icon: ':heavy_check_mark:'
     path: geometry/radian-to-degree.hpp
-    title: geometry/radian-to-degree.hpp
+    title: "\u30E9\u30B8\u30A2\u30F3\u304B\u3089\u5EA6"
   - icon: ':heavy_check_mark:'
     path: geometry/reflection.hpp
-    title: geometry/reflection.hpp
+    title: "\u76F4\u7DDA\u306B\u5BFE\u3059\u308B\u53CD\u5C04"
   - icon: ':heavy_check_mark:'
     path: geometry/rotate.hpp
-    title: geometry/rotate.hpp
+    title: "\u70B9\u30FB\u30D9\u30AF\u30C8\u30EB\u306E\u56DE\u8EE2"
   - icon: ':heavy_check_mark:'
     path: geometry/segment.hpp
-    title: geometry/segment.hpp
+    title: "\u7DDA\u5206"
   - icon: ':heavy_check_mark:'
     path: geometry/tangent-to-circle.hpp
-    title: geometry/tangent-to-circle.hpp
+    title: "\u70B9\u304B\u3089\u5186\u3078\u306E\u63A5\u7DDA"
   - icon: ':heavy_check_mark:'
     path: geometry/tangent.hpp
-    title: geometry/tangent.hpp
+    title: "2 \u5186\u306E\u5171\u901A\u63A5\u7DDA"
   - icon: ':heavy_check_mark:'
     path: geometry/unit-vector.hpp
-    title: geometry/unit-vector.hpp
+    title: "\u5358\u4F4D\u30D9\u30AF\u30C8\u30EB"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -460,14 +460,43 @@ data:
 documentation_of: geometry/geometry.hpp
 layout: document
 link: https://bakamono1357.hatenablog.com/entry/2020/04/29/025320
-title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA"
+title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA\uFF08\u307E\u3068\u3081\u3066 include\uFF09"
 ---
 
-必要な型・関数のヘッダーを個別に include して利用する。
+## このライブラリでできること
+
+`geometry/geometry.hpp` は、幾何ライブラリのすべてのヘッダーをまとめて読み込む入口です。このファイル自体が新しいアルゴリズムを実装しているわけではなく、点・直線・円の型と、交差・距離・多角形などの関数を一括で使えるようにします。
+
+## 使い方
+
+どの機能を使うか決める前や、複数の幾何操作を組み合わせるときは、このヘッダーを include すると便利です。必要な機能だけを使いたい場合は、`geometry/projection.hpp` のように個別のヘッダーを選んでも構いません。
+
+例では点から直線への射影を計算しています。各関数の引数の意味、計算量、零長の図形などの扱いは、それぞれの個別ページを確認してください。
 
 ```cpp
-#include "geometry/line.hpp"
-#include "geometry/projection.hpp"
+#include "template/template.cpp"
+#include "geometry/geometry.hpp"
+
+int main() {
+    using namespace geometry;
+    Line l(Point(0, 0), Point(1, 0));
+    Point foot = projection(l, Point(2, 3));
+    assert(equal(foot.imag(), 0));
+}
 ```
 
-従来どおり全機能をまとめて利用する場合は `geometry/geometry.hpp` を include する。
+## API・計算量
+
+時間・空間計算量は、利用する各関数のページを参照してください。
+
+| API | 動作・返り値 | 時間計算量 |
+| --- | --- | --- |
+| `geometry.hpp の include` | 型・関数をまとめて宣言する。独自の実行時処理は持たない。 | 各 API のページ参照 |
+
+## 利用条件と実装上の注意
+
+型と関数は `geometry` 名前空間にあります。座標型 `D` は long double、`Point` は `complex<D>` です。実部を $x$ 座標、虚部を $y$ 座標として扱います。
+
+同じ図形でも「直線」と「線分」、「円周」と「円の内部」では関数の意味が変わります。名前だけで判断せず、対象と返り値を確認して使ってください。
+
+共通のEPSは絶対誤差の目安であり、すべての判定が同じ距離誤差で定義されているわけではありません。整数座標の厳密な幾何計算を提供するライブラリではなく、浮動小数点の許容誤差を伴う実装です。

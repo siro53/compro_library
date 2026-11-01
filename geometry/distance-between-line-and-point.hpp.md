@@ -3,26 +3,27 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: geometry/base.hpp
-    title: geometry/base.hpp
+    title: "\u5E7E\u4F55\u306E\u57FA\u672C\u578B"
   - icon: ':heavy_check_mark:'
     path: geometry/cross.hpp
-    title: geometry/cross.hpp
+    title: "\u5916\u7A4D"
   - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
-    title: geometry/line.hpp
+    title: "\u76F4\u7DDA"
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: geometry/convex-cut.hpp
-    title: geometry/convex-cut.hpp
+    title: "\u51F8\u591A\u89D2\u5F62\u306E\u5207\u65AD"
   - icon: ':heavy_check_mark:'
     path: geometry/cross-point.hpp
-    title: geometry/cross-point.hpp
+    title: "\u4EA4\u70B9"
   - icon: ':warning:'
     path: geometry/geometry.hpp
-    title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA"
+    title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA\uFF08\u307E\u3068\u3081\u3066\
+      \ include\uFF09"
   - icon: ':heavy_check_mark:'
     path: geometry/tangent-to-circle.hpp
-    title: geometry/tangent-to-circle.hpp
+    title: "\u70B9\u304B\u3089\u5186\u3078\u306E\u63A5\u7DDA"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/mytest/geometry/geometry.test.cpp
@@ -80,8 +81,38 @@ data:
   - test/mytest/geometry/geometry.test.cpp
 documentation_of: geometry/distance-between-line-and-point.hpp
 layout: document
-redirect_from:
-- /library/geometry/distance-between-line-and-point.hpp
-- /library/geometry/distance-between-line-and-point.hpp.html
-title: geometry/distance-between-line-and-point.hpp
+title: "\u76F4\u7DDA\u3068\u70B9\u306E\u8DDD\u96E2"
 ---
+
+## このライブラリでできること
+
+`distanceBetweenLineAndPoint(l,p)` は、点 $p$ から無限直線 $l$ までの最短距離を返します。直線上の点を $a,b$ とすると、距離は $|(b-a)\times(p-a)|/|b-a|$ です。平行四辺形の面積を底辺の長さで割り、高さを求めています。
+
+## 使い方
+
+例の直線は $x$ 軸なので、点 $(2,3)$ までの距離は $3$ です。点の射影が `a,b` の間にあるかは関係なく、直線全体への距離を計算します。
+
+```cpp
+#include "template/template.cpp"
+#include "geometry/distance-between-line-and-point.hpp"
+
+int main() {
+    using namespace geometry;
+    Line l(Point(0, 0), Point(1, 0));
+    assert(equal(distanceBetweenLineAndPoint(l, Point(2, 3)), 3));
+}
+```
+
+## API・計算量
+
+必要な追加空間は $O(1)$ です。
+
+| API | 動作・返り値 | 時間計算量 |
+| --- | --- | --- |
+| `distanceBetweenLineAndPoint(l,p)` | 非負の距離 D。 | O(1) |
+
+## 利用条件と実装上の注意
+
+型と関数は `geometry` 名前空間にあります。座標型 `D` は long double、`Point` は `complex<D>` です。実部を $x$ 座標、虚部を $y$ 座標として扱います。
+
+直線は異なる2点で指定してください。2点が一致すると0で割ることになります。線分への距離が欲しい場合は、端点の外側も考慮する `distanceBetweenSegmentAndPoint` を使います。

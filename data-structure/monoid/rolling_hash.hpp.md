@@ -3,10 +3,10 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: modint/modint_2_61.hpp
-    title: modint/modint_2_61.hpp
+    title: "\u6CD5 2^61-1 \u306E modint"
   - icon: ':heavy_check_mark:'
     path: string/rolling-hash.hpp
-    title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
+    title: Rolling Hash
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -105,8 +105,44 @@ data:
   verifiedWith: []
 documentation_of: data-structure/monoid/rolling_hash.hpp
 layout: document
-redirect_from:
-- /library/data-structure/monoid/rolling_hash.hpp
-- /library/data-structure/monoid/rolling_hash.hpp.html
-title: data-structure/monoid/rolling_hash.hpp
+title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5\u30E2\u30CE\u30A4\u30C9"
 ---
+
+## このライブラリでできること
+
+`MonoidRollingHash<N>` は、列のハッシュ値と長さを組にして、列同士の連結を表すモノイドです。セグメント木に載せると、1文字の変更を伴う文字列の部分列ハッシュなどに利用できます。ハッシュ値の型 `mint` は、法 $2^{61}-1$ の `ModInt_2_61` です。
+
+底を $b$、列 $A$ のハッシュを $H(A)=\sum_{i=0}^{|A|-1}A_i b^i$ とします。このとき $H(AB)=H(A)+b^{|A|}H(B)$ なので、2つのハッシュと長さだけから連結後のハッシュを計算できます。
+
+## 使い方
+
+1文字は `S(文字コード,1)`、空列は `e()` で表します。例では文字コード $97,98$ の2要素を結合し、長さが $2$ になることを確認しています。
+
+テンプレート引数 `N` は累乗表の長さです。初回の `op` で底を選んで累乗表を作るため $O(N)$ 時間がかかりますが、それ以降の結合は $O(1)$ 時間です。
+
+```cpp
+#include "template/template.cpp"
+#include "data-structure/monoid/rolling_hash.hpp"
+
+int main() {
+    using M = MonoidRollingHash<100>;
+    auto x = M::op(M::S(97, 1), M::S(98, 1));
+    assert(x.len == 2);
+}
+```
+
+## API・計算量
+
+底の累乗を保存する静的な表に $O(N)$ の空間を使います。
+
+| API | 動作・返り値 | 時間計算量 |
+| --- | --- | --- |
+| `S(h, len)` | ハッシュと長さを設定。デフォルト構築は未初期化。 | O(1) |
+| `op(a, b)` | h=a.h+b.h*base^(a.len)、len=a.len+b.len。 | 初回 O(N)、以後 O(1) |
+| `e()` | 空列 (0,0)。 | O(1) |
+
+## 利用条件と実装上の注意
+
+`N>=1` とし、すべての結合で左側の長さが `N` 未満になるようにしてください。扱う最大列長より大きい `N` を選ぶと境界を管理しやすくなります。`S()` のデフォルト構築では値が設定されません。
+
+ハッシュの一致は列の一致を保証しません。比較時は長さも確認してください。底は同じ `N` の型ごとに共有されますが、`RollingHash` 本体とは底の管理方法も次数の向きも異なるため、両者の値を直接比較できません。

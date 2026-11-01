@@ -3,47 +3,48 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: geometry/base.hpp
-    title: geometry/base.hpp
+    title: "\u5E7E\u4F55\u306E\u57FA\u672C\u578B"
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: geometry/ccw.hpp
-    title: geometry/ccw.hpp
+    title: "3 \u70B9\u306E\u4F4D\u7F6E\u95A2\u4FC2"
   - icon: ':heavy_check_mark:'
     path: geometry/convex-cut.hpp
-    title: geometry/convex-cut.hpp
+    title: "\u51F8\u591A\u89D2\u5F62\u306E\u5207\u65AD"
   - icon: ':heavy_check_mark:'
     path: geometry/cross-point.hpp
-    title: geometry/cross-point.hpp
+    title: "\u4EA4\u70B9"
   - icon: ':heavy_check_mark:'
     path: geometry/distance-between-segment-and-point.hpp
-    title: geometry/distance-between-segment-and-point.hpp
+    title: "\u7DDA\u5206\u3068\u70B9\u306E\u8DDD\u96E2"
   - icon: ':heavy_check_mark:'
     path: geometry/distance-between-segments.hpp
-    title: geometry/distance-between-segments.hpp
+    title: "\u7DDA\u5206\u9593\u306E\u8DDD\u96E2"
   - icon: ':warning:'
     path: geometry/geometry.hpp
-    title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA"
+    title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA\uFF08\u307E\u3068\u3081\u3066\
+      \ include\uFF09"
   - icon: ':heavy_check_mark:'
     path: geometry/is-contained.hpp
-    title: geometry/is-contained.hpp
+    title: "\u591A\u89D2\u5F62\u3078\u306E\u5305\u542B\u5224\u5B9A"
   - icon: ':heavy_check_mark:'
     path: geometry/is-convex.hpp
-    title: geometry/is-convex.hpp
+    title: "\u51F8\u591A\u89D2\u5F62\u5224\u5B9A"
   - icon: ':heavy_check_mark:'
     path: geometry/is-intersect.hpp
-    title: geometry/is-intersect.hpp
+    title: "\u4EA4\u5DEE\u5224\u5B9A"
   - icon: ':heavy_check_mark:'
     path: geometry/is-orthogonal.hpp
-    title: geometry/is-orthogonal.hpp
+    title: "\u76F4\u7DDA\u306E\u76F4\u4EA4\u5224\u5B9A"
   - icon: ':heavy_check_mark:'
     path: geometry/projection.hpp
-    title: geometry/projection.hpp
+    title: "\u5C04\u5F71"
   - icon: ':heavy_check_mark:'
     path: geometry/reflection.hpp
-    title: geometry/reflection.hpp
+    title: "\u76F4\u7DDA\u306B\u5BFE\u3059\u308B\u53CD\u5C04"
   - icon: ':heavy_check_mark:'
     path: geometry/tangent-to-circle.hpp
-    title: geometry/tangent-to-circle.hpp
+    title: "\u70B9\u304B\u3089\u5186\u3078\u306E\u63A5\u7DDA"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/mytest/geometry/geometry.test.cpp
@@ -92,8 +93,39 @@ data:
   - test/mytest/geometry/geometry.test.cpp
 documentation_of: geometry/dot.hpp
 layout: document
-redirect_from:
-- /library/geometry/dot.hpp
-- /library/geometry/dot.hpp.html
-title: geometry/dot.hpp
+title: "\u5185\u7A4D"
 ---
+
+## このライブラリでできること
+
+`dot(a,b)` は2つのベクトルの内積 $a_xb_x+a_yb_y$ を返します。長さと角度を使うと $a\cdot b=|a||b|\cos\theta$ と表せるので、向きの近さや直交を調べるために使えます。
+
+非零ベクトル同士なら、内積が正のときはなす角が鋭角、0なら直角、負なら鈍角です。射影や、点からの垂線の足が線分内にあるかの判定にも使います。
+
+## 使い方
+
+例の $(1,2)$ と $(3,4)$ の内積は $1\cdot3+2\cdot4=11$ です。2点間の方向を調べたい場合は、点そのものではなく `b-a` のような差を渡してください。
+
+```cpp
+#include "template/template.cpp"
+#include "geometry/dot.hpp"
+
+int main() {
+    using namespace geometry;
+    assert(equal(dot(Point(1, 2), Point(3, 4)), 11));
+}
+```
+
+## API・計算量
+
+必要な追加空間は $O(1)$ です。
+
+| API | 動作・返り値 | 時間計算量 |
+| --- | --- | --- |
+| `dot(a,b)` | ax*bx+ay*by。 | O(1) |
+
+## 利用条件と実装上の注意
+
+型と関数は `geometry` 名前空間にあります。座標型 `D` は long double、`Point` は `complex<D>` です。実部を $x$ 座標、虚部を $y$ 座標として扱います。
+
+関数は内積をそのまま計算し、0への丸めは行いません。直交判定では `equal(dot(a,b),0)` などの許容誤差を使う必要がありますが、内積の値はベクトルの長さにも依存するため、同じEPSでも角度としての許容幅は一定ではありません。

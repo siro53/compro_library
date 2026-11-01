@@ -3,11 +3,11 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: math/pow_mod.hpp
-    title: math/pow_mod.hpp
+    title: "\u5270\u4F59\u4ED8\u304D\u7D2F\u4E57"
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: math/convolution/ntt.hpp
-    title: math/convolution/ntt.hpp
+    title: "NTT \u306B\u3088\u308B\u7573\u307F\u8FBC\u307F"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/convolution/convolution-mod.test.cpp
@@ -51,8 +51,40 @@ data:
   - test/library-checker/convolution/convolution-mod.test.cpp
 documentation_of: math/primitive-root.hpp
 layout: document
-redirect_from:
-- /library/math/primitive-root.hpp
-- /library/math/primitive-root.hpp.html
-title: math/primitive-root.hpp
+title: "\u539F\u59CB\u6839"
 ---
+
+## このライブラリでできること
+
+`primitive_root(p)` は、素数 $p$ を法として、$0$ 以外のすべての剰余を累乗で生成できる整数を1つ求めます。すなわち、返り値 $g$ の位数が $p-1$ となり、$g^0,g^1,\ldots,g^{p-2}$ が相異なる非零剰余になります。数論変換の1の原始根を作る場合などに使います。
+
+$p-1$ の異なる素因数を $q$ とすると、候補 $g$ が原始根であるための条件は、すべての $q$ に対して $g^{(p-1)/q}\not\equiv1\pmod p$ となることです。この実装は試し割りで素因数を集め、候補を小さい方から検査します。
+
+## 使い方
+
+素数を渡すと原始根を整数で返します。例では $p=17$ に対する原始根 $3$ を取得しています。$p=2$ と $p=998244353$ は特別扱いで、それぞれ $1,3$ を返します。
+
+表の $G$ は試した候補数、$K$ は $p-1$ の異なる素因数の個数です。候補を定数個試せば必ず見つかると仮定した計算量ではありません。
+
+```cpp
+#include "template/template.cpp"
+#include "math/primitive-root.hpp"
+
+int main() {
+    assert(primitive_root(17) == 3);
+}
+```
+
+## API・計算量
+
+素因数を保持する配列は固定長なので、追加空間は $O(1)$ です。
+
+| API | 動作・返り値 | 時間計算量 |
+| --- | --- | --- |
+| `primitive_root(p)` | 1<=g<p の原始根。p=2 は 1、998244353 は 3。 | O(sqrt(p)+G K log p)、G は検査候補数、K は p-1 の異なる素因数数 |
+
+## 利用条件と実装上の注意
+
+入力が素数であることを呼び出し側で保証してください。この関数自身は素数判定をしません。
+
+入力型は int です。試し割りの `i*i` も int で評価するため、int の上限付近では中間積がオーバーフローする可能性があります。扱う値が型に収まることだけでは十分ではありません。

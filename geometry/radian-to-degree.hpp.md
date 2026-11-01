@@ -3,11 +3,12 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: geometry/base.hpp
-    title: geometry/base.hpp
+    title: "\u5E7E\u4F55\u306E\u57FA\u672C\u578B"
   _extendedRequiredBy:
   - icon: ':warning:'
     path: geometry/geometry.hpp
-    title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA"
+    title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA\uFF08\u307E\u3068\u3081\u3066\
+      \ include\uFF09"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/mytest/geometry/geometry.test.cpp
@@ -42,8 +43,37 @@ data:
   - test/mytest/geometry/geometry.test.cpp
 documentation_of: geometry/radian-to-degree.hpp
 layout: document
-redirect_from:
-- /library/geometry/radian-to-degree.hpp
-- /library/geometry/radian-to-degree.hpp.html
-title: geometry/radian-to-degree.hpp
+title: "\u30E9\u30B8\u30A2\u30F3\u304B\u3089\u5EA6"
 ---
+
+## このライブラリでできること
+
+`radianToDegree` は、ラジアンの角度を度数法へ変換します。角度 $\theta$ に対して $180\theta/\pi$ を計算します。三角関数などで得た角度を度で表示したい場合に使えます。
+
+## 使い方
+
+例の $\pi$ ラジアンは $180$ 度になります。$2\pi$ を渡せば $360$ が返り、0に正規化されるわけではありません。負の角度も符号を保って変換します。
+
+```cpp
+#include "template/template.cpp"
+#include "geometry/radian-to-degree.hpp"
+
+int main() {
+    using namespace geometry;
+    assert(equal(radianToDegree(PI), 180));
+}
+```
+
+## API・計算量
+
+必要な追加空間は $O(1)$ です。
+
+| API | 動作・返り値 | 時間計算量 |
+| --- | --- | --- |
+| `radianToDegree(radian)` | radian*180/PI。 | O(1) |
+
+## 利用条件と実装上の注意
+
+型と関数は `geometry` 名前空間にあります。座標型 `D` は long double、`Point` は `complex<D>` です。実部を $x$ 座標、虚部を $y$ 座標として扱います。
+
+浮動小数点演算のため、理論上整数の度数になる場合でも小さな誤差が生じ得ます。必要に応じて許容誤差で比較したり、表示時に丸めたりしてください。

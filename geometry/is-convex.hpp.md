@@ -3,20 +3,21 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: geometry/base.hpp
-    title: geometry/base.hpp
+    title: "\u5E7E\u4F55\u306E\u57FA\u672C\u578B"
   - icon: ':heavy_check_mark:'
     path: geometry/ccw.hpp
-    title: geometry/ccw.hpp
+    title: "3 \u70B9\u306E\u4F4D\u7F6E\u95A2\u4FC2"
   - icon: ':heavy_check_mark:'
     path: geometry/cross.hpp
-    title: geometry/cross.hpp
+    title: "\u5916\u7A4D"
   - icon: ':heavy_check_mark:'
     path: geometry/dot.hpp
-    title: geometry/dot.hpp
+    title: "\u5185\u7A4D"
   _extendedRequiredBy:
   - icon: ':warning:'
     path: geometry/geometry.hpp
-    title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA"
+    title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA\uFF08\u307E\u3068\u3081\u3066\
+      \ include\uFF09"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/mytest/geometry/geometry.test.cpp
@@ -82,8 +83,38 @@ data:
   - test/mytest/geometry/geometry.test.cpp
 documentation_of: geometry/is-convex.hpp
 layout: document
-redirect_from:
-- /library/geometry/is-convex.hpp
-- /library/geometry/is-convex.hpp.html
-title: geometry/is-convex.hpp
+title: "\u51F8\u591A\u89D2\u5F62\u5224\u5B9A"
 ---
+
+## このライブラリでできること
+
+`isConvex(p)` は、多角形の境界をたどるときに右へ曲がる箇所がないかを調べます。反時計回りの単純多角形を前提にすると、これは凸であるための条件になります。頂点数を $N$ とすると計算時間は $O(N)$ です。
+
+## 使い方
+
+例では頂点を反時計回りに並べた正方形を渡しているため真になります。連続する3点が一直線上にあることは許すので、辺の途中に余分な頂点があっても、それだけで偽にはなりません。
+
+```cpp
+#include "template/template.cpp"
+#include "geometry/is-convex.hpp"
+
+int main() {
+    using namespace geometry;
+    vector<Point> p{ {0, 0}, {2, 0}, {2, 2}, {0, 2}};
+    assert(isConvex(p));
+}
+```
+
+## API・計算量
+
+必要な追加空間は $O(1)$ です。
+
+| API | 動作・返り値 | 時間計算量 |
+| --- | --- | --- |
+| `isConvex(p)` | 時計回りの曲がりがなければ true。 | O(N) |
+
+## 利用条件と実装上の注意
+
+型と関数は `geometry` 名前空間にあります。座標型 `D` は long double、`Point` は `complex<D>` です。実部を $x$ 座標、虚部を $y$ 座標として扱います。
+
+3頂点以上の単純多角形を、反時計回りに並べて渡してください。時計回りの凸多角形は偽になり得ます。この関数は頂点数や自己交差を検査するものではないため、「任意の点列が正しい凸多角形か」を丸ごと検証する用途には使えません。

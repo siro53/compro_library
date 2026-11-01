@@ -86,8 +86,50 @@ data:
   verifiedWith: []
 documentation_of: graph/namori.hpp
 layout: document
-redirect_from:
-- /library/graph/namori.hpp
-- /library/graph/namori.hpp.html
-title: graph/namori.hpp
+title: "\u306A\u3082\u308A\u30B0\u30E9\u30D5\u306E\u5206\u89E3"
 ---
+
+## このライブラリでできること
+
+`Namori<Cost>` は、連結な無向グラフに閉路がちょうど1つある「なもりグラフ」を、閉路とそこから伸びる木に分けます。閉路の辺を除くと、各頂点は閉路上のちょうど1頂点を根とする木に属します。その根の識別番号を各頂点に付けるクラスです。
+
+次数1の頂点を繰り返し取り除くと閉路だけが残ります。そこから各木へ番号を伝えるので、頂点数 $N$、辺数 $M$ に対して構築時間は $O(N+M)$ です。
+
+## 使い方
+
+`Graph` と同じように無向辺を追加し、最後に `build()` を呼びます。構築後の `g[v]` は隣接リストではなく、頂点 $v$ に対応する閉路頂点の番号を返します。
+
+例では $0,1,2$ が閉路を作り、$3$ は $1$ から伸びる枝にあります。したがって $1,3$ には同じ番号が付きます。同じ枝の木に属するかどうかは、この番号の一致で判定できます。
+
+```cpp
+#include "template/template.cpp"
+#include "graph/namori.hpp"
+
+int main() {
+    Namori<int> g(4);
+    g.add_undirected_edge(0, 1);
+    g.add_undirected_edge(1, 2);
+    g.add_undirected_edge(2, 0);
+    g.add_undirected_edge(1, 3);
+    g.build();
+    assert(g[1] == g[3]);
+}
+```
+
+## API・計算量
+
+保持するグラフと作業配列に $O(N+M)$、再帰スタックに最大 $O(N)$ の空間を使います。
+
+| API | 動作・返り値 | 時間計算量 |
+| --- | --- | --- |
+| `Namori(N)` | N 頂点を作る。 | O(N) |
+| `add_undirected_edge(u, v, cost=1)` | 辺追加（Graph から継承）。 | 償却 O(1) |
+| `size()` | 頂点数（継承）。 | O(1) |
+| `build()` | 葉を除去して閉路を抽出し、枝の頂点に閉路 ID を付ける。 | O(N+M) |
+| `operator[](v)` | v が属する閉路頂点の ID。 | O(1) |
+
+## 利用条件と実装上の注意
+
+単純・連結な無向なもりグラフを渡し、全辺の追加後に一度だけ `build()` してください。辺重みは分解に使いません。結果の番号は閉路を探索した順序であり、元の頂点番号ではありません。
+
+`operator[]` は親クラス `Graph` の同名メソッドを隠します。その他の継承された辺追加や頂点数取得の API は、`Graph` の説明に従います。深い木では再帰の深さが $O(N)$ になります。

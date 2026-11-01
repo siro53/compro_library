@@ -3,14 +3,15 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: geometry/base.hpp
-    title: geometry/base.hpp
+    title: "\u5E7E\u4F55\u306E\u57FA\u672C\u578B"
   - icon: ':heavy_check_mark:'
     path: geometry/cross.hpp
-    title: geometry/cross.hpp
+    title: "\u5916\u7A4D"
   _extendedRequiredBy:
   - icon: ':warning:'
     path: geometry/geometry.hpp
-    title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA"
+    title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA\uFF08\u307E\u3068\u3081\u3066\
+      \ include\uFF09"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/mytest/geometry/geometry.test.cpp
@@ -72,8 +73,45 @@ data:
   - test/mytest/geometry/geometry.test.cpp
 documentation_of: geometry/convex-hull.hpp
 layout: document
-redirect_from:
-- /library/geometry/convex-hull.hpp
-- /library/geometry/convex-hull.hpp.html
-title: geometry/convex-hull.hpp
+title: "\u51F8\u5305"
 ---
+
+## このライブラリでできること
+
+`ConvexHull(p)` は、点集合をすべて含む最小の凸な領域の境界を求めます。点に輪ゴムを掛けて外側から張ったときの形が凸包です。入力点数を $N$ とすると、ソートを含めて $O(N\log N)$ 時間です。
+
+実装は点を座標順に並べ、下側と上側の境界をそれぞれ作る単調鎖法です。凸性を保たなくなる途中の点を取り除きながら進めます。
+
+## 使い方
+
+点は周回順でなくても構いません。例では正方形の4頂点と中心を渡し、境界の4頂点だけを得ています。結果は反時計回りで、始点は $x$、次に $y$ の辞書順で最小の点です。末尾に始点は重ねません。
+
+この実装では、一直線上にある辺の途中の点を除きます。境界上の入力点をすべて列挙する関数ではありません。
+
+```cpp
+#include "template/template.cpp"
+#include "geometry/convex-hull.hpp"
+
+int main() {
+    using namespace geometry;
+    vector<Point> p{ {0, 0}, {2, 0}, {2, 2}, {0, 2}, {1, 1}};
+    auto hull = ConvexHull(p);
+    assert(hull.size() == 4);
+}
+```
+
+## API・計算量
+
+入力のコピー、ソート、結果の保持に $O(N)$ の空間を使います。
+
+| API | 動作・返り値 | 時間計算量 |
+| --- | --- | --- |
+| `ConvexHull(p)` | 凸包の頂点列を反時計回りで返す。 | O(N log N) |
+
+## 利用条件と実装上の注意
+
+型と関数は `geometry` 名前空間にあります。座標型 `D` は long double、`Point` は `complex<D>` です。実部を $x$ 座標、虚部を $y$ 座標として扱います。
+
+現実装は0点で不正なresizeを行い、1点では空の結果を返します。重複点を事前に取り除き、異なる点を2個以上渡してください。
+
+向きの判定にEPSを使うので、ほぼ一直線上の点は削除される場合があります。すべての点が一直線上なら、通常は両端の2点が結果になります。

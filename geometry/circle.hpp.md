@@ -3,32 +3,33 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: geometry/base.hpp
-    title: geometry/base.hpp
+    title: "\u5E7E\u4F55\u306E\u57FA\u672C\u578B"
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: geometry/convex-cut.hpp
-    title: geometry/convex-cut.hpp
+    title: "\u51F8\u591A\u89D2\u5F62\u306E\u5207\u65AD"
   - icon: ':heavy_check_mark:'
     path: geometry/cross-point.hpp
-    title: geometry/cross-point.hpp
+    title: "\u4EA4\u70B9"
   - icon: ':heavy_check_mark:'
     path: geometry/distance-between-segments.hpp
-    title: geometry/distance-between-segments.hpp
+    title: "\u7DDA\u5206\u9593\u306E\u8DDD\u96E2"
   - icon: ':warning:'
     path: geometry/geometry.hpp
-    title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA"
+    title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA\uFF08\u307E\u3068\u3081\u3066\
+      \ include\uFF09"
   - icon: ':heavy_check_mark:'
     path: geometry/is-in-circle.hpp
-    title: geometry/is-in-circle.hpp
+    title: "\u5186\u3078\u306E\u5305\u542B\u5224\u5B9A"
   - icon: ':heavy_check_mark:'
     path: geometry/is-intersect.hpp
-    title: geometry/is-intersect.hpp
+    title: "\u4EA4\u5DEE\u5224\u5B9A"
   - icon: ':heavy_check_mark:'
     path: geometry/tangent-to-circle.hpp
-    title: geometry/tangent-to-circle.hpp
+    title: "\u70B9\u304B\u3089\u5186\u3078\u306E\u63A5\u7DDA"
   - icon: ':heavy_check_mark:'
     path: geometry/tangent.hpp
-    title: geometry/tangent.hpp
+    title: "2 \u5186\u306E\u5171\u901A\u63A5\u7DDA"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/mytest/geometry/geometry.test.cpp
@@ -74,8 +75,39 @@ data:
   - test/mytest/geometry/geometry.test.cpp
 documentation_of: geometry/circle.hpp
 layout: document
-redirect_from:
-- /library/geometry/circle.hpp
-- /library/geometry/circle.hpp.html
-title: geometry/circle.hpp
+title: "\u5186"
 ---
+
+## このライブラリでできること
+
+`Circle` は、中心 `p` と半径 `r` を持つ円を表す構造体です。円周は $\{x\mid|x-p|=r\}$、円の内部と境界を合わせた領域は $\{x\mid|x-p|\le r\}$ です。交点の関数は円周、包含の関数は内部も含む領域を扱います。
+
+## 使い方
+
+例の `Circle(Point(1,2),3)` は中心 $(1,2)$、半径 $3$ の円を作ります。中心や半径を保持するだけで、この構造体自体が交差判定や面積計算を行うわけではありません。必要な幾何関数へ渡して使います。
+
+```cpp
+#include "template/template.cpp"
+#include "geometry/circle.hpp"
+
+int main() {
+    using namespace geometry;
+    Circle c(Point(1, 2), 3);
+    assert(equal(c.r, 3));
+}
+```
+
+## API・計算量
+
+必要な追加空間は $O(1)$ です。
+
+| API | 動作・返り値 | 時間計算量 |
+| --- | --- | --- |
+| `Circle()` | デフォルト構築。r は未初期化。 | O(1) |
+| `Circle(p,r)` | 中心・半径を設定。 | O(1) |
+
+## 利用条件と実装上の注意
+
+型と関数は `geometry` 名前空間にあります。座標型 `D` は long double、`Point` は `complex<D>` です。実部を $x$ 座標、虚部を $y$ 座標として扱います。
+
+半径は非負で指定してください。交点・接線の計算では、さらに正の半径が必要な場合があります。デフォルト構築では半径が初期化されないので、使用前に中心と半径を設定してください。

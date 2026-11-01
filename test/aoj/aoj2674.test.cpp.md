@@ -3,13 +3,13 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: data-structure/compact-bitvector.hpp
-    title: data-structure/compact-bitvector.hpp
+    title: Compact Bit Vector
   - icon: ':heavy_check_mark:'
     path: data-structure/wavelet-matrix.hpp
     title: Wavelet Matrix
   - icon: ':heavy_check_mark:'
     path: template/template.cpp
-    title: template/template.cpp
+    title: "\u7AF6\u30D7\u30ED\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false

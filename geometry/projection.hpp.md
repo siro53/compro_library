@@ -3,32 +3,33 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: geometry/base.hpp
-    title: geometry/base.hpp
+    title: "\u5E7E\u4F55\u306E\u57FA\u672C\u578B"
   - icon: ':heavy_check_mark:'
     path: geometry/dot.hpp
-    title: geometry/dot.hpp
+    title: "\u5185\u7A4D"
   - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
-    title: geometry/line.hpp
+    title: "\u76F4\u7DDA"
   - icon: ':heavy_check_mark:'
     path: geometry/segment.hpp
-    title: geometry/segment.hpp
+    title: "\u7DDA\u5206"
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: geometry/convex-cut.hpp
-    title: geometry/convex-cut.hpp
+    title: "\u51F8\u591A\u89D2\u5F62\u306E\u5207\u65AD"
   - icon: ':heavy_check_mark:'
     path: geometry/cross-point.hpp
-    title: geometry/cross-point.hpp
+    title: "\u4EA4\u70B9"
   - icon: ':warning:'
     path: geometry/geometry.hpp
-    title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA"
+    title: "\u5E7E\u4F55\u30E9\u30A4\u30D6\u30E9\u30EA\uFF08\u307E\u3068\u3081\u3066\
+      \ include\uFF09"
   - icon: ':heavy_check_mark:'
     path: geometry/reflection.hpp
-    title: geometry/reflection.hpp
+    title: "\u76F4\u7DDA\u306B\u5BFE\u3059\u308B\u53CD\u5C04"
   - icon: ':heavy_check_mark:'
     path: geometry/tangent-to-circle.hpp
-    title: geometry/tangent-to-circle.hpp
+    title: "\u70B9\u304B\u3089\u5186\u3078\u306E\u63A5\u7DDA"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/mytest/geometry/geometry.test.cpp
@@ -99,8 +100,40 @@ data:
   - test/mytest/geometry/geometry.test.cpp
 documentation_of: geometry/projection.hpp
 layout: document
-redirect_from:
-- /library/geometry/projection.hpp
-- /library/geometry/projection.hpp.html
-title: geometry/projection.hpp
+title: "\u5C04\u5F71"
 ---
+
+## このライブラリでできること
+
+`projection(l,p)` は、点 $p$ から直線 $l$ に下ろした垂線の足を返します。直線の方向を $d=b-a$ とすると、足は $a+d\,((p-a)\cdot d)/(d\cdot d)$ です。点を直線方向と垂直方向に分解する際に使えます。
+
+## 使い方
+
+例では水平な直線に点 $(1,3)$ を射影するので、足は $(1,0)$ になります。`Line` と `Segment` の両方を受け取れますが、Segment版も同じ無限直線への射影を行います。
+
+```cpp
+#include "template/template.cpp"
+#include "geometry/projection.hpp"
+
+int main() {
+    using namespace geometry;
+    Line l(Point(0, 0), Point(2, 0));
+    Point q = projection(l, Point(1, 3));
+    assert(equal(q.real(), 1) && equal(q.imag(), 0));
+}
+```
+
+## API・計算量
+
+必要な追加空間は $O(1)$ です。
+
+| API | 動作・返り値 | 時間計算量 |
+| --- | --- | --- |
+| `projection(Line l,p)` | 無限直線 l への射影。 | O(1) |
+| `projection(Segment l,p)` | 線分を含む無限直線への射影。 | O(1) |
+
+## 利用条件と実装上の注意
+
+型と関数は `geometry` 名前空間にあります。座標型 `D` は long double、`Point` は `complex<D>` です。実部を $x$ 座標、虚部を $y$ 座標として扱います。
+
+2端点は異なる点にしてください。零方向では分母が0になります。Segment版の結果は線分の外に出ることがあり、端点へ切り詰める処理はありません。線分上の最近点を求めたい場合は、射影位置が端点の間にあるかも判定する必要があります。
