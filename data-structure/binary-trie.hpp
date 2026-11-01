@@ -101,32 +101,20 @@ template <typename T = unsigned int, int LOG = 32> class BinaryTrie {
         int ret = 0;
         Node* now = root;
         for(int i = LOG - 1; i >= 0; i--) {
+            if(!now || now->count == 0) break;
             int b = lazy_xor_value >> i & 1;
             int small_count = (now->child[b] ? now->child[b]->count : 0);
-            int big_count = (now->child[b ^ 1] ? now->child[b ^ 1]->count : 0);
-            if(small_count == 0) {
-                assert(big_count);
+            if(val >> i & 1) {
+                ret += small_count;
                 now = now->child[b ^ 1];
-            } else if(big_count == 0) {
-                assert(small_count);
-                now = now->child[b];
             } else {
-                if(b == (val >> i & 1)) { 
-                    now = now->child[b];
-                } else {
-                    ret += small_count;
-                    now = now->child[b ^ 1];
-                }
+                now = now->child[b];
             }
         }
         return ret;
     }
     int upper_bound(T val) {
-        int id = lower_bound(val);
-        T kth_element = get_kth_element(id);
-        if(kth_element != val) return id;
-        int cnt = count(kth_element);
-        return id + cnt;
+        return lower_bound(val) + count(val ^ lazy_xor_value);
     }
     int size() const {
         if(!root) return 0;

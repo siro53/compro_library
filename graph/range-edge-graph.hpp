@@ -5,11 +5,12 @@
 template <typename Cost = int> class RangeEdgeGraph {
   public:
     explicit RangeEdgeGraph(int n, int m) : N(n), M(0), G(3 * N + m) {
+        assert(n > 0 && m >= 0);
         for(int i = 1; i < N; i++) {
-            G.add_directed_edge(i, (i << 1 | 0), 0);
-            G.add_directed_edge(i, (i << 1 | 1), 0);
-            G.add_directed_edge((i << 1 | 0) + N * 2, i + N * 2, 0);
-            G.add_directed_edge((i << 1 | 1) + N * 2, i + N * 2, 0);
+            for(int child : {i * 2, i * 2 + 1}) {
+                G.add_directed_edge(down(i), down(child), 0);
+                G.add_directed_edge(up(child), up(i), 0);
+            }
         }
     }
     void add_edge(int from_l, int from_r, int to_l, int to_r, Cost cost) {
@@ -21,18 +22,18 @@ template <typename Cost = int> class RangeEdgeGraph {
         from_l += N;
         from_r += N;
         while(from_l < from_r) {
-            if(from_l & 1) G.add_directed_edge(from_l + 2*N, id, 0), from_l++;
-            if(from_r & 1) from_r--, G.add_directed_edge(from_r + 2*N, id, 0);
-            from_l <<= 1;
-            from_r <<= 1;
+            if(from_l & 1) G.add_directed_edge(up(from_l++), id, 0);
+            if(from_r & 1) G.add_directed_edge(up(--from_r), id, 0);
+            from_l >>= 1;
+            from_r >>= 1;
         }
         to_l += N;
         to_r += N;
         while(to_l < to_r) {
-            if(to_l & 1) G.add_directed_edge(id, to_l, cost), to_l++;
-            if(to_r & 1) to_r--, G.add_directed_edge(id, to_r, cost);
-            to_l <<= 1;
-            to_r <<= 1;
+            if(to_l & 1) G.add_directed_edge(id, down(to_l++), cost);
+            if(to_r & 1) G.add_directed_edge(id, down(--to_r), cost);
+            to_l >>= 1;
+            to_r >>= 1;
         }
     }
     operator Graph<Cost>() const { return G; }
@@ -40,4 +41,6 @@ template <typename Cost = int> class RangeEdgeGraph {
   private:
     int N, M;
     Graph<Cost> G;
+    int down(int i) const { return i < N ? N + i : i - N; }
+    int up(int i) const { return i < N ? 2 * N + i : i - N; }
 };

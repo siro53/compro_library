@@ -45,4 +45,4 @@ int main() {
 
 `Subset_k(S,t)` は $1\le t\le k<32$ の範囲で使います。$k=32$ は32 bit幅を超えるシフトになるため使えません。`SetBit` はBMI、`Subset_k` はBMI/BMI2命令に対応したx86 CPUが必要で、実行時の対応判定はしません。
 
-各内部イテレータは `operator*` で現在値、`operator++` で次の状態、`operator!=` で終了を扱います。特に `Subset` の終端比較には副作用があるため、汎用STLイテレータではなくrange-for用として使ってください。assertのため、共通テンプレートなどを先に include します。
+各内部イテレータは `operator*` で現在値、`operator++` で次の状態、`operator!=` で終了を扱います。特に `Subset` の終端比較には副作用があるため、汎用STLイテレータではなくrange-for用として使ってください。ヘッダーは assert に必要な標準ヘッダーも含みます。

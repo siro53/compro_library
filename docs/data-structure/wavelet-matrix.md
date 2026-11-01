@@ -35,7 +35,7 @@ int main() {
 | `WaveletMatrix(vector<int> v)` | 列をビットごとに分割して構築。 | O(NB) |
 | `access(pos), operator[](pos)` | 元の値を返す。 | O(B) |
 | `rank(i, x)` | [0,i) の x の個数。 | O(B) |
-| `select(i, x)` | x の i 番目の出現位置を意図するが、下位実装に不備がある。 | O(B log N) |
+| `select(i, x)` | 0 始まりで i 番目の x の位置。存在しなければ -1。 | O(B log N) |
 | `quantile(l, r, i)` | [l,r) 内の昇順 i 番目（0-indexed）。 | O(B) |
 | `rangefreq(l, r, xr)` | [l,r) 内で x<xr の個数。 | O(B) |
 | `rangefreq(l, r, xl, xr)` | [l,r) 内で xl<=x<xr の個数。 | O(B) |
@@ -48,4 +48,4 @@ int main() {
 
 区間は $0\le l\le r\le N$ とし、`quantile(l,r,k)` ではさらに $0\le k<r-l$ が必要です。前後の値が存在しないときは $-1$ を返すため、返り値の型には符号付き型を推奨します。
 
-下位の `CompactBitVector` に不備があり、$N$ が64の倍数のときの右端 $N$ を含む rank 計算は配列外参照になります。`select` も下位の実装に不備があるため使用できません。また、非修飾の `vector` を使うため、共通テンプレートを先に include してください。
+空列や長さが64の倍数の列にも対応します。`select(i,x)` は左から0始まりで i 番目の x の位置を返し、負の i や出現個数以上の i には -1 を返します。

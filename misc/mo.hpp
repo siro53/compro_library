@@ -37,8 +37,8 @@ class Mo {
         if(idx == (int)ord.size()) return -1;
         int qid = ord[idx++];
         while(l > L[qid]) add_left(--l);
-        while(l < L[qid]) del_left(l++);
         while(r < R[qid]) add_right(r++);
+        while(l < L[qid]) del_left(l++);
         while(r > R[qid]) del_right(--r);
         return qid;
     }

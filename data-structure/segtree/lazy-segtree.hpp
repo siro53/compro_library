@@ -125,7 +125,7 @@ public:
         S now = MonoidAct::e();
         do {
             r--;
-            while (r > 1 and (r & 1) == 0) r >>= 1;
+            while (r > 1 and (r & 1)) r >>= 1;
             if (!g(MonoidAct::op(node[r], now))) {
                 while (r < sz) {
                     propagate(r);

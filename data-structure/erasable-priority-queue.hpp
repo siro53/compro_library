@@ -38,6 +38,7 @@ struct ErasablePriorityQueue {
     }
 
     bool empty() {
+        normalize();
         return que.empty();
     }
 private:

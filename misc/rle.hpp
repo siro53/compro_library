@@ -6,6 +6,7 @@
 
 template<class T>
 std::vector<std::pair<T, int>> runlength_encoding(const std::vector<T>& v) {
+    if(v.empty()) return {};
     std::vector<std::pair<T, int>> ret = {{v[0], 1}};
     for(size_t i = 1; i < v.size(); i++) {
         if(ret.back().first == v[i]) ret.back().second++;
@@ -14,7 +15,8 @@ std::vector<std::pair<T, int>> runlength_encoding(const std::vector<T>& v) {
     return ret;
 }
 
-std::vector<std::pair<char, int>> runlength_encoding(const std::string& s) {
+inline std::vector<std::pair<char, int>> runlength_encoding(const std::string& s) {
+    if(s.empty()) return {};
     std::vector<std::pair<char, int>> ret = {{s[0], 1}};
     for(size_t i = 1; i < s.size(); i++) {
         if(ret.back().first == s[i]) ret.back().second++;

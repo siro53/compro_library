@@ -59,6 +59,12 @@ void geometry_test() {
     assert(equal(PolygonArea(triangle), 0.5));
     assert(isConvex(triangle));
     assert(ConvexHull(triangle).size() == 3);
+    assert(ConvexHull({}).empty());
+    assert(ConvexHull(vector<Point>{origin}) == vector<Point>{origin});
+    assert(ConvexHull(vector<Point>{origin, origin}) == vector<Point>{origin});
+    assert(ConvexHull(vector<Point>{origin, x, origin}) == (vector<Point>{origin, x}));
+    vector<Point> square{origin, Point(2, 0), Point(2, 2), Point(0, 2)};
+    assert(ConvexCut(square, Line(Point(-2, 0), Point(-1, 0))) == square);
     assert(isContained(triangle, Point(0.1, 0.1)) == 2);
     assert(!ConvexCut(triangle, Line(Point(0.5, -1), Point(0.5, 1))).empty());
 }

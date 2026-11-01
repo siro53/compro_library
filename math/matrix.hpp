@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cassert>
+#include <cstddef>
 #include <utility>
 #include <vector>
 
@@ -9,8 +10,8 @@ template <typename T> class Matrix {
     Matrix() {}
     explicit Matrix(int n) : Matrix(n, n) {}
     explicit Matrix(int n, int m) : dat(n, std::vector<T>(m)) {}
-    size_t height() const { return dat.size(); }
-    size_t width() const { return dat[0].size(); }
+    std::size_t height() const { return dat.size(); }
+    std::size_t width() const { return dat[0].size(); }
     const std::vector<T> &operator[](int k) const { return dat[k]; }
     std::vector<T> &operator[](int k) { return dat[k]; }
     static inline Matrix I(int n) {
@@ -19,30 +20,30 @@ template <typename T> class Matrix {
         return ret;
     }
     Matrix &operator+=(const Matrix &other) {
-        size_t n = height(), m = width();
+        std::size_t n = height(), m = width();
         assert(n == other.height() && m == other.width());
-        for(size_t i = 0; i < n; i++) {
-            for(size_t j = 0; j < m; j++) { (*this)[i][j] += other[i][j]; }
+        for(std::size_t i = 0; i < n; i++) {
+            for(std::size_t j = 0; j < m; j++) { (*this)[i][j] += other[i][j]; }
         }
         return (*this);
     }
     Matrix &operator-=(const Matrix &other) {
-        size_t n = height(), m = width();
+        std::size_t n = height(), m = width();
         assert(n == other.height() && m == other.width());
-        for(size_t i = 0; i < n; i++) {
-            for(size_t j = 0; j < m; j++) { (*this)[i][j] -= other[i][j]; }
+        for(std::size_t i = 0; i < n; i++) {
+            for(std::size_t j = 0; j < m; j++) { (*this)[i][j] -= other[i][j]; }
         }
         return (*this);
     }
     Matrix &operator*=(const Matrix &other) {
-        size_t n = height(), m2 = width();
-        size_t m = other.width();
+        std::size_t n = height(), m2 = width();
+        std::size_t m = other.width();
         assert(m2 == other.height());
         std::vector res(n, std::vector<T>(m));
-        for(size_t i = 0; i < n; i++) {
-            for(size_t j = 0; j < m; j++) {
+        for(std::size_t i = 0; i < n; i++) {
+            for(std::size_t j = 0; j < m; j++) {
                 T sum = 0;
-                for(size_t k = 0; k < m2; k++) {
+                for(std::size_t k = 0; k < m2; k++) {
                     sum += (*this)[i][k] * other[k][j];
                 }
                 res[i][j] = sum;

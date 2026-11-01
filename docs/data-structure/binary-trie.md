@@ -43,12 +43,12 @@ int main() {
 | `get_kth_element(k)` | XOR 適用後の昇順で k 番目（0-indexed）。 | O(B) |
 | `all_xor(val)` | 読み出し用の XOR マスクを更新。 | O(1) |
 | `size(), empty()` | 個数・空判定。 | O(1) |
-| `lower_bound(val), upper_bound(val)` | 順位検索用だが、現状は正しい境界を保証しない。 | O(B) |
+| `lower_bound(val), upper_bound(val)` | XOR 適用後の値が val 未満 / val 以下の要素数。 | O(B) |
 
 ## 利用条件と実装上の注意
 
 値と XOR マスクは $B$ bit に収めてください。最小値・最大値は非空のとき、`get_kth_element(k)` は $0\le k<\mathrm{size}()$ のときに使います。
 
-`lower_bound` は片側にしか子がない場合などを正しく扱えず、`upper_bound` もその結果に依存しています。これらの境界探索は修正するまで使用を避けてください。
+`lower_bound/upper_bound` は空集合でも使え、その場合は0を返します。返り値は $[0,\mathrm{size}()]$ の順位で、全要素より大きい値を探すと size() になります。検索値は XOR 適用後の値として解釈します。
 
 削除してもノードは解放されず、デストラクタによる解放もありません。また、オブジェクトのコピーは同じノードを共有するため、独立した集合の複製にはなりません。

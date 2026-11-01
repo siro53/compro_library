@@ -19,7 +19,7 @@ template <typename T> struct SlopeTrick {
 
   private:
     void push_L(T a) { L.push(a - add_L); }
-    T top_L() {
+    T top_L() const {
         if(L.empty()) return -inf;
         return L.top() + add_L;
     }
@@ -29,7 +29,7 @@ template <typename T> struct SlopeTrick {
         return ret;
     }
     void push_R(T a) { R.push(a - add_R); }
-    T top_R() {
+    T top_R() const {
         if(R.empty()) return inf;
         return R.top() + add_R;
     }
@@ -101,8 +101,8 @@ template <typename T> struct SlopeTrick {
     // L, R は空になる
     T eval(T x) {
         T ret = min_f;
-        while(!L.empty()) ret += max(T(0), pop_L() - x);
-        while(!R.empty()) ret += max(T(0), x - pop_R());
+        while(!L.empty()) ret += std::max(T(0), pop_L() - x);
+        while(!R.empty()) ret += std::max(T(0), x - pop_R());
         return ret;
     }
 };

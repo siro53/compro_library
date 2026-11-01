@@ -41,8 +41,9 @@ struct Fraction {
         return *this;
     }
     F &operator/=(const F& f) {
-        a *= f.b;
-        b *= f.a;
+        Int na = a * f.b;
+        Int nb = b * f.a;
+        a = na, b = nb;
         normalize();
         return *this;
     }
