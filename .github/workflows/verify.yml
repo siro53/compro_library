@@ -5,12 +5,15 @@ on:
   push:
     branches: main
 
+permissions:
+  contents: write
+
 jobs:
   verify:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
 
     - name: Set up Python
       uses: actions/setup-python@v7
@@ -76,9 +79,26 @@ jobs:
     #     use-tool-cache: true
 
     - name: Run tests
+      id: verification
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
-        GH_PAT: ${{ secrets.GH_PAT }}
         DROPBOX_TOKEN: ${{ secrets.DROPBOX_TOKEN }}
-      run: oj-verify all
+      run: oj-verify run
+
+    # Generate even after failed tests, so the published verification status stays current.
+    # Unset GITHUB_TOKEN to disable oj-verify's automatic gh-pages replacement.
+    - name: Generate documentation
+      id: docs
+      if: ${{ !cancelled() && github.event_name == 'push' && steps.verification.outcome != 'skipped' }}
+      run: env -u GITHUB_TOKEN oj-verify docs
+
+    - name: Publish documentation
+      if: ${{ !cancelled() && github.event_name == 'push' && steps.verification.outcome != 'skipped' && steps.docs.outcome == 'success' }}
+      uses: JamesIves/github-pages-deploy-action@fa24774553152dd7873cd16ebd8d959b010c5445 # v4
+      with:
+        token: ${{ secrets.GH_PAT }}
+        branch: gh-pages
+        folder: .verify-helper/markdown
+        clean-exclude: pr-preview/
+        force: false
