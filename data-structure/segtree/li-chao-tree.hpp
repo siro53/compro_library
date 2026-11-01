@@ -8,22 +8,25 @@
 template <typename T, T inf>
 class LiChaoTree {
 public:
-    LiChaoTree() = default;
+    LiChaoTree(): LiChaoTree(std::vector<T>{}) {}
     explicit LiChaoTree(const std::vector<T>& x): xs(x) {
         std::sort(xs.begin(), xs.end());
         xs.erase(std::unique(xs.begin(), xs.end()), xs.end());
         n = (int)xs.size();
         sz = 1;
+        if(n == 0) return;
         while(sz < n) sz <<= 1;
         while((int)xs.size() < sz) xs.emplace_back(xs.back() + 1);
         node.resize(sz * 2, Line(T(0), inf));
     }
     // 直線 ax + b を追加
     void add_line(T a, T b) {
+        if(n == 0) return;
         update(a, b, 0, sz, 1);
     }
     // 線分 ax + b (x_l <= x < x_r) を追加
     void add_segment(T a, T b, T x_l, T x_r) {
+        if(n == 0) return;
         int l = std::lower_bound(xs.begin(), xs.end(), x_l) - xs.begin();
         int r = std::lower_bound(xs.begin(), xs.end(), x_r) - xs.begin();
         l += sz;
@@ -50,6 +53,7 @@ public:
     }
     // min_{i} (a_i * x + b) を求める
     T get_min(T x) {
+        assert(n > 0);
         int pos = std::lower_bound(xs.begin(), xs.end(), x) - xs.begin();
         assert(0 <= pos and pos < sz);
         pos += sz;
