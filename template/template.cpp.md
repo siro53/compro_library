@@ -112,6 +112,9 @@ data:
     path: test/mytest/data-structure/erasable-priority-queue.test.cpp
     title: test/mytest/data-structure/erasable-priority-queue.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/li-chao-tree.test.cpp
+    title: test/mytest/data-structure/li-chao-tree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/mytest/geometry/geometry.test.cpp
     title: test/mytest/geometry/geometry.test.cpp
   - icon: ':heavy_check_mark:'
@@ -478,6 +481,7 @@ data:
   - test/library-checker/data-structure/range-chmin-chmax-add-range-sum.test.cpp
   - test/library-checker/string/z-algorithm.test.cpp
   - test/mytest/geometry/geometry.test.cpp
+  - test/mytest/data-structure/li-chao-tree.test.cpp
   - test/mytest/data-structure/binary-trie.test.cpp
   - test/mytest/data-structure/erasable-priority-queue.test.cpp
   - test/mytest/misc/fraction.test.cpp

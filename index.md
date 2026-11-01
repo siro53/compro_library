@@ -517,6 +517,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/mytest/data-structure/erasable-priority-queue.test.cpp
       title: test/mytest/data-structure/erasable-priority-queue.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/data-structure/li-chao-tree.test.cpp
+      title: test/mytest/data-structure/li-chao-tree.test.cpp
   - name: test/mytest/geometry
     pages:
     - icon: ':heavy_check_mark:'

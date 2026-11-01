@@ -4,6 +4,20 @@
 [![Actions Status](https://github.com/siro53/compro_library/workflows/verify/badge.svg)](https://github.com/siro53/compro_library/actions)
 [![GitHub Pages](https://img.shields.io/static/v1?label=GitHub+Pages&message=+&color=brightgreen&logo=github)](https://siro53.github.io/compro_library/)
 
+## マージ前のドキュメント確認
+
+このリポジトリ内のブランチから PR を作ると、`verify` ワークフローの検証が成功した後に `Pages preview` ジョブがドキュメントを生成し、次の URL に公開します。Draft PR でも利用できます。
+
+```text
+https://siro53.github.io/compro_library/pr-preview/pr-<PR番号>/
+```
+
+PR にプレビューへのリンクが自動でコメントされます。ブランチへ push すると、検証が成功した場合のみ更新されます。検証が失敗・キャンセルされた場合は更新せず、以前のプレビューがあればそのまま残ります。PR を閉じるかマージすると、検証結果に関係なく削除されます。コメント掲載後、GitHub Pages のビルドが完了するまでは反映に時間がかかります。
+
+プレビューは表示確認用です。テストとプレビュー生成は同じワークフロー内で直列に実行しますが、別ジョブのため検証結果のファイルは引き継ぎません。そのため、プレビュー内の検証ステータスはその PR の最新テスト結果とは限りません。フォークからの PR は対象外です。
+
+公開先は既存の `gh-pages` ブランチで、Pages の設定は `Deploy from a branch` の `gh-pages` / `/ (root)` を使用します。既存の `GH_PAT` シークレットを公開に使用します。本番公開では `pr-preview/` を保持するため、他の PR のプレビューも引き続き閲覧できます。
+
 ## 出典付きでbundleする
 
 `oj-bundle` の代わりに `scripts/bundle.py` を使うと、各ライブラリの挿入位置に次のコメントを付けます。ネストした include も対象で、同じファイルには最初の挿入時だけ付けます。ライブラリを含まないソースには付けません。
