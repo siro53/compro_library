@@ -1,8 +1,8 @@
-name: Pages preview
+name: Remove Pages preview
 
 on:
   pull_request:
-    types: [opened, reopened, synchronize, closed]
+    types: [closed]
 
 concurrency:
   group: pages-preview-${{ github.event.number }}
@@ -13,8 +13,8 @@ permissions:
   pull-requests: write
 
 jobs:
-  preview:
-    # Fork PRs do not have access to the deployment secret.
+  remove-preview:
+    # Cleanup must run even if verification failed or is still running.
     if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
@@ -22,39 +22,11 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Set up Python
-        if: github.event.action != 'closed'
-        uses: actions/setup-python@v7
-        with:
-          python-version: "3.11"
-
-      - name: Generate documentation
-        if: github.event.action != 'closed'
-        run: |
-          pip3 install -U "setuptools<82" online-judge-verify-helper
-          env -u GITHUB_TOKEN oj-verify docs
-
-      - name: Configure preview URLs
-        if: github.event.action != 'closed'
-        env:
-          PREVIEW_BASEURL: /${{ github.event.repository.name }}/pr-preview/pr-${{ github.event.number }}
-          PAGES_URL: https://${{ github.repository_owner }}.github.io
-        run: |
-          printf '\nbaseurl: "%s"\nurl: "%s"\n' "$PREVIEW_BASEURL" "$PAGES_URL" >> .verify-helper/markdown/_config.yml
-
-      - name: Build preview HTML
-        if: github.event.action != 'closed'
-        uses: actions/jekyll-build-pages@44a6e6beabd48582f863aeeb6cb2151cc1716697 # v1
-        with:
-          source: .verify-helper/markdown
-          destination: _site
-
-      - name: Deploy or remove preview
+      - name: Remove preview
         uses: rossjrw/pr-preview-action@873417d2df72380da1f3978378fb58560bcde976 # v1
         with:
-          # A PAT is needed to trigger the branch-based GitHub Pages build.
           token: ${{ secrets.GH_PAT }}
-          source-dir: _site
+          action: remove
           preview-branch: gh-pages
           umbrella-dir: pr-preview
           qr-code: false
