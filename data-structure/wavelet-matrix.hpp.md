@@ -162,8 +162,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/data-structure/range-kth-smallest.test.cpp
-  - test/aoj/aoj2674.test.cpp
   - test/aoj/aoj1549.test.cpp
+  - test/aoj/aoj2674.test.cpp
 documentation_of: data-structure/wavelet-matrix.hpp
 layout: document
 title: Wavelet Matrix

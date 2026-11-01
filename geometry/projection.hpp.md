@@ -88,10 +88,10 @@ data:
   isVerificationFile: false
   path: geometry/projection.hpp
   requiredBy:
-  - geometry/cross-point.hpp
   - geometry/tangent-to-circle.hpp
-  - geometry/reflection.hpp
   - geometry/geometry.hpp
+  - geometry/reflection.hpp
+  - geometry/cross-point.hpp
   - geometry/convex-cut.hpp
   timestamp: '2026-08-30 15:33:14+09:00'
   verificationStatus: LIBRARY_ALL_AC

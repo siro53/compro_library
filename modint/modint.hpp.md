@@ -97,12 +97,12 @@ data:
   timestamp: '2023-02-25 23:57:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
-  - test/library-checker/data-structure/range-affine-range-sum.test.cpp
-  - test/library-checker/data-structure/range-affine-point-get/lazysegtree.test.cpp
-  - test/library-checker/convolution/convolution-mod.test.cpp
   - test/yukicoder/yuki117.test.cpp
   - test/yukicoder/yuki1750.test.cpp
+  - test/library-checker/convolution/convolution-mod.test.cpp
+  - test/library-checker/data-structure/range-affine-point-get/lazysegtree.test.cpp
+  - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
+  - test/library-checker/data-structure/range-affine-range-sum.test.cpp
 documentation_of: modint/modint.hpp
 layout: document
 redirect_from:

@@ -89,13 +89,13 @@ data:
   isVerificationFile: false
   path: geometry/ccw.hpp
   requiredBy:
-  - geometry/cross-point.hpp
   - geometry/tangent-to-circle.hpp
+  - geometry/geometry.hpp
   - geometry/is-intersect.hpp
   - geometry/distance-between-segments.hpp
-  - geometry/geometry.hpp
-  - geometry/is-convex.hpp
+  - geometry/cross-point.hpp
   - geometry/convex-cut.hpp
+  - geometry/is-convex.hpp
   timestamp: '2026-08-30 15:33:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

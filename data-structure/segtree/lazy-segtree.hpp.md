@@ -151,8 +151,8 @@ data:
   timestamp: '2025-12-29 15:38:26+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/data-structure/range-affine-range-sum.test.cpp
   - test/library-checker/data-structure/range-affine-point-get/lazysegtree.test.cpp
+  - test/library-checker/data-structure/range-affine-range-sum.test.cpp
 documentation_of: data-structure/segtree/lazy-segtree.hpp
 layout: document
 title: Lazy Segment Tree

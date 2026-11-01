@@ -87,8 +87,8 @@ data:
   isVerificationFile: false
   path: geometry/distance-between-segment-and-point.hpp
   requiredBy:
-  - geometry/distance-between-segments.hpp
   - geometry/geometry.hpp
+  - geometry/distance-between-segments.hpp
   timestamp: '2026-08-30 15:33:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

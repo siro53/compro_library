@@ -79,20 +79,20 @@ data:
   isVerificationFile: false
   path: geometry/cross.hpp
   requiredBy:
-  - geometry/cross-point.hpp
-  - geometry/is-contained.hpp
-  - geometry/polygon-area.hpp
   - geometry/tangent-to-circle.hpp
-  - geometry/ccw.hpp
-  - geometry/is-parallel.hpp
-  - geometry/is-intersect.hpp
   - geometry/convex-hull.hpp
   - geometry/is-point-on-line.hpp
-  - geometry/distance-between-segments.hpp
   - geometry/geometry.hpp
+  - geometry/is-intersect.hpp
+  - geometry/ccw.hpp
+  - geometry/is-parallel.hpp
+  - geometry/distance-between-segments.hpp
   - geometry/distance-between-line-and-point.hpp
-  - geometry/is-convex.hpp
+  - geometry/is-contained.hpp
+  - geometry/polygon-area.hpp
+  - geometry/cross-point.hpp
   - geometry/convex-cut.hpp
+  - geometry/is-convex.hpp
   - geometry/distance-between-segment-and-point.hpp
   timestamp: '2026-08-30 15:33:14+09:00'
   verificationStatus: LIBRARY_ALL_AC

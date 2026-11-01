@@ -78,7 +78,8 @@ data:
     \ xs) {\n        comp = Compress<T>(xs);\n        seg = Segtree<MonoidSumCount<T,\
     \ int>>((int)comp.size());\n    }\n\n    void add(T val) {\n        int pos =\
     \ comp.get(val);\n        assert(comp[pos] == val);\n        auto x = seg.get(pos);\n\
-    \        seg.set(pos, S(x.sum + val, x.cnt + 1));\n    }\n};\n"
+    \        seg.set(pos, S(x.sum + val, x.cnt + 1));\n    }\n\n    int get(T val)\
+    \ const {\n        return comp.get(val);\n    }\n};\n"
   code: "#pragma once\n\n#include \"../../misc/compress.hpp\"\n#include \"../segtree/segtree.hpp\"\
     \n#include \"../monoid/sum_count.hpp\"\n\ntemplate<typename T>\nstruct SumCountManager\
     \ {\n    Segtree<MonoidSumCount<T, int>> seg;\n    Compress<T> comp;\n\n    SumCountManager()\
@@ -86,7 +87,8 @@ data:
     \        seg = Segtree<MonoidSumCount<T, int>>((int)comp.size());\n    }\n\n \
     \   void add(T val) {\n        int pos = comp.get(val);\n        assert(comp[pos]\
     \ == val);\n        auto x = seg.get(pos);\n        seg.set(pos, S(x.sum + val,\
-    \ x.cnt + 1));\n    }\n};"
+    \ x.cnt + 1));\n    }\n\n    int get(T val) const {\n        return comp.get(val);\n\
+    \    }\n};"
   dependsOn:
   - misc/compress.hpp
   - data-structure/segtree/segtree.hpp
@@ -94,7 +96,7 @@ data:
   isVerificationFile: false
   path: data-structure/utils/sum_count_manager.hpp
   requiredBy: []
-  timestamp: '2025-12-21 17:21:57+09:00'
+  timestamp: '2026-11-01 14:08:40+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: data-structure/utils/sum_count_manager.hpp
