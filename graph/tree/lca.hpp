@@ -7,7 +7,7 @@
 
 template <typename Cost = int> class LCA {
   public:
-    LCA() = default;
+    LCA(): G(0), root(0), LOG(0) {}
     explicit LCA(const Graph<Cost> &G, int root = 0)
         : G(G), root(root), LOG((int)log2(G.size()) + 1), depth(G.size()),
           parent(LOG, std::vector<int>(G.size())) {
@@ -23,9 +23,11 @@ template <typename Cost = int> class LCA {
         }
     }
     int get_lca(int u, int v) {
+        assert(0 <= u && u < (int)G.size());
+        assert(0 <= v && v < (int)G.size());
         if(depth[u] > depth[v]) std::swap(u, v);
         for(int k = 0; k < LOG; k++) {
-            if((depth[u] - depth[v]) >> k & 1) v = parent[k][v];
+            if((depth[v] - depth[u]) >> k & 1) v = parent[k][v];
         }
         if(u == v) return u;
         for(int k = LOG - 1; k >= 0; k--) {

@@ -28,6 +28,9 @@ jobs:
     - name: Run bundle snapshot tests
       run: python3 -m unittest discover -s test/mytest/bundle -v
 
+    - name: Check standalone headers and linkage
+      run: python3 -m unittest discover -s test/mytest/headers -v
+
 
     # # required only if you want to verify Haskell code
     # - name: Install dependencies (Haskell)

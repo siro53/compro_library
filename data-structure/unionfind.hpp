@@ -44,7 +44,7 @@ class UnionFind {
         std::map<int, std::vector<int>> g;
         for(int i = 0; i < N; i++) {
             int l = leader(i);
-            if(!g.count(l)) g[l].push_back(i);
+            g[l].push_back(i);
         }
         return g;
     }

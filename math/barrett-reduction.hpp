@@ -15,16 +15,19 @@ public:
         return result;
     }
     unsigned int quo(unsigned int a) const {
+        if(m == 1) return a;
         unsigned int result = (unsigned int)(((__uint128_t)a * m_inv) >> 64);
         return result;
     }
     unsigned int rem(unsigned long long a) const {
+        if(m == 1) return 0;
         unsigned long long v = (unsigned long long)(((__uint128_t)a * m_inv) >> 64);
         unsigned int result = (unsigned int)(a - v * m);
         if(m <= result) result += m;
         return result;
     }
     std::pair<unsigned int, unsigned int> quorem(unsigned int a) const {
+        if(m == 1) return {a, 0};
         unsigned long long v =  (unsigned long long)(((__uint128_t)a * m_inv) >> 64);
         unsigned int r = (unsigned int)((unsigned long long)a - v * m);
         if(m <= r) r += m;

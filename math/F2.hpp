@@ -24,7 +24,7 @@ public:
 
     // 掃き出し法
     // https://drken1215.hatenablog.com/entry/2019/03/20/202800
-    int row_reduction(vector<int>& b) {
+    int row_reduction(std::vector<int>& b) {
         assert((int)b.size() == H);
         int rank = 0;
         for(int j = 0; j < W; j++) {

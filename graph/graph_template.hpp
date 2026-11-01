@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cassert>
+#include <cstddef>
 #include <vector>
 
 template <typename Cost = int> struct Edge {
@@ -31,7 +32,7 @@ template <typename Cost = int> class Graph {
         G[to].emplace_back(to, from, cost, M++);
     }
 
-    inline size_t size() const { return G.size(); }
+    inline std::size_t size() const { return G.size(); }
     inline std::vector<Edge<Cost>> &operator[](const int &i) { return G[i]; }
     inline const std::vector<Edge<Cost>> &operator[](const int &i) const {
         return G[i];

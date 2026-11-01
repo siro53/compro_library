@@ -105,6 +105,7 @@ namespace fft {
 
     template<typename D>
     std::vector<D> convolution(const std::vector<D>& a, const std::vector<D>& b) {
+        if(a.empty() || b.empty()) return {};
         int m = (int)a.size() + (int)b.size() - 1;
         int n = 1, bitlen = 0;
         while(n < m) {

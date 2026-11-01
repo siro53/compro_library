@@ -3,9 +3,10 @@
 #include <vector>
 #include <string>
 
-std::vector<int> z_algo(const std::string& s) {
+inline std::vector<int> z_algo(const std::string& s) {
     int n = (int)s.size();
     std::vector<int> z(n);
+    if(n == 0) return z;
     z[0] = n;
     for(int i = 1, j = 0; i < n;) {
         while(i + j < n and s[j] == s[i + j]) j++;
