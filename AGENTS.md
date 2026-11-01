@@ -33,3 +33,9 @@ Every new algorithm or bug fix should have a focused `*.test.cpp` verifier. Begi
 ## Commit & Pull Request Guidelines
 
 Use a concise imperative subject, preferably with the history's prefixes: `feat:`, `fix:`, or `docs:`. Do not imitate `[auto-verifier]` commits; automation creates those. Pull requests should explain the algorithm or defect, identify complexity or behavioral changes, link relevant problems/issues, and list verification performed. Include updated documentation and tests with API changes; screenshots are unnecessary unless rendered documentation is affected.
+
+When Codex creates a commit containing changes it authored or modified (including documentation), include the following trailer exactly once at the end of the commit message. Separate the trailer block from the preceding text with a blank line and preserve any existing trailers.
+
+```text
+Co-authored-by: Codex <noreply@openai.com>
+```
