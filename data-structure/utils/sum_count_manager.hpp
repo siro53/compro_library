@@ -21,4 +21,8 @@ struct SumCountManager {
         auto x = seg.get(pos);
         seg.set(pos, S(x.sum + val, x.cnt + 1));
     }
+
+    int get(T val) const {
+        return comp.get(val);
+    }
 };
