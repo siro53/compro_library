@@ -5,7 +5,7 @@ documentation_of: //geometry/is-point-on-segment.hpp
 
 ## このライブラリでできること
 
-`isPointOnSegment(a,b,c)` は、点 $c$ が端点を含む線分 $ab$ 上にあるかを調べます。数学的には、三角不等式が等号になる条件 $|a-c|+|c-b|=|a-b|$ を利用しています。
+`isPointOnSegment(a,b,c)` は、点 $c$ が端点を含む線分 $ab$ 上にあるかを調べます。数学的には、三角不等式が等号になる条件 $\lvert a-c\rvert+\lvert c-b\rvert=\lvert a-b\rvert$ を利用しています。
 
 ## 使い方
 
@@ -33,4 +33,4 @@ int main() {
 
 型と関数は `geometry` 名前空間にあります。座標型 `D` は long double、`Point` は `complex<D>` です。実部を $x$ 座標、虚部を $y$ 座標として扱います。
 
-実装は等号の代わりに $|a-c|+|c-b|<|a-b|+\mathrm{EPS}$ を用います。これは距離の和の差に対する許容誤差であり、点から線分への距離がEPS以下かを判定するものではありません。
+実装は等号の代わりに $\lvert a-c\rvert+\lvert c-b\rvert<\lvert a-b\rvert+\mathrm{EPS}$ を用います。これは距離の和の差に対する許容誤差であり、点から線分への距離がEPS以下かを判定するものではありません。

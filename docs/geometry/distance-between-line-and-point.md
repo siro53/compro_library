@@ -5,7 +5,7 @@ documentation_of: //geometry/distance-between-line-and-point.hpp
 
 ## このライブラリでできること
 
-`distanceBetweenLineAndPoint(l,p)` は、点 $p$ から無限直線 $l$ までの最短距離を返します。直線上の点を $a,b$ とすると、距離は $|(b-a)\times(p-a)|/|b-a|$ です。平行四辺形の面積を底辺の長さで割り、高さを求めています。
+`distanceBetweenLineAndPoint(l,p)` は、点 $p$ から無限直線 $l$ までの最短距離を返します。直線上の点を $a,b$ とすると、距離は $\lvert (b-a)\times(p-a)\rvert/\lvert b-a\rvert$ です。平行四辺形の面積を底辺の長さで割り、高さを求めています。
 
 ## 使い方
 

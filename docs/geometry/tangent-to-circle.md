@@ -7,7 +7,7 @@ documentation_of: //geometry/tangent-to-circle.hpp
 
 `tangentToCircle(p,c)` は、円の外部の点 $p$ から円へ引いた2本の接線について、その接点を返します。返り値は直線ではなく `vector<Point>` です。各接点と $p$ を結べば接線になります。
 
-接点 $t$ では半径と接線が直交するので、$|p-t|=\sqrt{|p-c.p|^2-c.r^2}$ です。この長さを半径とする補助円と元の円の交点を使って、接点を求めます。
+接点 $t$ では半径と接線が直交するので、$\lvert p-t\rvert=\sqrt{\lvert p-c.p\rvert^2-c.r^2}$ です。この長さを半径とする補助円と元の円の交点を使って、接点を求めます。
 
 ## 使い方
 
