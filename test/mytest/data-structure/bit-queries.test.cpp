@@ -51,6 +51,12 @@ void regression_test() {
         auto visible = stored;
         for(auto& v : visible) v ^= mask;
         sort(visible.begin(), visible.end());
+        assert(trie.size() == int(stored.size()) && trie.empty() == stored.empty());
+        for(unsigned q = 0; q < 64; ++q) assert(trie.count(q) == count(stored.begin(), stored.end(), q));
+        if(!visible.empty()) {
+            assert(trie.min_element() == visible.front() && trie.max_element() == visible.back());
+            for(int k = 0; k < int(visible.size()); ++k) assert(trie.get_kth_element(k) == visible[k]);
+        }
         for(unsigned q = 0; q < 64; q++) {
             assert(trie.lower_bound(q) == lower_bound(visible.begin(), visible.end(), q) - visible.begin());
             assert(trie.upper_bound(q) == upper_bound(visible.begin(), visible.end(), q) - visible.begin());
