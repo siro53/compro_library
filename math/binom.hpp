@@ -35,7 +35,7 @@ template <class mint> class Binomial {
         return f_inv[n];
     }
     mint inv(int n) {
-        if(n < 0) return -mint(-n);
+        if(n < 0) return mint(n).inv();
         assert(n != 0);
         while(n >= (int)f_inv.size()) extend();
         return (f_inv[n] * f[n - 1]);

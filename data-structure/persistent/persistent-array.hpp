@@ -9,9 +9,9 @@ template <class T, int LOG = 4> struct PersistentArray {
         T val;
         Node *childs[1 << LOG];
 
-        Node() { memset(childs, 0, sizeof(childs)); }
-        Node(const Node *node) { memcpy(childs, node->childs, sizeof(childs)); }
-        Node(const Node &node) { memcpy(childs, node.childs, sizeof(childs)); }
+        Node(): val{} { memset(childs, 0, sizeof(childs)); }
+        Node(const Node *node): val(node->val) { memcpy(childs, node->childs, sizeof(childs)); }
+        Node(const Node &node): val(node.val) { memcpy(childs, node.childs, sizeof(childs)); }
     };
 
     Node *root;
@@ -19,12 +19,12 @@ template <class T, int LOG = 4> struct PersistentArray {
     T identity;
     const int full_bit = (1 << LOG) - 1;
 
-    PersistentArray() {}
+    PersistentArray(): PersistentArray(0) {}
     explicit PersistentArray(int N, const T &id = 0)
-        : root(new Node()), depth(0), identity(id) {
-        PersistentArray(std::vector<T>(N, id));
+        : PersistentArray(std::vector<T>(N, id)) {
+        identity = id;
     }
-    PersistentArray(const std::vector<T> &v) : root(new Node()), depth(0) {
+    PersistentArray(const std::vector<T> &v) : root(new Node()), depth(0), identity{} {
         int N = (int)v.size();
         while(N > 0) {
             N >>= LOG;

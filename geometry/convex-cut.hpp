@@ -14,7 +14,7 @@ namespace geometry {
             Point now = p[i];
             Point nxt = p[i == sz - 1 ? 0 : i + 1];
             if(ccw(l.a, l.b, now) != -1) ret.emplace_back(now);
-            if(ccw(l.a, l.b, now) * ccw(l.a, l.b, nxt) < 0) {
+            if(ccw(l.a, l.b, now) * ccw(l.a, l.b, nxt) == -1) {
                 ret.emplace_back(crossPoint(Line(now, nxt), l));
             }
         }

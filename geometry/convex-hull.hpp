@@ -13,6 +13,9 @@ namespace geometry {
             return (a.real() != b.real() ? a.real() < b.real()
                                          : a.imag() < b.imag());
         });
+        p.erase(std::unique(p.begin(), p.end()), p.end());
+        n = (int)p.size();
+        if(n <= 1) return p;
         std::vector<Point> ch(2 * n);
         // 一直線上の3点を含める -> (< -EPS)
         // 含め無い -> (< EPS)

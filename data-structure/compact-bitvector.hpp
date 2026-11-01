@@ -9,7 +9,7 @@ class CompactBitVector {
     using u64 = unsigned long long;
 
   public:
-    explicit CompactBitVector() = default;
+    explicit CompactBitVector() : CompactBitVector(0) {}
     explicit CompactBitVector(int n) : N(n), sz((N + 63) >> 6) {
         bv.assign(sz, 0);
         sum.assign(sz + 1, 0);
@@ -25,18 +25,18 @@ class CompactBitVector {
     }
     // [0, i)
     u32 rank(int i, int b) const {
-        assert(i >= 0);
-        u32 res = sum[i >> 6] + __builtin_popcountll(bv[i >> 6] & ((1ULL << (i & 63)) - 1));
+        assert(0 <= i && i <= N);
+        u32 res = sum[i >> 6];
+        if(i & 63) res += __builtin_popcountll(bv[i >> 6] & ((1ULL << (i & 63)) - 1));
         if(b == 0) res = i - res;
         return res;
     }
     int select(int i, int b) const {
-        if(b and sum.back() > i) return -1;
-        if(!b and N - sum.back() > i) return -1;
-        int ok = N, ng = -1;
+        if(i < 0 || (u32)i >= rank(N, b)) return -1;
+        int ok = N - 1, ng = -1;
         while(ok - ng > 1) {
             int mid = (ok + ng) / 2;
-            (rank(i, b) >= mid ? ok : ng) = mid;
+            (rank(mid + 1, b) > (u32)i ? ok : ng) = mid;
         }
         return ok;
     }

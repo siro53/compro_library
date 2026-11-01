@@ -36,7 +36,7 @@ class DynamicModInt {
         *this *= p.inv();
         return *this;
     }
-    DynamicModInt operator-() const { return DynamicModInt(-x); }
+    DynamicModInt operator-() const { return DynamicModInt(-(long long)x); }
     DynamicModInt operator+(const DynamicModInt &p) const {
         return DynamicModInt(*this) += p;
     }

@@ -5,7 +5,7 @@
 template<class Cost = int>
 class TwoSat {
 public:
-    TwoSat() = default;
+    TwoSat(): TwoSat(0) {}
     explicit TwoSat(int N): N(N), scc(N * 2), ans(N), called_satisfiable(false) {}
 
     void add_clause(int i, bool f_i, int j, bool f_j) {

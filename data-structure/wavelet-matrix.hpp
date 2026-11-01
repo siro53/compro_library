@@ -9,7 +9,7 @@ template <typename T, int BITLEN = 31>
 class WaveletMatrix {
 public:
     explicit WaveletMatrix() = default;
-    explicit WaveletMatrix(vector<int> v): N((int)v.size()), B(BITLEN, CompactBitVector(N)), zero_num(BITLEN, 0) {
+    explicit WaveletMatrix(std::vector<int> v): N((int)v.size()), B(BITLEN, CompactBitVector(N)), zero_num(BITLEN, 0) {
         for(int k = BITLEN - 1; k >= 0; k--) {
             std::vector<T> zeros, ones;
             for(int i = 0; i < N; i++) {
@@ -49,6 +49,7 @@ public:
     };
     // 左から i 個目の値 x の index. O(log(N)log(σ))
     int select(int i, T x) {
+        if(i < 0 || i >= rank(N, x)) return -1;
         int pos = 0;
         for(int k = BITLEN - 1; k >= 0; k--) {
             int b = (x >> k) & 1;
