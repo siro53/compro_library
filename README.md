@@ -4,6 +4,10 @@
 [![Actions Status](https://github.com/siro53/compro_library/workflows/verify/badge.svg)](https://github.com/siro53/compro_library/actions)
 [![GitHub Pages](https://img.shields.io/static/v1?label=GitHub+Pages&message=+&color=brightgreen&logo=github)](https://siro53.github.io/compro_library/)
 
+## ライブラリの使い方
+
+[ライブラリ一覧](docs/index.md)から各ファイルのドキュメントを参照できます。各ページに、構造体・クラスの役割、API の動作と計算量、利用条件、使用例を記載しています。実装上の既知の制約については各ページの「前提・注意点」を確認してください。
+
 ## 出典付きでbundleする
 
 `oj-bundle` の代わりに `scripts/bundle.py` を使うと、各ライブラリの挿入位置に次のコメントを付けます。ネストした include も対象で、同じファイルには最初の挿入時だけ付けます。ライブラリを含まないソースには付けません。

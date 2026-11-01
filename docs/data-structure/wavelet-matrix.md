@@ -5,20 +5,39 @@ documentation_of: //data-structure/wavelet-matrix.hpp
 
 ## 概要
 
-非負整数列 $A$ に対して以下の操作を行うデータ構造。
+`WaveletMatrix<T, BITLEN=31>` は静的な非負整数列の順位・個数検索を行う。`N` は長さ、`B=BITLEN`。
 
-以下、$A$ の要素数を $N$、$A$ の最大値を $M$ とする。 
+空間 O(B ceil(N/64)) ワードに加え、構築時 O(N) の作業領域。
 
-- `access(i)` : $A_i$ を返す。$O(\log(M))$
-- `rank(i, x)` : 値 $x$ が区間 $[0, i)$ に何個あるかを求める。$O(\log(M))$
-- `select(i, x)` : 左から $i$ 個目の値 $x$ の位置を返す。$O(\log(N)\log(M))$
-- `quantile(l, r, i)` : 区間 $[l, r)$ に含まれる要素の中で、$i$ 番目に小さい値を返す。$O(\log(M))$
-- `rangefreq(l, r, x)` : 区間 $[l, r)$ に含まれる要素の中で、$x$ 未満の値を返す。$O(\log(M))$
-- `prev_value(l, r, x)` : $\max_{l \leq i < r, A_i < x} A_i$ を返す。$O(\log(M))$
-- `next_value(l, r, x)` : $\min_{l \leq i < r, A_i \geq x} A_i$ を返す。$O(\log(M))$
+## API・計算量
 
-## メモ
-- $A$ に負の値が入ってるとバグるので、その場合は適切に座圧して使うこと。
-- 最下段の完備辞書に対して元の列$A$でのindexを保持しておくと、 `select` 操作を $O(\log(M))$ にすることが出来る。しかし、そもそも競プロで `select` を使う機会があまりないことからその工夫は行っていない。
-- また、完備辞書において `select` を定数時間で行えるようにすることでも $O(\log(M))$ にすることが出来るが、定数が重すぎるため実用的ではない(らしい)。
-- 完備辞書は succinct なものではなく compact なものを使っている（競プロの範囲なら compact でも問題ないため）。どちらが早いかは未検証。
+| API | 動作・返り値 | 時間計算量 |
+| --- | --- | --- |
+| `WaveletMatrix(vector<int> v)` | 列をビットごとに分割して構築。 | O(NB) |
+| `access(pos), operator[](pos)` | 元の値を返す。 | O(B) |
+| `rank(i, x)` | [0,i) の x の個数。 | O(B) |
+| `select(i, x)` | x の i 番目の出現位置を意図するが、下位実装に不備がある。 | O(B log N) |
+| `quantile(l, r, i)` | [l,r) 内の昇順 i 番目（0-indexed）。 | O(B) |
+| `rangefreq(l, r, xr)` | [l,r) 内で x<xr の個数。 | O(B) |
+| `rangefreq(l, r, xl, xr)` | [l,r) 内で xl<=x<xr の個数。 | O(B) |
+| `prev_value(l, r, xr)` | xr 未満の最大値。なければ -1。 | O(B) |
+| `next_value(l, r, xl)` | xl 以上の最小値。なければ -1。 | O(B) |
+
+## 前提・注意点
+
+値と検索境界を `[0,2^B)` に収める。上限 `2^B` は表現できず、`rangefreq` の上限としても使えない。負数は座標圧縮などで変換する。構築引数は T によらず `vector<int>`。
+
+`CompactBitVector::rank` の不備により、N が 64 の倍数で右端 N を問い合わせると配列外参照する。`select` も下位の select の不備により使用不可。`T` は -1 を表せる符号付き型を推奨。単体ヘッダーに非修飾 `vector` があるため本例の include 順を使う。
+
+## 使用例
+
+```cpp
+#include "template/template.cpp"
+#include "data-structure/wavelet-matrix.hpp"
+
+int main() {
+    WaveletMatrix<int, 4> wm(vector<int>{3, 1, 4, 1, 5});
+    assert(wm.quantile(0, 5, 2) == 3);
+    assert(wm.rangefreq(0, 5, 2) == 2);
+}
+```

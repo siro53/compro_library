@@ -1,10 +1,48 @@
 ---
-title: 実行時 modint
-documentation_of: //data-structure/modint/dynamic-modint.hpp
+title: 動的法 modint
+documentation_of: //modint/dynamic-modint.hpp
 ---
 
-実行時 modint。
+## 概要
 
-入力時にmodが与えられるような問題で用いる。それ以外の場合は `modint/modint.hpp` を使う。
+`DynamicModInt` は整数を法 m の剰余として保持し、通常の算術演算子で計算する。
 
-なぜわざわざ実行時 modint だけ別で構造体を作っているのかは、[barrett reduction と modint について](https://scrapbox.io/comproMEMO/barrett_reduction_%E3%81%A8_modint_%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)に書いた。
+各値の空間 O(1)。法の bit 幅で固定長整数演算を O(1) とする。
+
+## API・計算量
+
+| API | 動作・返り値 | 時間計算量 |
+| --- | --- | --- |
+| `コンストラクタ(), コンストラクタ(long long y)` | 0 または y mod m を保持。 | O(1) |
+| `val(), get_mod()` | 正規化された値・法（get_mod は static）。 | O(1) |
+| `operator+, -, *, +=, -=, *=` | 剰余の加減乗算。 | O(1) |
+| `単項 operator-` | 加法逆元（動的版は注意点参照）。 | O(1) |
+| `operator/, /=, inv()` | 除算・拡張 Euclid 法による逆元。 | O(log m) |
+| `pow(n)` | n 乗。 | O(log(n+1)) |
+| `operator==, !=` | 値の一致・不一致。 | O(1) |
+| `operator<<, >>` | 正規化された値の出力・long long の入力。 | 数字の桁数に比例 |
+| `set_mod(m)` | 全インスタンス共通の法を設定。 | O(1) |
+
+## 前提・注意点
+
+除算・inv は値と法 m が互いに素な場合のみ。入力は long long の最小値を避ける（負数の正規化で符号反転するため）。比較は正規化後の値の一致。演算子は同じ型同士で使い、整数はコンストラクタで変換できる。
+
+最初に set_mod を呼び、`2<=m<2^31` で使う。法は全オブジェクトで共有されるので、値が生存中に変更しない。現実装の単項マイナスは unsigned int のまま -x を計算するため誤答となる場合がある。代わりに `mint(0)-x` を使う。
+
+pow の指数は非負。固定法版と 2^61-1 版は unsigned long long、動的版は long long を受け取る。
+
+## 使用例
+
+```cpp
+#include "template/template.cpp"
+#include "modint/dynamic-modint.hpp"
+
+int main() {
+    using mint = DynamicModInt;
+    mint::set_mod(998244353);
+    mint a = 3, b = 5;
+    assert((a * b).val() == 15);
+    assert((a / a).val() == 1);
+    assert(a.pow(3).val() == 27);
+}
+```
