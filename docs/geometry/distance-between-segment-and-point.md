@@ -5,7 +5,7 @@ documentation_of: //geometry/distance-between-segment-and-point.hpp
 
 ## このライブラリでできること
 
-`distanceBetweenSegmentAndPoint(l,p)` は、線分上の点 $q$ のうち $|p-q|$ が最小になる距離を返します。垂線の足が線分の中にあれば直線への距離を使い、外にあれば近い方の端点までの距離を使います。
+`distanceBetweenSegmentAndPoint(l,p)` は、線分上の点 $q$ のうち $\lvert p-q\rvert$ が最小になる距離を返します。垂線の足が線分の中にあれば直線への距離を使い、外にあれば近い方の端点までの距離を使います。
 
 ## 使い方
 

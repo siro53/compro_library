@@ -94,7 +94,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
         DROPBOX_TOKEN: ${{ secrets.DROPBOX_TOKEN }}
-      run: oj-verify run
+      run: oj-verify run --timeout 6000
 
     # Generate even after failed tests, so the published verification status stays current.
     # Unset GITHUB_TOKEN to disable oj-verify's automatic gh-pages replacement.

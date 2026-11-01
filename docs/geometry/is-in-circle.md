@@ -5,7 +5,7 @@ documentation_of: //geometry/is-in-circle.hpp
 
 ## このライブラリでできること
 
-`isInCircle(c,p)` は、点 $p$ が円の内部または円周上にあるかを判定します。数学的な条件は、中心を $c.p$、半径を $r$ として $|p-c.p|\le r$ です。円周だけを調べる関数ではありません。
+`isInCircle(c,p)` は、点 $p$ が円の内部または円周上にあるかを判定します。数学的な条件は、中心を $c.p$、半径を $r$ として $\lvert p-c.p\rvert\le r$ です。円周だけを調べる関数ではありません。
 
 ## 使い方
 

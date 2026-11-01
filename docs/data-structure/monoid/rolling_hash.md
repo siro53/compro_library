@@ -7,7 +7,7 @@ documentation_of: //data-structure/monoid/rolling_hash.hpp
 
 `MonoidRollingHash<N>` は、列のハッシュ値と長さを組にして、列同士の連結を表すモノイドです。セグメント木に載せると、1文字の変更を伴う文字列の部分列ハッシュなどに利用できます。ハッシュ値の型 `mint` は、法 $2^{61}-1$ の `ModInt_2_61` です。
 
-底を $b$、列 $A$ のハッシュを $H(A)=\sum_{i=0}^{|A|-1}A_i b^i$ とします。このとき $H(AB)=H(A)+b^{|A|}H(B)$ なので、2つのハッシュと長さだけから連結後のハッシュを計算できます。
+底を $b$、列 $A$ のハッシュを $H(A)=\sum_{i=0}^{\lvert A\rvert-1}A_i b^i$ とします。このとき $H(AB)=H(A)+b^{\lvert A\rvert}H(B)$ なので、2つのハッシュと長さだけから連結後のハッシュを計算できます。
 
 ## 使い方
 
