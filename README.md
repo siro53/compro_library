@@ -6,7 +6,7 @@
 
 ## 出典付きでbundleする
 
-`oj-bundle` の代わりに `scripts/bundle.py` を使うと、展開結果の先頭に次のコメントを付けます。
+`oj-bundle` の代わりに `scripts/bundle.py` を使うと、各ライブラリの挿入位置に次のコメントを付けます。ネストした include も対象で、同じファイルには最初の挿入時だけ付けます。ライブラリを含まないソースには付けません。
 
 ```cpp
 // Source: https://github.com/siro53/compro_library
