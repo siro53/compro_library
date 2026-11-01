@@ -3,13 +3,35 @@ title: 競プロ用テンプレート
 documentation_of: //template/template.cpp
 ---
 
-## 概要
+## このライブラリでできること
 
-GCC 向けの標準ヘッダー、入出力、型別名、マクロ、補助関数をまとめる。`using namespace std` と `siro53_io` を導入する。`Setup` のグローバルインスタンスが同期を無効化し、固定小数点 15 桁の出力を設定する。
+`template/template.cpp` は、競技プログラミングのソースで共通に使う入出力・型別名・ループマクロ・小さな補助関数をまとめたファイルです。このライブラリの使用例は、まずこのファイルを include し、その後に使うアルゴリズムのヘッダーを include する形にしています。
 
-補助配列は結果の要素数に比例した空間。queue の出力には要素数分のコピー領域も必要。
+`using namespace std` と入出力用の `siro53_io` を導入します。また、グローバルな `Setup` オブジェクトが、標準入出力の同期解除、cinのtie解除、小数点以下15桁の出力形式を設定します。これらはmain関数の前に行われます。
+
+## 使い方
+
+`input(a,b)` は値を読み、`print(a,b)` は空白区切りで出力して最後に改行します。vectorへの入力では、先に長さを確保しておいてください。`INT(n)` や `VEC(a,int,n)` は宣言と入力をまとめるマクロです。
+
+例では `ord_sort(v)` で値が小さい順の添字を取得し、`make_vector<int>({2,3},7)` で2行3列をすべて $7$ にした配列を作っています。`chmax/chmin` は値が改善したときだけ代入し、その有無をboolで返すため、動的計画法などで使えます。
+
+```cpp
+#include "template/template.cpp"
+
+int main() {
+    vector<int> v{3, 1, 2};
+    auto order = ord_sort(v);
+    assert((order == vector<int>{1, 2, 0}));
+    auto a = make_vector<int>({2, 3}, 7);
+    assert(a[1][2] == 7);
+    int best = 2;
+    assert(chmax(best, 5));
+}
+```
 
 ## API・計算量
+
+配列を作る補助関数は、結果の要素数に応じた空間を使います。queueの出力には、さらに要素数分のコピー領域が必要です。表の $N$ は対象コンテナの要素数を表します。
 
 | API | 動作・返り値 | 時間計算量 |
 | --- | --- | --- |
@@ -32,24 +54,12 @@ GCC 向けの標準ヘッダー、入出力、型別名、マクロ、補助関�
 | `iota_gen(n,start=0)` | start から n 個の連続整数。 | O(n) |
 | `ord_sort(v,greater=false)` | v の昇順（true は降順）に並ぶ添字列。 | O(N log N) |
 
-## 前提・注意点
+## 利用条件と実装上の注意
 
-`ll=long long`、`i128=__int128_t`。定数は `INF=2^30`、`LLINF=2^60`、`MOD=1000000007`、`MOD2=998244353`、dx/dy は 4 近傍（右・下・左・上に相当する座標差）。OVERLOAD3、REP1、REP2 は REP の実装補助。
+型別名は `ll=long long`、`i128=__int128_t` です。`INF=2^30`、`LLINF=2^60` は有限の番兵値であり、任意の答えより大きいとは限りません。`MOD=1000000007` と `MOD2=998244353` は法の候補として使う定数です。`dx/dy` は4方向の座標差を表します。
 
-MIN/MAX は非空コンテナのみ。ord_sort の同値要素の順序は未保証。input(vector) はサイズを変更しないので先に確保する。queue の出力は値渡しでコピーする。128 bit 入出力はその型の範囲内を使い、最小負値の出力は符号反転がオーバーフローするため避ける。ヘッダーとして使うときは 1 翻訳単位に 1 回だけ include する。
+`REP(i,n)` は $[0,n)$、`REP(i,a,b)` は $[a,b)$ を走査します。`OVERLOAD3,REP1,REP2` はこのマクロの内部用です。`MIN/MAX` は非空コンテナにだけ使い、`ord_sort` は同値の要素の順序を保証しません。
 
-## 使用例
+`debug` は `DEBUG` を定義した場合にだけ出力されます。queueの出力はキューをコピーして処理するため、要素数分の追加メモリが必要です。128 bit整数の出力も最小負値の符号反転には対応していません。
 
-```cpp
-#include "template/template.cpp"
-
-int main() {
-    vector<int> v{3, 1, 2};
-    auto order = ord_sort(v);
-    assert((order == vector<int>{1, 2, 0}));
-    auto a = make_vector<int>({2, 3}, 7);
-    assert(a[1][2] == 7);
-    int best = 2;
-    assert(chmax(best, 5));
-}
-```
+GCC向けの `bits/stdc++.h` や128 bit整数拡張を使います。通常のヘッダーのような多重include防止はなく、関数定義も含むため、1翻訳単位に1回だけ include してください。

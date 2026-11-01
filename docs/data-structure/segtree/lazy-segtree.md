@@ -3,35 +3,17 @@ title: Lazy Segment Tree
 documentation_of: //data-structure/segtree/lazy-segtree.hpp
 ---
 
-## 概要
+## このライブラリでできること
 
-`LazySegtree<MonoidAct>` は区間作用と区間積を遅延伝播で処理する。`N` は列の長さ。各モノイド・作用の演算を O(1) とする。
+`LazySegtree<MonoidAct>` は、区間内の要素をまとめて更新し、その区間の集約値も求めるデータ構造です。たとえば「区間の全要素に5を加える」「区間の和を求める」という操作を、長さ $N$ の配列に対してそれぞれ $O(\log N)$ 時間で処理できます。
 
-空間 O(N+1)。
+更新をすぐに各要素へ配らず、区間を表すノードに保留します。そのノードの中を詳しく調べるときに子へ更新を伝えるため、遅延伝播と呼ばれます。区間の集約値を表す型を $S$、更新を表す型を $F$ とすると、`mapping(f,x)` が更新の適用、`composition(f,g)` が $g$ の後に $f$ を行う合成です。
 
-## API・計算量
+## 使い方
 
-| API | 動作・返り値 | 時間計算量 |
-| --- | --- | --- |
-| `LazySegtree(), LazySegtree(n), LazySegtree(v)` | 空、n 個の e()、列 v から構築。 | O(N+1) |
-| `set(pos, val)` | 点を上書き。 | O(log N) |
-| `get(pos)` | 遅延作用を反映した点の値。 | O(log N) |
-| `prod(l, r)` | [l,r) の積。 | O(log N) |
-| `all_prod()` | 全体の積。 | O(1) |
-| `apply(pos, f)` | 点に作用 f を適用。 | O(log N) |
-| `apply(l, r, f)` | [l,r) に作用 f を適用。 | O(log N) |
-| `max_right(l, g)` | g(prod(l,r)) が true となる最大 r。 | O(log N) |
-| `min_left(r, g)` | g(prod(l,r)) が true となる最小 l。 | O(log N) |
+区間和への加算では、集約値に「和」と「要素数」を持たせます。和を $s$、要素数を $n$ とすると、各要素への $d$ の加算は $(s,n)\mapsto(s+dn,n)$ としてまとめて計算できます。単に和だけを保存すると、加算後の和を求めるための長さが足りません。
 
-## 前提・注意点
-
-`MonoidAct` に `value_type_S`（集約値）、`value_type_F`（作用）、`op/e`（集約の演算・単位元）、`mapping(f,x)`（作用の適用）、`composition(f,g)`（g の後に f を適用）、`id()`（恒等作用）を定義する。`mapping` は区間の結合と整合し、作用の合成は結合的であること。区間和への加算では集約値に長さも保持する。`n` だけで構築すると全葉が e() なので、長さ 1 の葉が必要なら配列から構築する。
-
-添字は 0-indexed、`0 <= l <= r <= N`。境界探索には `g(e())=true` と区間を伸ばした際の単調性が必要。
-
-現実装の `min_left` は上方へ移動する際の偶奇条件が通常の探索と逆で、誤答・範囲外参照の可能性があるため使用を避ける。
-
-## 使用例
+例の `RangeAddSum` はこの対応を実装しています。各葉を `{値,1}` として構築し、最初の2要素に $5$ を加えるので、全体の和は $1+2+3+5\times2=16$ になります。
 
 ```cpp
 #include "template/template.cpp"
@@ -53,3 +35,31 @@ int main() {
     assert(seg.prod(0, 3).sum == 16);
 }
 ```
+
+## API・計算量
+
+必要な空間は $O(N+1)$ です。
+
+| API | 動作・返り値 | 時間計算量 |
+| --- | --- | --- |
+| `LazySegtree(), LazySegtree(n), LazySegtree(v)` | 空、n 個の e()、列 v から構築。 | O(N+1) |
+| `set(pos, val)` | 点を上書き。 | O(log N) |
+| `get(pos)` | 遅延作用を反映した点の値。 | O(log N) |
+| `prod(l, r)` | [l,r) の積。 | O(log N) |
+| `all_prod()` | 全体の積。 | O(1) |
+| `apply(pos, f)` | 点に作用 f を適用。 | O(log N) |
+| `apply(l, r, f)` | [l,r) に作用 f を適用。 | O(log N) |
+| `max_right(l, g)` | g(prod(l,r)) が true となる最大 r。 | O(log N) |
+| `min_left(r, g)` | g(prod(l,r)) が true となる最小 l。 | O(log N) |
+
+## 利用条件と実装上の注意
+
+`MonoidAct` には、集約用の `value_type_S,op,e` と、更新用の `value_type_F,mapping,composition,id` を用意します。集約の `op/e` はモノイドの条件を満たす必要があります。また、更新は恒等写像を含み、合成について閉じていて、$f(x\circ y)=f(x)\circ f(y)$ を満たす必要があります。表では、これらの演算とコピーを定数時間としています。
+
+サイズだけを指定すると各葉は `e()` で初期化されます。例のように `e()` の長さが0である場合、実要素を表す長さ1の葉は配列で渡してください。添字・区間の範囲は通常のセグメント木と同じです。
+
+境界探索には、単位元で真となり、区間を伸ばすと真から偽へ一度だけ変化する述語を使います。ただし、現実装の `min_left` には上方移動時の偶奇条件に不備があり、使用を避ける必要があります。
+
+## 参考資料
+
+[ACL の Lazy Segtree ドキュメント](https://atcoder.github.io/ac-library/production/document_ja/lazysegtree.html)を、作用の条件と合成順序の参考にしています。

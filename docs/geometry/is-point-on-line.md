@@ -3,25 +3,13 @@ title: 点が直線上にあるか
 documentation_of: //geometry/is-point-on-line.hpp
 ---
 
-## 概要
+## このライブラリでできること
 
-無限直線 ab 上に c があるかを調べる。
+`isPointOnLine(a,b,c)` は、点 $c$ が2点 $a,b$ を通る無限直線上にあるかを調べます。ベクトル $b-a$ と $c-a$ の外積が0に近いことを、平行判定によって確認します。
 
-追加空間 O(1)。
+## 使い方
 
-## API・計算量
-
-| API | 動作・返り値 | 時間計算量 |
-| --- | --- | --- |
-| `isPointOnLine(a,b,c)` | 直線上なら true。 | O(1) |
-
-## 前提・注意点
-
-全て `geometry` 名前空間内。座標型は `D=long double`、点は `Point=complex<D>`、許容誤差は `EPS=1e-7`。
-
-a!=b。線分の外側でも同一直線上なら true。
-
-## 使用例
+例の $(3,0)$ は、$(0,0)$ と $(1,0)$ の間にはありませんが、同じ水平直線上にあるので真を返します。端点の間にあることも必要なら、`isPointOnSegment` を使ってください。
 
 ```cpp
 #include "template/template.cpp"
@@ -32,3 +20,17 @@ int main() {
     assert(isPointOnLine(Point(0, 0), Point(1, 0), Point(3, 0)));
 }
 ```
+
+## API・計算量
+
+必要な追加空間は $O(1)$ です。
+
+| API | 動作・返り値 | 時間計算量 |
+| --- | --- | --- |
+| `isPointOnLine(a,b,c)` | 直線上なら true。 | O(1) |
+
+## 利用条件と実装上の注意
+
+型と関数は `geometry` 名前空間にあります。座標型 `D` は long double、`Point` は `complex<D>` です。実部を $x$ 座標、虚部を $y$ 座標として扱います。
+
+$a,b$ は異なる点にしてください。判定にはEPSを使いますが、点と直線の距離を直接EPSと比較しているわけではありません。方向ベクトルの長さによって、同じ距離の点でも判定が変わり得ます。

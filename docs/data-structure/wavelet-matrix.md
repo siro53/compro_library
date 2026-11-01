@@ -3,13 +3,32 @@ title: Wavelet Matrix
 documentation_of: //data-structure/wavelet-matrix.hpp
 ---
 
-## 概要
+## このライブラリでできること
 
-`WaveletMatrix<T, BITLEN=31>` は静的な非負整数列の順位・個数検索を行う。`N` は長さ、`B=BITLEN`。
+`WaveletMatrix<T,BITLEN>` は、変更しない整数列について、区間内の順位や値の分布を調べるデータ構造です。「区間内で3番目に小さい値」「指定値未満の要素数」「ある値の直前・直後の値」といった問い合わせに向いています。
 
-空間 O(B ceil(N/64)) ワードに加え、構築時 O(N) の作業領域。
+長さを $N$、扱う bit 数を $B=\mathrm{BITLEN}$ とします。上位 bit から順に値を $0$ 側と $1$ 側へ安定に分け、各段の移動先を bit 列の rank で追跡します。前処理は $O(NB)$、順位・個数の問い合わせは $O(B)$ 時間です。
+
+## 使い方
+
+配列を渡して構築した後は、その配列に対する問い合わせ専用として使います。例の列 $[3,1,4,1,5]$ を並べ替えると $[1,1,3,4,5]$ なので、0始まりの順位 $2$ にある値は $3$ です。また $2$ 未満の値は2個あるため、`rangefreq(0,5,2)` は $2$ を返します。
+
+`prev_value(l,r,x)` は $x$ 未満の最大値、`next_value(l,r,x)` は $x$ 以上の最小値を求めます。前者が $x$ 自身を含まない点に注意してください。
+
+```cpp
+#include "template/template.cpp"
+#include "data-structure/wavelet-matrix.hpp"
+
+int main() {
+    WaveletMatrix<int, 4> wm(vector<int>{3, 1, 4, 1, 5});
+    assert(wm.quantile(0, 5, 2) == 3);
+    assert(wm.rangefreq(0, 5, 2) == 2);
+}
+```
 
 ## API・計算量
+
+保持するbit列と累積情報に $O(B\lceil N/64\rceil)$ ワード、構築中の作業用配列に $O(N)$ の空間を使います。
 
 | API | 動作・返り値 | 時間計算量 |
 | --- | --- | --- |
@@ -23,21 +42,10 @@ documentation_of: //data-structure/wavelet-matrix.hpp
 | `prev_value(l, r, xr)` | xr 未満の最大値。なければ -1。 | O(B) |
 | `next_value(l, r, xl)` | xl 以上の最小値。なければ -1。 | O(B) |
 
-## 前提・注意点
+## 利用条件と実装上の注意
 
-値と検索境界を `[0,2^B)` に収める。上限 `2^B` は表現できず、`rangefreq` の上限としても使えない。負数は座標圧縮などで変換する。構築引数は T によらず `vector<int>`。
+配列の値と検索に使う値の境界は $[0,2^B)$ に収めてください。`rangefreq` の上限にも $2^B$ 自体は渡せません。負の値は先に座標圧縮するなどして変換します。構築時の引数型は `T` によらず `vector<int>` です。
 
-`CompactBitVector::rank` の不備により、N が 64 の倍数で右端 N を問い合わせると配列外参照する。`select` も下位の select の不備により使用不可。`T` は -1 を表せる符号付き型を推奨。単体ヘッダーに非修飾 `vector` があるため本例の include 順を使う。
+区間は $0\le l\le r\le N$ とし、`quantile(l,r,k)` ではさらに $0\le k<r-l$ が必要です。前後の値が存在しないときは $-1$ を返すため、返り値の型には符号付き型を推奨します。
 
-## 使用例
-
-```cpp
-#include "template/template.cpp"
-#include "data-structure/wavelet-matrix.hpp"
-
-int main() {
-    WaveletMatrix<int, 4> wm(vector<int>{3, 1, 4, 1, 5});
-    assert(wm.quantile(0, 5, 2) == 3);
-    assert(wm.rangefreq(0, 5, 2) == 2);
-}
-```
+下位の `CompactBitVector` に不備があり、$N$ が64の倍数のときの右端 $N$ を含む rank 計算は配列外参照になります。`select` も下位の実装に不備があるため使用できません。また、非修飾の `vector` を使うため、共通テンプレートを先に include してください。
