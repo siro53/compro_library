@@ -165,14 +165,15 @@ data:
     \ ord = iota_gen((int)v.size());\n    sort(ALL(ord), [&](int i, int j) {\n   \
     \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
     \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"string/z-algo.hpp\"\n\
-    \n#line 5 \"string/z-algo.hpp\"\n\nstd::vector<int> z_algo(const std::string&\
-    \ s) {\n    int n = (int)s.size();\n    std::vector<int> z(n);\n    z[0] = n;\n\
-    \    for(int i = 1, j = 0; i < n;) {\n        while(i + j < n and s[j] == s[i\
-    \ + j]) j++;\n        z[i] = j;\n        if(j == 0) {\n            i++;\n    \
-    \        continue;\n        }\n        int k = 1;\n        while(k < j and k +\
-    \ z[k] < j) {\n            z[i + k] = z[k];\n            k++;\n        }\n   \
-    \     i += k;\n        j -= k;\n    }\n    return z;\n}\n#line 4 \"test/library-checker/string/z-algorithm.test.cpp\"\
-    \n\nint main() {\n    STRING(S);\n    print(z_algo(S));\n}\n"
+    \n#line 5 \"string/z-algo.hpp\"\n\ninline std::vector<int> z_algo(const std::string&\
+    \ s) {\n    int n = (int)s.size();\n    std::vector<int> z(n);\n    if(n == 0)\
+    \ return z;\n    z[0] = n;\n    for(int i = 1, j = 0; i < n;) {\n        while(i\
+    \ + j < n and s[j] == s[i + j]) j++;\n        z[i] = j;\n        if(j == 0) {\n\
+    \            i++;\n            continue;\n        }\n        int k = 1;\n    \
+    \    while(k < j and k + z[k] < j) {\n            z[i + k] = z[k];\n         \
+    \   k++;\n        }\n        i += k;\n        j -= k;\n    }\n    return z;\n\
+    }\n#line 4 \"test/library-checker/string/z-algorithm.test.cpp\"\n\nint main()\
+    \ {\n    STRING(S);\n    print(z_algo(S));\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/zalgorithm\"\n#include\
     \ \"../../../template/template.cpp\"\n#include \"../../../string/z-algo.hpp\"\n\
     \nint main() {\n    STRING(S);\n    print(z_algo(S));\n}"
@@ -182,7 +183,7 @@ data:
   isVerificationFile: true
   path: test/library-checker/string/z-algorithm.test.cpp
   requiredBy: []
-  timestamp: '2024-09-08 23:17:50+09:00'
+  timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/library-checker/string/z-algorithm.test.cpp

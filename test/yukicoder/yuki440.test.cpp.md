@@ -207,20 +207,21 @@ data:
     \              }\n            }\n            len <<= 1;\n        }\n        for(int\
     \ i = 0; i < n; i++) a[i] /= Complex<D>(n, 0);\n    }\n\n    template<typename\
     \ D>\n    std::vector<D> convolution(const std::vector<D>& a, const std::vector<D>&\
-    \ b) {\n        int m = (int)a.size() + (int)b.size() - 1;\n        int n = 1,\
-    \ bitlen = 0;\n        while(n < m) {\n            n <<= 1;\n            bitlen++;\n\
-    \        }\n        std::vector<Complex<D>> A(n), B(n);\n        for(int i = 0;\
-    \ i < (int)a.size(); i++) A[i] = Complex<D>(a[i], 0);\n        for(int i = 0;\
-    \ i < (int)b.size(); i++) B[i] = Complex<D>(b[i], 0);\n        fft<D>(A, bitlen);\n\
-    \        fft<D>(B, bitlen);\n        for(int i = 0; i < n; i++) A[i] *= B[i];\n\
-    \        ifft<D>(A, bitlen);\n        std::vector<D> res(m);\n        for(int\
-    \ i = 0; i < m; i++) res[i] = A[i].x;\n        return res;\n    } \n}; // namespace\
-    \ fft\n#line 4 \"test/yukicoder/yuki440.test.cpp\"\n\nint main() {\n    int L,\
-    \ M, N;\n    cin >> L >> M >> N;\n    vector<double> fa(N+1, 0), fb(N+1, 0);\n\
-    \    REP(i, L) {\n        int a;\n        cin >> a;\n        fa[a] += 1;\n   \
-    \ }\n    REP(i, M) {\n        int b;\n        cin >> b;\n        fb[N - b] +=\
-    \ 1;\n    }\n    auto c = fft::convolution<double>(fa, fb);\n    int Q;\n    cin\
-    \ >> Q;\n    REP(v, Q) cout << (ll)(c[N + v] + 0.5) << '\\n';\n}\n"
+    \ b) {\n        if(a.empty() || b.empty()) return {};\n        int m = (int)a.size()\
+    \ + (int)b.size() - 1;\n        int n = 1, bitlen = 0;\n        while(n < m) {\n\
+    \            n <<= 1;\n            bitlen++;\n        }\n        std::vector<Complex<D>>\
+    \ A(n), B(n);\n        for(int i = 0; i < (int)a.size(); i++) A[i] = Complex<D>(a[i],\
+    \ 0);\n        for(int i = 0; i < (int)b.size(); i++) B[i] = Complex<D>(b[i],\
+    \ 0);\n        fft<D>(A, bitlen);\n        fft<D>(B, bitlen);\n        for(int\
+    \ i = 0; i < n; i++) A[i] *= B[i];\n        ifft<D>(A, bitlen);\n        std::vector<D>\
+    \ res(m);\n        for(int i = 0; i < m; i++) res[i] = A[i].x;\n        return\
+    \ res;\n    } \n}; // namespace fft\n#line 4 \"test/yukicoder/yuki440.test.cpp\"\
+    \n\nint main() {\n    int L, M, N;\n    cin >> L >> M >> N;\n    vector<double>\
+    \ fa(N+1, 0), fb(N+1, 0);\n    REP(i, L) {\n        int a;\n        cin >> a;\n\
+    \        fa[a] += 1;\n    }\n    REP(i, M) {\n        int b;\n        cin >> b;\n\
+    \        fb[N - b] += 1;\n    }\n    auto c = fft::convolution<double>(fa, fb);\n\
+    \    int Q;\n    cin >> Q;\n    REP(v, Q) cout << (ll)(c[N + v] + 0.5) << '\\\
+    n';\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/206\"\n#include \"../../template/template.cpp\"\
     \n#include \"../../math/convolution/fft.hpp\"\n\nint main() {\n    int L, M, N;\n\
     \    cin >> L >> M >> N;\n    vector<double> fa(N+1, 0), fb(N+1, 0);\n    REP(i,\
@@ -234,7 +235,7 @@ data:
   isVerificationFile: true
   path: test/yukicoder/yuki440.test.cpp
   requiredBy: []
-  timestamp: '2024-09-08 23:17:50+09:00'
+  timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yukicoder/yuki440.test.cpp

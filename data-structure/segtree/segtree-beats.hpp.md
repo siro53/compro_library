@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/range-chmin-chmax-add-range-sum.test.cpp
     title: test/library-checker/data-structure/range-chmin-chmax-add-range-sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/segtree-boundaries.test.cpp
+    title: test/mytest/data-structure/segtree-boundaries.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -56,18 +59,18 @@ data:
     \ <<= 1;\n                    if (g(MonoidAct::op(now, node[l]))) {\n        \
     \                now = MonoidAct::op(now, node[l]);\n                        l++;\n\
     \                    }\n                }\n                return l - sz;\n  \
-    \          }\n            now = MonoidAct::op(now, node[l]);\n        } while\
-    \ ((l & -l) != l);\n        return N;\n    } \n\n    template <class G> int min_left(int\
-    \ r, G g) {\n        assert(0 <= r and r <= N);\n        assert(g(MonoidAct::e()));\n\
+    \          }\n            now = MonoidAct::op(now, node[l]);\n            l++;\n\
+    \        } while ((l & -l) != l);\n        return N;\n    } \n\n    template <class\
+    \ G> int min_left(int r, G g) {\n        assert(0 <= r and r <= N);\n        assert(g(MonoidAct::e()));\n\
     \        if (r == 0) return 0;\n        r += sz;\n        for(int i = lg; i >=\
     \ 1; i--) propagate((r - 1) >> i);\n        S now = MonoidAct::e();\n        do\
-    \ {\n            r--;\n            while (r > 1 and (r & 1) == 0) r >>= 1;\n \
-    \           if (!g(MonoidAct::op(node[r], now))) {\n                while (r <\
-    \ sz) {\n                    propagate(r);\n                    r = (r << 1) +\
-    \ 1;\n                    if (g(MonoidAct::op(node[r], now))) {\n            \
-    \            now = MonoidAct::op(node[r], now);\n                        r--;\n\
-    \                    }\n                }\n                return r + 1 - sz;\n\
-    \            }\n            now = MonoidAct::op(node[r], now);\n        } while((r\
+    \ {\n            r--;\n            while (r > 1 and (r & 1)) r >>= 1;\n      \
+    \      if (!g(MonoidAct::op(node[r], now))) {\n                while (r < sz)\
+    \ {\n                    propagate(r);\n                    r = (r << 1) + 1;\n\
+    \                    if (g(MonoidAct::op(node[r], now))) {\n                 \
+    \       now = MonoidAct::op(node[r], now);\n                        r--;\n   \
+    \                 }\n                }\n                return r + 1 - sz;\n \
+    \           }\n            now = MonoidAct::op(node[r], now);\n        } while((r\
     \ & -r) != r);\n        return 0;\n    }\n\nprivate:\n    int N, sz, lg;\n   \
     \ std::vector<S> node;\n    std::vector<F> lazy;\n\n    void update(int i) {\n\
     \        node[i] = MonoidAct::op(node[i << 1], node[(i << 1) | 1]);\n    }\n \
@@ -122,18 +125,18 @@ data:
     \ <<= 1;\n                    if (g(MonoidAct::op(now, node[l]))) {\n        \
     \                now = MonoidAct::op(now, node[l]);\n                        l++;\n\
     \                    }\n                }\n                return l - sz;\n  \
-    \          }\n            now = MonoidAct::op(now, node[l]);\n        } while\
-    \ ((l & -l) != l);\n        return N;\n    } \n\n    template <class G> int min_left(int\
-    \ r, G g) {\n        assert(0 <= r and r <= N);\n        assert(g(MonoidAct::e()));\n\
+    \          }\n            now = MonoidAct::op(now, node[l]);\n            l++;\n\
+    \        } while ((l & -l) != l);\n        return N;\n    } \n\n    template <class\
+    \ G> int min_left(int r, G g) {\n        assert(0 <= r and r <= N);\n        assert(g(MonoidAct::e()));\n\
     \        if (r == 0) return 0;\n        r += sz;\n        for(int i = lg; i >=\
     \ 1; i--) propagate((r - 1) >> i);\n        S now = MonoidAct::e();\n        do\
-    \ {\n            r--;\n            while (r > 1 and (r & 1) == 0) r >>= 1;\n \
-    \           if (!g(MonoidAct::op(node[r], now))) {\n                while (r <\
-    \ sz) {\n                    propagate(r);\n                    r = (r << 1) +\
-    \ 1;\n                    if (g(MonoidAct::op(node[r], now))) {\n            \
-    \            now = MonoidAct::op(node[r], now);\n                        r--;\n\
-    \                    }\n                }\n                return r + 1 - sz;\n\
-    \            }\n            now = MonoidAct::op(node[r], now);\n        } while((r\
+    \ {\n            r--;\n            while (r > 1 and (r & 1)) r >>= 1;\n      \
+    \      if (!g(MonoidAct::op(node[r], now))) {\n                while (r < sz)\
+    \ {\n                    propagate(r);\n                    r = (r << 1) + 1;\n\
+    \                    if (g(MonoidAct::op(node[r], now))) {\n                 \
+    \       now = MonoidAct::op(node[r], now);\n                        r--;\n   \
+    \                 }\n                }\n                return r + 1 - sz;\n \
+    \           }\n            now = MonoidAct::op(node[r], now);\n        } while((r\
     \ & -r) != r);\n        return 0;\n    }\n\nprivate:\n    int N, sz, lg;\n   \
     \ std::vector<S> node;\n    std::vector<F> lazy;\n\n    void update(int i) {\n\
     \        node[i] = MonoidAct::op(node[i << 1], node[(i << 1) | 1]);\n    }\n \
@@ -147,10 +150,11 @@ data:
   isVerificationFile: false
   path: data-structure/segtree/segtree-beats.hpp
   requiredBy: []
-  timestamp: '2025-12-27 20:01:42+09:00'
+  timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/data-structure/range-chmin-chmax-add-range-sum.test.cpp
+  - test/mytest/data-structure/segtree-boundaries.test.cpp
 documentation_of: data-structure/segtree/segtree-beats.hpp
 layout: document
 title: Segment Tree Beats
@@ -211,4 +215,4 @@ int main() {
 
 `composition(f,g)` は $g$ の後に $f$ を適用する合成です。失敗した更新も子へ伝えられる必要があり、`op/e` が返す `fail` の状態も整合させてください。サイズだけで構築すると葉は `e()` になるため、必要なら長さなどを持つ初期配列を渡します。
 
-現実装では `max_right` の外側ループに次のノードへ進む処理がなく、`min_left` の上方移動条件にも不備があります。これらの境界探索は使用しないでください。
+境界探索には、単位元で真となり、区間を伸ばすと真から偽へ一度だけ変化する述語を使います。`max_right` は左端、`min_left` は右端を固定し、条件を満たす範囲が端まで続く場合はそれぞれ N、0 を返します。

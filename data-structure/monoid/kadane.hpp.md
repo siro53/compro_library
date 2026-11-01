@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/initialization-and-monoids.test.cpp
+    title: test/mytest/data-structure/initialization-and-monoids.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://hotman78.hatenablog.com/entry/2020/06/17/102519
@@ -15,28 +18,35 @@ data:
     \ allmax, sum;\n        S() = default;\n        S(T lmax, T rmax, T allmax, T\
     \ sum)\n            : lmax(lmax), rmax(rmax), allmax(allmax), sum(sum) {}\n  \
     \  };\n    using value_type = S;\n    inline static S op(const S &l, const S &r)\
-    \ {\n        T lmax = std::max(l.lmax, l.sum + r.lmax);\n        T rmax = std::max(r.rmax,\
+    \ {\n        const T m = std::numeric_limits<T>::lowest();\n        if(l.lmax\
+    \ == m && l.rmax == m && l.allmax == m && l.sum == T(0)) return r;\n        if(r.lmax\
+    \ == m && r.rmax == m && r.allmax == m && r.sum == T(0)) return l;\n        T\
+    \ lmax = std::max(l.lmax, l.sum + r.lmax);\n        T rmax = std::max(r.rmax,\
     \ l.rmax + r.sum);\n        T allmax = std::max({l.allmax, r.allmax, l.rmax +\
     \ r.lmax});\n        T sum = l.sum + r.sum;\n        return S(lmax, rmax, allmax,\
-    \ sum);\n    }\n    inline static S e() {\n        T m = std::numeric_limits<T>::min();\n\
+    \ sum);\n    }\n    inline static S e() {\n        T m = std::numeric_limits<T>::lowest();\n\
     \        return S(m, m, m, T(0));\n    }\n};\n"
   code: "#pragma once\n\n#include <limits>\n#include <algorithm>\n\n// ref: https://hotman78.hatenablog.com/entry/2020/06/17/102519\n\
     template <typename T> struct MonoidKadane {\n    struct S {\n        T lmax, rmax,\
     \ allmax, sum;\n        S() = default;\n        S(T lmax, T rmax, T allmax, T\
     \ sum)\n            : lmax(lmax), rmax(rmax), allmax(allmax), sum(sum) {}\n  \
     \  };\n    using value_type = S;\n    inline static S op(const S &l, const S &r)\
-    \ {\n        T lmax = std::max(l.lmax, l.sum + r.lmax);\n        T rmax = std::max(r.rmax,\
+    \ {\n        const T m = std::numeric_limits<T>::lowest();\n        if(l.lmax\
+    \ == m && l.rmax == m && l.allmax == m && l.sum == T(0)) return r;\n        if(r.lmax\
+    \ == m && r.rmax == m && r.allmax == m && r.sum == T(0)) return l;\n        T\
+    \ lmax = std::max(l.lmax, l.sum + r.lmax);\n        T rmax = std::max(r.rmax,\
     \ l.rmax + r.sum);\n        T allmax = std::max({l.allmax, r.allmax, l.rmax +\
     \ r.lmax});\n        T sum = l.sum + r.sum;\n        return S(lmax, rmax, allmax,\
-    \ sum);\n    }\n    inline static S e() {\n        T m = std::numeric_limits<T>::min();\n\
+    \ sum);\n    }\n    inline static S e() {\n        T m = std::numeric_limits<T>::lowest();\n\
     \        return S(m, m, m, T(0));\n    }\n};"
   dependsOn: []
   isVerificationFile: false
   path: data-structure/monoid/kadane.hpp
   requiredBy: []
-  timestamp: '2023-09-22 12:39:25+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-11-01 16:38:28+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/mytest/data-structure/initialization-and-monoids.test.cpp
 documentation_of: data-structure/monoid/kadane.hpp
 layout: document
 title: "\u6700\u5927\u90E8\u5206\u914D\u5217\u548C\u30E2\u30CE\u30A4\u30C9"
@@ -52,7 +62,7 @@ title: "\u6700\u5927\u90E8\u5206\u914D\u5217\u548C\u30E2\u30CE\u30A4\u30C9"
 
 1要素 $x$ を表す葉は `S(x,x,x,x)` です。例では $[2]$ と $[-1]$ を結合し、全体和は $1$、最大部分配列和は $[2]$ を選んだ $2$ になります。
 
-ただし、現実装の単位元には後述のオーバーフロー問題があります。この例は実要素同士の結合を確認するもので、現在のままセグメント木へ安全に載せられることを示すものではありません。
+`e()` は空区間を表します。実要素との結合では実要素の集約値をそのまま返すため、セグメント木の初期値や空区間の結果として使えます。
 
 ```cpp
 #include "template/template.cpp"
@@ -62,6 +72,7 @@ int main() {
     using M = MonoidKadane<long long>;
     auto s = M::op(M::S(2, 2, 2, 2), M::S(-1, -1, -1, -1));
     assert(s.allmax == 2 && s.sum == 1);
+    assert(M::op(M::e(), s).allmax == 2);
 }
 ```
 
@@ -73,10 +84,10 @@ int main() {
 | --- | --- | --- |
 | `S(lmax, rmax, allmax, sum)` | 集約値を作る。デフォルト構築では各値は未初期化。 | O(1) |
 | `op(l, r)` | 左右を連結した区間の集約値。 | O(1) |
-| `e()` | (numeric_limits<T>::min(), 同左, 同左, 0)。 | O(1) |
+| `e()` | (numeric_limits<T>::lowest(), 同左, 同左, 0)。 | O(1) |
 
 ## 利用条件と実装上の注意
 
-数学的な単位元は、和を $0$、3種類の最大値を $-\infty$ とした状態です。実装では $-\infty$ の代わりに `numeric_limits<T>::min()` を使っていますが、それを通常の数として足すため、`op(e(),e())` などでも符号付きオーバーフローが発生します。
+数学的な単位元は、和を $0$、3種類の最大値を $-\infty$ とした状態です。実装は3種類の最大値が `numeric_limits<T>::lowest()`、和が0の組を空区間として識別し、加算する前に処理します。`op(e(),e())` は e() を返します。
 
-セグメント木で使う前に、空区間を明示的に区別するなどの実装修正が必要です。浮動小数点型の `min()` も負の無限大ではありません。また、`S()` のデフォルト構築はメンバを初期化しないため、すべての値を設定して使ってください。
+実要素同士を結合するときの区間和・部分和は T の範囲に収めてください。浮動小数点型では丸め誤差を許容する必要があります。`S()` のデフォルト構築はメンバを初期化しないため、すべての値を設定して使ってください。

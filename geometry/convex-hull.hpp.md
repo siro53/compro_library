@@ -37,29 +37,33 @@ data:
     \ ConvexHull(std::vector<Point> p) {\n        int n = (int)p.size(), k = 0;\n\
     \        std::sort(p.begin(), p.end(), [](const Point &a, const Point &b) {\n\
     \            return (a.real() != b.real() ? a.real() < b.real()\n            \
-    \                             : a.imag() < b.imag());\n        });\n        std::vector<Point>\
-    \ ch(2 * n);\n        // \u4E00\u76F4\u7DDA\u4E0A\u306E3\u70B9\u3092\u542B\u3081\
-    \u308B -> (< -EPS)\n        // \u542B\u3081\u7121\u3044 -> (< EPS)\n        for(int\
-    \ i = 0; i < n; ch[k++] = p[i++]) { // lower\n            while(k >= 2 &&\n  \
-    \                cross(ch[k - 1] - ch[k - 2], p[i] - ch[k - 1]) < EPS)\n     \
-    \           --k;\n        }\n        for(int i = n - 2, t = k + 1; i >= 0; ch[k++]\
-    \ = p[i--]) { // upper\n            while(k >= t &&\n                  cross(ch[k\
-    \ - 1] - ch[k - 2], p[i] - ch[k - 1]) < EPS)\n                --k;\n        }\n\
-    \        ch.resize(k - 1);\n        return ch;\n    }\n} // namespace geometry\n"
+    \                             : a.imag() < b.imag());\n        });\n        p.erase(std::unique(p.begin(),\
+    \ p.end()), p.end());\n        n = (int)p.size();\n        if(n <= 1) return p;\n\
+    \        std::vector<Point> ch(2 * n);\n        // \u4E00\u76F4\u7DDA\u4E0A\u306E\
+    3\u70B9\u3092\u542B\u3081\u308B -> (< -EPS)\n        // \u542B\u3081\u7121\u3044\
+    \ -> (< EPS)\n        for(int i = 0; i < n; ch[k++] = p[i++]) { // lower\n   \
+    \         while(k >= 2 &&\n                  cross(ch[k - 1] - ch[k - 2], p[i]\
+    \ - ch[k - 1]) < EPS)\n                --k;\n        }\n        for(int i = n\
+    \ - 2, t = k + 1; i >= 0; ch[k++] = p[i--]) { // upper\n            while(k >=\
+    \ t &&\n                  cross(ch[k - 1] - ch[k - 2], p[i] - ch[k - 1]) < EPS)\n\
+    \                --k;\n        }\n        ch.resize(k - 1);\n        return ch;\n\
+    \    }\n} // namespace geometry\n"
   code: "#pragma once\n\n#include <algorithm>\n#include <vector>\n\n#include \"cross.hpp\"\
     \n\nnamespace geometry {\n    // \u51F8\u5305 O(NlogN)\n    inline std::vector<Point>\
     \ ConvexHull(std::vector<Point> p) {\n        int n = (int)p.size(), k = 0;\n\
     \        std::sort(p.begin(), p.end(), [](const Point &a, const Point &b) {\n\
     \            return (a.real() != b.real() ? a.real() < b.real()\n            \
-    \                             : a.imag() < b.imag());\n        });\n        std::vector<Point>\
-    \ ch(2 * n);\n        // \u4E00\u76F4\u7DDA\u4E0A\u306E3\u70B9\u3092\u542B\u3081\
-    \u308B -> (< -EPS)\n        // \u542B\u3081\u7121\u3044 -> (< EPS)\n        for(int\
-    \ i = 0; i < n; ch[k++] = p[i++]) { // lower\n            while(k >= 2 &&\n  \
-    \                cross(ch[k - 1] - ch[k - 2], p[i] - ch[k - 1]) < EPS)\n     \
-    \           --k;\n        }\n        for(int i = n - 2, t = k + 1; i >= 0; ch[k++]\
-    \ = p[i--]) { // upper\n            while(k >= t &&\n                  cross(ch[k\
-    \ - 1] - ch[k - 2], p[i] - ch[k - 1]) < EPS)\n                --k;\n        }\n\
-    \        ch.resize(k - 1);\n        return ch;\n    }\n} // namespace geometry\n"
+    \                             : a.imag() < b.imag());\n        });\n        p.erase(std::unique(p.begin(),\
+    \ p.end()), p.end());\n        n = (int)p.size();\n        if(n <= 1) return p;\n\
+    \        std::vector<Point> ch(2 * n);\n        // \u4E00\u76F4\u7DDA\u4E0A\u306E\
+    3\u70B9\u3092\u542B\u3081\u308B -> (< -EPS)\n        // \u542B\u3081\u7121\u3044\
+    \ -> (< EPS)\n        for(int i = 0; i < n; ch[k++] = p[i++]) { // lower\n   \
+    \         while(k >= 2 &&\n                  cross(ch[k - 1] - ch[k - 2], p[i]\
+    \ - ch[k - 1]) < EPS)\n                --k;\n        }\n        for(int i = n\
+    \ - 2, t = k + 1; i >= 0; ch[k++] = p[i--]) { // upper\n            while(k >=\
+    \ t &&\n                  cross(ch[k - 1] - ch[k - 2], p[i] - ch[k - 1]) < EPS)\n\
+    \                --k;\n        }\n        ch.resize(k - 1);\n        return ch;\n\
+    \    }\n} // namespace geometry\n"
   dependsOn:
   - geometry/cross.hpp
   - geometry/base.hpp
@@ -67,7 +71,7 @@ data:
   path: geometry/convex-hull.hpp
   requiredBy:
   - geometry/geometry.hpp
-  timestamp: '2026-08-30 15:33:14+09:00'
+  timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/mytest/geometry/geometry.test.cpp
@@ -112,6 +116,6 @@ int main() {
 
 型と関数は `geometry` 名前空間にあります。座標型 `D` は long double、`Point` は `complex<D>` です。実部を $x$ 座標、虚部を $y$ 座標として扱います。
 
-現実装は0点で不正なresizeを行い、1点では空の結果を返します。重複点を事前に取り除き、異なる点を2個以上渡してください。
+座標が厳密に一致する重複点は内部で取り除きます。空入力には空の配列、異なる点が1個だけならその1点を返します。
 
 向きの判定にEPSを使うので、ほぼ一直線上の点は削除される場合があります。すべての点が一直線上なら、通常は両端の2点が結果になります。

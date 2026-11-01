@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/erasable-priority-queue.test.cpp
     title: test/mytest/data-structure/erasable-priority-queue.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/helper-regressions.test.cpp
+    title: test/mytest/data-structure/helper-regressions.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -21,9 +24,10 @@ data:
     \        assert(!que.empty());\n        return que.top();\n    }\n\n    void pop()\
     \ {\n        normalize();\n        assert(!que.empty());\n        que.pop();\n\
     \    }\n\n    void erase(const T& val) {\n        rm_que.emplace(val);\n    }\n\
-    \n    bool empty() {\n        return que.empty();\n    }\nprivate:\n    void normalize()\
-    \ {\n        while(!que.empty() and !rm_que.empty() and que.top() == rm_que.top())\
-    \ {\n            que.pop();\n            rm_que.pop();\n        }\n    }\n};\n"
+    \n    bool empty() {\n        normalize();\n        return que.empty();\n    }\n\
+    private:\n    void normalize() {\n        while(!que.empty() and !rm_que.empty()\
+    \ and que.top() == rm_que.top()) {\n            que.pop();\n            rm_que.pop();\n\
+    \        }\n    }\n};\n"
   code: "#pragma once\n\n#include <cassert>\n#include <functional>\n#include <type_traits>\n\
     #include <queue>\n#include <vector>\n\ntemplate<class T, bool isAscending = true>\n\
     struct ErasablePriorityQueue {\n    using PQ = std::conditional_t<\n        isAscending,\n\
@@ -33,18 +37,19 @@ data:
     \        normalize();\n        assert(!que.empty());\n        return que.top();\n\
     \    }\n\n    void pop() {\n        normalize();\n        assert(!que.empty());\n\
     \        que.pop();\n    }\n\n    void erase(const T& val) {\n        rm_que.emplace(val);\n\
-    \    }\n\n    bool empty() {\n        return que.empty();\n    }\nprivate:\n \
-    \   void normalize() {\n        while(!que.empty() and !rm_que.empty() and que.top()\
-    \ == rm_que.top()) {\n            que.pop();\n            rm_que.pop();\n    \
-    \    }\n    }\n};"
+    \    }\n\n    bool empty() {\n        normalize();\n        return que.empty();\n\
+    \    }\nprivate:\n    void normalize() {\n        while(!que.empty() and !rm_que.empty()\
+    \ and que.top() == rm_que.top()) {\n            que.pop();\n            rm_que.pop();\n\
+    \        }\n    }\n};"
   dependsOn: []
   isVerificationFile: false
   path: data-structure/erasable-priority-queue.hpp
   requiredBy: []
-  timestamp: '2026-01-12 01:17:47+09:00'
+  timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/mytest/data-structure/erasable-priority-queue.test.cpp
+  - test/mytest/data-structure/helper-regressions.test.cpp
 documentation_of: data-structure/erasable-priority-queue.hpp
 layout: document
 title: "\u524A\u9664\u53EF\u80FD\u306A\u512A\u5148\u5EA6\u4ED8\u304D\u30AD\u30E5\u30FC"
@@ -86,10 +91,10 @@ int main() {
 | `erase(val)` | 値 1 個の削除を予約。 | O(log Q) |
 | `top()` | 削除予約を反映して先頭を返す。 | 償却 O(log Q)、1 回最悪 O(Q log Q) |
 | `pop()` | 削除予約を反映して先頭を削除。 | 償却 O(log Q)、1 回最悪 O(Q log Q) |
-| `empty()` | 現在の物理ヒープ que が空か。削除予約は反映しない。 | O(1) |
+| `empty()` | 削除予約を処理して空判定。 | 償却 O(log Q)、1 回最悪 O(Q log Q) |
 
 ## 利用条件と実装上の注意
 
 `erase(x)` は現在存在している値に対してだけ呼んでください。同じ値が複数個ある場合は1回の呼び出しで1個を削除します。
 
-現実装の `empty()` は削除予約を処理せず、物理的なヒープが空かどうかだけを調べます。そのため、論理上すべて削除済みでも `false` になることがあります。要素数を別途管理し、`top/pop` は論理的に非空と分かっている場合だけ呼んでください。公開されている `que,rm_que` は内部状態なので直接変更しないでください。
+`empty()` も削除予約を処理し、論理的に空かどうかを返します。`top/pop` は非空のときだけ呼んでください。公開されている `que,rm_que` は内部状態なので直接変更しないでください。

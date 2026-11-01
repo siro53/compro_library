@@ -22,6 +22,12 @@ data:
     path: test/library-checker/data-structure/vertex-set-path-composite.test.cpp
     title: test/library-checker/data-structure/vertex-set-path-composite.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/mytest/math/arithmetic-regressions.test.cpp
+    title: test/mytest/math/arithmetic-regressions.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/math/convolution-regressions.test.cpp
+    title: test/mytest/math/convolution-regressions.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki117.test.cpp
     title: test/yukicoder/yuki117.test.cpp
   - icon: ':heavy_check_mark:'
@@ -103,6 +109,8 @@ data:
   - test/library-checker/data-structure/range-affine-point-get/lazysegtree.test.cpp
   - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
   - test/library-checker/data-structure/range-affine-range-sum.test.cpp
+  - test/mytest/math/convolution-regressions.test.cpp
+  - test/mytest/math/arithmetic-regressions.test.cpp
 documentation_of: modint/modint.hpp
 layout: document
 title: "\u56FA\u5B9A\u6CD5 modint"

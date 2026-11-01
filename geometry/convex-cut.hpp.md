@@ -174,9 +174,9 @@ data:
     \ ret;\n        int sz = (int)p.size();\n        for(int i = 0; i < sz; i++) {\n\
     \            Point now = p[i];\n            Point nxt = p[i == sz - 1 ? 0 : i\
     \ + 1];\n            if(ccw(l.a, l.b, now) != -1) ret.emplace_back(now);\n   \
-    \         if(ccw(l.a, l.b, now) * ccw(l.a, l.b, nxt) < 0) {\n                ret.emplace_back(crossPoint(Line(now,\
-    \ nxt), l));\n            }\n        }\n        return ret;\n    }\n} // namespace\
-    \ geometry\n"
+    \         if(ccw(l.a, l.b, now) * ccw(l.a, l.b, nxt) == -1) {\n              \
+    \  ret.emplace_back(crossPoint(Line(now, nxt), l));\n            }\n        }\n\
+    \        return ret;\n    }\n} // namespace geometry\n"
   code: "#pragma once\n\n#include <vector>\n\n#include \"ccw.hpp\"\n#include \"cross-point.hpp\"\
     \n\nnamespace geometry {\n    // \u51F8\u591A\u89D2\u5F62p\u3092\u76F4\u7DDAl\u3067\
     \u5207\u65AD\u3057\u3001\u305D\u306E\u5DE6\u5074\u3092\u8FD4\u3059\n    inline\
@@ -184,9 +184,9 @@ data:
     \ ret;\n        int sz = (int)p.size();\n        for(int i = 0; i < sz; i++) {\n\
     \            Point now = p[i];\n            Point nxt = p[i == sz - 1 ? 0 : i\
     \ + 1];\n            if(ccw(l.a, l.b, now) != -1) ret.emplace_back(now);\n   \
-    \         if(ccw(l.a, l.b, now) * ccw(l.a, l.b, nxt) < 0) {\n                ret.emplace_back(crossPoint(Line(now,\
-    \ nxt), l));\n            }\n        }\n        return ret;\n    }\n} // namespace\
-    \ geometry\n"
+    \         if(ccw(l.a, l.b, now) * ccw(l.a, l.b, nxt) == -1) {\n              \
+    \  ret.emplace_back(crossPoint(Line(now, nxt), l));\n            }\n        }\n\
+    \        return ret;\n    }\n} // namespace geometry\n"
   dependsOn:
   - geometry/ccw.hpp
   - geometry/cross.hpp
@@ -204,7 +204,7 @@ data:
   path: geometry/convex-cut.hpp
   requiredBy:
   - geometry/geometry.hpp
-  timestamp: '2026-08-30 15:33:14+09:00'
+  timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/mytest/geometry/geometry.test.cpp
@@ -249,4 +249,4 @@ int main() {
 
 反時計回りの凸多角形と、異なる2点で表した直線を渡してください。全体が捨てる側にあれば空の配列になります。
 
-現実装は `ccw` の返す $\pm2$ も交差判定に使っています。切断直線と辺が同一直線上になる退化ケースでは、不要な交点が挿入される場合があります。境界上の頂点や共線辺を含む結果は、必要に応じて重複や退化した辺を整理してください。
+交点を追加するのは、辺の両端が切断直線の左右に分かれる場合だけです。境界上の頂点はそのまま残し、共線な辺に不要な交点を追加しません。EPS による向きの判定のため、ほぼ共線な配置では誤差の影響を受けます。

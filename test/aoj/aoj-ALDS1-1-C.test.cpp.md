@@ -168,10 +168,10 @@ data:
     \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
     \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"math/is-prime.hpp\"\n\
     \n#line 4 \"math/is-prime.hpp\"\n\n#line 2 \"math/pow_mod.hpp\"\n\nconstexpr long\
-    \ long pow_mod(long long x, long long k, long long m) {\n    long long res = 1;\n\
-    \    long long mul = (x >= 0 ? x % m : x % m + m);\n    while(k) {\n        if(k\
-    \ & 1) res = (__int128_t)res * mul % m;\n        mul = (__int128_t)mul * mul %\
-    \ m;\n        k >>= 1;\n    }\n    return res;\n}\n#line 6 \"math/is-prime.hpp\"\
+    \ long pow_mod(long long x, long long k, long long m) {\n    long long res = 1\
+    \ % m;\n    long long mul = (x >= 0 ? x % m : x % m + m);\n    while(k) {\n  \
+    \      if(k & 1) res = (__int128_t)res * mul % m;\n        mul = (__int128_t)mul\
+    \ * mul % m;\n        k >>= 1;\n    }\n    return res;\n}\n#line 6 \"math/is-prime.hpp\"\
     \n\n/*\nref: Fast Primality Testing for Integers That Fit into a Machine Word\n\
     Michal Fori\u02C7sek and Jakub Jan\u02C7cina\n*/\n\nconstexpr bool is_prime(int\
     \ n) {\n    if(n <= 1) return false;\n    if(n == 2 or n == 7 or n == 61) return\
@@ -203,7 +203,7 @@ data:
   isVerificationFile: true
   path: test/aoj/aoj-ALDS1-1-C.test.cpp
   requiredBy: []
-  timestamp: '2024-09-08 23:17:50+09:00'
+  timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/aoj-ALDS1-1-C.test.cpp

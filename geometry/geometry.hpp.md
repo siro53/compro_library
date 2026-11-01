@@ -226,26 +226,28 @@ data:
     \ ret;\n        int sz = (int)p.size();\n        for(int i = 0; i < sz; i++) {\n\
     \            Point now = p[i];\n            Point nxt = p[i == sz - 1 ? 0 : i\
     \ + 1];\n            if(ccw(l.a, l.b, now) != -1) ret.emplace_back(now);\n   \
-    \         if(ccw(l.a, l.b, now) * ccw(l.a, l.b, nxt) < 0) {\n                ret.emplace_back(crossPoint(Line(now,\
-    \ nxt), l));\n            }\n        }\n        return ret;\n    }\n} // namespace\
-    \ geometry\n#line 2 \"geometry/convex-hull.hpp\"\n\n#include <algorithm>\n#line\
-    \ 5 \"geometry/convex-hull.hpp\"\n\n#line 7 \"geometry/convex-hull.hpp\"\n\nnamespace\
-    \ geometry {\n    // \u51F8\u5305 O(NlogN)\n    inline std::vector<Point> ConvexHull(std::vector<Point>\
-    \ p) {\n        int n = (int)p.size(), k = 0;\n        std::sort(p.begin(), p.end(),\
-    \ [](const Point &a, const Point &b) {\n            return (a.real() != b.real()\
-    \ ? a.real() < b.real()\n                                         : a.imag() <\
-    \ b.imag());\n        });\n        std::vector<Point> ch(2 * n);\n        // \u4E00\
-    \u76F4\u7DDA\u4E0A\u306E3\u70B9\u3092\u542B\u3081\u308B -> (< -EPS)\n        //\
-    \ \u542B\u3081\u7121\u3044 -> (< EPS)\n        for(int i = 0; i < n; ch[k++] =\
-    \ p[i++]) { // lower\n            while(k >= 2 &&\n                  cross(ch[k\
-    \ - 1] - ch[k - 2], p[i] - ch[k - 1]) < EPS)\n                --k;\n        }\n\
-    \        for(int i = n - 2, t = k + 1; i >= 0; ch[k++] = p[i--]) { // upper\n\
-    \            while(k >= t &&\n                  cross(ch[k - 1] - ch[k - 2], p[i]\
-    \ - ch[k - 1]) < EPS)\n                --k;\n        }\n        ch.resize(k -\
-    \ 1);\n        return ch;\n    }\n} // namespace geometry\n#line 2 \"geometry/degree-to-radian.hpp\"\
-    \n\n#line 4 \"geometry/degree-to-radian.hpp\"\n\nnamespace geometry {\n    //\
-    \ \u5EA6->\u30E9\u30B8\u30A2\u30F3\n    inline D degreeToRadian(const D &degree)\
-    \ { return degree * PI / 180.0; }\n} // namespace geometry\n#line 2 \"geometry/distance-between-segment-and-point.hpp\"\
+    \         if(ccw(l.a, l.b, now) * ccw(l.a, l.b, nxt) == -1) {\n              \
+    \  ret.emplace_back(crossPoint(Line(now, nxt), l));\n            }\n        }\n\
+    \        return ret;\n    }\n} // namespace geometry\n#line 2 \"geometry/convex-hull.hpp\"\
+    \n\n#include <algorithm>\n#line 5 \"geometry/convex-hull.hpp\"\n\n#line 7 \"geometry/convex-hull.hpp\"\
+    \n\nnamespace geometry {\n    // \u51F8\u5305 O(NlogN)\n    inline std::vector<Point>\
+    \ ConvexHull(std::vector<Point> p) {\n        int n = (int)p.size(), k = 0;\n\
+    \        std::sort(p.begin(), p.end(), [](const Point &a, const Point &b) {\n\
+    \            return (a.real() != b.real() ? a.real() < b.real()\n            \
+    \                             : a.imag() < b.imag());\n        });\n        p.erase(std::unique(p.begin(),\
+    \ p.end()), p.end());\n        n = (int)p.size();\n        if(n <= 1) return p;\n\
+    \        std::vector<Point> ch(2 * n);\n        // \u4E00\u76F4\u7DDA\u4E0A\u306E\
+    3\u70B9\u3092\u542B\u3081\u308B -> (< -EPS)\n        // \u542B\u3081\u7121\u3044\
+    \ -> (< EPS)\n        for(int i = 0; i < n; ch[k++] = p[i++]) { // lower\n   \
+    \         while(k >= 2 &&\n                  cross(ch[k - 1] - ch[k - 2], p[i]\
+    \ - ch[k - 1]) < EPS)\n                --k;\n        }\n        for(int i = n\
+    \ - 2, t = k + 1; i >= 0; ch[k++] = p[i--]) { // upper\n            while(k >=\
+    \ t &&\n                  cross(ch[k - 1] - ch[k - 2], p[i] - ch[k - 1]) < EPS)\n\
+    \                --k;\n        }\n        ch.resize(k - 1);\n        return ch;\n\
+    \    }\n} // namespace geometry\n#line 2 \"geometry/degree-to-radian.hpp\"\n\n\
+    #line 4 \"geometry/degree-to-radian.hpp\"\n\nnamespace geometry {\n    // \u5EA6\
+    ->\u30E9\u30B8\u30A2\u30F3\n    inline D degreeToRadian(const D &degree) { return\
+    \ degree * PI / 180.0; }\n} // namespace geometry\n#line 2 \"geometry/distance-between-segment-and-point.hpp\"\
     \n\n#line 6 \"geometry/distance-between-segment-and-point.hpp\"\n\nnamespace geometry\
     \ {\n    // \u7DDA\u5206l\u3068\u70B9p\u306E\u8DDD\u96E2\u3092\u6C42\u3081\u308B\
     \n    // \u5B9A\u7FA9\uFF1A\u70B9p\u304B\u3089\u300C\u7DDA\u5206l\u306E\u3069\u3053\
@@ -454,7 +456,7 @@ data:
   isVerificationFile: false
   path: geometry/geometry.hpp
   requiredBy: []
-  timestamp: '2026-08-30 15:33:14+09:00'
+  timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/geometry.hpp

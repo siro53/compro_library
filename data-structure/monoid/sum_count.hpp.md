@@ -2,13 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/utils/sum_count_manager.hpp
     title: "\u5024\u3054\u3068\u306E\u548C\u30FB\u500B\u6570\u7BA1\u7406"
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/helper-regressions.test.cpp
+    title: test/mytest/data-structure/helper-regressions.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data-structure/monoid/sum_count.hpp\"\n\ntemplate <typename\
@@ -29,8 +32,9 @@ data:
   requiredBy:
   - data-structure/utils/sum_count_manager.hpp
   timestamp: '2025-12-21 17:21:57+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/mytest/data-structure/helper-regressions.test.cpp
 documentation_of: data-structure/monoid/sum_count.hpp
 layout: document
 title: "\u548C\u30FB\u500B\u6570\u30E2\u30CE\u30A4\u30C9"

@@ -1,14 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: math/barrett-reduction.hpp
     title: Barrett Reduction
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/math/arithmetic-regressions.test.cpp
+    title: test/mytest/math/arithmetic-regressions.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://atcoder.jp/contests/arc104/submissions/38888866
@@ -21,17 +24,19 @@ data:
     \ * b;\n        unsigned long long v =  (unsigned long long)(((__uint128_t)z *\
     \ m_inv) >> 64);\n        unsigned int result = (unsigned int)(z - v * m);\n \
     \       if(m <= result) result += m;\n        return result;\n    }\n    unsigned\
-    \ int quo(unsigned int a) const {\n        unsigned int result = (unsigned int)(((__uint128_t)a\
-    \ * m_inv) >> 64);\n        return result;\n    }\n    unsigned int rem(unsigned\
-    \ long long a) const {\n        unsigned long long v = (unsigned long long)(((__uint128_t)a\
+    \ int quo(unsigned int a) const {\n        if(m == 1) return a;\n        unsigned\
+    \ int result = (unsigned int)(((__uint128_t)a * m_inv) >> 64);\n        return\
+    \ result;\n    }\n    unsigned int rem(unsigned long long a) const {\n       \
+    \ if(m == 1) return 0;\n        unsigned long long v = (unsigned long long)(((__uint128_t)a\
     \ * m_inv) >> 64);\n        unsigned int result = (unsigned int)(a - v * m);\n\
     \        if(m <= result) result += m;\n        return result;\n    }\n    std::pair<unsigned\
-    \ int, unsigned int> quorem(unsigned int a) const {\n        unsigned long long\
-    \ v =  (unsigned long long)(((__uint128_t)a * m_inv) >> 64);\n        unsigned\
-    \ int r = (unsigned int)((unsigned long long)a - v * m);\n        if(m <= r) r\
-    \ += m;\n        return {v, r};\n    }\nprivate:\n    unsigned int m;\n    unsigned\
-    \ long long m_inv;\n};\n#line 8 \"modint/dynamic-modint.hpp\"\n\n// verify: https://atcoder.jp/contests/arc104/submissions/38888866\n\
-    class DynamicModInt {\n  public:\n    DynamicModInt() : x(0) {}\n    DynamicModInt(long\
+    \ int, unsigned int> quorem(unsigned int a) const {\n        if(m == 1) return\
+    \ {a, 0};\n        unsigned long long v =  (unsigned long long)(((__uint128_t)a\
+    \ * m_inv) >> 64);\n        unsigned int r = (unsigned int)((unsigned long long)a\
+    \ - v * m);\n        if(m <= r) r += m;\n        return {v, r};\n    }\nprivate:\n\
+    \    unsigned int m;\n    unsigned long long m_inv;\n};\n#line 8 \"modint/dynamic-modint.hpp\"\
+    \n\n// verify: https://atcoder.jp/contests/arc104/submissions/38888866\nclass\
+    \ DynamicModInt {\n  public:\n    DynamicModInt() : x(0) {}\n    DynamicModInt(long\
     \ long y)\n        : x(y >= 0\n                ? y % (long long)mod\n        \
     \        : ((long long)mod - (-y) % (long long)mod) % (long long)mod) {}\n   \
     \ static void set_mod(unsigned int m) {\n        assert(m > 0);\n        mod =\
@@ -43,9 +48,9 @@ data:
     \ DynamicModInt &p) {\n        x = bt.mul(x, p.x);\n        return *this;\n  \
     \  }\n    DynamicModInt &operator/=(const DynamicModInt &p) {\n        *this *=\
     \ p.inv();\n        return *this;\n    }\n    DynamicModInt operator-() const\
-    \ { return DynamicModInt(-x); }\n    DynamicModInt operator+(const DynamicModInt\
-    \ &p) const {\n        return DynamicModInt(*this) += p;\n    }\n    DynamicModInt\
-    \ operator-(const DynamicModInt &p) const {\n        return DynamicModInt(*this)\
+    \ { return DynamicModInt(-(long long)x); }\n    DynamicModInt operator+(const\
+    \ DynamicModInt &p) const {\n        return DynamicModInt(*this) += p;\n    }\n\
+    \    DynamicModInt operator-(const DynamicModInt &p) const {\n        return DynamicModInt(*this)\
     \ -= p;\n    }\n    DynamicModInt operator*(const DynamicModInt &p) const {\n\
     \        return DynamicModInt(*this) *= p;\n    }\n    DynamicModInt operator/(const\
     \ DynamicModInt &p) const {\n        return DynamicModInt(*this) /= p;\n    }\n\
@@ -78,9 +83,9 @@ data:
     \ DynamicModInt &p) {\n        x = bt.mul(x, p.x);\n        return *this;\n  \
     \  }\n    DynamicModInt &operator/=(const DynamicModInt &p) {\n        *this *=\
     \ p.inv();\n        return *this;\n    }\n    DynamicModInt operator-() const\
-    \ { return DynamicModInt(-x); }\n    DynamicModInt operator+(const DynamicModInt\
-    \ &p) const {\n        return DynamicModInt(*this) += p;\n    }\n    DynamicModInt\
-    \ operator-(const DynamicModInt &p) const {\n        return DynamicModInt(*this)\
+    \ { return DynamicModInt(-(long long)x); }\n    DynamicModInt operator+(const\
+    \ DynamicModInt &p) const {\n        return DynamicModInt(*this) += p;\n    }\n\
+    \    DynamicModInt operator-(const DynamicModInt &p) const {\n        return DynamicModInt(*this)\
     \ -= p;\n    }\n    DynamicModInt operator*(const DynamicModInt &p) const {\n\
     \        return DynamicModInt(*this) *= p;\n    }\n    DynamicModInt operator/(const\
     \ DynamicModInt &p) const {\n        return DynamicModInt(*this) /= p;\n    }\n\
@@ -104,9 +109,10 @@ data:
   isVerificationFile: false
   path: modint/dynamic-modint.hpp
   requiredBy: []
-  timestamp: '2023-10-01 12:14:26+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-11-01 16:38:28+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/mytest/math/arithmetic-regressions.test.cpp
 documentation_of: modint/dynamic-modint.hpp
 layout: document
 title: "\u52D5\u7684\u6CD5 modint"
@@ -147,7 +153,7 @@ int main() {
 | `コンストラクタ(), コンストラクタ(long long y)` | 0 または y mod m を保持。 | O(1) |
 | `val(), get_mod()` | 正規化された値・法（get_mod は static）。 | O(1) |
 | `operator+, -, *, +=, -=, *=` | 剰余の加減乗算。 | O(1) |
-| `単項 operator-` | 加法逆元（動的版は注意点参照）。 | O(1) |
+| `単項 operator-` | 加法逆元。 | O(1) |
 | `operator/, /=, inv()` | 除算・拡張 Euclid 法による逆元。 | O(log m) |
 | `pow(n)` | n 乗。 | O(log(n+1)) |
 | `operator==, !=` | 値の一致・不一致。 | O(1) |
@@ -158,6 +164,6 @@ int main() {
 
 法は $2\le m<2^{31}$ の範囲で使用してください。乗算には `BarrettReduction`、逆元には int を使った拡張Euclid法を利用します。除算は除数と法が互いに素なときだけ可能です。
 
-現実装の単項マイナス `-x` は、内部の unsigned int のまま符号反転するため、意図した加法逆元にならない場合があります。代わりに `DynamicModInt(0)-x` を使ってください。
+単項マイナスは加法逆元を返します。たとえば法7で値1を反転すると6になり、0の反転は0です。
 
 `pow` は非負の long long 指数を受け取ります。コンストラクタには long long の最小値を渡さず、最初の値の構築前に必ず `set_mod` を実行してください。

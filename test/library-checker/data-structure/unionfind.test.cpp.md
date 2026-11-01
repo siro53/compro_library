@@ -183,13 +183,13 @@ data:
     \ &v) { return v.empty(); }),\n                g.end());\n        return g;\n\
     \    }\n    std::map<int, std::vector<int>> groups_with_map() {\n        std::map<int,\
     \ std::vector<int>> g;\n        for(int i = 0; i < N; i++) {\n            int\
-    \ l = leader(i);\n            if(!g.count(l)) g[l].push_back(i);\n        }\n\
-    \        return g;\n    }\n\n  private:\n    int N;\n    std::vector<int> parent_or_size;\n\
-    };\n#line 4 \"test/library-checker/data-structure/unionfind.test.cpp\"\n\nint\
-    \ main() {\n    int N, Q;\n    cin >> N >> Q;\n    UnionFind uf(N);\n    while(Q--)\
-    \ {\n        int t, u, v;\n        cin >> t >> u >> v;\n        if(t == 0) {\n\
-    \            uf.merge(u, v);\n        } else {\n            cout << (uf.same(u,\
-    \ v) ? 1 : 0) << '\\n';\n        }\n    }\n}\n"
+    \ l = leader(i);\n            g[l].push_back(i);\n        }\n        return g;\n\
+    \    }\n\n  private:\n    int N;\n    std::vector<int> parent_or_size;\n};\n#line\
+    \ 4 \"test/library-checker/data-structure/unionfind.test.cpp\"\n\nint main() {\n\
+    \    int N, Q;\n    cin >> N >> Q;\n    UnionFind uf(N);\n    while(Q--) {\n \
+    \       int t, u, v;\n        cin >> t >> u >> v;\n        if(t == 0) {\n    \
+    \        uf.merge(u, v);\n        } else {\n            cout << (uf.same(u, v)\
+    \ ? 1 : 0) << '\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/unionfind\"\n#include \"\
     ../../../template/template.cpp\"\n#include \"../../../data-structure/unionfind.hpp\"\
     \n\nint main() {\n    int N, Q;\n    cin >> N >> Q;\n    UnionFind uf(N);\n  \
@@ -202,7 +202,7 @@ data:
   isVerificationFile: true
   path: test/library-checker/data-structure/unionfind.test.cpp
   requiredBy: []
-  timestamp: '2024-09-08 23:17:50+09:00'
+  timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/library-checker/data-structure/unionfind.test.cpp

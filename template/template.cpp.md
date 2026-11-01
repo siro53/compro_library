@@ -109,17 +109,47 @@ data:
     path: test/mytest/data-structure/binary-trie.test.cpp
     title: test/mytest/data-structure/binary-trie.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/bit-queries.test.cpp
+    title: test/mytest/data-structure/bit-queries.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/erasable-priority-queue.test.cpp
     title: test/mytest/data-structure/erasable-priority-queue.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/helper-regressions.test.cpp
+    title: test/mytest/data-structure/helper-regressions.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/initialization-and-monoids.test.cpp
+    title: test/mytest/data-structure/initialization-and-monoids.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/li-chao-tree.test.cpp
     title: test/mytest/data-structure/li-chao-tree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/segtree-boundaries.test.cpp
+    title: test/mytest/data-structure/segtree-boundaries.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/mytest/geometry/geometry.test.cpp
     title: test/mytest/geometry/geometry.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/mytest/graph/lca-and-empty-two-sat.test.cpp
+    title: test/mytest/graph/lca-and-empty-two-sat.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/graph/range-edge-graph.test.cpp
+    title: test/mytest/graph/range-edge-graph.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/math/arithmetic-regressions.test.cpp
+    title: test/mytest/math/arithmetic-regressions.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/math/convolution-regressions.test.cpp
+    title: test/mytest/math/convolution-regressions.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/mytest/misc/fraction.test.cpp
     title: test/mytest/misc/fraction.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/misc/mo-and-fraction.test.cpp
+    title: test/mytest/misc/mo-and-fraction.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/string/empty-inputs.test.cpp
+    title: test/mytest/string/empty-inputs.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki1435.test.cpp
     title: test/yukicoder/yuki1435.test.cpp
@@ -481,9 +511,19 @@ data:
   - test/library-checker/data-structure/range-chmin-chmax-add-range-sum.test.cpp
   - test/library-checker/string/z-algorithm.test.cpp
   - test/mytest/geometry/geometry.test.cpp
+  - test/mytest/graph/lca-and-empty-two-sat.test.cpp
+  - test/mytest/graph/range-edge-graph.test.cpp
+  - test/mytest/math/convolution-regressions.test.cpp
+  - test/mytest/math/arithmetic-regressions.test.cpp
   - test/mytest/data-structure/li-chao-tree.test.cpp
   - test/mytest/data-structure/binary-trie.test.cpp
+  - test/mytest/data-structure/bit-queries.test.cpp
   - test/mytest/data-structure/erasable-priority-queue.test.cpp
+  - test/mytest/data-structure/initialization-and-monoids.test.cpp
+  - test/mytest/data-structure/helper-regressions.test.cpp
+  - test/mytest/data-structure/segtree-boundaries.test.cpp
+  - test/mytest/string/empty-inputs.test.cpp
+  - test/mytest/misc/mo-and-fraction.test.cpp
   - test/mytest/misc/fraction.test.cpp
   - test/aoj/aoj2858.test.cpp
   - test/aoj/aoj-ALDS1-5-D.test.cpp

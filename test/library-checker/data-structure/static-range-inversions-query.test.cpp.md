@@ -61,7 +61,7 @@ data:
     \ const AddRight &add_right,\n                const DelLeft &del_left, const DelRight\
     \ &del_right) {\n        assert(isBuilt);\n        if(idx == (int)ord.size())\
     \ return -1;\n        int qid = ord[idx++];\n        while(l > L[qid]) add_left(--l);\n\
-    \        while(l < L[qid]) del_left(l++);\n        while(r < R[qid]) add_right(r++);\n\
+    \        while(r < R[qid]) add_right(r++);\n        while(l < L[qid]) del_left(l++);\n\
     \        while(r > R[qid]) del_right(--r);\n        return qid;\n    }\n\n  private:\n\
     \    std::vector<int> L, R, ord;\n    int n, l, r, idx;\n    int BUCKET_SIZE;\n\
     \    bool isBuilt;\n};\n#line 1 \"template/template.cpp\"\n#pragma region Macros\n\
@@ -252,7 +252,7 @@ data:
   isVerificationFile: true
   path: test/library-checker/data-structure/static-range-inversions-query.test.cpp
   requiredBy: []
-  timestamp: '2024-09-08 23:17:50+09:00'
+  timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/library-checker/data-structure/static-range-inversions-query.test.cpp

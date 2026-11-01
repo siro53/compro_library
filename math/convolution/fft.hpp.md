@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/mytest/math/convolution-regressions.test.cpp
+    title: test/mytest/math/convolution-regressions.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/yuki440.test.cpp
     title: test/yukicoder/yuki440.test.cpp
   _isVerificationFailed: false
@@ -55,15 +58,15 @@ data:
     \              }\n            }\n            len <<= 1;\n        }\n        for(int\
     \ i = 0; i < n; i++) a[i] /= Complex<D>(n, 0);\n    }\n\n    template<typename\
     \ D>\n    std::vector<D> convolution(const std::vector<D>& a, const std::vector<D>&\
-    \ b) {\n        int m = (int)a.size() + (int)b.size() - 1;\n        int n = 1,\
-    \ bitlen = 0;\n        while(n < m) {\n            n <<= 1;\n            bitlen++;\n\
-    \        }\n        std::vector<Complex<D>> A(n), B(n);\n        for(int i = 0;\
-    \ i < (int)a.size(); i++) A[i] = Complex<D>(a[i], 0);\n        for(int i = 0;\
-    \ i < (int)b.size(); i++) B[i] = Complex<D>(b[i], 0);\n        fft<D>(A, bitlen);\n\
-    \        fft<D>(B, bitlen);\n        for(int i = 0; i < n; i++) A[i] *= B[i];\n\
-    \        ifft<D>(A, bitlen);\n        std::vector<D> res(m);\n        for(int\
-    \ i = 0; i < m; i++) res[i] = A[i].x;\n        return res;\n    } \n}; // namespace\
-    \ fft\n"
+    \ b) {\n        if(a.empty() || b.empty()) return {};\n        int m = (int)a.size()\
+    \ + (int)b.size() - 1;\n        int n = 1, bitlen = 0;\n        while(n < m) {\n\
+    \            n <<= 1;\n            bitlen++;\n        }\n        std::vector<Complex<D>>\
+    \ A(n), B(n);\n        for(int i = 0; i < (int)a.size(); i++) A[i] = Complex<D>(a[i],\
+    \ 0);\n        for(int i = 0; i < (int)b.size(); i++) B[i] = Complex<D>(b[i],\
+    \ 0);\n        fft<D>(A, bitlen);\n        fft<D>(B, bitlen);\n        for(int\
+    \ i = 0; i < n; i++) A[i] *= B[i];\n        ifft<D>(A, bitlen);\n        std::vector<D>\
+    \ res(m);\n        for(int i = 0; i < m; i++) res[i] = A[i].x;\n        return\
+    \ res;\n    } \n}; // namespace fft\n"
   code: "#pragma once\n\n#include <cassert>\n#include <cmath>\n#include <vector>\n\
     #include <utility>\n\nnamespace fft {\n    template <typename D> struct Complex\
     \ {\n        D x, y;\n        Complex(): x(0), y(0) {};\n        Complex(D x,\
@@ -108,23 +111,24 @@ data:
     \              }\n            }\n            len <<= 1;\n        }\n        for(int\
     \ i = 0; i < n; i++) a[i] /= Complex<D>(n, 0);\n    }\n\n    template<typename\
     \ D>\n    std::vector<D> convolution(const std::vector<D>& a, const std::vector<D>&\
-    \ b) {\n        int m = (int)a.size() + (int)b.size() - 1;\n        int n = 1,\
-    \ bitlen = 0;\n        while(n < m) {\n            n <<= 1;\n            bitlen++;\n\
-    \        }\n        std::vector<Complex<D>> A(n), B(n);\n        for(int i = 0;\
-    \ i < (int)a.size(); i++) A[i] = Complex<D>(a[i], 0);\n        for(int i = 0;\
-    \ i < (int)b.size(); i++) B[i] = Complex<D>(b[i], 0);\n        fft<D>(A, bitlen);\n\
-    \        fft<D>(B, bitlen);\n        for(int i = 0; i < n; i++) A[i] *= B[i];\n\
-    \        ifft<D>(A, bitlen);\n        std::vector<D> res(m);\n        for(int\
-    \ i = 0; i < m; i++) res[i] = A[i].x;\n        return res;\n    } \n}; // namespace\
-    \ fft"
+    \ b) {\n        if(a.empty() || b.empty()) return {};\n        int m = (int)a.size()\
+    \ + (int)b.size() - 1;\n        int n = 1, bitlen = 0;\n        while(n < m) {\n\
+    \            n <<= 1;\n            bitlen++;\n        }\n        std::vector<Complex<D>>\
+    \ A(n), B(n);\n        for(int i = 0; i < (int)a.size(); i++) A[i] = Complex<D>(a[i],\
+    \ 0);\n        for(int i = 0; i < (int)b.size(); i++) B[i] = Complex<D>(b[i],\
+    \ 0);\n        fft<D>(A, bitlen);\n        fft<D>(B, bitlen);\n        for(int\
+    \ i = 0; i < n; i++) A[i] *= B[i];\n        ifft<D>(A, bitlen);\n        std::vector<D>\
+    \ res(m);\n        for(int i = 0; i < m; i++) res[i] = A[i].x;\n        return\
+    \ res;\n    } \n}; // namespace fft"
   dependsOn: []
   isVerificationFile: false
   path: math/convolution/fft.hpp
   requiredBy: []
-  timestamp: '2023-09-26 00:52:28+09:00'
+  timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yukicoder/yuki440.test.cpp
+  - test/mytest/math/convolution-regressions.test.cpp
 documentation_of: math/convolution/fft.hpp
 layout: document
 title: "FFT \u306B\u3088\u308B\u7573\u307F\u8FBC\u307F"
@@ -170,6 +174,6 @@ int main() {
 
 ## 利用条件と実装上の注意
 
-係数の型 `D` は double または long double を使ってください。畳み込みの両入力は非空とします。直接 `fft/ifft` を呼ぶ場合、長さ $N$ は正の2冪で、引数 `bitlen` は $N=2^{\mathrm{bitlen}}$ を満たす必要があります。逆変換には $N$ による正規化が含まれます。
+係数の型 `D` は double または long double を使ってください。畳み込みの片方でも空なら空の配列を返します。直接 `fft/ifft` を呼ぶ場合、長さ $N$ は正の2冪で、引数 `bitlen` は $N=2^{\mathrm{bitlen}}$ を満たす必要があります。逆変換には $N$ による正規化が含まれます。
 
 FFTは浮動小数点計算です。整数の結果を得たい場合も、値の大きさや列長による誤差を見積もったうえで丸めてください。専用複素数型の除算では、除数を0にしてはいけません。

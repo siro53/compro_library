@@ -2,13 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: modint/dynamic-modint.hpp
     title: "\u52D5\u7684\u6CD5 modint"
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/math/arithmetic-regressions.test.cpp
+    title: test/mytest/math/arithmetic-regressions.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/barrett-reduction.hpp\"\n\n#include <utility>\n\nclass\
@@ -19,12 +22,13 @@ data:
     \ long v =  (unsigned long long)(((__uint128_t)z * m_inv) >> 64);\n        unsigned\
     \ int result = (unsigned int)(z - v * m);\n        if(m <= result) result += m;\n\
     \        return result;\n    }\n    unsigned int quo(unsigned int a) const {\n\
-    \        unsigned int result = (unsigned int)(((__uint128_t)a * m_inv) >> 64);\n\
-    \        return result;\n    }\n    unsigned int rem(unsigned long long a) const\
-    \ {\n        unsigned long long v = (unsigned long long)(((__uint128_t)a * m_inv)\
-    \ >> 64);\n        unsigned int result = (unsigned int)(a - v * m);\n        if(m\
-    \ <= result) result += m;\n        return result;\n    }\n    std::pair<unsigned\
-    \ int, unsigned int> quorem(unsigned int a) const {\n        unsigned long long\
+    \        if(m == 1) return a;\n        unsigned int result = (unsigned int)(((__uint128_t)a\
+    \ * m_inv) >> 64);\n        return result;\n    }\n    unsigned int rem(unsigned\
+    \ long long a) const {\n        if(m == 1) return 0;\n        unsigned long long\
+    \ v = (unsigned long long)(((__uint128_t)a * m_inv) >> 64);\n        unsigned\
+    \ int result = (unsigned int)(a - v * m);\n        if(m <= result) result += m;\n\
+    \        return result;\n    }\n    std::pair<unsigned int, unsigned int> quorem(unsigned\
+    \ int a) const {\n        if(m == 1) return {a, 0};\n        unsigned long long\
     \ v =  (unsigned long long)(((__uint128_t)a * m_inv) >> 64);\n        unsigned\
     \ int r = (unsigned int)((unsigned long long)a - v * m);\n        if(m <= r) r\
     \ += m;\n        return {v, r};\n    }\nprivate:\n    unsigned int m;\n    unsigned\
@@ -36,24 +40,27 @@ data:
     \ z = (unsigned long long)a * b;\n        unsigned long long v =  (unsigned long\
     \ long)(((__uint128_t)z * m_inv) >> 64);\n        unsigned int result = (unsigned\
     \ int)(z - v * m);\n        if(m <= result) result += m;\n        return result;\n\
-    \    }\n    unsigned int quo(unsigned int a) const {\n        unsigned int result\
-    \ = (unsigned int)(((__uint128_t)a * m_inv) >> 64);\n        return result;\n\
-    \    }\n    unsigned int rem(unsigned long long a) const {\n        unsigned long\
-    \ long v = (unsigned long long)(((__uint128_t)a * m_inv) >> 64);\n        unsigned\
-    \ int result = (unsigned int)(a - v * m);\n        if(m <= result) result += m;\n\
-    \        return result;\n    }\n    std::pair<unsigned int, unsigned int> quorem(unsigned\
-    \ int a) const {\n        unsigned long long v =  (unsigned long long)(((__uint128_t)a\
-    \ * m_inv) >> 64);\n        unsigned int r = (unsigned int)((unsigned long long)a\
-    \ - v * m);\n        if(m <= r) r += m;\n        return {v, r};\n    }\nprivate:\n\
-    \    unsigned int m;\n    unsigned long long m_inv;\n};"
+    \    }\n    unsigned int quo(unsigned int a) const {\n        if(m == 1) return\
+    \ a;\n        unsigned int result = (unsigned int)(((__uint128_t)a * m_inv) >>\
+    \ 64);\n        return result;\n    }\n    unsigned int rem(unsigned long long\
+    \ a) const {\n        if(m == 1) return 0;\n        unsigned long long v = (unsigned\
+    \ long long)(((__uint128_t)a * m_inv) >> 64);\n        unsigned int result = (unsigned\
+    \ int)(a - v * m);\n        if(m <= result) result += m;\n        return result;\n\
+    \    }\n    std::pair<unsigned int, unsigned int> quorem(unsigned int a) const\
+    \ {\n        if(m == 1) return {a, 0};\n        unsigned long long v =  (unsigned\
+    \ long long)(((__uint128_t)a * m_inv) >> 64);\n        unsigned int r = (unsigned\
+    \ int)((unsigned long long)a - v * m);\n        if(m <= r) r += m;\n        return\
+    \ {v, r};\n    }\nprivate:\n    unsigned int m;\n    unsigned long long m_inv;\n\
+    };"
   dependsOn: []
   isVerificationFile: false
   path: math/barrett-reduction.hpp
   requiredBy:
   - modint/dynamic-modint.hpp
-  timestamp: '2023-02-25 23:57:16+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-11-01 16:38:28+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/mytest/math/arithmetic-regressions.test.cpp
 documentation_of: math/barrett-reduction.hpp
 layout: document
 title: Barrett Reduction
@@ -97,6 +104,6 @@ int main() {
 
 ## 利用条件と実装上の注意
 
-この実装の利用範囲は $2\le m<2^{31}$ とします。`mul(a,b)` は $0\le a,b<m$、`rem(a)` は $0\le a<m^2$ の範囲で利用してください。`quo/quorem` の入力型は unsigned int です。
+この実装の利用範囲は $1\le m<2^{31}$ とします。`mul(a,b)` は $0\le a,b<m$、`rem(a)` は $0\le a<m^2$ の範囲で利用してください。`quo/quorem` の入力型は unsigned int です。
 
-$m=0$ は逆数の前計算で除算に失敗します。$m=1$ も近似逆数が0に巻き戻るため、商・剰余のAPIは一般に正しくありません。デフォルトコンストラクタは法1を設定するので、実際の計算前に有効な法で作り直してください。128 bit整数拡張が必要です。
+$m=0$ は利用できません。デフォルトコンストラクタは法1を設定します。法1では商は入力そのもの、剰余は0です。この場合だけ rem(a) は unsigned long long の全域を受け付けます。128 bit整数拡張が必要です。

@@ -59,18 +59,18 @@ data:
     \     if(n < 0) return mint(0);\n        while(n >= (int)f.size()) extend();\n\
     \        return f[n];\n    }\n    mint fac_inv(int n) {\n        if(n < 0) return\
     \ mint(0);\n        while(n >= (int)f_inv.size()) extend();\n        return f_inv[n];\n\
-    \    }\n    mint inv(int n) {\n        if(n < 0) return -mint(-n);\n        assert(n\
-    \ != 0);\n        while(n >= (int)f_inv.size()) extend();\n        return (f_inv[n]\
-    \ * f[n - 1]);\n    }\n    mint binom(int n, int k) {\n        if(n < k || n <\
-    \ 0 || k < 0) return mint(0);\n        return (fac(n) * fac_inv(k) * fac_inv(n\
-    \ - k));\n    }\n    mint binom_naive(long long n, long long k) {\n        if(n\
-    \ < k || n < 0 || k < 0) return mint(0);\n        mint res(1);\n        k = std::min(k,\
-    \ n - k);\n        for(int i = 0; i < k; i++) res *= inv(i + 1) * mint(n - i);\n\
-    \        return res;\n    }\n    mint perm(int n, int k) {\n        if(n < k ||\
-    \ n < 0 || k < 0) return mint(0);\n        return (fac(n) * fac_inv(n - k));\n\
-    \    }\n    mint hom(int n, int k) {\n        if(n < 0 || k < 0) return mint(0);\n\
-    \        return (k == 0 ? mint(1) : binom(n + k - 1, k));\n    }\n\n  private:\n\
-    \    std::vector<mint> f, f_inv;\n};\n#line 6 \"test/yukicoder/yuki117.test.cpp\"\
+    \    }\n    mint inv(int n) {\n        if(n < 0) return mint(n).inv();\n     \
+    \   assert(n != 0);\n        while(n >= (int)f_inv.size()) extend();\n       \
+    \ return (f_inv[n] * f[n - 1]);\n    }\n    mint binom(int n, int k) {\n     \
+    \   if(n < k || n < 0 || k < 0) return mint(0);\n        return (fac(n) * fac_inv(k)\
+    \ * fac_inv(n - k));\n    }\n    mint binom_naive(long long n, long long k) {\n\
+    \        if(n < k || n < 0 || k < 0) return mint(0);\n        mint res(1);\n \
+    \       k = std::min(k, n - k);\n        for(int i = 0; i < k; i++) res *= inv(i\
+    \ + 1) * mint(n - i);\n        return res;\n    }\n    mint perm(int n, int k)\
+    \ {\n        if(n < k || n < 0 || k < 0) return mint(0);\n        return (fac(n)\
+    \ * fac_inv(n - k));\n    }\n    mint hom(int n, int k) {\n        if(n < 0 ||\
+    \ k < 0) return mint(0);\n        return (k == 0 ? mint(1) : binom(n + k - 1,\
+    \ k));\n    }\n\n  private:\n    std::vector<mint> f, f_inv;\n};\n#line 6 \"test/yukicoder/yuki117.test.cpp\"\
     \n\nusing mint = ModInt<1000000007>;\n\nint main() {\n    int T;\n    scanf(\"\
     %d\\n\", &T);\n    Binomial<mint> binom;\n    while(T--) {\n        char t;\n\
     \        int N, K;\n        scanf(\"%c(%d,%d)\\n\", &t, &N, &K);\n        if(t\
@@ -93,7 +93,7 @@ data:
   isVerificationFile: true
   path: test/yukicoder/yuki117.test.cpp
   requiredBy: []
-  timestamp: '2023-02-25 23:57:16+09:00'
+  timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yukicoder/yuki117.test.cpp

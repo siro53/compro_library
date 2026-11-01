@@ -170,7 +170,7 @@ data:
     \     if(greater) return v[i] > v[j];\n        return v[i] < v[j];\n    });\n\
     \    return ord;\n}\n#pragma endregion Macros\n#line 2 \"graph/tree/lca.hpp\"\n\
     \n#line 5 \"graph/tree/lca.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\n\n#line\
-    \ 5 \"graph/graph_template.hpp\"\n\ntemplate <typename Cost = int> struct Edge\
+    \ 6 \"graph/graph_template.hpp\"\n\ntemplate <typename Cost = int> struct Edge\
     \ {\n    int from, to;\n    Cost cost;\n    int id;\n    Edge() = default;\n \
     \   explicit Edge(int from, int to, Cost cost = 1, int id = -1)\n        : from(from),\
     \ to(to), cost(cost), id(id) {}\n    operator int() const { return to; }\n};\n\
@@ -181,31 +181,33 @@ data:
     \ M++);\n    }\n\n    inline void add_undirected_edge(int from, int to, Cost cost\
     \ = 1) {\n        assert(0 <= from && from < N);\n        assert(0 <= to && to\
     \ < N);\n        G[from].emplace_back(from, to, cost, M);\n        G[to].emplace_back(to,\
-    \ from, cost, M++);\n    }\n\n    inline size_t size() const { return G.size();\
+    \ from, cost, M++);\n    }\n\n    inline std::size_t size() const { return G.size();\
     \ }\n    inline std::vector<Edge<Cost>> &operator[](const int &i) { return G[i];\
     \ }\n    inline const std::vector<Edge<Cost>> &operator[](const int &i) const\
     \ {\n        return G[i];\n    }\n\n  protected:\n    int N, M;\n    std::vector<std::vector<Edge<Cost>>>\
     \ G;\n};\n\ntemplate <class Cost = int> using Edges = std::vector<Edge<Cost>>;\n\
     #line 7 \"graph/tree/lca.hpp\"\n\ntemplate <typename Cost = int> class LCA {\n\
-    \  public:\n    LCA() = default;\n    explicit LCA(const Graph<Cost> &G, int root\
-    \ = 0)\n        : G(G), root(root), LOG((int)log2(G.size()) + 1), depth(G.size()),\n\
-    \          parent(LOG, std::vector<int>(G.size())) {\n        dfs(root, -1, 0);\n\
-    \        for(int k = 0; k + 1 < LOG; k++) {\n            for(int i = 0; i < (int)G.size();\
-    \ i++) {\n                if(parent[k][i] < 0) {\n                    parent[k\
-    \ + 1][i] = -1;\n                } else {\n                    parent[k + 1][i]\
-    \ = parent[k][parent[k][i]];\n                }\n            }\n        }\n  \
-    \  }\n    int get_lca(int u, int v) {\n        if(depth[u] > depth[v]) std::swap(u,\
-    \ v);\n        for(int k = 0; k < LOG; k++) {\n            if((depth[u] - depth[v])\
-    \ >> k & 1) v = parent[k][v];\n        }\n        if(u == v) return u;\n     \
-    \   for(int k = LOG - 1; k >= 0; k--) {\n            if(parent[k][u] != parent[k][v])\
-    \ {\n                u = parent[k][u];\n                v = parent[k][v];\n  \
-    \          }\n        }\n        return parent[0][u];\n    }\n    int get_dist(int\
-    \ u, int v) {\n        return (depth[u] + depth[v] - 2 * depth[get_lca(u, v)]);\n\
-    \    }\n\n  private:\n    Graph<Cost> G;\n    const int root;\n    const int LOG;\n\
-    \    std::vector<int> depth;\n    std::vector<std::vector<int>> parent;\n\n  \
-    \  void dfs(int u, int p, int d) {\n        depth[u] = d;\n        parent[0][u]\
-    \ = p;\n        for(int v : G[u]) {\n            if(v == p) continue;\n      \
-    \      dfs(v, u, d + 1);\n        }\n    }\n};\n#line 4 \"test/library-checker/tree/lowest-common-ancestor.test.cpp\"\
+    \  public:\n    LCA(): G(0), root(0), LOG(0) {}\n    explicit LCA(const Graph<Cost>\
+    \ &G, int root = 0)\n        : G(G), root(root), LOG((int)log2(G.size()) + 1),\
+    \ depth(G.size()),\n          parent(LOG, std::vector<int>(G.size())) {\n    \
+    \    dfs(root, -1, 0);\n        for(int k = 0; k + 1 < LOG; k++) {\n         \
+    \   for(int i = 0; i < (int)G.size(); i++) {\n                if(parent[k][i]\
+    \ < 0) {\n                    parent[k + 1][i] = -1;\n                } else {\n\
+    \                    parent[k + 1][i] = parent[k][parent[k][i]];\n           \
+    \     }\n            }\n        }\n    }\n    int get_lca(int u, int v) {\n  \
+    \      assert(0 <= u && u < (int)G.size());\n        assert(0 <= v && v < (int)G.size());\n\
+    \        if(depth[u] > depth[v]) std::swap(u, v);\n        for(int k = 0; k <\
+    \ LOG; k++) {\n            if((depth[v] - depth[u]) >> k & 1) v = parent[k][v];\n\
+    \        }\n        if(u == v) return u;\n        for(int k = LOG - 1; k >= 0;\
+    \ k--) {\n            if(parent[k][u] != parent[k][v]) {\n                u =\
+    \ parent[k][u];\n                v = parent[k][v];\n            }\n        }\n\
+    \        return parent[0][u];\n    }\n    int get_dist(int u, int v) {\n     \
+    \   return (depth[u] + depth[v] - 2 * depth[get_lca(u, v)]);\n    }\n\n  private:\n\
+    \    Graph<Cost> G;\n    const int root;\n    const int LOG;\n    std::vector<int>\
+    \ depth;\n    std::vector<std::vector<int>> parent;\n\n    void dfs(int u, int\
+    \ p, int d) {\n        depth[u] = d;\n        parent[0][u] = p;\n        for(int\
+    \ v : G[u]) {\n            if(v == p) continue;\n            dfs(v, u, d + 1);\n\
+    \        }\n    }\n};\n#line 4 \"test/library-checker/tree/lowest-common-ancestor.test.cpp\"\
     \n\nint main() {\n    int N, Q;\n    cin >> N >> Q;\n    Graph<int> G(N);\n  \
     \  REP(i, 1, N) {\n        int p;\n        cin >> p;   \n        G.add_undirected_edge(i,\
     \ p);\n    }\n    LCA<int> lca(G);\n    REP(_, Q) {\n        int u, v;\n     \
@@ -223,7 +225,7 @@ data:
   isVerificationFile: true
   path: test/library-checker/tree/lowest-common-ancestor.test.cpp
   requiredBy: []
-  timestamp: '2024-09-08 23:17:50+09:00'
+  timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/library-checker/tree/lowest-common-ancestor.test.cpp

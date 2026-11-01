@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/utils/sum_count_manager.hpp
     title: "\u5024\u3054\u3068\u306E\u548C\u30FB\u500B\u6570\u7BA1\u7406"
   _extendedVerifiedWith:
@@ -15,6 +15,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/static-range-inversions-query.test.cpp
     title: test/library-checker/data-structure/static-range-inversions-query.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/helper-regressions.test.cpp
+    title: test/mytest/data-structure/helper-regressions.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -47,6 +50,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/data-structure/static-range-inversions-query.test.cpp
+  - test/mytest/data-structure/helper-regressions.test.cpp
   - test/aoj/aoj-ALDS1-5-D.test.cpp
   - test/aoj/aoj2426.test.cpp
 documentation_of: misc/compress.hpp

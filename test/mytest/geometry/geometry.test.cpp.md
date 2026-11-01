@@ -378,26 +378,28 @@ data:
     \ ret;\n        int sz = (int)p.size();\n        for(int i = 0; i < sz; i++) {\n\
     \            Point now = p[i];\n            Point nxt = p[i == sz - 1 ? 0 : i\
     \ + 1];\n            if(ccw(l.a, l.b, now) != -1) ret.emplace_back(now);\n   \
-    \         if(ccw(l.a, l.b, now) * ccw(l.a, l.b, nxt) < 0) {\n                ret.emplace_back(crossPoint(Line(now,\
-    \ nxt), l));\n            }\n        }\n        return ret;\n    }\n} // namespace\
-    \ geometry\n#line 2 \"geometry/convex-hull.hpp\"\n\n#line 5 \"geometry/convex-hull.hpp\"\
-    \n\n#line 7 \"geometry/convex-hull.hpp\"\n\nnamespace geometry {\n    // \u51F8\
-    \u5305 O(NlogN)\n    inline std::vector<Point> ConvexHull(std::vector<Point> p)\
-    \ {\n        int n = (int)p.size(), k = 0;\n        std::sort(p.begin(), p.end(),\
-    \ [](const Point &a, const Point &b) {\n            return (a.real() != b.real()\
-    \ ? a.real() < b.real()\n                                         : a.imag() <\
-    \ b.imag());\n        });\n        std::vector<Point> ch(2 * n);\n        // \u4E00\
-    \u76F4\u7DDA\u4E0A\u306E3\u70B9\u3092\u542B\u3081\u308B -> (< -EPS)\n        //\
-    \ \u542B\u3081\u7121\u3044 -> (< EPS)\n        for(int i = 0; i < n; ch[k++] =\
-    \ p[i++]) { // lower\n            while(k >= 2 &&\n                  cross(ch[k\
-    \ - 1] - ch[k - 2], p[i] - ch[k - 1]) < EPS)\n                --k;\n        }\n\
-    \        for(int i = n - 2, t = k + 1; i >= 0; ch[k++] = p[i--]) { // upper\n\
-    \            while(k >= t &&\n                  cross(ch[k - 1] - ch[k - 2], p[i]\
-    \ - ch[k - 1]) < EPS)\n                --k;\n        }\n        ch.resize(k -\
-    \ 1);\n        return ch;\n    }\n} // namespace geometry\n#line 2 \"geometry/degree-to-radian.hpp\"\
-    \n\n#line 4 \"geometry/degree-to-radian.hpp\"\n\nnamespace geometry {\n    //\
-    \ \u5EA6->\u30E9\u30B8\u30A2\u30F3\n    inline D degreeToRadian(const D &degree)\
-    \ { return degree * PI / 180.0; }\n} // namespace geometry\n#line 2 \"geometry/distance-between-segments.hpp\"\
+    \         if(ccw(l.a, l.b, now) * ccw(l.a, l.b, nxt) == -1) {\n              \
+    \  ret.emplace_back(crossPoint(Line(now, nxt), l));\n            }\n        }\n\
+    \        return ret;\n    }\n} // namespace geometry\n#line 2 \"geometry/convex-hull.hpp\"\
+    \n\n#line 5 \"geometry/convex-hull.hpp\"\n\n#line 7 \"geometry/convex-hull.hpp\"\
+    \n\nnamespace geometry {\n    // \u51F8\u5305 O(NlogN)\n    inline std::vector<Point>\
+    \ ConvexHull(std::vector<Point> p) {\n        int n = (int)p.size(), k = 0;\n\
+    \        std::sort(p.begin(), p.end(), [](const Point &a, const Point &b) {\n\
+    \            return (a.real() != b.real() ? a.real() < b.real()\n            \
+    \                             : a.imag() < b.imag());\n        });\n        p.erase(std::unique(p.begin(),\
+    \ p.end()), p.end());\n        n = (int)p.size();\n        if(n <= 1) return p;\n\
+    \        std::vector<Point> ch(2 * n);\n        // \u4E00\u76F4\u7DDA\u4E0A\u306E\
+    3\u70B9\u3092\u542B\u3081\u308B -> (< -EPS)\n        // \u542B\u3081\u7121\u3044\
+    \ -> (< EPS)\n        for(int i = 0; i < n; ch[k++] = p[i++]) { // lower\n   \
+    \         while(k >= 2 &&\n                  cross(ch[k - 1] - ch[k - 2], p[i]\
+    \ - ch[k - 1]) < EPS)\n                --k;\n        }\n        for(int i = n\
+    \ - 2, t = k + 1; i >= 0; ch[k++] = p[i--]) { // upper\n            while(k >=\
+    \ t &&\n                  cross(ch[k - 1] - ch[k - 2], p[i] - ch[k - 1]) < EPS)\n\
+    \                --k;\n        }\n        ch.resize(k - 1);\n        return ch;\n\
+    \    }\n} // namespace geometry\n#line 2 \"geometry/degree-to-radian.hpp\"\n\n\
+    #line 4 \"geometry/degree-to-radian.hpp\"\n\nnamespace geometry {\n    // \u5EA6\
+    ->\u30E9\u30B8\u30A2\u30F3\n    inline D degreeToRadian(const D &degree) { return\
+    \ degree * PI / 180.0; }\n} // namespace geometry\n#line 2 \"geometry/distance-between-segments.hpp\"\
     \n\n#line 4 \"geometry/distance-between-segments.hpp\"\n\n#line 2 \"geometry/distance-between-segment-and-point.hpp\"\
     \n\n#line 6 \"geometry/distance-between-segment-and-point.hpp\"\n\nnamespace geometry\
     \ {\n    // \u7DDA\u5206l\u3068\u70B9p\u306E\u8DDD\u96E2\u3092\u6C42\u3081\u308B\
@@ -525,9 +527,14 @@ data:
     \    assert(tangent(unit_circle, Circle(Point(4, 0), 1)).size() == 4);\n\n   \
     \ std::vector<Point> triangle = {origin, x, y};\n    assert(equal(PolygonArea(triangle),\
     \ 0.5));\n    assert(isConvex(triangle));\n    assert(ConvexHull(triangle).size()\
-    \ == 3);\n    assert(isContained(triangle, Point(0.1, 0.1)) == 2);\n    assert(!ConvexCut(triangle,\
-    \ Line(Point(0.5, -1), Point(0.5, 1))).empty());\n}\n\nint main() {\n    geometry_test();\n\
-    \    INT(a, b);\n    print(a + b);\n}\n"
+    \ == 3);\n    assert(ConvexHull({}).empty());\n    assert(ConvexHull(vector<Point>{origin})\
+    \ == vector<Point>{origin});\n    assert(ConvexHull(vector<Point>{origin, origin})\
+    \ == vector<Point>{origin});\n    assert(ConvexHull(vector<Point>{origin, x, origin})\
+    \ == (vector<Point>{origin, x}));\n    vector<Point> square{origin, Point(2, 0),\
+    \ Point(2, 2), Point(0, 2)};\n    assert(ConvexCut(square, Line(Point(-2, 0),\
+    \ Point(-1, 0))) == square);\n    assert(isContained(triangle, Point(0.1, 0.1))\
+    \ == 2);\n    assert(!ConvexCut(triangle, Line(Point(0.5, -1), Point(0.5, 1))).empty());\n\
+    }\n\nint main() {\n    geometry_test();\n    INT(a, b);\n    print(a + b);\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../template/template.cpp\"\
     \n\n#include \"../../../geometry/ccw.hpp\"\n#include \"../../../geometry/convex-cut.hpp\"\
     \n#include \"../../../geometry/convex-hull.hpp\"\n#include \"../../../geometry/degree-to-radian.hpp\"\
@@ -560,9 +567,14 @@ data:
     \    assert(tangent(unit_circle, Circle(Point(4, 0), 1)).size() == 4);\n\n   \
     \ std::vector<Point> triangle = {origin, x, y};\n    assert(equal(PolygonArea(triangle),\
     \ 0.5));\n    assert(isConvex(triangle));\n    assert(ConvexHull(triangle).size()\
-    \ == 3);\n    assert(isContained(triangle, Point(0.1, 0.1)) == 2);\n    assert(!ConvexCut(triangle,\
-    \ Line(Point(0.5, -1), Point(0.5, 1))).empty());\n}\n\nint main() {\n    geometry_test();\n\
-    \    INT(a, b);\n    print(a + b);\n}\n"
+    \ == 3);\n    assert(ConvexHull({}).empty());\n    assert(ConvexHull(vector<Point>{origin})\
+    \ == vector<Point>{origin});\n    assert(ConvexHull(vector<Point>{origin, origin})\
+    \ == vector<Point>{origin});\n    assert(ConvexHull(vector<Point>{origin, x, origin})\
+    \ == (vector<Point>{origin, x}));\n    vector<Point> square{origin, Point(2, 0),\
+    \ Point(2, 2), Point(0, 2)};\n    assert(ConvexCut(square, Line(Point(-2, 0),\
+    \ Point(-1, 0))) == square);\n    assert(isContained(triangle, Point(0.1, 0.1))\
+    \ == 2);\n    assert(!ConvexCut(triangle, Line(Point(0.5, -1), Point(0.5, 1))).empty());\n\
+    }\n\nint main() {\n    geometry_test();\n    INT(a, b);\n    print(a + b);\n}\n"
   dependsOn:
   - template/template.cpp
   - geometry/ccw.hpp
@@ -599,7 +611,7 @@ data:
   isVerificationFile: true
   path: test/mytest/geometry/geometry.test.cpp
   requiredBy: []
-  timestamp: '2026-08-30 15:33:14+09:00'
+  timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/mytest/geometry/geometry.test.cpp

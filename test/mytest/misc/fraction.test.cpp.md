@@ -180,14 +180,15 @@ data:
     \ Int nb = b * f.b;\n        a = na, b = nb;\n        normalize();\n        return\
     \ *this;\n    }\n    F &operator*=(const F& f) {\n        a *= f.a;\n        b\
     \ *= f.b;\n        normalize();\n        return *this;\n    }\n    F &operator/=(const\
-    \ F& f) {\n        a *= f.b;\n        b *= f.a;\n        normalize();\n      \
-    \  return *this;\n    }\n    F operator-() const { return F(-a, b); }\n    F operator+(const\
-    \ F& f) const { return F(*this) += f; }\n    F operator-(const F& f) const { return\
-    \ F(*this) -= f; }\n    F operator*(const F& f) const { return F(*this) *= f;\
-    \ }\n    F operator/(const F& f) const { return F(*this) /= f; }\n    bool operator==(const\
-    \ F& f) const {\n        return a * f.b == b * f.a;\n    }\n    bool operator!=(const\
-    \ F& f) const {\n        return !(*this == f);\n    }\n    bool operator<(const\
-    \ F& f) const {\n        return a * f.b < b * f.a;\n    }\n    bool operator<=(const\
+    \ F& f) {\n        Int na = a * f.b;\n        Int nb = b * f.a;\n        a = na,\
+    \ b = nb;\n        normalize();\n        return *this;\n    }\n    F operator-()\
+    \ const { return F(-a, b); }\n    F operator+(const F& f) const { return F(*this)\
+    \ += f; }\n    F operator-(const F& f) const { return F(*this) -= f; }\n    F\
+    \ operator*(const F& f) const { return F(*this) *= f; }\n    F operator/(const\
+    \ F& f) const { return F(*this) /= f; }\n    bool operator==(const F& f) const\
+    \ {\n        return a * f.b == b * f.a;\n    }\n    bool operator!=(const F& f)\
+    \ const {\n        return !(*this == f);\n    }\n    bool operator<(const F& f)\
+    \ const {\n        return a * f.b < b * f.a;\n    }\n    bool operator<=(const\
     \ F& f) const {\n        return a * f.b <= b * f.a;\n    }\n    bool operator>(const\
     \ F& f) const {\n        return !(*this <= f);\n    }\n    bool operator>=(const\
     \ F& f) const {\n        return !(*this < f);\n    }\n    \n    inline static\
@@ -209,28 +210,29 @@ data:
     \ rand(); }\n\n  private:\n    std::mt19937_64 mt;\n    const double denomitor\
     \ = 1LL << 53;\n};\n#line 5 \"test/mytest/misc/fraction.test.cpp\"\n\nusing F\
     \ = Fraction<i128>;\nRNG32 r;\n\nF generate_random_frac() {\n    ll a = r.randint(-100000,\
+    \ 100000 + 1);\n    while(a == 0) a = r.randint(-100000, 100000 + 1);\n    ll\
+    \ b = r.randint(-100000, 100000 + 1);\n    while(b == 0) {\n        b = r.randint(-100000,\
+    \ 100000 + 1);\n    }\n    return F(a, b);\n}\n\nvoid fraction_test() {\n    REP(_,\
+    \ 100) {\n        F f1 = generate_random_frac();\n        F f2 = generate_random_frac();\n\
+    \        F f = f1 * f2 / f2;\n        assert(f == f1);\n        f = f1 + f2 -\
+    \ f2;\n        assert(f == f1);\n        f = f1 - f2 + f2;\n        assert(f ==\
+    \ f1);\n        f = f1 / f2 * f2;\n        assert(f == f1);\n        f = f2 /\
+    \ f1 * f1;\n        assert(f == f2);\n        f = f1 + f2 * 2;\n        assert(f\
+    \ != f1);\n    }\n}\n\nint main() {\n    fraction_test();\n    INT(a, b);\n  \
+    \  print(a + b);\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../template/template.cpp\"\
+    \n#include \"../../../misc/fraction.hpp\"\n#include \"../../../random/rng.hpp\"\
+    \n\nusing F = Fraction<i128>;\nRNG32 r;\n\nF generate_random_frac() {\n    ll\
+    \ a = r.randint(-100000, 100000 + 1);\n    while(a == 0) a = r.randint(-100000,\
     \ 100000 + 1);\n    ll b = r.randint(-100000, 100000 + 1);\n    while(b == 0)\
     \ {\n        b = r.randint(-100000, 100000 + 1);\n    }\n    return F(a, b);\n\
     }\n\nvoid fraction_test() {\n    REP(_, 100) {\n        F f1 = generate_random_frac();\n\
     \        F f2 = generate_random_frac();\n        F f = f1 * f2 / f2;\n       \
     \ assert(f == f1);\n        f = f1 + f2 - f2;\n        assert(f == f1);\n    \
     \    f = f1 - f2 + f2;\n        assert(f == f1);\n        f = f1 / f2 * f2;\n\
-    \        assert(f == f1);\n        f = f2 / f1 * f1;\n        assert(f != f1);\n\
+    \        assert(f == f1);\n        f = f2 / f1 * f1;\n        assert(f == f2);\n\
     \        f = f1 + f2 * 2;\n        assert(f != f1);\n    }\n}\n\nint main() {\n\
-    \    fraction_test();\n    INT(a, b);\n    print(a + b);\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"../../../template/template.cpp\"\
-    \n#include \"../../../misc/fraction.hpp\"\n#include \"../../../random/rng.hpp\"\
-    \n\nusing F = Fraction<i128>;\nRNG32 r;\n\nF generate_random_frac() {\n    ll\
-    \ a = r.randint(-100000, 100000 + 1);\n    ll b = r.randint(-100000, 100000 +\
-    \ 1);\n    while(b == 0) {\n        b = r.randint(-100000, 100000 + 1);\n    }\n\
-    \    return F(a, b);\n}\n\nvoid fraction_test() {\n    REP(_, 100) {\n       \
-    \ F f1 = generate_random_frac();\n        F f2 = generate_random_frac();\n   \
-    \     F f = f1 * f2 / f2;\n        assert(f == f1);\n        f = f1 + f2 - f2;\n\
-    \        assert(f == f1);\n        f = f1 - f2 + f2;\n        assert(f == f1);\n\
-    \        f = f1 / f2 * f2;\n        assert(f == f1);\n        f = f2 / f1 * f1;\n\
-    \        assert(f != f1);\n        f = f1 + f2 * 2;\n        assert(f != f1);\n\
-    \    }\n}\n\nint main() {\n    fraction_test();\n    INT(a, b);\n    print(a +\
-    \ b);\n}"
+    \    fraction_test();\n    INT(a, b);\n    print(a + b);\n}"
   dependsOn:
   - template/template.cpp
   - misc/fraction.hpp
@@ -238,7 +240,7 @@ data:
   isVerificationFile: true
   path: test/mytest/misc/fraction.test.cpp
   requiredBy: []
-  timestamp: '2025-03-09 11:07:17+09:00'
+  timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/mytest/misc/fraction.test.cpp

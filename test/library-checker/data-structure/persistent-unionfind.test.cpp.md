@@ -171,28 +171,28 @@ data:
     \n\n#line 5 \"data-structure/persistent/persistent-unionfind.hpp\"\n\n#line 2\
     \ \"data-structure/persistent/persistent-array.hpp\"\n\n#line 6 \"data-structure/persistent/persistent-array.hpp\"\
     \n\ntemplate <class T, int LOG = 4> struct PersistentArray {\n    struct Node\
-    \ {\n        T val;\n        Node *childs[1 << LOG];\n\n        Node() { memset(childs,\
-    \ 0, sizeof(childs)); }\n        Node(const Node *node) { memcpy(childs, node->childs,\
-    \ sizeof(childs)); }\n        Node(const Node &node) { memcpy(childs, node.childs,\
-    \ sizeof(childs)); }\n    };\n\n    Node *root;\n    int depth;\n    T identity;\n\
-    \    const int full_bit = (1 << LOG) - 1;\n\n    PersistentArray() {}\n    explicit\
-    \ PersistentArray(int N, const T &id = 0)\n        : root(new Node()), depth(0),\
-    \ identity(id) {\n        PersistentArray(std::vector<T>(N, id));\n    }\n   \
-    \ PersistentArray(const std::vector<T> &v) : root(new Node()), depth(0) {\n  \
-    \      int N = (int)v.size();\n        while(N > 0) {\n            N >>= LOG;\n\
-    \            depth++;\n        }\n        N = (int)v.size();\n        for(int\
-    \ i = 0; i < N; i++) {\n            Node *now = root;\n            for(int mask\
-    \ = i, d = depth; d > 0; d--) {\n                if(!now->childs[mask & full_bit])\
-    \ {\n                    now->childs[mask & full_bit] = new Node();\n        \
-    \        }\n                now = now->childs[mask & full_bit];\n            \
-    \    mask >>= LOG;\n            }\n            now->val = v[i];\n        }\n \
-    \   }\n\n    T get(int idx) { return get(root, idx); }\n\n    Node *set(int idx,\
-    \ const T &new_value) { return set(root, idx, new_value); }\n\n    T get(Node\
-    \ *node, int idx) {\n        for(int i = 0; i < depth; i++) {\n            node\
-    \ = node ? node->childs[idx & full_bit] : nullptr;\n            idx >>= LOG;\n\
-    \        }\n        return (node ? node->val : identity);\n    }\n\n    Node *set(Node\
-    \ *node, int idx, T new_value) {\n        std::vector<std::pair<Node *, int>>\
-    \ st;\n        for(int i = 0; i < depth; i++) {\n            st.emplace_back(node,\
+    \ {\n        T val;\n        Node *childs[1 << LOG];\n\n        Node(): val{}\
+    \ { memset(childs, 0, sizeof(childs)); }\n        Node(const Node *node): val(node->val)\
+    \ { memcpy(childs, node->childs, sizeof(childs)); }\n        Node(const Node &node):\
+    \ val(node.val) { memcpy(childs, node.childs, sizeof(childs)); }\n    };\n\n \
+    \   Node *root;\n    int depth;\n    T identity;\n    const int full_bit = (1\
+    \ << LOG) - 1;\n\n    PersistentArray(): PersistentArray(0) {}\n    explicit PersistentArray(int\
+    \ N, const T &id = 0)\n        : PersistentArray(std::vector<T>(N, id)) {\n  \
+    \      identity = id;\n    }\n    PersistentArray(const std::vector<T> &v) : root(new\
+    \ Node()), depth(0), identity{} {\n        int N = (int)v.size();\n        while(N\
+    \ > 0) {\n            N >>= LOG;\n            depth++;\n        }\n        N =\
+    \ (int)v.size();\n        for(int i = 0; i < N; i++) {\n            Node *now\
+    \ = root;\n            for(int mask = i, d = depth; d > 0; d--) {\n          \
+    \      if(!now->childs[mask & full_bit]) {\n                    now->childs[mask\
+    \ & full_bit] = new Node();\n                }\n                now = now->childs[mask\
+    \ & full_bit];\n                mask >>= LOG;\n            }\n            now->val\
+    \ = v[i];\n        }\n    }\n\n    T get(int idx) { return get(root, idx); }\n\
+    \n    Node *set(int idx, const T &new_value) { return set(root, idx, new_value);\
+    \ }\n\n    T get(Node *node, int idx) {\n        for(int i = 0; i < depth; i++)\
+    \ {\n            node = node ? node->childs[idx & full_bit] : nullptr;\n     \
+    \       idx >>= LOG;\n        }\n        return (node ? node->val : identity);\n\
+    \    }\n\n    Node *set(Node *node, int idx, T new_value) {\n        std::vector<std::pair<Node\
+    \ *, int>> st;\n        for(int i = 0; i < depth; i++) {\n            st.emplace_back(node,\
     \ idx & full_bit);\n            node = node ? node->childs[idx & full_bit] : nullptr;\n\
     \            idx >>= LOG;\n        }\n        Node *new_child = new Node();\n\
     \        new_child->val = new_value;\n        while(!st.empty()) {\n         \
@@ -241,7 +241,7 @@ data:
   isVerificationFile: true
   path: test/library-checker/data-structure/persistent-unionfind.test.cpp
   requiredBy: []
-  timestamp: '2024-09-08 23:17:50+09:00'
+  timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/library-checker/data-structure/persistent-unionfind.test.cpp

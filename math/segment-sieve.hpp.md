@@ -2,39 +2,53 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/math/arithmetic-regressions.test.cpp
+    title: test/mytest/math/arithmetic-regressions.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/segment-sieve.hpp\"\n\n#include <algorithm>\n#include\
     \ <cassert>\n#include <cmath>\n#include <vector>\n\nclass SegmentSieve {\n  public:\n\
-    \    explicit SegmentSieve(long long L, long long R)\n        : L(L), R(R), sq(std::sqrt(R)\
-    \ + 1) {\n        small.assign(sq, true);\n        large.assign(R - L, true);\n\
-    \        for(long long i = 2; i * i < R; i++) {\n            if(!small[i]) continue;\n\
-    \            for(long long j = i * i; j < R; j += i) small[j] = false;\n     \
-    \       long long start = std::max((L + i - 1) / i, i * 2);\n            for(long\
-    \ long j = start; j < R; j += i) large[j - L] = false;\n        }\n    }\n   \
-    \ bool operator[](long long k) const { return large[k - L]; }\n\n  private:\n\
-    \    long long L, R;\n    int sq;\n    std::vector<bool> small, large;\n};\n"
+    \    explicit SegmentSieve(long long L, long long R)\n        : L(L), R(R), sq(std::sqrt((long\
+    \ double)R) + 1) {\n        assert(0 <= L && L <= R);\n        small.assign(sq,\
+    \ true);\n        large.assign(R - L, true);\n        for(long long n = L; n <\
+    \ R && n < 2; n++) large[n - L] = false;\n        for(long long i = 2; i < sq\
+    \ && i <= (R - 1) / i; i++) {\n            if(!small[i]) continue;\n         \
+    \   for(long long j = i * i; j < sq; j += i) small[j] = false;\n            long\
+    \ long first = L / i + (L % i != 0);\n            if(first > (R - 1) / i) continue;\n\
+    \            long long start = std::max(first * i, i * i);\n            for(long\
+    \ long j = start; j < R;) {\n                large[j - L] = false;\n         \
+    \       if(R - 1 - j < i) break;\n                j += i;\n            }\n   \
+    \     }\n    }\n    bool operator[](long long k) const {\n        assert(L <=\
+    \ k && k < R);\n        return large[k - L];\n    }\n\n  private:\n    long long\
+    \ L, R;\n    long long sq;\n    std::vector<bool> small, large;\n};\n"
   code: "#pragma once\n\n#include <algorithm>\n#include <cassert>\n#include <cmath>\n\
     #include <vector>\n\nclass SegmentSieve {\n  public:\n    explicit SegmentSieve(long\
-    \ long L, long long R)\n        : L(L), R(R), sq(std::sqrt(R) + 1) {\n       \
-    \ small.assign(sq, true);\n        large.assign(R - L, true);\n        for(long\
-    \ long i = 2; i * i < R; i++) {\n            if(!small[i]) continue;\n       \
-    \     for(long long j = i * i; j < R; j += i) small[j] = false;\n            long\
-    \ long start = std::max((L + i - 1) / i, i * 2);\n            for(long long j\
-    \ = start; j < R; j += i) large[j - L] = false;\n        }\n    }\n    bool operator[](long\
-    \ long k) const { return large[k - L]; }\n\n  private:\n    long long L, R;\n\
-    \    int sq;\n    std::vector<bool> small, large;\n};"
+    \ long L, long long R)\n        : L(L), R(R), sq(std::sqrt((long double)R) + 1)\
+    \ {\n        assert(0 <= L && L <= R);\n        small.assign(sq, true);\n    \
+    \    large.assign(R - L, true);\n        for(long long n = L; n < R && n < 2;\
+    \ n++) large[n - L] = false;\n        for(long long i = 2; i < sq && i <= (R -\
+    \ 1) / i; i++) {\n            if(!small[i]) continue;\n            for(long long\
+    \ j = i * i; j < sq; j += i) small[j] = false;\n            long long first =\
+    \ L / i + (L % i != 0);\n            if(first > (R - 1) / i) continue;\n     \
+    \       long long start = std::max(first * i, i * i);\n            for(long long\
+    \ j = start; j < R;) {\n                large[j - L] = false;\n              \
+    \  if(R - 1 - j < i) break;\n                j += i;\n            }\n        }\n\
+    \    }\n    bool operator[](long long k) const {\n        assert(L <= k && k <\
+    \ R);\n        return large[k - L];\n    }\n\n  private:\n    long long L, R;\n\
+    \    long long sq;\n    std::vector<bool> small, large;\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: math/segment-sieve.hpp
   requiredBy: []
-  timestamp: '2023-02-25 23:57:16+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-11-01 16:38:28+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/mytest/math/arithmetic-regressions.test.cpp
 documentation_of: math/segment-sieve.hpp
 layout: document
 title: "\u533A\u9593\u7D20\u6570\u5224\u5B9A"
@@ -42,37 +56,36 @@ title: "\u533A\u9593\u7D20\u6570\u5224\u5B9A"
 
 ## このライブラリでできること
 
-`SegmentSieve` は、連続区間 $[L,R)$ にある数が素数かどうかをまとめて調べる区間篩を意図したクラスです。一般的な区間篩では、$\sqrt R$ 以下の素数を先に列挙し、それぞれの倍数だけを対象区間から消します。
-
-ただし、このヘッダーの現実装は配列の境界と倍数の開始位置に不備があり、そのままでは利用できません。通常の区間篩の説明と、現在の実装が正しく動くことは分けて考える必要があります。
+`SegmentSieve` は、連続区間 $[L,R)$ にある数が素数かどうかをまとめて調べます。およそ $\sqrt R$ 以下の素数を小さい篩で列挙し、それぞれの倍数を対象区間から除きます。0と1は素数ではなく、素数自身は除きません。
 
 ## 使い方
 
-APIとしては、`SegmentSieve(L,R)` で対象区間を準備し、`sieve[n]` で判定する形です。以下の例は $[10,20)$ のうち $13$ を問い合わせる呼び出し形だけを示しています。実行可能な使用例ではありません。
-
-以下のコードは呼び出し形を示すものです。現実装の不備があるため、動作確認済みの使用例ではありません。
+`SegmentSieve(L,R)` で判定表を構築し、`sieve[n]` で判定します。例では区間 $[10,20)$ に含まれる13は素数、15は合成数なので、それぞれ真と偽になります。
 
 ```cpp
-#include "template/template.cpp"
+#include <cassert>
 #include "math/segment-sieve.hpp"
 
 int main() {
     SegmentSieve sieve(10, 20);
-    bool prime = sieve[13];
+    assert(sieve[13]);
+    assert(!sieve[15]);
+    SegmentSieve small(0, 3);
+    assert(!small[0] && !small[1] && small[2]);
 }
 ```
 
 ## API・計算量
 
-確保しようとしている配列の大きさは $O(\sqrt R+R-L)$ です。
+区間幅を $K=R-L$、小さい篩の長さを $S=\lfloor\sqrt R\rfloor+1$ とします。空間は $O(S+K)$ bitです。素数ごとの区間内の倍数を消す処理に加え、小さい篩全体も走査します。
 
 | API | 動作・返り値 | 時間計算量 |
 | --- | --- | --- |
-| `SegmentSieve(L, R)` | 区間の素数判定表を作る意図。 | 現状は範囲外アクセスがあり保証なし |
-| `operator[](k)` | large[k-L] の判定値を取得。 | O(1) |
+| `SegmentSieve(long long L, long long R)` | 区間の素数判定表を構築。 | O((S+K) log log(R+3)) 上界 |
+| `bool operator[](long long k) const` | k が素数なら true。 | O(1) |
 
 ## 利用条件と実装上の注意
 
-小さい篩 `small` は約 $\sqrt R$ 要素しか確保していないのに、$R$ 未満まで書き込んでいます。また、区間側の倍数の開始位置の式には素数との乗算がなく、$L$ 未満の位置を参照することがあります。$0,1$ を素数から除く処理もありません。
+$0\le L\le R$、問い合わせは $L\le k<R$ に限ります。空区間も構築できますが、問い合わせられる数はありません。入力値は long long に収め、小さい篩と区間の判定表をメモリに確保できる範囲で使ってください。
 
-これらの修正が必要なため、表では正常終了を前提とする構築時間を記載していません。空間量も、確保しようとしている配列サイズの説明です。
+構築後の区間変更や判定表の更新には対応しません。浮動小数点による平方根は表の確保サイズに使い、素数の走査上限は整数除算でも確認しています。

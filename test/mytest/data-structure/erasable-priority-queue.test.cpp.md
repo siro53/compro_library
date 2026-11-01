@@ -192,10 +192,11 @@ data:
     \      return que.top();\n    }\n\n    void pop() {\n        normalize();\n  \
     \      assert(!que.empty());\n        que.pop();\n    }\n\n    void erase(const\
     \ T& val) {\n        rm_que.emplace(val);\n    }\n\n    bool empty() {\n     \
-    \   return que.empty();\n    }\nprivate:\n    void normalize() {\n        while(!que.empty()\
-    \ and !rm_que.empty() and que.top() == rm_que.top()) {\n            que.pop();\n\
-    \            rm_que.pop();\n        }\n    }\n};\n#line 5 \"test/mytest/data-structure/erasable-priority-queue.test.cpp\"\
-    \n\nvoid erasable_priority_queue_test() {\n    RNG32 rnd;\n    ErasablePriorityQueue<int>\
+    \   normalize();\n        return que.empty();\n    }\nprivate:\n    void normalize()\
+    \ {\n        while(!que.empty() and !rm_que.empty() and que.top() == rm_que.top())\
+    \ {\n            que.pop();\n            rm_que.pop();\n        }\n    }\n};\n\
+    #line 5 \"test/mytest/data-structure/erasable-priority-queue.test.cpp\"\n\nvoid\
+    \ erasable_priority_queue_test() {\n    RNG32 rnd;\n    ErasablePriorityQueue<int>\
     \ que;\n    REP(i, 100000) {\n        que.push(i);\n    }\n    for(int i = 100000\
     \ - 1; i >= 50000; i--) {\n        que.erase(i);\n    }\n    for(int i = 50000;\
     \ i < 100000; i++) {\n        que.push(i);\n    }\n    REP(i, 100000) {\n    \
@@ -218,7 +219,7 @@ data:
   isVerificationFile: true
   path: test/mytest/data-structure/erasable-priority-queue.test.cpp
   requiredBy: []
-  timestamp: '2026-01-12 01:17:47+09:00'
+  timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/mytest/data-structure/erasable-priority-queue.test.cpp

@@ -26,28 +26,29 @@ data:
   bundledCode: "#line 1 \"test/library-checker/math/two-sat.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.yosupo.jp/problem/two_sat\"\n#line 2 \"math/two_sat.hpp\"\n\n\
     #line 2 \"graph/scc.hpp\"\n\n#include <algorithm>\n#include <cassert>\n#include\
-    \ <vector>\n\n#line 2 \"graph/graph_template.hpp\"\n\n#line 5 \"graph/graph_template.hpp\"\
-    \n\ntemplate <typename Cost = int> struct Edge {\n    int from, to;\n    Cost\
-    \ cost;\n    int id;\n    Edge() = default;\n    explicit Edge(int from, int to,\
-    \ Cost cost = 1, int id = -1)\n        : from(from), to(to), cost(cost), id(id)\
-    \ {}\n    operator int() const { return to; }\n};\n\ntemplate <typename Cost =\
-    \ int> class Graph {\n  public:\n    Graph() = default;\n    explicit Graph(int\
-    \ N) : N(N), M(0), G(N) {}\n\n    inline void add_directed_edge(int from, int\
-    \ to, Cost cost = 1) {\n        assert(0 <= from && from < N);\n        assert(0\
-    \ <= to && to < N);\n        G[from].emplace_back(from, to, cost, M++);\n    }\n\
-    \n    inline void add_undirected_edge(int from, int to, Cost cost = 1) {\n   \
-    \     assert(0 <= from && from < N);\n        assert(0 <= to && to < N);\n   \
-    \     G[from].emplace_back(from, to, cost, M);\n        G[to].emplace_back(to,\
-    \ from, cost, M++);\n    }\n\n    inline size_t size() const { return G.size();\
-    \ }\n    inline std::vector<Edge<Cost>> &operator[](const int &i) { return G[i];\
-    \ }\n    inline const std::vector<Edge<Cost>> &operator[](const int &i) const\
-    \ {\n        return G[i];\n    }\n\n  protected:\n    int N, M;\n    std::vector<std::vector<Edge<Cost>>>\
-    \ G;\n};\n\ntemplate <class Cost = int> using Edges = std::vector<Edge<Cost>>;\n\
-    #line 8 \"graph/scc.hpp\"\n\ntemplate <typename Cost = int> class SCC {\n  public:\n\
-    \    explicit SCC(int N)\n        : G(N), G_rev(N), comp(N, -1), seen(N, false),\
-    \ isBuilt(false) {}\n    explicit SCC(const Graph<Cost> &g)\n        : G(g), G_rev(g.size()),\
-    \ comp(g.size(), -1), seen(g.size(), false), isBuilt(false) {\n        for(int\
-    \ i = 0; i < (int)g.size(); i++) {\n            for(const auto &e : g[i]) G_rev.add_directed_edge(e.to,\
+    \ <vector>\n\n#line 2 \"graph/graph_template.hpp\"\n\n#line 4 \"graph/graph_template.hpp\"\
+    \n#include <cstddef>\n#line 6 \"graph/graph_template.hpp\"\n\ntemplate <typename\
+    \ Cost = int> struct Edge {\n    int from, to;\n    Cost cost;\n    int id;\n\
+    \    Edge() = default;\n    explicit Edge(int from, int to, Cost cost = 1, int\
+    \ id = -1)\n        : from(from), to(to), cost(cost), id(id) {}\n    operator\
+    \ int() const { return to; }\n};\n\ntemplate <typename Cost = int> class Graph\
+    \ {\n  public:\n    Graph() = default;\n    explicit Graph(int N) : N(N), M(0),\
+    \ G(N) {}\n\n    inline void add_directed_edge(int from, int to, Cost cost = 1)\
+    \ {\n        assert(0 <= from && from < N);\n        assert(0 <= to && to < N);\n\
+    \        G[from].emplace_back(from, to, cost, M++);\n    }\n\n    inline void\
+    \ add_undirected_edge(int from, int to, Cost cost = 1) {\n        assert(0 <=\
+    \ from && from < N);\n        assert(0 <= to && to < N);\n        G[from].emplace_back(from,\
+    \ to, cost, M);\n        G[to].emplace_back(to, from, cost, M++);\n    }\n\n \
+    \   inline std::size_t size() const { return G.size(); }\n    inline std::vector<Edge<Cost>>\
+    \ &operator[](const int &i) { return G[i]; }\n    inline const std::vector<Edge<Cost>>\
+    \ &operator[](const int &i) const {\n        return G[i];\n    }\n\n  protected:\n\
+    \    int N, M;\n    std::vector<std::vector<Edge<Cost>>> G;\n};\n\ntemplate <class\
+    \ Cost = int> using Edges = std::vector<Edge<Cost>>;\n#line 8 \"graph/scc.hpp\"\
+    \n\ntemplate <typename Cost = int> class SCC {\n  public:\n    explicit SCC(int\
+    \ N)\n        : G(N), G_rev(N), comp(N, -1), seen(N, false), isBuilt(false) {}\n\
+    \    explicit SCC(const Graph<Cost> &g)\n        : G(g), G_rev(g.size()), comp(g.size(),\
+    \ -1), seen(g.size(), false), isBuilt(false) {\n        for(int i = 0; i < (int)g.size();\
+    \ i++) {\n            for(const auto &e : g[i]) G_rev.add_directed_edge(e.to,\
     \ i);\n        }\n        build();\n    }\n    inline void add_directed_edge(int\
     \ from, int to) {\n        assert(!isBuilt &&\n               \"This scc_graph\
     \ is already built, but you tried to add edge.\");\n        G.add_directed_edge(from,\
@@ -72,7 +73,7 @@ data:
     \    void dfs_rev(int u, int idx) {\n        comp[u] = idx;\n        for(const\
     \ auto &e : G_rev[u]) {\n            if(comp[e.to] == -1) dfs_rev(e.to, idx);\n\
     \        }\n    }\n};\n#line 4 \"math/two_sat.hpp\"\n\ntemplate<class Cost = int>\n\
-    class TwoSat {\npublic:\n    TwoSat() = default;\n    explicit TwoSat(int N):\
+    class TwoSat {\npublic:\n    TwoSat(): TwoSat(0) {}\n    explicit TwoSat(int N):\
     \ N(N), scc(N * 2), ans(N), called_satisfiable(false) {}\n\n    void add_clause(int\
     \ i, bool f_i, int j, bool f_j) {\n        if(!f_i) i = NOT(i);\n        if(!f_j)\
     \ j = NOT(j);\n        scc.add_directed_edge(i, NOT(j));\n        scc.add_directed_edge(j,\
@@ -253,7 +254,7 @@ data:
   isVerificationFile: true
   path: test/library-checker/math/two-sat.test.cpp
   requiredBy: []
-  timestamp: '2025-03-09 11:05:50+09:00'
+  timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/library-checker/math/two-sat.test.cpp

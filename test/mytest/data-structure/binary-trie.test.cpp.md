@@ -220,22 +220,16 @@ data:
     \       k -= small_count;\n            } else {\n                now = now->child[b];\n\
     \            }\n        }\n        return ret;\n    }\n    int lower_bound(T val)\
     \ {\n        int ret = 0;\n        Node* now = root;\n        for(int i = LOG\
-    \ - 1; i >= 0; i--) {\n            int b = lazy_xor_value >> i & 1;\n        \
-    \    int small_count = (now->child[b] ? now->child[b]->count : 0);\n         \
-    \   int big_count = (now->child[b ^ 1] ? now->child[b ^ 1]->count : 0);\n    \
-    \        if(small_count == 0) {\n                assert(big_count);\n        \
-    \        now = now->child[b ^ 1];\n            } else if(big_count == 0) {\n \
-    \               assert(small_count);\n                now = now->child[b];\n \
-    \           } else {\n                if(b == (val >> i & 1)) { \n           \
-    \         now = now->child[b];\n                } else {\n                   \
-    \ ret += small_count;\n                    now = now->child[b ^ 1];\n        \
-    \        }\n            }\n        }\n        return ret;\n    }\n    int upper_bound(T\
-    \ val) {\n        int id = lower_bound(val);\n        T kth_element = get_kth_element(id);\n\
-    \        if(kth_element != val) return id;\n        int cnt = count(kth_element);\n\
-    \        return id + cnt;\n    }\n    int size() const {\n        if(!root) return\
-    \ 0;\n        return root->count;\n    }\n    inline bool empty() const { return\
-    \ (!root or root->count == 0); }\n    void all_xor(T val) { lazy_xor_value ^=\
-    \ val; }\n\n  private:\n    struct Node {\n        int count;\n        std::array<Node\
+    \ - 1; i >= 0; i--) {\n            if(!now || now->count == 0) break;\n      \
+    \      int b = lazy_xor_value >> i & 1;\n            int small_count = (now->child[b]\
+    \ ? now->child[b]->count : 0);\n            if(val >> i & 1) {\n             \
+    \   ret += small_count;\n                now = now->child[b ^ 1];\n          \
+    \  } else {\n                now = now->child[b];\n            }\n        }\n\
+    \        return ret;\n    }\n    int upper_bound(T val) {\n        return lower_bound(val)\
+    \ + count(val ^ lazy_xor_value);\n    }\n    int size() const {\n        if(!root)\
+    \ return 0;\n        return root->count;\n    }\n    inline bool empty() const\
+    \ { return (!root or root->count == 0); }\n    void all_xor(T val) { lazy_xor_value\
+    \ ^= val; }\n\n  private:\n    struct Node {\n        int count;\n        std::array<Node\
     \ *, 2> child;\n        Node() : count(0), child({nullptr, nullptr}) {}\n    };\n\
     \    Node *root;\n    T lazy_xor_value;\n};\n#line 5 \"test/mytest/data-structure/binary-trie.test.cpp\"\
     \n\nvoid binary_trie_test() {\n    REP(testcase_idx, 20) {\n        vector<int>\
@@ -291,7 +285,7 @@ data:
   isVerificationFile: true
   path: test/mytest/data-structure/binary-trie.test.cpp
   requiredBy: []
-  timestamp: '2025-03-09 11:07:17+09:00'
+  timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/mytest/data-structure/binary-trie.test.cpp

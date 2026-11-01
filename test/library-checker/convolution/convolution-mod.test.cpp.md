@@ -201,10 +201,10 @@ data:
     \ >> t;\n        a = ModInt<mod>(t);\n        return (is);\n    }\n    static\
     \ constexpr int get_mod() { return mod; }\n\n  private:\n    unsigned int x;\n\
     \    static constexpr unsigned int umod() { return mod; }\n};\n#line 2 \"math/convolution/ntt.hpp\"\
-    \n\n#line 6 \"math/convolution/ntt.hpp\"\n\n#line 2 \"math/primitive-root.hpp\"\
+    \n\n#line 8 \"math/convolution/ntt.hpp\"\n\n#line 2 \"math/primitive-root.hpp\"\
     \n\n#line 2 \"math/pow_mod.hpp\"\n\nconstexpr long long pow_mod(long long x, long\
-    \ long k, long long m) {\n    long long res = 1;\n    long long mul = (x >= 0\
-    \ ? x % m : x % m + m);\n    while(k) {\n        if(k & 1) res = (__int128_t)res\
+    \ long k, long long m) {\n    long long res = 1 % m;\n    long long mul = (x >=\
+    \ 0 ? x % m : x % m + m);\n    while(k) {\n        if(k & 1) res = (__int128_t)res\
     \ * mul % m;\n        mul = (__int128_t)mul * mul % m;\n        k >>= 1;\n   \
     \ }\n    return res;\n}\n#line 4 \"math/primitive-root.hpp\"\n\nconstexpr int\
     \ primitive_root(int p) {\n    if(p == 2) return 1;\n    if(p == 998244353) return\
@@ -214,8 +214,8 @@ data:
     \ = t;\n    for(int g = 2;;g++) {\n        bool f = true;\n        for(int i =\
     \ 0; i < sz; i++) {\n            if(pow_mod(g, (p - 1) / primes[i], p) == 1) {\n\
     \                f = false;\n                break;\n            }\n        }\
-    \   \n        if(f) return g;\n    }\n}\n#line 9 \"math/convolution/ntt.hpp\"\n\
-    \nnamespace ntt {\n    constexpr int exp_limit(int mod) { return __builtin_ctz(mod\
+    \   \n        if(f) return g;\n    }\n}\n#line 11 \"math/convolution/ntt.hpp\"\
+    \n\nnamespace ntt {\n    constexpr int exp_limit(int mod) { return __builtin_ctz(mod\
     \ - 1); }\n\n    template <class mint, int mod = mint::get_mod(),\n          \
     \    int g = primitive_root(mod)>\n    struct ntt_info {\n        static constexpr\
     \ int limit = exp_limit(mod);\n        std::array<mint, limit + 1> root;\n   \
@@ -224,36 +224,42 @@ data:
     \            for(int i = limit - 1; i >= 0; i--) {\n                root[i] =\
     \ root[i + 1] * root[i + 1];\n                iroot[i] = iroot[i + 1] * iroot[i\
     \ + 1];\n            }\n        }\n    };\n\n    inline uint64_t revbit(uint64_t\
-    \ mask) {\n        int b = __builtin_clzll(mask);\n        uint64_t x = mask;\n\
-    \        x = (x >> 32) | (x << 32);\n        x = ((x >> 16) & 0x0000FFFF0000FFFF)\
-    \ | ((x << 16) & 0xFFFF0000FFFF0000);\n        x = ((x >> 8) & 0x00FF00FF00FF00FF)\
-    \ | ((x << 8) & 0xFF00FF00FF00FF00);\n        x = ((x >> 4) & 0x0F0F0F0F0F0F0F0F)\
-    \ | ((x << 4) & 0xF0F0F0F0F0F0F0F0);\n        x = ((x >> 2) & 0x3333333333333333)\
-    \ | ((x << 2) & 0xCCCCCCCCCCCCCCCC);\n        x = ((x >> 1) & 0x5555555555555555)\
-    \ | ((x << 1) & 0xAAAAAAAAAAAAAAAA);\n        return (x >> b);\n    }\n\n    template<class\
-    \ mint>\n    void ntt(std::vector<mint>& a) {\n        int n = (int)a.size();\n\
-    \        int bitlen = __builtin_ctz(n);\n        static const ntt_info<mint> info;\n\
-    \        for(int len = n, b = bitlen; len > 1; len >>= 1, b--) {\n           \
-    \ for(int i = 0; i < n; i += len) {\n                int t = len >> 1;\n     \
-    \           mint wj = 1;\n                for(int j = 0; j < t; j++) {\n     \
-    \               int p = i + j;\n                    mint l = a[p] + a[p + t];\n\
-    \                    mint r = (a[p] - a[p + t]) * wj;\n                    a[p]\
-    \ = l, a[p + t] = r;\n                    wj *= info.root[b];\n              \
-    \  }\n            }\n        }\n        for(int i = 0; i < n; i++) {\n       \
-    \     int j = revbit(i);\n            if(i < j) std::swap(a[i], a[j]);\n     \
-    \   }\n    }\n\n    template<class mint>\n    void intt(std::vector<mint>& a)\
-    \ {\n        int n = (int)a.size();\n        static const ntt_info<mint> info;\n\
-    \        for(int i = 0; i < n; i++) {\n            int j = revbit(i);\n      \
-    \      if(i < j) std::swap(a[i], a[j]);\n        }\n        for(int len = 2, b\
-    \ = 1; len <= n; len <<= 1, b++) {\n            for(int i = 0; i < n; i += len)\
-    \ {\n                int t = len >> 1;\n                mint wj = 1;\n       \
-    \         for(int j = 0; j < t; j++) {\n                    int p = i + j;\n \
-    \                   auto l = a[p] + a[p + t] * wj;\n                    auto r\
-    \ = a[p] - a[p + t] * wj;\n                    a[p] = l, a[p + t] = r;\n     \
-    \               wj *= info.iroot[b];\n                }\n            }\n     \
-    \   }\n        mint invn = mint(n).inv();\n        for(int i = 0; i < n; i++)\
-    \ a[i] *= invn;\n    }\n\n    template<class mint>\n    std::vector<mint> convolution(std::vector<mint>\
-    \ a, std::vector<mint> b) {\n        int m = (int)a.size() + (int)b.size() - 1;\n\
+    \ mask, int bitlen) {\n        assert(0 <= bitlen && bitlen <= 64);\n        if(bitlen\
+    \ == 0) return 0;\n        uint64_t x = mask;\n        x = (x >> 32) | (x << 32);\n\
+    \        x = ((x >> 16) & 0x0000FFFF0000FFFF) | ((x << 16) & 0xFFFF0000FFFF0000);\n\
+    \        x = ((x >> 8) & 0x00FF00FF00FF00FF) | ((x << 8) & 0xFF00FF00FF00FF00);\n\
+    \        x = ((x >> 4) & 0x0F0F0F0F0F0F0F0F) | ((x << 4) & 0xF0F0F0F0F0F0F0F0);\n\
+    \        x = ((x >> 2) & 0x3333333333333333) | ((x << 2) & 0xCCCCCCCCCCCCCCCC);\n\
+    \        x = ((x >> 1) & 0x5555555555555555) | ((x << 1) & 0xAAAAAAAAAAAAAAAA);\n\
+    \        return (x >> (64 - bitlen));\n    }\n\n    inline uint64_t revbit(uint64_t\
+    \ mask) {\n        return mask == 0 ? 0 : revbit(mask, 64 - __builtin_clzll(mask));\n\
+    \    }\n\n    template<class mint>\n    void ntt(std::vector<mint>& a) {\n   \
+    \     int n = (int)a.size();\n        assert(n > 0 && (n & (n - 1)) == 0);\n \
+    \       int bitlen = __builtin_ctz(n);\n        static const ntt_info<mint> info;\n\
+    \        assert(bitlen <= info.limit);\n        for(int len = n, b = bitlen; len\
+    \ > 1; len >>= 1, b--) {\n            for(int i = 0; i < n; i += len) {\n    \
+    \            int t = len >> 1;\n                mint wj = 1;\n               \
+    \ for(int j = 0; j < t; j++) {\n                    int p = i + j;\n         \
+    \           mint l = a[p] + a[p + t];\n                    mint r = (a[p] - a[p\
+    \ + t]) * wj;\n                    a[p] = l, a[p + t] = r;\n                 \
+    \   wj *= info.root[b];\n                }\n            }\n        }\n       \
+    \ for(int i = 0; i < n; i++) {\n            int j = revbit(i, bitlen);\n     \
+    \       if(i < j) std::swap(a[i], a[j]);\n        }\n    }\n\n    template<class\
+    \ mint>\n    void intt(std::vector<mint>& a) {\n        int n = (int)a.size();\n\
+    \        assert(n > 0 && (n & (n - 1)) == 0);\n        int bitlen = __builtin_ctz(n);\n\
+    \        static const ntt_info<mint> info;\n        assert(bitlen <= info.limit);\n\
+    \        for(int i = 0; i < n; i++) {\n            int j = revbit(i, bitlen);\n\
+    \            if(i < j) std::swap(a[i], a[j]);\n        }\n        for(int len\
+    \ = 2, b = 1; len <= n; len <<= 1, b++) {\n            for(int i = 0; i < n; i\
+    \ += len) {\n                int t = len >> 1;\n                mint wj = 1;\n\
+    \                for(int j = 0; j < t; j++) {\n                    int p = i +\
+    \ j;\n                    auto l = a[p] + a[p + t] * wj;\n                   \
+    \ auto r = a[p] - a[p + t] * wj;\n                    a[p] = l, a[p + t] = r;\n\
+    \                    wj *= info.iroot[b];\n                }\n            }\n\
+    \        }\n        mint invn = mint(n).inv();\n        for(int i = 0; i < n;\
+    \ i++) a[i] *= invn;\n    }\n\n    template<class mint>\n    std::vector<mint>\
+    \ convolution(std::vector<mint> a, std::vector<mint> b) {\n        if(a.empty()\
+    \ || b.empty()) return {};\n        int m = (int)a.size() + (int)b.size() - 1;\n\
     \        int n = 1;\n        while(n < m) n <<= 1;\n        a.resize(n), b.resize(n);\n\
     \        ntt<mint>(a);\n        ntt<mint>(b);\n        for(int i = 0; i < n; i++)\
     \ a[i] *= b[i];\n        intt<mint>(a);\n        a.resize(m);\n        return\
@@ -277,7 +283,7 @@ data:
   isVerificationFile: true
   path: test/library-checker/convolution/convolution-mod.test.cpp
   requiredBy: []
-  timestamp: '2024-09-08 23:17:50+09:00'
+  timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/library-checker/convolution/convolution-mod.test.cpp

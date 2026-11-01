@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/unionfind.test.cpp
     title: test/library-checker/data-structure/unionfind.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/helper-regressions.test.cpp
+    title: test/mytest/data-structure/helper-regressions.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -30,9 +33,8 @@ data:
     \ &v) { return v.empty(); }),\n                g.end());\n        return g;\n\
     \    }\n    std::map<int, std::vector<int>> groups_with_map() {\n        std::map<int,\
     \ std::vector<int>> g;\n        for(int i = 0; i < N; i++) {\n            int\
-    \ l = leader(i);\n            if(!g.count(l)) g[l].push_back(i);\n        }\n\
-    \        return g;\n    }\n\n  private:\n    int N;\n    std::vector<int> parent_or_size;\n\
-    };\n"
+    \ l = leader(i);\n            g[l].push_back(i);\n        }\n        return g;\n\
+    \    }\n\n  private:\n    int N;\n    std::vector<int> parent_or_size;\n};\n"
   code: "#pragma once\n\n#include <algorithm>\n#include <cassert>\n#include <map>\n\
     #include <vector>\n\nclass UnionFind {\n  public:\n    UnionFind() = default;\n\
     \    explicit UnionFind(int n) : N(n), parent_or_size(n, -1) {}\n    int leader(int\
@@ -52,17 +54,17 @@ data:
     \ &v) { return v.empty(); }),\n                g.end());\n        return g;\n\
     \    }\n    std::map<int, std::vector<int>> groups_with_map() {\n        std::map<int,\
     \ std::vector<int>> g;\n        for(int i = 0; i < N; i++) {\n            int\
-    \ l = leader(i);\n            if(!g.count(l)) g[l].push_back(i);\n        }\n\
-    \        return g;\n    }\n\n  private:\n    int N;\n    std::vector<int> parent_or_size;\n\
-    };"
+    \ l = leader(i);\n            g[l].push_back(i);\n        }\n        return g;\n\
+    \    }\n\n  private:\n    int N;\n    std::vector<int> parent_or_size;\n};"
   dependsOn: []
   isVerificationFile: false
   path: data-structure/unionfind.hpp
   requiredBy: []
-  timestamp: '2023-02-25 23:57:16+09:00'
+  timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/data-structure/unionfind.test.cpp
+  - test/mytest/data-structure/helper-regressions.test.cpp
 documentation_of: data-structure/unionfind.hpp
 layout: document
 title: Union Find
@@ -103,10 +105,10 @@ int main() {
 | `merge(u, v)` | 併合できたら true、既に同一なら false。 | 償却 O(α(N)) |
 | `size(u)` | u の属する集合の要素数。 | 償却 O(α(N)) |
 | `groups()` | 全集合を vector<vector<int>> で列挙。 | O(N α(N)) |
-| `groups_with_map()` | 代表をキーとする map を作る。ただし現状は各集合の最初の頂点しか入らない。 | O(N log N) |
+| `groups_with_map()` | 代表をキー、集合内の全頂点の列を値とする map。 | O(N log N) |
 
 ## 利用条件と実装上の注意
 
 要素番号は $[0,N)$ です。一度併合した集合を分割する操作はありません。代表要素の番号も併合によって変わるため、常に最小番号になるとは考えないでください。
 
-全集合の列挙には `groups()` を使ってください。`groups_with_map()` は現実装では各集合の最初の要素しか追加せず、集合全体を返せません。引数なしで構築した場合は、サイズ付きのオブジェクトを代入してから利用します。
+`groups()` と `groups_with_map()` は、どちらも各集合の全要素を返します。後者は代表要素をキーとする map です。引数なしで構築した場合は、サイズ付きのオブジェクトを代入してから利用します。

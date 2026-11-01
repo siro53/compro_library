@@ -24,27 +24,27 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/tree/hld.hpp\"\n\n#include <utility>\n\n#line 2 \"\
-    graph/graph_template.hpp\"\n\n#include <cassert>\n#include <vector>\n\ntemplate\
-    \ <typename Cost = int> struct Edge {\n    int from, to;\n    Cost cost;\n   \
-    \ int id;\n    Edge() = default;\n    explicit Edge(int from, int to, Cost cost\
-    \ = 1, int id = -1)\n        : from(from), to(to), cost(cost), id(id) {}\n   \
-    \ operator int() const { return to; }\n};\n\ntemplate <typename Cost = int> class\
-    \ Graph {\n  public:\n    Graph() = default;\n    explicit Graph(int N) : N(N),\
-    \ M(0), G(N) {}\n\n    inline void add_directed_edge(int from, int to, Cost cost\
-    \ = 1) {\n        assert(0 <= from && from < N);\n        assert(0 <= to && to\
-    \ < N);\n        G[from].emplace_back(from, to, cost, M++);\n    }\n\n    inline\
-    \ void add_undirected_edge(int from, int to, Cost cost = 1) {\n        assert(0\
-    \ <= from && from < N);\n        assert(0 <= to && to < N);\n        G[from].emplace_back(from,\
-    \ to, cost, M);\n        G[to].emplace_back(to, from, cost, M++);\n    }\n\n \
-    \   inline size_t size() const { return G.size(); }\n    inline std::vector<Edge<Cost>>\
-    \ &operator[](const int &i) { return G[i]; }\n    inline const std::vector<Edge<Cost>>\
-    \ &operator[](const int &i) const {\n        return G[i];\n    }\n\n  protected:\n\
-    \    int N, M;\n    std::vector<std::vector<Edge<Cost>>> G;\n};\n\ntemplate <class\
-    \ Cost = int> using Edges = std::vector<Edge<Cost>>;\n#line 6 \"graph/tree/hld.hpp\"\
-    \n\ntemplate <typename Cost = int> class HeavyLightDecomposition {\n  public:\n\
-    \    explicit HeavyLightDecomposition(int N)\n        : G(N), in(N), out(N), sz(N),\
-    \ head(N), par(N), dep(N), rev(N),\n          isBuilt(false) {}\n    explicit\
-    \ HeavyLightDecomposition(const Graph<Cost> &g)\n        : G(g), in(g.size()),\
+    graph/graph_template.hpp\"\n\n#include <cassert>\n#include <cstddef>\n#include\
+    \ <vector>\n\ntemplate <typename Cost = int> struct Edge {\n    int from, to;\n\
+    \    Cost cost;\n    int id;\n    Edge() = default;\n    explicit Edge(int from,\
+    \ int to, Cost cost = 1, int id = -1)\n        : from(from), to(to), cost(cost),\
+    \ id(id) {}\n    operator int() const { return to; }\n};\n\ntemplate <typename\
+    \ Cost = int> class Graph {\n  public:\n    Graph() = default;\n    explicit Graph(int\
+    \ N) : N(N), M(0), G(N) {}\n\n    inline void add_directed_edge(int from, int\
+    \ to, Cost cost = 1) {\n        assert(0 <= from && from < N);\n        assert(0\
+    \ <= to && to < N);\n        G[from].emplace_back(from, to, cost, M++);\n    }\n\
+    \n    inline void add_undirected_edge(int from, int to, Cost cost = 1) {\n   \
+    \     assert(0 <= from && from < N);\n        assert(0 <= to && to < N);\n   \
+    \     G[from].emplace_back(from, to, cost, M);\n        G[to].emplace_back(to,\
+    \ from, cost, M++);\n    }\n\n    inline std::size_t size() const { return G.size();\
+    \ }\n    inline std::vector<Edge<Cost>> &operator[](const int &i) { return G[i];\
+    \ }\n    inline const std::vector<Edge<Cost>> &operator[](const int &i) const\
+    \ {\n        return G[i];\n    }\n\n  protected:\n    int N, M;\n    std::vector<std::vector<Edge<Cost>>>\
+    \ G;\n};\n\ntemplate <class Cost = int> using Edges = std::vector<Edge<Cost>>;\n\
+    #line 6 \"graph/tree/hld.hpp\"\n\ntemplate <typename Cost = int> class HeavyLightDecomposition\
+    \ {\n  public:\n    explicit HeavyLightDecomposition(int N)\n        : G(N), in(N),\
+    \ out(N), sz(N), head(N), par(N), dep(N), rev(N),\n          isBuilt(false) {}\n\
+    \    explicit HeavyLightDecomposition(const Graph<Cost> &g)\n        : G(g), in(g.size()),\
     \ out(g.size()), sz(g.size()), head(g.size()),\n          par(g.size()), dep(g.size()),\
     \ rev(g.size()), isBuilt(false) {\n        build();\n    }\n    void add_edge(int\
     \ from, int to, Cost cost = 1) {\n        G.add_undirected_edge(from, to, cost);\n\
@@ -135,7 +135,7 @@ data:
   isVerificationFile: false
   path: graph/tree/hld.hpp
   requiredBy: []
-  timestamp: '2023-11-04 18:06:00+09:00'
+  timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/tree/lowest-common-ancestor2.test.cpp

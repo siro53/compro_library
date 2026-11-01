@@ -218,7 +218,7 @@ data:
     \ value_now);\n        } while((r & -r) != r);\n        return 0;\n    }\n\n \
     \ private:\n    int N, sz;\n    std::vector<T> node;\n};\n#line 2 \"graph/tree/hld.hpp\"\
     \n\n#line 4 \"graph/tree/hld.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\n\n\
-    #line 5 \"graph/graph_template.hpp\"\n\ntemplate <typename Cost = int> struct\
+    #line 6 \"graph/graph_template.hpp\"\n\ntemplate <typename Cost = int> struct\
     \ Edge {\n    int from, to;\n    Cost cost;\n    int id;\n    Edge() = default;\n\
     \    explicit Edge(int from, int to, Cost cost = 1, int id = -1)\n        : from(from),\
     \ to(to), cost(cost), id(id) {}\n    operator int() const { return to; }\n};\n\
@@ -229,7 +229,7 @@ data:
     \ M++);\n    }\n\n    inline void add_undirected_edge(int from, int to, Cost cost\
     \ = 1) {\n        assert(0 <= from && from < N);\n        assert(0 <= to && to\
     \ < N);\n        G[from].emplace_back(from, to, cost, M);\n        G[to].emplace_back(to,\
-    \ from, cost, M++);\n    }\n\n    inline size_t size() const { return G.size();\
+    \ from, cost, M++);\n    }\n\n    inline std::size_t size() const { return G.size();\
     \ }\n    inline std::vector<Edge<Cost>> &operator[](const int &i) { return G[i];\
     \ }\n    inline const std::vector<Edge<Cost>> &operator[](const int &i) const\
     \ {\n        return G[i];\n    }\n\n  protected:\n    int N, M;\n    std::vector<std::vector<Edge<Cost>>>\
@@ -312,7 +312,7 @@ data:
   isVerificationFile: true
   path: test/library-checker/data-structure/vertex-add-path-sum.test.cpp
   requiredBy: []
-  timestamp: '2024-09-08 23:17:50+09:00'
+  timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/library-checker/data-structure/vertex-add-path-sum.test.cpp

@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/data-structure/static-range-inversions-query.test.cpp
     title: test/library-checker/data-structure/static-range-inversions-query.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/misc/mo-and-fraction.test.cpp
+    title: test/mytest/misc/mo-and-fraction.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -26,8 +29,8 @@ data:
     \    int process(const AddLeft &add_left, const AddRight &add_right,\n       \
     \         const DelLeft &del_left, const DelRight &del_right) {\n        assert(isBuilt);\n\
     \        if(idx == (int)ord.size()) return -1;\n        int qid = ord[idx++];\n\
-    \        while(l > L[qid]) add_left(--l);\n        while(l < L[qid]) del_left(l++);\n\
-    \        while(r < R[qid]) add_right(r++);\n        while(r > R[qid]) del_right(--r);\n\
+    \        while(l > L[qid]) add_left(--l);\n        while(r < R[qid]) add_right(r++);\n\
+    \        while(l < L[qid]) del_left(l++);\n        while(r > R[qid]) del_right(--r);\n\
     \        return qid;\n    }\n\n  private:\n    std::vector<int> L, R, ord;\n \
     \   int n, l, r, idx;\n    int BUCKET_SIZE;\n    bool isBuilt;\n};\n"
   code: "#pragma once\n\n#include <algorithm>\n#include <cassert>\n#include <cmath>\n\
@@ -45,7 +48,7 @@ data:
     \ const AddRight &add_right,\n                const DelLeft &del_left, const DelRight\
     \ &del_right) {\n        assert(isBuilt);\n        if(idx == (int)ord.size())\
     \ return -1;\n        int qid = ord[idx++];\n        while(l > L[qid]) add_left(--l);\n\
-    \        while(l < L[qid]) del_left(l++);\n        while(r < R[qid]) add_right(r++);\n\
+    \        while(r < R[qid]) add_right(r++);\n        while(l < L[qid]) del_left(l++);\n\
     \        while(r > R[qid]) del_right(--r);\n        return qid;\n    }\n\n  private:\n\
     \    std::vector<int> L, R, ord;\n    int n, l, r, idx;\n    int BUCKET_SIZE;\n\
     \    bool isBuilt;\n};"
@@ -53,10 +56,11 @@ data:
   isVerificationFile: false
   path: misc/mo.hpp
   requiredBy: []
-  timestamp: '2023-02-25 23:57:16+09:00'
+  timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/data-structure/static-range-inversions-query.test.cpp
+  - test/mytest/misc/mo-and-fraction.test.cpp
 documentation_of: misc/mo.hpp
 layout: document
 link: https://ei1333.hateblo.jp/entry/2017/09/11/211011
@@ -109,4 +113,4 @@ int main() {
 
 $N\ge1$、$0\le l<r\le N$ としてください。全クエリを登録してから一度だけ構築し、その後は追加せずに処理を進めます。`process` が $-1$ を返したら終了です。
 
-現実装には端点の移動順に制約があります。右端を拡張する前に左端を削除するため、まだ現在区間に追加していない要素を削除する通知が発生し得ます。例の和では途中の負の寄与を許すので扱えますが、頻度が常に非負であることを前提にした処理には、そのまま使えません。その場合は移動順を修正する必要があります。
+端点の移動では、先に左右の追加を済ませてから削除します。削除コールバックが通知する要素は、その時点の区間に必ず含まれます。区間が互いに離れている場合でも、負の出現回数を許す必要はありません。

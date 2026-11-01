@@ -21,20 +21,26 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/math/primality-test.test.cpp
     title: test/library-checker/math/primality-test.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/math/arithmetic-regressions.test.cpp
+    title: test/mytest/math/arithmetic-regressions.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/math/convolution-regressions.test.cpp
+    title: test/mytest/math/convolution-regressions.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/pow_mod.hpp\"\n\nconstexpr long long pow_mod(long long\
-    \ x, long long k, long long m) {\n    long long res = 1;\n    long long mul =\
-    \ (x >= 0 ? x % m : x % m + m);\n    while(k) {\n        if(k & 1) res = (__int128_t)res\
+    \ x, long long k, long long m) {\n    long long res = 1 % m;\n    long long mul\
+    \ = (x >= 0 ? x % m : x % m + m);\n    while(k) {\n        if(k & 1) res = (__int128_t)res\
     \ * mul % m;\n        mul = (__int128_t)mul * mul % m;\n        k >>= 1;\n   \
     \ }\n    return res;\n}\n"
   code: "#pragma once\n\nconstexpr long long pow_mod(long long x, long long k, long\
-    \ long m) {\n    long long res = 1;\n    long long mul = (x >= 0 ? x % m : x %\
-    \ m + m);\n    while(k) {\n        if(k & 1) res = (__int128_t)res * mul % m;\n\
-    \        mul = (__int128_t)mul * mul % m;\n        k >>= 1;\n    }\n    return\
+    \ long m) {\n    long long res = 1 % m;\n    long long mul = (x >= 0 ? x % m :\
+    \ x % m + m);\n    while(k) {\n        if(k & 1) res = (__int128_t)res * mul %\
+    \ m;\n        mul = (__int128_t)mul * mul % m;\n        k >>= 1;\n    }\n    return\
     \ res;\n}"
   dependsOn: []
   isVerificationFile: false
@@ -43,11 +49,13 @@ data:
   - math/convolution/ntt.hpp
   - math/primitive-root.hpp
   - math/is-prime.hpp
-  timestamp: '2023-10-01 12:06:18+09:00'
+  timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/math/primality-test.test.cpp
   - test/library-checker/convolution/convolution-mod.test.cpp
+  - test/mytest/math/convolution-regressions.test.cpp
+  - test/mytest/math/arithmetic-regressions.test.cpp
   - test/aoj/aoj-ALDS1-1-C.test.cpp
 documentation_of: math/pow_mod.hpp
 layout: document
@@ -86,4 +94,4 @@ int main() {
 
 指数は $k\ge0$、法は $m>0$ としてください。負の指数から逆元を求める機能はありません。
 
-例外として現実装は $k=0,m=1$ の場合にも $1$ を返します。数学的な剰余は $0$ なので、この組み合わせは呼び出し側で処理してください。128 bit整数を使うため、GCC/Clangの拡張を利用できる環境が必要です。
+指数0の結果は $1\bmod m$ です。法1では指数0も含めて常に0を返します。128 bit整数を使うため、GCC/Clangの拡張を利用できる環境が必要です。

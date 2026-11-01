@@ -5,7 +5,7 @@ data:
   - icon: ':warning:'
     path: graph/namori.hpp
     title: "\u306A\u3082\u308A\u30B0\u30E9\u30D5\u306E\u5206\u89E3"
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: graph/range-edge-graph.hpp
     title: "\u533A\u9593\u306B\u8FBA\u3092\u5F35\u308B\u30B0\u30E9\u30D5"
   - icon: ':heavy_check_mark:'
@@ -70,45 +70,51 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/tree/tree-diameter.test.cpp
     title: test/library-checker/tree/tree-diameter.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/graph/lca-and-empty-two-sat.test.cpp
+    title: test/mytest/graph/lca-and-empty-two-sat.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/graph/range-edge-graph.test.cpp
+    title: test/mytest/graph/range-edge-graph.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/graph_template.hpp\"\n\n#include <cassert>\n#include\
-    \ <vector>\n\ntemplate <typename Cost = int> struct Edge {\n    int from, to;\n\
-    \    Cost cost;\n    int id;\n    Edge() = default;\n    explicit Edge(int from,\
-    \ int to, Cost cost = 1, int id = -1)\n        : from(from), to(to), cost(cost),\
-    \ id(id) {}\n    operator int() const { return to; }\n};\n\ntemplate <typename\
-    \ Cost = int> class Graph {\n  public:\n    Graph() = default;\n    explicit Graph(int\
-    \ N) : N(N), M(0), G(N) {}\n\n    inline void add_directed_edge(int from, int\
-    \ to, Cost cost = 1) {\n        assert(0 <= from && from < N);\n        assert(0\
-    \ <= to && to < N);\n        G[from].emplace_back(from, to, cost, M++);\n    }\n\
-    \n    inline void add_undirected_edge(int from, int to, Cost cost = 1) {\n   \
-    \     assert(0 <= from && from < N);\n        assert(0 <= to && to < N);\n   \
-    \     G[from].emplace_back(from, to, cost, M);\n        G[to].emplace_back(to,\
-    \ from, cost, M++);\n    }\n\n    inline size_t size() const { return G.size();\
+    \ <cstddef>\n#include <vector>\n\ntemplate <typename Cost = int> struct Edge {\n\
+    \    int from, to;\n    Cost cost;\n    int id;\n    Edge() = default;\n    explicit\
+    \ Edge(int from, int to, Cost cost = 1, int id = -1)\n        : from(from), to(to),\
+    \ cost(cost), id(id) {}\n    operator int() const { return to; }\n};\n\ntemplate\
+    \ <typename Cost = int> class Graph {\n  public:\n    Graph() = default;\n   \
+    \ explicit Graph(int N) : N(N), M(0), G(N) {}\n\n    inline void add_directed_edge(int\
+    \ from, int to, Cost cost = 1) {\n        assert(0 <= from && from < N);\n   \
+    \     assert(0 <= to && to < N);\n        G[from].emplace_back(from, to, cost,\
+    \ M++);\n    }\n\n    inline void add_undirected_edge(int from, int to, Cost cost\
+    \ = 1) {\n        assert(0 <= from && from < N);\n        assert(0 <= to && to\
+    \ < N);\n        G[from].emplace_back(from, to, cost, M);\n        G[to].emplace_back(to,\
+    \ from, cost, M++);\n    }\n\n    inline std::size_t size() const { return G.size();\
     \ }\n    inline std::vector<Edge<Cost>> &operator[](const int &i) { return G[i];\
     \ }\n    inline const std::vector<Edge<Cost>> &operator[](const int &i) const\
     \ {\n        return G[i];\n    }\n\n  protected:\n    int N, M;\n    std::vector<std::vector<Edge<Cost>>>\
     \ G;\n};\n\ntemplate <class Cost = int> using Edges = std::vector<Edge<Cost>>;\n"
-  code: "#pragma once\n\n#include <cassert>\n#include <vector>\n\ntemplate <typename\
-    \ Cost = int> struct Edge {\n    int from, to;\n    Cost cost;\n    int id;\n\
-    \    Edge() = default;\n    explicit Edge(int from, int to, Cost cost = 1, int\
-    \ id = -1)\n        : from(from), to(to), cost(cost), id(id) {}\n    operator\
-    \ int() const { return to; }\n};\n\ntemplate <typename Cost = int> class Graph\
-    \ {\n  public:\n    Graph() = default;\n    explicit Graph(int N) : N(N), M(0),\
-    \ G(N) {}\n\n    inline void add_directed_edge(int from, int to, Cost cost = 1)\
-    \ {\n        assert(0 <= from && from < N);\n        assert(0 <= to && to < N);\n\
-    \        G[from].emplace_back(from, to, cost, M++);\n    }\n\n    inline void\
-    \ add_undirected_edge(int from, int to, Cost cost = 1) {\n        assert(0 <=\
-    \ from && from < N);\n        assert(0 <= to && to < N);\n        G[from].emplace_back(from,\
-    \ to, cost, M);\n        G[to].emplace_back(to, from, cost, M++);\n    }\n\n \
-    \   inline size_t size() const { return G.size(); }\n    inline std::vector<Edge<Cost>>\
-    \ &operator[](const int &i) { return G[i]; }\n    inline const std::vector<Edge<Cost>>\
-    \ &operator[](const int &i) const {\n        return G[i];\n    }\n\n  protected:\n\
-    \    int N, M;\n    std::vector<std::vector<Edge<Cost>>> G;\n};\n\ntemplate <class\
-    \ Cost = int> using Edges = std::vector<Edge<Cost>>;"
+  code: "#pragma once\n\n#include <cassert>\n#include <cstddef>\n#include <vector>\n\
+    \ntemplate <typename Cost = int> struct Edge {\n    int from, to;\n    Cost cost;\n\
+    \    int id;\n    Edge() = default;\n    explicit Edge(int from, int to, Cost\
+    \ cost = 1, int id = -1)\n        : from(from), to(to), cost(cost), id(id) {}\n\
+    \    operator int() const { return to; }\n};\n\ntemplate <typename Cost = int>\
+    \ class Graph {\n  public:\n    Graph() = default;\n    explicit Graph(int N)\
+    \ : N(N), M(0), G(N) {}\n\n    inline void add_directed_edge(int from, int to,\
+    \ Cost cost = 1) {\n        assert(0 <= from && from < N);\n        assert(0 <=\
+    \ to && to < N);\n        G[from].emplace_back(from, to, cost, M++);\n    }\n\n\
+    \    inline void add_undirected_edge(int from, int to, Cost cost = 1) {\n    \
+    \    assert(0 <= from && from < N);\n        assert(0 <= to && to < N);\n    \
+    \    G[from].emplace_back(from, to, cost, M);\n        G[to].emplace_back(to,\
+    \ from, cost, M++);\n    }\n\n    inline std::size_t size() const { return G.size();\
+    \ }\n    inline std::vector<Edge<Cost>> &operator[](const int &i) { return G[i];\
+    \ }\n    inline const std::vector<Edge<Cost>> &operator[](const int &i) const\
+    \ {\n        return G[i];\n    }\n\n  protected:\n    int N, M;\n    std::vector<std::vector<Edge<Cost>>>\
+    \ G;\n};\n\ntemplate <class Cost = int> using Edges = std::vector<Edge<Cost>>;"
   dependsOn: []
   isVerificationFile: false
   path: graph/graph_template.hpp
@@ -125,7 +131,7 @@ data:
   - graph/range-edge-graph.hpp
   - graph/namori.hpp
   - math/two_sat.hpp
-  timestamp: '2023-11-04 18:06:00+09:00'
+  timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/graph/scc.test.cpp
@@ -137,6 +143,8 @@ data:
   - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
   - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
   - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
+  - test/mytest/graph/lca-and-empty-two-sat.test.cpp
+  - test/mytest/graph/range-edge-graph.test.cpp
   - test/aoj/aoj2821.test.cpp
 documentation_of: graph/graph_template.hpp
 layout: document

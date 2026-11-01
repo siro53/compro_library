@@ -22,7 +22,7 @@ data:
     - icon: ':warning:'
       path: data-structure/range-BIT.hpp
       title: Range BIT
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/slope-trick.hpp
       title: Slope Trick
     - icon: ':heavy_check_mark:'
@@ -42,13 +42,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/monoid/affine.hpp
       title: "\u30A2\u30D5\u30A3\u30F3\u5909\u63DB\u30E2\u30CE\u30A4\u30C9"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/monoid/and.hpp
       title: "\u30D3\u30C3\u30C8 AND\u30E2\u30CE\u30A4\u30C9"
     - icon: ':warning:'
       path: data-structure/monoid/gcd.hpp
       title: "\u6700\u5927\u516C\u7D04\u6570\u30E2\u30CE\u30A4\u30C9"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/monoid/kadane.hpp
       title: "\u6700\u5927\u90E8\u5206\u914D\u5217\u548C\u30E2\u30CE\u30A4\u30C9"
     - icon: ':warning:'
@@ -73,7 +73,7 @@ data:
       path: data-structure/monoid/rolling_hash.hpp
       title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5\u30E2\u30CE\u30A4\
         \u30C9"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/monoid/sum_count.hpp
       title: "\u548C\u30FB\u500B\u6570\u30E2\u30CE\u30A4\u30C9"
   - name: data-structure/persistent
@@ -106,7 +106,7 @@ data:
       title: Segment Tree
   - name: data-structure/utils
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/utils/sum_count_manager.hpp
       title: "\u5024\u3054\u3068\u306E\u548C\u30FB\u500B\u6570\u7BA1\u7406"
   - name: geometry
@@ -216,7 +216,7 @@ data:
     - icon: ':warning:'
       path: graph/namori.hpp
       title: "\u306A\u3082\u308A\u30B0\u30E9\u30D5\u306E\u5206\u89E3"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: graph/range-edge-graph.hpp
       title: "\u533A\u9593\u306B\u8FBA\u3092\u5F35\u308B\u30B0\u30E9\u30D5"
     - icon: ':heavy_check_mark:'
@@ -253,10 +253,10 @@ data:
       title: "\u6728\u30CF\u30C3\u30B7\u30E5"
   - name: math
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/F2.hpp
       title: "F\u2082 \u4E0A\u306E\u884C\u5217\u30FB\u9023\u7ACB\u65B9\u7A0B\u5F0F"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/barrett-reduction.hpp
       title: Barrett Reduction
     - icon: ':heavy_check_mark:'
@@ -289,7 +289,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/segment-factorize.hpp
       title: "\u533A\u9593\u7D20\u56E0\u6570\u5206\u89E3"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/segment-sieve.hpp
       title: "\u533A\u9593\u7D20\u6570\u5224\u5B9A"
     - icon: ':heavy_check_mark:'
@@ -332,7 +332,7 @@ data:
       title: "\u30BF\u30A4\u30DE\u30FC"
   - name: modint
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: modint/dynamic-modint.hpp
       title: "\u52D5\u7684\u6CD5 modint"
     - icon: ':heavy_check_mark:'
@@ -398,6 +398,11 @@ data:
     - icon: ':warning:'
       path: test/mytest/bundle/test_bundle.py
       title: test/mytest/bundle/test_bundle.py
+  - name: test/mytest/headers
+    pages:
+    - icon: ':warning:'
+      path: test/mytest/headers/test_headers.py
+      title: test/mytest/headers/test_headers.py
   verificationCategories:
   - name: test/aoj
     pages:
@@ -520,21 +525,57 @@ data:
       path: test/mytest/data-structure/binary-trie.test.cpp
       title: test/mytest/data-structure/binary-trie.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/mytest/data-structure/bit-queries.test.cpp
+      title: test/mytest/data-structure/bit-queries.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/mytest/data-structure/erasable-priority-queue.test.cpp
       title: test/mytest/data-structure/erasable-priority-queue.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/mytest/data-structure/helper-regressions.test.cpp
+      title: test/mytest/data-structure/helper-regressions.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/data-structure/initialization-and-monoids.test.cpp
+      title: test/mytest/data-structure/initialization-and-monoids.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/mytest/data-structure/li-chao-tree.test.cpp
       title: test/mytest/data-structure/li-chao-tree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/data-structure/segtree-boundaries.test.cpp
+      title: test/mytest/data-structure/segtree-boundaries.test.cpp
   - name: test/mytest/geometry
     pages:
     - icon: ':heavy_check_mark:'
       path: test/mytest/geometry/geometry.test.cpp
       title: test/mytest/geometry/geometry.test.cpp
+  - name: test/mytest/graph
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/graph/lca-and-empty-two-sat.test.cpp
+      title: test/mytest/graph/lca-and-empty-two-sat.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/graph/range-edge-graph.test.cpp
+      title: test/mytest/graph/range-edge-graph.test.cpp
+  - name: test/mytest/math
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/math/arithmetic-regressions.test.cpp
+      title: test/mytest/math/arithmetic-regressions.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/math/convolution-regressions.test.cpp
+      title: test/mytest/math/convolution-regressions.test.cpp
   - name: test/mytest/misc
     pages:
     - icon: ':heavy_check_mark:'
       path: test/mytest/misc/fraction.test.cpp
       title: test/mytest/misc/fraction.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/misc/mo-and-fraction.test.cpp
+      title: test/mytest/misc/mo-and-fraction.test.cpp
+  - name: test/mytest/string
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/string/empty-inputs.test.cpp
+      title: test/mytest/string/empty-inputs.test.cpp
   - name: test/yukicoder
     pages:
     - icon: ':heavy_check_mark:'

@@ -6,34 +6,39 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/string/z-algorithm.test.cpp
     title: test/library-checker/string/z-algorithm.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/string/empty-inputs.test.cpp
+    title: test/mytest/string/empty-inputs.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"string/z-algo.hpp\"\n\n#include <vector>\n#include <string>\n\
-    \nstd::vector<int> z_algo(const std::string& s) {\n    int n = (int)s.size();\n\
-    \    std::vector<int> z(n);\n    z[0] = n;\n    for(int i = 1, j = 0; i < n;)\
-    \ {\n        while(i + j < n and s[j] == s[i + j]) j++;\n        z[i] = j;\n \
-    \       if(j == 0) {\n            i++;\n            continue;\n        }\n   \
-    \     int k = 1;\n        while(k < j and k + z[k] < j) {\n            z[i + k]\
-    \ = z[k];\n            k++;\n        }\n        i += k;\n        j -= k;\n   \
-    \ }\n    return z;\n}\n"
-  code: "#pragma once\n\n#include <vector>\n#include <string>\n\nstd::vector<int>\
+    \ninline std::vector<int> z_algo(const std::string& s) {\n    int n = (int)s.size();\n\
+    \    std::vector<int> z(n);\n    if(n == 0) return z;\n    z[0] = n;\n    for(int\
+    \ i = 1, j = 0; i < n;) {\n        while(i + j < n and s[j] == s[i + j]) j++;\n\
+    \        z[i] = j;\n        if(j == 0) {\n            i++;\n            continue;\n\
+    \        }\n        int k = 1;\n        while(k < j and k + z[k] < j) {\n    \
+    \        z[i + k] = z[k];\n            k++;\n        }\n        i += k;\n    \
+    \    j -= k;\n    }\n    return z;\n}\n"
+  code: "#pragma once\n\n#include <vector>\n#include <string>\n\ninline std::vector<int>\
     \ z_algo(const std::string& s) {\n    int n = (int)s.size();\n    std::vector<int>\
-    \ z(n);\n    z[0] = n;\n    for(int i = 1, j = 0; i < n;) {\n        while(i +\
-    \ j < n and s[j] == s[i + j]) j++;\n        z[i] = j;\n        if(j == 0) {\n\
-    \            i++;\n            continue;\n        }\n        int k = 1;\n    \
-    \    while(k < j and k + z[k] < j) {\n            z[i + k] = z[k];\n         \
-    \   k++;\n        }\n        i += k;\n        j -= k;\n    }\n    return z;\n}"
+    \ z(n);\n    if(n == 0) return z;\n    z[0] = n;\n    for(int i = 1, j = 0; i\
+    \ < n;) {\n        while(i + j < n and s[j] == s[i + j]) j++;\n        z[i] =\
+    \ j;\n        if(j == 0) {\n            i++;\n            continue;\n        }\n\
+    \        int k = 1;\n        while(k < j and k + z[k] < j) {\n            z[i\
+    \ + k] = z[k];\n            k++;\n        }\n        i += k;\n        j -= k;\n\
+    \    }\n    return z;\n}"
   dependsOn: []
   isVerificationFile: false
   path: string/z-algo.hpp
   requiredBy: []
-  timestamp: '2024-05-04 17:59:59+09:00'
+  timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/string/z-algorithm.test.cpp
+  - test/mytest/string/empty-inputs.test.cpp
 documentation_of: string/z-algo.hpp
 layout: document
 title: Z algorithm
@@ -71,4 +76,4 @@ int main() {
 
 ## 利用条件と実装上の注意
 
-現実装は `z[0]` に書き込むため、空文字列は渡せません。空の場合は呼び出し側で空の配列を返すなどして処理してください。文字列はバイト単位で比較するので、UTF-8の1文字を単位として処理するものではありません。
+空文字列には空の配列を返します。文字列はバイト単位で比較するので、UTF-8の1文字を単位として処理するものではありません。

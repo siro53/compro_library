@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/mytest/misc/fraction.test.cpp
     title: test/mytest/misc/fraction.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/misc/mo-and-fraction.test.cpp
+    title: test/mytest/misc/mo-and-fraction.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -23,21 +26,22 @@ data:
     \ a * f.b - b * f.a;\n        Int nb = b * f.b;\n        a = na, b = nb;\n   \
     \     normalize();\n        return *this;\n    }\n    F &operator*=(const F& f)\
     \ {\n        a *= f.a;\n        b *= f.b;\n        normalize();\n        return\
-    \ *this;\n    }\n    F &operator/=(const F& f) {\n        a *= f.b;\n        b\
-    \ *= f.a;\n        normalize();\n        return *this;\n    }\n    F operator-()\
-    \ const { return F(-a, b); }\n    F operator+(const F& f) const { return F(*this)\
-    \ += f; }\n    F operator-(const F& f) const { return F(*this) -= f; }\n    F\
-    \ operator*(const F& f) const { return F(*this) *= f; }\n    F operator/(const\
-    \ F& f) const { return F(*this) /= f; }\n    bool operator==(const F& f) const\
-    \ {\n        return a * f.b == b * f.a;\n    }\n    bool operator!=(const F& f)\
-    \ const {\n        return !(*this == f);\n    }\n    bool operator<(const F& f)\
-    \ const {\n        return a * f.b < b * f.a;\n    }\n    bool operator<=(const\
-    \ F& f) const {\n        return a * f.b <= b * f.a;\n    }\n    bool operator>(const\
-    \ F& f) const {\n        return !(*this <= f);\n    }\n    bool operator>=(const\
-    \ F& f) const {\n        return !(*this < f);\n    }\n    \n    inline static\
-    \ Int gcd(Int a, Int b) {\n        Int s = (a > 0 ? a : -a), t = (b > 0 ? b :\
-    \ -b);\n        while (s % t != 0) {\n            Int u = s % t;\n           \
-    \ s = t;\n            t = u;\n        }\n        return t;\n    }\n};\n"
+    \ *this;\n    }\n    F &operator/=(const F& f) {\n        Int na = a * f.b;\n\
+    \        Int nb = b * f.a;\n        a = na, b = nb;\n        normalize();\n  \
+    \      return *this;\n    }\n    F operator-() const { return F(-a, b); }\n  \
+    \  F operator+(const F& f) const { return F(*this) += f; }\n    F operator-(const\
+    \ F& f) const { return F(*this) -= f; }\n    F operator*(const F& f) const { return\
+    \ F(*this) *= f; }\n    F operator/(const F& f) const { return F(*this) /= f;\
+    \ }\n    bool operator==(const F& f) const {\n        return a * f.b == b * f.a;\n\
+    \    }\n    bool operator!=(const F& f) const {\n        return !(*this == f);\n\
+    \    }\n    bool operator<(const F& f) const {\n        return a * f.b < b * f.a;\n\
+    \    }\n    bool operator<=(const F& f) const {\n        return a * f.b <= b *\
+    \ f.a;\n    }\n    bool operator>(const F& f) const {\n        return !(*this\
+    \ <= f);\n    }\n    bool operator>=(const F& f) const {\n        return !(*this\
+    \ < f);\n    }\n    \n    inline static Int gcd(Int a, Int b) {\n        Int s\
+    \ = (a > 0 ? a : -a), t = (b > 0 ? b : -b);\n        while (s % t != 0) {\n  \
+    \          Int u = s % t;\n            s = t;\n            t = u;\n        }\n\
+    \        return t;\n    }\n};\n"
   code: "#pragma once\n\n#include <numeric>\n\ntemplate<typename Int = long long>\n\
     struct Fraction {\n    using F = Fraction;\n    Int a, b;\n\n    Fraction(): a(0),\
     \ b(1) {}\n    Fraction(Int _a, Int _b): a(_a), b(_b) {\n        normalize();\n\
@@ -50,14 +54,15 @@ data:
     \ Int nb = b * f.b;\n        a = na, b = nb;\n        normalize();\n        return\
     \ *this;\n    }\n    F &operator*=(const F& f) {\n        a *= f.a;\n        b\
     \ *= f.b;\n        normalize();\n        return *this;\n    }\n    F &operator/=(const\
-    \ F& f) {\n        a *= f.b;\n        b *= f.a;\n        normalize();\n      \
-    \  return *this;\n    }\n    F operator-() const { return F(-a, b); }\n    F operator+(const\
-    \ F& f) const { return F(*this) += f; }\n    F operator-(const F& f) const { return\
-    \ F(*this) -= f; }\n    F operator*(const F& f) const { return F(*this) *= f;\
-    \ }\n    F operator/(const F& f) const { return F(*this) /= f; }\n    bool operator==(const\
-    \ F& f) const {\n        return a * f.b == b * f.a;\n    }\n    bool operator!=(const\
-    \ F& f) const {\n        return !(*this == f);\n    }\n    bool operator<(const\
-    \ F& f) const {\n        return a * f.b < b * f.a;\n    }\n    bool operator<=(const\
+    \ F& f) {\n        Int na = a * f.b;\n        Int nb = b * f.a;\n        a = na,\
+    \ b = nb;\n        normalize();\n        return *this;\n    }\n    F operator-()\
+    \ const { return F(-a, b); }\n    F operator+(const F& f) const { return F(*this)\
+    \ += f; }\n    F operator-(const F& f) const { return F(*this) -= f; }\n    F\
+    \ operator*(const F& f) const { return F(*this) *= f; }\n    F operator/(const\
+    \ F& f) const { return F(*this) /= f; }\n    bool operator==(const F& f) const\
+    \ {\n        return a * f.b == b * f.a;\n    }\n    bool operator!=(const F& f)\
+    \ const {\n        return !(*this == f);\n    }\n    bool operator<(const F& f)\
+    \ const {\n        return a * f.b < b * f.a;\n    }\n    bool operator<=(const\
     \ F& f) const {\n        return a * f.b <= b * f.a;\n    }\n    bool operator>(const\
     \ F& f) const {\n        return !(*this <= f);\n    }\n    bool operator>=(const\
     \ F& f) const {\n        return !(*this < f);\n    }\n    \n    inline static\
@@ -68,9 +73,10 @@ data:
   isVerificationFile: false
   path: misc/fraction.hpp
   requiredBy: []
-  timestamp: '2024-11-17 22:22:03+09:00'
+  timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/mytest/misc/mo-and-fraction.test.cpp
   - test/mytest/misc/fraction.test.cpp
 documentation_of: misc/fraction.hpp
 layout: document
@@ -114,6 +120,8 @@ int main() {
 | `gcd(a,b)` | 絶対値の gcd を求める static 補助関数。 | O(log M) |
 
 ## 利用条件と実装上の注意
+
+`f /= f` のように左辺と右辺が同じオブジェクトでも計算できます。非零の f を自身で割った結果は1です。
 
 分母は非零とし、除算の右辺も0にしないでください。内部の `gcd(a,b)` は第2引数が0の場合を扱えません。
 

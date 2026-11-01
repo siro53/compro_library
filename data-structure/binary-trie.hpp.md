@@ -9,6 +9,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/mytest/data-structure/binary-trie.test.cpp
     title: test/mytest/data-structure/binary-trie.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/data-structure/bit-queries.test.cpp
+    title: test/mytest/data-structure/bit-queries.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -55,22 +58,16 @@ data:
     \       k -= small_count;\n            } else {\n                now = now->child[b];\n\
     \            }\n        }\n        return ret;\n    }\n    int lower_bound(T val)\
     \ {\n        int ret = 0;\n        Node* now = root;\n        for(int i = LOG\
-    \ - 1; i >= 0; i--) {\n            int b = lazy_xor_value >> i & 1;\n        \
-    \    int small_count = (now->child[b] ? now->child[b]->count : 0);\n         \
-    \   int big_count = (now->child[b ^ 1] ? now->child[b ^ 1]->count : 0);\n    \
-    \        if(small_count == 0) {\n                assert(big_count);\n        \
-    \        now = now->child[b ^ 1];\n            } else if(big_count == 0) {\n \
-    \               assert(small_count);\n                now = now->child[b];\n \
-    \           } else {\n                if(b == (val >> i & 1)) { \n           \
-    \         now = now->child[b];\n                } else {\n                   \
-    \ ret += small_count;\n                    now = now->child[b ^ 1];\n        \
-    \        }\n            }\n        }\n        return ret;\n    }\n    int upper_bound(T\
-    \ val) {\n        int id = lower_bound(val);\n        T kth_element = get_kth_element(id);\n\
-    \        if(kth_element != val) return id;\n        int cnt = count(kth_element);\n\
-    \        return id + cnt;\n    }\n    int size() const {\n        if(!root) return\
-    \ 0;\n        return root->count;\n    }\n    inline bool empty() const { return\
-    \ (!root or root->count == 0); }\n    void all_xor(T val) { lazy_xor_value ^=\
-    \ val; }\n\n  private:\n    struct Node {\n        int count;\n        std::array<Node\
+    \ - 1; i >= 0; i--) {\n            if(!now || now->count == 0) break;\n      \
+    \      int b = lazy_xor_value >> i & 1;\n            int small_count = (now->child[b]\
+    \ ? now->child[b]->count : 0);\n            if(val >> i & 1) {\n             \
+    \   ret += small_count;\n                now = now->child[b ^ 1];\n          \
+    \  } else {\n                now = now->child[b];\n            }\n        }\n\
+    \        return ret;\n    }\n    int upper_bound(T val) {\n        return lower_bound(val)\
+    \ + count(val ^ lazy_xor_value);\n    }\n    int size() const {\n        if(!root)\
+    \ return 0;\n        return root->count;\n    }\n    inline bool empty() const\
+    \ { return (!root or root->count == 0); }\n    void all_xor(T val) { lazy_xor_value\
+    \ ^= val; }\n\n  private:\n    struct Node {\n        int count;\n        std::array<Node\
     \ *, 2> child;\n        Node() : count(0), child({nullptr, nullptr}) {}\n    };\n\
     \    Node *root;\n    T lazy_xor_value;\n};\n"
   code: "#pragma once\n\n#include <array>\n#include <cassert>\n#include <utility>\n\
@@ -114,33 +111,28 @@ data:
     \            } else {\n                now = now->child[b];\n            }\n \
     \       }\n        return ret;\n    }\n    int lower_bound(T val) {\n        int\
     \ ret = 0;\n        Node* now = root;\n        for(int i = LOG - 1; i >= 0; i--)\
-    \ {\n            int b = lazy_xor_value >> i & 1;\n            int small_count\
-    \ = (now->child[b] ? now->child[b]->count : 0);\n            int big_count = (now->child[b\
-    \ ^ 1] ? now->child[b ^ 1]->count : 0);\n            if(small_count == 0) {\n\
-    \                assert(big_count);\n                now = now->child[b ^ 1];\n\
-    \            } else if(big_count == 0) {\n                assert(small_count);\n\
-    \                now = now->child[b];\n            } else {\n                if(b\
-    \ == (val >> i & 1)) { \n                    now = now->child[b];\n          \
-    \      } else {\n                    ret += small_count;\n                   \
-    \ now = now->child[b ^ 1];\n                }\n            }\n        }\n    \
-    \    return ret;\n    }\n    int upper_bound(T val) {\n        int id = lower_bound(val);\n\
-    \        T kth_element = get_kth_element(id);\n        if(kth_element != val)\
-    \ return id;\n        int cnt = count(kth_element);\n        return id + cnt;\n\
-    \    }\n    int size() const {\n        if(!root) return 0;\n        return root->count;\n\
-    \    }\n    inline bool empty() const { return (!root or root->count == 0); }\n\
-    \    void all_xor(T val) { lazy_xor_value ^= val; }\n\n  private:\n    struct\
-    \ Node {\n        int count;\n        std::array<Node *, 2> child;\n        Node()\
-    \ : count(0), child({nullptr, nullptr}) {}\n    };\n    Node *root;\n    T lazy_xor_value;\n\
-    };"
+    \ {\n            if(!now || now->count == 0) break;\n            int b = lazy_xor_value\
+    \ >> i & 1;\n            int small_count = (now->child[b] ? now->child[b]->count\
+    \ : 0);\n            if(val >> i & 1) {\n                ret += small_count;\n\
+    \                now = now->child[b ^ 1];\n            } else {\n            \
+    \    now = now->child[b];\n            }\n        }\n        return ret;\n   \
+    \ }\n    int upper_bound(T val) {\n        return lower_bound(val) + count(val\
+    \ ^ lazy_xor_value);\n    }\n    int size() const {\n        if(!root) return\
+    \ 0;\n        return root->count;\n    }\n    inline bool empty() const { return\
+    \ (!root or root->count == 0); }\n    void all_xor(T val) { lazy_xor_value ^=\
+    \ val; }\n\n  private:\n    struct Node {\n        int count;\n        std::array<Node\
+    \ *, 2> child;\n        Node() : count(0), child({nullptr, nullptr}) {}\n    };\n\
+    \    Node *root;\n    T lazy_xor_value;\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: data-structure/binary-trie.hpp
   requiredBy: []
-  timestamp: '2023-02-25 23:57:16+09:00'
+  timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/data-structure/set-xor-min.test.cpp
   - test/mytest/data-structure/binary-trie.test.cpp
+  - test/mytest/data-structure/bit-queries.test.cpp
 documentation_of: data-structure/binary-trie.hpp
 layout: document
 title: Binary Trie
@@ -186,12 +178,12 @@ int main() {
 | `get_kth_element(k)` | XOR 適用後の昇順で k 番目（0-indexed）。 | O(B) |
 | `all_xor(val)` | 読み出し用の XOR マスクを更新。 | O(1) |
 | `size(), empty()` | 個数・空判定。 | O(1) |
-| `lower_bound(val), upper_bound(val)` | 順位検索用だが、現状は正しい境界を保証しない。 | O(B) |
+| `lower_bound(val), upper_bound(val)` | XOR 適用後の値が val 未満 / val 以下の要素数。 | O(B) |
 
 ## 利用条件と実装上の注意
 
 値と XOR マスクは $B$ bit に収めてください。最小値・最大値は非空のとき、`get_kth_element(k)` は $0\le k<\mathrm{size}()$ のときに使います。
 
-`lower_bound` は片側にしか子がない場合などを正しく扱えず、`upper_bound` もその結果に依存しています。これらの境界探索は修正するまで使用を避けてください。
+`lower_bound/upper_bound` は空集合でも使え、その場合は0を返します。返り値は $[0,\mathrm{size}()]$ の順位で、全要素より大きい値を探すと size() になります。検索値は XOR 適用後の値として解釈します。
 
 削除してもノードは解放されず、デストラクタによる解放もありません。また、オブジェクトのコピーは同じノードを共有するため、独立した集合の複製にはなりません。

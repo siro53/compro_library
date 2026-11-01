@@ -12,6 +12,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/library-checker/math/two-sat.test.cpp
     title: test/library-checker/math/two-sat.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mytest/graph/lca-and-empty-two-sat.test.cpp
+    title: test/mytest/graph/lca-and-empty-two-sat.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -19,18 +22,19 @@ data:
     links: []
   bundledCode: "#line 2 \"math/two_sat.hpp\"\n\n#line 2 \"graph/scc.hpp\"\n\n#include\
     \ <algorithm>\n#include <cassert>\n#include <vector>\n\n#line 2 \"graph/graph_template.hpp\"\
-    \n\n#line 5 \"graph/graph_template.hpp\"\n\ntemplate <typename Cost = int> struct\
-    \ Edge {\n    int from, to;\n    Cost cost;\n    int id;\n    Edge() = default;\n\
-    \    explicit Edge(int from, int to, Cost cost = 1, int id = -1)\n        : from(from),\
-    \ to(to), cost(cost), id(id) {}\n    operator int() const { return to; }\n};\n\
-    \ntemplate <typename Cost = int> class Graph {\n  public:\n    Graph() = default;\n\
-    \    explicit Graph(int N) : N(N), M(0), G(N) {}\n\n    inline void add_directed_edge(int\
-    \ from, int to, Cost cost = 1) {\n        assert(0 <= from && from < N);\n   \
-    \     assert(0 <= to && to < N);\n        G[from].emplace_back(from, to, cost,\
-    \ M++);\n    }\n\n    inline void add_undirected_edge(int from, int to, Cost cost\
-    \ = 1) {\n        assert(0 <= from && from < N);\n        assert(0 <= to && to\
-    \ < N);\n        G[from].emplace_back(from, to, cost, M);\n        G[to].emplace_back(to,\
-    \ from, cost, M++);\n    }\n\n    inline size_t size() const { return G.size();\
+    \n\n#line 4 \"graph/graph_template.hpp\"\n#include <cstddef>\n#line 6 \"graph/graph_template.hpp\"\
+    \n\ntemplate <typename Cost = int> struct Edge {\n    int from, to;\n    Cost\
+    \ cost;\n    int id;\n    Edge() = default;\n    explicit Edge(int from, int to,\
+    \ Cost cost = 1, int id = -1)\n        : from(from), to(to), cost(cost), id(id)\
+    \ {}\n    operator int() const { return to; }\n};\n\ntemplate <typename Cost =\
+    \ int> class Graph {\n  public:\n    Graph() = default;\n    explicit Graph(int\
+    \ N) : N(N), M(0), G(N) {}\n\n    inline void add_directed_edge(int from, int\
+    \ to, Cost cost = 1) {\n        assert(0 <= from && from < N);\n        assert(0\
+    \ <= to && to < N);\n        G[from].emplace_back(from, to, cost, M++);\n    }\n\
+    \n    inline void add_undirected_edge(int from, int to, Cost cost = 1) {\n   \
+    \     assert(0 <= from && from < N);\n        assert(0 <= to && to < N);\n   \
+    \     G[from].emplace_back(from, to, cost, M);\n        G[to].emplace_back(to,\
+    \ from, cost, M++);\n    }\n\n    inline std::size_t size() const { return G.size();\
     \ }\n    inline std::vector<Edge<Cost>> &operator[](const int &i) { return G[i];\
     \ }\n    inline const std::vector<Edge<Cost>> &operator[](const int &i) const\
     \ {\n        return G[i];\n    }\n\n  protected:\n    int N, M;\n    std::vector<std::vector<Edge<Cost>>>\
@@ -64,7 +68,7 @@ data:
     \    void dfs_rev(int u, int idx) {\n        comp[u] = idx;\n        for(const\
     \ auto &e : G_rev[u]) {\n            if(comp[e.to] == -1) dfs_rev(e.to, idx);\n\
     \        }\n    }\n};\n#line 4 \"math/two_sat.hpp\"\n\ntemplate<class Cost = int>\n\
-    class TwoSat {\npublic:\n    TwoSat() = default;\n    explicit TwoSat(int N):\
+    class TwoSat {\npublic:\n    TwoSat(): TwoSat(0) {}\n    explicit TwoSat(int N):\
     \ N(N), scc(N * 2), ans(N), called_satisfiable(false) {}\n\n    void add_clause(int\
     \ i, bool f_i, int j, bool f_j) {\n        if(!f_i) i = NOT(i);\n        if(!f_j)\
     \ j = NOT(j);\n        scc.add_directed_edge(i, NOT(j));\n        scc.add_directed_edge(j,\
@@ -76,7 +80,7 @@ data:
     \    int N;\n    SCC<Cost> scc;\n    std::vector<bool> ans;\n    bool called_satisfiable;\n\
     \n    inline int NOT(int i) { return i + (i < N ? N : -N); }\n};\n"
   code: "#pragma once\n\n#include \"../graph/scc.hpp\"\n\ntemplate<class Cost = int>\n\
-    class TwoSat {\npublic:\n    TwoSat() = default;\n    explicit TwoSat(int N):\
+    class TwoSat {\npublic:\n    TwoSat(): TwoSat(0) {}\n    explicit TwoSat(int N):\
     \ N(N), scc(N * 2), ans(N), called_satisfiable(false) {}\n\n    void add_clause(int\
     \ i, bool f_i, int j, bool f_j) {\n        if(!f_i) i = NOT(i);\n        if(!f_j)\
     \ j = NOT(j);\n        scc.add_directed_edge(i, NOT(j));\n        scc.add_directed_edge(j,\
@@ -93,10 +97,11 @@ data:
   isVerificationFile: false
   path: math/two_sat.hpp
   requiredBy: []
-  timestamp: '2025-03-09 11:05:50+09:00'
+  timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/library-checker/math/two-sat.test.cpp
+  - test/mytest/graph/lca-and-empty-two-sat.test.cpp
 documentation_of: math/two_sat.hpp
 layout: document
 title: 2-SAT
@@ -134,7 +139,7 @@ int main() {
 
 | API | 動作・返り値 | 時間計算量 |
 | --- | --- | --- |
-| `TwoSat(N)` | 変数 N 個で初期化。 | O(N) |
+| `TwoSat(), TwoSat(N)` | 変数0個、または N 個で初期化。 | O(N+1) |
 | `add_clause(i, fi, j, fj)` | (x[i]==fi) OR (x[j]==fj) を追加。 | 償却 O(1) |
 | `satisfiable()` | 充足可能なら true、割当を保存。 | O(N+Q) |
 | `get_answer()` | 成功時の割当 vector<bool> をコピーして返す。 | O(N) |
@@ -143,4 +148,4 @@ int main() {
 
 変数番号は $[0,N)$ です。すべての節を追加してから判定を一度だけ実行してください。内部のSCCを構築するため、判定後の追加や再判定には対応していません。
 
-`get_answer()` は充足可能と判定された後にだけ呼べます。割当が複数ある場合は、そのうち1つを返します。デフォルトコンストラクタは内部SCCを構築できないため、変数数を指定してください。
+`get_answer()` は充足可能と判定された後にだけ呼べます。割当が複数ある場合は、そのうち1つを返します。デフォルト構築は変数数0です。空の問題は充足可能で、答えは空の配列になります。
