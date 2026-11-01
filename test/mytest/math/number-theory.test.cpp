@@ -14,7 +14,8 @@
 int main() {
     LinearSieve linear;
     linear = LinearSieve(2000);
-    Eratosthenes sieve(2000);
+    Eratosthenes sieve;
+    sieve = Eratosthenes(2000);
     assert(linear[0] == -1 && linear[1] == -1);
     assert(linear.factor(0).empty() && linear.factor(1).empty());
     SegmentSieve segment(0, 2001);
