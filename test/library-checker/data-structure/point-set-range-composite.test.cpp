@@ -15,7 +15,8 @@ int main() {
         cin >> a >> b;
         v[i] = {a, b};
     }
-    Segtree<MonoidAffine<mint>> seg(v);
+    // Apply f_l first, then f_{l+1}, ..., f_{r-1}.
+    Segtree<MonoidAffine<mint, true>> seg(v);
     while(Q--) {
         int t;
         cin >> t;
