@@ -1,0 +1,6 @@
+# Exclude development tools before dependency analysis (see patch_dependencies.py).
+exclude:
+  - scripts
+  - test/mytest/bundle
+  - test/mytest/headers
+  - test/mytest/ci

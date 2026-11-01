@@ -17,7 +17,8 @@ template <int N> struct MonoidRollingHash {
     using value_type = S;
 
     static inline S op(const S &a, const S &b) {
-        static auto [base, powers] = gen();
+        static const auto parameters = gen();
+        const auto &powers = parameters.second;
         mint h = a.h + b.h * powers[a.len];
         int len = a.len + b.len;
         return S(h, len);

@@ -1,4 +1,4 @@
-#pragma region Macros
+// #region Macros
 #include <bits/stdc++.h>
 using namespace std;
 // input output utils
@@ -342,4 +342,4 @@ vector<int> ord_sort(const vector<T>& v, bool greater = false) {
     });
     return ord;
 }
-#pragma endregion Macros
+// #endregion Macros
