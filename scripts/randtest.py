@@ -184,13 +184,6 @@ def show(label, data, saved=None):
     print(text, end="" if text.endswith("\n") else "\n")
 
 
-def show_stderr(main, naive, out_dir=None):
-    """Print stderr of both programs (shown even when empty)."""
-    for role, result in (("main", main), ("naive", naive)):
-        saved = out_dir / f"err_{role}.txt" if out_dir and result.stderr else None
-        show(f"stderr of {role}", result.stderr, saved)
-
-
 def show_diff(main_out, naive_out):
     a = main_out.decode(errors="replace").splitlines()
     b = naive_out.decode(errors="replace").splitlines()
@@ -204,14 +197,13 @@ def show_diff(main_out, naive_out):
 
 def save_case(out_dir, seed, args, stdin, main, naive):
     out_dir.mkdir(parents=True, exist_ok=True)
-    for name in ("in.txt", "out_main.txt", "out_naive.txt",
-                 "err_main.txt", "err_naive.txt", "info.txt"):
+    for name in ("in.txt", "out_main.txt", "out_naive.txt", "stderr_main.log",
+                 "stderr_naive.log", "err_main.txt", "err_naive.txt", "info.txt"):
         (out_dir / name).unlink(missing_ok=True)
     (out_dir / "in.txt").write_bytes(stdin)
     for role, result in (("main", main), ("naive", naive)):
         (out_dir / f"out_{role}.txt").write_bytes(result.stdout)
-        if result.stderr:
-            (out_dir / f"err_{role}.txt").write_bytes(result.stderr)
+        (out_dir / f"stderr_{role}.log").write_bytes(result.stderr)
     (out_dir / "info.txt").write_text(
         f"seed: {seed}\n"
         f"main: {args.main} {main.status(args.timeout)}\n"
@@ -235,8 +227,12 @@ def report(seed, args, stdin, main, naive):
         print(f"{role}: {result.status(args.timeout)}")
     if main.ok and naive.ok:
         show_diff(main.stdout, naive.stdout)
-    show_stderr(main, naive, out_dir)
-    print(f"saved to {out_dir}/ (replay with --replay {seed})")
+    print_saved(out_dir)
+    print(f"replay with --replay {seed}")
+
+
+def print_saved(out_dir):
+    print(f"saved to {out_dir}/ (stderr: stderr_main.log, stderr_naive.log)")
 
 
 # ---------------------------------------------------------------- main
@@ -283,16 +279,16 @@ generator:
   `randtest --init` writes a template to gen.cpp.
 
 counterexample:
-  The first counterexample is printed with the results, the diff of the
-  outputs and the stderr of both MAIN and NAIVE (stderr is shown but not
-  compared, so debug output is fine). It is also saved to OUT
-  (randtest_fail/):
-    in.txt                      the input
-    out_main.txt out_naive.txt  the outputs
-    err_main.txt err_naive.txt  stderr (only when it is not empty)
-    info.txt                    the seed, the results and a replay command
-  --replay SEED runs only that seed and shows the input, both outputs and
-  both stderr.
+  The first counterexample is printed with the input, the results and
+  the diff of the outputs, and saved to OUT (randtest_fail/):
+    in.txt                            the input
+    out_main.txt out_naive.txt        the outputs
+    stderr_main.log stderr_naive.log  stderr (always written, maybe empty)
+    info.txt                          the seed, the results and a replay
+                                      command
+  Stderr is not printed nor compared, so debug output is fine; read it
+  in the .log files. --replay SEED runs only that seed, shows the input
+  and both outputs, and saves the same files to OUT.
   Seeds start from 0 on every run, so rerunning after a fix checks the
   same inputs again. Use --start to try other seeds.
 
@@ -335,7 +331,7 @@ help language:
             "start": "first seed (default: 0)",
             "time": "stop after SEC seconds (default: no limit)",
             "timeout": "time limit of each run of GEN, MAIN and NAIVE\n(default: 2)",
-            "replay": "run only SEED and show the input, outputs and stderr",
+            "replay": "run only SEED, show the input and outputs and\nsave them with stderr to OUT",
             "exact": "compare outputs byte by byte instead of token by token",
             "out": "directory to save a counterexample\n(default: randtest_fail)",
             "cxx": "C++ compiler (default: g++)",
@@ -390,16 +386,16 @@ seed S = START, START+1, ... の順に、次の処理を繰り返します。
   `randtest --init` で雛形を gen.cpp に書き出せます。
 
 反例:
-  最初に見つかった反例について、入力、各解の結果、出力の差分、MAIN と
-  NAIVE 両方の標準エラー出力を表示します (標準エラー出力は表示するだけで
-  比較しないので、デバッグ出力が残っていても構いません)。反例は OUT
-  (randtest_fail/) にも保存します。
-    in.txt                      入力
-    out_main.txt out_naive.txt  出力
-    err_main.txt err_naive.txt  標準エラー出力 (空でない場合だけ)
-    info.txt                    seed、各解の結果、再現用のコマンド
-  --replay SEED でその seed だけを実行し、入力と両方の出力・標準エラー出力
-  を表示します。
+  最初に見つかった反例について、入力、各解の結果、出力の差分を表示し、
+  OUT (randtest_fail/) に保存します。
+    in.txt                            入力
+    out_main.txt out_naive.txt        出力
+    stderr_main.log stderr_naive.log  標準エラー出力 (空でも必ず書き出す)
+    info.txt                          seed、各解の結果、再現用のコマンド
+  標準エラー出力は画面に表示せず、比較もしないので、デバッグ出力が残って
+  いても構いません。内容は .log ファイルで確認してください。
+  --replay SEED でその seed だけを実行し、入力と両方の出力を表示して、
+  同じファイルを OUT に保存します。
   seed は毎回 0 から始まるので、修正後に再実行すると同じ入力で確認できます。
   別の入力を試すには --start で開始位置をずらします。
 
@@ -444,7 +440,7 @@ seed S = START, START+1, ... の順に、次の処理を繰り返します。
             "start": "最初の seed (既定値: 0)",
             "time": "SEC 秒経過したら終了する (既定値: 制限なし)",
             "timeout": "GEN, MAIN, NAIVE の 1 回の実行の制限時間 (秒)\n(既定値: 2)",
-            "replay": "SEED だけを実行し、入力・出力・標準エラー出力を\n表示する",
+            "replay": "SEED だけを実行して入力と出力を表示し、\n標準エラー出力とともに OUT に保存する",
             "exact": "トークン単位ではなくバイト列の完全一致で比較する",
             "out": "反例の保存先 (既定値: randtest_fail)",
             "cxx": "C++ コンパイラ (既定値: g++)",
@@ -556,16 +552,18 @@ def replay(args, main, naive, gen):
     stdin = generate(gen, seed, args.timeout)
     m = run(main, stdin, args.timeout)
     n = run(naive, stdin, args.timeout)
+    out_dir = Path(args.out)
+    save_case(out_dir, seed, args, stdin, m, n)
     show(f"input (seed {seed})", stdin)
     for role, result in (("main", m), ("naive", n)):
         show(f"{role}: {result.status(args.timeout)}", result.stdout)
-    show_stderr(m, n)
-    if m.ok and n.ok and same_output(m.stdout, n.stdout, args.exact):
+    matched = m.ok and n.ok and same_output(m.stdout, n.stdout, args.exact)
+    if matched:
         print("outputs match")
-        return 0
-    if m.ok and n.ok:
+    elif m.ok and n.ok:
         show_diff(m.stdout, n.stdout)
-    return 1
+    print_saved(out_dir)
+    return 0 if matched else 1
 
 
 def search(args, main, naive, gen):

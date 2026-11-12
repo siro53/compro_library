@@ -174,33 +174,46 @@ class RandTestTests(unittest.TestCase):
         self.assertIn(regenerated.strip(), replay.stdout)
         self.assertIn("--- diff (naive -> main) ---", replay.stdout)
 
-    def test_stderr_of_both_programs_is_shown(self):
+    def test_stderr_is_saved_to_log_files_not_printed(self):
         # wrong when every value is negative; prints debug output to stderr
         self.write("main.cpp", solution(
             "long long b = 0; for(auto x : a) if(x > b) b = x; "
             "std::cerr << \"debug-main n=\" << n << '\\n'; std::cout << b << '\\n';"))
         self.write("noisy.cpp", "#include <iostream>\n" + NAIVE.replace(
             "int main() {", "int main() {\n    std::cerr << \"debug-naive\\n\";"))
+        fail = self.dir / "randtest_fail"
+        self.write("randtest_fail/err_main.txt", "stale file of an older version\n")
         result = self.randtest("-m", "main.cpp", "-n", "noisy.cpp", "-g", "gen.cpp")
         self.assertEqual(result.returncode, 1, result.stderr)
-        out = result.stdout
-        self.assertIn("main: OK\nnaive: OK\n", out)
-        self.assertIn("--- stderr of main ---\ndebug-main n=", out)
-        self.assertIn("--- stderr of naive ---\ndebug-naive\n", out)
-        self.assertLess(out.index("--- diff"), out.index("--- stderr of main ---"))
-        seed = (self.dir / "randtest_fail" / "info.txt").read_text().split()[1]
+        for stream in (result.stdout, result.stderr):
+            self.assertNotIn("debug-main", stream)
+            self.assertNotIn("debug-naive", stream)
+        self.assertIn("main: OK\nnaive: OK\n", result.stdout)
+        self.assertIn("saved to randtest_fail/ (stderr: stderr_main.log, stderr_naive.log)",
+                      result.stdout)
+        self.assertTrue((fail / "stderr_main.log").read_text().startswith("debug-main n="))
+        self.assertEqual((fail / "stderr_naive.log").read_text(), "debug-naive\n")
+        self.assertFalse((fail / "err_main.txt").exists())
+
+        # --replay saves the case too; an empty stderr gives an empty log
+        seed = (fail / "info.txt").read_text().split()[1]
         replay = self.randtest("-m", "main.cpp", "-n", "naive.cpp", "-g", "gen.cpp",
                                "--replay", seed)
-        self.assertIn("--- stderr of main ---\ndebug-main n=", replay.stdout)
-        self.assertIn("--- stderr of naive ---\n(empty)\n", replay.stdout)
+        self.assertEqual(replay.returncode, 1)
+        self.assertNotIn("debug-main", replay.stdout)
+        self.assertIn("saved to randtest_fail/", replay.stdout)
+        self.assertTrue((fail / "stderr_main.log").read_text().startswith("debug-main n="))
+        self.assertEqual((fail / "stderr_naive.log").read_bytes(), b"")
 
-    def test_long_stderr_is_truncated_with_a_pointer(self):
+    def test_long_stderr_is_saved_in_full(self):
         self.write("main.cpp", solution(
             "for(int i = 0; i < 1000; i++) std::cerr << \"0123456789\\n\"; return 1;"))
         result = self.randtest("-m", "main.cpp", "-n", "naive.cpp", "-g", "gen.cpp")
         self.assertEqual(result.returncode, 1, result.stderr)
-        self.assertIn("... (truncated, full text in randtest_fail/err_main.txt)", result.stdout)
-        self.assertEqual(len((self.dir / "randtest_fail" / "err_main.txt").read_text()), 11000)
+        self.assertIn("main: RE (exit code 1)", result.stdout)
+        self.assertNotIn("0123456789", result.stdout)
+        log = (self.dir / "randtest_fail" / "stderr_main.log").read_text()
+        self.assertEqual(log, "0123456789\n" * 1000)
 
     def test_runtime_error_and_timeout_are_counterexamples(self):
         self.write("re.cpp", solution(
