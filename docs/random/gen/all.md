@@ -9,7 +9,7 @@ documentation_of: //random/gen/all.hpp
 
 | ヘッダ | 主な機能 |
 | --- | --- |
-| [`random.hpp`](https://github.com/siro53/compro_library/blob/main/docs/random/gen/random.md) | seed 付きの乱数クラス `Random`。整数・実数・確率判定・選択・シャッフル |
+| [`random.hpp`](https://github.com/siro53/compro_library/blob/main/docs/random/gen/random.md) | seed 付きの乱数クラス `Random`。整数・偶数・奇数・実数・確率判定・選択・シャッフル |
 | [`sequence.hpp`](https://github.com/siro53/compro_library/blob/main/docs/random/gen/sequence.md) | 数列、相異なる値の数列、順列、部分集合、区間 |
 | [`string.hpp`](https://github.com/siro53/compro_library/blob/main/docs/random/gen/string.md) | 文字集合を指定した文字列、英小文字の文字列 |
 | [`tree.hpp`](https://github.com/siro53/compro_library/blob/main/docs/random/gen/tree.md) | 一様な木、パス、スター、親配列、頂点番号の付け替え |

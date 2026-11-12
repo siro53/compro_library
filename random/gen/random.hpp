@@ -45,6 +45,26 @@ class Random {
         return randint(T(0), r);
     }
 
+    // [l, r) に含まれる偶数から一様に選ぶ (偶数が 1 つ以上あること)
+    template <class T, class U>
+    std::common_type_t<T, U, int> even(T l, U r) {
+        return with_parity(l, r, 0);
+    }
+    // [0, r) に含まれる偶数から一様に選ぶ
+    template <class T> std::common_type_t<T, int> even(T r) {
+        return even(T(0), r);
+    }
+
+    // [l, r) に含まれる奇数から一様に選ぶ (奇数が 1 つ以上あること)
+    template <class T, class U>
+    std::common_type_t<T, U, int> odd(T l, U r) {
+        return with_parity(l, r, 1);
+    }
+    // [0, r) に含まれる奇数から一様に選ぶ
+    template <class T> std::common_type_t<T, int> odd(T r) {
+        return odd(T(0), r);
+    }
+
     // [l, r) の実数 (53 bit の分解能)
     double real(double l, double r) {
         assert(l < r);
@@ -91,6 +111,23 @@ class Random {
 
   private:
     std::mt19937_64 mt;
+
+    // [l, r) のうち 2 で割った余りが parity (負の数も含めて数学的な偶奇) の値から一様に選ぶ
+    template <class T, class U>
+    std::common_type_t<T, U, int> with_parity(T l, U r, unsigned parity) {
+        using C = std::common_type_t<T, U, int>;
+        static_assert(std::is_integral<C>::value, "even/odd requires integers");
+        using UC = std::make_unsigned_t<C>;
+        const C lo = C(l), hi = C(r);
+        assert(lo < hi);
+        const std::uint64_t width = std::uint64_t(UC(hi) - UC(lo));
+        // 2 の補数表現では UC への変換で偶奇が保たれる
+        const std::uint64_t first = (std::uint64_t(UC(lo)) & 1) == parity ? 0 : 1;
+        assert(first < width && "no integer of the requested parity in [l, r)");
+        // first, first + 2, ... < width の個数 (width - first + 1 のあふれを避ける)
+        const std::uint64_t count = (width - first - 1) / 2 + 1;
+        return C(UC(lo) + UC(first + 2 * uniform(count)));
+    }
 
     static std::uint64_t parse_seed(int argc, char **argv) {
         if(argc < 2) return 0;

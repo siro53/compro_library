@@ -54,6 +54,41 @@ int main() {
         assert(u < ~0ULL);
         assert(rng.uniform(1) == 0);
     }
+    // even, odd: 負の数も含めた数学的な偶奇で、該当する値をすべて取る
+    {
+        static_assert(is_same<decltype(rng.even(1, 2LL)), long long>::value);
+        static_assert(is_same<decltype(rng.odd(5)), int>::value);
+        for(int l = -7; l <= 7; l++) {
+            for(int r = l + 1; r <= l + 8; r++) {
+                for(int parity = 0; parity < 2; parity++) {
+                    set<int> expected, seen;
+                    for(int x = l; x < r; x++) if(((x % 2) + 2) % 2 == parity) expected.insert(x);
+                    if(expected.empty()) continue;
+                    for(int i = 0; i < 200; i++) seen.insert(parity ? rng.odd(l, r) : rng.even(l, r));
+                    assert(seen == expected);
+                }
+            }
+        }
+        vector<int> cnt(5);
+        for(int i = 0; i < 5000; i++) {
+            int x = rng.even(-4, 5);  // -4, -2, 0, 2, 4
+            cnt[(x + 4) / 2]++;
+        }
+        for(int c : cnt) assert(800 < c && c < 1200);
+        for(int i = 0; i < 100; i++) {
+            int e = rng.even(10), o = rng.odd(10);
+            assert(0 <= e && e < 10 && e % 2 == 0);
+            assert(0 <= o && o < 10 && o % 2 == 1);
+            long long be = rng.even(LLONG_MIN, LLONG_MAX), bo = rng.odd(LLONG_MIN, LLONG_MAX);
+            assert(be % 2 == 0 && bo % 2 != 0 && bo < LLONG_MAX);
+            unsigned long long ue = rng.even(0ULL, ~0ULL), uo = rng.odd(0ULL, ~0ULL);
+            assert(ue % 2 == 0 && uo % 2 == 1 && uo < ~0ULL);
+        }
+        assert(rng.even(3, 5) == 4 && rng.odd(4, 6) == 5);
+        assert(rng.odd(-1, 0) == -1 && rng.even(-1, 1) == 0);
+        assert(rng.even(LLONG_MAX - 1, LLONG_MAX) == LLONG_MAX - 1);
+        assert(rng.odd(LLONG_MIN + 1, LLONG_MIN + 2) == LLONG_MIN + 1);
+    }
     // real, coin
     {
         for(int i = 0; i < 1000; i++) {

@@ -9,7 +9,7 @@ documentation_of: //random/gen/random.hpp
 
 コンストラクタ `Random(argc, argv)` はコマンドライン引数の `argv[1]` を seed として読みます。[`scripts/randtest.py`](https://github.com/siro53/compro_library/blob/main/scripts/randtest.py) が生成器を `gen <seed>` の形で呼ぶので、この規約に合わせて書くだけで反例の保存と再現ができます。
 
-整数乱数の区間は、既存の [`random/rng.hpp`](https://github.com/siro53/compro_library/blob/main/docs/random/rng.md) と同じく右端を含まない半開区間 $[l,r)$ です。`randint(1, 7)` は $1$ 以上 $6$ 以下の整数を返します。
+整数乱数の区間は、既存の [`random/rng.hpp`](https://github.com/siro53/compro_library/blob/main/docs/random/rng.md) と同じく右端を含まない半開区間 $[l,r)$ です。`randint(1, 7)` は $1$ 以上 $6$ 以下の整数を返します。偶数だけ・奇数だけが欲しい場合は、`even(l, r)` と `odd(l, r)` が $[l,r)$ に含まれる偶数・奇数から一様に選びます。
 
 `rng.hpp` との違いは次のとおりです。
 
@@ -32,6 +32,10 @@ int main(int argc, char **argv) {
     assert(1 <= n && n <= 8);
     long long x = rng.randint(0, 1000000000000LL);  // long long になる
     assert(0 <= x && x < 1000000000000LL);
+    int e = rng.even(1, 11);          // 2, 4, 6, 8, 10 のいずれか
+    int o = rng.odd(-3, 4);           // -3, -1, 1, 3 のいずれか
+    assert(e % 2 == 0 && 2 <= e && e <= 10);
+    assert(o % 2 != 0 && -3 <= o && o <= 3);
     vector<int> p{1, 2, 3};
     rng.shuffle(p);
     int c = rng.choice(p);
@@ -57,6 +61,10 @@ int main(int argc, char **argv) {
 | `uniform(uint64_t n)` | $[0,n)$ の一様な整数を返す。$n>0$。 | 期待 $O(1)$ |
 | `randint(l, r)` | $[l,r)$ の一様な整数を返す。型は `l`, `r`, `int` の共通型。 | 期待 $O(1)$ |
 | `randint(r)` | `randint(0, r)` と同じ。 | 期待 $O(1)$ |
+| `even(l, r)` | $[l,r)$ に含まれる偶数から一様に1つ選ぶ。型は `randint` と同じ。 | 期待 $O(1)$ |
+| `even(r)` | `even(0, r)` と同じ。 | 期待 $O(1)$ |
+| `odd(l, r)` | $[l,r)$ に含まれる奇数から一様に1つ選ぶ。型は `randint` と同じ。 | 期待 $O(1)$ |
+| `odd(r)` | `odd(0, r)` と同じ。 | 期待 $O(1)$ |
 | `real(l, r)` | $[l,r)$ の `double` を返す。 | $O(1)$ |
 | `real()` | `real(0.0, 1.0)` と同じ。 | $O(1)$ |
 | `coin(p = 0.5)` | 確率 $p$ で `true` を返す。 | $O(1)$ |
@@ -70,6 +78,7 @@ int main(int argc, char **argv) {
 ## 利用条件と実装上の注意
 
 - `randint` と `size` は $l<r$、`real` は $l<r$ を要求し、満たさない場合は `assert` で停止します。引数は整数型で、`bool` や `char` などは `int` に昇格して計算します。
+- `even` と `odd` は、$[l,r)$ に該当する整数が少なくとも1つあることを要求します。例えば `odd(4, 5)` は候補がないので `assert` で停止します。偶奇は負の数も含めて数学的な意味で判定し、$-3$ は奇数、$-4$ は偶数です。候補の最小値 $x_0$ と個数 $c$ を求め、$x_0+2k$（$k$ は $[0,c)$ の一様乱数）を返すので、棄却による引き直しは `uniform` 内部のものだけです。
 - `real(l, r)` は $[0,1)$ を $2^{-53}$ 刻みで表した値 $u$ から $l+(r-l)u$ を計算します。丸めで $r$ に等しくなった場合だけ、$r$ より小さい最大の `double` を返します。数学的な連続一様分布ではありません。
 - `size(l, r)` は、$2^k \ge w$ となる最小の $k$ を $K$ として、$k \in \{0,1,\dots,K\}$ を等確率に選び、$[l, l+\min(w,2^k))$ から一様に選びます。$k=0$ なら必ず $l$ になるので、$l$ が出る確率は $1/(K+1)$ 以上です。たとえば `size(1, 1001)` では $K=10$ で、$1$ になる確率は約 $0.18$、$10$ 未満になる確率は約 $0.47$ です。$k=K$ のときは範囲全体から一様に選ぶので、最大付近の値も出ます。
 - `Random(argc, argv)` は、`argv[1]` が非負整数として読めない場合、標準エラー出力にメッセージを出して終了コード $2$ で終了します。生成器が誤った seed で黙って動くのを防ぐためです。
