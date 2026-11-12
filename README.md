@@ -84,7 +84,7 @@ ln -s /path/to/compro_library/scripts/randtest.py ~/.local/bin/randtest
 
 ### 使い方
 
-提出する解 `main.cpp`、愚直解 `naive.cpp`、入力生成器 `gen.cpp` を用意して実行します。生成器の雛形は `randtest --init` で `gen.cpp` に書き出せます。
+提出する解 `main.cpp`、愚直解 `naive.cpp`、入力生成器 `gen.cpp` を用意して実行します。生成器の雛形は `randtest --init` で `gen.cpp` に書き出せます。既に存在するファイルは上書きしません。
 
 ```sh
 randtest --init                                  # gen.cpp の雛形を作る
@@ -103,7 +103,7 @@ randtest -g gen.cpp main.cpp naive.cpp
 
 C++ のソースは、ライブラリのルートを include パスに加えて `g++ -std=c++17 -O2` でコンパイルします。結果はカレントディレクトリの `.randtest/build/` にキャッシュし、ソースか include したヘッダが更新されたときだけ再コンパイルします。拡張子が `.py` のファイルは `python3` で、それ以外は実行ファイルとしてそのまま実行します。
 
-各 seed について、2つの解の出力を空白区切りのトークン列として比較します。出力が食い違うか、どちらかが実行時エラー（終了コードが0以外）や時間切れになると、その入力を反例として報告して終了します。報告には、入力、各解の結果（`OK`・`RE`・`TLE`）、出力の差分が含まれます。反例は `randtest_fail/` に保存され、`in.txt`（入力）、`out_main.txt`・`out_naive.txt`（出力）、`stderr_main.log`・`stderr_naive.log`（標準エラー出力）、`info.txt`（seed と再現コマンド）が残ります。標準エラー出力は画面に表示せず、比較もしません。デバッグ出力を残したままでも使え、内容は `.log` ファイルで確認できます。`.log` ファイルは空でも必ず両方作ります。
+各 seed について、2つの解の出力を空白区切りのトークン列として比較します。出力が食い違うか、どちらかが実行時エラー（終了コードが0以外）や時間切れになると、その入力を反例として報告して終了します。報告には、入力、各解の結果（`OK`・`RE`・`TLE`）、最初に食い違ったトークン、出力の差分が含まれます。反例は `randtest_fail/` に保存され、`in.txt`（入力）、`out_main.txt`・`out_naive.txt`（出力）、`stderr_main.log`・`stderr_naive.log`（標準エラー出力）、`info.txt`（seed、各解の結果、最初の食い違い、再現コマンド）が残ります。`--checker` を使った場合は `checker.log` も残ります。標準エラー出力は画面に表示せず、比較もしません。デバッグ出力を残したままでも使え、内容は `.log` ファイルで確認できます。`.log` ファイルは空でも必ず両方作ります。
 
 ```sh
 randtest -m main.cpp -n naive.cpp -g gen.cpp --replay 42   # seed 42 の入力と両方の出力を表示し、randtest_fail/ に保存する
@@ -120,11 +120,62 @@ randtest -m main.cpp -n naive.cpp -g gen.cpp --replay 42   # seed 42 の入力�
 | `--timeout SEC` | 1回の実行の制限時間（既定値は 2 秒） |
 | `--exact` | トークン単位ではなく、出力をバイト列として完全一致で比較する |
 | `--no-exact` | トークン単位で比較する（設定ファイルの `"exact": true` を打ち消す） |
+| `--float EPS` | 実数のトークンは、絶対誤差か相対誤差が `EPS` 以下なら一致とみなす |
+| `--checker CHECKER` | 比較の代わりにチェッカーで `main` の出力を判定する。`-n` は省略できる |
 | `--replay SEED` | 指定した seed だけを実行し、入力と出力を表示する |
 | `-o DIR` | 反例の保存先（既定値は `randtest_fail`） |
 | `--cxx`, `--cxxflags`, `-I DIR` | コンパイラ、コンパイルオプション、追加の include パス |
 
-終了コードは、すべて一致すれば `0`、反例が見つかれば `1`、コンパイルエラーや生成器の異常終了など準備の段階で失敗すれば `2` です。深い再帰で落ちないよう、実行時はスタックサイズの上限をハードリミットまで引き上げます。解が複数ある問題やインタラクティブ問題の判定には対応していません。
+終了コードは、すべて一致すれば `0`、反例が見つかれば `1`、コンパイルエラーや生成器の異常終了など準備の段階で失敗すれば `2` です。深い再帰で落ちないよう、実行時はスタックサイズの上限をハードリミットまで引き上げます。インタラクティブ問題には対応していません。
+
+### 誤差を許す比較とチェッカー
+
+答えが実数の問題では `--float EPS` を付けます。実数のトークン x（`main`）と y（`naive`）は、|x − y| ≤ EPS か |x − y| ≤ EPS·|y| を満たせば一致とみなします。ただし、両方が整数の形のトークン（`1000000` と `1000001` など）と、単語などの数でないトークンは完全一致で比べます。
+
+```sh
+randtest -m main.cpp -n naive.cpp -g gen.cpp --float 1e-6
+```
+
+正解が複数ある問題では `--checker CHECKER` を使います。入力ごとに次のコマンドを実行し、終了コードが 0 なら合格、それ以外（異常終了と時間切れを含む）なら反例とします。引数の順は testlib のチェッカーと同じです。
+
+```sh
+CHECKER <入力ファイル> <main の出力> <naive の出力>
+```
+
+`-n` は省略でき、そのときは3番目のファイルが空になります。愚直解を渡すと、チェッカーは最適値などをその答えから読み取れます。チェッカーが標準出力・標準エラー出力に書いた内容は、不合格の理由として表示し、`randtest_fail/checker.log` に保存します。`randtest --init --checker check.cpp` を実行すると、生成器の雛形と一緒にチェッカーの雛形も `check.cpp` に書き出します（設定ファイルに `checker` がある場合も同様です）。雛形は、生成器の雛形と組み合わせてそのまま動く「最大の要素の添字（1始まり）を1つ出力する」問題用のチェッカーです。入力を読む、出力を読んで検証する、最適性を確かめる、余分な出力がないか確かめる、の4段階に分かれているので、問題に合わせて書き換えて使います。不合格は `wrong("理由")`（終了コード 1）で返し、愚直解の答えが矛盾するなどチェッカー自身の前提が崩れた場合は終了コード 3 で終了します。
+
+同じ問題のチェッカーを最小限に書くと次のようになります。
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(int, char **argv) {
+    ifstream in(argv[1]), out(argv[2]);  // argv[3] は naive の出力 (-n がなければ空)
+    int n;
+    in >> n;
+    vector<long long> a(n);
+    for(auto &x : a) in >> x;
+    long long best = *max_element(a.begin(), a.end());
+    int k;
+    if(!(out >> k) || k < 1 || k > n) {
+        cout << "invalid index\n";
+        return 1;
+    }
+    if(a[k - 1] != best) {
+        cout << "a[" << k << "] = " << a[k - 1] << " is not the maximum " << best << "\n";
+        return 1;
+    }
+}
+```
+
+```sh
+randtest -m main.cpp -g gen.cpp --checker check.cpp            # 愚直解なし
+randtest main.cpp gen.cpp --checker check.cpp                  # 同じ（FILE は main, gen の順）
+randtest -m main.cpp -n naive.cpp -g gen.cpp --checker check.cpp
+```
+
+`--exact`、`--float`、`--checker` は同時に指定できません。
 
 ### 設定ファイル
 
@@ -150,12 +201,14 @@ randtest -m main.cpp -n naive.cpp -g gen.cpp --replay 42   # seed 42 の入力�
 | `time` | 数値または `null`（`0` と `null` は制限なし） | `--time` |
 | `timeout` | 正の数値 | `--timeout` |
 | `exact` | `true` / `false` | `--exact`, `--no-exact` |
+| `float` | 数値または `null` | `--float` |
+| `checker` | 文字列 | `--checker` |
 | `out`, `cxx`, `cxxflags` | 文字列 | `-o`, `--cxx`, `--cxxflags` |
 | `include` | 文字列のリスト | `-I` |
 
 コマンドラインで指定した値は設定ファイルより優先します。位置引数のファイルも、設定ファイルの `main`・`naive`・`gen` より優先します。例えば設定ファイルに3つのファイルが書いてあっても、`randtest -m other.cpp` なら提出する解だけを差し替えて実行します。`-I` だけは上書きせず、`include` のリストに追加します。
 
-未知のキー、型の誤り、JSON の構文エラーは、ファイル名を添えたエラー（終了コード 2）になります。読み込んだときは、標準エラー出力に `randtest: using settings in randtest.json` と表示します。`randtest --init` は雛形を書き出すだけで、設定ファイルの `main`・`naive`・`gen` は使いません。
+未知のキー、型の誤り、JSON の構文エラーは、ファイル名を添えたエラー（終了コード 2）になります。読み込んだときは、標準エラー出力に `randtest: using settings in randtest.json` と表示します。`randtest --init` は雛形を書き出すだけで、設定ファイルの `main`・`naive`・`gen` は使いません（`checker` があればチェッカーの雛形も作ります）。
 
 ### 動作確認
 

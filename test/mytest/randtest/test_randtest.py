@@ -82,16 +82,17 @@ class RandTestTests(unittest.TestCase):
         self.assertEqual(english.returncode, 0)
         self.assertEqual(japanese.returncode, 0)
         for heading in ("usage: randtest -m MAIN -n NAIVE -g GEN", "files:", "running:",
-                        "specifying files:", "generator:", "counterexample:",
+                        "specifying files:", "comparison:", "generator:", "counterexample:",
                         "exit status:", "examples:", "help language:"):
             self.assertIn(heading, english.stdout)
         for heading in ("使い方: randtest -m MAIN -n NAIVE -g GEN", "ファイル:", "実行:",
-                        "ファイルの指定:", "生成器:", "反例:", "終了コード:", "使用例:",
+                        "ファイルの指定:", "比較方法:", "生成器:", "反例:", "終了コード:", "使用例:",
                         "ヘルプの言語:"):
             self.assertIn(heading, japanese.stdout)
         for option in ("--main", "--naive", "--gen", "--count", "--start", "--time",
                        "--timeout", "--replay", "--exact", "--out", "--cxx", "--cxxflags",
-                       "-I DIR", "--init", "--help-ja", "--help-en"):
+                       "-I DIR", "--init", "--help-ja", "--help-en", "--float EPS",
+                       "--checker CHECKER", "--no-exact"):
             self.assertIn(option, english.stdout)
             self.assertIn(option, japanese.stdout)
 
@@ -227,6 +228,222 @@ class RandTestTests(unittest.TestCase):
         self.assertEqual(result.stdout, "wrote gen2.cpp\n")
         self.assertFalse((self.dir / ".randtest").exists())
 
+    def load_module(self):
+        spec = importlib.util.spec_from_file_location("randtest", SCRIPT)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module
+
+    def test_tokens_match_with_tolerance(self):
+        match = self.load_module().tokens_match
+        for x, y, eps, expected in (
+            (b"1.0000001", b"1", 1e-6, True),     # absolute error
+            (b"1000000.5", b"1000000", 1e-6, True),  # relative error
+            (b"1.01", b"1", 1e-6, False),
+            (b"1", b"1.0", 1e-6, True),           # integer vs real
+            (b"1000001", b"1000000", 1e-6, False),  # both integers: exact
+            (b"-0.0000000", b"0", 1e-6, True),
+            (b"1e-7", b"0", 1e-6, True),
+            (b"inf", b"inf", 1e-6, True),
+            (b"nan", b"nan", 1e-6, True),          # same token
+            (b"nan", b"0", 1e-6, False),
+            (b"Yes", b"yes", 1e-6, False),
+            (b"1.0000001", b"1", None, False),     # no tolerance
+            (b"1.0", b"1.0", 0.0, True),
+            (b"1.00", b"1.0", 0.0, True),
+        ):
+            with self.subTest(x=x, y=y, eps=eps):
+                self.assertEqual(match(x, y, eps), expected)
+
+    def test_float_option(self):
+        self.write("avg_naive.cpp", solution(
+            "long double s = 0; for(auto x : a) s += x; printf(\"%.12Lf\\n\", s / n);"))
+        self.write("avg_close.cpp", solution(
+            "double s = 0; for(auto x : a) s += x; printf(\"%.9f\\n\", s / n * (1 + 1e-8));"))
+        self.write("avg_floor.cpp", solution(
+            "long long s = 0; for(auto x : a) s += x; printf(\"%lld\\n\", s / n);"))
+        # average of [-5, 6) values is often not an integer
+        result = self.randtest("-m", "avg_close.cpp", "-n", "avg_naive.cpp", "-g", "gen.cpp",
+                               "-c", "50", "--float", "1e-6")
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        result = self.randtest("-m", "avg_close.cpp", "-n", "avg_naive.cpp", "-g", "gen.cpp",
+                               "-c", "50")
+        self.assertEqual(result.returncode, 1)
+        result = self.randtest("-m", "avg_floor.cpp", "-n", "avg_naive.cpp", "-g", "gen.cpp",
+                               "--float", "1e-6")
+        self.assertEqual(result.returncode, 1, result.stderr)
+        self.assertIn("first difference: token 1: main ", result.stdout)
+        info = (self.dir / "randtest_fail" / "info.txt").read_text()
+        self.assertIn("--float 1e-06 --replay", info)
+        self.assertIn("first difference: token 1", info)
+
+    def checker_setup(self):
+        # output any index of a maximum element; the checker uses the naive answer if any
+        self.write("gen.cpp", GEN.replace("rng.randint(-5, 6)", "rng.randint(0, 3)"))
+        self.write("argmax_naive.cpp", solution(
+            "int k = 0; for(int i = 0; i < n; i++) if(a[i] > a[k]) k = i; "
+            "std::cout << k + 1 << '\\n';"))
+        self.write("argmax_last.cpp", solution(
+            "int k = 0; for(int i = 0; i < n; i++) if(a[i] >= a[k]) k = i; "
+            "std::cout << k + 1 << '\\n';"))
+        self.write("argmax_bad.cpp", solution("std::cout << n << '\\n';"))
+        self.write("check.cpp", textwrap.dedent("""\
+            #include <fstream>
+            #include <iostream>
+            #include <vector>
+            int main(int argc, char **argv) {
+                if(argc != 4) return 3;
+                std::ifstream in(argv[1]), out(argv[2]), ans(argv[3]);
+                int n; in >> n;
+                std::vector<long long> a(n);
+                for(auto &x : a) in >> x;
+                long long best = a[0];
+                for(auto x : a) if(x > best) best = x;
+                int expected;
+                if(ans >> expected && a[expected - 1] != best) return 3;
+                int k;
+                if(!(out >> k) || k < 1 || k > n) { std::cout << "invalid index\\n"; return 1; }
+                if(a[k - 1] != best) { std::cout << "not maximum: " << k << "\\n"; return 1; }
+                std::cerr << "checked\\n";
+            }
+            """))
+
+    def test_checker_accepts_any_correct_answer(self):
+        self.checker_setup()
+        result = self.randtest("-m", "argmax_last.cpp", "-n", "argmax_naive.cpp", "-g", "gen.cpp")
+        self.assertEqual(result.returncode, 1)  # plain comparison rejects other answers
+        for args in (
+            ["-m", "argmax_last.cpp", "-n", "argmax_naive.cpp", "-g", "gen.cpp",
+             "--checker", "check.cpp"],
+            ["-m", "argmax_last.cpp", "-g", "gen.cpp", "--checker", "check.cpp"],
+            ["argmax_last.cpp", "gen.cpp", "--checker", "check.cpp"],  # FILEs: MAIN, GEN
+            ["argmax_last.cpp", "argmax_naive.cpp", "gen.cpp", "--checker", "check.cpp"],
+        ):
+            with self.subTest(args=args):
+                result = self.randtest(*args, "-c", "50")
+                self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+                self.assertIn("all 50 cases passed", result.stdout)
+
+    def test_checker_rejection_is_reported(self):
+        self.checker_setup()
+        result = self.randtest("-m", "argmax_bad.cpp", "-g", "gen.cpp", "--checker", "check.cpp")
+        self.assertEqual(result.returncode, 1, result.stderr)
+        self.assertIn("--- output of main ---", result.stdout)
+        self.assertRegex(result.stdout, r"checker: rejected \(exit code 1\)\n"
+                                        r"--- checker message ---\n(not maximum|invalid index)")
+        self.assertIn("(logs: stderr_main.log, checker.log)", result.stdout)
+        fail = self.dir / "randtest_fail"
+        self.assertFalse((fail / "out_naive.txt").exists())
+        self.assertIn("not maximum", (fail / "checker.log").read_text())
+        info = (fail / "info.txt").read_text()
+        self.assertIn("checker: check.cpp rejected (exit code 1)", info)
+        self.assertIn("--checker check.cpp --replay", info)
+        seed = info.split()[1]
+        replay = self.randtest("-m", "argmax_bad.cpp", "-g", "gen.cpp", "--checker", "check.cpp",
+                               "--replay", seed)
+        self.assertEqual(replay.returncode, 1)
+        self.assertIn("checker: rejected", replay.stdout)
+        replay = self.randtest("-m", "argmax_naive.cpp", "-g", "gen.cpp", "--checker",
+                               "check.cpp", "--replay", seed)
+        self.assertEqual(replay.returncode, 0)
+        self.assertIn("checker: accepted\n--- checker message ---\nchecked", replay.stdout)
+
+        # a crashing or slow checker rejects too
+        self.write("crash.py", "import os\nos.abort()\n")
+        result = self.randtest("-m", "argmax_naive.cpp", "-g", "gen.cpp", "--checker", "crash.py")
+        self.assertIn("checker: crashed (signal 6)", result.stdout)
+        self.write("slow.py", "while True:\n    pass\n")
+        result = self.randtest("-m", "argmax_naive.cpp", "-g", "gen.cpp", "--checker", "slow.py",
+                               "--timeout", "0.5")
+        self.assertIn("checker: TLE (> 0.5s)", result.stdout)
+        # MAIN failing to run is reported without calling the checker
+        self.write("re.cpp", solution("return 4;"))
+        result = self.randtest("-m", "re.cpp", "-g", "gen.cpp", "--checker", "crash.py")
+        self.assertIn("main: RE (exit code 4)", result.stdout)
+        self.assertNotIn("checker:", result.stdout)
+
+    def test_init_writes_a_working_checker_template(self):
+        (self.dir / "gen.cpp").unlink()
+        result = self.randtest("--init", "--checker", "check.cpp")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout, "wrote gen.cpp\nwrote check.cpp\n")
+        self.assertIn("exit(1)", (self.dir / "check.cpp").read_text())
+        # the two templates work together: print the index of a maximum
+        self.write("first_max.cpp", solution(
+            "int k = 0; for(int i = 0; i < n; i++) if(a[i] > a[k]) k = i; "
+            "std::cout << k + 1 << '\\n';"))
+        self.write("last_max.cpp", solution(
+            "int k = 0; for(int i = 0; i < n; i++) if(a[i] >= a[k]) k = i; "
+            "std::cout << k + 1 << '\\n';"))
+        self.write("skip_last.cpp", solution(
+            "int k = 0; for(int i = 0; i + 1 < n; i++) if(a[i] > a[k]) k = i; "
+            "std::cout << k + 1 << '\\n';"))
+        self.write("extra.cpp", solution(
+            "int k = 0; for(int i = 0; i < n; i++) if(a[i] > a[k]) k = i; "
+            "std::cout << k + 1 << \" 0\\n\";"))
+        result = self.randtest("last_max.cpp", "gen.cpp", "--checker", "check.cpp", "-c", "100")
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        result = self.randtest("-m", "last_max.cpp", "-n", "first_max.cpp", "-g", "gen.cpp",
+                               "--checker", "check.cpp", "-c", "100")
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        result = self.randtest("skip_last.cpp", "gen.cpp", "--checker", "check.cpp")
+        self.assertEqual(result.returncode, 1)
+        self.assertRegex(result.stdout, r"checker: rejected \(exit code 1\)\n"
+                                        r"--- checker message ---\na\[\d+\] = \d+ is not the maximum")
+        result = self.randtest("extra.cpp", "gen.cpp", "--checker", "check.cpp")
+        self.assertEqual(result.returncode, 1)
+        self.assertIn("extra output: 0", result.stdout)
+
+    def test_init_keeps_existing_files(self):
+        self.write("check.cpp", "// mine\n")
+        result = self.randtest("--init", "--checker", "check.cpp")  # gen.cpp exists too
+        self.assertEqual(result.returncode, 2)
+        self.assertIn("gen.cpp already exists, kept it", result.stderr)
+        self.assertIn("check.cpp already exists, kept it", result.stderr)
+        self.assertIn("nothing was written", result.stderr)
+        result = self.randtest("--init", "gen2.cpp", "--checker", "check.cpp")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout, "wrote gen2.cpp\n")
+        self.assertEqual((self.dir / "check.cpp").read_text(), "// mine\n")
+        result = self.randtest("--init", "gen3.cpp", "--checker", "check.py")
+        self.assertEqual(result.returncode, 2)
+        self.assertIn("check.py is not a C++ file", result.stderr)
+        self.assertFalse((self.dir / "gen3.cpp").exists())
+        # "checker" in the settings file is used as well
+        self.write_config({"checker": "c2.cpp"})
+        result = self.randtest("--init", "gen4.cpp")
+        self.assertEqual(result.stdout, "wrote gen4.cpp\nwrote c2.cpp\n")
+
+    def test_comparison_mode_errors(self):
+        for args, message in (
+            (["--exact", "--float", "1e-6"], "--exact and --float cannot be combined"),
+            (["--exact", "--checker", "c.cpp"], "--exact and --checker cannot be combined"),
+            (["--float", "1e-6", "--checker", "c.cpp"], "--float and --checker cannot be combined"),
+            (["--float", "-1"], "--float must be a non-negative number"),
+            (["--float", "nan"], "--float must be a non-negative number"),
+        ):
+            with self.subTest(args=args):
+                result = self.randtest("main.cpp", "naive.cpp", "gen.cpp", *args)
+                self.assertEqual(result.returncode, 2)
+                self.assertIn(message, result.stderr)
+        result = self.randtest("-m", "main.cpp", "--checker", "c.cpp")
+        self.assertIn("missing GEN", result.stderr)
+        self.assertNotIn("NAIVE", result.stderr.splitlines()[-1])
+
+    def test_config_float_and_checker(self):
+        self.checker_setup()
+        self.write_config({"main": "argmax_last.cpp", "gen": "gen.cpp", "checker": "check.cpp",
+                           "count": 20})
+        result = self.randtest()
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.write_config({"float": "1e-6"})
+        result = self.randtest("main.cpp", "naive.cpp", "gen.cpp")
+        self.assertIn('"float" must be a number or null', result.stderr)
+        self.write_config({"float": 1e-6})
+        result = self.randtest("main.cpp", "naive.cpp", "gen.cpp", "--exact")
+        self.assertIn("--exact and --float cannot be combined (check randtest.json)",
+                      result.stderr)
+
     def test_counterexample_is_saved_and_replayable(self):
         # wrong when every value is negative
         self.write("main.cpp", solution(
@@ -264,7 +481,7 @@ class RandTestTests(unittest.TestCase):
             self.assertNotIn("debug-main", stream)
             self.assertNotIn("debug-naive", stream)
         self.assertIn("main: OK\nnaive: OK\n", result.stdout)
-        self.assertIn("saved to randtest_fail/ (stderr: stderr_main.log, stderr_naive.log)",
+        self.assertIn("saved to randtest_fail/ (logs: stderr_main.log, stderr_naive.log)",
                       result.stdout)
         self.assertTrue((fail / "stderr_main.log").read_text().startswith("debug-main n="))
         self.assertEqual((fail / "stderr_naive.log").read_text(), "debug-naive\n")

@@ -11,7 +11,9 @@ import argparse
 import difflib
 import hashlib
 import json
+import math
 import os
+import re
 import resource
 import shlex
 import shutil
@@ -24,6 +26,7 @@ from pathlib import Path
 LIBRARY_ROOT = Path(__file__).resolve().parents[1]
 CPP_SUFFIXES = {".cpp", ".cc", ".cxx"}
 BUILD_DIR = Path(".randtest") / "build"
+CASE_DIR = Path(".randtest") / "case"  # files passed to the checker
 SHOW_LIMIT = 2000  # bytes of input/output printed on failure
 CONFIG_FILE = "randtest.json"
 ROLES = ("main", "naive", "gen")
@@ -38,6 +41,66 @@ int main(int argc, char **argv) {
     auto a = random_vector(rng, n, 1, 11);  // each value in [1, 11)
     print(n);
     print(a);
+}
+"""
+
+CHECKER_TEMPLATE = """\
+// randtest checker, called as: check <input> <output of MAIN> <output of NAIVE>
+// The third file is empty when NAIVE is not given.
+// Exit status: 0 = accepted, 1 = wrong answer (print the reason to stdout).
+// This sample checks "print the 1-indexed position of a maximum of a".
+#include "template/template.cpp"
+
+ifstream input_file, output_file, answer_file;
+
+[[noreturn]] void wrong(const string &reason) {
+    cout << reason << '\\n';
+    exit(1);
+}
+
+// Read one value of the output of MAIN; rejects missing or malformed tokens.
+template <class T> T read_output() {
+    T x;
+    if(!(output_file >> x)) wrong("cannot read the output");
+    return x;
+}
+
+int main(int argc, char **argv) {
+    if(argc != 4) {
+        cerr << "usage: " << argv[0] << " <input> <output> <answer>\\n";
+        return 3;
+    }
+    input_file.open(argv[1]);
+    output_file.open(argv[2]);
+    answer_file.open(argv[3]);
+
+    // 1. read the input
+    int n;
+    input_file >> n;
+    vector<ll> a(n);
+    for(auto &x : a) input_file >> x;
+
+    // 2. read and validate the output of MAIN
+    int k = read_output<int>();
+    if(k < 1 || k > n) wrong("index out of range: " + to_string(k));
+
+    // 3. check optimality; the answer of NAIVE (if any) can be used here
+    ll best = *max_element(a.begin(), a.end());
+    int expected;
+    if(answer_file >> expected) {
+        if(a[expected - 1] != best) {
+            cerr << "the naive answer is not a maximum\\n";
+            return 3;
+        }
+    }
+    if(a[k - 1] != best) {
+        wrong("a[" + to_string(k) + "] = " + to_string(a[k - 1]) +
+              " is not the maximum " + to_string(best));
+    }
+
+    // 4. reject extra output
+    string extra;
+    if(output_file >> extra) wrong("extra output: " + extra);
 }
 """
 
@@ -159,8 +222,94 @@ def run(command, stdin, timeout):
     return Result(p.stdout, p.stderr, p.returncode)
 
 
-def same_output(a, b, exact):
-    return a == b if exact else a.split() == b.split()
+INTEGER = re.compile(rb"[+-]?[0-9]+\Z")
+
+
+def tokens_match(x, y, eps):
+    """Compare two tokens; with eps, real numbers may differ by eps.
+
+    The error is accepted when it is at most eps either absolutely or relative
+    to y (the naive answer). Two integer tokens must be equal."""
+    if x == y:
+        return True
+    if eps is None or (INTEGER.match(x) and INTEGER.match(y)):
+        return False
+    try:
+        a, b = float(x), float(y)
+    except ValueError:
+        return False
+    if not (math.isfinite(a) and math.isfinite(b)):
+        return a == b
+    diff = abs(a - b)
+    return diff <= eps or diff <= eps * abs(b)
+
+
+def first_mismatch(main_out, naive_out, args):
+    """Return None if the outputs match, otherwise a description."""
+    if args.exact:
+        return None if main_out == naive_out else "outputs differ byte by byte"
+    a, b = main_out.split(), naive_out.split()
+    for i, (x, y) in enumerate(zip(a, b)):
+        if not tokens_match(x, y, args.float):
+            return (f"token {i + 1}: main {x.decode(errors='replace')!r}, "
+                    f"naive {y.decode(errors='replace')!r}")
+    if len(a) != len(b):
+        return f"main printed {len(a)} tokens, naive printed {len(b)}"
+    return None
+
+
+def checker_status(result, timeout):
+    if result.ok:
+        return "accepted"
+    if result.timed_out:
+        return f"TLE (> {timeout}s)"
+    if result.returncode < 0:
+        return f"crashed (signal {-result.returncode})"
+    return f"rejected (exit code {result.returncode})"
+
+
+class Case:
+    """One input with the results of running every program on it."""
+
+    def __init__(self, seed, stdin, main, naive, checker, mismatch):
+        self.seed = seed
+        self.stdin = stdin
+        self.main = main          # Result
+        self.naive = naive        # Result, or None without NAIVE
+        self.checker = checker    # Result, or None without CHECKER
+        self.mismatch = mismatch  # description of differing outputs, or None
+
+    @property
+    def runs_ok(self):
+        return self.main.ok and (self.naive is None or self.naive.ok)
+
+    @property
+    def passed(self):
+        if not self.runs_ok:
+            return False
+        if self.checker is not None:
+            return self.checker.ok
+        return self.mismatch is None
+
+
+def evaluate(seed, args, programs):
+    stdin = generate(programs["gen"], seed, args.timeout)
+    main = run(programs["main"], stdin, args.timeout)
+    naive = run(programs["naive"], stdin, args.timeout) if programs["naive"] else None
+    checker = mismatch = None
+    if main.ok and (naive is None or naive.ok):
+        if programs["checker"]:
+            CASE_DIR.mkdir(parents=True, exist_ok=True)
+            files = []
+            for name, data in (("in.txt", stdin), ("out.txt", main.stdout),
+                               ("ans.txt", naive.stdout if naive else b"")):
+                path = (CASE_DIR / name).resolve()
+                path.write_bytes(data)
+                files.append(str(path))
+            checker = run([*programs["checker"], *files], b"", args.timeout)
+        else:
+            mismatch = first_mismatch(main.stdout, naive.stdout, args)
+    return Case(seed, stdin, main, naive, checker, mismatch)
 
 
 def generate(gen, seed, timeout):
@@ -198,44 +347,81 @@ def show_diff(main_out, naive_out):
         print("... (truncated)")
 
 
-def save_case(out_dir, seed, args, stdin, main, naive):
+def roles_of(case):
+    return [("main", case.main)] + ([("naive", case.naive)] if case.naive else [])
+
+
+def show_verdict(case, args, out_dir=None):
+    """Print why the case passed or failed (the statuses are printed before)."""
+    if not case.runs_ok:
+        return
+    if case.checker is not None:
+        print(f"checker: {checker_status(case.checker, args.timeout)}")
+        message = case.checker.stdout + case.checker.stderr
+        if message:
+            show("checker message", message, out_dir / "checker.log" if out_dir else None)
+    elif case.mismatch is None:
+        print("outputs match")
+    else:
+        print(f"first difference: {case.mismatch}")
+        show_diff(case.main.stdout, case.naive.stdout)
+
+
+def save_case(out_dir, args, case):
     out_dir.mkdir(parents=True, exist_ok=True)
     for name in ("in.txt", "out_main.txt", "out_naive.txt", "stderr_main.log",
-                 "stderr_naive.log", "err_main.txt", "err_naive.txt", "info.txt"):
+                 "stderr_naive.log", "checker.log", "err_main.txt", "err_naive.txt",
+                 "info.txt"):
         (out_dir / name).unlink(missing_ok=True)
-    (out_dir / "in.txt").write_bytes(stdin)
-    for role, result in (("main", main), ("naive", naive)):
+    (out_dir / "in.txt").write_bytes(case.stdin)
+    for role, result in roles_of(case):
         (out_dir / f"out_{role}.txt").write_bytes(result.stdout)
         (out_dir / f"stderr_{role}.log").write_bytes(result.stderr)
-    (out_dir / "info.txt").write_text(
-        f"seed: {seed}\n"
-        f"main: {args.main} {main.status(args.timeout)}\n"
-        f"naive: {args.naive} {naive.status(args.timeout)}\n"
-        f"replay: {replay_command(args, seed)}\n"
-    )
+    info = [f"seed: {case.seed}", f"main: {args.main} {case.main.status(args.timeout)}"]
+    if case.naive:
+        info.append(f"naive: {args.naive} {case.naive.status(args.timeout)}")
+    if case.checker is not None:
+        (out_dir / "checker.log").write_bytes(case.checker.stdout + case.checker.stderr)
+        info.append(f"checker: {args.checker} {checker_status(case.checker, args.timeout)}")
+    elif case.mismatch:
+        info.append(f"first difference: {case.mismatch}")
+    info.append(f"replay: {replay_command(args, case.seed)}")
+    (out_dir / "info.txt").write_text("\n".join(info) + "\n")
 
 
 def replay_command(args, seed):
-    files = " ".join(f"-{flag} {shlex.quote(path)}" for flag, path in
-                     (("m", args.main), ("n", args.naive), ("g", args.gen)))
-    return f"randtest {files} --replay {seed}"
+    words = ["randtest", "-m", args.main]
+    if args.naive:
+        words += ["-n", args.naive]
+    words += ["-g", args.gen]
+    if args.checker:
+        words += ["--checker", args.checker]
+    if args.float is not None:
+        words += ["--float", repr(args.float)]
+    if args.exact:
+        words.append("--exact")
+    return " ".join(shlex.quote(w) for w in words) + f" --replay {seed}"
 
 
-def report(seed, args, stdin, main, naive):
+def print_saved(out_dir, case):
+    logs = [f"stderr_{role}.log" for role, _ in roles_of(case)]
+    if case.checker is not None:
+        logs.append("checker.log")
+    print(f"saved to {out_dir}/ (logs: {', '.join(logs)})")
+
+
+def report(args, case):
     out_dir = Path(args.out)
-    save_case(out_dir, seed, args, stdin, main, naive)
-    print(f"\nfound a counterexample (seed {seed})")
-    show("input", stdin, out_dir / "in.txt")
-    for role, result in (("main", main), ("naive", naive)):
+    save_case(out_dir, args, case)
+    print(f"\nfound a counterexample (seed {case.seed})")
+    show("input", case.stdin, out_dir / "in.txt")
+    for role, result in roles_of(case):
         print(f"{role}: {result.status(args.timeout)}")
-    if main.ok and naive.ok:
-        show_diff(main.stdout, naive.stdout)
-    print_saved(out_dir)
-    print(f"replay with --replay {seed}")
-
-
-def print_saved(out_dir):
-    print(f"saved to {out_dir}/ (stderr: stderr_main.log, stderr_naive.log)")
+    if case.checker is not None and case.runs_ok:
+        show("output of main", case.main.stdout, out_dir / "out_main.txt")
+    show_verdict(case, args, out_dir)
+    print_saved(out_dir, case)
+    print(f"replay with --replay {case.seed}")
 
 
 # ---------------------------------------------------------------- main
@@ -245,6 +431,7 @@ HELP = {
         "usage_prefix": "usage: ",
         "usage": "%(prog)s -m MAIN -n NAIVE -g GEN [options]\n"
                  "       %(prog)s MAIN NAIVE GEN [options]\n"
+                 "       %(prog)s -m MAIN -g GEN --checker CHECKER [-n NAIVE] [options]\n"
                  "       %(prog)s --init [PATH]",
         "description": """\
 Random testing: run a solution and a naive solution on many generated
@@ -253,9 +440,11 @@ inputs and stop at the first input (a counterexample) where they disagree.
 For each seed S = START, START+1, ..., randtest
   1. runs `GEN S` and takes its stdout as the input,
   2. feeds the input to MAIN and NAIVE,
-  3. compares their outputs token by token (whitespace is ignored).
-A different output, a runtime error (non-zero exit status) or a timeout
-of either program is reported as a counterexample.""",
+  3. compares their outputs token by token (whitespace is ignored), with
+     an error tolerance (--float), or judges MAIN with a checker (--checker).
+A different output (or rejection by the checker), a runtime error
+(non-zero exit status) or a timeout of a program is reported as a
+counterexample.""",
         "epilog": """\
 specifying files:
   The three files can be given with -m, -n and -g in any order.
@@ -272,6 +461,25 @@ specifying files:
     .py            run with the Python interpreter that runs randtest
     others         executed as they are (e.g. ./a.out)
 
+comparison:
+  By default the outputs are split at whitespace and the tokens must be
+  equal. --exact compares the bytes instead.
+  --float EPS accepts two real-number tokens x (MAIN) and y (NAIVE) when
+    |x - y| <= EPS  or  |x - y| <= EPS * |y|.
+  Tokens that are both integers (e.g. 1000000 and 1000001) must still be
+  equal, and other tokens such as words must match exactly.
+  --checker CHECKER runs, for every input,
+    CHECKER <input file> <output of MAIN> <output of NAIVE>
+  (the argument order of testlib checkers). Exit status 0 accepts the
+  output, and any other status, a crash or a timeout rejects it. Without
+  NAIVE the third file is empty. Use it for problems with several correct
+  answers. The checker's stdout and stderr are printed as the reason and
+  saved to checker.log. With --checker, NAIVE is optional; when FILEs are
+  one fewer than the roles left, they fill MAIN and GEN.
+  `randtest --init --checker check.cpp` writes a checker template with
+  the generator template (also when "checker" is in randtest.json).
+  --exact, --float and --checker cannot be combined.
+
 generator:
   GEN is called as `GEN <seed>` and must print one input to stdout.
   The same seed must always give the same input. With this library:
@@ -287,6 +495,7 @@ counterexample:
     in.txt                            the input
     out_main.txt out_naive.txt        the outputs
     stderr_main.log stderr_naive.log  stderr (always written, maybe empty)
+    checker.log                       output of CHECKER (with --checker)
     info.txt                          the seed, the results and a replay
                                       command
   Stderr is not printed nor compared, so debug output is fine; read it
@@ -304,6 +513,8 @@ exit status:
 examples:
   randtest --init
       write a generator template to gen.cpp
+  randtest --init --checker check.cpp
+      also write a checker template to check.cpp
   randtest -m main.cpp -n naive.cpp -g gen.cpp
       try seeds 0..999
   randtest -m main.cpp -n naive.py -g gen.cpp -c 0 --time 60
@@ -313,6 +524,10 @@ examples:
   randtest -m main.cpp -n naive.cpp -g gen.cpp \\
            --cxxflags "-std=c++17 -O2 -g -fsanitize=address,undefined"
       also report out-of-range accesses as runtime errors
+  randtest -m main.cpp -n naive.cpp -g gen.cpp --float 1e-6
+      accept an absolute or relative error of at most 1e-6
+  randtest -m main.cpp -n naive.cpp -g gen.cpp --checker check.cpp
+      judge with check.cpp, which can read the naive answer
 
 settings file:
   If ./randtest.json exists, its values are used as the defaults of the
@@ -323,6 +538,8 @@ settings file:
     "count", "start"           integers
     "time", "timeout"          seconds ("time": 0 or null for no limit)
     "exact"                    true or false (--no-exact turns it off)
+    "float"                    a number or null
+    "checker"                  a file (string)
     "out", "cxx", "cxxflags"   strings
     "include"                  list of directories
   Unknown keys and values of a wrong type are errors. Example:
@@ -357,12 +574,15 @@ help language:
             "replay": "run only SEED, show the input and outputs and\nsave them with stderr to OUT",
             "exact": "compare outputs byte by byte instead of token by token",
             "no_exact": "compare token by token (overrides \"exact\": true)",
+            "float": "accept real numbers with an absolute or relative\nerror of at most EPS",
+            "checker": "judge the output of MAIN with CHECKER instead of\ncomparing; NAIVE becomes optional",
             "out": "directory to save a counterexample\n(default: randtest_fail)",
             "cxx": "C++ compiler (default: g++)",
             "cxxflags": "compiler flags, replacing the default\n(default: \"-std=c++17 -O2\")",
             "include": "additional include directory (repeatable)",
-            "init": "write a generator template to PATH (default: gen.cpp)\n"
-                    "and exit; run the test as well if all files are given",
+            "init": "write a generator template to PATH (default: gen.cpp),\n"
+                    "and a checker template too with --checker CHECKER;\n"
+                    "run the test as well if all files are given",
             "help": "show the help in the language of the environment",
             "help_ja": "show the help in Japanese",
             "help_en": "show the help in English",
@@ -372,6 +592,7 @@ help language:
         "usage_prefix": "使い方: ",
         "usage": "%(prog)s -m MAIN -n NAIVE -g GEN [オプション]\n"
                  "       %(prog)s MAIN NAIVE GEN [オプション]\n"
+                 "       %(prog)s -m MAIN -g GEN --checker CHECKER [-n NAIVE] [オプション]\n"
                  "       %(prog)s --init [PATH]",
         "description": """\
 ランダムテスト: 提出する解 (MAIN) と愚直解 (NAIVE) に、生成器 (GEN) が
@@ -380,9 +601,11 @@ help language:
 seed S = START, START+1, ... の順に、次の処理を繰り返します。
   1. `GEN S` を実行し、標準出力を入力とする
   2. その入力を MAIN と NAIVE に与える
-  3. 2 つの出力をトークン単位で比較する (空白・改行の違いは無視)
-出力の食い違い、実行時エラー (終了コードが 0 以外)、時間切れのいずれかが
-起きた入力を反例として報告し、そこで終了します。""",
+  3. 2 つの出力をトークン単位で比較する (空白・改行の違いは無視)。
+     誤差を許して比較する (--float) か、チェッカーで判定する (--checker)
+     こともできる
+出力の食い違い (チェッカーの不合格)、実行時エラー (終了コードが 0 以外)、
+時間切れのいずれかが起きた入力を反例として報告し、そこで終了します。""",
         "epilog": """\
 ファイルの指定:
   3 つのファイルは -m, -n, -g で順不同に指定できます。オプションを付けずに
@@ -398,6 +621,25 @@ seed S = START, START+1, ... の順に、次の処理を繰り返します。
                    したヘッダが変わったときだけ再コンパイルする)
     .py            randtest を動かしている Python で実行する
     それ以外       実行ファイルとしてそのまま実行する (例: ./a.out)
+
+比較方法:
+  既定では、出力を空白・改行で区切ったトークンがすべて等しいかを調べます。
+  --exact を付けるとバイト列の完全一致で比較します。
+  --float EPS は、実数のトークン x (MAIN) と y (NAIVE) が
+    |x - y| <= EPS  または  |x - y| <= EPS * |y|
+  を満たせば一致とみなします。ただし、両方が整数の形のトークン (例えば
+  1000000 と 1000001) と、単語などの数でないトークンは完全一致で比べます。
+  --checker CHECKER は、入力ごとに
+    CHECKER <入力ファイル> <MAIN の出力> <NAIVE の出力>
+  を実行します (testlib のチェッカーと同じ引数の順)。終了コード 0 なら
+  合格、それ以外の終了コード・異常終了・時間切れは不合格です。NAIVE が
+  なければ 3 番目のファイルは空になります。正解が複数ある問題に使います。
+  チェッカーの標準出力と標準エラー出力は、不合格の理由として表示し、
+  checker.log に保存します。--checker を使うときは NAIVE を省略でき、
+  FILE が残りの役割より 1 つ少なければ MAIN と GEN に割り当てます。
+  `randtest --init --checker check.cpp` で、生成器の雛形と一緒にチェッカー
+  の雛形も書き出します (randtest.json に "checker" がある場合も同様)。
+  --exact, --float, --checker は同時に指定できません。
 
 生成器:
   GEN は `GEN <seed>` の形で呼ばれ、入力を 1 つ標準出力に書きます。同じ
@@ -415,6 +657,7 @@ seed S = START, START+1, ... の順に、次の処理を繰り返します。
     in.txt                            入力
     out_main.txt out_naive.txt        出力
     stderr_main.log stderr_naive.log  標準エラー出力 (空でも必ず書き出す)
+    checker.log                       CHECKER の出力 (--checker のとき)
     info.txt                          seed、各解の結果、再現用のコマンド
   標準エラー出力は画面に表示せず、比較もしないので、デバッグ出力が残って
   いても構いません。内容は .log ファイルで確認してください。
@@ -432,6 +675,8 @@ seed S = START, START+1, ... の順に、次の処理を繰り返します。
 使用例:
   randtest --init
       生成器の雛形を gen.cpp に書き出す
+  randtest --init --checker check.cpp
+      チェッカーの雛形も check.cpp に書き出す
   randtest -m main.cpp -n naive.cpp -g gen.cpp
       seed 0 から 999 までを試す
   randtest -m main.cpp -n naive.py -g gen.cpp -c 0 --time 60
@@ -441,6 +686,10 @@ seed S = START, START+1, ... の順に、次の処理を繰り返します。
   randtest -m main.cpp -n naive.cpp -g gen.cpp \\
            --cxxflags "-std=c++17 -O2 -g -fsanitize=address,undefined"
       配列外アクセスなども実行時エラーとして検出する
+  randtest -m main.cpp -n naive.cpp -g gen.cpp --float 1e-6
+      絶対誤差または相対誤差 1e-6 までを許して比較する
+  randtest -m main.cpp -n naive.cpp -g gen.cpp --checker check.cpp
+      check.cpp で判定する (愚直解の答えも参照できる)
 
 設定ファイル:
   実行したディレクトリに randtest.json があれば、その値をオプションの既定値
@@ -451,6 +700,8 @@ seed S = START, START+1, ... の順に、次の処理を繰り返します。
     "count", "start"           整数
     "time", "timeout"          秒数 ("time" は 0 か null で制限なし)
     "exact"                    true か false (--no-exact で打ち消せる)
+    "float"                    数値か null
+    "checker"                  ファイル (文字列)
     "out", "cxx", "cxxflags"   文字列
     "include"                  ディレクトリのリスト
   未知のキーや型の誤りはエラーになります。例:
@@ -487,12 +738,15 @@ seed S = START, START+1, ... の順に、次の処理を繰り返します。
             "replay": "SEED だけを実行して入力と出力を表示し、\n標準エラー出力とともに OUT に保存する",
             "exact": "トークン単位ではなくバイト列の完全一致で比較する",
             "no_exact": "トークン単位で比較する (\"exact\": true を打ち消す)",
+            "float": "実数のトークンは絶対誤差か相対誤差が EPS 以下なら\n一致とみなす",
+            "checker": "比較の代わりに CHECKER で MAIN の出力を判定する。\nNAIVE は省略できる",
             "out": "反例の保存先 (既定値: randtest_fail)",
             "cxx": "C++ コンパイラ (既定値: g++)",
             "cxxflags": "コンパイルオプション。既定値を置き換える\n(既定値: \"-std=c++17 -O2\")",
             "include": "追加の include ディレクトリ (複数回指定できる)",
             "init": "生成器の雛形を PATH に書き出す (既定値: gen.cpp)。\n"
-                    "ファイルも 3 つ指定すれば、続けてテストを実行する",
+                    "--checker CHECKER も指定すればチェッカーの雛形も作る。\n"
+                    "ファイルも指定すれば、続けてテストを実行する",
             "help": "環境に合わせた言語でヘルプを表示する",
             "help_ja": "日本語でヘルプを表示する",
             "help_en": "英語でヘルプを表示する",
@@ -551,6 +805,8 @@ def build_parser(lang):
     g["compare"].add_argument("--exact", action="store_true", help=h["exact"])
     g["compare"].add_argument("--no-exact", dest="exact", action="store_false",
                               help=h["no_exact"])
+    g["compare"].add_argument("--float", type=float, metavar="EPS", help=h["float"])
+    g["compare"].add_argument("--checker", metavar="CHECKER", help=h["checker"])
     g["compare"].add_argument("-o", "--out", default="randtest_fail", metavar="DIR",
                               help=h["out"])
     g["build"].add_argument("--cxx", default="g++", metavar="CXX", help=h["cxx"])
@@ -583,6 +839,8 @@ CONFIG_TYPES = {
     "time": ("a number or null", lambda v: v is None or _is_number(v)),
     "timeout": ("a number", _is_number),
     "exact": ("true or false", lambda v: isinstance(v, bool)),
+    "float": ("a number or null", lambda v: v is None or _is_number(v)),
+    "checker": ("a string", lambda v: isinstance(v, str)),
     "out": ("a string", lambda v: isinstance(v, str)),
     "cxx": ("a string", lambda v: isinstance(v, str)),
     "cxxflags": ("a string", lambda v: isinstance(v, str)),
@@ -632,19 +890,32 @@ def parse_args(argv):
 
     files = list(args.files)
     files_on_command_line = bool(files) or any(getattr(args, r) for r in ROLES)
-    for role in ROLES:
-        if getattr(args, role) is None and files:
-            setattr(args, role, files.pop(0))
-    if files:
-        parser.error(f"too many files: {' '.join(files)}")
+    unset = [role for role in ROLES if getattr(args, role) is None]
+    # with a checker NAIVE is optional: one FILE fewer means MAIN and GEN
+    if args.checker and "naive" in unset and len(files) == len(unset) - 1:
+        unset.remove("naive")
+    for role, path in zip(unset, files):
+        setattr(args, role, path)
+    if len(files) > len(unset):
+        parser.error(f"too many files: {' '.join(files[len(unset):])}")
     if args.init is None or files_on_command_line:
         for role in ROLES:
             if getattr(args, role) is None and role in config:
                 setattr(args, role, config[role])
-    missing = [role.upper() for role in ROLES if getattr(args, role) is None]
-    if missing and not (args.init is not None and len(missing) == len(ROLES)):
+    required = [r for r in ROLES if not (r == "naive" and args.checker)]
+    missing = [role.upper() for role in required if getattr(args, role) is None]
+    nothing = all(getattr(args, role) is None for role in ROLES)
+    if missing and not (args.init is not None and nothing):
         parser.error(f"missing {', '.join(missing)} "
                      f"(use -m, -n, -g, positional FILEs or {CONFIG_FILE})")
+    modes = [name for name, on in (("--exact", args.exact),
+                                   ("--float", args.float is not None),
+                                   ("--checker", args.checker is not None)) if on]
+    if len(modes) > 1:
+        parser.error(f"{' and '.join(modes)} cannot be combined"
+                     + (f" (check {CONFIG_FILE})" if config else ""))
+    if args.float is not None and not (args.float >= 0 and math.isfinite(args.float)):
+        parser.error("--float must be a non-negative number")
     if args.count < 0:
         parser.error("--count must be non-negative")
     if args.start < 0 or (args.replay is not None and args.replay < 0):
@@ -658,34 +929,41 @@ def parse_args(argv):
     return args
 
 
-def init(path):
-    target = Path(path)
-    if target.exists():
-        raise Abort(f"{path} already exists")
-    target.write_text(GEN_TEMPLATE)
-    print(f"wrote {path}")
+def init(args):
+    """Write the generator template, and the checker template with --checker.
+
+    Existing files are kept; it fails only when nothing could be written."""
+    targets = [(args.init, GEN_TEMPLATE)]
+    if args.checker:
+        if Path(args.checker).suffix.lower() not in CPP_SUFFIXES:
+            raise Abort(f"--init writes a C++ checker; {args.checker} is not a C++ file")
+        targets.append((args.checker, CHECKER_TEMPLATE))
+    kept = []
+    for path, text in targets:
+        target = Path(path)
+        if target.exists():
+            kept.append(path)
+            print(f"{path} already exists, kept it", file=sys.stderr)
+            continue
+        target.write_text(text)
+        print(f"wrote {path}")
+    if len(kept) == len(targets):
+        raise Abort("nothing was written")
 
 
-def replay(args, main, naive, gen):
-    seed = args.replay
-    stdin = generate(gen, seed, args.timeout)
-    m = run(main, stdin, args.timeout)
-    n = run(naive, stdin, args.timeout)
+def replay(args, programs):
+    case = evaluate(args.replay, args, programs)
     out_dir = Path(args.out)
-    save_case(out_dir, seed, args, stdin, m, n)
-    show(f"input (seed {seed})", stdin)
-    for role, result in (("main", m), ("naive", n)):
+    save_case(out_dir, args, case)
+    show(f"input (seed {case.seed})", case.stdin)
+    for role, result in roles_of(case):
         show(f"{role}: {result.status(args.timeout)}", result.stdout)
-    matched = m.ok and n.ok and same_output(m.stdout, n.stdout, args.exact)
-    if matched:
-        print("outputs match")
-    elif m.ok and n.ok:
-        show_diff(m.stdout, n.stdout)
-    print_saved(out_dir)
-    return 0 if matched else 1
+    show_verdict(case, args, out_dir)
+    print_saved(out_dir, case)
+    return 0 if case.passed else 1
 
 
-def search(args, main, naive, gen):
+def search(args, programs):
     tty = sys.stderr.isatty()
     started = time.monotonic()
     last_print = 0.0
@@ -702,13 +980,11 @@ def search(args, main, naive, gen):
                 rate = done / elapsed if elapsed > 0 else 0.0
                 print(f"\r{done}{total} passed ({rate:.0f} cases/s)",
                       end="", file=sys.stderr, flush=True)
-            stdin = generate(gen, seed, args.timeout)
-            m = run(main, stdin, args.timeout)
-            n = run(naive, stdin, args.timeout)
-            if not (m.ok and n.ok and same_output(m.stdout, n.stdout, args.exact)):
+            case = evaluate(seed, args, programs)
+            if not case.passed:
                 if tty:
                     print(file=sys.stderr)
-                report(seed, args, stdin, m, n)
+                report(args, case)
                 return 1
             done += 1
             seed += 1
@@ -728,13 +1004,16 @@ def main(argv=None):
     args = parse_args(sys.argv[1:] if argv is None else argv)
     try:
         if args.init is not None:
-            init(args.init)
+            init(args)
             if args.gen is None:
                 return 0
-        commands = [prepare(s, args) for s in (args.main, args.naive, args.gen)]
+        programs = {
+            role: prepare(getattr(args, role), args) if getattr(args, role) else None
+            for role in ("main", "naive", "gen", "checker")
+        }
         if args.replay is not None:
-            return replay(args, *commands)
-        return search(args, *commands)
+            return replay(args, programs)
+        return search(args, programs)
     except Abort as e:
         print(f"randtest: {e}", file=sys.stderr)
         return 2
