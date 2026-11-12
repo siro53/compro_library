@@ -69,3 +69,55 @@ python3 ../../../../scripts/bundle.py includes.cpp -I include > ../snapshots/inc
 ```
 
 [AtCoder生成AI対策ルール（20261014版）](https://info.atcoder.jp/entry/llm-rules-ja)では、生成AIで作成されたコードを利用する場合、コンテスト開始前のWeb公開と参照URLの添付が必要です。GitHubで事前公開したライブラリは、リポジトリへのリンクを提出コードに含めればよく、ファイルごとのリンクは不要とされています。このスクリプトはURLを付けるだけなので、使用するコードは別途コンテスト開始前に公開してください。他のリポジトリのコードを含める場合は、その出典も別途記載してください。
+
+## ランダムテスト
+
+`scripts/randtest.py` は、提出する解と愚直解に同じランダムな入力を与え、出力が食い違う入力（反例）を探します。[AtCoder のランダムテストの解説記事](https://info.atcoder.jp/entry/algorithm_lectures/randomtest)の方法1を自動化したものです。
+
+### 準備
+
+PATH の通ったディレクトリにシンボリックリンクを作ると、どこからでも `randtest` で呼び出せます。Python 3.8 以上と g++ が必要で、追加のパッケージは不要です。
+
+```sh
+ln -s /path/to/compro_library/scripts/randtest.py ~/.local/bin/randtest
+```
+
+### 使い方
+
+提出する解 `main.cpp`、愚直解 `naive.cpp`、入力生成器 `gen.cpp` を用意して実行します。生成器の雛形は `randtest --init` で `gen.cpp` に書き出せます。
+
+```sh
+randtest --init                        # gen.cpp の雛形を作る
+randtest main.cpp naive.cpp gen.cpp    # seed 0, 1, ..., 999 で比較する
+```
+
+生成器は `gen <seed>` として呼ばれ、1つの入力を標準出力に書きます。[生成器ライブラリ](docs/random/gen/all.md)の `Random(argc, argv)` を使えば、この規約どおりに `argv[1]` を seed として読めます。木やグラフ、順列などを生成する関数もこのライブラリにあります。
+
+C++ のソースは、ライブラリのルートを include パスに加えて `g++ -std=c++17 -O2` でコンパイルします。結果はカレントディレクトリの `.randtest/build/` にキャッシュし、ソースか include したヘッダが更新されたときだけ再コンパイルします。拡張子が `.py` のファイルは `python3` で、それ以外は実行ファイルとしてそのまま実行します。
+
+各 seed について、2つの解の出力を空白区切りのトークン列として比較します。出力が食い違うか、どちらかが実行時エラー（終了コードが0以外）や時間切れになると、その入力を反例として報告して終了します。反例は `randtest_fail/` に保存され、`in.txt`（入力）、`out_main.txt`・`out_naive.txt`（出力）、`err_*.txt`（標準エラー出力）、`info.txt`（seed と再現コマンド）が残ります。
+
+```sh
+randtest main.cpp naive.cpp gen.cpp --replay 42   # seed 42 の入力と両方の出力を表示する
+```
+
+主なオプションは次のとおりです。
+
+| オプション | 意味 |
+| --- | --- |
+| `-n N` | 試すケース数。`0` なら無制限（既定値は 1000） |
+| `--start S` | 最初の seed（既定値は 0） |
+| `--time SEC` | 指定した秒数が経過したら終了する |
+| `--timeout SEC` | 1回の実行の制限時間（既定値は 2 秒） |
+| `--exact` | トークン単位ではなく、出力をバイト列として完全一致で比較する |
+| `--replay SEED` | 指定した seed だけを実行し、入力と出力を表示する |
+| `-o DIR` | 反例の保存先（既定値は `randtest_fail`） |
+| `--cxx`, `--cxxflags`, `-I DIR` | コンパイラ、コンパイルオプション、追加の include パス |
+
+終了コードは、すべて一致すれば `0`、反例が見つかれば `1`、コンパイルエラーや生成器の異常終了など準備の段階で失敗すれば `2` です。深い再帰で落ちないよう、実行時はスタックサイズの上限をハードリミットまで引き上げます。解が複数ある問題やインタラクティブ問題の判定には対応していません。
+
+動作確認用のテストは、リポジトリのルートで次のコマンドを実行します。CI でも同じテストを実行します。
+
+```sh
+python3 -m unittest discover -s test/mytest/randtest -v
+```
