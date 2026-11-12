@@ -44,9 +44,9 @@ data:
   timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yukicoder/yuki1469.test.cpp
-  - test/mytest/string/empty-inputs.test.cpp
   - test/mytest/misc/utilities.test.cpp
+  - test/mytest/string/empty-inputs.test.cpp
+  - test/yukicoder/yuki1469.test.cpp
 documentation_of: misc/rle.hpp
 layout: document
 title: "\u30E9\u30F3\u30EC\u30F3\u30B0\u30B9\u5727\u7E2E"

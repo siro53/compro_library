@@ -53,8 +53,8 @@ data:
   timestamp: '2024-12-15 14:47:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/data-structure/imos2D.test.cpp
   - test/aoj/aoj-DSL-5-B.test.cpp
+  - test/mytest/data-structure/imos2D.test.cpp
 documentation_of: data-structure/imos2D.hpp
 layout: document
 title: "\u4E8C\u6B21\u5143\u3044\u3082\u3059\u6CD5"

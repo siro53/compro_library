@@ -55,12 +55,12 @@ data:
   timestamp: '2023-09-30 04:41:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/data-structure/static-range-inversions-query.test.cpp
-  - test/mytest/data-structure/basic-api.test.cpp
-  - test/mytest/data-structure/helper-regressions.test.cpp
-  - test/mytest/misc/utilities.test.cpp
   - test/aoj/aoj-ALDS1-5-D.test.cpp
   - test/aoj/aoj2426.test.cpp
+  - test/mytest/misc/utilities.test.cpp
+  - test/mytest/data-structure/basic-api.test.cpp
+  - test/mytest/data-structure/helper-regressions.test.cpp
+  - test/library-checker/data-structure/static-range-inversions-query.test.cpp
 documentation_of: misc/compress.hpp
 layout: document
 title: "\u5EA7\u6A19\u5727\u7E2E"

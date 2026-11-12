@@ -76,9 +76,9 @@ data:
   timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yukicoder/yuki117.test.cpp
-  - test/mytest/math/matrix-binom.test.cpp
   - test/mytest/math/arithmetic-regressions.test.cpp
+  - test/mytest/math/matrix-binom.test.cpp
+  - test/yukicoder/yuki117.test.cpp
 documentation_of: math/binom.hpp
 layout: document
 title: "\u4E8C\u9805\u4FC2\u6570"

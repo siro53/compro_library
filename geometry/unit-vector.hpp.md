@@ -53,16 +53,16 @@ data:
   isVerificationFile: false
   path: geometry/unit-vector.hpp
   requiredBy:
-  - geometry/tangent-to-circle.hpp
-  - geometry/tangent.hpp
   - geometry/geometry.hpp
+  - geometry/tangent-to-circle.hpp
   - geometry/cross-point.hpp
   - geometry/convex-cut.hpp
+  - geometry/tangent.hpp
   timestamp: '2026-08-30 15:33:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/geometry/geometry.test.cpp
   - test/mytest/geometry/geometry-api.test.cpp
+  - test/mytest/geometry/geometry.test.cpp
 documentation_of: geometry/unit-vector.hpp
 layout: document
 title: "\u5358\u4F4D\u30D9\u30AF\u30C8\u30EB"

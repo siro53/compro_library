@@ -79,9 +79,9 @@ data:
   timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/misc/fraction-api.test.cpp
-  - test/mytest/misc/mo-and-fraction.test.cpp
   - test/mytest/misc/fraction.test.cpp
+  - test/mytest/misc/mo-and-fraction.test.cpp
+  - test/mytest/misc/fraction-api.test.cpp
 documentation_of: misc/fraction.hpp
 layout: document
 title: "\u6709\u7406\u6570"

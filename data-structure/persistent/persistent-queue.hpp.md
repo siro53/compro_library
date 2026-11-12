@@ -62,8 +62,8 @@ data:
   timestamp: '2023-02-25 23:57:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/data-structure/persistent-queue.test.cpp
   - test/mytest/data-structure/persistent-api.test.cpp
+  - test/library-checker/data-structure/persistent-queue.test.cpp
 documentation_of: data-structure/persistent/persistent-queue.hpp
 layout: document
 title: "\u6C38\u7D9A\u30AD\u30E5\u30FC"

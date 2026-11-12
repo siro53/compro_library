@@ -91,9 +91,9 @@ data:
   timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/data-structure/persistent-unionfind.test.cpp
-  - test/mytest/data-structure/persistent-api.test.cpp
   - test/mytest/data-structure/initialization-and-monoids.test.cpp
+  - test/mytest/data-structure/persistent-api.test.cpp
+  - test/library-checker/data-structure/persistent-unionfind.test.cpp
 documentation_of: data-structure/persistent/persistent-array.hpp
 layout: document
 title: "\u6C38\u7D9A\u914D\u5217"

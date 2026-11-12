@@ -69,10 +69,10 @@ data:
   timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/modint/dynamic-modint.test.cpp
-  - test/mytest/math/arithmetic-regressions.test.cpp
-  - test/mytest/math/barrett-reduction.test.cpp
   - test/aoj/aoj-NTL-1-B-dynamic-modint.test.cpp
+  - test/mytest/modint/dynamic-modint.test.cpp
+  - test/mytest/math/barrett-reduction.test.cpp
+  - test/mytest/math/arithmetic-regressions.test.cpp
 documentation_of: math/barrett-reduction.hpp
 layout: document
 title: Barrett Reduction

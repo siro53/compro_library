@@ -92,8 +92,8 @@ data:
   timestamp: '2026-08-30 15:33:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/geometry/geometry.test.cpp
   - test/mytest/geometry/geometry-api.test.cpp
+  - test/mytest/geometry/geometry.test.cpp
 documentation_of: geometry/reflection.hpp
 layout: document
 title: "\u76F4\u7DDA\u306B\u5BFE\u3059\u308B\u53CD\u5C04"

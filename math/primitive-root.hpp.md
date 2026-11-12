@@ -58,10 +58,10 @@ data:
   timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/convolution/convolution-mod.test.cpp
-  - test/mytest/math/transforms-api.test.cpp
-  - test/mytest/math/number-theory.test.cpp
   - test/mytest/math/convolution-regressions.test.cpp
+  - test/mytest/math/number-theory.test.cpp
+  - test/mytest/math/transforms-api.test.cpp
+  - test/library-checker/convolution/convolution-mod.test.cpp
 documentation_of: math/primitive-root.hpp
 layout: document
 title: "\u539F\u59CB\u6839"

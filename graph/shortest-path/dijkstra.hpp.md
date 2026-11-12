@@ -71,9 +71,9 @@ data:
   timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/graph/shortest-path.test.cpp
-  - test/mytest/graph/range-edge-graph.test.cpp
   - test/mytest/graph/graph-scc-two-sat.test.cpp
+  - test/mytest/graph/range-edge-graph.test.cpp
+  - test/library-checker/graph/shortest-path.test.cpp
 documentation_of: graph/shortest-path/dijkstra.hpp
 layout: document
 title: "Dijkstra \u6CD5"

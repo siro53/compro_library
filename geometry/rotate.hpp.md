@@ -48,13 +48,13 @@ data:
   isVerificationFile: false
   path: geometry/rotate.hpp
   requiredBy:
-  - geometry/tangent.hpp
   - geometry/geometry.hpp
+  - geometry/tangent.hpp
   timestamp: '2026-08-30 15:33:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/geometry/geometry.test.cpp
   - test/mytest/geometry/geometry-api.test.cpp
+  - test/mytest/geometry/geometry.test.cpp
 documentation_of: geometry/rotate.hpp
 layout: document
 title: "\u70B9\u30FB\u30D9\u30AF\u30C8\u30EB\u306E\u56DE\u8EE2"

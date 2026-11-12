@@ -130,16 +130,16 @@ data:
   timestamp: '2023-10-30 20:10:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/aoj/aoj-DSL-2-A.test.cpp
+  - test/mytest/data-structure/basic-api.test.cpp
+  - test/mytest/data-structure/initialization-and-monoids.test.cpp
+  - test/mytest/data-structure/segment-tree-api.test.cpp
+  - test/mytest/data-structure/helper-regressions.test.cpp
   - test/yukicoder/yuki1435.test.cpp
   - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
   - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
-  - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
   - test/library-checker/data-structure/point-set-range-composite.test.cpp
-  - test/mytest/data-structure/basic-api.test.cpp
-  - test/mytest/data-structure/segment-tree-api.test.cpp
-  - test/mytest/data-structure/initialization-and-monoids.test.cpp
-  - test/mytest/data-structure/helper-regressions.test.cpp
-  - test/aoj/aoj-DSL-2-A.test.cpp
+  - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
 documentation_of: data-structure/segtree/segtree.hpp
 layout: document
 title: Segment Tree

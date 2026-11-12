@@ -85,8 +85,8 @@ data:
   timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yukicoder/yuki1750.test.cpp
   - test/mytest/math/matrix-binom.test.cpp
+  - test/yukicoder/yuki1750.test.cpp
 documentation_of: math/matrix.hpp
 layout: document
 title: "\u884C\u5217"

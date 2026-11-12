@@ -40,9 +40,9 @@ data:
   timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/string/z-algorithm.test.cpp
-  - test/mytest/string/string-api.test.cpp
   - test/mytest/string/empty-inputs.test.cpp
+  - test/mytest/string/string-api.test.cpp
+  - test/library-checker/string/z-algorithm.test.cpp
 documentation_of: string/z-algo.hpp
 layout: document
 title: Z algorithm

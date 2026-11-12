@@ -33,8 +33,8 @@ data:
   timestamp: '2023-12-05 16:32:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/math/number-theory.test.cpp
   - test/aoj/aoj-ITP1-3-D.test.cpp
+  - test/mytest/math/number-theory.test.cpp
 documentation_of: math/divisor.hpp
 layout: document
 title: "\u7D04\u6570\u5217\u6319"

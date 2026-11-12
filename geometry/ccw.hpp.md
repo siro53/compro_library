@@ -93,18 +93,18 @@ data:
   isVerificationFile: false
   path: geometry/ccw.hpp
   requiredBy:
-  - geometry/tangent-to-circle.hpp
+  - geometry/is-convex.hpp
   - geometry/geometry.hpp
-  - geometry/is-intersect.hpp
   - geometry/distance-between-segments.hpp
+  - geometry/tangent-to-circle.hpp
+  - geometry/is-intersect.hpp
   - geometry/cross-point.hpp
   - geometry/convex-cut.hpp
-  - geometry/is-convex.hpp
   timestamp: '2026-08-30 15:33:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/geometry/geometry.test.cpp
   - test/mytest/geometry/geometry-api.test.cpp
+  - test/mytest/geometry/geometry.test.cpp
 documentation_of: geometry/ccw.hpp
 layout: document
 title: "3 \u70B9\u306E\u4F4D\u7F6E\u95A2\u4FC2"

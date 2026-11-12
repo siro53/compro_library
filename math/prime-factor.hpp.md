@@ -35,8 +35,8 @@ data:
   timestamp: '2023-12-05 16:32:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/math/number-theory.test.cpp
   - test/aoj/aoj-NTL-1-A.test.cpp
+  - test/mytest/math/number-theory.test.cpp
 documentation_of: math/prime-factor.hpp
 layout: document
 title: "\u8A66\u3057\u5272\u308A\u306B\u3088\u308B\u7D20\u56E0\u6570\u5206\u89E3"

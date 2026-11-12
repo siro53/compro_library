@@ -49,8 +49,8 @@ data:
   timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/data-structure/monoids.test.cpp
   - test/mytest/data-structure/initialization-and-monoids.test.cpp
+  - test/mytest/data-structure/monoids.test.cpp
 documentation_of: data-structure/monoid/kadane.hpp
 layout: document
 title: "\u6700\u5927\u90E8\u5206\u914D\u5217\u548C\u30E2\u30CE\u30A4\u30C9"

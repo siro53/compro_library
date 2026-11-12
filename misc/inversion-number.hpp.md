@@ -47,8 +47,8 @@ data:
   timestamp: '2023-02-25 23:57:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/misc/utilities.test.cpp
   - test/aoj/aoj-ALDS1-5-D.test.cpp
+  - test/mytest/misc/utilities.test.cpp
 documentation_of: misc/inversion-number.hpp
 layout: document
 title: "\u8EE2\u5012\u6570"

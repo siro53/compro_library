@@ -65,12 +65,12 @@ data:
   timestamp: '2025-03-09 11:07:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/graph/tree-api.test.cpp
-  - test/mytest/data-structure/binary-trie.test.cpp
-  - test/mytest/data-structure/erasable-priority-queue.test.cpp
+  - test/aoj/aoj2821.test.cpp
   - test/mytest/misc/fraction.test.cpp
   - test/mytest/misc/utilities.test.cpp
-  - test/aoj/aoj2821.test.cpp
+  - test/mytest/data-structure/binary-trie.test.cpp
+  - test/mytest/data-structure/erasable-priority-queue.test.cpp
+  - test/mytest/graph/tree-api.test.cpp
 documentation_of: random/rng.hpp
 layout: document
 title: "\u4E71\u6570\u751F\u6210"

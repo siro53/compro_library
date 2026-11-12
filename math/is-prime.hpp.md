@@ -73,10 +73,10 @@ data:
   timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/math/primality-test.test.cpp
+  - test/aoj/aoj-ALDS1-1-C.test.cpp
   - test/mytest/math/number-theory.test.cpp
   - test/mytest/math/arithmetic-regressions.test.cpp
-  - test/aoj/aoj-ALDS1-1-C.test.cpp
+  - test/library-checker/math/primality-test.test.cpp
 documentation_of: math/is-prime.hpp
 layout: document
 title: "\u7D20\u6570\u5224\u5B9A"

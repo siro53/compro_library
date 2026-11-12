@@ -4,6 +4,7 @@ exclude:
 - test/mytest/bundle
 - test/mytest/headers
 - test/mytest/ci
+- test/mytest/randtest
 plugins:
 - jemoji
 - jekyll-redirect-from

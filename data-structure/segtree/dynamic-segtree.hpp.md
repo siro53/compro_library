@@ -74,8 +74,8 @@ data:
   timestamp: '2023-02-25 23:57:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yukicoder/yuki789.test.cpp
   - test/mytest/data-structure/segment-tree-api.test.cpp
+  - test/yukicoder/yuki789.test.cpp
 documentation_of: data-structure/segtree/dynamic-segtree.hpp
 layout: document
 link: https://lorent-kyopro.hatenablog.com/entry/2021/03/12/025644

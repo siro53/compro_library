@@ -179,9 +179,9 @@ data:
   timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/convolution/convolution-mod.test.cpp
-  - test/mytest/math/transforms-api.test.cpp
   - test/mytest/math/convolution-regressions.test.cpp
+  - test/mytest/math/transforms-api.test.cpp
+  - test/library-checker/convolution/convolution-mod.test.cpp
 documentation_of: math/convolution/ntt.hpp
 layout: document
 title: "NTT \u306B\u3088\u308B\u7573\u307F\u8FBC\u307F"

@@ -61,8 +61,8 @@ data:
   timestamp: '2023-02-25 23:57:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/math/number-theory.test.cpp
   - test/aoj/aoj2858.test.cpp
+  - test/mytest/math/number-theory.test.cpp
 documentation_of: math/segment-factorize.hpp
 layout: document
 title: "\u533A\u9593\u7D20\u56E0\u6570\u5206\u89E3"

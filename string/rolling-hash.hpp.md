@@ -117,10 +117,10 @@ data:
   timestamp: '2023-12-05 19:29:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/mytest/string/string-api.test.cpp
+  - test/mytest/data-structure/monoids.test.cpp
   - test/yukicoder/yuki2102.test.cpp
   - test/yukicoder/yuki430.test.cpp
-  - test/mytest/data-structure/monoids.test.cpp
-  - test/mytest/string/string-api.test.cpp
 documentation_of: string/rolling-hash.hpp
 layout: document
 link: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6

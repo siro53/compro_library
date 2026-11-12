@@ -69,3 +69,98 @@ python3 ../../../../scripts/bundle.py includes.cpp -I include > ../snapshots/inc
 ```
 
 [AtCoder生成AI対策ルール（20261014版）](https://info.atcoder.jp/entry/llm-rules-ja)では、生成AIで作成されたコードを利用する場合、コンテスト開始前のWeb公開と参照URLの添付が必要です。GitHubで事前公開したライブラリは、リポジトリへのリンクを提出コードに含めればよく、ファイルごとのリンクは不要とされています。このスクリプトはURLを付けるだけなので、使用するコードは別途コンテスト開始前に公開してください。他のリポジトリのコードを含める場合は、その出典も別途記載してください。
+
+## ランダムテスト
+
+`scripts/randtest.py` は、提出する解と愚直解に同じランダムな入力を与え、出力が食い違う入力（反例）を探します。[AtCoder のランダムテストの解説記事](https://info.atcoder.jp/entry/algorithm_lectures/randomtest)の方法1を自動化したものです。
+
+### 準備
+
+PATH の通ったディレクトリにシンボリックリンクを作ると、どこからでも `randtest` で呼び出せます。Python 3.8 以上と g++ が必要で、追加のパッケージは不要です。
+
+```sh
+ln -s /path/to/compro_library/scripts/randtest.py ~/.local/bin/randtest
+```
+
+### 使い方
+
+提出する解 `main.cpp`、愚直解 `naive.cpp`、入力生成器 `gen.cpp` を用意して実行します。生成器の雛形は `randtest --init` で `gen.cpp` に書き出せます。
+
+```sh
+randtest --init                                  # gen.cpp の雛形を作る
+randtest -m main.cpp -n naive.cpp -g gen.cpp     # seed 0, 1, ..., 999 で比較する
+```
+
+3つのファイルは `-m`（提出する解）、`-n`（愚直解）、`-g`（生成器）で指定し、オプションの順番は自由です。オプションを付けずに並べることもできます。その場合は、オプションで指定しなかった役割を「提出する解、愚直解、生成器」の順に埋めます。次のコマンドはどれも同じ意味です。
+
+```sh
+randtest -g gen.cpp -n naive.cpp -m main.cpp
+randtest main.cpp naive.cpp gen.cpp
+randtest -g gen.cpp main.cpp naive.cpp
+```
+
+生成器は `gen <seed>` として呼ばれ、1つの入力を標準出力に書きます。[生成器ライブラリ](docs/random/gen/all.md)の `Random(argc, argv)` を使えば、この規約どおりに `argv[1]` を seed として読めます。木やグラフ、順列などを生成する関数もこのライブラリにあります。
+
+C++ のソースは、ライブラリのルートを include パスに加えて `g++ -std=c++17 -O2` でコンパイルします。結果はカレントディレクトリの `.randtest/build/` にキャッシュし、ソースか include したヘッダが更新されたときだけ再コンパイルします。拡張子が `.py` のファイルは `python3` で、それ以外は実行ファイルとしてそのまま実行します。
+
+各 seed について、2つの解の出力を空白区切りのトークン列として比較します。出力が食い違うか、どちらかが実行時エラー（終了コードが0以外）や時間切れになると、その入力を反例として報告して終了します。報告には、入力、各解の結果（`OK`・`RE`・`TLE`）、出力の差分が含まれます。反例は `randtest_fail/` に保存され、`in.txt`（入力）、`out_main.txt`・`out_naive.txt`（出力）、`stderr_main.log`・`stderr_naive.log`（標準エラー出力）、`info.txt`（seed と再現コマンド）が残ります。標準エラー出力は画面に表示せず、比較もしません。デバッグ出力を残したままでも使え、内容は `.log` ファイルで確認できます。`.log` ファイルは空でも必ず両方作ります。
+
+```sh
+randtest -m main.cpp -n naive.cpp -g gen.cpp --replay 42   # seed 42 の入力と両方の出力を表示し、randtest_fail/ に保存する
+```
+
+主なオプションは次のとおりです。詳しい説明と使用例は `randtest -h` で表示できます。ヘルプは日本語と英語の両方があり、`--help-ja` と `--help-en` で選べます。`-h` の言語は環境変数 `RANDTEST_LANG`（`ja` または `en`）で決まり、未設定ならロケールに従います。普段から日本語で表示するには、シェルの設定に `export RANDTEST_LANG=ja` を追加してください。
+
+| オプション | 意味 |
+| --- | --- |
+| `-m FILE`, `-n FILE`, `-g FILE` | 提出する解、愚直解、生成器（`--main`, `--naive`, `--gen` とも書ける） |
+| `-c N` | 試すケース数。`0` なら無制限（既定値は 1000） |
+| `--start S` | 最初の seed（既定値は 0） |
+| `--time SEC` | 指定した秒数が経過したら終了する。`0` なら制限なし |
+| `--timeout SEC` | 1回の実行の制限時間（既定値は 2 秒） |
+| `--exact` | トークン単位ではなく、出力をバイト列として完全一致で比較する |
+| `--no-exact` | トークン単位で比較する（設定ファイルの `"exact": true` を打ち消す） |
+| `--replay SEED` | 指定した seed だけを実行し、入力と出力を表示する |
+| `-o DIR` | 反例の保存先（既定値は `randtest_fail`） |
+| `--cxx`, `--cxxflags`, `-I DIR` | コンパイラ、コンパイルオプション、追加の include パス |
+
+終了コードは、すべて一致すれば `0`、反例が見つかれば `1`、コンパイルエラーや生成器の異常終了など準備の段階で失敗すれば `2` です。深い再帰で落ちないよう、実行時はスタックサイズの上限をハードリミットまで引き上げます。解が複数ある問題やインタラクティブ問題の判定には対応していません。
+
+### 設定ファイル
+
+コマンドを実行したディレクトリに `randtest.json` があると、その内容をオプションの既定値として読み込みます。問題ごとのディレクトリに置いておけば、`randtest` だけでテストを始められます。
+
+```json
+{
+  "main": "main.cpp",
+  "naive": "naive.cpp",
+  "gen": "gen.cpp",
+  "count": 5000,
+  "timeout": 5,
+  "cxxflags": "-std=c++17 -O2 -g -fsanitize=address,undefined"
+}
+```
+
+キーはオプションの名前と同じで、すべて省略できます。
+
+| キー | 型 | 対応するオプション |
+| --- | --- | --- |
+| `main`, `naive`, `gen` | 文字列 | `-m`, `-n`, `-g` |
+| `count`, `start` | 整数 | `-c`, `--start` |
+| `time` | 数値または `null`（`0` と `null` は制限なし） | `--time` |
+| `timeout` | 正の数値 | `--timeout` |
+| `exact` | `true` / `false` | `--exact`, `--no-exact` |
+| `out`, `cxx`, `cxxflags` | 文字列 | `-o`, `--cxx`, `--cxxflags` |
+| `include` | 文字列のリスト | `-I` |
+
+コマンドラインで指定した値は設定ファイルより優先します。位置引数のファイルも、設定ファイルの `main`・`naive`・`gen` より優先します。例えば設定ファイルに3つのファイルが書いてあっても、`randtest -m other.cpp` なら提出する解だけを差し替えて実行します。`-I` だけは上書きせず、`include` のリストに追加します。
+
+未知のキー、型の誤り、JSON の構文エラーは、ファイル名を添えたエラー（終了コード 2）になります。読み込んだときは、標準エラー出力に `randtest: using settings in randtest.json` と表示します。`randtest --init` は雛形を書き出すだけで、設定ファイルの `main`・`naive`・`gen` は使いません。
+
+### 動作確認
+
+動作確認用のテストは、リポジトリのルートで次のコマンドを実行します。CI でも同じテストを実行します。
+
+```sh
+python3 -m unittest discover -s test/mytest/randtest -v
+```

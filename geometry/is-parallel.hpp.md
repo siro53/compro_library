@@ -67,13 +67,13 @@ data:
   isVerificationFile: false
   path: geometry/is-parallel.hpp
   requiredBy:
-  - geometry/is-point-on-line.hpp
   - geometry/geometry.hpp
+  - geometry/is-point-on-line.hpp
   timestamp: '2026-08-30 15:33:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/geometry/geometry.test.cpp
   - test/mytest/geometry/geometry-api.test.cpp
+  - test/mytest/geometry/geometry.test.cpp
 documentation_of: geometry/is-parallel.hpp
 layout: document
 title: "\u76F4\u7DDA\u306E\u5E73\u884C\u5224\u5B9A"

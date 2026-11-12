@@ -13,6 +13,7 @@ title: "\u30E9\u30A4\u30D6\u30E9\u30EA\u4E00\u89A7"
 - 集合の併合には **Union Find**、過去の状態も残す場合には **永続 Union Find** を使います。
 - 最短路は、辺数を数えるなら **BFS**、非負の重みを加算するなら **Dijkstra 法** を選びます。木のパス上の集約を配列の区間処理へ変換したい場合は **HL 分解** を使います。
 - 小さい数をまとめて素数判定するなら **エラトステネスの篩**、大きい数を個別に調べるなら **素数判定** のページが入口になります。
+- 提出する解を愚直解とランダムな入力で比べるなら、**生成器ライブラリ一式** で入力生成器を書き、README の「ランダムテスト」で紹介している `scripts/randtest.py` で実行します。
 
 下の一覧には、小さな補助関数やモノイドも含め、各ファイルの説明をまとめています。実装に不備があるAPIは、そのページの「利用条件と実装上の注意」に明記しています。アルゴリズムの数学的な性質と、現在のコードが対応できる範囲を確認してから利用してください。
 
@@ -165,6 +166,12 @@ g++ -std=c++17 -O2 -Wall -Wextra -I /path/to/compro_library example.cpp
 ## random
 
 - [乱数生成](https://github.com/siro53/compro_library/blob/main/docs/random/rng.md)
+- [生成器ライブラリ一式](https://github.com/siro53/compro_library/blob/main/docs/random/gen/all.md)
+- [テスト生成用の乱数 (Random)](https://github.com/siro53/compro_library/blob/main/docs/random/gen/random.md)
+- [ランダムな数列・順列・部分集合・区間](https://github.com/siro53/compro_library/blob/main/docs/random/gen/sequence.md)
+- [ランダムな文字列](https://github.com/siro53/compro_library/blob/main/docs/random/gen/string.md)
+- [ランダムな木](https://github.com/siro53/compro_library/blob/main/docs/random/gen/tree.md)
+- [ランダムなグラフ](https://github.com/siro53/compro_library/blob/main/docs/random/gen/graph.md)
 
 ## template
 

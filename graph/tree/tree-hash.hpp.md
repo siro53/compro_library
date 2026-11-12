@@ -130,8 +130,8 @@ data:
   timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/graph/tree-api.test.cpp
   - test/aoj/aoj2821.test.cpp
+  - test/mytest/graph/tree-api.test.cpp
 documentation_of: graph/tree/tree-hash.hpp
 layout: document
 link: https://snuke.hatenablog.com/entry/2017/02/03/054210

@@ -40,8 +40,8 @@ data:
   timestamp: '2025-12-21 17:21:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/data-structure/monoids.test.cpp
   - test/mytest/data-structure/basic-api.test.cpp
+  - test/mytest/data-structure/monoids.test.cpp
   - test/mytest/data-structure/helper-regressions.test.cpp
 documentation_of: data-structure/monoid/sum_count.hpp
 layout: document

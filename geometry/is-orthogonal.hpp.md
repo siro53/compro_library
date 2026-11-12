@@ -68,8 +68,8 @@ data:
   timestamp: '2026-08-30 15:33:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/geometry/geometry.test.cpp
   - test/mytest/geometry/geometry-api.test.cpp
+  - test/mytest/geometry/geometry.test.cpp
 documentation_of: geometry/is-orthogonal.hpp
 layout: document
 title: "\u76F4\u7DDA\u306E\u76F4\u4EA4\u5224\u5B9A"

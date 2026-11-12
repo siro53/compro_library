@@ -54,8 +54,8 @@ data:
   timestamp: '2023-10-30 20:10:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/data-structure/range-bit.test.cpp
   - test/aoj/aoj-DSL-2-G.test.cpp
+  - test/mytest/data-structure/range-bit.test.cpp
 documentation_of: data-structure/range-BIT.hpp
 layout: document
 title: Range BIT

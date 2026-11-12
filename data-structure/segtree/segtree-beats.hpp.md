@@ -156,9 +156,9 @@ data:
   timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/data-structure/range-chmin-chmax-add-range-sum.test.cpp
   - test/mytest/data-structure/segment-tree-api.test.cpp
   - test/mytest/data-structure/segtree-boundaries.test.cpp
+  - test/library-checker/data-structure/range-chmin-chmax-add-range-sum.test.cpp
 documentation_of: data-structure/segtree/segtree-beats.hpp
 layout: document
 title: Segment Tree Beats

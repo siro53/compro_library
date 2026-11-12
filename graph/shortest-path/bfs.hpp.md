@@ -64,8 +64,8 @@ data:
   timestamp: '2026-11-01 17:39:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/graph/bfs-topological-sort.test.cpp
   - test/aoj/aoj-ALDS1-11-C.test.cpp
+  - test/mytest/graph/bfs-topological-sort.test.cpp
 documentation_of: graph/shortest-path/bfs.hpp
 layout: document
 title: "\u5E45\u512A\u5148\u63A2\u7D22"

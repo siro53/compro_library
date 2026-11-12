@@ -84,8 +84,8 @@ data:
   timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/misc/subset-iterator.test.cpp
   - test/aoj/aoj-ITP2-11-C.test.cpp
+  - test/mytest/misc/subset-iterator.test.cpp
 documentation_of: misc/subset-iterator.hpp
 layout: document
 title: "bit \u96C6\u5408\u306E\u5217\u6319"

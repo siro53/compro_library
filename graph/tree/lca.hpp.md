@@ -90,9 +90,9 @@ data:
   timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/tree/lowest-common-ancestor.test.cpp
-  - test/mytest/graph/lca-and-empty-two-sat.test.cpp
   - test/mytest/graph/tree-api.test.cpp
+  - test/mytest/graph/lca-and-empty-two-sat.test.cpp
+  - test/library-checker/tree/lowest-common-ancestor.test.cpp
 documentation_of: graph/tree/lca.hpp
 layout: document
 title: "\u6700\u5C0F\u5171\u901A\u7956\u5148\uFF08\u30C0\u30D6\u30EA\u30F3\u30B0\uFF09"

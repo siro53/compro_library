@@ -37,11 +37,11 @@ data:
   timestamp: '2023-02-25 23:57:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/mytest/data-structure/segment-tree-api.test.cpp
+  - test/mytest/data-structure/monoids.test.cpp
   - test/yukicoder/yuki789.test.cpp
   - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
   - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
-  - test/mytest/data-structure/monoids.test.cpp
-  - test/mytest/data-structure/segment-tree-api.test.cpp
 documentation_of: data-structure/monoid/add.hpp
 layout: document
 title: "\u52A0\u7B97\u30E2\u30CE\u30A4\u30C9"

@@ -97,26 +97,26 @@ data:
   isVerificationFile: false
   path: geometry/line.hpp
   requiredBy:
-  - geometry/projection.hpp
-  - geometry/tangent-to-circle.hpp
-  - geometry/tangent.hpp
-  - geometry/is-point-on-line.hpp
-  - geometry/geometry.hpp
-  - geometry/is-intersect.hpp
-  - geometry/segment.hpp
-  - geometry/is-parallel.hpp
   - geometry/is-orthogonal.hpp
-  - geometry/distance-between-segments.hpp
+  - geometry/segment.hpp
+  - geometry/projection.hpp
+  - geometry/geometry.hpp
   - geometry/reflection.hpp
-  - geometry/distance-between-line-and-point.hpp
-  - geometry/cross-point.hpp
-  - geometry/convex-cut.hpp
+  - geometry/distance-between-segments.hpp
+  - geometry/tangent-to-circle.hpp
   - geometry/distance-between-segment-and-point.hpp
+  - geometry/is-intersect.hpp
+  - geometry/cross-point.hpp
+  - geometry/is-point-on-line.hpp
+  - geometry/is-parallel.hpp
+  - geometry/convex-cut.hpp
+  - geometry/tangent.hpp
+  - geometry/distance-between-line-and-point.hpp
   timestamp: '2026-08-30 15:33:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/geometry/geometry.test.cpp
   - test/mytest/geometry/geometry-api.test.cpp
+  - test/mytest/geometry/geometry.test.cpp
 documentation_of: geometry/line.hpp
 layout: document
 title: "\u76F4\u7DDA"

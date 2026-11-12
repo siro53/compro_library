@@ -77,24 +77,24 @@ data:
   isVerificationFile: false
   path: geometry/dot.hpp
   requiredBy:
-  - geometry/projection.hpp
-  - geometry/tangent-to-circle.hpp
-  - geometry/geometry.hpp
-  - geometry/is-intersect.hpp
-  - geometry/ccw.hpp
   - geometry/is-orthogonal.hpp
-  - geometry/distance-between-segments.hpp
+  - geometry/is-convex.hpp
+  - geometry/projection.hpp
+  - geometry/ccw.hpp
+  - geometry/geometry.hpp
   - geometry/reflection.hpp
-  - geometry/is-contained.hpp
+  - geometry/distance-between-segments.hpp
+  - geometry/tangent-to-circle.hpp
+  - geometry/distance-between-segment-and-point.hpp
+  - geometry/is-intersect.hpp
   - geometry/cross-point.hpp
   - geometry/convex-cut.hpp
-  - geometry/is-convex.hpp
-  - geometry/distance-between-segment-and-point.hpp
+  - geometry/is-contained.hpp
   timestamp: '2026-08-30 15:33:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/geometry/geometry.test.cpp
   - test/mytest/geometry/geometry-api.test.cpp
+  - test/mytest/geometry/geometry.test.cpp
 documentation_of: geometry/dot.hpp
 layout: document
 title: "\u5185\u7A4D"

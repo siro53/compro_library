@@ -103,9 +103,9 @@ data:
   timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/math/two-sat.test.cpp
-  - test/mytest/graph/lca-and-empty-two-sat.test.cpp
   - test/mytest/graph/graph-scc-two-sat.test.cpp
+  - test/mytest/graph/lca-and-empty-two-sat.test.cpp
+  - test/library-checker/math/two-sat.test.cpp
 documentation_of: math/two_sat.hpp
 layout: document
 title: 2-SAT

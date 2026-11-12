@@ -130,9 +130,9 @@ data:
   timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/data-structure/set-xor-min.test.cpp
   - test/mytest/data-structure/binary-trie.test.cpp
   - test/mytest/data-structure/bit-queries.test.cpp
+  - test/library-checker/data-structure/set-xor-min.test.cpp
 documentation_of: data-structure/binary-trie.hpp
 layout: document
 title: Binary Trie

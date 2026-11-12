@@ -204,8 +204,8 @@ data:
   timestamp: '2026-08-30 15:33:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/geometry/geometry.test.cpp
   - test/mytest/geometry/geometry-api.test.cpp
+  - test/mytest/geometry/geometry.test.cpp
 documentation_of: geometry/tangent-to-circle.hpp
 layout: document
 title: "\u70B9\u304B\u3089\u5186\u3078\u306E\u63A5\u7DDA"

@@ -55,20 +55,20 @@ data:
   isVerificationFile: false
   path: math/pow_mod.hpp
   requiredBy:
-  - math/convolution/ntt.hpp
-  - math/primitive-root.hpp
   - math/is-prime.hpp
+  - math/primitive-root.hpp
+  - math/convolution/ntt.hpp
   timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/math/primality-test.test.cpp
-  - test/library-checker/convolution/convolution-mod.test.cpp
-  - test/mytest/math/transforms-api.test.cpp
-  - test/mytest/math/number-theory.test.cpp
-  - test/mytest/math/convolution-regressions.test.cpp
-  - test/mytest/math/arithmetic-regressions.test.cpp
   - test/aoj/aoj-NTL-1-B.test.cpp
   - test/aoj/aoj-ALDS1-1-C.test.cpp
+  - test/mytest/math/convolution-regressions.test.cpp
+  - test/mytest/math/number-theory.test.cpp
+  - test/mytest/math/arithmetic-regressions.test.cpp
+  - test/mytest/math/transforms-api.test.cpp
+  - test/library-checker/convolution/convolution-mod.test.cpp
+  - test/library-checker/math/primality-test.test.cpp
 documentation_of: math/pow_mod.hpp
 layout: document
 title: "\u5270\u4F59\u4ED8\u304D\u7D2F\u4E57"

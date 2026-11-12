@@ -126,42 +126,42 @@ data:
   isVerificationFile: false
   path: geometry/base.hpp
   requiredBy:
+  - geometry/is-orthogonal.hpp
+  - geometry/convex-hull.hpp
+  - geometry/segment.hpp
+  - geometry/is-convex.hpp
   - geometry/line.hpp
   - geometry/projection.hpp
-  - geometry/tangent-to-circle.hpp
-  - geometry/is-in-circle.hpp
-  - geometry/convex-hull.hpp
-  - geometry/tangent.hpp
-  - geometry/is-point-on-line.hpp
-  - geometry/radian-to-degree.hpp
-  - geometry/geometry.hpp
-  - geometry/is-intersect.hpp
-  - geometry/segment.hpp
-  - geometry/normal-vector.hpp
   - geometry/ccw.hpp
-  - geometry/circle.hpp
-  - geometry/is-parallel.hpp
-  - geometry/is-orthogonal.hpp
-  - geometry/distance-between-segments.hpp
-  - geometry/is-point-on-segment.hpp
+  - geometry/geometry.hpp
   - geometry/reflection.hpp
-  - geometry/distance-between-line-and-point.hpp
-  - geometry/dot.hpp
-  - geometry/is-contained.hpp
-  - geometry/unit-vector.hpp
-  - geometry/polygon-area.hpp
-  - geometry/cross-point.hpp
-  - geometry/degree-to-radian.hpp
-  - geometry/convex-cut.hpp
-  - geometry/rotate.hpp
-  - geometry/is-convex.hpp
+  - geometry/distance-between-segments.hpp
+  - geometry/tangent-to-circle.hpp
   - geometry/distance-between-segment-and-point.hpp
+  - geometry/rotate.hpp
+  - geometry/is-intersect.hpp
+  - geometry/cross-point.hpp
+  - geometry/is-point-on-line.hpp
+  - geometry/is-parallel.hpp
+  - geometry/normal-vector.hpp
+  - geometry/circle.hpp
+  - geometry/dot.hpp
+  - geometry/polygon-area.hpp
+  - geometry/convex-cut.hpp
+  - geometry/radian-to-degree.hpp
+  - geometry/unit-vector.hpp
+  - geometry/is-contained.hpp
+  - geometry/tangent.hpp
+  - geometry/distance-between-line-and-point.hpp
+  - geometry/is-point-on-segment.hpp
   - geometry/cross.hpp
+  - geometry/is-in-circle.hpp
+  - geometry/degree-to-radian.hpp
   timestamp: '2026-08-30 15:33:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/geometry/geometry.test.cpp
   - test/mytest/geometry/geometry-api.test.cpp
+  - test/mytest/geometry/geometry.test.cpp
 documentation_of: geometry/base.hpp
 layout: document
 title: "\u5E7E\u4F55\u306E\u57FA\u672C\u578B"

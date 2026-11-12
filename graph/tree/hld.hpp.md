@@ -141,11 +141,11 @@ data:
   timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/mytest/graph/tree-api.test.cpp
   - test/library-checker/tree/lowest-common-ancestor2.test.cpp
   - test/library-checker/data-structure/vertex-set-path-composite.test.cpp
   - test/library-checker/data-structure/vertex-add-path-sum.test.cpp
   - test/library-checker/data-structure/vertex-add-subtree-sum.test.cpp
-  - test/mytest/graph/tree-api.test.cpp
 documentation_of: graph/tree/hld.hpp
 layout: document
 title: Heavy Light Decomposition

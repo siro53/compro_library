@@ -113,9 +113,9 @@ data:
   timestamp: '2026-11-01 15:55:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/data-structure/segment-add-get-min.test.cpp
-  - test/library-checker/data-structure/line-add-get-min.test.cpp
   - test/mytest/data-structure/li-chao-tree.test.cpp
+  - test/library-checker/data-structure/line-add-get-min.test.cpp
+  - test/library-checker/data-structure/segment-add-get-min.test.cpp
 documentation_of: data-structure/segtree/li-chao-tree.hpp
 layout: document
 link: https://smijake3.hatenablog.com/entry/2018/06/16/144548

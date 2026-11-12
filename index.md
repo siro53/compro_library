@@ -341,6 +341,27 @@ data:
     - icon: ':heavy_check_mark:'
       path: modint/modint_2_61.hpp
       title: "\u6CD5 2^61-1 \u306E modint"
+  - name: random/gen
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: random/gen/all.hpp
+      title: "\u751F\u6210\u5668\u30E9\u30A4\u30D6\u30E9\u30EA\u4E00\u5F0F"
+    - icon: ':heavy_check_mark:'
+      path: random/gen/graph.hpp
+      title: "\u30E9\u30F3\u30C0\u30E0\u306A\u30B0\u30E9\u30D5"
+    - icon: ':heavy_check_mark:'
+      path: random/gen/random.hpp
+      title: "\u30C6\u30B9\u30C8\u751F\u6210\u7528\u306E\u4E71\u6570 (Random)"
+    - icon: ':heavy_check_mark:'
+      path: random/gen/sequence.hpp
+      title: "\u30E9\u30F3\u30C0\u30E0\u306A\u6570\u5217\u30FB\u9806\u5217\u30FB\u90E8\
+        \u5206\u96C6\u5408\u30FB\u533A\u9593"
+    - icon: ':heavy_check_mark:'
+      path: random/gen/string.hpp
+      title: "\u30E9\u30F3\u30C0\u30E0\u306A\u6587\u5B57\u5217"
+    - icon: ':heavy_check_mark:'
+      path: random/gen/tree.hpp
+      title: "\u30E9\u30F3\u30C0\u30E0\u306A\u6728"
   - name: random
     pages:
     - icon: ':heavy_check_mark:'
@@ -628,6 +649,26 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/mytest/modint/dynamic-modint.test.cpp
       title: test/mytest/modint/dynamic-modint.test.cpp
+  - name: test/mytest/random/gen
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/random/gen/all.test.cpp
+      title: test/mytest/random/gen/all.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/random/gen/graph.test.cpp
+      title: test/mytest/random/gen/graph.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/random/gen/random.test.cpp
+      title: test/mytest/random/gen/random.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/random/gen/sequence.test.cpp
+      title: test/mytest/random/gen/sequence.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/random/gen/string.test.cpp
+      title: test/mytest/random/gen/string.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mytest/random/gen/tree.test.cpp
+      title: test/mytest/random/gen/tree.test.cpp
   - name: test/mytest/string
     pages:
     - icon: ':heavy_check_mark:'

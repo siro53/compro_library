@@ -82,19 +82,19 @@ data:
   path: geometry/segment.hpp
   requiredBy:
   - geometry/projection.hpp
-  - geometry/tangent-to-circle.hpp
   - geometry/geometry.hpp
-  - geometry/is-intersect.hpp
-  - geometry/distance-between-segments.hpp
   - geometry/reflection.hpp
+  - geometry/distance-between-segments.hpp
+  - geometry/tangent-to-circle.hpp
+  - geometry/distance-between-segment-and-point.hpp
+  - geometry/is-intersect.hpp
   - geometry/cross-point.hpp
   - geometry/convex-cut.hpp
-  - geometry/distance-between-segment-and-point.hpp
   timestamp: '2026-08-30 15:33:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/geometry/geometry.test.cpp
   - test/mytest/geometry/geometry-api.test.cpp
+  - test/mytest/geometry/geometry.test.cpp
 documentation_of: geometry/segment.hpp
 layout: document
 title: "\u7DDA\u5206"

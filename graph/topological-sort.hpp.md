@@ -62,8 +62,8 @@ data:
   timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/graph/bfs-topological-sort.test.cpp
   - test/aoj/aoj-GRL-4-A.test.cpp
+  - test/mytest/graph/bfs-topological-sort.test.cpp
 documentation_of: graph/topological-sort.hpp
 layout: document
 title: "\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8"

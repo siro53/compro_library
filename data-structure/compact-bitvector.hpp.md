@@ -72,11 +72,11 @@ data:
   timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library-checker/data-structure/range-kth-smallest.test.cpp
-  - test/mytest/data-structure/wavelet-api.test.cpp
-  - test/mytest/data-structure/bit-queries.test.cpp
-  - test/aoj/aoj1549.test.cpp
   - test/aoj/aoj2674.test.cpp
+  - test/aoj/aoj1549.test.cpp
+  - test/mytest/data-structure/bit-queries.test.cpp
+  - test/mytest/data-structure/wavelet-api.test.cpp
+  - test/library-checker/data-structure/range-kth-smallest.test.cpp
 documentation_of: data-structure/compact-bitvector.hpp
 layout: document
 title: Compact Bit Vector

@@ -51,8 +51,8 @@ data:
   timestamp: '2024-12-15 14:15:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/data-structure/basic-api.test.cpp
   - test/aoj/aoj2426.test.cpp
+  - test/mytest/data-structure/basic-api.test.cpp
 documentation_of: data-structure/sum2D.hpp
 layout: document
 title: "\u4E8C\u6B21\u5143\u7D2F\u7A4D\u548C"

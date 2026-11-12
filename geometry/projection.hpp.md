@@ -92,16 +92,16 @@ data:
   isVerificationFile: false
   path: geometry/projection.hpp
   requiredBy:
-  - geometry/tangent-to-circle.hpp
   - geometry/geometry.hpp
   - geometry/reflection.hpp
+  - geometry/tangent-to-circle.hpp
   - geometry/cross-point.hpp
   - geometry/convex-cut.hpp
   timestamp: '2026-08-30 15:33:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/geometry/geometry.test.cpp
   - test/mytest/geometry/geometry-api.test.cpp
+  - test/mytest/geometry/geometry.test.cpp
 documentation_of: geometry/projection.hpp
 layout: document
 title: "\u5C04\u5F71"

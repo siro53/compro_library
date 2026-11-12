@@ -30,8 +30,8 @@ data:
   timestamp: '2023-12-24 03:50:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/data-structure/monoids.test.cpp
   - test/aoj/aoj-DSL-2-A.test.cpp
+  - test/mytest/data-structure/monoids.test.cpp
 documentation_of: data-structure/monoid/min.hpp
 layout: document
 title: "\u6700\u5C0F\u5024\u30E2\u30CE\u30A4\u30C9"

@@ -28,8 +28,8 @@ data:
   timestamp: '2026-11-01 16:38:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mytest/data-structure/monoids.test.cpp
   - test/mytest/data-structure/initialization-and-monoids.test.cpp
+  - test/mytest/data-structure/monoids.test.cpp
 documentation_of: data-structure/monoid/and.hpp
 layout: document
 title: "\u30D3\u30C3\u30C8 AND\u30E2\u30CE\u30A4\u30C9"
