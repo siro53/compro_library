@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Random testing: compare a solution with a naive one on generated inputs.
 
+    randtest -m main.cpp -n naive.cpp -g gen.cpp [options]
     randtest main.cpp naive.cpp gen.cpp [options]
 
 The generator is called as ``gen <seed>`` and must write one input to stdout.
@@ -204,8 +205,14 @@ def save_case(out_dir, seed, args, stdin, main, naive):
         f"seed: {seed}\n"
         f"main: {args.main} {main.status(args.timeout)}\n"
         f"naive: {args.naive} {naive.status(args.timeout)}\n"
-        f"replay: randtest {args.main} {args.naive} {args.gen} --replay {seed}\n"
+        f"replay: {replay_command(args, seed)}\n"
     )
+
+
+def replay_command(args, seed):
+    files = " ".join(f"-{flag} {shlex.quote(path)}" for flag, path in
+                     (("m", args.main), ("n", args.naive), ("g", args.gen)))
+    return f"randtest {files} --replay {seed}"
 
 
 def report(seed, args, stdin, main, naive):
@@ -229,13 +236,18 @@ def report(seed, args, stdin, main, naive):
 def parse_args(argv):
     parser = argparse.ArgumentParser(
         prog="randtest",
+        usage="%(prog)s [-m MAIN] [-n NAIVE] [-g GEN] [options] [FILE ...]",
         description="Compare MAIN with NAIVE on inputs printed by `GEN <seed>`. "
-                    "C++ sources are compiled with the library root on the include path.",
+                    "C++ sources are compiled with the library root on the include path. "
+                    "Files may be given by options in any order; positional FILEs fill "
+                    "the roles not given by options, in the order MAIN, NAIVE, GEN.",
     )
-    parser.add_argument("main", nargs="?", help="solution to test")
-    parser.add_argument("naive", nargs="?", help="trusted (slow) solution")
-    parser.add_argument("gen", nargs="?", help="generator, called as `gen <seed>`")
-    parser.add_argument("-n", "--count", type=int, default=1000,
+    parser.add_argument("files", nargs="*", metavar="FILE",
+                        help="MAIN, NAIVE and GEN for the roles not given by options")
+    parser.add_argument("-m", "--main", help="solution to test")
+    parser.add_argument("-n", "--naive", help="trusted (slow) solution")
+    parser.add_argument("-g", "--gen", help="generator, called as `GEN <seed>`")
+    parser.add_argument("-c", "--count", type=int, default=1000,
                         help="number of cases, 0 for unlimited (default: 1000)")
     parser.add_argument("--start", type=int, default=0, help="first seed (default: 0)")
     parser.add_argument("--time", type=float, help="stop after this many seconds")
@@ -254,9 +266,17 @@ def parse_args(argv):
                         help="additional include directory")
     parser.add_argument("--init", nargs="?", const="gen.cpp", metavar="PATH",
                         help="write a generator template to PATH (default: gen.cpp)")
-    args = parser.parse_args(argv)
-    if args.init is None and args.gen is None:
-        parser.error("MAIN, NAIVE and GEN are required")
+    args = parser.parse_intermixed_args(argv)
+    roles = ("main", "naive", "gen")
+    files = list(args.files)
+    for role in roles:
+        if getattr(args, role) is None and files:
+            setattr(args, role, files.pop(0))
+    if files:
+        parser.error(f"too many files: {' '.join(files)}")
+    missing = [role.upper() for role in roles if getattr(args, role) is None]
+    if missing and not (args.init is not None and len(missing) == len(roles)):
+        parser.error(f"missing {', '.join(missing)} (use -m, -n, -g or positional FILEs)")
     if args.count < 0:
         parser.error("--count must be non-negative")
     if args.start < 0 or (args.replay is not None and args.replay < 0):

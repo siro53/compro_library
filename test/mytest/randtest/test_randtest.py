@@ -73,10 +73,36 @@ class RandTestTests(unittest.TestCase):
     def test_all_cases_pass(self):
         self.write("main.cpp", solution(
             "long long b = a[0]; for(auto x : a) if(x > b) b = x; std::cout << b << '\\n';"))
-        result = self.randtest("main.cpp", "naive.cpp", "gen.cpp", "-n", "30", "--start", "5")
+        result = self.randtest("main.cpp", "naive.cpp", "gen.cpp", "-c", "30", "--start", "5")
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertIn("all 30 cases passed (seeds 5..34", result.stdout)
         self.assertFalse((self.dir / "randtest_fail").exists())
+
+    def test_files_by_options_in_any_order(self):
+        self.write("main.cpp", solution(
+            "long long b = a[0]; for(auto x : a) if(x > b) b = x; std::cout << b << '\\n';"))
+        for args in (
+            ["-g", "gen.cpp", "-c", "5", "-n", "naive.cpp", "-m", "main.cpp"],
+            ["--naive", "naive.cpp", "--gen", "gen.cpp", "--main", "main.cpp", "-c", "5"],
+            ["-g", "gen.cpp", "main.cpp", "-c", "5", "naive.cpp"],  # positionals fill MAIN, NAIVE
+            ["main.cpp", "-c", "5", "naive.cpp", "gen.cpp"],
+        ):
+            with self.subTest(args=args):
+                result = self.randtest(*args)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                self.assertIn("all 5 cases passed", result.stdout)
+
+    def test_file_argument_errors(self):
+        for args, message in (
+            (["-m", "main.cpp", "-n", "naive.cpp"], "missing GEN"),
+            (["main.cpp"], "missing NAIVE, GEN"),
+            ([], "missing MAIN, NAIVE, GEN"),
+            (["-g", "gen.cpp", "a.cpp", "b.cpp", "c.cpp"], "too many files: c.cpp"),
+        ):
+            with self.subTest(args=args):
+                result = self.randtest(*args)
+                self.assertEqual(result.returncode, 2)
+                self.assertIn(message, result.stderr)
 
     def test_counterexample_is_saved_and_replayable(self):
         # wrong when every value is negative
@@ -94,7 +120,8 @@ class RandTestTests(unittest.TestCase):
         gen = next(p for p in (self.dir / ".randtest" / "build").glob("gen-*") if p.suffix != ".d")
         regenerated = subprocess.run([str(gen), str(seed)], capture_output=True, text=True).stdout
         self.assertEqual(regenerated, (fail / "in.txt").read_text())
-        replay = self.randtest("main.cpp", "naive.cpp", "gen.cpp", "--replay", str(seed))
+        self.assertIn(f"replay: randtest -m main.cpp -n naive.cpp -g gen.cpp --replay {seed}", info)
+        replay = self.randtest("--replay", str(seed), "-g", "gen.cpp", "-n", "naive.cpp", "-m", "main.cpp")
         self.assertEqual(replay.returncode, 1)
         self.assertIn(regenerated.strip(), replay.stdout)
         self.assertIn("--- diff (naive -> main) ---", replay.stdout)
@@ -119,9 +146,9 @@ class RandTestTests(unittest.TestCase):
     def test_token_and_exact_comparison(self):
         self.write("spaces.cpp", solution(
             "long long b = a[0]; for(auto x : a) if(x > b) b = x; std::cout << b << \"  \\n\\n\";"))
-        result = self.randtest("spaces.cpp", "naive.cpp", "gen.cpp", "-n", "20")
+        result = self.randtest("spaces.cpp", "naive.cpp", "gen.cpp", "-c", "20")
         self.assertEqual(result.returncode, 0, result.stderr)
-        result = self.randtest("spaces.cpp", "naive.cpp", "gen.cpp", "-n", "20", "--exact")
+        result = self.randtest("spaces.cpp", "naive.cpp", "gen.cpp", "-c", "20", "--exact")
         self.assertEqual(result.returncode, 1, result.stderr)
 
     def test_setup_errors(self):
@@ -143,13 +170,13 @@ class RandTestTests(unittest.TestCase):
         self.write("inc/answer.hpp", "#pragma once\nconstexpr int OFFSET = 0;\n")
         self.write("main.cpp", '#include "answer.hpp"\n' + solution(
             "long long b = a[0]; for(auto x : a) if(x > b) b = x; std::cout << b + OFFSET << '\\n';"))
-        result = self.randtest("main.cpp", "naive.cpp", "gen.cpp", "-n", "5", "-I", "inc")
+        result = self.randtest("main.cpp", "naive.cpp", "gen.cpp", "-c", "5", "-I", "inc")
         self.assertEqual(result.returncode, 0, result.stderr)
-        result = self.randtest("main.cpp", "naive.cpp", "gen.cpp", "-n", "5", "-I", "inc")
+        result = self.randtest("main.cpp", "naive.cpp", "gen.cpp", "-c", "5", "-I", "inc")
         self.assertNotIn("compiling", result.stderr)
         time.sleep(0.01)
         self.write("inc/answer.hpp", "#pragma once\nconstexpr int OFFSET = 1;\n")
-        result = self.randtest("main.cpp", "naive.cpp", "gen.cpp", "-n", "5", "-I", "inc")
+        result = self.randtest("main.cpp", "naive.cpp", "gen.cpp", "-c", "5", "-I", "inc")
         self.assertIn("compiling main.cpp", result.stderr)
         self.assertEqual(result.returncode, 1, result.stderr)
 
@@ -163,7 +190,7 @@ class RandTestTests(unittest.TestCase):
         self.assertIn("gen.cpp already exists", result.stderr)
 
         self.write("echo.py", "import sys\nsys.stdout.write(sys.stdin.read())\n")
-        result = self.randtest("echo.py", "echo.py", "gen.cpp", "-n", "3")
+        result = self.randtest("echo.py", "echo.py", "gen.cpp", "-c", "3")
         self.assertEqual(result.returncode, 0, result.stderr)
 
 
