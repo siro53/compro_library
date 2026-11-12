@@ -362,6 +362,58 @@ class RandTestTests(unittest.TestCase):
         self.assertIn("main: RE (exit code 4)", result.stdout)
         self.assertNotIn("checker:", result.stdout)
 
+    def test_init_writes_a_working_checker_template(self):
+        (self.dir / "gen.cpp").unlink()
+        result = self.randtest("--init", "--checker", "check.cpp")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout, "wrote gen.cpp\nwrote check.cpp\n")
+        self.assertIn("exit(1)", (self.dir / "check.cpp").read_text())
+        # the two templates work together: print the index of a maximum
+        self.write("first_max.cpp", solution(
+            "int k = 0; for(int i = 0; i < n; i++) if(a[i] > a[k]) k = i; "
+            "std::cout << k + 1 << '\\n';"))
+        self.write("last_max.cpp", solution(
+            "int k = 0; for(int i = 0; i < n; i++) if(a[i] >= a[k]) k = i; "
+            "std::cout << k + 1 << '\\n';"))
+        self.write("skip_last.cpp", solution(
+            "int k = 0; for(int i = 0; i + 1 < n; i++) if(a[i] > a[k]) k = i; "
+            "std::cout << k + 1 << '\\n';"))
+        self.write("extra.cpp", solution(
+            "int k = 0; for(int i = 0; i < n; i++) if(a[i] > a[k]) k = i; "
+            "std::cout << k + 1 << \" 0\\n\";"))
+        result = self.randtest("last_max.cpp", "gen.cpp", "--checker", "check.cpp", "-c", "100")
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        result = self.randtest("-m", "last_max.cpp", "-n", "first_max.cpp", "-g", "gen.cpp",
+                               "--checker", "check.cpp", "-c", "100")
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        result = self.randtest("skip_last.cpp", "gen.cpp", "--checker", "check.cpp")
+        self.assertEqual(result.returncode, 1)
+        self.assertRegex(result.stdout, r"checker: rejected \(exit code 1\)\n"
+                                        r"--- checker message ---\na\[\d+\] = \d+ is not the maximum")
+        result = self.randtest("extra.cpp", "gen.cpp", "--checker", "check.cpp")
+        self.assertEqual(result.returncode, 1)
+        self.assertIn("extra output: 0", result.stdout)
+
+    def test_init_keeps_existing_files(self):
+        self.write("check.cpp", "// mine\n")
+        result = self.randtest("--init", "--checker", "check.cpp")  # gen.cpp exists too
+        self.assertEqual(result.returncode, 2)
+        self.assertIn("gen.cpp already exists, kept it", result.stderr)
+        self.assertIn("check.cpp already exists, kept it", result.stderr)
+        self.assertIn("nothing was written", result.stderr)
+        result = self.randtest("--init", "gen2.cpp", "--checker", "check.cpp")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout, "wrote gen2.cpp\n")
+        self.assertEqual((self.dir / "check.cpp").read_text(), "// mine\n")
+        result = self.randtest("--init", "gen3.cpp", "--checker", "check.py")
+        self.assertEqual(result.returncode, 2)
+        self.assertIn("check.py is not a C++ file", result.stderr)
+        self.assertFalse((self.dir / "gen3.cpp").exists())
+        # "checker" in the settings file is used as well
+        self.write_config({"checker": "c2.cpp"})
+        result = self.randtest("--init", "gen4.cpp")
+        self.assertEqual(result.stdout, "wrote gen4.cpp\nwrote c2.cpp\n")
+
     def test_comparison_mode_errors(self):
         for args, message in (
             (["--exact", "--float", "1e-6"], "--exact and --float cannot be combined"),

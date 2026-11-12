@@ -44,6 +44,66 @@ int main(int argc, char **argv) {
 }
 """
 
+CHECKER_TEMPLATE = """\
+// randtest checker, called as: check <input> <output of MAIN> <output of NAIVE>
+// The third file is empty when NAIVE is not given.
+// Exit status: 0 = accepted, 1 = wrong answer (print the reason to stdout).
+// This sample checks "print the 1-indexed position of a maximum of a".
+#include "template/template.cpp"
+
+ifstream input_file, output_file, answer_file;
+
+[[noreturn]] void wrong(const string &reason) {
+    cout << reason << '\\n';
+    exit(1);
+}
+
+// Read one value of the output of MAIN; rejects missing or malformed tokens.
+template <class T> T read_output() {
+    T x;
+    if(!(output_file >> x)) wrong("cannot read the output");
+    return x;
+}
+
+int main(int argc, char **argv) {
+    if(argc != 4) {
+        cerr << "usage: " << argv[0] << " <input> <output> <answer>\\n";
+        return 3;
+    }
+    input_file.open(argv[1]);
+    output_file.open(argv[2]);
+    answer_file.open(argv[3]);
+
+    // 1. read the input
+    int n;
+    input_file >> n;
+    vector<ll> a(n);
+    for(auto &x : a) input_file >> x;
+
+    // 2. read and validate the output of MAIN
+    int k = read_output<int>();
+    if(k < 1 || k > n) wrong("index out of range: " + to_string(k));
+
+    // 3. check optimality; the answer of NAIVE (if any) can be used here
+    ll best = *max_element(a.begin(), a.end());
+    int expected;
+    if(answer_file >> expected) {
+        if(a[expected - 1] != best) {
+            cerr << "the naive answer is not a maximum\\n";
+            return 3;
+        }
+    }
+    if(a[k - 1] != best) {
+        wrong("a[" + to_string(k) + "] = " + to_string(a[k - 1]) +
+              " is not the maximum " + to_string(best));
+    }
+
+    // 4. reject extra output
+    string extra;
+    if(output_file >> extra) wrong("extra output: " + extra);
+}
+"""
+
 
 class Abort(Exception):
     """A setup error (compile error, broken generator, ...)."""
@@ -416,6 +476,8 @@ comparison:
   answers. The checker's stdout and stderr are printed as the reason and
   saved to checker.log. With --checker, NAIVE is optional; when FILEs are
   one fewer than the roles left, they fill MAIN and GEN.
+  `randtest --init --checker check.cpp` writes a checker template with
+  the generator template (also when "checker" is in randtest.json).
   --exact, --float and --checker cannot be combined.
 
 generator:
@@ -451,6 +513,8 @@ exit status:
 examples:
   randtest --init
       write a generator template to gen.cpp
+  randtest --init --checker check.cpp
+      also write a checker template to check.cpp
   randtest -m main.cpp -n naive.cpp -g gen.cpp
       try seeds 0..999
   randtest -m main.cpp -n naive.py -g gen.cpp -c 0 --time 60
@@ -516,8 +580,9 @@ help language:
             "cxx": "C++ compiler (default: g++)",
             "cxxflags": "compiler flags, replacing the default\n(default: \"-std=c++17 -O2\")",
             "include": "additional include directory (repeatable)",
-            "init": "write a generator template to PATH (default: gen.cpp)\n"
-                    "and exit; run the test as well if all files are given",
+            "init": "write a generator template to PATH (default: gen.cpp),\n"
+                    "and a checker template too with --checker CHECKER;\n"
+                    "run the test as well if all files are given",
             "help": "show the help in the language of the environment",
             "help_ja": "show the help in Japanese",
             "help_en": "show the help in English",
@@ -572,6 +637,8 @@ seed S = START, START+1, ... の順に、次の処理を繰り返します。
   チェッカーの標準出力と標準エラー出力は、不合格の理由として表示し、
   checker.log に保存します。--checker を使うときは NAIVE を省略でき、
   FILE が残りの役割より 1 つ少なければ MAIN と GEN に割り当てます。
+  `randtest --init --checker check.cpp` で、生成器の雛形と一緒にチェッカー
+  の雛形も書き出します (randtest.json に "checker" がある場合も同様)。
   --exact, --float, --checker は同時に指定できません。
 
 生成器:
@@ -608,6 +675,8 @@ seed S = START, START+1, ... の順に、次の処理を繰り返します。
 使用例:
   randtest --init
       生成器の雛形を gen.cpp に書き出す
+  randtest --init --checker check.cpp
+      チェッカーの雛形も check.cpp に書き出す
   randtest -m main.cpp -n naive.cpp -g gen.cpp
       seed 0 から 999 までを試す
   randtest -m main.cpp -n naive.py -g gen.cpp -c 0 --time 60
@@ -676,7 +745,8 @@ seed S = START, START+1, ... の順に、次の処理を繰り返します。
             "cxxflags": "コンパイルオプション。既定値を置き換える\n(既定値: \"-std=c++17 -O2\")",
             "include": "追加の include ディレクトリ (複数回指定できる)",
             "init": "生成器の雛形を PATH に書き出す (既定値: gen.cpp)。\n"
-                    "ファイルも 3 つ指定すれば、続けてテストを実行する",
+                    "--checker CHECKER も指定すればチェッカーの雛形も作る。\n"
+                    "ファイルも指定すれば、続けてテストを実行する",
             "help": "環境に合わせた言語でヘルプを表示する",
             "help_ja": "日本語でヘルプを表示する",
             "help_en": "英語でヘルプを表示する",
@@ -859,12 +929,26 @@ def parse_args(argv):
     return args
 
 
-def init(path):
-    target = Path(path)
-    if target.exists():
-        raise Abort(f"{path} already exists")
-    target.write_text(GEN_TEMPLATE)
-    print(f"wrote {path}")
+def init(args):
+    """Write the generator template, and the checker template with --checker.
+
+    Existing files are kept; it fails only when nothing could be written."""
+    targets = [(args.init, GEN_TEMPLATE)]
+    if args.checker:
+        if Path(args.checker).suffix.lower() not in CPP_SUFFIXES:
+            raise Abort(f"--init writes a C++ checker; {args.checker} is not a C++ file")
+        targets.append((args.checker, CHECKER_TEMPLATE))
+    kept = []
+    for path, text in targets:
+        target = Path(path)
+        if target.exists():
+            kept.append(path)
+            print(f"{path} already exists, kept it", file=sys.stderr)
+            continue
+        target.write_text(text)
+        print(f"wrote {path}")
+    if len(kept) == len(targets):
+        raise Abort("nothing was written")
 
 
 def replay(args, programs):
@@ -920,7 +1004,7 @@ def main(argv=None):
     args = parse_args(sys.argv[1:] if argv is None else argv)
     try:
         if args.init is not None:
-            init(args.init)
+            init(args)
             if args.gen is None:
                 return 0
         programs = {

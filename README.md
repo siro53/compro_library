@@ -84,7 +84,7 @@ ln -s /path/to/compro_library/scripts/randtest.py ~/.local/bin/randtest
 
 ### 使い方
 
-提出する解 `main.cpp`、愚直解 `naive.cpp`、入力生成器 `gen.cpp` を用意して実行します。生成器の雛形は `randtest --init` で `gen.cpp` に書き出せます。
+提出する解 `main.cpp`、愚直解 `naive.cpp`、入力生成器 `gen.cpp` を用意して実行します。生成器の雛形は `randtest --init` で `gen.cpp` に書き出せます。既に存在するファイルは上書きしません。
 
 ```sh
 randtest --init                                  # gen.cpp の雛形を作る
@@ -142,7 +142,9 @@ randtest -m main.cpp -n naive.cpp -g gen.cpp --float 1e-6
 CHECKER <入力ファイル> <main の出力> <naive の出力>
 ```
 
-`-n` は省略でき、そのときは3番目のファイルが空になります。愚直解を渡すと、チェッカーは最適値などをその答えから読み取れます。チェッカーが標準出力・標準エラー出力に書いた内容は、不合格の理由として表示し、`randtest_fail/checker.log` に保存します。次のチェッカーは「最大の要素の添字（1始まり）を1つ出力する」問題用です。
+`-n` は省略でき、そのときは3番目のファイルが空になります。愚直解を渡すと、チェッカーは最適値などをその答えから読み取れます。チェッカーが標準出力・標準エラー出力に書いた内容は、不合格の理由として表示し、`randtest_fail/checker.log` に保存します。`randtest --init --checker check.cpp` を実行すると、生成器の雛形と一緒にチェッカーの雛形も `check.cpp` に書き出します（設定ファイルに `checker` がある場合も同様です）。雛形は、生成器の雛形と組み合わせてそのまま動く「最大の要素の添字（1始まり）を1つ出力する」問題用のチェッカーです。入力を読む、出力を読んで検証する、最適性を確かめる、余分な出力がないか確かめる、の4段階に分かれているので、問題に合わせて書き換えて使います。不合格は `wrong("理由")`（終了コード 1）で返し、愚直解の答えが矛盾するなどチェッカー自身の前提が崩れた場合は終了コード 3 で終了します。
+
+同じ問題のチェッカーを最小限に書くと次のようになります。
 
 ```cpp
 #include <bits/stdc++.h>
@@ -206,7 +208,7 @@ randtest -m main.cpp -n naive.cpp -g gen.cpp --checker check.cpp
 
 コマンドラインで指定した値は設定ファイルより優先します。位置引数のファイルも、設定ファイルの `main`・`naive`・`gen` より優先します。例えば設定ファイルに3つのファイルが書いてあっても、`randtest -m other.cpp` なら提出する解だけを差し替えて実行します。`-I` だけは上書きせず、`include` のリストに追加します。
 
-未知のキー、型の誤り、JSON の構文エラーは、ファイル名を添えたエラー（終了コード 2）になります。読み込んだときは、標準エラー出力に `randtest: using settings in randtest.json` と表示します。`randtest --init` は雛形を書き出すだけで、設定ファイルの `main`・`naive`・`gen` は使いません。
+未知のキー、型の誤り、JSON の構文エラーは、ファイル名を添えたエラー（終了コード 2）になります。読み込んだときは、標準エラー出力に `randtest: using settings in randtest.json` と表示します。`randtest --init` は雛形を書き出すだけで、設定ファイルの `main`・`naive`・`gen` は使いません（`checker` があればチェッカーの雛形も作ります）。
 
 ### 動作確認
 
