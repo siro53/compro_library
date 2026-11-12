@@ -172,12 +172,23 @@ def generate(gen, seed, timeout):
 
 # ---------------------------------------------------------------- report
 
-def show(label, data):
+def show(label, data, saved=None):
     text = data.decode(errors="replace")
     if len(data) > SHOW_LIMIT:
-        text = text[:SHOW_LIMIT] + "\n... (truncated)"
+        text = text[:SHOW_LIMIT] + "\n... (truncated"
+        text += f", full text in {saved})" if saved else ")"
     print(f"--- {label} ---")
+    if not data:
+        print("(empty)")
+        return
     print(text, end="" if text.endswith("\n") else "\n")
+
+
+def show_stderr(main, naive, out_dir=None):
+    """Print stderr of both programs (shown even when empty)."""
+    for role, result in (("main", main), ("naive", naive)):
+        saved = out_dir / f"err_{role}.txt" if out_dir and result.stderr else None
+        show(f"stderr of {role}", result.stderr, saved)
 
 
 def show_diff(main_out, naive_out):
@@ -216,18 +227,15 @@ def replay_command(args, seed):
 
 
 def report(seed, args, stdin, main, naive):
-    print(f"\nfound a counterexample (seed {seed})")
-    show("input", stdin)
-    for role, result in (("main", main), ("naive", naive)):
-        status = result.status(args.timeout)
-        if status != "OK":
-            print(f"{role}: {status}")
-            if result.stderr:
-                show(f"stderr of {role}", result.stderr)
-    if main.ok and naive.ok:
-        show_diff(main.stdout, naive.stdout)
     out_dir = Path(args.out)
     save_case(out_dir, seed, args, stdin, main, naive)
+    print(f"\nfound a counterexample (seed {seed})")
+    show("input", stdin, out_dir / "in.txt")
+    for role, result in (("main", main), ("naive", naive)):
+        print(f"{role}: {result.status(args.timeout)}")
+    if main.ok and naive.ok:
+        show_diff(main.stdout, naive.stdout)
+    show_stderr(main, naive, out_dir)
     print(f"saved to {out_dir}/ (replay with --replay {seed})")
 
 
@@ -275,12 +283,16 @@ generator:
   `randtest --init` writes a template to gen.cpp.
 
 counterexample:
-  The first counterexample is printed and saved to OUT (randtest_fail/):
+  The first counterexample is printed with the results, the diff of the
+  outputs and the stderr of both MAIN and NAIVE (stderr is shown but not
+  compared, so debug output is fine). It is also saved to OUT
+  (randtest_fail/):
     in.txt                      the input
     out_main.txt out_naive.txt  the outputs
     err_main.txt err_naive.txt  stderr (only when it is not empty)
     info.txt                    the seed, the results and a replay command
-  --replay SEED runs only that seed and shows the input and both outputs.
+  --replay SEED runs only that seed and shows the input, both outputs and
+  both stderr.
   Seeds start from 0 on every run, so rerunning after a fix checks the
   same inputs again. Use --start to try other seeds.
 
@@ -323,7 +335,7 @@ help language:
             "start": "first seed (default: 0)",
             "time": "stop after SEC seconds (default: no limit)",
             "timeout": "time limit of each run of GEN, MAIN and NAIVE\n(default: 2)",
-            "replay": "run only SEED and show the input and both outputs",
+            "replay": "run only SEED and show the input, outputs and stderr",
             "exact": "compare outputs byte by byte instead of token by token",
             "out": "directory to save a counterexample\n(default: randtest_fail)",
             "cxx": "C++ compiler (default: g++)",
@@ -378,12 +390,16 @@ seed S = START, START+1, ... の順に、次の処理を繰り返します。
   `randtest --init` で雛形を gen.cpp に書き出せます。
 
 反例:
-  最初に見つかった反例を表示し、OUT (randtest_fail/) に保存します。
+  最初に見つかった反例について、入力、各解の結果、出力の差分、MAIN と
+  NAIVE 両方の標準エラー出力を表示します (標準エラー出力は表示するだけで
+  比較しないので、デバッグ出力が残っていても構いません)。反例は OUT
+  (randtest_fail/) にも保存します。
     in.txt                      入力
     out_main.txt out_naive.txt  出力
     err_main.txt err_naive.txt  標準エラー出力 (空でない場合だけ)
     info.txt                    seed、各解の結果、再現用のコマンド
-  --replay SEED でその seed だけを実行し、入力と両方の出力を表示します。
+  --replay SEED でその seed だけを実行し、入力と両方の出力・標準エラー出力
+  を表示します。
   seed は毎回 0 から始まるので、修正後に再実行すると同じ入力で確認できます。
   別の入力を試すには --start で開始位置をずらします。
 
@@ -428,7 +444,7 @@ seed S = START, START+1, ... の順に、次の処理を繰り返します。
             "start": "最初の seed (既定値: 0)",
             "time": "SEC 秒経過したら終了する (既定値: 制限なし)",
             "timeout": "GEN, MAIN, NAIVE の 1 回の実行の制限時間 (秒)\n(既定値: 2)",
-            "replay": "SEED だけを実行し、入力と両方の出力を表示する",
+            "replay": "SEED だけを実行し、入力・出力・標準エラー出力を\n表示する",
             "exact": "トークン単位ではなくバイト列の完全一致で比較する",
             "out": "反例の保存先 (既定値: randtest_fail)",
             "cxx": "C++ コンパイラ (既定値: g++)",
@@ -543,6 +559,7 @@ def replay(args, main, naive, gen):
     show(f"input (seed {seed})", stdin)
     for role, result in (("main", m), ("naive", n)):
         show(f"{role}: {result.status(args.timeout)}", result.stdout)
+    show_stderr(m, n)
     if m.ok and n.ok and same_output(m.stdout, n.stdout, args.exact):
         print("outputs match")
         return 0
