@@ -87,8 +87,16 @@ ln -s /path/to/compro_library/scripts/randtest.py ~/.local/bin/randtest
 提出する解 `main.cpp`、愚直解 `naive.cpp`、入力生成器 `gen.cpp` を用意して実行します。生成器の雛形は `randtest --init` で `gen.cpp` に書き出せます。
 
 ```sh
-randtest --init                        # gen.cpp の雛形を作る
-randtest main.cpp naive.cpp gen.cpp    # seed 0, 1, ..., 999 で比較する
+randtest --init                                  # gen.cpp の雛形を作る
+randtest -m main.cpp -n naive.cpp -g gen.cpp     # seed 0, 1, ..., 999 で比較する
+```
+
+3つのファイルは `-m`（提出する解）、`-n`（愚直解）、`-g`（生成器）で指定し、オプションの順番は自由です。オプションを付けずに並べることもできます。その場合は、オプションで指定しなかった役割を「提出する解、愚直解、生成器」の順に埋めます。次のコマンドはどれも同じ意味です。
+
+```sh
+randtest -g gen.cpp -n naive.cpp -m main.cpp
+randtest main.cpp naive.cpp gen.cpp
+randtest -g gen.cpp main.cpp naive.cpp
 ```
 
 生成器は `gen <seed>` として呼ばれ、1つの入力を標準出力に書きます。[生成器ライブラリ](docs/random/gen/all.md)の `Random(argc, argv)` を使えば、この規約どおりに `argv[1]` を seed として読めます。木やグラフ、順列などを生成する関数もこのライブラリにあります。
@@ -98,14 +106,15 @@ C++ のソースは、ライブラリのルートを include パスに加えて 
 各 seed について、2つの解の出力を空白区切りのトークン列として比較します。出力が食い違うか、どちらかが実行時エラー（終了コードが0以外）や時間切れになると、その入力を反例として報告して終了します。反例は `randtest_fail/` に保存され、`in.txt`（入力）、`out_main.txt`・`out_naive.txt`（出力）、`err_*.txt`（標準エラー出力）、`info.txt`（seed と再現コマンド）が残ります。
 
 ```sh
-randtest main.cpp naive.cpp gen.cpp --replay 42   # seed 42 の入力と両方の出力を表示する
+randtest -m main.cpp -n naive.cpp -g gen.cpp --replay 42   # seed 42 の入力と両方の出力を表示する
 ```
 
 主なオプションは次のとおりです。
 
 | オプション | 意味 |
 | --- | --- |
-| `-n N` | 試すケース数。`0` なら無制限（既定値は 1000） |
+| `-m FILE`, `-n FILE`, `-g FILE` | 提出する解、愚直解、生成器（`--main`, `--naive`, `--gen` とも書ける） |
+| `-c N` | 試すケース数。`0` なら無制限（既定値は 1000） |
 | `--start S` | 最初の seed（既定値は 0） |
 | `--time SEC` | 指定した秒数が経過したら終了する |
 | `--timeout SEC` | 1回の実行の制限時間（既定値は 2 秒） |
