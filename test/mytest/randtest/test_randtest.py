@@ -1,5 +1,7 @@
 """Behavior tests for scripts/randtest.py."""
 
+import importlib.util
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -64,11 +66,57 @@ class RandTestTests(unittest.TestCase):
         path.write_text(text)
         return path
 
-    def randtest(self, *args):
+    def randtest(self, *args, env=None):
+        base = {k: v for k, v in os.environ.items()
+                if k not in ("RANDTEST_LANG", "LANGUAGE", "LC_ALL", "LC_MESSAGES", "LANG")}
         return subprocess.run(
             [sys.executable, str(SCRIPT), *args], cwd=self.dir,
             capture_output=True, text=True, timeout=120,
+            env={**base, "LANG": "C.UTF-8", **(env or {})},
         )
+
+    def test_help_in_both_languages(self):
+        english = self.randtest("--help-en")
+        japanese = self.randtest("--help-ja")
+        self.assertEqual(english.returncode, 0)
+        self.assertEqual(japanese.returncode, 0)
+        for heading in ("usage: randtest -m MAIN -n NAIVE -g GEN", "files:", "running:",
+                        "specifying files:", "generator:", "counterexample:",
+                        "exit status:", "examples:", "help language:"):
+            self.assertIn(heading, english.stdout)
+        for heading in ("使い方: randtest -m MAIN -n NAIVE -g GEN", "ファイル:", "実行:",
+                        "ファイルの指定:", "生成器:", "反例:", "終了コード:", "使用例:",
+                        "ヘルプの言語:"):
+            self.assertIn(heading, japanese.stdout)
+        for option in ("--main", "--naive", "--gen", "--count", "--start", "--time",
+                       "--timeout", "--replay", "--exact", "--out", "--cxx", "--cxxflags",
+                       "-I DIR", "--init", "--help-ja", "--help-en"):
+            self.assertIn(option, english.stdout)
+            self.assertIn(option, japanese.stdout)
+
+    def test_help_language_selection(self):
+        for env, prefix in (
+            ({}, "usage:"),
+            ({"RANDTEST_LANG": "ja"}, "使い方:"),
+            ({"LANG": "ja_JP.UTF-8"}, "使い方:"),
+            ({"LANG": "ja_JP.UTF-8", "RANDTEST_LANG": "en"}, "usage:"),
+            ({"LANGUAGE": "ja:en", "LANG": "C.UTF-8"}, "使い方:"),
+        ):
+            with self.subTest(env=env):
+                result = self.randtest("-h", env=env)
+                self.assertEqual(result.returncode, 0)
+                self.assertTrue(result.stdout.startswith(prefix), result.stdout[:40])
+        self.assertTrue(self.randtest("--help-en", env={"RANDTEST_LANG": "ja"})
+                        .stdout.startswith("usage:"))
+
+    def test_help_texts_cover_the_same_options(self):
+        spec = importlib.util.spec_from_file_location("randtest", SCRIPT)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        en, ja = module.HELP["en"], module.HELP["ja"]
+        self.assertEqual(en.keys(), ja.keys())
+        self.assertEqual(en["args"].keys(), ja["args"].keys())
+        self.assertEqual(en["groups"].keys(), ja["groups"].keys())
 
     def test_all_cases_pass(self):
         self.write("main.cpp", solution(

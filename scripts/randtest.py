@@ -233,39 +233,282 @@ def report(seed, args, stdin, main, naive):
 
 # ---------------------------------------------------------------- main
 
-def parse_args(argv):
+HELP = {
+    "en": {
+        "usage_prefix": "usage: ",
+        "usage": "%(prog)s -m MAIN -n NAIVE -g GEN [options]\n"
+                 "       %(prog)s MAIN NAIVE GEN [options]\n"
+                 "       %(prog)s --init [PATH]",
+        "description": """\
+Random testing: run a solution and a naive solution on many generated
+inputs and stop at the first input (a counterexample) where they disagree.
+
+For each seed S = START, START+1, ..., randtest
+  1. runs `GEN S` and takes its stdout as the input,
+  2. feeds the input to MAIN and NAIVE,
+  3. compares their outputs token by token (whitespace is ignored).
+A different output, a runtime error (non-zero exit status) or a timeout
+of either program is reported as a counterexample.""",
+        "epilog": """\
+specifying files:
+  The three files can be given with -m, -n and -g in any order.
+  Positional FILEs fill the roles not given by options, in the order
+  MAIN, NAIVE, GEN. The following commands are equivalent:
+    randtest -m main.cpp -n naive.cpp -g gen.cpp
+    randtest -g gen.cpp -m main.cpp -n naive.cpp
+    randtest main.cpp naive.cpp gen.cpp
+
+  How each file is run:
+    .cpp .cc .cxx  compiled with CXX CXXFLAGS -I <library root> and cached
+                   in ./.randtest/build/ (rebuilt only when the source or
+                   an included header has changed)
+    .py            run with the Python interpreter that runs randtest
+    others         executed as they are (e.g. ./a.out)
+
+generator:
+  GEN is called as `GEN <seed>` and must print one input to stdout.
+  The same seed must always give the same input. With this library:
+    #include "random/gen/all.hpp"
+    Random rng(argc, argv);  // reads argv[1] as the seed
+  Ranges are half-open [l, r) and vertices are 0-indexed.
+  Small inputs (e.g. N <= 8) give counterexamples that are easy to trace.
+  `randtest --init` writes a template to gen.cpp.
+
+counterexample:
+  The first counterexample is printed and saved to OUT (randtest_fail/):
+    in.txt                      the input
+    out_main.txt out_naive.txt  the outputs
+    err_main.txt err_naive.txt  stderr (only when it is not empty)
+    info.txt                    the seed, the results and a replay command
+  --replay SEED runs only that seed and shows the input and both outputs.
+  Seeds start from 0 on every run, so rerunning after a fix checks the
+  same inputs again. Use --start to try other seeds.
+
+exit status:
+  0    all cases passed (or only --init was run)
+  1    a counterexample was found (--replay: the outputs differ)
+  2    setup error: invalid arguments, compile error, generator failure
+  130  interrupted with Ctrl-C
+
+examples:
+  randtest --init
+      write a generator template to gen.cpp
+  randtest -m main.cpp -n naive.cpp -g gen.cpp
+      try seeds 0..999
+  randtest -m main.cpp -n naive.py -g gen.cpp -c 0 --time 60
+      search for 60 seconds with a naive solution in Python
+  randtest -m main.cpp -n naive.cpp -g gen.cpp --replay 42
+      show the input and outputs for seed 42
+  randtest -m main.cpp -n naive.cpp -g gen.cpp \\
+           --cxxflags "-std=c++17 -O2 -g -fsanitize=address,undefined"
+      also report out-of-range accesses as runtime errors
+
+help language:
+  -h follows RANDTEST_LANG (ja or en), and otherwise the locale
+  (LANGUAGE, LC_ALL, LC_MESSAGES, LANG). --help-ja and --help-en
+  always show the Japanese and English help.""",
+        "groups": {
+            "files": "files",
+            "run": "running",
+            "compare": "comparison and output",
+            "build": "compilation",
+            "other": "others",
+        },
+        "args": {
+            "files": "MAIN, NAIVE and GEN for the roles not given by options",
+            "main": "solution to test",
+            "naive": "trusted (slow) solution to compare with",
+            "gen": "generator, called as `GEN <seed>`",
+            "count": "number of cases, 0 for unlimited (default: 1000)",
+            "start": "first seed (default: 0)",
+            "time": "stop after SEC seconds (default: no limit)",
+            "timeout": "time limit of each run of GEN, MAIN and NAIVE\n(default: 2)",
+            "replay": "run only SEED and show the input and both outputs",
+            "exact": "compare outputs byte by byte instead of token by token",
+            "out": "directory to save a counterexample\n(default: randtest_fail)",
+            "cxx": "C++ compiler (default: g++)",
+            "cxxflags": "compiler flags, replacing the default\n(default: \"-std=c++17 -O2\")",
+            "include": "additional include directory (repeatable)",
+            "init": "write a generator template to PATH (default: gen.cpp)\n"
+                    "and exit; run the test as well if all files are given",
+            "help": "show the help in the language of the environment",
+            "help_ja": "show the help in Japanese",
+            "help_en": "show the help in English",
+        },
+    },
+    "ja": {
+        "usage_prefix": "使い方: ",
+        "usage": "%(prog)s -m MAIN -n NAIVE -g GEN [オプション]\n"
+                 "       %(prog)s MAIN NAIVE GEN [オプション]\n"
+                 "       %(prog)s --init [PATH]",
+        "description": """\
+ランダムテスト: 提出する解 (MAIN) と愚直解 (NAIVE) に、生成器 (GEN) が
+作った入力を次々に与え、結果が食い違う入力 (反例) を探します。
+
+seed S = START, START+1, ... の順に、次の処理を繰り返します。
+  1. `GEN S` を実行し、標準出力を入力とする
+  2. その入力を MAIN と NAIVE に与える
+  3. 2 つの出力をトークン単位で比較する (空白・改行の違いは無視)
+出力の食い違い、実行時エラー (終了コードが 0 以外)、時間切れのいずれかが
+起きた入力を反例として報告し、そこで終了します。""",
+        "epilog": """\
+ファイルの指定:
+  3 つのファイルは -m, -n, -g で順不同に指定できます。オプションを付けずに
+  並べたファイル (FILE) は、オプションで指定しなかった役割を MAIN, NAIVE,
+  GEN の順に埋めます。次のコマンドはどれも同じ意味です。
+    randtest -m main.cpp -n naive.cpp -g gen.cpp
+    randtest -g gen.cpp -m main.cpp -n naive.cpp
+    randtest main.cpp naive.cpp gen.cpp
+
+  ファイルの実行方法:
+    .cpp .cc .cxx  CXX CXXFLAGS -I <ライブラリのルート> でコンパイルし、
+                   ./.randtest/build/ にキャッシュする (ソースか include
+                   したヘッダが変わったときだけ再コンパイルする)
+    .py            randtest を動かしている Python で実行する
+    それ以外       実行ファイルとしてそのまま実行する (例: ./a.out)
+
+生成器:
+  GEN は `GEN <seed>` の形で呼ばれ、入力を 1 つ標準出力に書きます。同じ
+  seed からは常に同じ入力を出してください。このライブラリでは次のように
+  書けます。
+    #include "random/gen/all.hpp"
+    Random rng(argc, argv);  // argv[1] を seed として読む
+  区間は半開区間 [l, r)、頂点番号は 0 始まりです。N <= 8 程度の小さい入力
+  にすると、手で追える反例が見つかりやすくなります。
+  `randtest --init` で雛形を gen.cpp に書き出せます。
+
+反例:
+  最初に見つかった反例を表示し、OUT (randtest_fail/) に保存します。
+    in.txt                      入力
+    out_main.txt out_naive.txt  出力
+    err_main.txt err_naive.txt  標準エラー出力 (空でない場合だけ)
+    info.txt                    seed、各解の結果、再現用のコマンド
+  --replay SEED でその seed だけを実行し、入力と両方の出力を表示します。
+  seed は毎回 0 から始まるので、修正後に再実行すると同じ入力で確認できます。
+  別の入力を試すには --start で開始位置をずらします。
+
+終了コード:
+  0    すべて一致した (または --init だけを実行した)
+  1    反例が見つかった (--replay では出力が食い違った)
+  2    準備の段階で失敗した (引数の誤り、コンパイルエラー、生成器の異常終了)
+  130  Ctrl-C で中断した
+
+使用例:
+  randtest --init
+      生成器の雛形を gen.cpp に書き出す
+  randtest -m main.cpp -n naive.cpp -g gen.cpp
+      seed 0 から 999 までを試す
+  randtest -m main.cpp -n naive.py -g gen.cpp -c 0 --time 60
+      Python の愚直解と比べながら 60 秒間探し続ける
+  randtest -m main.cpp -n naive.cpp -g gen.cpp --replay 42
+      seed 42 の入力と両方の出力を表示する
+  randtest -m main.cpp -n naive.cpp -g gen.cpp \\
+           --cxxflags "-std=c++17 -O2 -g -fsanitize=address,undefined"
+      配列外アクセスなども実行時エラーとして検出する
+
+ヘルプの言語:
+  -h の言語は環境変数 RANDTEST_LANG (ja または en) で決まり、未設定なら
+  ロケール (LANGUAGE, LC_ALL, LC_MESSAGES, LANG) に従います。
+  --help-ja と --help-en は、常に日本語・英語のヘルプを表示します。
+  普段から日本語にするには、シェルの設定に export RANDTEST_LANG=ja を
+  追加してください。""",
+        "groups": {
+            "files": "ファイル",
+            "run": "実行",
+            "compare": "比較と出力",
+            "build": "コンパイル",
+            "other": "その他",
+        },
+        "args": {
+            "files": "オプションで指定しなかった MAIN, NAIVE, GEN",
+            "main": "テストする解 (提出する解)",
+            "naive": "比較に使う、確実に正しい解 (遅くてよい)",
+            "gen": "生成器。`GEN <seed>` の形で呼ばれる",
+            "count": "試すケース数。0 なら無制限 (既定値: 1000)",
+            "start": "最初の seed (既定値: 0)",
+            "time": "SEC 秒経過したら終了する (既定値: 制限なし)",
+            "timeout": "GEN, MAIN, NAIVE の 1 回の実行の制限時間 (秒)\n(既定値: 2)",
+            "replay": "SEED だけを実行し、入力と両方の出力を表示する",
+            "exact": "トークン単位ではなくバイト列の完全一致で比較する",
+            "out": "反例の保存先 (既定値: randtest_fail)",
+            "cxx": "C++ コンパイラ (既定値: g++)",
+            "cxxflags": "コンパイルオプション。既定値を置き換える\n(既定値: \"-std=c++17 -O2\")",
+            "include": "追加の include ディレクトリ (複数回指定できる)",
+            "init": "生成器の雛形を PATH に書き出す (既定値: gen.cpp)。\n"
+                    "ファイルも 3 つ指定すれば、続けてテストを実行する",
+            "help": "環境に合わせた言語でヘルプを表示する",
+            "help_ja": "日本語でヘルプを表示する",
+            "help_en": "英語でヘルプを表示する",
+        },
+    },
+}
+
+
+def help_language():
+    """Return "ja" or "en" from RANDTEST_LANG or the locale variables."""
+    for name in ("RANDTEST_LANG", "LANGUAGE", "LC_ALL", "LC_MESSAGES", "LANG"):
+        value = os.environ.get(name, "")
+        if value:
+            return "ja" if value.split(":")[0].lower().startswith("ja") else "en"
+    return "en"
+
+
+class HelpAction(argparse.Action):
+    def __init__(self, option_strings, dest, lang=None, **kwargs):
+        super().__init__(option_strings, dest=argparse.SUPPRESS,
+                         default=argparse.SUPPRESS, nargs=0, **kwargs)
+        self.lang = lang
+
+    def __call__(self, parser, namespace, values, option_string=None):
+        build_parser(self.lang or help_language()).print_help()
+        parser.exit()
+
+
+def build_parser(lang):
+    text = HELP[lang]
+
+    class Formatter(argparse.RawTextHelpFormatter):
+        def __init__(self, prog):
+            super().__init__(prog, max_help_position=26)
+
+        def add_usage(self, usage, actions, groups, prefix=None):
+            super().add_usage(usage, actions, groups, text["usage_prefix"])
+
     parser = argparse.ArgumentParser(
-        prog="randtest",
-        usage="%(prog)s [-m MAIN] [-n NAIVE] [-g GEN] [options] [FILE ...]",
-        description="Compare MAIN with NAIVE on inputs printed by `GEN <seed>`. "
-                    "C++ sources are compiled with the library root on the include path. "
-                    "Files may be given by options in any order; positional FILEs fill "
-                    "the roles not given by options, in the order MAIN, NAIVE, GEN.",
+        prog="randtest", usage=text["usage"], description=text["description"],
+        epilog=text["epilog"], formatter_class=Formatter, add_help=False,
     )
-    parser.add_argument("files", nargs="*", metavar="FILE",
-                        help="MAIN, NAIVE and GEN for the roles not given by options")
-    parser.add_argument("-m", "--main", help="solution to test")
-    parser.add_argument("-n", "--naive", help="trusted (slow) solution")
-    parser.add_argument("-g", "--gen", help="generator, called as `GEN <seed>`")
-    parser.add_argument("-c", "--count", type=int, default=1000,
-                        help="number of cases, 0 for unlimited (default: 1000)")
-    parser.add_argument("--start", type=int, default=0, help="first seed (default: 0)")
-    parser.add_argument("--time", type=float, help="stop after this many seconds")
-    parser.add_argument("--timeout", type=float, default=2.0,
-                        help="time limit per run in seconds (default: 2)")
-    parser.add_argument("--exact", action="store_true",
-                        help="compare outputs byte by byte instead of token by token")
-    parser.add_argument("--replay", type=int, metavar="SEED",
-                        help="run only SEED and show the input and both outputs")
-    parser.add_argument("-o", "--out", default="randtest_fail",
-                        help="directory for a counterexample (default: randtest_fail)")
-    parser.add_argument("--cxx", default="g++", help="C++ compiler (default: g++)")
-    parser.add_argument("--cxxflags", default="-std=c++17 -O2",
-                        help="compiler flags (default: '-std=c++17 -O2')")
-    parser.add_argument("-I", dest="include", action="append", default=[],
-                        help="additional include directory")
-    parser.add_argument("--init", nargs="?", const="gen.cpp", metavar="PATH",
-                        help="write a generator template to PATH (default: gen.cpp)")
+    h, g = text["args"], {key: parser.add_argument_group(title)
+                          for key, title in text["groups"].items()}
+    g["files"].add_argument("-m", "--main", metavar="MAIN", help=h["main"])
+    g["files"].add_argument("-n", "--naive", metavar="NAIVE", help=h["naive"])
+    g["files"].add_argument("-g", "--gen", metavar="GEN", help=h["gen"])
+    g["files"].add_argument("files", nargs="*", metavar="FILE", help=h["files"])
+    g["run"].add_argument("-c", "--count", type=int, default=1000, metavar="N",
+                          help=h["count"])
+    g["run"].add_argument("--start", type=int, default=0, metavar="SEED", help=h["start"])
+    g["run"].add_argument("--time", type=float, metavar="SEC", help=h["time"])
+    g["run"].add_argument("--timeout", type=float, default=2.0, metavar="SEC",
+                          help=h["timeout"])
+    g["run"].add_argument("--replay", type=int, metavar="SEED", help=h["replay"])
+    g["compare"].add_argument("--exact", action="store_true", help=h["exact"])
+    g["compare"].add_argument("-o", "--out", default="randtest_fail", metavar="DIR",
+                              help=h["out"])
+    g["build"].add_argument("--cxx", default="g++", metavar="CXX", help=h["cxx"])
+    g["build"].add_argument("--cxxflags", default="-std=c++17 -O2", metavar="FLAGS",
+                            help=h["cxxflags"])
+    g["build"].add_argument("-I", dest="include", action="append", default=[],
+                            metavar="DIR", help=h["include"])
+    g["other"].add_argument("--init", nargs="?", const="gen.cpp", metavar="PATH",
+                            help=h["init"])
+    g["other"].add_argument("-h", "--help", action=HelpAction, help=h["help"])
+    g["other"].add_argument("--help-ja", action=HelpAction, lang="ja", help=h["help_ja"])
+    g["other"].add_argument("--help-en", action=HelpAction, lang="en", help=h["help_en"])
+    return parser
+
+
+def parse_args(argv):
+    parser = build_parser(help_language())
     args = parser.parse_intermixed_args(argv)
     roles = ("main", "naive", "gen")
     files = list(args.files)
