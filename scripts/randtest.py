@@ -10,6 +10,7 @@ The generator is called as ``gen <seed>`` and must write one input to stdout.
 import argparse
 import difflib
 import hashlib
+import json
 import os
 import resource
 import shlex
@@ -24,6 +25,8 @@ LIBRARY_ROOT = Path(__file__).resolve().parents[1]
 CPP_SUFFIXES = {".cpp", ".cc", ".cxx"}
 BUILD_DIR = Path(".randtest") / "build"
 SHOW_LIMIT = 2000  # bytes of input/output printed on failure
+CONFIG_FILE = "randtest.json"
+ROLES = ("main", "naive", "gen")
 
 GEN_TEMPLATE = """\
 #include "template/template.cpp"
@@ -311,6 +314,26 @@ examples:
            --cxxflags "-std=c++17 -O2 -g -fsanitize=address,undefined"
       also report out-of-range accesses as runtime errors
 
+settings file:
+  If ./randtest.json exists, its values are used as the defaults of the
+  options. Options on the command line take precedence over it, and so do
+  positional FILEs over "main", "naive" and "gen". -I directories are
+  added to "include". All keys are optional:
+    "main", "naive", "gen"     files (strings)
+    "count", "start"           integers
+    "time", "timeout"          seconds ("time": 0 or null for no limit)
+    "exact"                    true or false (--no-exact turns it off)
+    "out", "cxx", "cxxflags"   strings
+    "include"                  list of directories
+  Unknown keys and values of a wrong type are errors. Example:
+    {
+      "main": "main.cpp", "naive": "naive.cpp", "gen": "gen.cpp",
+      "count": 5000, "timeout": 5,
+      "cxxflags": "-std=c++17 -O2 -g -fsanitize=address,undefined"
+    }
+  With this file, `randtest` alone runs the test. `randtest --init` only
+  writes the template and does not use the files in the settings.
+
 help language:
   -h follows RANDTEST_LANG (ja or en), and otherwise the locale
   (LANGUAGE, LC_ALL, LC_MESSAGES, LANG). --help-ja and --help-en
@@ -329,10 +352,11 @@ help language:
             "gen": "generator, called as `GEN <seed>`",
             "count": "number of cases, 0 for unlimited (default: 1000)",
             "start": "first seed (default: 0)",
-            "time": "stop after SEC seconds (default: no limit)",
+            "time": "stop after SEC seconds, 0 for no limit\n(default: no limit)",
             "timeout": "time limit of each run of GEN, MAIN and NAIVE\n(default: 2)",
             "replay": "run only SEED, show the input and outputs and\nsave them with stderr to OUT",
             "exact": "compare outputs byte by byte instead of token by token",
+            "no_exact": "compare token by token (overrides \"exact\": true)",
             "out": "directory to save a counterexample\n(default: randtest_fail)",
             "cxx": "C++ compiler (default: g++)",
             "cxxflags": "compiler flags, replacing the default\n(default: \"-std=c++17 -O2\")",
@@ -418,6 +442,26 @@ seed S = START, START+1, ... の順に、次の処理を繰り返します。
            --cxxflags "-std=c++17 -O2 -g -fsanitize=address,undefined"
       配列外アクセスなども実行時エラーとして検出する
 
+設定ファイル:
+  実行したディレクトリに randtest.json があれば、その値をオプションの既定値
+  として使います。コマンドラインのオプションはこれより優先し、位置引数の
+  FILE も "main", "naive", "gen" より優先します。-I で指定したディレクトリは
+  "include" に追加されます。キーはすべて省略できます。
+    "main", "naive", "gen"     ファイル (文字列)
+    "count", "start"           整数
+    "time", "timeout"          秒数 ("time" は 0 か null で制限なし)
+    "exact"                    true か false (--no-exact で打ち消せる)
+    "out", "cxx", "cxxflags"   文字列
+    "include"                  ディレクトリのリスト
+  未知のキーや型の誤りはエラーになります。例:
+    {
+      "main": "main.cpp", "naive": "naive.cpp", "gen": "gen.cpp",
+      "count": 5000, "timeout": 5,
+      "cxxflags": "-std=c++17 -O2 -g -fsanitize=address,undefined"
+    }
+  このファイルがあれば `randtest` だけでテストを実行できます。
+  `randtest --init` は雛形を書き出すだけで、設定のファイルは使いません。
+
 ヘルプの言語:
   -h の言語は環境変数 RANDTEST_LANG (ja または en) で決まり、未設定なら
   ロケール (LANGUAGE, LC_ALL, LC_MESSAGES, LANG) に従います。
@@ -438,10 +482,11 @@ seed S = START, START+1, ... の順に、次の処理を繰り返します。
             "gen": "生成器。`GEN <seed>` の形で呼ばれる",
             "count": "試すケース数。0 なら無制限 (既定値: 1000)",
             "start": "最初の seed (既定値: 0)",
-            "time": "SEC 秒経過したら終了する (既定値: 制限なし)",
+            "time": "SEC 秒経過したら終了する。0 なら制限なし\n(既定値: 制限なし)",
             "timeout": "GEN, MAIN, NAIVE の 1 回の実行の制限時間 (秒)\n(既定値: 2)",
             "replay": "SEED だけを実行して入力と出力を表示し、\n標準エラー出力とともに OUT に保存する",
             "exact": "トークン単位ではなくバイト列の完全一致で比較する",
+            "no_exact": "トークン単位で比較する (\"exact\": true を打ち消す)",
             "out": "反例の保存先 (既定値: randtest_fail)",
             "cxx": "C++ コンパイラ (既定値: g++)",
             "cxxflags": "コンパイルオプション。既定値を置き換える\n(既定値: \"-std=c++17 -O2\")",
@@ -504,6 +549,8 @@ def build_parser(lang):
                           help=h["timeout"])
     g["run"].add_argument("--replay", type=int, metavar="SEED", help=h["replay"])
     g["compare"].add_argument("--exact", action="store_true", help=h["exact"])
+    g["compare"].add_argument("--no-exact", dest="exact", action="store_false",
+                              help=h["no_exact"])
     g["compare"].add_argument("-o", "--out", default="randtest_fail", metavar="DIR",
                               help=h["out"])
     g["build"].add_argument("--cxx", default="g++", metavar="CXX", help=h["cxx"])
@@ -519,23 +566,95 @@ def build_parser(lang):
     return parser
 
 
+class ConfigError(Exception):
+    pass
+
+
+def _is_number(value):
+    return isinstance(value, (int, float)) and not isinstance(value, bool)
+
+
+CONFIG_TYPES = {
+    "main": ("a string", lambda v: isinstance(v, str)),
+    "naive": ("a string", lambda v: isinstance(v, str)),
+    "gen": ("a string", lambda v: isinstance(v, str)),
+    "count": ("an integer", lambda v: isinstance(v, int) and not isinstance(v, bool)),
+    "start": ("an integer", lambda v: isinstance(v, int) and not isinstance(v, bool)),
+    "time": ("a number or null", lambda v: v is None or _is_number(v)),
+    "timeout": ("a number", _is_number),
+    "exact": ("true or false", lambda v: isinstance(v, bool)),
+    "out": ("a string", lambda v: isinstance(v, str)),
+    "cxx": ("a string", lambda v: isinstance(v, str)),
+    "cxxflags": ("a string", lambda v: isinstance(v, str)),
+    "include": ("a list of strings",
+                lambda v: isinstance(v, list) and all(isinstance(x, str) for x in v)),
+}
+
+
+def load_config(path):
+    """Return the settings in ``path``, or {} when the file does not exist."""
+    try:
+        text = path.read_text()
+    except FileNotFoundError:
+        return {}
+    except OSError as e:
+        raise ConfigError(f"{path}: {e.strerror}")
+    try:
+        data = json.loads(text)
+    except json.JSONDecodeError as e:
+        raise ConfigError(f"{path}: invalid JSON: {e}")
+    if not isinstance(data, dict):
+        raise ConfigError(f"{path}: the top level must be an object")
+    for key, value in data.items():
+        if key not in CONFIG_TYPES:
+            raise ConfigError(f"{path}: unknown key \"{key}\" "
+                              f"(allowed: {', '.join(CONFIG_TYPES)})")
+        expected, valid = CONFIG_TYPES[key]
+        if not valid(value):
+            raise ConfigError(f"{path}: \"{key}\" must be {expected}")
+    return data
+
+
 def parse_args(argv):
     parser = build_parser(help_language())
-    args = parser.parse_intermixed_args(argv)
-    roles = ("main", "naive", "gen")
+    path = Path(CONFIG_FILE)
+    try:
+        config, config_error = load_config(path), None
+    except ConfigError as e:
+        config, config_error = {}, str(e)
+    defaults = {k: v for k, v in config.items() if k not in ROLES}
+    if "include" in defaults:
+        defaults["include"] = list(defaults["include"])  # -I appends to it
+    parser.set_defaults(**defaults)
+    args = parser.parse_intermixed_args(argv)  # exits here for --help
+    if config_error:
+        parser.error(config_error)
+
     files = list(args.files)
-    for role in roles:
+    files_on_command_line = bool(files) or any(getattr(args, r) for r in ROLES)
+    for role in ROLES:
         if getattr(args, role) is None and files:
             setattr(args, role, files.pop(0))
     if files:
         parser.error(f"too many files: {' '.join(files)}")
-    missing = [role.upper() for role in roles if getattr(args, role) is None]
-    if missing and not (args.init is not None and len(missing) == len(roles)):
-        parser.error(f"missing {', '.join(missing)} (use -m, -n, -g or positional FILEs)")
+    if args.init is None or files_on_command_line:
+        for role in ROLES:
+            if getattr(args, role) is None and role in config:
+                setattr(args, role, config[role])
+    missing = [role.upper() for role in ROLES if getattr(args, role) is None]
+    if missing and not (args.init is not None and len(missing) == len(ROLES)):
+        parser.error(f"missing {', '.join(missing)} "
+                     f"(use -m, -n, -g, positional FILEs or {CONFIG_FILE})")
     if args.count < 0:
         parser.error("--count must be non-negative")
     if args.start < 0 or (args.replay is not None and args.replay < 0):
         parser.error("seeds must be non-negative")
+    if args.time is not None and args.time < 0:
+        parser.error("--time must be non-negative")
+    if args.timeout <= 0:
+        parser.error("--timeout must be positive")
+    if config:
+        print(f"randtest: using settings in {CONFIG_FILE}", file=sys.stderr)
     return args
 
 
@@ -575,7 +694,7 @@ def search(args, main, naive, gen):
     try:
         while args.count == 0 or done < args.count:
             elapsed = time.monotonic() - started
-            if args.time is not None and elapsed >= args.time:
+            if args.time and elapsed >= args.time:
                 break
             if tty and elapsed - last_print >= 0.1:
                 last_print = elapsed

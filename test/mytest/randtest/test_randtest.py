@@ -1,6 +1,7 @@
 """Behavior tests for scripts/randtest.py."""
 
 import importlib.util
+import json
 import os
 from pathlib import Path
 import subprocess
@@ -151,6 +152,80 @@ class RandTestTests(unittest.TestCase):
                 result = self.randtest(*args)
                 self.assertEqual(result.returncode, 2)
                 self.assertIn(message, result.stderr)
+
+    MAX_SOLUTION = ("long long b = a[0]; for(auto x : a) if(x > b) b = x; "
+                    "std::cout << b << '\\n';")
+
+    def write_config(self, data):
+        text = data if isinstance(data, str) else json.dumps(data)
+        self.write("randtest.json", text)
+
+    def test_config_supplies_defaults(self):
+        self.write("main.cpp", solution(self.MAX_SOLUTION))
+        self.write_config({"main": "main.cpp", "naive": "naive.cpp", "gen": "gen.cpp",
+                           "count": 7, "start": 3, "timeout": 5, "time": None})
+        result = self.randtest()
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("all 7 cases passed (seeds 3..9", result.stdout)
+        self.assertIn("randtest: using settings in randtest.json", result.stderr)
+
+        # command-line options and positional files take precedence
+        result = self.randtest("-c", "2", "--start", "0")
+        self.assertIn("all 2 cases passed (seeds 0..1", result.stdout)
+        self.write_config({"main": "missing.cpp", "naive": "missing.cpp", "gen": "gen.cpp",
+                           "count": 2})
+        result = self.randtest("main.cpp", "naive.cpp")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        result = self.randtest("-n", "naive.cpp", "main.cpp")  # FILE fills MAIN
+        self.assertEqual(result.returncode, 0, result.stderr)
+        result = self.randtest("-m", "main.cpp")
+        self.assertEqual(result.returncode, 2)
+        self.assertIn("missing.cpp: no such file", result.stderr)
+
+    def test_config_exact_include_and_time(self):
+        self.write("spaces.cpp", solution(
+            "long long b = a[0]; for(auto x : a) if(x > b) b = x; std::cout << b << \"  \\n\";"))
+        self.write("inc/a.hpp", "#pragma once\nconstexpr int A = 0;\n")
+        self.write("inc2/b.hpp", "#pragma once\nconstexpr int B = 0;\n")
+        self.write("both.cpp", '#include "a.hpp"\n#include "b.hpp"\n' + solution(
+            "long long b = a[0]; for(auto x : a) if(x > b) b = x; std::cout << b + A + B << '\\n';"))
+        self.write_config({"naive": "naive.cpp", "gen": "gen.cpp", "count": 5,
+                           "exact": True, "include": ["inc"], "time": 0})
+        self.assertEqual(self.randtest("-m", "spaces.cpp").returncode, 1)
+        self.assertEqual(self.randtest("-m", "spaces.cpp", "--no-exact").returncode, 0)
+        # -I adds to "include"
+        result = self.randtest("-m", "both.cpp", "-I", "inc2")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        result = self.randtest("-m", "both.cpp")
+        self.assertEqual(result.returncode, 2)
+        self.assertIn("b.hpp", result.stderr)
+
+    def test_config_errors(self):
+        for text, message in (
+            ("{", "randtest.json: invalid JSON"),
+            ("[]", "randtest.json: the top level must be an object"),
+            ('{"cout": 5}', 'randtest.json: unknown key "cout"'),
+            ('{"count": "5"}', 'randtest.json: "count" must be an integer'),
+            ('{"count": true}', 'randtest.json: "count" must be an integer'),
+            ('{"exact": 1}', 'randtest.json: "exact" must be true or false'),
+            ('{"include": "inc"}', 'randtest.json: "include" must be a list of strings'),
+            ('{"timeout": 0}', "--timeout must be positive"),
+        ):
+            with self.subTest(text=text):
+                self.write_config(text)
+                result = self.randtest("main.cpp", "naive.cpp", "gen.cpp")
+                self.assertEqual(result.returncode, 2)
+                self.assertIn(message, result.stderr)
+        # help is still available with a broken settings file
+        self.write_config("{")
+        self.assertEqual(self.randtest("-h").returncode, 0)
+
+    def test_init_ignores_files_in_config(self):
+        self.write_config({"main": "main.cpp", "naive": "naive.cpp", "gen": "gen.cpp"})
+        result = self.randtest("--init", "gen2.cpp")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout, "wrote gen2.cpp\n")
+        self.assertFalse((self.dir / ".randtest").exists())
 
     def test_counterexample_is_saved_and_replayable(self):
         # wrong when every value is negative
