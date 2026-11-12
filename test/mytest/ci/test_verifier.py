@@ -33,7 +33,8 @@ class VerifierTests(unittest.TestCase):
         paths = {p.relative_to(ROOT) for p in configure._find_source_code_paths(basedir=ROOT)}
         self.assertIn(Path('data-structure/monoid/rolling_hash.hpp'), paths)
         self.assertIn(Path('test/mytest/data-structure/monoids.test.cpp'), paths)
-        for prefix in ('scripts', 'test/mytest/bundle', 'test/mytest/headers', 'test/mytest/ci'):
+        for prefix in ('scripts', 'test/mytest/bundle', 'test/mytest/headers', 'test/mytest/ci',
+                       'test/mytest/randtest'):
             self.assertFalse(any(p == Path(prefix) or Path(prefix) in p.parents for p in paths))
 
     def test_packaged_resources(self):

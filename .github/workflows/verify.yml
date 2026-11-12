@@ -36,6 +36,9 @@ jobs:
     - name: Check standalone headers and linkage
       run: python3 -m unittest discover -s test/mytest/headers -v
 
+    - name: Run randtest behavior tests
+      run: python3 -m unittest discover -s test/mytest/randtest -v
+
 
     # # required only if you want to verify Haskell code
     # - name: Install dependencies (Haskell)
