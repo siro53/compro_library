@@ -83,16 +83,17 @@ class RandTestTests(unittest.TestCase):
         self.assertEqual(japanese.returncode, 0)
         for heading in ("usage: randtest -m MAIN -n NAIVE -g GEN", "files:", "running:",
                         "specifying files:", "comparison:", "generator:", "counterexample:",
-                        "exit status:", "examples:", "help language:"):
+                        "exit status:", "examples:", "help language:",
+                        "interactive problems:"):
             self.assertIn(heading, english.stdout)
         for heading in ("使い方: randtest -m MAIN -n NAIVE -g GEN", "ファイル:", "実行:",
                         "ファイルの指定:", "比較方法:", "生成器:", "反例:", "終了コード:", "使用例:",
-                        "ヘルプの言語:"):
+                        "ヘルプの言語:", "インタラクティブ問題:"):
             self.assertIn(heading, japanese.stdout)
         for option in ("--main", "--naive", "--gen", "--count", "--start", "--time",
                        "--timeout", "--replay", "--exact", "--out", "--cxx", "--cxxflags",
                        "-I DIR", "--init", "--help-ja", "--help-en", "--float EPS",
-                       "--checker CHECKER", "--no-exact"):
+                       "--checker CHECKER", "--no-exact", "--interactor INTERACTOR"):
             self.assertIn(option, english.stdout)
             self.assertIn(option, japanese.stdout)
 
@@ -419,6 +420,9 @@ class RandTestTests(unittest.TestCase):
             (["--exact", "--float", "1e-6"], "--exact and --float cannot be combined"),
             (["--exact", "--checker", "c.cpp"], "--exact and --checker cannot be combined"),
             (["--float", "1e-6", "--checker", "c.cpp"], "--float and --checker cannot be combined"),
+            (["--checker", "c.cpp", "--interactor", "j.cpp"],
+             "--checker and --interactor cannot be combined"),
+            (["--exact", "--interactor", "j.cpp"], "--exact and --interactor cannot be combined"),
             (["--float", "-1"], "--float must be a non-negative number"),
             (["--float", "nan"], "--float must be a non-negative number"),
         ):
@@ -574,6 +578,216 @@ class RandTestTests(unittest.TestCase):
         result = self.randtest("echo.py", "echo.py", "gen.cpp", "-c", "3")
         self.assertEqual(result.returncode, 0, result.stderr)
 
+
+    # ------------------------------------------------------------ interactive
+
+    # binary search for the hidden number of the --init interactor template
+    GUESS = textwrap.dedent("""\
+        #include <iostream>
+        int main() {
+            %s
+            int n; std::cin >> n;
+            int lo = 1, hi = n;
+            while(lo < hi) {
+                int m = (lo + hi) / 2;
+                std::cout << "? " << m << %s;
+                int r; std::cin >> r;
+                if(r) hi = m; else lo = m + 1;
+            }
+            std::cout << "! " << %s << %s;
+            %s
+        }
+        """)
+
+    def guess(self, name, setup="", flush="std::endl", answer="lo", after=""):
+        self.write(name, self.GUESS % (setup, flush, answer, flush, after))
+
+    def interactive_setup(self):
+        (self.dir / "gen.cpp").unlink()
+        result = self.randtest("--init", "--interactor", "judge.cpp")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout, "wrote gen.cpp\nwrote judge.cpp\n")
+        self.guess("guess.cpp")
+
+    def test_interactor_accepts_a_correct_solution(self):
+        self.interactive_setup()
+        self.write("guess.py", textwrap.dedent("""\
+            n = int(input())
+            lo, hi = 1, n
+            while lo < hi:
+                m = (lo + hi) // 2
+                print("?", m, flush=True)
+                if int(input()):
+                    hi = m
+                else:
+                    lo = m + 1
+            print("!", lo, flush=True)
+            """))
+        for args in (
+            ["-m", "guess.cpp", "-g", "gen.cpp", "--interactor", "judge.cpp"],
+            ["guess.cpp", "gen.cpp", "--interactor", "judge.cpp"],  # FILEs: MAIN, GEN
+            ["guess.cpp", "guess.py", "gen.cpp", "--interactor", "judge.cpp"],
+            ["-m", "guess.py", "-g", "gen.cpp", "--interactor", "judge.cpp"],
+        ):
+            with self.subTest(args=args):
+                result = self.randtest(*args, "-c", "40")
+                self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+                self.assertIn("all 40 cases passed", result.stdout)
+        self.write_config({"main": "guess.cpp", "gen": "gen.cpp", "interactor": "judge.cpp",
+                           "count": 10})
+        result = self.randtest()
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn("all 10 cases passed", result.stdout)
+
+    def test_interactor_rejection_saves_transcript(self):
+        self.interactive_setup()
+        self.guess("off.cpp", answer="lo + (lo < n)")  # wrong unless x = N
+        result = self.randtest("-m", "off.cpp", "-g", "gen.cpp", "--interactor", "judge.cpp")
+        self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+        self.assertIn("--- input (read only by the interactor) ---", result.stdout)
+        self.assertIn("main: OK, interactor: rejected (exit code 1)\n"
+                      "--- transcript of main (< from the interactor, > from main) ---\n< ",
+                      result.stdout)
+        self.assertRegex(result.stdout, r"> ! \d+\n--- interactor message ---\n"
+                                        r"answered \d+, but x = \d+")
+        fail = self.dir / "randtest_fail"
+        n, x = map(int, (fail / "in.txt").read_text().split())
+        transcript = (fail / "transcript_main.txt").read_text()
+        self.assertTrue(transcript.startswith(f"< {n}\n> ? "), transcript)
+        self.assertIn(f"but x = {x}", (fail / "interactor_main.log").read_text())
+        info = (fail / "info.txt").read_text()
+        self.assertIn("main: off.cpp OK, interactor: judge.cpp rejected (exit code 1)", info)
+        self.assertIn("-g gen.cpp --interactor judge.cpp --replay", info)
+
+        seed = info.split()[1]
+        replay = self.randtest("-m", "off.cpp", "-g", "gen.cpp", "--interactor", "judge.cpp",
+                               "--replay", seed)
+        self.assertEqual(replay.returncode, 1)
+        self.assertIn(transcript, replay.stdout)
+        replay = self.randtest("-m", "guess.cpp", "-g", "gen.cpp", "--interactor", "judge.cpp",
+                               "--replay", seed)
+        self.assertEqual(replay.returncode, 0, replay.stdout)
+        self.assertIn("main: OK, interactor: accepted", replay.stdout)
+        self.assertRegex((fail / "interactor_out_main.txt").read_text(), r"^\d+ queries\n$")
+
+    def test_interactor_timeouts_explain_who_was_waiting(self):
+        self.interactive_setup()
+        # without cin.tie(nullptr), reading cin flushes cout, so this one passes
+        self.guess("lazy.cpp", flush="'\\n'")
+        result = self.randtest("lazy.cpp", "gen.cpp", "--interactor", "judge.cpp", "-c", "20")
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.guess("noflush.cpp", setup="std::cin.tie(nullptr);", flush="'\\n'")
+        started = time.monotonic()
+        result = self.randtest("noflush.cpp", "gen.cpp", "--interactor", "judge.cpp",
+                               "--timeout", "0.5")
+        self.assertLess(time.monotonic() - started, 60)
+        self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+        self.assertIn("main: TLE (> 0.5s), interactor: TLE (> 0.5s)", result.stdout)
+        self.assertIn("hint: main did not reply to the last message of the interactor; "
+                      "did main flush its output?", result.stdout)
+        self.assertIn("hint (main): main did not reply",
+                      (self.dir / "randtest_fail" / "info.txt").read_text())
+        # waiting for input after the final answer
+        self.guess("linger.cpp", after="int z; std::cin >> z;")
+        result = self.randtest("linger.cpp", "gen.cpp", "--interactor", "judge.cpp",
+                               "--timeout", "0.5")
+        self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+        self.assertIn("If it was the final answer, main has to exit", result.stdout)
+        # an interactor that ignores the end of input
+        self.write("deaf.py", "import sys, time\nprint(5, flush=True)\ntime.sleep(60)\n")
+        self.write("quit.cpp", "int main() {}\n")
+        result = self.randtest("quit.cpp", "gen.cpp", "--interactor", "deaf.py",
+                               "--timeout", "0.5")
+        self.assertIn("main: OK, interactor: TLE (> 0.5s)", result.stdout)
+        self.assertIn("main had exited, but the interactor did not finish", result.stdout)
+
+    def test_interactor_runtime_error_and_flood(self):
+        self.interactive_setup()
+        self.write("crash.cpp", textwrap.dedent("""\
+            #include <cstdlib>
+            #include <iostream>
+            int main() {
+                int n; std::cin >> n;
+                std::cout << "? 1" << std::endl;
+                std::cerr << "debug-crash\\n";
+                std::abort();
+            }
+            """))
+        result = self.randtest("crash.cpp", "gen.cpp", "--interactor", "judge.cpp")
+        self.assertEqual(result.returncode, 1)
+        self.assertIn("main: RE (signal 6), interactor: rejected (exit code 1)", result.stdout)
+        self.assertNotIn("debug-crash", result.stdout + result.stderr)
+        fail = self.dir / "randtest_fail"
+        self.assertEqual((fail / "stderr_main.log").read_text(), "debug-crash\n")
+        # flooding the interactor that has already rejected must not hang
+        self.write("flood.cpp", textwrap.dedent("""\
+            #include <iostream>
+            int main() {
+                int n; std::cin >> n;
+                for(int i = 0; i < 400000; i++) std::cout << "? 1\\n";
+            }
+            """))
+        started = time.monotonic()
+        result = self.randtest("flood.cpp", "gen.cpp", "--interactor", "judge.cpp")
+        self.assertLess(time.monotonic() - started, 60)
+        self.assertEqual(result.returncode, 1)
+        self.assertIn("main: OK, interactor: rejected (exit code 1)", result.stdout)
+        self.assertIn("lines omitted, full text in randtest_fail/transcript_main.txt",
+                      result.stdout)
+        transcript = (fail / "transcript_main.txt").read_text()
+        self.assertIn("[not delivered: the receiver had exited]", transcript)
+        self.assertTrue(transcript.endswith("not recorded)\n"), transcript[-200:])
+
+    def test_naive_rejected_by_interactor_is_a_setup_error(self):
+        self.interactive_setup()
+        judge = (self.dir / "judge.cpp").read_text()
+        self.write("badjudge.cpp", judge.replace("x <= y ? 1 : 0", "x < y ? 1 : 0"))
+        result = self.randtest("-m", "guess.cpp", "-n", "guess.cpp", "-g", "gen.cpp",
+                               "--interactor", "badjudge.cpp")
+        self.assertEqual(result.returncode, 2, result.stdout + result.stderr)
+        self.assertIn("naive failed against the interactor (seed ", result.stdout)
+        self.assertIn("--- interactor message (naive) ---", result.stdout)
+        self.assertTrue((self.dir / "randtest_fail" / "transcript_naive.txt").exists())
+
+    def test_init_interactor_templates(self):
+        self.write("judge.cpp", "// mine\n")
+        result = self.randtest("--init", "g2.cpp", "--interactor", "judge.cpp")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout, "wrote g2.cpp\n")
+        self.assertIn("only the interactor reads", (self.dir / "g2.cpp").read_text())
+        self.assertEqual((self.dir / "judge.cpp").read_text(), "// mine\n")
+        result = self.randtest("--init", "g3.cpp", "--interactor", "judge.py")
+        self.assertEqual(result.returncode, 2)
+        self.assertIn("judge.py is not a C++ file", result.stderr)
+        self.write_config({"interactor": "j2.cpp"})
+        result = self.randtest("--init", "g4.cpp")
+        self.assertEqual(result.stdout, "wrote g4.cpp\nwrote j2.cpp\n")
+        # the templates reject too many queries
+        self.write("linear.cpp", textwrap.dedent("""\
+            #include <iostream>
+            int main() {
+                int n; std::cin >> n;
+                for(int y = 1; y <= n; y++) {
+                    std::cout << "? " << y << std::endl;
+                    int r; std::cin >> r;
+                    if(r) { std::cout << "! " << y << std::endl; return 0; }
+                }
+            }
+            """))
+        result = self.randtest("linear.cpp", "g4.cpp", "--interactor", "j2.cpp")
+        self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+        self.assertRegex(result.stdout, r"interactor message ---\nmore than \d+ queries")
+
+    def test_render_transcript(self):
+        module = self.load_module()
+        interaction = module.Interaction(
+            module.Result(), module.Result(),
+            [["<", b"3\n", True], [">", b"? ", True], [">", b"1\n", True],
+             ["<", b"0\n", True], [">", b"! 2", True], [">", b"\n", False]], [">"])
+        self.assertEqual(module.render_transcript(interaction), (
+            "< 3\n> ? 1\n< 0\n> ! 2  [no newline]\n"
+            ">   [not delivered: the receiver had exited]\n"
+            f"> ... (more than {module.TRANSCRIPT_LIMIT} bytes, not recorded)\n"))
 
 if __name__ == "__main__":
     unittest.main()
