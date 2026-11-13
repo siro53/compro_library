@@ -117,16 +117,17 @@ randtest -m main.cpp -n naive.cpp -g gen.cpp --replay 42   # seed 42 の入力�
 | `-c N` | 試すケース数。`0` なら無制限（既定値は 1000） |
 | `--start S` | 最初の seed（既定値は 0） |
 | `--time SEC` | 指定した秒数が経過したら終了する。`0` なら制限なし |
-| `--timeout SEC` | 1回の実行の制限時間（既定値は 2 秒） |
+| `--timeout SEC` | 1回の実行の制限時間（既定値は 2 秒）。`--interactor` では対話全体の制限時間 |
 | `--exact` | トークン単位ではなく、出力をバイト列として完全一致で比較する |
 | `--no-exact` | トークン単位で比較する（設定ファイルの `"exact": true` を打ち消す） |
 | `--float EPS` | 実数のトークンは、絶対誤差か相対誤差が `EPS` 以下なら一致とみなす |
 | `--checker CHECKER` | 比較の代わりにチェッカーで `main` の出力を判定する。`-n` は省略できる |
+| `--interactor INTERACTOR` | インタラクティブ問題として、`main` をインタラクタと対話させて判定する。`-n` は省略できる |
 | `--replay SEED` | 指定した seed だけを実行し、入力と出力を表示する |
 | `-o DIR` | 反例の保存先（既定値は `randtest_fail`） |
 | `--cxx`, `--cxxflags`, `-I DIR` | コンパイラ、コンパイルオプション、追加の include パス |
 
-終了コードは、すべて一致すれば `0`、反例が見つかれば `1`、コンパイルエラーや生成器の異常終了など準備の段階で失敗すれば `2` です。深い再帰で落ちないよう、実行時はスタックサイズの上限をハードリミットまで引き上げます。インタラクティブ問題には対応していません。
+終了コードは、すべて一致すれば `0`、反例が見つかれば `1`、コンパイルエラーや生成器の異常終了など準備の段階で失敗すれば `2` です。深い再帰で落ちないよう、実行時はスタックサイズの上限をハードリミットまで引き上げます。インタラクティブ問題は `--interactor` で扱えます（[後述](#インタラクティブ問題)）。
 
 ### 誤差を許す比較とチェッカー
 
@@ -175,7 +176,62 @@ randtest main.cpp gen.cpp --checker check.cpp                  # 同じ（FILE �
 randtest -m main.cpp -n naive.cpp -g gen.cpp --checker check.cpp
 ```
 
-`--exact`、`--float`、`--checker` は同時に指定できません。
+`--exact`、`--float`、`--checker`、`--interactor` は同時に指定できません。
+
+### インタラクティブ問題
+
+インタラクティブ問題では、`--interactor INTERACTOR` で、提出する解をインタラクタ（ジャッジ役のプログラム）と対話させます。`randtest` は入力ごとに次のコマンドを実行し、インタラクタの標準入力と標準出力を `main` の標準出力と標準入力につなぎます。引数の順は testlib のインタラクタと同じです。
+
+```sh
+INTERACTOR <入力ファイル> <出力ファイル>
+```
+
+このとき生成器が出力するのは、`main` への入力ではなく、インタラクタだけが読む隠された入力（当てるべき数など）です。`main` に知らせてよい情報（N など）は、インタラクタが `main` に送ります。`main` が正常終了し、インタラクタが終了コード 0 で終われば合格です。それ以外の終了コード、異常終了、時間切れは、どちらのプログラムで起きても反例になります。不合格の理由は、インタラクタが標準エラー出力に書きます。インタラクタが出力ファイルに書いた内容（質問の回数など）は `interactor_out_main.txt` に保存します。
+
+`randtest --init --interactor judge.cpp` を実行すると、組み合わせてそのまま動く生成器（`gen.cpp`）とインタラクタ（`judge.cpp`）の雛形を書き出します。題材は「隠された数 x（1 ≤ x ≤ N）を当てる」問題です。`main` は最初に N を受け取ります。`? y` と質問すると、x ≤ y なら `1`、そうでなければ `0` が返ってきます。質問は ⌈log₂ N⌉ 回までで、最後に `! x` で答えます。インタラクタの雛形は、隠された入力を読む、`main` に情報を送る、質問に答える、余分な出力がないか確かめる、の4段階に分かれています。
+
+```sh
+randtest --init --interactor judge.cpp                  # gen.cpp と judge.cpp の雛形を作る
+randtest -m main.cpp -g gen.cpp --interactor judge.cpp
+randtest main.cpp gen.cpp --interactor judge.cpp        # 同じ（FILE は main, gen の順）
+```
+
+`randtest` は2つのプログラムの間に入ってすべてのバイトを中継し、やり取りとして記録します。反例では、各プログラムの結果、やり取り、インタラクタのメッセージを表示します。
+
+```text
+found a counterexample (seed 2)
+--- input (read only by the interactor) ---
+10 8
+main: OK, interactor: rejected (exit code 1)
+--- transcript of main (< from the interactor, > from main) ---
+< 10
+> ? 5
+< 0
+> ? 8
+< 1
+> ? 6
+< 0
+> ! 7
+--- interactor message ---
+answered 7, but x = 8
+```
+
+`<` の行はインタラクタから `main` へ、`>` の行は `main` からインタラクタへのメッセージです。インタラクタが終了した後に `main` が送ったデータは `[not delivered: the receiver had exited]` と記録します。最後が改行で終わらないメッセージには `[no newline]` が付きます。やり取りが長いときは、先頭と末尾だけを表示します。各方向で 1 MiB を超えた分は記録しませんが、中継は続けます。反例は `randtest_fail/` に保存し、`in.txt`（隠された入力）、`transcript_main.txt`（やり取り）、`stderr_main.log`（`main` の標準エラー出力）、`interactor_main.log`（インタラクタの標準エラー出力）、`interactor_out_main.txt`（インタラクタの出力ファイル）、`info.txt` が残ります。
+
+`--timeout` は対話全体の制限時間です。時間切れのときは、どちらがまだ動いていたか、最後にどちらがメッセージを送ったかから、原因の候補を `hint:` として表示します。よくある原因は、`main` が出力を flush し忘れていることです。`cin` は読み込みのたびに `cout` を flush するので、普段は `endl` を書かなくても動きます。しかし、`template/template.cpp` のように `cin.tie(nullptr)` とすると自動では flush されなくなり、対話が止まります。この場合は次のように表示されるので、`endl` か `cout.flush()` を使ってください。
+
+```text
+main: TLE (> 2.0s), interactor: TLE (> 2.0s)
+--- transcript of main (< from the interactor, > from main) ---
+< 12
+hint: main did not reply to the last message of the interactor; did main flush its output? (cin.tie(nullptr) stops cin from flushing cout) Otherwise main is too slow
+```
+
+Python の解も同じで、`print(..., flush=True)` が必要です。ジャッジと同じ条件で確かめるため、`randtest` が出力のバッファリングを無効にすることはありません。
+
+`-n` で愚直解を渡すと、愚直解もインタラクタと対話させます。愚直解は必ず合格するはずです。不合格になった場合は、インタラクタ・生成器・愚直解のどれかが誤っているとみなし、`naive failed against the interactor` と表示して終了コード 2 で終了します。インタラクタを書き換えたときの確認に使えます。
+
+返答を乱択で変えるインタラクタ（適応的なインタラクタ）は、乱数の seed を入力ファイルから読んでください。生成器が seed を隠された入力に書いておけば、同じ seed からは常に同じ対話になり、`--replay` で再現できます。
 
 ### 設定ファイル
 
@@ -203,6 +259,7 @@ randtest -m main.cpp -n naive.cpp -g gen.cpp --checker check.cpp
 | `exact` | `true` / `false` | `--exact`, `--no-exact` |
 | `float` | 数値または `null` | `--float` |
 | `checker` | 文字列 | `--checker` |
+| `interactor` | 文字列 | `--interactor` |
 | `out`, `cxx`, `cxxflags` | 文字列 | `-o`, `--cxx`, `--cxxflags` |
 | `include` | 文字列のリスト | `-I` |
 
